@@ -1,0 +1,18 @@
+{
+  "id": "REPLACE-ME-ID",
+  "priority": "P1",
+  "category": "replace-me-category",
+  "title": "Replace me",
+  "description": "Describe the feature in one sentence.",
+  "source_refs": [
+    "./01-外部知识库映射.md"
+  ],
+  "acceptance_criteria": [
+    "Replace this with concrete completion criteria."
+  ],
+  "dependencies": [],
+  "verification": {
+    "mode": "markdown-file",
+    "target": "./runs/replace-me/output.md"
+  }
+}

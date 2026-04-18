@@ -1,0 +1,32 @@
+{
+  "_instructions": [
+    "Copy this file into runs/research-queues/YYYY-MM-DD-topic.json before editing.",
+    "Use this only for pre-backtest prioritization.",
+    "These scores are heuristics, not real simulation metrics.",
+    "Ranges: idea_strength 0-3, dataset_freshness 0-2, correlation_novelty 0-3, metric_headroom 0-2, execution_simplicity 0-1."
+  ],
+  "items": [
+    {
+      "name": "replace-me-analyst-family",
+      "idea_strength": 3,
+      "dataset_freshness": 2,
+      "correlation_novelty": 2,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "Replace this example with a real research direction.",
+      "next_step": "State the next smallest experiment to run."
+    },
+    {
+      "name": "replace-me-event-line",
+      "idea_strength": 2,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 1,
+      "execution_simplicity": 0,
+      "current_status": "new_direction",
+      "notes": "Use a second line so the queue has relative prioritization.",
+      "next_step": "State the first baseline experiment."
+    }
+  ]
+}

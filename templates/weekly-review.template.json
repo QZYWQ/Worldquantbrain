@@ -1,0 +1,23 @@
+{
+  "_instructions": [
+    "Copy this file into runs/notes/weekly/YYYY-Wxx-review.json before editing.",
+    "Keep this week-level summary grounded in real work products from runs/."
+  ],
+  "week_of": "2026-W16",
+  "focus": "Summarize the main research focus of the week.",
+  "wins": [
+    "replace-me-win-1"
+  ],
+  "lessons": [
+    "replace-me-lesson-1"
+  ],
+  "top_candidates": [
+    {
+      "name": "replace-me-alpha-1",
+      "action": "replace-me-submit-polish-branch-kill"
+    }
+  ],
+  "next_week_queue": [
+    "replace-me-next-week-item-1"
+  ]
+}

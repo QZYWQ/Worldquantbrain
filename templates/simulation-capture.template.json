@@ -1,0 +1,38 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "replace-me-capture-id",
+  "topic": "replace-me-topic",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08
+  },
+  "alphas": [
+    {
+      "name": "replace-me-alpha-name",
+      "expression": "replace-me-fast-expression",
+      "metrics": {
+        "sharpe": null,
+        "fitness": null,
+        "turnover": null,
+        "returns": null,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Replace with real platform observations."
+    }
+  ]
+}

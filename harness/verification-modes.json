@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "modes": {
+    "research-queue-json": {
+      "validator": "validate_research_queue",
+      "template_hint": "./templates/research-queue.template.json",
+      "script_hint": "script://research_queue_builder.py",
+      "runner_script": "research_queue_builder.py",
+      "runner_args": [
+        "--input",
+        "{target_abs}",
+        "--format",
+        "json"
+      ],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": false,
+      "extra_output_hints": []
+    },
+    "candidate-batch-json": {
+      "validator": "validate_candidate_batch",
+      "template_hint": "./templates/candidate-batch.template.json",
+      "script_hint": "script://candidate_scorecard.py",
+      "runner_script": "candidate_scorecard.py",
+      "runner_args": [
+        "--input",
+        "{target_abs}",
+        "--format",
+        "json"
+      ],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": false,
+      "extra_output_hints": []
+    },
+    "daily-note-json": {
+      "validator": "validate_daily_note",
+      "template_hint": "./templates/daily-note.template.json",
+      "script_hint": "script://session_note_scaffold.py --mode daily",
+      "runner_script": "session_note_scaffold.py",
+      "runner_args": [
+        "--mode",
+        "daily",
+        "--input",
+        "{target_abs}"
+      ],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": false,
+      "extra_output_hints": []
+    },
+    "weekly-review-json": {
+      "validator": "validate_weekly_review",
+      "template_hint": null,
+      "script_hint": "script://session_note_scaffold.py --mode weekly",
+      "runner_script": "session_note_scaffold.py",
+      "runner_args": [
+        "--mode",
+        "weekly",
+        "--input",
+        "{target_abs}"
+      ],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": false,
+      "extra_output_hints": []
+    },
+    "markdown-file": {
+      "validator": "validate_markdown",
+      "template_hint": null,
+      "script_hint": null,
+      "runner_script": null,
+      "runner_args": [],
+      "requires_artifacts_dir": false,
+      "target_non_empty": true,
+      "target_json": false,
+      "extra_output_hints": []
+    },
+    "manual-artifact": {
+      "validator": "validate_simulation_capture",
+      "template_hint": null,
+      "script_hint": null,
+      "runner_script": null,
+      "runner_args": [],
+      "requires_artifacts_dir": true,
+      "target_non_empty": false,
+      "target_json": true,
+      "extra_output_hints": [
+        "./harness/artifacts/"
+      ]
+    }
+  }
+}

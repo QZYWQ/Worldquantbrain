@@ -1,0 +1,30 @@
+{
+  "_instructions": [
+    "Copy this file into runs/notes/daily/YYYY-MM-DD-topic.json before editing.",
+    "Use real settings and real observations from the current session.",
+    "Do not claim submission readiness without official platform evidence."
+  ],
+  "date": "2026-04-17",
+  "research_direction": "replace-me-direction",
+  "hypothesis": "Write one plain-language hypothesis.",
+  "candidate_fields": [
+    "replace-me-field-1",
+    "replace-me-field-2"
+  ],
+  "expression": "replace-me-fast-expression",
+  "settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08
+  },
+  "result_summary": "Write the real result summary after simulation.",
+  "first_failure": "Write the first real bottleneck.",
+  "next_experiments": [
+    "replace-me-next-experiment-1",
+    "replace-me-next-experiment-2"
+  ],
+  "decision": "replace-me-submit-polish-branch-kill"
+}

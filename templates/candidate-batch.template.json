@@ -1,0 +1,23 @@
+{
+  "_instructions": [
+    "Copy this file into runs/candidate-batches/YYYY-MM-DD-topic.json before editing.",
+    "Use this only after you have real simulation results.",
+    "Do not invent Sharpe, Fitness, Turnover, Weight, Self-correlation, Sub-universe, or Test Period values.",
+    "Leave unavailable values as null until real results exist."
+  ],
+  "candidates": [
+    {
+      "name": "replace-me-alpha-1",
+      "delay": 1,
+      "sharpe": null,
+      "fitness": null,
+      "turnover": null,
+      "max_weight": null,
+      "self_corr": null,
+      "sharpe_lift_vs_correlated": null,
+      "subuniverse_pass": null,
+      "test_period_pass": null,
+      "notes": "Replace with a real simulated alpha candidate."
+    }
+  ]
+}

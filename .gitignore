@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Local machine configuration
+harness/config.env
+
+# Harness runtime state and handoff artifacts
+harness/active-cycle.txt
+harness/progress.md
+harness/state/**
+!harness/state/README.md
+harness/reports/**
+!harness/reports/README.md
+harness/artifacts/**
+!harness/artifacts/README.md
+
+# Ephemeral session-start artifacts
+runs/session-briefs/**
+!runs/session-briefs/README.md

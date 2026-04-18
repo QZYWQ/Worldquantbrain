@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0",
+  "project_goal": "Create a formal, resumable alpha engineering workflow for the first official WorldQuant alpha cycle.",
+  "generated_at": "2026-04-18T00:00:00+0800",
+  "cycle_type": "official",
+  "cycle_profile": "research-first",
+  "features": [
+    {
+      "id": "ALPHA-QUEUE-001",
+      "priority": "P0",
+      "category": "planning",
+      "title": "Create the first official research queue",
+      "description": "Build the first formal queue of research directions for the initial alpha cycle.",
+      "source_refs": [
+        "./templates/research-queue.template.json",
+        "kb://03-研究方法/05-首批真实候选池.md",
+        "kb://03-研究方法/06-首批真实候选优先级.md"
+      ],
+      "acceptance_criteria": [
+        "A real queue JSON exists under runs/research-queues.",
+        "The queue is compatible with the local research_queue_builder script.",
+        "The queue contains at least two distinct directions."
+      ],
+      "dependencies": [],
+      "verification": {
+        "mode": "research-queue-json",
+        "target": "./runs/research-queues/official-alpha-cycle-01.json"
+      }
+    },
+    {
+      "id": "ALPHA-FIELD-001",
+      "priority": "P0",
+      "category": "research",
+      "title": "Create the primary field-search pack",
+      "description": "Create a field-search pack for the primary research direction with search terms, candidate fields, and likely failure modes.",
+      "source_refs": [
+        "./templates/field-search-pack.template.md",
+        "kb://02-平台基础/07-Data Explorer 与字段研究工作流.md",
+        "kb://02-平台基础/05-数据字段、覆盖率与数据体检.md"
+      ],
+      "acceptance_criteria": [
+        "A markdown field-search pack exists under runs/field-search-packs.",
+        "The pack lists search terms, candidate fields, and a baseline expression plan.",
+        "The pack clearly separates confirmed facts from hypotheses."
+      ],
+      "dependencies": [
+        "ALPHA-QUEUE-001"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/field-search-packs/primary-direction-search-pack.md"
+      }
+    },
+    {
+      "id": "ALPHA-EXPR-001",
+      "priority": "P0",
+      "category": "expression",
+      "title": "Draft the primary expression family",
+      "description": "Create a baseline plus same-family expression variants for the primary direction.",
+      "source_refs": [
+        "./templates/expression-family.template.md",
+        "kb://03-研究方法/02-从假设到表达式.md",
+        "kb://03-研究方法/04-初学者表达式模式库.md"
+      ],
+      "acceptance_criteria": [
+        "A markdown expression family file exists under runs/expression-families.",
+        "The file includes one baseline and at least three variants.",
+        "Each variant has a stated purpose or bottleneck target."
+      ],
+      "dependencies": [
+        "ALPHA-FIELD-001"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/expression-families/primary-direction-baselines.md"
+      }
+    },
+    {
+      "id": "ALPHA-SIM-001",
+      "priority": "P0",
+      "category": "simulation",
+      "title": "Capture the first real simulation results",
+      "description": "Record real platform metrics and notes for the primary baseline and variants.",
+      "source_refs": [
+        "./templates/simulation-capture.template.json",
+        "kb://02-平台基础/04-结果指标与提交门槛.md",
+        "kb://02-平台基础/06-Test Period、IS-OS 与防过拟合.md"
+      ],
+      "acceptance_criteria": [
+        "A simulation capture JSON exists under runs/simulation-captures.",
+        "The capture includes real metrics from the platform.",
+        "Evidence artifacts exist for the capture."
+      ],
+      "dependencies": [
+        "ALPHA-EXPR-001"
+      ],
+      "verification": {
+        "mode": "manual-artifact",
+        "target": "./runs/simulation-captures/primary-direction-baseline.json"
+      }
+    },
+    {
+      "id": "ALPHA-CAND-001",
+      "priority": "P0",
+      "category": "triage",
+      "title": "Build the first formal candidate batch",
+      "description": "Convert real simulation results into a candidate batch that can be triaged into submit, polish, branch, or kill.",
+      "source_refs": [
+        "./templates/candidate-batch.template.json",
+        "kb://03-研究方法/03-低相关与稳健性.md",
+        "kb://03-研究方法/01-Alpha 研究流程.md"
+      ],
+      "acceptance_criteria": [
+        "A candidate batch JSON exists under runs/candidate-batches.",
+        "The candidate batch is compatible with the local candidate_scorecard script.",
+        "The batch contains real metrics only."
+      ],
+      "dependencies": [
+        "ALPHA-SIM-001"
+      ],
+      "verification": {
+        "mode": "candidate-batch-json",
+        "target": "./runs/candidate-batches/primary-cycle-candidates.json"
+      }
+    },
+    {
+      "id": "ALPHA-NOTE-001",
+      "priority": "P1",
+      "category": "documentation",
+      "title": "Write the first formal daily note",
+      "description": "Record the first official alpha-cycle session in the daily note format.",
+      "source_refs": [
+        "./templates/daily-note.template.json",
+        "kb://03-研究方法/01-Alpha 研究流程.md",
+        "kb://02-平台基础/04-结果指标与提交门槛.md"
+      ],
+      "acceptance_criteria": [
+        "A daily note JSON exists under runs/notes/daily.",
+        "The JSON is compatible with the local session_note_scaffold daily mode.",
+        "The note references real work from the current cycle."
+      ],
+      "dependencies": [
+        "ALPHA-SIM-001"
+      ],
+      "verification": {
+        "mode": "daily-note-json",
+        "target": "./runs/notes/daily/official-alpha-cycle-day-01.json"
+      }
+    },
+    {
+      "id": "ALPHA-SUBMIT-001",
+      "priority": "P1",
+      "category": "submission",
+      "title": "Prepare the first submission memo",
+      "description": "Write a submission memo grounded in real platform results and official checks.",
+      "source_refs": [
+        "kb://02-平台基础/04-结果指标与提交门槛.md",
+        "kb://02-平台基础/06-Test Period、IS-OS 与防过拟合.md",
+        "kb://03-研究方法/03-低相关与稳健性.md"
+      ],
+      "acceptance_criteria": [
+        "A submission memo markdown file exists under runs/submission-memos.",
+        "The memo references real simulation and test results.",
+        "The memo does not claim readiness without official platform evidence."
+      ],
+      "dependencies": [
+        "ALPHA-CAND-001"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/submission-memos/primary-cycle-submission-memo.md"
+      }
+    }
+  ]
+}

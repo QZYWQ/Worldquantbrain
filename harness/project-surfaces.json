@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "surfaces": {
+    "runtime_local_state": {
+      "description": "Harness runtime state stays local by default and should not pollute ordinary git commits.",
+      "gitignore": {
+        "ignored": [
+          "harness/active-cycle.txt",
+          "harness/progress.md",
+          "harness/state/**",
+          "harness/reports/**",
+          "harness/artifacts/**"
+        ],
+        "tracked_readmes": [
+          "harness/state/README.md",
+          "harness/reports/README.md",
+          "harness/artifacts/README.md"
+        ]
+      }
+    },
+    "ephemeral_session_start": {
+      "description": "Session-open handoff artifacts are intentionally ephemeral startup output.",
+      "gitignore": {
+        "ignored": [
+          "runs/session-briefs/**"
+        ],
+        "tracked_readmes": [
+          "runs/session-briefs/README.md"
+        ]
+      }
+    },
+    "durable_run_tree": {
+      "description": "The durable run tree should retain its tracked directory skeleton so fresh clones keep the output map.",
+      "tracked_readmes": [
+        "runs/README.md",
+        "runs/research-queues/README.md",
+        "runs/field-search-packs/README.md",
+        "runs/expression-families/README.md",
+        "runs/simulation-captures/README.md",
+        "runs/candidate-batches/README.md",
+        "runs/notes/README.md",
+        "runs/notes/daily/README.md",
+        "runs/notes/weekly/README.md",
+        "runs/submission-memos/README.md"
+      ]
+    }
+  }
+}
