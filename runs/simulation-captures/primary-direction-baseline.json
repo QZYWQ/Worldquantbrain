@@ -1,0 +1,163 @@
+{
+  "capture_id": "official-alpha-cycle-01-primary-direction-batch-01",
+  "topic": "analyst_eps_price_industry",
+  "captured_at": "2026-04-18",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SUBINDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY"
+  },
+  "evidence": {
+    "artifacts_dir": "./harness/artifacts/2026-04-18/ALPHA-SIM-001",
+    "notes": [
+      "Metrics below came from real platform alpha objects returned by the logged-in WorldQuant BRAIN session.",
+      "Self-correlation remained pending at capture time for all four runs.",
+      "No check-submission result was recorded in this batch."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "eps_average_60d_industry",
+      "alpha_id": "qMmld9JE",
+      "simulation_id": "1HcKrg67q4LV8JzuIsEubHo",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)",
+      "metrics": {
+        "sharpe": 1.64,
+        "fitness": 1.03,
+        "turnover": 0.1732,
+        "returns": 0.0682,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "train": {
+        "sharpe": 1.93,
+        "fitness": 1.34,
+        "turnover": 0.1737,
+        "returns": 0.0843,
+        "drawdown": 0.0367
+      },
+      "test": {
+        "sharpe": 0.15,
+        "fitness": 0.03,
+        "turnover": 0.1712,
+        "returns": 0.005,
+        "drawdown": 0.0357
+      },
+      "notes": "Visible IS gates passed. Family-level concern is weak holdout performance and pending self-correlation."
+    },
+    {
+      "name": "eps_average_20d_industry",
+      "alpha_id": "RRk8ap10",
+      "simulation_id": "1JkysS2aF4KIcD18Z8Dq4kv",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 20), industry)",
+      "metrics": {
+        "sharpe": 1.25,
+        "fitness": 0.57,
+        "turnover": 0.2856,
+        "returns": 0.0593,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "train": {
+        "sharpe": 1.26,
+        "fitness": 0.59,
+        "turnover": 0.2864,
+        "returns": 0.0626,
+        "drawdown": 0.0563
+      },
+      "test": {
+        "sharpe": 1.25,
+        "fitness": 0.51,
+        "turnover": 0.2827,
+        "returns": 0.0464,
+        "drawdown": 0.0259
+      },
+      "notes": "Fast window raises turnover and fails the visible fitness gate. This branch is not the main polish target."
+    },
+    {
+      "name": "eps_average_120d_industry",
+      "alpha_id": "d5l07rpX",
+      "simulation_id": "1Gaxcw8TE4iKcpMip0SqdyW",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), industry)",
+      "metrics": {
+        "sharpe": 1.67,
+        "fitness": 1.22,
+        "turnover": 0.1281,
+        "returns": 0.0681,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "train": {
+        "sharpe": 2.01,
+        "fitness": 1.64,
+        "turnover": 0.1299,
+        "returns": 0.0869,
+        "drawdown": 0.0407
+      },
+      "test": {
+        "sharpe": -0.19,
+        "fitness": -0.04,
+        "turnover": 0.121,
+        "returns": -0.0056,
+        "drawdown": 0.0422
+      },
+      "notes": "Slow window improves visible IS metrics but breaks badly in holdout. This looks like a robustness warning, not a submit candidate."
+    },
+    {
+      "name": "eps_median_60d_industry",
+      "alpha_id": "RRk8k3Ln",
+      "simulation_id": "3Ca6xW9OQ4nw97nh1N4sYon",
+      "expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), industry)",
+      "metrics": {
+        "sharpe": 1.64,
+        "fitness": 1.03,
+        "turnover": 0.1729,
+        "returns": 0.0682,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "train": {
+        "sharpe": 1.93,
+        "fitness": 1.34,
+        "turnover": 0.1734,
+        "returns": 0.0839,
+        "drawdown": 0.0364
+      },
+      "test": {
+        "sharpe": 0.19,
+        "fitness": 0.04,
+        "turnover": 0.1709,
+        "returns": 0.0063,
+        "drawdown": 0.0345
+      },
+      "notes": "Median-field substitution does not improve visible robustness versus the average-field baseline, but remains a valid same-family backup."
+    }
+  ]
+}

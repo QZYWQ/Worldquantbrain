@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "cycle_id": "official-alpha-cycle-01",
+  "generated_at": "2026-04-18",
+  "purpose": "Pre-backtest research queue for the first formal WorldQuant alpha cycle.",
+  "primary_direction": "analyst_eps_price_industry",
+  "selection_principles": [
+    "Prefer interpretable data families over operator soup.",
+    "Use one primary direction plus distinct backup lanes.",
+    "Reward expected submission value per research hour, not raw novelty alone.",
+    "Keep crowded price-only control lines in the queue only as controls."
+  ],
+  "official_verification_boundary": {
+    "official_docs_accessible_in_this_session": false,
+    "reason": "WorldQuant Learn documentation redirected to sign-in in this session, so current submission thresholds and account-specific field visibility still require manual platform confirmation.",
+    "implications": [
+      "Do not treat current Sharpe or Fitness thresholds as officially verified from this session.",
+      "Do not treat any candidate field below as confirmed on the current account until Data Explorer shows it.",
+      "Use this queue for prioritization, not as proof of live submission readiness."
+    ]
+  },
+  "items": [
+    {
+      "name": "analyst_eps_price_industry",
+      "idea_strength": 3,
+      "dataset_freshness": 2,
+      "correlation_novelty": 2,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "第一正式主攻线。逻辑最清楚，baseline 明确，可直接从 est_eps/close 的行业内排序切入，并且自然长出 20/60/120 窗口和相邻 analyst 字段分支。",
+      "next_step": "Search eps and analyst fields in Data Explorer, confirm est_eps visibility, then simulate 20/60/120-window baseline variants."
+    },
+    {
+      "name": "event_option_volume_gate",
+      "idea_strength": 2,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 1,
+      "execution_simplicity": 0,
+      "current_status": "new_direction",
+      "notes": "低相关备线优先级很高，但执行摩擦更大。先作为第二条线保留，避免第一正式 cycle 一开始就把时间花在 coverage 和事件稀疏性上。",
+      "next_step": "Check whether option sentiment fields such as pcr_oi_all are visible, then run one minimal trade_when baseline before any extra gating."
+    },
+    {
+      "name": "sentiment_buzz_stability",
+      "idea_strength": 2,
+      "dataset_freshness": 2,
+      "correlation_novelty": 2,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "适合作为 analyst 线后的第三优先级。它能训练快信号降 turnover，但不该在第一枪前抢走注意力。",
+      "next_step": "Search sentiment1 buzz-style fields and compare 5/10/20-day stability windows with and without smoothing."
+    },
+    {
+      "name": "sales_delta_fundamental",
+      "idea_strength": 2,
+      "dataset_freshness": 1,
+      "correlation_novelty": 2,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "慢信号后备线。相比静态基本面更像变化率信号，适合在 analyst 和 sentiment 之后补一条更慢、更稳的家族。",
+      "next_step": "Run ts_delta(sales, 21/63/126) baselines and compare raw versus ranked variants once the first faster lanes are underway."
+    },
+    {
+      "name": "operating_income_history_position",
+      "idea_strength": 2,
+      "dataset_freshness": 1,
+      "correlation_novelty": 1,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "保留为慢信号基线和对照组，适合在需要更稳解释框架时再开跑。",
+      "next_step": "Check operating income field coverage first, then compare ts_rank windows before adding group treatment."
+    },
+    {
+      "name": "capital_structure_ratio",
+      "idea_strength": 2,
+      "dataset_freshness": 1,
+      "correlation_novelty": 1,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "结构简单、解释性强，但首轮 expected reward per hour 不如 analyst / sentiment / event 线。",
+      "next_step": "Run liabilities/assets baseline only after higher-priority lines have first-pass results."
+    },
+    {
+      "name": "sales_acceleration",
+      "idea_strength": 1,
+      "dataset_freshness": 1,
+      "correlation_novelty": 2,
+      "metric_headroom": 1,
+      "execution_simplicity": 0,
+      "current_status": "new_direction",
+      "notes": "这是 sales_delta 的进阶分支，不适合抢在一阶变化率前面。",
+      "next_step": "Only revisit after sales_delta_fundamental shows stable promise; compare first versus second differences directly."
+    },
+    {
+      "name": "smoothed_mean_reversion_control",
+      "idea_strength": 1,
+      "dataset_freshness": 0,
+      "correlation_novelty": 0,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "crowded",
+      "notes": "保留为快反馈控制组，不作为正式主攻线，也不允许它挤掉 analyst / event / sentiment 研究时间。",
+      "next_step": "Keep as a control batch only; do not promote it unless every fresher lane is blocked."
+    }
+  ]
+}

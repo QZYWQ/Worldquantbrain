@@ -13,10 +13,13 @@
       "fitness": null,
       "turnover": null,
       "max_weight": null,
+      "max_weight_check": null,
       "self_corr": null,
+      "self_corr_check": null,
       "sharpe_lift_vs_correlated": null,
       "subuniverse_pass": null,
       "test_period_pass": null,
+      "test_period_observation": null,
       "notes": "Replace with a real simulated alpha candidate."
     }
   ]

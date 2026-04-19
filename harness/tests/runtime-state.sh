@@ -27,13 +27,62 @@ cp -R "$PROJECT_ROOT" "$TMP_ROOT/project"
 PROJECT_COPY="$TMP_ROOT/project"
 cd "$PROJECT_COPY"
 
-./harness/coding-session.sh start ALPHA-QUEUE-001 >/dev/null
+status_output="$(./harness/coding-session.sh status)"
+active_feature="$(printf '%s\n' "$status_output" | awk -F': ' '/active_feature:/ {print $2}')"
+active_status="$(printf '%s\n' "$status_output" | awk -F': ' '/active_status:/ {print $2}')"
 
-python3 - <<'PY' >"$TMP_ROOT/runtime-state-check.json"
+if [ "$active_status" = "in_progress" ] && [ -n "$active_feature" ] && [ "$active_feature" != "null" ]; then
+  ./harness/coding-session.sh block "$active_feature" --summary "Reset copied runtime state for runtime-state test." >/dev/null
+fi
+
+./harness/coding-session.sh cycle-switch ./harness/cycles/official-alpha-cycle-01.json >/dev/null
+
+python3 - <<'PY'
+import json
+import re
+from pathlib import Path
+
+root = Path.cwd()
+state_path = root / "harness" / "state" / "cycles" / "official-alpha-cycle-01.json"
+with state_path.open("r", encoding="utf-8") as handle:
+    payload = json.load(handle)
+
+for feature in payload["features"]:
+    feature["status"] = "pending"
+    feature["passes"] = False
+    feature["evidence"] = {}
+    feature["last_verified_at"] = None
+
+with state_path.open("w", encoding="utf-8") as handle:
+    json.dump(payload, handle, indent=2, ensure_ascii=False)
+    handle.write("\n")
+
+progress_path = root / "harness" / "progress.md"
+text = progress_path.read_text(encoding="utf-8")
+replacements = {
+    r"current_session:\s*\d+": "current_session: 0",
+    r"active_feature:\s*.+": "active_feature: null",
+    r"active_status:\s*.+": "active_status: idle",
+    r"last_verified_feature:\s*.+": "last_verified_feature: null",
+    r"last_verified_at:\s*.+": "last_verified_at: null",
+    r"- Active feature: .+": "- Active feature: null",
+    r"- Session status: .+": "- Session status: idle",
+}
+for pattern, replacement in replacements.items():
+    text = re.sub(pattern, replacement, text)
+progress_path.write_text(text, encoding="utf-8")
+PY
+
+./harness/coding-session.sh start ALPHA-QUEUE-001 >/dev/null
+active_feature="ALPHA-QUEUE-001"
+
+ACTIVE_FEATURE="$active_feature" python3 - <<'PY' >"$TMP_ROOT/runtime-state-check.json"
+import os
 import json
 from pathlib import Path
 
 root = Path.cwd()
+active_feature = os.environ["ACTIVE_FEATURE"]
 active_cycle_rel = (root / "harness" / "active-cycle.txt").read_text(encoding="utf-8").strip()
 definition_rel = active_cycle_rel.removeprefix("./")
 definition_path = root / definition_rel
@@ -45,8 +94,8 @@ with definition_path.open("r", encoding="utf-8") as handle:
 with state_path.open("r", encoding="utf-8") as handle:
     runtime_payload = json.load(handle)
 
-definition_feature = definition_payload["features"][0]
-runtime_feature = runtime_payload["features"][0]
+definition_feature = next(feature for feature in definition_payload["features"] if feature["id"] == active_feature)
+runtime_feature = next(feature for feature in runtime_payload["features"] if feature["id"] == active_feature)
 
 print(json.dumps(
     {

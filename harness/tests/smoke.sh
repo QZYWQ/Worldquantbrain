@@ -62,6 +62,45 @@ cp -R "$PROJECT_ROOT" "$TMP_ROOT/project"
 PROJECT_COPY="$TMP_ROOT/project"
 cd "$PROJECT_COPY"
 
+./harness/coding-session.sh cycle-switch ./harness/cycles/official-alpha-cycle-01.json >/dev/null
+
+python3 - <<'PY'
+import json
+import re
+from pathlib import Path
+
+root = Path.cwd()
+active_cycle_rel = (root / "harness" / "active-cycle.txt").read_text(encoding="utf-8").strip().removeprefix("./")
+state_path = root / "harness" / "state" / active_cycle_rel.removeprefix("harness/")
+with state_path.open("r", encoding="utf-8") as handle:
+    payload = json.load(handle)
+
+for feature in payload["features"]:
+    feature["status"] = "pending"
+    feature["passes"] = False
+    feature["evidence"] = {}
+    feature["last_verified_at"] = None
+
+with state_path.open("w", encoding="utf-8") as handle:
+    json.dump(payload, handle, indent=2, ensure_ascii=False)
+    handle.write("\n")
+
+progress_path = root / "harness" / "progress.md"
+text = progress_path.read_text(encoding="utf-8")
+replacements = {
+    r"current_session:\s*\d+": "current_session: 0",
+    r"active_feature:\s*.+": "active_feature: null",
+    r"active_status:\s*.+": "active_status: idle",
+    r"last_verified_feature:\s*.+": "last_verified_feature: null",
+    r"last_verified_at:\s*.+": "last_verified_at: null",
+    r"- Active feature: .+": "- Active feature: null",
+    r"- Session status: .+": "- Session status: idle",
+}
+for pattern, replacement in replacements.items():
+    text = re.sub(pattern, replacement, text)
+progress_path.write_text(text, encoding="utf-8")
+PY
+
 next_id="$(./harness/coding-session.sh next)"
 assert_eq "ALPHA-QUEUE-001" "$next_id" "next should return the first actionable feature"
 

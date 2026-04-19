@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "project_goal": "Run the second official alpha cycle focused on a lower-correlation analyst EPS sibling around anl4_afv4_median_eps.",
+  "generated_at": "2026-04-19T01:19:29+0800",
+  "cycle_type": "official",
+  "cycle_profile": "research-first",
+  "features": [
+    {
+      "id": "ALPHA-QUEUE-002",
+      "priority": "P0",
+      "category": "planning",
+      "title": "Create the second-cycle sibling research queue",
+      "description": "Build the branch-focused queue for the lower-correlation analyst EPS sibling cycle.",
+      "source_refs": [
+        "./templates/research-queue.template.json",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A real queue JSON exists under runs/research-queues.",
+        "The queue is compatible with the local research_queue_builder script.",
+        "The queue contains at least two distinct directions."
+      ],
+      "dependencies": [],
+      "verification": {
+        "mode": "research-queue-json",
+        "target": "./runs/research-queues/official-alpha-cycle-02.json"
+      }
+    },
+    {
+      "id": "ALPHA-FIELD-002",
+      "priority": "P0",
+      "category": "research",
+      "title": "Create the sibling field-search pack",
+      "description": "Create a field-search pack for the anl4_afv4_median_eps sibling branch with search terms, candidate fields, and likely failure modes.",
+      "source_refs": [
+        "./templates/field-search-pack.template.md",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A markdown field-search pack exists under runs/field-search-packs.",
+        "The pack lists search terms, candidate fields, and a baseline expression plan.",
+        "The pack clearly separates confirmed facts from hypotheses."
+      ],
+      "dependencies": [
+        "ALPHA-QUEUE-002"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/field-search-packs/analyst-sibling-search-pack.md"
+      }
+    },
+    {
+      "id": "ALPHA-EXPR-002",
+      "priority": "P0",
+      "category": "expression",
+      "title": "Draft the sibling expression family",
+      "description": "Create a baseline plus same-family expression variants for the analyst sibling branch.",
+      "source_refs": [
+        "./templates/expression-family.template.md",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A markdown expression family file exists under runs/expression-families.",
+        "The file includes one baseline and at least three variants.",
+        "Each variant has a stated purpose or bottleneck target."
+      ],
+      "dependencies": [
+        "ALPHA-FIELD-002"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/expression-families/analyst-sibling-branch.md"
+      }
+    },
+    {
+      "id": "ALPHA-SIM-002",
+      "priority": "P0",
+      "category": "simulation",
+      "title": "Capture the sibling branch simulation results",
+      "description": "Record real platform metrics and notes for the anl4_afv4_median_eps sibling branch.",
+      "source_refs": [
+        "./templates/simulation-capture.template.json",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A simulation capture JSON exists under runs/simulation-captures.",
+        "The capture includes real metrics from the platform.",
+        "Evidence artifacts exist for the capture."
+      ],
+      "dependencies": [
+        "ALPHA-EXPR-002"
+      ],
+      "verification": {
+        "mode": "manual-artifact",
+        "target": "./runs/simulation-captures/analyst-sibling-branch.json"
+      }
+    },
+    {
+      "id": "ALPHA-CAND-002",
+      "priority": "P0",
+      "category": "triage",
+      "title": "Build the sibling branch candidate batch",
+      "description": "Convert real sibling-branch simulation results into a candidate batch that can be triaged into submit, polish, branch, or kill.",
+      "source_refs": [
+        "./templates/candidate-batch.template.json",
+        "./02-工作流索引.md"
+      ],
+      "acceptance_criteria": [
+        "A candidate batch JSON exists under runs/candidate-batches.",
+        "The candidate batch is compatible with the local candidate_scorecard script.",
+        "The batch contains real metrics only."
+      ],
+      "dependencies": [
+        "ALPHA-SIM-002"
+      ],
+      "verification": {
+        "mode": "candidate-batch-json",
+        "target": "./runs/candidate-batches/analyst-sibling-candidates.json"
+      }
+    },
+    {
+      "id": "ALPHA-NOTE-002",
+      "priority": "P1",
+      "category": "documentation",
+      "title": "Write the second-cycle daily note",
+      "description": "Record the second official alpha-cycle session in the daily note format.",
+      "source_refs": [
+        "./templates/daily-note.template.json",
+        "./02-工作流索引.md"
+      ],
+      "acceptance_criteria": [
+        "A daily note JSON exists under runs/notes/daily.",
+        "The JSON is compatible with the local session_note_scaffold daily mode.",
+        "The note references real work from the current cycle."
+      ],
+      "dependencies": [
+        "ALPHA-SIM-002"
+      ],
+      "verification": {
+        "mode": "daily-note-json",
+        "target": "./runs/notes/daily/official-alpha-cycle-day-02.json"
+      }
+    },
+    {
+      "id": "ALPHA-SUBMIT-002",
+      "priority": "P1",
+      "category": "submission",
+      "title": "Prepare the sibling branch submission memo",
+      "description": "Write a submission memo grounded in real sibling-branch platform results and official checks.",
+      "source_refs": [
+        "./02-工作流索引.md",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A submission memo markdown file exists under runs/submission-memos.",
+        "The memo references real simulation and test results.",
+        "The memo does not claim readiness without official platform evidence."
+      ],
+      "dependencies": [
+        "ALPHA-CAND-002"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/submission-memos/analyst-sibling-submission-memo.md"
+      }
+    }
+  ]
+}

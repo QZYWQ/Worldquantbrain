@@ -1,0 +1,63 @@
+{
+  "batch_id": "official-alpha-cycle-02-analyst-sibling-candidates",
+  "topic": "analyst_eps_sibling_qfv4_industry",
+  "created_at": "2026-04-19",
+  "source_capture": "./runs/simulation-captures/analyst-sibling-branch.json",
+  "evidence_path": "./harness/artifacts/2026-04-19/ALPHA-CAND-002/candidate-check-status.json",
+  "candidates": [
+    {
+      "name": "anl4_qfv4_median_60d_industry",
+      "simulation_id": "4A4YMi46X4wCcaRPpxQcYiQ",
+      "alpha_id": "qMm6xPVv",
+      "delay": 1,
+      "sharpe": 1.65,
+      "fitness": 1.04,
+      "turnover": 0.1729,
+      "max_weight": null,
+      "max_weight_check": "PASS",
+      "self_corr": null,
+      "self_corr_check": "PASS",
+      "sharpe_lift_vs_correlated": null,
+      "subuniverse_pass": true,
+      "test_period_pass": null,
+      "test_period_observation": "Official alpha detail showed test sharpe 0.25, fitness 0.06, and returns 0.0083. That is better than the first-cycle baseline but still weak.",
+      "notes": "Official /alphas/{id}/check resolved concentrated weight PASS and self-correlation PASS. Official self-correlation detail returned records=[], min=null, and max=null."
+    },
+    {
+      "name": "anl4_qfv4_mean_60d_industry",
+      "simulation_id": "46MzvT6sB4noc74LK30sIzD",
+      "alpha_id": "QP59baMg",
+      "delay": 1,
+      "sharpe": 1.64,
+      "fitness": 1.03,
+      "turnover": 0.1733,
+      "max_weight": null,
+      "max_weight_check": "PASS",
+      "self_corr": null,
+      "self_corr_check": "PASS",
+      "sharpe_lift_vs_correlated": null,
+      "subuniverse_pass": true,
+      "test_period_pass": null,
+      "test_period_observation": "Official alpha detail showed test sharpe 0.20, fitness 0.04, and returns 0.0064. That is positive but still weak.",
+      "notes": "Official /alphas/{id}/check resolved concentrated weight PASS and self-correlation PASS. Official self-correlation detail returned records=[], min=null, and max=null."
+    },
+    {
+      "name": "anl4_afv4_median_60d_industry",
+      "simulation_id": "VXAGQc3958PcBGvR1KK3tE",
+      "alpha_id": "E5repQ81",
+      "delay": 1,
+      "sharpe": 1.93,
+      "fitness": 1.4,
+      "turnover": 0.1768,
+      "max_weight": null,
+      "max_weight_check": "PASS",
+      "self_corr": null,
+      "self_corr_check": "PASS",
+      "sharpe_lift_vs_correlated": null,
+      "subuniverse_pass": true,
+      "test_period_pass": null,
+      "test_period_observation": "Official alpha detail showed test sharpe 1.23, fitness 0.59, and returns 0.0407. Holdout was materially stronger than the first-cycle baseline and both qfv4 siblings.",
+      "notes": "A later official /alphas/{id}/check refresh in this session resolved concentrated weight PASS, self-correlation PASS, low fitness PASS, and low sub-universe sharpe PASS. The official alpha object lagged behind and still showed self-correlation PENDING, so /check is treated as the fresher source."
+    }
+  ]
+}

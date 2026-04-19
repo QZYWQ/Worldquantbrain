@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "cycle_id": "official-alpha-cycle-02",
+  "generated_at": "2026-04-19",
+  "purpose": "Branch-focused research queue for the second official alpha cycle.",
+  "primary_direction": "analyst_eps_sibling_qfv4_industry",
+  "selection_principles": [
+    "Prefer lower-crowding analyst siblings over repeated polishing of the first-cycle annual mean baseline.",
+    "Keep the comparison frame fixed while changing field family first.",
+    "Use official account-visible field evidence before treating any sibling as real.",
+    "Keep one control line so lower-crowding claims are tested rather than assumed."
+  ],
+  "official_verification_boundary": {
+    "official_platform_account_checks_completed_in_this_session": true,
+    "verified_facts": [
+      "anl4_qfv4_median_eps is visible as MATRIX with coverage 1.0 in USA / D1 / TOP3000.",
+      "anl4_qfv4_eps_mean is visible as MATRIX with coverage 1.0 in USA / D1 / TOP3000.",
+      "anl4_afv4_median_eps is visible as MATRIX with coverage 1.0 in USA / D1 / TOP3000.",
+      "Current crowding counts for these fields were checked on the official platform in this session."
+    ],
+    "still_unverified": [
+      "Current generic submission-threshold wording from official documentation was not re-verified in this cycle.",
+      "No new Check Submission result has been captured yet for the second-cycle branch candidates."
+    ]
+  },
+  "items": [
+    {
+      "name": "analyst_qfv4_median_level_sibling",
+      "idea_strength": 3,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "active_branch",
+      "notes": "Official field check shows anl4_qfv4_median_eps has full coverage and materially lower crowding than the first-cycle annual mean baseline. This is the best immediate sibling to test before leaving the analyst thesis.",
+      "next_step": "Simulate group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry) and compare train/test behavior against qMmld9JE."
+    },
+    {
+      "name": "analyst_qfv4_mean_level_sibling",
+      "idea_strength": 3,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "active_branch",
+      "notes": "Official field check shows anl4_qfv4_eps_mean also has full coverage and low crowding. It is a clean same-thesis backup in case the quarterly median line is noisy.",
+      "next_step": "Simulate group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), industry) with the same platform settings as the primary sibling."
+    },
+    {
+      "name": "analyst_afv4_median_control",
+      "idea_strength": 2,
+      "dataset_freshness": 1,
+      "correlation_novelty": 1,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "control",
+      "notes": "anl4_afv4_median_eps is account-visible, but official crowding is not lower than the first-cycle annual mean line. Keep it only as a control to test whether the analyst4 naming variant adds anything real.",
+      "next_step": "Run the 60-day annual-median control only to measure whether analyst4-specific naming changes behavior enough to matter."
+    },
+    {
+      "name": "analyst_eps_dispersion_disagreement",
+      "idea_strength": 2,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "hold",
+      "notes": "Official field discovery surfaced anl4_afv4_dts_spe as a disagreement-style analyst sibling. It is more distinct than another level-only clone, but it changes the thesis enough that it should wait until the level siblings are judged.",
+      "next_step": "Only open this line after the qfv4 level siblings finish, starting with one simple inverse-disagreement baseline."
+    }
+  ]
+}

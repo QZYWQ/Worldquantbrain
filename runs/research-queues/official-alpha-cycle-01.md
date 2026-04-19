@@ -1,0 +1,10 @@
+| rank | name | recommendation | queue_score | summary | next_step |
+| --- | --- | --- | --- | --- | --- |
+| 1 | analyst_eps_price_industry | prioritize | 26 | new direction with diversification upside | Search eps and analyst fields in Data Explorer, confirm est_eps visibility, then simulate 20/60/120-window baseline variants. |
+| 2 | sentiment_buzz_stability | prioritize | 23 | new direction with diversification upside | Search sentiment1 buzz-style fields and compare 5/10/20-day stability windows with and without smoothing. |
+| 3 | event_option_volume_gate | prioritize | 23 | high execution friction; new direction with diversification upside | Check whether option sentiment fields such as pcr_oi_all are visible, then run one minimal trade_when baseline before any extra gating. |
+| 4 | sales_delta_fundamental | prioritize | 21 | new direction with diversification upside | Run ts_delta(sales, 21/63/126) baselines and compare raw versus ranked variants once the first faster lanes are underway. |
+| 5 | operating_income_history_position | hold | 16 | new direction with diversification upside | Check operating income field coverage first, then compare ts_rank windows before adding group treatment. |
+| 6 | capital_structure_ratio | hold | 16 | new direction with diversification upside | Run liabilities/assets baseline only after higher-priority lines have first-pass results. |
+| 7 | sales_acceleration | hold | 15 | thesis looks weak or unproven; high execution friction; new direction with diversification upside | Only revisit after sales_delta_fundamental shows stable promise; compare first versus second differences directly. |
+| 8 | smoothed_mean_reversion_control | drop | 2 | low novelty versus existing pool; crowded or stale data lane; thesis looks weak or unproven | Keep as a control batch only; do not promote it unless every fresher lane is blocked. |

@@ -45,6 +45,15 @@ cp -R "$PROJECT_ROOT" "$TMP_ROOT/project"
 PROJECT_COPY="$TMP_ROOT/project"
 cd "$PROJECT_COPY"
 
+status_output="$(./harness/coding-session.sh status)"
+active_feature="$(printf '%s\n' "$status_output" | awk -F': ' '/active_feature:/ {print $2}')"
+active_status="$(printf '%s\n' "$status_output" | awk -F': ' '/active_status:/ {print $2}')"
+if [ "$active_status" = "in_progress" ] && [ -n "$active_feature" ] && [ "$active_feature" != "null" ]; then
+  ./harness/coding-session.sh block "$active_feature" --summary "Reset copied runtime state for official-cycle-default test." >/dev/null
+fi
+
+./harness/coding-session.sh cycle-switch ./harness/cycles/official-alpha-cycle-01.json >/dev/null
+
 active_cycle="$(./harness/coding-session.sh cycle-current)"
 assert_eq "./harness/cycles/official-alpha-cycle-01.json" "$active_cycle" "default active cycle should point to official cycle"
 

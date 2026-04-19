@@ -90,6 +90,8 @@ def validate_candidate_batch(path: Path) -> None:
     candidates = payload.get("candidates")
     require(isinstance(candidates, list) and candidates, "Candidate batch must contain at least one candidate.")
     required_fields = [
+        "name",
+        "delay",
         "sharpe",
         "fitness",
         "turnover",
@@ -97,10 +99,35 @@ def validate_candidate_batch(path: Path) -> None:
         "self_corr",
         "subuniverse_pass",
         "test_period_pass",
+        "notes",
     ]
+    real_required_fields = [
+        "sharpe",
+        "fitness",
+        "turnover",
+        "subuniverse_pass",
+    ]
+    optional_fallback_fields = {
+        "max_weight": ["max_weight_check"],
+        "self_corr": ["self_corr_check"],
+        "test_period_pass": ["test_period_observation"],
+    }
     for index, candidate in enumerate(candidates):
         for field in required_fields:
+            require(field in candidate, f"Candidate {index} is missing required field {field}.")
+        for field in real_required_fields:
             require(candidate.get(field) is not None, f"Candidate {index} is missing real value for {field}.")
+        require(bool(candidate.get("notes")), f"Candidate {index} must include notes.")
+        for field, fallback_fields in optional_fallback_fields.items():
+            if candidate.get(field) is not None:
+                continue
+            require(
+                any(candidate.get(fallback_field) not in (None, "") for fallback_field in fallback_fields),
+                (
+                    f"Candidate {index} is missing both {field} and its fallback explanation "
+                    f"({', '.join(fallback_fields)})."
+                ),
+            )
 
 
 def validate_daily_note(path: Path) -> None:

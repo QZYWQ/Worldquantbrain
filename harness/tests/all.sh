@@ -14,6 +14,7 @@ tests=(
   "codex-app-readiness.sh"
   "surface-contract.sh"
   "verification-registry.sh"
+  "content-validator.sh"
   "read-only-parallel.sh"
   "read-only-surface.sh"
   "module-boundaries.sh"
