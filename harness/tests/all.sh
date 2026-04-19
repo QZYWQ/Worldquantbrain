@@ -26,6 +26,7 @@ tests=(
   "bootstrap-warning.sh"
   "smoke.sh"
   "cycle-close-report.sh"
+  "learning-loop.sh"
   "cycle-config.sh"
   "hardening.sh"
 )

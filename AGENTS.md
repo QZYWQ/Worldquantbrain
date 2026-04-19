@@ -69,6 +69,40 @@ You must verify against official WorldQuant BRAIN pages before treating any of t
 - Prefer interpretable alpha families over opaque operator soup.
 - Keep session-start artifacts, cycle reports, and post-work notes separate by role.
 
+## Execution Discipline
+
+Apply these execution rules on top of the project-specific hard rules.
+
+### A. Resolve ambiguity before action
+
+- Treat user phrasing as a starting hypothesis, not as final specification.
+- State important assumptions explicitly when task meaning, fact source, or success criteria are ambiguous.
+- If multiple reasonable interpretations exist, surface them instead of silently choosing one.
+- If a simpler or safer path fits the project better, say so instead of mechanically following the first wording.
+- Stop and clarify when confusion would otherwise cause fabricated facts, wrong scope, or invalid completion claims.
+
+### B. Prefer minimum sufficient change
+
+- Make the smallest durable change that solves the actual task.
+- Do not add speculative flexibility, configurability, abstraction, or workflow complexity that the task did not require.
+- Do not add defensive handling for scenarios that are impossible, unverified, or irrelevant to the current project boundary.
+- If a shorter or clearer solution would do the same job, prefer that version.
+
+### C. Keep changes surgical
+
+- Touch only the files, sections, and artifacts that trace directly to the current task.
+- Do not opportunistically rewrite adjacent comments, formatting, docs, or unrelated workflow behavior.
+- Match existing local style, naming, and routing conventions unless the task is explicitly about changing them.
+- If you notice unrelated problems, record or mention them; do not clean them up by default.
+- Remove only the dead code, imports, fields, or artifacts made obsolete by your own change, not pre-existing unrelated debris.
+
+### D. Work from verifiable goals
+
+- Translate tasks into explicit success criteria before declaring them complete.
+- For multi-step work, prefer brief `step -> verify` thinking rather than vague "make it work" execution.
+- Verification should be evidence-based: tests, harness checks, generated artifacts, or official platform pages depending on task type.
+- If verification could not be run, say so plainly and do not overclaim completion.
+
 ## Progressive Loading Rule
 
 Default startup load is:

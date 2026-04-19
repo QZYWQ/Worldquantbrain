@@ -43,6 +43,10 @@ cp -R "$PROJECT_ROOT" "$TMP_ROOT/project"
 PROJECT_COPY="$TMP_ROOT/project"
 cd "$PROJECT_COPY"
 
+cycle_id="test-cycle-close-report-$$"
+cycle_rel="./harness/cycles/${cycle_id}.json"
+report_rel="./harness/reports/${cycle_id}-report.md"
+
 status_output="$(./harness/coding-session.sh status)"
 active_feature="$(printf '%s\n' "$status_output" | awk -F': ' '/active_feature:/ {print $2}')"
 active_status="$(printf '%s\n' "$status_output" | awk -F': ' '/active_status:/ {print $2}')"
@@ -50,12 +54,12 @@ if [ "$active_status" = "in_progress" ] && [ -n "$active_feature" ] && [ "$activ
   ./harness/coding-session.sh block "$active_feature" --summary "Reset copied runtime state for cycle-close-report test." >/dev/null
 fi
 
-./harness/coding-session.sh cycle-create official-alpha-cycle-04 >/dev/null
+./harness/coding-session.sh cycle-create "$cycle_id" >/dev/null
 
 report_output="$(./harness/coding-session.sh cycle-report)"
-assert_output_contains "./harness/reports/official-alpha-cycle-04-report.md" "$report_output"
+assert_output_contains "$report_rel" "$report_output"
 
-report_path="$PROJECT_COPY/harness/reports/official-alpha-cycle-04-report.md"
+report_path="$PROJECT_COPY/${report_rel#./}"
 [ -f "$report_path" ] || {
   printf 'Expected report file to exist: %s\n' "$report_path" >&2
   exit 1
@@ -63,12 +67,14 @@ report_path="$PROJECT_COPY/harness/reports/official-alpha-cycle-04-report.md"
 
 assert_command_fails ./harness/coding-session.sh cycle-close >/dev/null 2>&1
 
-python3 - <<'PY'
+python3 - "$cycle_id" <<'PY'
 import json
+import sys
 from pathlib import Path
 
-path = Path("harness/cycles/official-alpha-cycle-04.json")
-state_path = Path("harness/state/cycles/official-alpha-cycle-04.json")
+cycle_id = sys.argv[1]
+path = Path(f"harness/cycles/{cycle_id}.json")
+state_path = Path(f"harness/state/cycles/{cycle_id}.json")
 with state_path.open("r", encoding="utf-8") as handle:
     payload = json.load(handle)
 
@@ -83,9 +89,9 @@ PY
 
 close_output="$(./harness/coding-session.sh cycle-close)"
 assert_output_contains "Cycle closed" "$close_output"
-assert_output_contains "./harness/reports/official-alpha-cycle-04-report.md" "$close_output"
+assert_output_contains "$report_rel" "$close_output"
 
 current_cycle="$(./harness/coding-session.sh cycle-current)"
-assert_eq "./harness/cycles/official-alpha-cycle-04.json" "$current_cycle" "cycle-close should not archive or switch by itself"
+assert_eq "$cycle_rel" "$current_cycle" "cycle-close should not archive or switch by itself"
 
 printf 'Harness cycle close and report test passed.\n'

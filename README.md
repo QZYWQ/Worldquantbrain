@@ -8,6 +8,7 @@ This repository is not a copy of the external knowledge base. It is the executio
 - real expression families
 - real simulation captures
 - candidate batches
+- closed-cycle learning-loop artifacts
 - daily and weekly notes
 - submission memos
 - harness rules, templates, and tests
@@ -86,6 +87,7 @@ For harness verification:
 │   ├── expression-families/
 │   ├── simulation-captures/
 │   ├── candidate-batches/
+│   ├── learning-loops/
 │   ├── notes/
 │   ├── submission-memos/
 │   └── session-briefs/
@@ -101,6 +103,7 @@ Durable execution artifacts belong under `./runs/`, for example:
 - `./runs/expression-families/`
 - `./runs/simulation-captures/`
 - `./runs/candidate-batches/`
+- `./runs/learning-loops/`
 - `./runs/notes/daily/`
 - `./runs/notes/weekly/`
 - `./runs/submission-memos/`

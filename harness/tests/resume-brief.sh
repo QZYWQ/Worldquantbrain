@@ -44,6 +44,10 @@ cp -R "$PROJECT_ROOT" "$TMP_ROOT/project"
 PROJECT_COPY="$TMP_ROOT/project"
 cd "$PROJECT_COPY"
 
+cycle_id="test-resume-brief-$$"
+report_rel="./harness/reports/${cycle_id}-report.md"
+brief_rel="./harness/reports/${cycle_id}-resume-brief.md"
+
 status_output="$(./harness/coding-session.sh status)"
 active_feature="$(printf '%s\n' "$status_output" | awk -F': ' '/active_feature:/ {print $2}')"
 active_status="$(printf '%s\n' "$status_output" | awk -F': ' '/active_status:/ {print $2}')"
@@ -51,13 +55,15 @@ if [ "$active_status" = "in_progress" ] && [ -n "$active_feature" ] && [ "$activ
   ./harness/coding-session.sh block "$active_feature" --summary "Reset copied runtime state for resume-brief test." >/dev/null
 fi
 
-./harness/coding-session.sh cycle-create official-alpha-cycle-05 >/dev/null
+./harness/coding-session.sh cycle-create "$cycle_id" >/dev/null
 
-python3 - <<'PY'
+python3 - "$cycle_id" <<'PY'
 import json
+import sys
 from pathlib import Path
 
-path = Path("harness/state/cycles/official-alpha-cycle-05.json")
+cycle_id = sys.argv[1]
+path = Path(f"harness/state/cycles/{cycle_id}.json")
 with path.open("r", encoding="utf-8") as handle:
     payload = json.load(handle)
 
@@ -74,9 +80,9 @@ PY
 ./harness/coding-session.sh cycle-report >/dev/null
 
 resume_output="$(./harness/coding-session.sh resume-brief)"
-assert_output_contains "./harness/reports/official-alpha-cycle-05-resume-brief.md" "$resume_output"
+assert_output_contains "$brief_rel" "$resume_output"
 
-brief_path="$PROJECT_COPY/harness/reports/official-alpha-cycle-05-resume-brief.md"
+brief_path="$PROJECT_COPY/${brief_rel#./}"
 [ -f "$brief_path" ] || {
   printf 'Expected resume brief file to exist: %s\n' "$brief_path" >&2
   exit 1
@@ -91,6 +97,6 @@ assert_file_contains "ALPHA-FIELD-001" "$brief_path"
 assert_file_contains "Create the primary field-search pack" "$brief_path"
 assert_file_contains "## Doctor" "$brief_path"
 assert_file_contains "## Recent Harness Decisions" "$brief_path"
-assert_file_contains "./harness/reports/official-alpha-cycle-05-report.md" "$brief_path"
+assert_file_contains "$report_rel" "$brief_path"
 
 printf 'Harness resume brief test passed.\n'

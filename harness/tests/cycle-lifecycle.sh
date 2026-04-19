@@ -63,6 +63,11 @@ cp -R "$PROJECT_ROOT" "$TMP_ROOT/project"
 PROJECT_COPY="$TMP_ROOT/project"
 cd "$PROJECT_COPY"
 
+cycle_id="test-cycle-lifecycle-$$"
+cycle_rel="./harness/cycles/${cycle_id}.json"
+report_rel="./harness/reports/${cycle_id}-report.md"
+archive_rel="./harness/archive/${cycle_id}.json"
+
 status_output="$(./harness/coding-session.sh status)"
 active_feature="$(printf '%s\n' "$status_output" | awk -F': ' '/active_feature:/ {print $2}')"
 active_status="$(printf '%s\n' "$status_output" | awk -F': ' '/active_status:/ {print $2}')"
@@ -86,13 +91,15 @@ with path.open("w", encoding="utf-8") as handle:
     handle.write("\n")
 PY
 
-./harness/coding-session.sh cycle-create official-alpha-cycle-03 >/dev/null
+./harness/coding-session.sh cycle-create "$cycle_id" >/dev/null
 
-python3 - <<'PY' >"$TMP_ROOT/new-cycle-values.txt"
+python3 - "$cycle_id" <<'PY' >"$TMP_ROOT/new-cycle-values.txt"
 import json
+import sys
 from pathlib import Path
 
-path = Path("harness/cycles/official-alpha-cycle-03.json")
+cycle_id = sys.argv[1]
+path = Path(f"harness/cycles/{cycle_id}.json")
 with path.open("r", encoding="utf-8") as handle:
     payload = json.load(handle)
 
@@ -108,7 +115,7 @@ assert_eq "Create the first official research queue" "$new_title" "new cycle sho
 
 summary_output="$(./harness/coding-session.sh cycle-summary)"
 assert_output_contains "Active cycle:" "$summary_output"
-assert_output_contains "Active cycle: ./harness/cycles/official-alpha-cycle-03.json" "$summary_output"
+assert_output_contains "Active cycle: ${cycle_rel}" "$summary_output"
 assert_output_contains "Cycle type: official" "$summary_output"
 assert_output_contains "Cycle profile: research-first" "$summary_output"
 assert_output_contains "Status counts:" "$summary_output"
@@ -117,18 +124,20 @@ assert_output_contains "Next actionable feature: ALPHA-QUEUE-001" "$summary_outp
 assert_output_not_contains "Warning: active cycle is bootstrap fallback state." "$summary_output"
 
 report_output="$(./harness/coding-session.sh cycle-report)"
-assert_output_contains "./harness/reports/official-alpha-cycle-03-report.md" "$report_output"
+assert_output_contains "$report_rel" "$report_output"
 
-report_path="$PROJECT_COPY/harness/reports/official-alpha-cycle-03-report.md"
+report_path="$PROJECT_COPY/${report_rel#./}"
 assert_file_contains "- Cycle type: official" "$report_path"
 assert_file_contains "- Cycle profile: research-first" "$report_path"
 assert_file_not_contains "- Note: Report generated from bootstrap fallback state." "$report_path"
 
-python3 - <<'PY'
+python3 - "$cycle_id" <<'PY'
 import json
+import sys
 from pathlib import Path
 
-path = Path("harness/state/cycles/official-alpha-cycle-03.json")
+cycle_id = sys.argv[1]
+path = Path(f"harness/state/cycles/{cycle_id}.json")
 with path.open("r", encoding="utf-8") as handle:
     payload = json.load(handle)
 
@@ -141,8 +150,8 @@ with path.open("w", encoding="utf-8") as handle:
     handle.write("\n")
 PY
 
-archive_output="$(./harness/coding-session.sh cycle-archive ./harness/cycles/official-alpha-cycle-03.json)"
-assert_output_contains "./harness/archive/official-alpha-cycle-03.json" "$archive_output"
+archive_output="$(./harness/coding-session.sh cycle-archive "$cycle_rel")"
+assert_output_contains "$archive_rel" "$archive_output"
 
 current_cycle="$(./harness/coding-session.sh cycle-current)"
 assert_eq "./harness/feature_list.json" "$current_cycle" "archiving the active cycle should fall back to bootstrap cycle"

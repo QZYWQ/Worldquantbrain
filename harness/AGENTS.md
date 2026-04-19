@@ -101,6 +101,7 @@ Use these commands to manage repeatable alpha cycles:
 - `./harness/coding-session.sh cycle-list`
 - `./harness/coding-session.sh cycle-summary`
 - `./harness/coding-session.sh cycle-report [path]`
+- `./harness/coding-session.sh cycle-learning-loop [path]`
 - `./harness/coding-session.sh cycle-close [path]`
 - `./harness/coding-session.sh resume-brief [path]`
 - `./harness/coding-session.sh session-open [path]`
@@ -114,10 +115,11 @@ Use the cycle end-state commands in this order:
 
 1. `cycle-summary` for a quick terminal check
 2. `cycle-report` for a durable markdown artifact
-3. `resume-brief` for the next-session handoff artifact
-4. `session-open` for the execution starter artifact in `./runs/`
-5. `cycle-close` to enforce terminal readiness
-6. `cycle-archive` only after you decide to move the JSON out of the active area
+3. `cycle-learning-loop` for post-cycle project / KB / skill promotion candidates
+4. `resume-brief` for the next-session handoff artifact
+5. `session-open` for the execution starter artifact in `./runs/`
+6. `cycle-close` to enforce terminal readiness
+7. `cycle-archive` only after you decide to move the JSON out of the active area
 
 Cycle creation now uses:
 
@@ -167,6 +169,8 @@ The harness points work into the project root `runs/` tree:
   `./runs/simulation-captures/`
 - candidate batches:
   `./runs/candidate-batches/`
+- learning loops:
+  `./runs/learning-loops/`
 - session briefs:
   `./runs/session-briefs/`
 - daily notes:

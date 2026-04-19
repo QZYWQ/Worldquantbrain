@@ -25,6 +25,7 @@ Usage:
   ./harness/coding-session.sh cycle-list
   ./harness/coding-session.sh cycle-summary
   ./harness/coding-session.sh cycle-report [PATH]
+  ./harness/coding-session.sh cycle-learning-loop [PATH]
   ./harness/coding-session.sh cycle-close [PATH]
   ./harness/coding-session.sh resume-brief [PATH]
   ./harness/coding-session.sh session-open [PATH]
@@ -122,6 +123,24 @@ show_cycle_report() {
 
   print_section "Cycle Report"
   printf '%s\n' "$report_target"
+}
+
+show_cycle_learning_loop() {
+  local cycle_path="${1:-}"
+  local report_target
+  local bundle_targets
+
+  run_preflight_base
+  if [ -z "$cycle_path" ]; then
+    cycle_path="$(active_cycle_rel_path)"
+  fi
+
+  report_target="$(write_cycle_report "$cycle_path")"
+  bundle_targets="$(write_learning_loop_bundle "$cycle_path" "$report_target")"
+
+  print_section "Learning Loop"
+  printf 'Source report: %s\n' "$report_target"
+  printf '%s\n' "$bundle_targets"
 }
 
 show_resume_brief() {
@@ -228,6 +247,7 @@ close_cycle() {
   local cycle_path="${1:-}"
   local normalized_rel
   local report_target
+  local learning_loop_targets
 
   acquire_lock
   trap cleanup EXIT
@@ -243,10 +263,12 @@ close_cycle() {
   cycle_validate_close_readiness "$normalized_rel" || exit 4
   cycle_require_clean_doctor_if_active "$normalized_rel" || exit 4
   report_target="$(write_cycle_report "$normalized_rel")"
+  learning_loop_targets="$(write_learning_loop_bundle "$normalized_rel" "$report_target")"
 
   print_section "Cycle Closed"
   printf 'Cycle closed: %s\n' "$normalized_rel"
   printf 'Report: %s\n' "$report_target"
+  printf 'Learning loop artifacts:\n%s\n' "$learning_loop_targets"
 }
 
 show_next() {
@@ -406,6 +428,10 @@ main() {
     cycle-report)
       shift || true
       show_cycle_report "${1:-}"
+      ;;
+    cycle-learning-loop)
+      shift || true
+      show_cycle_learning_loop "${1:-}"
       ;;
     cycle-close)
       shift || true

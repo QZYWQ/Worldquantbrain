@@ -43,6 +43,9 @@ cp -R "$PROJECT_ROOT" "$TMP_ROOT/project"
 PROJECT_COPY="$TMP_ROOT/project"
 cd "$PROJECT_COPY"
 
+cycle_id="test-cycle-config-$$"
+cycle_rel="./harness/cycles/${cycle_id}.json"
+
 cat > ./harness/config.env <<EOF
 EXTERNAL_KB_ROOT="$TMP_ROOT/missing-kb"
 EOF
@@ -70,17 +73,19 @@ if [ "$active_status" = "in_progress" ] && [ -n "$active_feature" ] && [ "$activ
   ./harness/coding-session.sh block "$active_feature" --summary "Reset copied runtime state for cycle-config test." >/dev/null
 fi
 
-./harness/coding-session.sh cycle-create official-alpha-cycle-06 >/dev/null
+./harness/coding-session.sh cycle-create "$cycle_id" >/dev/null
 
 new_cycle="$(./harness/coding-session.sh cycle-current)"
-assert_eq "./harness/cycles/official-alpha-cycle-06.json" "$new_cycle" "cycle-create should activate the new cycle"
+assert_eq "$cycle_rel" "$new_cycle" "cycle-create should activate the new cycle"
 
-python3 - <<'PY'
+python3 - "$cycle_id" <<'PY'
 import json
+import sys
 from pathlib import Path
 
-path = Path("harness/cycles/official-alpha-cycle-06.json")
-state_path = Path("harness/state/cycles/official-alpha-cycle-06.json")
+cycle_id = sys.argv[1]
+path = Path(f"harness/cycles/{cycle_id}.json")
+state_path = Path(f"harness/state/cycles/{cycle_id}.json")
 with state_path.open("r", encoding="utf-8") as handle:
     payload = json.load(handle)
 
