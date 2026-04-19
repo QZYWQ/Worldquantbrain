@@ -1,0 +1,110 @@
+{
+  "capture_id": "2026-04-19-analyst-disagreement-branch",
+  "topic": "analyst_disagreement_dts_spe_industry",
+  "captured_at": "2026-04-19 14:24:51 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "language": "Fast Expression"
+  },
+  "alphas": [
+    {
+      "name": "analyst_disagreement_afv4_inverse_60",
+      "expression": "group_rank(-ts_rank(anl4_afv4_dts_spe, 60), industry)",
+      "ui_context": "Simulation 3 result surfaced under tutorial checks / IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.21,
+        "fitness": -0.04,
+        "turnover": "11.06%",
+        "returns": "-0.55%",
+        "drawdown": "8.29%",
+        "margin": "-0.99‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Inverse annual-frequency disagreement baseline failed on sign at the aggregate IS level."
+    },
+    {
+      "name": "analyst_disagreement_qfv4_inverse_60",
+      "expression": "group_rank(-ts_rank(anl4_qfv4_dts_spe, 60), industry)",
+      "ui_context": "Simulation 2 result surfaced under tutorial checks / IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.15,
+        "fitness": -0.03,
+        "turnover": "11.25%",
+        "returns": "-0.40%",
+        "drawdown": "5.65%",
+        "margin": "-0.72‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Quarterly-frequency sibling was slightly less bad than the annual inverse baseline, but still negative on aggregate IS."
+    },
+    {
+      "name": "analyst_disagreement_afv4_inverse_120",
+      "expression": "group_rank(-ts_rank(anl4_afv4_dts_spe, 120), industry)",
+      "ui_context": "Simulation 1 result surfaced under tutorial checks / IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.41,
+        "fitness": -0.12,
+        "turnover": "9.08%",
+        "returns": "-1.07%",
+        "drawdown": "6.93%",
+        "margin": "-2.35‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Slower 120d horizon made the inverse-disagreement thesis materially worse."
+    },
+    {
+      "name": "analyst_disagreement_afv4_direct_60",
+      "expression": "group_rank(ts_rank(anl4_afv4_dts_spe, 60), industry)",
+      "ui_context": "Simulation 5 result surfaced under tutorial checks / IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.21,
+        "fitness": 0.04,
+        "turnover": "11.06%",
+        "returns": "0.55%",
+        "drawdown": "3.61%",
+        "margin": "0.99‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Direct-sign control flipped the branch positive, but the aggregate IS metrics remained far below submission quality."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "analyst_disagreement_afv4_direct_60",
+    "winner_by_fitness": "analyst_disagreement_afv4_direct_60",
+    "branch_takeaway": "The first-pass inverse-disagreement sign assumption failed. Direct disagreement was directionally better, but the whole disagreement branch remained too weak for candidate promotion without a materially different structure."
+  }
+}

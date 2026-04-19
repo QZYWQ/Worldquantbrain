@@ -258,6 +258,22 @@
 **Rationale**: This keeps the shell query layer thin and deterministic while preserving the overall layered design: shell for orchestration, Python for structured query execution, and separate mutation modules for write paths.
 
 **Alternatives Considered**:
+
+## 2026-04-19 | ALPHA-DECISION-018 | Pivot the post-submit cycle to analyst disagreement first
+
+**Context**: `E5repQ81` is already submitted and locked. A fresh official re-check on `2026-04-19 12:14 CST` still shows `ACTV` with `OS Testing Status = 4 PENDING`, so there is no resolved OS outcome yet. The next research hour should therefore go to a lower-correlation follow-up branch instead of re-opening submission review or spending more time on EPS-level clones.
+
+**Decision**: Create `official-alpha-cycle-03` around two immediate jobs: keep monitoring the submitted line's OS status, and open the next primary branch on analyst disagreement with `anl4_afv4_dts_spe`. Use a simple inverse-disagreement baseline first. Keep a non-analyst lane ready as fallback, but do not let it displace the disagreement branch before field quality is checked.
+
+**Rationale**: This keeps the current submitted alpha untouched while using the next cycle to create a more distinct family. The disagreement field changes the information source meaningfully, which is a stronger correlation-reduction move than continuing EPS-level sibling polishing.
+
+**Alternatives Considered**:
+- Return immediately to `qMm6xPVv` or `QP59baMg`: rejected because they are same-family backups, not the highest expected-value next branch.
+- Open a non-analyst lane first: rejected for now because the continuation plan explicitly prefers the disagreement branch unless coverage or robustness fails quickly.
+
+**Consequences**:
+- The new cycle tracks an OS-status memo plus the disagreement branch planning artifacts before any new simulation capture.
+- The first disagreement experiments should stay simple: inverse sign, one field change at a time, and no unnecessary gating before the first bottleneck is known.
 - Leave large Python heredocs inside `state-queries.sh`: rejected because it kept the query boundary bulky and harder to review.
 - Merge query execution into the reporting renderer or mutation helper modules: rejected because it would reintroduce cross-layer coupling.
 

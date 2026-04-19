@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "cycle_id": "official-alpha-cycle-03",
+  "generated_at": "2026-04-19",
+  "purpose": "Post-submit continuation queue focused on OS monitoring and the next lower-correlation follow-up branch.",
+  "primary_direction": "analyst_disagreement_dts_spe_industry",
+  "selection_principles": [
+    "Do not reopen manual submission review while E5repQ81 remains in OS pending state.",
+    "Prefer a real information-source change over more EPS-level clone polishing.",
+    "Keep the first disagreement batch structurally simple so the first bottleneck is visible.",
+    "Keep one non-analyst fallback lane ready in case disagreement coverage or robustness fails quickly."
+  ],
+  "official_verification_boundary": {
+    "official_platform_account_checks_completed_in_this_session": true,
+    "verified_facts": [
+      "A fresh official re-check on 2026-04-19 kept E5repQ81 at ACTV with OS Testing Status = 4 PENDING.",
+      "A fresh official Data page check showed anl4_afv4_dts_spe as Matrix with coverage 69%, dateCoverage 100%, and 78 alphas in USA / D1 / TOP3000.",
+      "The same fresh official search also showed anl4_qfv4_dts_spe as Matrix with coverage 72%, dateCoverage 100%, and 102 alphas in USA / D1 / TOP3000."
+    ],
+    "still_unverified": [
+      "No fresh simulation result exists yet for any disagreement-branch expression in this cycle.",
+      "No exact non-analyst fallback field has been re-verified in this session yet."
+    ]
+  },
+  "items": [
+    {
+      "name": "analyst_disagreement_afv4_inverse_industry",
+      "idea_strength": 3,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "active_branch",
+      "notes": "This is the preferred next branch because it changes the information source from EPS level to analyst disagreement while preserving the proven group-relative structure. Fresh official field verification in this session confirms anl4_afv4_dts_spe is visible, Matrix, 69% coverage, 100% date coverage, and 78 alphas in the exact target setup.",
+      "next_step": "Simulate group_rank(-ts_rank(anl4_afv4_dts_spe, 60), industry) as the first inverse-disagreement baseline."
+    },
+    {
+      "name": "analyst_disagreement_qfv4_inverse_industry",
+      "idea_strength": 2,
+      "dataset_freshness": 2,
+      "correlation_novelty": 2,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "same_family_backup",
+      "notes": "This is the first same-family backup because fresh official search shows anl4_qfv4_dts_spe is also visible and slightly less sparse at 72% coverage, though its alpha count is higher at 102. Use it only after the annual-frequency disagreement line establishes the sign and basic robustness posture.",
+      "next_step": "If the afv4 disagreement baseline is directionally promising but too sparse, simulate group_rank(-ts_rank(anl4_qfv4_dts_spe, 60), industry)."
+    },
+    {
+      "name": "sentiment_buzz_stability",
+      "idea_strength": 2,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 1,
+      "execution_simplicity": 0,
+      "current_status": "fallback_non_analyst",
+      "notes": "This remains the cleanest non-analyst fallback from the first-cycle queue because it adds a real family change and diversification upside. It should be promoted only if disagreement coverage or Sub-universe behavior fails fast.",
+      "next_step": "Re-check one sentiment buzz-style field on the official Data page before opening a baseline with 5/10/20-day stability windows."
+    },
+    {
+      "name": "event_option_volume_gate",
+      "idea_strength": 2,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 1,
+      "execution_simplicity": 0,
+      "current_status": "secondary_fallback",
+      "notes": "This stays behind sentiment because the execution friction is higher, but it is still a valid non-analyst lane if the disagreement branch stalls and a more event-style family is preferred.",
+      "next_step": "Re-verify option sentiment field visibility before opening one minimal trade_when baseline."
+    }
+  ]
+}
