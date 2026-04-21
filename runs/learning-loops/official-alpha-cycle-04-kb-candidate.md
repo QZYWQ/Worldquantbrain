@@ -50,5 +50,7 @@
 - 项目侧回链：
   - `kb://01-外部知识库映射.md`
 - Skill 结论：
-  - 暂时不需要把这些内容再做成 skill。
-  - 这批材料是长期研究方法论，适合放知识库；如果以后要把其中某条变成强制门禁，再考虑规则层或 skill 层。
+  - 已把两个更适合提炼成 skill 的方法论补进了 worldquant-brain-alpha-engineering：
+    - unit / dimension sanity 作为 hard rule
+    - turnover 作为 cost / capacity secondary lever
+  - 其余内容仍然留在知识库，更适合当证据与延伸阅读，不必再搬进 skill。
