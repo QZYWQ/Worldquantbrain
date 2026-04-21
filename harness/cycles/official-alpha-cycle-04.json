@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "project_goal": "Open the next non-analyst fundamentals branch after the failed sentiment and option fallback lanes, starting from sales_delta_fundamental and iterating until one line reaches candidate quality or the lane is structurally blocked.",
+  "generated_at": "2026-04-21T00:05:03+0800",
+  "cycle_type": "official",
+  "cycle_profile": "research-first",
+  "features": [
+    {
+      "id": "ALPHA-QUEUE-004",
+      "priority": "P0",
+      "category": "planning",
+      "title": "Create the fourth-cycle fundamentals research queue",
+      "description": "Build the next queue around sales_delta_fundamental with one slower fundamentals fallback and one lower-priority structural backup.",
+      "source_refs": [
+        "./templates/research-queue.template.json",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A real queue JSON exists under runs/research-queues.",
+        "The queue is compatible with the local research_queue_builder script.",
+        "The queue contains the sales-delta primary lane and at least one distinct fundamentals fallback."
+      ],
+      "dependencies": [],
+      "verification": {
+        "mode": "research-queue-json",
+        "target": "./runs/research-queues/official-alpha-cycle-04.json"
+      }
+    },
+    {
+      "id": "ALPHA-FIELD-004",
+      "priority": "P0",
+      "category": "research",
+      "title": "Create the sales-delta field-search pack",
+      "description": "Create a field-search pack for the sales_delta_fundamental lane with fresh official field verification and likely failure modes.",
+      "source_refs": [
+        "./templates/field-search-pack.template.md",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A markdown field-search pack exists under runs/field-search-packs.",
+        "The pack records fresh official field verification for the chosen fundamentals field.",
+        "The pack clearly separates confirmed facts from planning assumptions."
+      ],
+      "dependencies": [
+        "ALPHA-QUEUE-004"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/field-search-packs/2026-04-21-sales-delta-fundamental.md"
+      }
+    },
+    {
+      "id": "ALPHA-EXPR-004",
+      "priority": "P0",
+      "category": "expression",
+      "title": "Draft the sales-delta expression family",
+      "description": "Create a simple baseline plus small, justified variants for the new fundamentals lane.",
+      "source_refs": [
+        "./templates/expression-family.template.md",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A markdown expression family file exists under runs/expression-families.",
+        "The file includes one baseline and at least three variants.",
+        "Each variant has a stated purpose or bottleneck target."
+      ],
+      "dependencies": [
+        "ALPHA-FIELD-004"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/expression-families/2026-04-21-sales-delta-fundamental.md"
+      }
+    },
+    {
+      "id": "ALPHA-SIM-004",
+      "priority": "P0",
+      "category": "simulation",
+      "title": "Capture the sales-delta simulation results",
+      "description": "Record real platform metrics and evidence for the first sales-delta batch once the new expressions are simulated.",
+      "source_refs": [
+        "./templates/simulation-capture.template.json",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A simulation capture JSON exists under runs/simulation-captures.",
+        "The capture includes real platform metrics only.",
+        "Evidence artifacts exist for the capture."
+      ],
+      "dependencies": [
+        "ALPHA-EXPR-004"
+      ],
+      "verification": {
+        "mode": "manual-artifact",
+        "target": "./runs/simulation-captures/2026-04-21-sales-delta-fundamental-batch-01.json"
+      }
+    },
+    {
+      "id": "ALPHA-CAND-004",
+      "priority": "P0",
+      "category": "triage",
+      "title": "Build the sales-delta candidate batch",
+      "description": "Convert the real sales-delta simulation outputs into a submit / polish / branch / kill candidate batch when real check evidence supports it.",
+      "source_refs": [
+        "./templates/candidate-batch.template.json",
+        "./02-工作流索引.md"
+      ],
+      "acceptance_criteria": [
+        "A candidate batch JSON exists under runs/candidate-batches.",
+        "The candidate batch is compatible with the local candidate_scorecard script.",
+        "The batch contains real metrics only."
+      ],
+      "dependencies": [
+        "ALPHA-SIM-004"
+      ],
+      "verification": {
+        "mode": "candidate-batch-json",
+        "target": "./runs/candidate-batches/2026-04-21-sales-delta-fundamental.json"
+      }
+    },
+    {
+      "id": "ALPHA-NOTE-004",
+      "priority": "P1",
+      "category": "documentation",
+      "title": "Write the fourth-cycle daily note",
+      "description": "Record the fundamentals follow-up session in the daily note format after the planning artifacts and first simulations exist.",
+      "source_refs": [
+        "./templates/daily-note.template.json",
+        "./02-工作流索引.md"
+      ],
+      "acceptance_criteria": [
+        "A daily note JSON exists under runs/notes/daily.",
+        "The JSON is compatible with the local session_note_scaffold daily mode.",
+        "The note references real work from the current cycle."
+      ],
+      "dependencies": [
+        "ALPHA-SIM-004"
+      ],
+      "verification": {
+        "mode": "daily-note-json",
+        "target": "./runs/notes/daily/official-alpha-cycle-day-04.json"
+      }
+    },
+    {
+      "id": "ALPHA-SUBMIT-004",
+      "priority": "P1",
+      "category": "submission",
+      "title": "Prepare the fundamentals submission memo",
+      "description": "Write a submission memo grounded in real sales-delta results and official checks if the lane reaches candidate quality.",
+      "source_refs": [
+        "./02-工作流索引.md",
+        "./01-外部知识库映射.md"
+      ],
+      "acceptance_criteria": [
+        "A submission memo markdown file exists under runs/submission-memos.",
+        "The memo references real simulation and test results.",
+        "The memo does not claim readiness without official platform evidence."
+      ],
+      "dependencies": [
+        "ALPHA-CAND-004"
+      ],
+      "verification": {
+        "mode": "markdown-file",
+        "target": "./runs/submission-memos/2026-04-21-sales-delta-fundamental.md"
+      }
+    }
+  ]
+}

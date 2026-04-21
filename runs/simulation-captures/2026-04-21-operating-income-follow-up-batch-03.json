@@ -1,0 +1,119 @@
+{
+  "capture_id": "2026-04-21-operating-income-follow-up-batch-03",
+  "topic": "operating_income_follow_up",
+  "captured_at": "2026-04-21 01:21:26 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-21-sales-delta-fundamental.md",
+    "expression_family": "./runs/expression-families/2026-04-21-operating-income-delta-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "The follow-up batch reused Simulation 4-7 and was captured from the official IS Summary aggregate section after each rerun completed.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "operating_income_delta_126_industry_rerun",
+      "expression": "group_rank(ts_delta(operating_income, 126), industry)",
+      "ui_context": "Simulation 4 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.95,
+        "fitness": 0.52,
+        "turnover": "4.73%",
+        "returns": "3.72%",
+        "drawdown": "11.45%",
+        "margin": "15.72‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The rerun reproduced the batch-2 winner exactly, which makes the next comparison against alternative representations trustworthy."
+    },
+    {
+      "name": "operating_income_delta_252_industry",
+      "expression": "group_rank(ts_delta(operating_income, 252), industry)",
+      "ui_context": "Simulation 5 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.55,
+        "fitness": 0.26,
+        "turnover": "4.11%",
+        "returns": "2.86%",
+        "drawdown": "11.36%",
+        "margin": "13.91‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "A slower delta horizon weakened the line, so more delay alone is not the correct improvement direction."
+    },
+    {
+      "name": "operating_income_delta_126_tsrank252_industry",
+      "expression": "group_rank(ts_rank(ts_delta(operating_income, 126), 252), industry)",
+      "ui_context": "Simulation 6 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.78,
+        "fitness": 0.33,
+        "turnover": "6.37%",
+        "returns": "2.29%",
+        "drawdown": "7.63%",
+        "margin": "7.20‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "History-ranking the delta reduced drawdown but still trailed the simple winner on both Sharpe and Fitness."
+    },
+    {
+      "name": "operating_income_history_position_252_industry",
+      "expression": "group_rank(ts_rank(operating_income, 252), industry)",
+      "ui_context": "Simulation 7 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.13,
+        "fitness": 0.73,
+        "turnover": "5.16%",
+        "returns": "5.17%",
+        "drawdown": "8.84%",
+        "margin": "20.05‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Switching from profitability delta to profitability history-position produced the first material step-up in both Sharpe and Fitness and became the new live winner."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_history_position_252_industry",
+    "winner_by_fitness": "operating_income_history_position_252_industry",
+    "branch_takeaway": "The only meaningful improvement came from changing the representation of the signal, not from slowing the delta window. Raw operating-income history position over 252d raised Sharpe to 1.13 and Fitness to 0.73 while keeping turnover healthy, so the next batch should stay entirely inside the operating-income history-position family. No visible submission-check evidence or non-null subuniverse result was captured, so the correct posture remains polish one more time, not package."
+  }
+}

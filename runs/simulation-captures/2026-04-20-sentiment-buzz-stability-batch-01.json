@@ -1,0 +1,135 @@
+{
+  "capture_id": "2026-04-20-sentiment-buzz-stability-batch-01",
+  "topic": "sentiment_buzz_stability",
+  "captured_at": "2026-04-20 02:25:04 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-20-sentiment-buzz-stability.md",
+    "expression_family": "./runs/expression-families/2026-04-20-sentiment-buzz-stability.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "Simulation 6 was re-run in-place during this session because its prior result panel was empty and did not represent a completed real result.",
+      "Visible IS Testing Status counts were recorded, but no detailed per-test rows, no submission-check result, and no non-null subuniverse verdict were visible at capture time."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "sentiment_buzz_mean_5_industry",
+      "expression": "group_rank(ts_mean(scl12_buzz, 5), industry)",
+      "ui_context": "Simulation 6 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.17,
+        "fitness": -0.03,
+        "turnover": "20.54%",
+        "returns": "-0.80%",
+        "drawdown": "11.15%",
+        "margin": "-0.77‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The shortest rolling-mean baseline was directionally weak and required an in-session re-run because the earlier tab state had no completed result."
+    },
+    {
+      "name": "sentiment_buzz_mean_10_industry",
+      "expression": "group_rank(ts_mean(scl12_buzz, 10), industry)",
+      "ui_context": "Simulation 7 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.10,
+        "fitness": -0.02,
+        "turnover": "12.52%",
+        "returns": "-0.48%",
+        "drawdown": "10.10%",
+        "margin": "-0.77‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "A slightly slower stability window reduced turnover but still left the aggregate IS line negative."
+    },
+    {
+      "name": "sentiment_buzz_mean_20_industry",
+      "expression": "group_rank(ts_mean(scl12_buzz, 20), industry)",
+      "ui_context": "Simulation 8 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.24,
+        "fitness": -0.07,
+        "turnover": "7.72%",
+        "returns": "-1.18%",
+        "drawdown": "12.47%",
+        "margin": "-3.07‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The slowest rolling-mean version cut turnover further, but materially worsened returns and margin."
+    },
+    {
+      "name": "sentiment_buzz_rank_10_industry",
+      "expression": "group_rank(ts_rank(scl12_buzz, 10), industry)",
+      "ui_context": "Simulation 9 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.11,
+        "fitness": 0.01,
+        "turnover": "63.60%",
+        "returns": "0.44%",
+        "drawdown": "9.45%",
+        "margin": "0.14‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The unsmoothed control was the least bad branch, but it still had near-zero robustness and excessive turnover."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "sentiment_buzz_rank_10_industry",
+    "winner_by_fitness": "sentiment_buzz_rank_10_industry",
+    "branch_takeaway": "The confirmed scl12_buzz lane is available and structurally healthy on coverage, but this first four-simulation family is uniformly too weak to justify polish. No visible submission-check evidence or non-null subuniverse result was present, so the correct posture is kill this lane and branch to event_option_volume_gate instead of extending the same crowded buzz thesis."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "capture_id": "2026-04-21-sales-delta-fundamental-batch-02",
+  "topic": "sales_delta_fundamental",
+  "captured_at": "2026-04-21 01:04:44 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-21-sales-delta-fundamental.md",
+    "expression_family": "./runs/expression-families/2026-04-21-sales-delta-fundamental.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "All four members of batch 2 were read from the official IS Summary aggregate view while switching among Simulation 4-7 in the browser.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "sales_delta_revenue_252_industry",
+      "expression": "group_rank(ts_delta(revenue, 252), industry)",
+      "ui_context": "Simulation 4 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.33,
+        "fitness": 0.13,
+        "turnover": "3.29%",
+        "returns": "2.03%",
+        "drawdown": "17.05%",
+        "margin": "12.35‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Going slower than 126d on revenue reduced both Sharpe and Fitness, so extra horizon length alone is not the fix."
+    },
+    {
+      "name": "sales_delta_revenue_126_tsrank252_industry",
+      "expression": "group_rank(ts_rank(ts_delta(revenue, 126), 252), industry)",
+      "ui_context": "Simulation 5 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.61,
+        "fitness": 0.26,
+        "turnover": "6.02%",
+        "returns": "2.19%",
+        "drawdown": "8.58%",
+        "margin": "7.26‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "History-ranking the revenue delta reduced drawdown but did not beat the simpler 126d revenue-delta winner from batch 1."
+    },
+    {
+      "name": "sales_delta_sales_126_industry",
+      "expression": "group_rank(ts_delta(sales, 126), industry)",
+      "ui_context": "Simulation 6 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.62,
+        "fitness": 0.31,
+        "turnover": "4.15%",
+        "returns": "3.21%",
+        "drawdown": "14.72%",
+        "margin": "15.44‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The synonym control stayed viable and close to the revenue 126d line, but it still did not clearly cross into candidate territory."
+    },
+    {
+      "name": "operating_income_delta_126_industry",
+      "expression": "group_rank(ts_delta(operating_income, 126), industry)",
+      "ui_context": "Simulation 7 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.95,
+        "fitness": 0.52,
+        "turnover": "4.73%",
+        "returns": "3.72%",
+        "drawdown": "11.45%",
+        "margin": "15.72‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The profitability fallback was the clear batch winner and the only branch that justified another real batch instead of an immediate family kill."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_delta_126_industry",
+    "winner_by_fitness": "operating_income_delta_126_industry",
+    "branch_takeaway": "Batch 2 showed that the thesis improved only after branching away from revenue into operating-income delta. Revenue 252d weakened, revenue-delta history-ranking only partially helped, the sales synonym remained merely decent, and operating-income 126d became the sole branch worth one more evidence-backed round. No visible submission-check evidence or non-null subuniverse result was captured, so the correct posture after batch 2 is polish the operating-income branch once, not package or submit."
+  }
+}

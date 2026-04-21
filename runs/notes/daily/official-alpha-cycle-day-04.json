@@ -1,0 +1,22 @@
+{
+  "date": "2026-04-21",
+  "research_direction": "operating_income_smoothed_history_position_follow_up",
+  "hypothesis": "Light smoothing on operating_income combined with a long history-rank window can keep the profitability-position signal stable, while the newly submitted EPS alpha stays locked and monitored separately.",
+  "candidate_fields": [
+    "operating_income"
+  ],
+  "expression": "group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)",
+  "settings": {
+    "Region": "USA",
+    "Universe": "TOP3000",
+    "Delay": 1
+  },
+  "result_summary": "The latest operating_income batch reran the 63/504 control and tested 21/504, 126/504, and 252/504 smoothing variants. The 63-day smoothed 504-day rank remained the best line in the batch with IS Sharpe 1.23, Fitness 0.93, Turnover 3.28%, and Returns 7.10%. The 126-day smoothed 504-day rank was the closest challenger on stability with Sharpe 1.21, Fitness 0.92, and Turnover 2.68%. No visible Check Submission evidence or non-null subuniverse verdict appeared for this family. Separately, the official submitted list now shows `analyst_afv4MedEPS_close_ts120_indrank_us3k_d1_v1` as `ACTIVE` with `Date Submitted (EST) = 04/21/2026 EDT` and `IS Testing Status = 8 PASS`.",
+  "first_failure": "The 504-rank sweep did not beat the existing 63-smoothing control, so the branch still has a clear local winner but not a submission-grade upgrade path yet. The other failure remains the absence of real submission-check or subuniverse evidence.",
+  "next_experiments": [
+    "Keep the operating_income smoothed-history branch separate and only continue with real simulation evidence.",
+    "Monitor the submitted EPS alpha OS status separately; do not reopen manual submission review for it.",
+    "Do not create a candidate-batch JSON for either lane until real submission-check evidence or non-null subuniverse evidence appears."
+  ],
+  "decision": "polish the operating_income branch and keep the submitted EPS alpha locked"
+}
