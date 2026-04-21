@@ -9,7 +9,7 @@
     "assets_curr",
     "liabilities_curr"
   ],
-  "expression": "group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), subindustry)",
+  "expression": "group_rank(ts_rank(ts_mean(assets_curr / liabilities_curr, 63), 504), subindustry)",
   "settings": {
     "Region": "USA",
     "Universe": "TOP3000",
@@ -19,13 +19,13 @@
     "Truncation": 0.08,
     "TestPeriod": "P1Y"
   },
-  "result_summary": "Simulation 17 tested the planned subindustry branch on the leverage family. The IS summary was Sharpe 0.30, Fitness 0.08, Turnover 2.43%, Returns 0.99%, Drawdown 6.23%, Margin 8.17‱. The TEST view improved to Sharpe 0.62, Fitness 0.29, Turnover 2.17%, Returns 2.82%, Drawdown 5.49%, Margin 25.96‱. No visible Check Submission evidence or non-null subuniverse verdict appeared, and Submit Alpha stayed disabled.",
-  "first_failure": "The subindustry branch keeps the family alive but does not make it candidate-ready; the lane still lacks real submission-check evidence and a non-null subuniverse verdict.",
+  "result_summary": "Simulation 17 tested the liquidity fallback with the neutralization axis switched to subindustry. The TEST view stayed mildly positive at Sharpe 0.39, Fitness 0.13, Turnover 2.38%, Returns 1.37%, Drawdown 3.55%, and Margin 11.49‱, but the IS summary remained negative at Sharpe -0.43, Fitness -0.14, Turnover 2.65%, Returns -1.24%, Drawdown 11.89%, and Margin -9.33‱. Visible testing status stayed at 4 PASS / 3 FAIL / 1 PENDING, and Submit Alpha stayed disabled.",
+  "first_failure": "A positive TEST view does not rescue the family when IS stays negative and no real Check Submission or non-null subuniverse evidence appears.",
   "next_experiments": [
-    "If the lane stays open, test the liquidity fallback with assets_curr / liabilities_curr as the next distinct ratio family.",
+    "Do not keep polishing the capital-structure family.",
+    "Move the next live branch to a distinct fundamentals family if another lane is needed.",
     "Do not create a candidate-batch JSON until real Check Submission evidence or non-null subuniverse evidence appears.",
-    "Keep the capital-structure lane separate from the older operating_income, revenue, sentiment, and analyst branches.",
-    "If the liquidity fallback also stalls, kill the capital-structure lane instead of polishing the same family further."
+    "Keep the capital-structure lesson project-local unless another family reproduces the same rule cleanly."
   ],
-  "decision": "branch to the liquidity fallback or kill the capital-structure lane"
+  "decision": "kill the capital-structure lane and move to a distinct fundamentals family"
 }

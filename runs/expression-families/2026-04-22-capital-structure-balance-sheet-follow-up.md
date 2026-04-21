@@ -110,3 +110,25 @@ group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), subindustry)
   baseline, sign control, `21d` time branch, and `subindustry` structure branch.
 - Backup branch:
   if the subindustry branch still does not make the lane candidate-ready, test the liquidity ratio family with `assets_curr / liabilities_curr`.
+
+
+## Liquidity Subindustry Probe
+
+- Simulation 17's liquidity follow-up kept the same slow rank/smoothing stack but switched the neutralization axis to `subindustry`:
+
+```text
+group_rank(ts_rank(ts_mean(assets_curr / liabilities_curr, 63), 504), subindustry)
+```
+
+- TEST summary:
+  `Sharpe 0.39 / Fitness 0.13 / Turnover 2.38% / Returns 1.37% / Drawdown 3.55% / Margin 11.49‱`
+- IS summary:
+  `Sharpe -0.43 / Fitness -0.14 / Turnover 2.65% / Returns -1.24% / Drawdown 11.89% / Margin -9.33‱`
+- Visible testing status:
+  `4 PASS / 3 FAIL / 1 PENDING`
+- No visible `Check Submission` evidence or non-null `subuniverse_pass` appeared, and `Submit Alpha` stayed disabled.
+
+## Decision
+
+- Kill the capital-structure lane.
+- Keep the branch-threshold lesson local for now; it is useful as a workflow rule, but it is not a submission-ready alpha family.

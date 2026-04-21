@@ -46,6 +46,12 @@
   `group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), subindustry)`
   and it settled at IS `Sharpe 0.30 / Fitness 0.08 / Turnover 2.43% / Returns 0.99% / Drawdown 6.23% / Margin 8.17‱`
   with TEST `Sharpe 0.62 / Fitness 0.29 / Turnover 2.17% / Returns 2.82% / Drawdown 5.49% / Margin 25.96‱`.
+- Simulation 17 then tested the liquidity fallback baseline on the same run:
+  `group_rank(ts_rank(ts_mean(assets_curr / liabilities_curr, 63), 504), industry)`
+  and it settled at IS `Sharpe -0.72 / Fitness -0.29 / Turnover 2.82% / Returns -2.02% / Drawdown 11.29% / Margin -14.36‱`
+  with TEST `Sharpe 0.45 / Fitness 0.17 / Turnover 2.48% / Returns 1.73% / Drawdown 3.73% / Margin 13.99‱`.
 - The settings modal confirmed the current run is `Fast Expression / Equity / USA / TOP3000 / Subindustry / 1Y` with `decay 4` and `truncation 0.08`.
 - No real `Check Submission` evidence or non-null `subuniverse_pass` appeared in the current session, so this remains exploratory only and no candidate-batch JSON should be created yet.
-- Decision: keep the 63d leverage anchor as the best current reference, but branch to the liquidity fallback (`assets_curr / liabilities_curr`) only if the lane stays open; otherwise kill the capital-structure lane instead of polishing the same family further.
+- Decision: the liquidity baseline is alive enough to justify one subindustry branch on `assets_curr / liabilities_curr`; if that also stalls, kill the capital-structure lane instead of polishing the same family further.
+- The actual liquidity subindustry follow-up then landed at TEST `Sharpe 0.39 / Fitness 0.13 / Turnover 2.38% / Returns 1.37% / Drawdown 3.55% / Margin 11.49‱` and IS `Sharpe -0.43 / Fitness -0.14 / Turnover 2.65% / Returns -1.24% / Drawdown 11.89% / Margin -9.33‱`, with visible testing status counts of `4 PASS / 3 FAIL / 1 PENDING`.
+- That result is project-local kill material: it is useful as a branch-threshold lesson, but it is not submission-ready and it is not strong enough for skill promotion yet.

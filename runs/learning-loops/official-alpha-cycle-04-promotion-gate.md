@@ -65,10 +65,11 @@
 - Hold the skill candidate until another cycle shows the scaffold adds clearer value than the current skill wording.
 
 ## Capital Structure Readout
-- The current live run is the leverage family's subindustry probe, not another revenue or operating-income polish pass.
+- The current live run is the liquidity baseline, not another revenue or operating-income polish pass.
 - The 63d leverage sign-control anchor remains the strongest observed point in the batch:
   `group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), industry)`
 - The 21d clone is a clear weak control, so same-family smoothing alone is not a useful next lever.
-- Simulation 17's subindustry branch improved the TEST view to `Sharpe 0.62 / Fitness 0.29 / Turnover 2.17%`, but IS stayed at `0.30 / 0.08 / 2.43%`, `Check Submission` never became visible, and `Submit Alpha` stayed disabled.
+- The liquidity subindustry follow-up improved the TEST view to `Sharpe 0.39 / Fitness 0.13 / Turnover 2.38%`, but IS stayed negative at `Sharpe -0.43 / Fitness -0.14 / Turnover 2.65%`, `Check Submission` never became visible, and `Submit Alpha` stayed disabled.
+- The visible testing status stayed at `4 PASS / 3 FAIL / 1 PENDING`, which confirms the lane is not candidate-ready even though the test slice is mildly positive.
 - The settings modal confirmed the run is still exploratory: `Subindustry` neutralization, `USA / TOP3000 / D1`, `decay 4`, `truncation 0.08`, `test period = 1Y`.
-- Current posture: still `review`, not `submit`; if the liquidity fallback does not materially improve the family, the lane should be killed rather than polished further.
+- Current posture: `kill`, not `submit` or `polish`; move the next live branch to a distinct fundamentals family.

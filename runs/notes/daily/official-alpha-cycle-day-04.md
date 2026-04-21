@@ -62,6 +62,15 @@ Do not keep smoothing revenue. The next live branch should come from a stronger 
   `group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), subindustry)`
   with IS `Sharpe 0.30 / Fitness 0.08 / Turnover 2.43% / Returns 0.99% / Drawdown 6.23% / Margin 8.17‱`
   and TEST `Sharpe 0.62 / Fitness 0.29 / Turnover 2.17% / Returns 2.82% / Drawdown 5.49% / Margin 25.96‱`.
+- Simulation 17 then tested the liquidity fallback baseline on the same run:
+  `group_rank(ts_rank(ts_mean(assets_curr / liabilities_curr, 63), 504), industry)`
+  with IS `Sharpe -0.72 / Fitness -0.29 / Turnover 2.82% / Returns -2.02% / Drawdown 11.29% / Margin -14.36‱`
+  and TEST `Sharpe 0.45 / Fitness 0.17 / Turnover 2.48% / Returns 1.73% / Drawdown 3.73% / Margin 13.99‱`.
+- The liquidity subindustry follow-up then tested the same slow-rank / history stack with the neutralization axis switched to `subindustry`:
+  `group_rank(ts_rank(ts_mean(assets_curr / liabilities_curr, 63), 504), subindustry)`
+  and it settled at TEST `Sharpe 0.39 / Fitness 0.13 / Turnover 2.38% / Returns 1.37% / Drawdown 3.55% / Margin 11.49‱`
+  while the IS view remained negative at `Sharpe -0.43 / Fitness -0.14 / Turnover 2.65% / Returns -1.24% / Drawdown 11.89% / Margin -9.33‱`.
+- The visible testing status stayed at `4 PASS / 3 FAIL / 1 PENDING`, `Check Submission` never became visible, and `Submit Alpha` stayed disabled.
 - The settings modal confirmed `Fast Expression / Equity / USA / TOP3000 / Subindustry / 1Y` with `decay 4` and `truncation 0.08`.
-- No real `Check Submission` evidence or non-null `subuniverse_pass` appeared in this session, and `Submit Alpha` stayed disabled, so do not create a candidate-batch JSON yet.
-- Decision: if the capital-structure lane stays open, the next meaningful test is the liquidity fallback with `assets_curr / liabilities_curr`; otherwise kill the lane instead of polishing the same family further.
+- No real `Check Submission` evidence or non-null `subuniverse_pass` appeared in this session, so do not create a candidate-batch JSON yet.
+- Decision: kill the capital-structure lane and keep the branch-threshold rule as project-local lesson material only.
