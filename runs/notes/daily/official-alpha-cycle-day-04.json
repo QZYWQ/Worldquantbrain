@@ -1,23 +1,31 @@
 {
-  "date": "2026-04-21",
-  "research_direction": "operating_income_smoothed_history_position_follow_up",
-  "hypothesis": "Light smoothing on operating_income combined with a long history-rank window still helps, and batch 08 suggests the ridge has moved slightly left: 78d now edges 84d on Sharpe/Fitness, while 84d remains the low-turnover balance point.",
+  "date": "2026-04-22",
+  "research_direction": "capital_structure_balance_sheet_follow_up",
+  "hypothesis": "A balance-sheet leverage or liquidity ratio, especially when smoothed slowly and normalized by industry structure, may surface a slow underreaction that was missed by the earlier earnings, sentiment, and analyst branches.",
   "candidate_fields": [
-    "operating_income"
+    "fnd6_teq",
+    "assets",
+    "liabilities",
+    "assets_curr",
+    "liabilities_curr"
   ],
-  "expression": "group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)",
+  "expression": "group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), subindustry)",
   "settings": {
     "Region": "USA",
     "Universe": "TOP3000",
-    "Delay": 1
+    "Delay": 1,
+    "Neutralization": "Subindustry",
+    "Decay": 4,
+    "Truncation": 0.08,
+    "TestPeriod": "P1Y"
   },
-  "result_summary": "Batch 08 reran the 504-day smoothing ridge around the 84d control with 72d, 78d, 84d, and 90d probes. The 78-day smoothed 504-day rank was the best visible probe in the batch with IS Sharpe 1.26, Fitness 0.96, Turnover 3.04%, and Returns 7.32%. The 84-day control stayed on the low-turnover side of the ridge with Sharpe 1.25, Fitness 0.96, Turnover 2.98%, and Returns 7.33%. The 72d probe matched the visible Sharpe/Fitness but carried slightly more turnover, and the 90d probe drifted off the ridge. No visible Check Submission evidence or non-null subuniverse verdict appeared for this family. Separately, the official submitted list still shows `analyst_afv4MedEPS_close_ts120_indrank_us3k_d1_v1` as `ACTIVE` with `Date Submitted (EST) = 04/21/2026 EDT` and `IS Testing Status = 8 PASS`.",
-  "first_failure": "The ridge is shallow rather than sharply peaked, and the absence of real submission-check or subuniverse evidence still blocks packaging.",
+  "result_summary": "Simulation 17 tested the planned subindustry branch on the leverage family. The IS summary was Sharpe 0.30, Fitness 0.08, Turnover 2.43%, Returns 0.99%, Drawdown 6.23%, Margin 8.17‱. The TEST view improved to Sharpe 0.62, Fitness 0.29, Turnover 2.17%, Returns 2.82%, Drawdown 5.49%, Margin 25.96‱. No visible Check Submission evidence or non-null subuniverse verdict appeared, and Submit Alpha stayed disabled.",
+  "first_failure": "The subindustry branch keeps the family alive but does not make it candidate-ready; the lane still lacks real submission-check evidence and a non-null subuniverse verdict.",
   "next_experiments": [
-    "Keep the operating_income smoothed-history branch separate and only continue with real simulation evidence.",
-    "Narrow the next sweep around the 78d/84d ridge, e.g. 81d and 87d or another tighter pair, before changing neutralization or adding operators.",
-    "Monitor the submitted EPS alpha OS status separately; do not reopen manual submission review for it.",
-    "Do not create a candidate-batch JSON for either lane until real submission-check evidence or non-null subuniverse evidence appears."
+    "If the lane stays open, test the liquidity fallback with assets_curr / liabilities_curr as the next distinct ratio family.",
+    "Do not create a candidate-batch JSON until real Check Submission evidence or non-null subuniverse evidence appears.",
+    "Keep the capital-structure lane separate from the older operating_income, revenue, sentiment, and analyst branches.",
+    "If the liquidity fallback also stalls, kill the capital-structure lane instead of polishing the same family further."
   ],
-  "decision": "polish the operating_income branch around the 78d/84d ridge and keep the submitted EPS alpha locked"
+  "decision": "branch to the liquidity fallback or kill the capital-structure lane"
 }
