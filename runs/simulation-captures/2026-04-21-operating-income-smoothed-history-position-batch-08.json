@@ -1,0 +1,120 @@
+{
+  "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-08",
+  "topic": "operating_income_smoothed_history_position_follow_up_batch_08",
+  "captured_at": "2026-04-21 22:41:18 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "expression_family": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "Batch 08 ran the 504-history smoothing sweep around the existing 84d control with 72d, 78d, 84d, and 90d probes.",
+      "Simulation 1 remained the prior 63d control from batch 05 and was not rerun in this sweep.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "operating_income_smoothed72_history_position_504_industry",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 72), 504), industry)",
+      "ui_context": "Simulation 3 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.26,
+        "fitness": 0.96,
+        "turnover": "3.11%",
+        "returns": "7.32%",
+        "drawdown": "8.23%",
+        "margin": "46.99‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Matched the visible Sharpe/Fitness ceiling of the batch, but it gave back a little turnover and margin versus the 78d probe."
+    },
+    {
+      "name": "operating_income_smoothed78_history_position_504_industry",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 78), 504), industry)",
+      "ui_context": "Simulation 6 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.26,
+        "fitness": 0.96,
+        "turnover": "3.04%",
+        "returns": "7.32%",
+        "drawdown": "8.15%",
+        "margin": "48.21‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Current ridge winner: it matches the visible Sharpe/Fitness top tier while improving turnover and margin relative to 72d."
+    },
+    {
+      "name": "operating_income_smoothed84_history_position_504_industry_control",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)",
+      "ui_context": "Simulation 7 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.25,
+        "fitness": 0.96,
+        "turnover": "2.98%",
+        "returns": "7.33%",
+        "drawdown": "8.36%",
+        "margin": "49.23‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Still the low-turnover balance point and the best control anchor for the ridge, even though 78d edges it on visible Sharpe/Fitness."
+    },
+    {
+      "name": "operating_income_smoothed90_history_position_504_industry",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 90), 504), industry)",
+      "ui_context": "Simulation 5 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.24,
+        "fitness": 0.95,
+        "turnover": "2.93%",
+        "returns": "7.30%",
+        "drawdown": "8.52%",
+        "margin": "49.79‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The right-tail probe drifted off the ridge: it bought a little more turnover reduction, but gave back visible Sharpe, Fitness, and margin."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_smoothed78_history_position_504_industry",
+    "winner_by_fitness": "operating_income_smoothed78_history_position_504_industry",
+    "branch_takeaway": "Batch 08 shifts the live ridge slightly left from the 84d control. The 78d probe now edges the batch on visible Sharpe/Fitness, 84d remains the low-turnover anchor, and 90d is clearly a weaker right-tail probe. The branch should keep the history rank fixed at 504d and continue with a narrower sweep around the 78d/84d ridge before changing neutralization or adding operators. Because no visible Check Submission evidence or non-null subuniverse result appeared, the line stays exploratory and not candidate-batch ready."
+  }
+}

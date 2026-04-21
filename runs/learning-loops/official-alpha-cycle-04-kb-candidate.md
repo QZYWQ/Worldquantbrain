@@ -18,6 +18,7 @@
 - If real `subuniverse_pass` or submission-check evidence is missing, record a blocked memo instead of backfilling a candidate-batch JSON with placeholders.
 - Use the first simple batch as a fast-kill gate: if the direct control remains far below candidate quality, demote the family and switch lanes instead of polishing by inertia.
 - When a smoothed-history family produces a shallow ridge, keep the history-rank window fixed and sweep only the smoothing window around the local peak before changing neutralization or adding extra operators.
+- The 2026-04-21 operating_income batch 08 reinforced that same rule: a wider sweep produced a shallow ridge that shifted from 72d/84d toward 78d/84d, so the right move was still to tighten the smoothing sweep rather than add operators.
 
 ## Not Ready For Promotion
 - Do not promote one-cycle family verdicts as universal truths.
@@ -35,6 +36,8 @@
 - `./runs/submission-memos/analyst_afv4MedEPS_close_ts120_indrank_us3k_d1_v1-os-status-2026-04-21.md`
 - `./runs/notes/daily/official-alpha-cycle-day-03.md`
 - `./runs/notes/daily/official-alpha-cycle-day-04.md`
+- `./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md`
+- `./runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-08.json`
 - `./runs/learning-loops/official-alpha-cycle-03-project-lessons.md`
 - `./runs/learning-loops/official-alpha-cycle-03-promotion-gate.md`
 

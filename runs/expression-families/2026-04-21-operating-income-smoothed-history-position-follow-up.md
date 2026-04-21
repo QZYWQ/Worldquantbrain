@@ -97,9 +97,19 @@ group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)
 - `96d` and `108d` both leaned toward cheaper turnover, but each gave back some Fitness versus the `72d`/`84d` ridge.
 - The family now looks like a shallow ridge around `72d` to `84d` rather than a single sharp peak.
 
+## Batch 08 Update
+
+- The 504-history sweep tightened again and the live ridge shifted slightly left from the `84d` control.
+- `78d` became the best visible probe in the batch:
+  `group_rank(ts_rank(ts_mean(operating_income, 78), 504), industry)`
+- `84d` remains the low-turnover control and the most stable anchor for the ridge:
+  `group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)`
+- `72d` stayed competitive on visible Sharpe/Fitness, but it gave back a bit of turnover and margin.
+- `90d` drifted off the ridge and should be treated as a right-tail probe rather than the new center.
+
 ## Optimization Order
 
-1. Keep the history rank fixed at `504d` and sweep smoothing narrowly around the `72d`/`84d` ridge, for example `78d` and `90d`, before changing neutralization or adding more operators.
+1. Keep the history rank fixed at `504d` and sweep only the smoothing window in a tighter band around the `78d`/`84d` ridge, for example `81d` and `87d`, before changing neutralization or adding more operators.
 2. Keep the family interpretable; do not stack extra transforms on top of smoothing until the local ridge shape is clearer or submission-style evidence appears.
 3. If the family stops improving or the platform still withholds submission-style evidence, then stop polishing this field family and branch to the next non-analyst lane.
 
@@ -110,6 +120,6 @@ group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)
 - Variant 1:
   `group_rank(ts_rank(ts_mean(operating_income, 78), 504), industry)`
 - Variant 2:
-  `group_rank(ts_rank(ts_mean(operating_income, 90), 504), industry)`
+  `group_rank(ts_rank(ts_mean(operating_income, 81), 504), industry)`
 - Variant 3:
-  `group_rank(ts_rank(ts_mean(operating_income, 72), 504), industry)`
+  `group_rank(ts_rank(ts_mean(operating_income, 87), 504), industry)`
