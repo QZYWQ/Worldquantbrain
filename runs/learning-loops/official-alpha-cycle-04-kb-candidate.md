@@ -39,3 +39,16 @@
 ## Promotion Posture
 - Status: `REVIEW`
 - Destination guidance: promote only after a deliberate KB pass confirms these remain valid as reusable project guidance.
+
+## KB 落地判断
+
+- 已经落到外部 KB 的页：
+  - `kb://05-资源与来源/04-外部论文与书目补充.md`
+  - `kb://03-研究方法/03-低相关与稳健性.md`
+  - `kb://04-专题技巧/04-提升 Sharpe 的实战方法.md`
+  - `kb://04-专题技巧/05-提升 Returns 与控制 Turnover.md`
+- 项目侧回链：
+  - `kb://01-外部知识库映射.md`
+- Skill 结论：
+  - 暂时不需要把这些内容再做成 skill。
+  - 这批材料是长期研究方法论，适合放知识库；如果以后要把其中某条变成强制门禁，再考虑规则层或 skill 层。
