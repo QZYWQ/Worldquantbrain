@@ -88,8 +88,28 @@ group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)
 - The lighter `21d` smoothing probe lagged the stronger anchors and did not change the branch decision.
 - The family now looks like a `504d` history sweep centered around `84d` smoothing, not a `252d` history sweep centered on `63d`.
 
+## Batch 07 Update
+
+- `72d` smoothing became the highest-Sharpe probe in the 504-history sweep and tied the best Fitness with the control anchor:
+  `group_rank(ts_rank(ts_mean(operating_income, 72), 504), industry)`
+- `84d` remained the lowest-turnover balance point and is still the working control:
+  `group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)`
+- `96d` and `108d` both leaned toward cheaper turnover, but each gave back some Fitness versus the `72d`/`84d` ridge.
+- The family now looks like a shallow ridge around `72d` to `84d` rather than a single sharp peak.
+
 ## Optimization Order
 
-1. Keep the history rank fixed at `504d` and sweep smoothing around the new `84d` control before changing neutralization or adding more operators.
-2. Keep the family interpretable; do not stack extra transforms on top of smoothing until the `84d` control either stalls or reveals a clearer local peak.
+1. Keep the history rank fixed at `504d` and sweep smoothing narrowly around the `72d`/`84d` ridge, for example `78d` and `90d`, before changing neutralization or adding more operators.
+2. Keep the family interpretable; do not stack extra transforms on top of smoothing until the local ridge shape is clearer or submission-style evidence appears.
 3. If the family stops improving or the platform still withholds submission-style evidence, then stop polishing this field family and branch to the next non-analyst lane.
+
+## Next Simulation Batch
+
+- Baseline:
+  `group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)`
+- Variant 1:
+  `group_rank(ts_rank(ts_mean(operating_income, 78), 504), industry)`
+- Variant 2:
+  `group_rank(ts_rank(ts_mean(operating_income, 90), 504), industry)`
+- Variant 3:
+  `group_rank(ts_rank(ts_mean(operating_income, 72), 504), industry)`

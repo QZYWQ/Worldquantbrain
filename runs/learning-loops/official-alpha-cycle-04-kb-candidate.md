@@ -17,6 +17,7 @@
 - Give each new family a cheap direct-sign or control test before candidate packaging, same-family polishing, or deeper branching.
 - If real `subuniverse_pass` or submission-check evidence is missing, record a blocked memo instead of backfilling a candidate-batch JSON with placeholders.
 - Use the first simple batch as a fast-kill gate: if the direct control remains far below candidate quality, demote the family and switch lanes instead of polishing by inertia.
+- When a smoothed-history family produces a shallow ridge, keep the history-rank window fixed and sweep only the smoothing window around the local peak before changing neutralization or adding extra operators.
 
 ## Not Ready For Promotion
 - Do not promote one-cycle family verdicts as universal truths.
@@ -27,6 +28,7 @@
 - These rules recur across the post-submit monitoring path, the non-analyst branch, and the operating-income follow-up branch.
 - The repeated pattern is about workflow discipline, evidence gating, and branch selection, not about one field family.
 - The heuristics are usable as durable operating guidance even when the specific alpha, field, or cycle changes.
+- The ridge-sweep rule above is reusable, but it is still operational guidance rather than a new skill-level policy.
 
 ## Supporting Outputs
 - `./runs/submission-memos/analyst-sibling-submission-memo.md`

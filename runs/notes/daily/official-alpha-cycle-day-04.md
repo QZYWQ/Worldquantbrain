@@ -4,13 +4,13 @@
 operating_income_smoothed_history_position_follow_up
 
 ## Hypothesis
-Light smoothing on operating_income combined with a long history-rank window can keep the profitability-position signal stable, while the newly submitted EPS alpha stays locked and monitored separately.
+Light smoothing on operating_income combined with a long history-rank window can keep the profitability-position signal stable, and the latest sweep suggests the local ridge sits between 72d and 84d smoothing rather than at a single peak.
 
 ## Candidate Fields
 - operating_income
 
 ## Expression
-`group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)`
+`group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)`
 
 ## Settings
 - `Region`: USA
@@ -18,15 +18,16 @@ Light smoothing on operating_income combined with a long history-rank window can
 - `Delay`: 1
 
 ## Result Summary
-The latest operating_income batch reran the 63/504 control and tested 21/504, 126/504, and 252/504 smoothing variants. The 63-day smoothed 504-day rank remained the best line in the batch with IS Sharpe 1.23, Fitness 0.93, Turnover 3.28%, and Returns 7.10%. The 126-day smoothed 504-day rank was the closest challenger on stability with Sharpe 1.21, Fitness 0.92, and Turnover 2.68%. No visible Check Submission evidence or non-null subuniverse verdict appeared for this family. Separately, the official submitted list now shows `analyst_afv4MedEPS_close_ts120_indrank_us3k_d1_v1` as `ACTIVE` with `Date Submitted (EST) = 04/21/2026 EDT` and `IS Testing Status = 8 PASS`.
+The latest operating_income batch reran the 504-day smoothing ridge around the 84d control with 72d, 96d, and 108d probes. The 72-day smoothed 504-day rank was the highest-Sharpe line in the batch with IS Sharpe 1.26, Fitness 0.96, Turnover 3.11%, and Returns 7.32%. The 84-day control remained the best low-turnover balance point with Sharpe 1.25, Fitness 0.96, Turnover 2.98%, and Returns 7.33%. The 96d and 108d probes traded away Fitness for slightly cheaper turnover. No visible Check Submission evidence or non-null subuniverse verdict appeared for this family. Separately, the official submitted list now shows `analyst_afv4MedEPS_close_ts120_indrank_us3k_d1_v1` as `ACTIVE` with `Date Submitted (EST) = 04/21/2026 EDT` and `IS Testing Status = 8 PASS`.
 
 ## First Failure
-The 504-rank sweep did not beat the existing 63-smoothing control, so the branch still has a clear local winner but not a submission-grade upgrade path yet. The other failure remains the absence of real submission-check or subuniverse evidence.
+The ridge is shallow rather than sharply peaked, and the absence of real submission-check or subuniverse evidence still blocks packaging.
 
 ## Next Experiments
 - Keep the operating_income smoothed-history branch separate and only continue with real simulation evidence.
+- Narrow the next sweep around the 72d/84d ridge, especially `78d` and `90d`, before changing neutralization or adding operators.
 - Monitor the submitted EPS alpha OS status separately; do not reopen manual submission review for it.
 - Do not create a candidate-batch JSON for either lane until real submission-check evidence or non-null subuniverse evidence appears.
 
 ## Decision
-polish the operating_income branch and keep the submitted EPS alpha locked
+polish the operating_income branch around the 72d/84d ridge and keep the submitted EPS alpha locked
