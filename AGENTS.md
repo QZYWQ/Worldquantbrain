@@ -103,6 +103,13 @@ Apply these execution rules on top of the project-specific hard rules.
 - Verification should be evidence-based: tests, harness checks, generated artifacts, or official platform pages depending on task type.
 - If verification could not be run, say so plainly and do not overclaim completion.
 
+## Default Response Style
+
+- Default to a concise answer first; expand only when the task needs steps, comparisons, evidence, or file-level traceability.
+- Use numbered lists only for real sequences, hierarchy, or tightly nested substeps; use short headings only when they improve scanability.
+- Give user-requested formats, length limits, tables, and citations priority over any local style preference.
+- The fuller project-side output protocol lives in `./agent-policies/06-回答风格与输出协议.md`.
+
 ## Progressive Loading Rule
 
 Default startup load is:
