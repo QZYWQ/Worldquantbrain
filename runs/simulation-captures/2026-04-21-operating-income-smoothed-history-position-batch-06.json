@@ -1,7 +1,7 @@
 {
   "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-06",
   "topic": "operating_income_smoothed_history_position_follow_up_batch_06",
-  "captured_at": "2026-04-21 17:48:46 CST (+0800)",
+  "captured_at": "2026-04-21 19:27:53 CST (+0800)",
   "capture_mode": "manual-ui",
   "platform_settings": {
     "region": "USA",
@@ -13,13 +13,14 @@
     "expression_family": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
     "notes": [
       "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
-      "This batch ran Simulation 1 through Simulation 4 as the control plus 21/504, 126/504, and 252/504 smoothing variants.",
+      "Simulation 5 and Simulation 6 were the two newly run probes in the 504-history smoothing sweep.",
+      "Simulation 1 remained the existing 63/504 control and Simulation 3 remained the existing 126/504 anchor from the prior batch.",
       "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch."
     ]
   },
   "alphas": [
     {
-      "name": "operating_income_smoothed63_history_position_504_industry_control_rerun",
+      "name": "operating_income_smoothed63_history_position_504_industry_control",
       "expression": "group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)",
       "ui_context": "Simulation 1 aggregate IS Summary",
       "classification": "Needs Improvement",
@@ -39,12 +40,35 @@
         "test_period_pass": null,
         "check_submission_pass": null
       },
-      "notes": "Reproduced the prior control result exactly; this remained the best Sharpe and Fitness in the batch."
+      "notes": "Existing control anchor reused from batch 05; it remains the comparison baseline for the new 504-history sweep."
+    },
+    {
+      "name": "operating_income_smoothed126_history_position_504_industry_anchor",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 126), 504), industry)",
+      "ui_context": "Simulation 3 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.25,
+        "fitness": 0.91,
+        "turnover": "2.96%",
+        "returns": "6.64%",
+        "drawdown": "8.52%",
+        "margin": "44.89‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Prior-batch anchor kept here for comparison; it is still the best low-turnover reference point inside the 504-history family."
     },
     {
       "name": "operating_income_smoothed21_history_position_504_industry",
       "expression": "group_rank(ts_rank(ts_mean(operating_income, 21), 504), industry)",
-      "ui_context": "Simulation 2 aggregate IS Summary",
+      "ui_context": "Simulation 5 aggregate IS Summary",
       "classification": "Needs Improvement",
       "metrics": {
         "sharpe": 1.20,
@@ -62,20 +86,20 @@
         "test_period_pass": null,
         "check_submission_pass": null
       },
-      "notes": "Lighter smoothing did not beat the control and gave back both Fitness and margin."
+      "notes": "The lighter-smoothing probe was weaker than the 63/84/126-day family and did not beat the current anchors."
     },
     {
-      "name": "operating_income_smoothed126_history_position_504_industry",
-      "expression": "group_rank(ts_rank(ts_mean(operating_income, 126), 504), industry)",
-      "ui_context": "Simulation 3 aggregate IS Summary",
+      "name": "operating_income_smoothed84_history_position_504_industry",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)",
+      "ui_context": "Simulation 6 aggregate IS Summary",
       "classification": "Needs Improvement",
       "metrics": {
-        "sharpe": 1.21,
-        "fitness": 0.92,
-        "turnover": "2.68%",
-        "returns": "7.23%",
-        "drawdown": "8.14%",
-        "margin": "53.88‱",
+        "sharpe": 1.25,
+        "fitness": 0.96,
+        "turnover": "2.98%",
+        "returns": "7.33%",
+        "drawdown": "8.36%",
+        "margin": "49.23‱",
         "max_weight": null,
         "self_corr": null
       },
@@ -85,36 +109,12 @@
         "test_period_pass": null,
         "check_submission_pass": null
       },
-      "notes": "This was the closest challenger: it improved turnover and margin materially, but still trailed the control on Sharpe and Fitness."
-    },
-    {
-      "name": "operating_income_smoothed252_history_position_504_industry",
-      "expression": "group_rank(ts_rank(ts_mean(operating_income, 252), 504), industry)",
-      "ui_context": "Simulation 4 aggregate IS Summary",
-      "classification": "Needs Improvement",
-      "metrics": {
-        "sharpe": 0.93,
-        "fitness": 0.64,
-        "turnover": "2.23%",
-        "returns": "5.84%",
-        "drawdown": "8.89%",
-        "margin": "52.41‱",
-        "max_weight": null,
-        "self_corr": null
-      },
-      "tests": {
-        "visible_status_counts": null,
-        "subuniverse_pass": null,
-        "test_period_pass": null,
-        "check_submission_pass": null
-      },
-      "notes": "Heavier smoothing flattened the signal too far and was the weakest variant in the batch."
+      "notes": "This became the new best balance inside the operating-income smoothed-history family, improving Fitness and returns while holding Sharpe at the top tier."
     }
   ],
   "batch_observation": {
-    "winner_by_sharpe": "operating_income_smoothed63_history_position_504_industry_control_rerun",
-    "winner_by_fitness": "operating_income_smoothed63_history_position_504_industry_control_rerun",
-    "branch_takeaway": "The new 504-rank sweep did not beat the existing 63-smoothing control. The closest challenger was the 126-smoothing variant, which improved turnover and margin but still trailed the control on Sharpe and Fitness. The 21-smoothing and 252-smoothing variants were weaker. There is still no visible Check Submission evidence or non-null subuniverse result, so this stays exploratory rather than candidate-ready.",
-    "posture": "polish"
+    "winner_by_sharpe": "operating_income_smoothed84_history_position_504_industry",
+    "winner_by_fitness": "operating_income_smoothed84_history_position_504_industry",
+    "branch_takeaway": "The 504-history smoothing sweep confirms the operating-income branch is still alive and the next working baseline should be 84-day smoothing, not the older 63/504 or 126/504 anchors. The 21/504 probe is not competitive. No visible Check Submission evidence or non-null subuniverse result was captured, so the correct posture remains polish-only inside this family rather than packaging or candidate-batch promotion."
   }
 }

@@ -80,8 +80,16 @@ group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)
 - Self-correlation:
   Unknown until real check evidence exists.
 
+## Batch 06 Update
+
+- `84d` smoothing on the `504d` rank window became the new working baseline:
+  `group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)`
+- It improved the family to `Sharpe 1.25 / Fitness 0.96 / Turnover 2.98% / Returns 7.33% / Margin 49.23‱`.
+- The lighter `21d` smoothing probe lagged the stronger anchors and did not change the branch decision.
+- The family now looks like a `504d` history sweep centered around `84d` smoothing, not a `252d` history sweep centered on `63d`.
+
 ## Optimization Order
 
-1. Sweep smoothing strength and one slower history-rank combination before changing neutralization or adding more operators.
-2. Keep the family interpretable; do not stack extra transforms on top of smoothing until this focused batch settles the stability question.
-3. If the best smoothed follow-up still cannot move beyond `Needs Improvement` with a materially higher Fitness, then stop polishing this field family and branch to the next non-analyst lane.
+1. Keep the history rank fixed at `504d` and sweep smoothing around the new `84d` control before changing neutralization or adding more operators.
+2. Keep the family interpretable; do not stack extra transforms on top of smoothing until the `84d` control either stalls or reveals a clearer local peak.
+3. If the family stops improving or the platform still withholds submission-style evidence, then stop polishing this field family and branch to the next non-analyst lane.
