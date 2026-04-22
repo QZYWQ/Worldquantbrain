@@ -1,0 +1,129 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT",
+  "title": "[BRAIN TIPS] Generate insights from a research paper using GPT – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:59+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-20457074342807-BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT-36a76865c2.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-20457074342807-BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT-36a76865c2.txt",
+  "content_excerpt": "[BRAIN TIPS] Generate insights from a research paper using GPT – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n [BRAIN TIPS] Generate insights from a research paper using GPT\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 31 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n NL41370\n \n \n \n \n\n \n \n \n2 years ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nSo you've got a research paper and want to quickly identify any potential ideas, quant algorithms, or mathematical models? Many of you are likely already aware with the prevalence and power of various advanced AI models, including “Generative Pre-trained Transformers” (or “GPT” as you’re more familiar with), such as OpenAI's ChatGPT, Bing Chat, and Google Bard, all of which are ready to assist aspiring researchers in any field. Here's an informative and straightforward guide to creating an effective GPT prompt:\n\n Provide context. \n\n“Refer to this paper <insert hyperlink or PDF>. Assume you are a world class expert in quantitative finance, building signals using market data.”\n\n Use open-ended questions. Ask something like, \"Can you give me three investment ideas to create quantitative algorithms inspired by this paper?\" Open-ended questions tend to spark more comprehensive answers from GPT models.\n\n Be clear and specific in any follow-up questions. \n\nQuestions like \"What could be the entry and exit conditions for this algorithm?\" or \"What type of data fields could I use to implement this idea?\" will get you much more detailed and targeted responses.\n\n Set output goals. Clearly outline what you want from the GPT model’s answer. For example, \"Translate the investment idea into an algorithm or Python code.\"\n\n Include additional instructions for better results. \n\nYou could instruct the GPT model to \"Focus on the abstract, introduction, or conclusion of the research paper\"\n\nOr ask it to \"generate ideas implemented using <xyz> category of data fields\".\n\nOr ask whether the authors encountered any unexpected insights or results.\n\n Tweak response details. Modify the GPT model's output to suit your needs. For instance, you can request the GPT model to \"summarize the idea in three bullet points\". \n\n🔔 Remember, while GPT models are smart, they’re not perfect. Always validate the output and make sure it makes sense to you. Happy prompting! 🔔\n\n \n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 29\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n10 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n deleted user\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nIn my limited experience, copying the text containing the key idea into chatgpt is more effective than importing the entire pdf file, because chatgpt scanning the entire pdf is not very effective.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 25\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TD17989\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI think chatGPT can be trusted in terms of explaining ideas, but the simulated results still depend on the Brain platform, because Chatgpt is not trained with Brain data.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 31\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n QG16026\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI’m curious, do you find that focusing on specific sections like the abstract or conclusion tends to yield more actionable algorithm ideas, or do you prefer exploring the entire paper for a broader perspective? Great guide on leveraging GPT for research!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 30\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n HV77283\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nBased on my experience, pasting the text with the key idea into ChatGPT works better than importing the entire PDF file, as scanning the whole PDF doesn’t seem to be as effective in extracting the important information.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 9\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AC63290\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nUsing GPT effectively for research involves clear, context-rich prompts. Provide specific details, ask open-ended questions, and define your desired output. For example, focus on translating ideas into algorithms or summarizing insights. Always validate outputs for accuracy and relevance to ensure quality results. Unlock GPT's potential to accelerate innovation!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 18\n \n \n\n \n \n\n \n\n ",
+  "headings": [
+    "[BRAIN TIPS] Generate insights from a research paper using GPT",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "NL41370",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11433604068887-NL41370"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT?sort_by=votes"
+    },
+    {
+      "text": "deleted user",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243496991767-deleted-user"
+    },
+    {
+      "text": "TD17989",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13680660215831-TD17989"
+    },
+    {
+      "text": "QG16026",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22532757009175-QG16026"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "CT68712",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15219840701719-CT68712"
+    },
+    {
+      "text": "ZH78994",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22396335369111-ZH78994"
+    },
+    {
+      "text": "JC25241",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22499347470871-JC25241"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 81,
+    "html_length": 308242,
+    "text_length": 8371,
+    "anchor_count": 25,
+    "code_block_count": 0
+  }
+}

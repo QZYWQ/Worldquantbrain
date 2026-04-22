@@ -1,0 +1,139 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization",
+  "title": "[BRAIN TIPS] Demystifying Simulation Settings: Pasteurization – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:26:34+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-17518278995991-BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization-46b25ebf9d.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-17518278995991-BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization-46b25ebf9d.txt",
+  "content_excerpt": "[BRAIN TIPS] Demystifying Simulation Settings: Pasteurization – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n [BRAIN TIPS] Demystifying Simulation Settings: Pasteurization\n \n \n\n \n Pinned\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 26 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n NL41370\n \n \n \n \n\n \n \n \n2 years ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nWhat does Pasteurization do? \n\nThe Pasteurization setting goes hand in hand with the Universe setting.\n\nIt turns Alpha values of instruments not in the selected Universe to \"NaN\" (undefined data).\n\n\"NaN\" means “Not a Number”. That is, the instrument with value = NAN won't take part in Alpha expression computations.\n\nIt is thus different from the situation where an Alpha value = 0 for an instrument, because this Alpha value can change to a non-zero value after operations like decay and neutralization, potentially resulting in weights allocated to that instrument.\n\nHowever, what happens when Pasteurization is \"Off\"?\n\nAll instruments, even those outside of the selected Universe, will be part of Alpha computation. This could affect group operations.\n\nThe default setting for Pasteurization is \"On\".\n\nThere are times when you might want to turn Pasteurization \"Off\". For instance, if you want to compare instruments within your selected Universe against all instruments in the market, you can set Pasteurization = “Off” in the settings use the pasteurize() operator in your Alpha expression. Check the Learn article: \"How to choose the Simulation Settings\" for an example.\n\nBut remember, the Pasteurization setting and the pasteurize() operator aren't the same. The operator also turns infinite (INF) input values to NaN, helpful to avoid allocating too much weight to an instrument.\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 34\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n11 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AT42510\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nWhy might we want to set Pasteurization to \"Off\" during analysis?\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 14\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n AG20578\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi AT42510!\n\nGood question!\n\nFor example you work on small universe (like top200) but want to get information about instruments outside simulation universe.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 11\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TT55495\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHello, I want to ask if setting Pasteurization and operator Pasteurization have the same function, right? If so, what is the difference when using? operator Pasteurization will help a part of alpha get information about instruments outside simulation universe, right? Looking forward to your reply.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 33\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LH38752\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThis is exactly what I needed to hear. Thank you so much for breaking it down! 👍\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 33\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AC63290\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nPasteurization is a simulation setting that determines how instruments outside the selected Universe are handled. When Pasteurization is \"On\" (default), Alpha values for such instruments are set to \"NaN,\" excluding them from computations and weight allocation. This ensures that only relevant instruments within the Universe are considered.\n\nWhen Pasteurization is \"Off,\" all instruments, even those outside the Universe, are included, which can influence group operations. This may be useful for comparing instruments across the entire market.\n\nThe pasteurize() operator complements this setting by not only handling out-of-Universe instruments but also converting infinite (INF) values to NaN, ensuring stable and meaningful Alpha computations.\n\n \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 25\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n HV77283\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, I’d like to confirm if setting Pasteurization and operator Pasteurization serve the same purpose. If so, what’s the difference in their usage? Does operator Pasteurization allow part of the alpha to access information about instruments outside the simulation universe? Looking forward ",
+  "headings": [
+    "[BRAIN TIPS] Demystifying Simulation Settings: Pasteurization",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "NL41370",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11433604068887-NL41370"
+    },
+    {
+      "text": "\"How to choose the Simulation Settings\"",
+      "href": "https://platform.worldquantbrain.com/learn/documentation/create-alphas/simulation-settings"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization?sort_by=votes"
+    },
+    {
+      "text": "AT42510",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/7593384582295-AT42510"
+    },
+    {
+      "text": "AG20578",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/12243980162327-AG20578"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "LH38752",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4842912366615-LH38752"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "DK30003",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4733983647511-DK30003"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "DS74354",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/7510379603863-DS74354"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [
+    "pasteurize()"
+  ],
+  "meta": {
+    "title_length": 80,
+    "html_length": 318157,
+    "text_length": 9089,
+    "anchor_count": 27,
+    "code_block_count": 1
+  }
+}

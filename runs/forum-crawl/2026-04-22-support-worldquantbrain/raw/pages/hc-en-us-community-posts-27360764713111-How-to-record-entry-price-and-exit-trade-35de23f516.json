@@ -1,0 +1,181 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade",
+  "title": "How to record entry price and exit trade – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:12+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-27360764713111-How-to-record-entry-price-and-exit-trade-35de23f516.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-27360764713111-How-to-record-entry-price-and-exit-trade-35de23f516.txt",
+  "content_excerpt": "How to record entry price and exit trade – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n How to record entry price and exit trade\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 21 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n MP97470\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nI have read the post in forums about how to set profit/ stop loss and they provide expressions as below:\n\nclose_at_event = trade_when(event, close, -1); \nalpha = trade_when(event, signal, abs(close - close_at_event) / close > .1); \nalpha\n\nHowever, I don't understand how close_at_event can be entry price, and how do they exit the trade in this code\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 9\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n21 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n AG20578\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi MP97470!\n\nAt first I'll explain the first usage of trade_when:\n\nTrade_When (x=triggerTradeExp, y=AlphaExp, z=triggerExitExp)\n\nIf triggerExitExp > 0, then Alpha = NaN;\n\nElse if triggerTradeExp > 0, then Alpha = AlphaExp;\n\nOtherwise, Alpha = previousAlpha.\n\nSo, when you use trade_when(a,b,-1), the triggerExitExp is always false, which means you are not exiting the position but only adjusting it when condition \"a\" is satisfied. In close_at_event = trade_when(event, close, -1); you'll getting the close price that was at event.\n\nNow, at the second usage of trade_when operator: alpha = trade_when(event, signal, abs(close - close_at_event) / close > .1); as a triggerExitExp you have an expression that sometimes might output true (1) sometimes might output false (0). If it outputs true (1) then it satisfices following condition:\n\ntriggerExitExp  = 1\n\ntriggerExitExp > 0, then Alpha = NaN;\n\nmeaning that you are not outputting positions - your alpha weight will be nan.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 5\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SK16172\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nTo understand this you need to know how trade_when operator work\n\n \n\ntrade_when\n\nThis operator can be used to change Alpha values only under a specified condition and to retain Alpha values in other cases. It also allows for closing Alpha positions (assigning NaN values) under a specified condition.\n\n \n\nTrade_When (x=triggerTradeExp, y=AlphaExp, z=triggerExitExp)\n\n \n\nIf triggerExitExp > 0, Alpha = NaN.\n\n \n\nElse if triggerTradeExp > 0, Alpha = AlphaExp;\n\n \n\nelse, Alpha = previousAlpha\n\n \n\nYou can read more about trade_when in the learn section\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 4\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n PL15523\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, I would like to ask if these 2 trade_when conditional types work the same:\nA: trade when(a && b, alpha,-1)\nB: trade when(b,trade when(a,alpha,-1),-1)\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 23\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AC63290\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThe expression close_at_event = trade_when(event, close, -1) sets the entry price (close_at_event) by capturing the close price at the time the event occurs. The trade_when() function stores this value when the event is true, marking the trade entry point.\n\nThe exit condition is managed by alpha = trade_when(event, signal, abs(close - close_at_event) / close > .1). Here, the trade remains active until the price change exceeds 10% (abs(close - close_at_event) / close > 0.1). When this condition is met, the trade exits, and alpha is updated accordingly, signaling the trade's closure.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 21\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n LK29993\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi PL15523! They should work the same. \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n ND68030\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nSignal Logic:\nThis line seems to define a condition for exiting the trade based on profit/stop loss logic:\n\nabs(close - close_at_event) calculates the absolute price difference from the entry price.\n\nDividing by close normalizes this difference into a percentage move.\n\nIf this percentage exceeds 10% (0.1), it triggers the signal (true) to close the trade.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 30\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n ",
+  "headings": [
+    "How to record entry price and exit trade",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F27360764713111-How-to-record-entry-price-and-exit-trade"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "MP97470",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/27118970667031-MP97470"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade?sort_by=votes"
+    },
+    {
+      "text": "AG20578",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/12243980162327-AG20578"
+    },
+    {
+      "text": "SK16172",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/6764556699927-SK16172"
+    },
+    {
+      "text": "PL15523",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13159798571671-PL15523"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "ND68030",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/9496734822295-ND68030"
+    },
+    {
+      "text": "NH84459",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243573453207-NH84459"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "DP11917",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243546243735-DP11917"
+    },
+    {
+      "text": "CT68712",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15219840701719-CT68712"
+    },
+    {
+      "text": "TD17989",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13680660215831-TD17989"
+    },
+    {
+      "text": "TN48752",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13714359745431-TN48752"
+    },
+    {
+      "text": "WX16829",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8702256081943-WX16829"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "NN89351",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1533055233262-NN89351"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "YQ51506",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/27706511330455-YQ51506"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [
+    "Trade_When (x=triggerTradeExp, y=AlphaExp, z=triggerExitExp)",
+    "triggerExitExp > 0",
+    "Alpha = NaN",
+    "triggerTradeExp > 0",
+    "Alpha = AlphaExp",
+    "Alpha = previousAlpha",
+    "trade_when(a,b,-1)",
+    "triggerExitExp",
+    "close_at_event = trade_when(event, close, -1)",
+    "close_at_event",
+    "close",
+    "event",
+    "trade_when()",
+    "alpha = trade_when(event, signal, abs(close - close_at_event) / close > .1)",
+    "abs(close - close_at_event) / close > 0.1",
+    "alpha",
+    "abs(close - close_at_event)",
+    "trade_when",
+    "trade_when(event, close, -1)",
+    "-1",
+    "alpha = trade_when(event, signal, abs(close - close_at_event) / close > 0.1);",
+    "close_at_event = trade_when(event, close, -1);",
+    "trade_when(event, signal, ...)"
+  ],
+  "meta": {
+    "title_length": 59,
+    "html_length": 410162,
+    "text_length": 13001,
+    "anchor_count": 32,
+    "code_block_count": 23
+  }
+}

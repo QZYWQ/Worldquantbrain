@@ -1,0 +1,1894 @@
+BRAIN TIPS – WorldQuant BRAIN-CN
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+
+ 跳到主内容
+
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ f
+ 
+ 
+ BRAIN platform
+
+ Community
+ 
+
+ FAQ
+
+ 
+ 提交请求
+ 
+ 
+ 
+
+ 
+ 
+ PZ96147
+ 
+ 
+ 
+ 
+ 
+
+ 我的活动
+ 我的个人资料
+ 
+ 退出
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 简体中文
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ English (United States)
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ WorldQuant BRAIN-CN
+ 
+ 
+
+ 
+ 
+
+ 
+ 社区
+ 
+ 
+
+ 
+ 
+
+ 
+ BRAIN TIPS
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+
+ BRAIN TIPS
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 新建帖子 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+Containing useful tips from BRAIN experts to help you improve your Alpha performance.
+
+ 
+ 
+ 
+ 
+
+ 
+关注286 人关注
+
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 按最新帖子排序
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 最新帖子
+ 
+ 
+ 
+ 最近的活动
+ 
+ 
+ 
+ 投票数
+ 
+ 
+ 
+ 评论数
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 显示所有 
+ 
+ 
+ 
+ 
+ 
+ 所有 
+ 
+ 已计划 
+ 
+ 未计划 
+ 
+ 已完成 
+ 
+ 已回答 
+ 
+ 没有状态 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Demystifying Simulation Settings: NaN Handling
+ 
+
+ 
+ 
+ 置顶的
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 79
+ 票
+ 
+ 
+ 19
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Demystifying Simulation Settings: Pasteurization
+ 
+
+ 
+ 
+ 置顶的
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 34
+ 票
+ 
+ 
+ 11
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ The Hidden Risk Filter: How Statistical Neutralization Sharpens Your Signals
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+EG18416
+
+ 
+ 
+6个月前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 36
+ 票
+ 
+ 
+ 6
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ My weight is continuously decreasing,I have tried everything can anyone give some suggestions so that it starts increasing?
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+SG25281
+
+ 
+ 
+1年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 30
+ 票
+ 
+ 
+ 46
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ Passing the IS-Ladder Sharpe ?
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+RD14646
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 53
+ 票
+ 
+ 
+ 59
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ How to increase Sharpe without overfitting?
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+HN80189
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 27
+ 票
+ 
+ 
+ 44
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ Reduce correlation by combining some fields from other datasets
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+LN92324
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 23
+ 票
+ 
+ 
+ 35
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ How i find o/s ratio positive and last 2 years pnl positive 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+MS18311
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 11
+ 票
+ 
+ 
+ 20
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ Sub-universe Sharpe of 0.32 is below cutoff of 0.82.
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+SH94314
+
+ 
+ 
+1年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 13
+ 票
+ 
+ 
+ 21
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ Learning fast expression, seeing the output of operators on the data
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+AW24434
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 5
+ 票
+ 
+ 
+ 22
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ How to record entry price and exit trade
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+MP97470
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 9
+ 票
+ 
+ 
+ 21
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ ATOM2024 GLB Theme multiplier
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+SM33733
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 9
+ 票
+ 
+ 
+ 18
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ How to reduce self correlation and production correlation
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+RB25229
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 35
+ 票
+ 
+ 
+ 33
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] How does the combo logic benefit Super Alphas?
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+Aziz Ansari
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 14
+ 票
+ 
+ 
+ 24
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ Day 1 homework
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+JT42832
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 7
+ 票
+ 
+ 
+ 12
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ Incorporating Volatility into Chinese Market Trades
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+SA89201
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 8
+ 票
+ 
+ 
+ 11
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ Comparing Stocks to Peers
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+SA89201
+
+ 
+ 
+1年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 4
+ 票
+ 
+ 
+ 12
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ can sentiment factor be used directly?
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+EZ56334
+
+ 
+ 
+2年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 6
+ 票
+ 
+ 
+ 5
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha?
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 13
+ 票
+ 
+ 
+ 8
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Finding Alphas: Price Volume Data
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 13
+ 票
+ 
+ 
+ 11
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Finding Alphas: Fundamental and Model Data
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+1年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 12
+ 票
+ 
+ 
+ 10
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Finding Alphas: Signal or Overfitting?
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 9
+ 票
+ 
+ 
+ 8
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Generate insights from a research paper using GPT
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 29
+ 票
+ 
+ 
+ 10
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Finding Alphas: News and Social Media
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 11
+ 票
+ 
+ 
+ 8
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Finding Alphas: Alpha and Risk Factors
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 10
+ 票
+ 
+ 
+ 6
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Finding Alphas: Options Data
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+1年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 8
+ 票
+ 
+ 
+ 8
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Sequencing Multiple Operators in an Expression
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 15
+ 票
+ 
+ 
+ 10
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ reducing production correlation without reducing sharpe or fitness much
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+SM60004
+
+ 
+ 
+2年前
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 3
+ 票
+ 
+ 
+ 11
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Exploring Sources for Alpha Ideas
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 17
+ 票
+ 
+ 
+ 11
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ [BRAIN TIPS] Liquidity of a Universe
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+NL41370
+
+ 
+ 
+2年前
+
+ 
+已编辑于
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 10
+ 票
+ 
+ 
+ 9
+ 条评论
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 下一页
+ ›
+ 
+ 
+
+ 
+
+ 
+ 最后
+ »
+ 
+ 
+
+ 
+ 
+
+	
+ 
+
+ 
+没有找到您要找的？
+
+ 新建帖子
+ 
+
+	
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+© 2026 WorldQuant BRAIN®. All Rights Reserved.
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+新帖子
+
+新帖子和评论

@@ -1,0 +1,113 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly",
+  "title": "can sentiment factor be used directly? – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:40+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-23100726090007-can-sentiment-factor-be-used-directly-4c758442da.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-23100726090007-can-sentiment-factor-be-used-directly-4c758442da.txt",
+  "content_excerpt": "can sentiment factor be used directly? – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n can sentiment factor be used directly?\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 8 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n EZ56334\n \n \n \n \n\n \n \n \n2 years ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nscl12_alltype_buzzvec. why I copy this variable name, it showed 'unknown varibale'\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 6\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n5 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SH71033\n \n \n \n \n\n \n \n \n2 years ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi,\n\nPlease retry the operation. You should have access to the data. \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n QG16026\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI find sentiment data is often difficult to deploy into alpha. Is it true that this data is only used in trade when or if else conditions to enhance the signal, but the data itself cannot create the original signal, right? I hope to get an answer.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 29\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n PL15523\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, I hope Brain can give notice before decommising a dataset, and have a way to handle it for those who have done alpha on that dataset. Thanks\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 17\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n deleted user\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI think most sentiment data is in vector form, so nesting vec functions to reduce dimensionality to matrix, then using operators like day from last change to capture the transaction time\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 18\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n LK29993\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi QG16026! Sentiment data can also be used to the Alpha signal itself, whether as an indicator of company performance, as an event-driven Alpha, or many more. \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \nPost is closed for comments.\n\n \n\n \n \n \n\n \nDidn't find what you were looking for?\n\n \n \n New post\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n\n \n \n\n \n© 2026 WorldQuant BRAIN®. All Rights Reserved.",
+  "headings": [
+    "can sentiment factor be used directly?",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F23100726090007-can-sentiment-factor-be-used-directly"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "EZ56334",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23003281006359-EZ56334"
+    },
+    {
+      "text": "scl12_alltype_buzzvec",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/socialmedia12/data-fields/scl12_alltype_buzzvec"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly?sort_by=votes"
+    },
+    {
+      "text": "SH71033",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/10135105894423-SH71033"
+    },
+    {
+      "text": "QG16026",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22532757009175-QG16026"
+    },
+    {
+      "text": "PL15523",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13159798571671-PL15523"
+    },
+    {
+      "text": "deleted user",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243496991767-deleted-user"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 57,
+    "html_length": 256028,
+    "text_length": 2857,
+    "anchor_count": 21,
+    "code_block_count": 0
+  }
+}

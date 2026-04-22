@@ -1,0 +1,206 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting",
+  "title": "How to increase Sharpe without overfitting? – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:26:50+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-27841757470359-How-to-increase-Sharpe-without-overfitting-5471e24d8d.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-27841757470359-How-to-increase-Sharpe-without-overfitting-5471e24d8d.txt",
+  "content_excerpt": "How to increase Sharpe without overfitting? – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n How to increase Sharpe without overfitting?\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 53 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n HN80189\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nI tried to increase my Sharpe, but only can increase it if I sum 2 alphas. I know it's not good but don't know other way. Anyone have tip for me?\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 27\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n44 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LN78195\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nInstead of just summing alphas, you could try these approaches:\n\nFocus on the Idea: Make sure each alpha has a solid, logical foundation and isn’t just tuned to fit past data.\n\nUse Robust Operators: Apply operators like rank or ts_rank to normalize and stabilize signals, which often improves Sharpe without overfitting.\n\nModerate to High Turnover Datasets: Test your alphas on datasets with moderate to high turnover to ensure they are effective in dynamic environments. \n\nPersonally, I’ve seen success by focusing on good ideas signals and refining them on high-turnover datasets. Curious to know if others have explored similar techniques!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 31\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TT10055\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHave you tried multiple it with other, or use if/else condition?\n\nI thought only linear combination is not good, we can try non-linear. With me, I always tried if/else with multiple conditions, such as price/volumne, or with high/low cap/liquidity\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 17\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TN33707\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n@TT10055 Can you share how to use combine by non-linear alpha example? I try something such as -ts_delta(close,5)*rank(cap) but it look like overfitting than logic combination.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 15\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n KK61864\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nTo achieve a better Sharpe ratio, use the Time Series Operators with shorter lookback periods, such as quarterly, monthly, or weekly (e.g., 60, 20, or 5 days), as they tend to yield better Sharpe ratios compared to longer lookback periods like yearly (250 days).\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 18\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LN92324\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nIn my experience, when you have an alpha with a Sharpe index that is close to the threshold for submission, instead of using the addition operator, you can use additional methods such as adjusting the decay setting, trying different neutralizations, or using the rank operator to re-normalize the data.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 12\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n AG20578\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi HN80189!\n\nI'd suggest that sometimes it might be a good idea to sum two alphas, especially if they are from the same dataset. However, when doing this, first group_neutralize and then scale each of your alphas. This way, you ensure equal contribution from each.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 9\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AM60509\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nChange the lookback period settings to simpler values like 20,60,252. You can also alter the decay settings. Use different time series operators like rank operator instead of quantile operator\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 19\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LH38752\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThis is incredibly insightful! Thanks for taking the time to share with us. 👏\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 44\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n PH82915\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nCombine them using a weighted average based on their individual Sharpe ratios and correlation.\n\nApply volatility scaling to smooth out the combined signa",
+  "headings": [
+    "How to increase Sharpe without overfitting?",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F27841757470359-How-to-increase-Sharpe-without-overfitting"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "HN80189",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8780130996119-HN80189"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting?sort_by=votes"
+    },
+    {
+      "text": "LN78195",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4647202315159-LN78195"
+    },
+    {
+      "text": "TT10055",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13560220117015-TT10055"
+    },
+    {
+      "text": "TN33707",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/5427498076567-TN33707"
+    },
+    {
+      "text": "KK61864",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/5448950662039-KK61864"
+    },
+    {
+      "text": "LN92324",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4601131163927-LN92324"
+    },
+    {
+      "text": "AG20578",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/12243980162327-AG20578"
+    },
+    {
+      "text": "AM60509",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/25127049757975-AM60509"
+    },
+    {
+      "text": "LH38752",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4842912366615-LH38752"
+    },
+    {
+      "text": "PH82915",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1532005543462-PH82915"
+    },
+    {
+      "text": "VK91272",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11425569673111-VK91272"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "TL60820",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13171997597975-TL60820"
+    },
+    {
+      "text": "PN39025",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1532011933942-PN39025"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "DK30003",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4733983647511-DK30003"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "RB20756",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1532012574042-RB20756"
+    },
+    {
+      "text": "KP26017",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/14992337006103-KP26017"
+    },
+    {
+      "text": "DS74354",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/7510379603863-DS74354"
+    },
+    {
+      "text": "BS20926",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13099795770903-BS20926"
+    },
+    {
+      "text": "WX16829",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8702256081943-WX16829"
+    },
+    {
+      "text": "SY65468",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23932095260567-SY65468"
+    },
+    {
+      "text": "NG78013",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/16142990999575-NG78013"
+    },
+    {
+      "text": "GN51437",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/27847996673431-GN51437"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "https://support.worldquantbrain.com/hc/en-us/articles/20251383456663-How-to-improve-Sharpe",
+      "href": "https://support.worldquantbrain.com/hc/en-us/articles/20251383456663-How-to-improve-Sharpe"
+    },
+    {
+      "text": "NN89351",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1533055233262-NN89351"
+    },
+    {
+      "text": "Next ›",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting?page=2#comments"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [
+    "rank",
+    "ts_rank",
+    "log(alpha + 1)",
+    "exp(alpha)"
+  ],
+  "meta": {
+    "title_length": 62,
+    "html_length": 501783,
+    "text_length": 17315,
+    "anchor_count": 43,
+    "code_block_count": 4
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data",
+  "title": "[BRAIN TIPS] Finding Alphas: Fundamental and Model Data – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:52+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-20051403346583-BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data-5b0a7e2b6d.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-20051403346583-BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data-5b0a7e2b6d.txt",
+  "content_excerpt": "[BRAIN TIPS] Finding Alphas: Fundamental and Model Data – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n [BRAIN TIPS] Finding Alphas: Fundamental and Model Data\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 19 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n NL41370\n \n \n \n \n\n \n \n \n1 year ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\n \n\nIn the book “Finding Alphas”, Chapter 19 “Financial Statement Analysis” [1] and Chapter 20 “Fundamental Analysis and Alpha Research” [2] introduce the data available in financial statements and discusses the ways to perform financial statement analysis.\n\n \n\nFinancial statement data\n\nFinancial statements consist of the four main statements (balance sheet, income statement, cash flow statement, statement of shareholders’ equity) and the notes to these financial statements, which represent a summary of a company’s financial health. The former is found in the in the Company Fundamental Data for Equity dataset, while the latter is in the Report Footnotes dataset.\n\nBalance Sheet: The balance sheet offers a financial snapshot of an entity at a particular point in time. It is represented by the balance sheet equation: Asset = Liabilities + Equity. Both assets and equity are data fields available on BRAIN, while liabilities can usually be represented by debt. On the top of that, you can also derive liabilities by taking assets - equity.\n\nIncome Statement: The income statement reflects changes in the balance sheet from one period to the next. It can be represented by Revenue–Expenses = Net Income. Both revenue and net income are data fields available on BRAIN, while you can derive the expenses by taking revenue - net income.\n\nCash Flow Statement: The cash flow statement describes the sources of the change in a company’s cash balance from one period to the next. For example, cashflow = cash – ts_delay(cash, 252), which means that cash flow movement for the year is equal to the cash balance at the end of the current year less the cash balance at the end of the earlier year.\n\nStatement of Shareholders’ Equity: The statement of shareholders’ equity shows the change in the equity section of the balance sheet during the given period. Shareholders’ equity (equity) includes common equity (fnd6_ceq) and retained earnings (retained_earnings).\n\nFinancial statement analysis\n\nThere are financial measures available in the Company Fundamental Data for Equity dataset and the Model Data dataset that can be considered when constructing fundamental Alphas.\n\nProfitability: gross margin (mdf_grm)\n\nLiquidity: current ratio (mdf_ccr)\n\nSolvency: debt / equity ratio (mdf_deq)\n\nCash flow: cash flow from operations (mdf_coa)\n\nGrowth: net income / total assets (income / assets)\n\nValuation: price/book ratio (mdf_pbk),\n\nRather than just accepting the data in the financial statements, you also need the ability to understand and interpret them in depth. For example, profit consists of two parts: the actual cash flow generated from operations (mdf_coa) and the accrual amount calculated by the management/accountants (mdf_rev-mdf_coa). Since the accrual amount is subject to some variance, the actual cash flow of the company can be a better indicator of the company’s performance. In fact, a study by Sloan et al. (2011) found that cash-based profits are a stronger predictor of future corporate performance than accrual-based profits including accruals. When judging a company’s quality and profitability, it is important to analyze accounting events.\n\nIn addition, analyzing fundamental data can offer ideas for alternative stock classifications when doing Alpha research. Depending on financial performance, companies can be classified as value stocks or growth stocks, and companies can also be classified according to their leverage ratio. These various classification criteria allow you to further refine your position by classifying companies, neutralizing them according to each classification, and so on.\n\n \n\n[1] Finding Alphas: Chapter 19. Financial Statement Analysis\n\n[2] Finding Alphas: Chapter 20. Fundamental Analysis and Alpha Research\n\n \n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 12\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n10 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n deleted user\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, I noticed that the os of alphas using fundamental data mostly have very good performance, so why is it limited to 30%. Besides the correlation is also very low\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 23\n \n \n\n \n \n\n \n\n \n \n",
+  "headings": [
+    "[BRAIN TIPS] Finding Alphas: Fundamental and Model Data",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "NL41370",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11433604068887-NL41370"
+    },
+    {
+      "text": "",
+      "href": "https://www.youtube.com/embed/40JActnyhkM?start=288&end=469"
+    },
+    {
+      "text": "Company Fundamental Data for Equity",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/fundamental6"
+    },
+    {
+      "text": "Report Footnotes",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/fundamental2"
+    },
+    {
+      "text": "[1] Finding Alphas: Chapter 19. Financial Statement Analysis",
+      "href": "https://onlinelibrary.wiley.com/doi/10.1002/9781119571278.ch19"
+    },
+    {
+      "text": "[2] Finding Alphas: Chapter 20. Fundamental Analysis and Alpha Research",
+      "href": "https://onlinelibrary.wiley.com/doi/10.1002/9781119571278.ch20"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data?sort_by=votes"
+    },
+    {
+      "text": "deleted user",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243496991767-deleted-user"
+    },
+    {
+      "text": "ND68030",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/9496734822295-ND68030"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "AM60509",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/25127049757975-AM60509"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "LY88401",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22179107455639-LY88401"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 74,
+    "html_length": 309989,
+    "text_length": 9912,
+    "anchor_count": 29,
+    "code_block_count": 0
+  }
+}

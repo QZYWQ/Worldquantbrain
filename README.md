@@ -87,6 +87,7 @@ For harness verification:
 │   ├── expression-families/
 │   ├── simulation-captures/
 │   ├── candidate-batches/
+│   ├── forum-crawl/
 │   ├── learning-loops/
 │   ├── notes/
 │   ├── submission-memos/
@@ -103,6 +104,7 @@ Durable execution artifacts belong under `./runs/`, for example:
 - `./runs/expression-families/`
 - `./runs/simulation-captures/`
 - `./runs/candidate-batches/`
+- `./runs/forum-crawl/`
 - `./runs/learning-loops/`
 - `./runs/notes/daily/`
 - `./runs/notes/weekly/`

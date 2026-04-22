@@ -1,0 +1,105 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783",
+  "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783",
+  "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783",
+  "title": "新手课代码分享 – WorldQuant BRAIN-CN",
+  "kind": "post",
+  "depth": 2,
+  "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:29:35+0800",
+  "html_path": "raw/pages/hc-zh-cn-community-posts-39467969845783-062f6b5dc2.html",
+  "text_path": "raw/pages/hc-zh-cn-community-posts-39467969845783-062f6b5dc2.txt",
+  "content_excerpt": "新手课代码分享 – WorldQuant BRAIN-CN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n 跳到主内容\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n 提交请求\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n 我的活动\n 我的个人资料\n \n 退出\n \n\n \n\n \n \n \n \n\n \n 简体中文\n \n \n \n \n \n \n \n English (United States)\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN-CN\n \n \n\n \n \n\n \n 社区\n \n \n\n \n \n\n \n 中文论坛\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n 新手课代码分享\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \n关注24 人关注\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n JL11546\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n19天前\n\n \n \n \n\n \n\n \n \n\n \n\n \n\n以下代码我以代码块作为区分，各位可以将代码块拷贝到Jupter Notebook中运行，请确保.env文件和代码在同一目录下。\n\nimport json\n\nfrom os.path import expanduser\n\nfrom os import environ\n\nimport pandas as pd\n\nimport requests\n\nfrom requests.auth import HTTPBasicAuth\n\nimport time\n\n# Load credentials\n\ntry:\n\n    with open(expanduser('brain_credentials.txt')) as f:\n\n        credentials = json.load(f)\n\nexcept FileNotFoundError:\n\n    credentials = (environ.get('BRAIN_USERNAME'), environ.get('BRAIN_PASSWORD'))\n\n# Extract username and password from the list\n\nusername, password = credentials\n\n# Create a session object\n\nsess = requests.Session()\n\n# Set up basic authentication\n\nsess.auth = HTTPBasicAuth(username, password)\n\n# Send a POST request to the API for authentication\n\nresponse = sess.post('https://api.worldquantbrain.com/authentication')\n\n# Print response status and content for debugging\n\nprint(response.status_code)\n\nprint(response.json())\n\n \n\n## 获取数据集ID为 fundamental6 下的所有数据字段\n\ndef get_datafields(\n\n        s,\n\n        instrument_type: str = 'EQUITY',\n\n        region: str = 'USA',\n\n        delay: int = 1,\n\n        universe: str = 'TOP3000',\n\n        dataset_id: str = '',\n\n        data_type: str = 'MATRIX',\n\n        search: str = ''\n\n):\n\n    offset = 0\n\n    datafields_list = []\n\n    while True:\n\n        url_template = \"https://api.worldquantbrain.com/data-fields?\" + \\\n\n                       f\"&instrumentType={instrument_type}\" + \\\n\n                       f\"®ion={region}&delay={str(delay)}&universe={universe}&dataset.id={dataset_id}&limit=50\" + \\\n\n                       f\"&offset={offset}\" + \\\n\n                       f\"&type={data_type}\"\n\n        url_template += (f\"&search={search}\" if search else \"\")\n\n        resp = sess.get(url_template)\n\n        results = resp.json()\n\n        # print(results)\n\n        if 'results' not in results:\n\n            print(f\"Unexpected response: {results}\")\n\n            break\n\n        else:\n\n            print(f\"Fetched {len(results['results'])} data fields with offset {offset}.\")\n\n            datafields_list.append(results['results'])\n\n            if len(results['results']) < 50:\n\n                print(\"Fetched the last batch of data fields.\")\n\n                break\n\n            offset += 50\n\n            time.sleep(5)\n\n       \n\n    datafields_list_flat = [item for sublist in datafields_list for item in sublist]\n\n    datafields_df = pd.DataFrame(datafields_list_flat)\n\n    return datafields_df\n\nfundamental6 = get_datafields(s=sess, dataset_id='pv13', data_type='GROUP')\n\n \n\ndatafields_list = fundamental6['id'].values\n\nlen(datafields_list)\n\n \n\nalpha_list = []\n\ngroup_ops_list = ['group_mean', 'group_neutralize']\n\nts_ops_list = ['ts_mean', 'ts_rank']\n\ndays = [63, 126]\n\ngroup = ['market', 'sector', 'industry']\n\nfor datafield in datafields_list:\n\n    for group_ops in group_ops_list:\n\n        for ts_ops in ts_ops_list:\n\n            for day in days:\n\n                for group in group:                  \n\n                    print(\"正在将如下 Alpha 表达式与 setting 封装\")\n\n                    print(f'{group_ops}({ts_ops}({datafield}, {days}), {group})')\n\n           \n\n                    simulation_data = {\n\n                        'type' : 'REGULAR',\n\n                        'settings' : {\n\n                            'instrumentType' : 'EQUITY',\n\n                            'region' : 'USA',\n\n                            'universe' : 'TOP3000',\n\n                            'delay' : 1,\n\n                            'decay' : 0,\n\n                            'neutralization' : 'MARKET',\n\n                            'truncation' : 0.08,\n\n                            'pasteurization': 'ON',\n\n                            'unitHandling' : 'VERIFY',\n\n                            'nanHandling': 'ON',\n\n                            'language' :'FASTEXPR',\n\n                            'visualization':False,\n\n                        },\n\n                      \"regular\": f'{group_ops}({ts_ops}({datafield}, {days}), {group})'\n\n                    }\n\n                    alpha_list.append(simulation_data)\n\n \n\nfor alpha in alpha_list:\n\n  sim_resp = sess.post(\n\n    \"https://api.worldquantbrain.com/simulations\",\n\n    json = alpha\n\n  )\n\n  try:\n\n    sim_progress_url = sim_resp.headers['Location']\n\n    while True:\n\n      sim_progress_resp = sess.get(sim_progress_url)\n\n      retry_after_sec = float(sim_progress_resp.headers.get(\"Retry-After\", 0))\n\n      if retry_after_sec == 0:  # simulation done!\n\n          break\n\n ",
+  "headings": [
+    "新手课代码分享",
+    "评论",
+    "没有找到您要找的？"
+  ],
+  "anchors": [
+    {
+      "text": "跳到主内容",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "FAQ",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "提交请求",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/requests/new"
+    },
+    {
+      "text": "我的活动",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/requests"
+    },
+    {
+      "text": "我的个人资料",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/39817559344663"
+    },
+    {
+      "text": "退出",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fzh-cn"
+    },
+    {
+      "text": "English (United States)",
+      "href": "https://support.worldquantbrain.com/hc/change_language/en-us?return_to=%2Fhc%2Fen-us%2Fcommunity%2Fposts%2F39467969845783"
+    },
+    {
+      "text": "中文论坛",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B"
+    },
+    {
+      "text": "JL11546",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/25889744529175-JL11546"
+    },
+    {
+      "text": "日期",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783-%E6%96%B0%E6%89%8B%E8%AF%BE%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB?sort_by=created_at"
+    },
+    {
+      "text": "投票数",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783-%E6%96%B0%E6%89%8B%E8%AF%BE%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB?sort_by=votes"
+    },
+    {
+      "text": "HZ14936",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/39230914633367-HZ14936"
+    },
+    {
+      "text": "ZL15100",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/33171940219927-ZL15100"
+    },
+    {
+      "text": "goliter(LG97237)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/34319546325399-goliter-LG97237"
+    },
+    {
+      "text": "Dennis zeng(DZ34853)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/36490108026775-Dennis-zeng-DZ34853"
+    },
+    {
+      "text": "新建帖子",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 29,
+    "html_length": 258617,
+    "text_length": 7104,
+    "anchor_count": 19,
+    "code_block_count": 0
+  }
+}

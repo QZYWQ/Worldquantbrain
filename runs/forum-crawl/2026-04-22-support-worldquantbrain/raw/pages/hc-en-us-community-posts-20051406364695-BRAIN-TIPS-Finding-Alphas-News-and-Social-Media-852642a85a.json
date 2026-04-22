@@ -1,0 +1,145 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media",
+  "title": "[BRAIN TIPS] Finding Alphas: News and Social Media – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:28:02+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-20051406364695-BRAIN-TIPS-Finding-Alphas-News-and-Social-Media-852642a85a.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-20051406364695-BRAIN-TIPS-Finding-Alphas-News-and-Social-Media-852642a85a.txt",
+  "content_excerpt": "[BRAIN TIPS] Finding Alphas: News and Social Media – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n [BRAIN TIPS] Finding Alphas: News and Social Media\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 15 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n NL41370\n \n \n \n \n\n \n \n \n2 years ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nThe book “Finding Alphas\" by Igor Tulchinsky et al explores Alpha ideas related to news data. In Chapter 22, the article \"The Impact of News and Social Media on Stock Returns\" discusses five Alpha ideas: sentiment, novelty or uniqueness, relevance, no news is good news, and news momentum. [1]\n\n   To apply these Alpha ideas on the BRAIN platform, the recommended dataset is the Ravenpack News Dataset. It has fields such as \"nws18_bee\" for sentiment, \"rp_nip_assets\" for novelty or uniqueness, and \"nws18_relevance\" and \"nws18_qcm\" for relevance.\n\n \n\nHere is a concise summary of the book and suggestions on how to apply them on the BRAIN platform:\n\n \n\nSentiment: Use the sentiment score provided in the Ravenpack News Dataset (i.e. nws18_bee) to inform decisions based on positive, negative, or neutral sentiment.\n\nNovelty or Uniqueness: Use the news impact projection of assets (i.e. rp_nip_assets) to identify news containing new and unique information that has the potential to influence stock prices significantly.\n\nRelevance: Consider the relevance of news to specific companies using data fields such as nws18_relevance and nws18_qcm to enhance Alpha signals and capture emotional signals related to highly relevant news.\n\nNo News is Good News: Explore Alpha ideas that stocks sensitive to news may experience reduced institutional investment flows when uncertainty increases.\n\nNews Momentum: Analyze news data to identify potential trends in the stock market when news is not efficiently reflected in stock prices.\n\n \n\n   For more detailed information and specific examples, please refer to the book \"Finding Alphas\" chapter 22 and explore the relevant datasets and fields available in the BRAIN platform!\n\n \n\n[1] Chapter 22. The Impact of News and Social Media on Stock Returns\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 11\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n8 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SK90981\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThank you for this wonderful series. It helps me to explore news and social media dataset and make alphas on these data fields. These data fields add uniqueness to my alpha. News and social media dataset help me to reduce self-correlation of my alpha.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 7\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TT55495\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHopefully there will be more webinars on creating alpha on these datasets. I feel like news and social are the two hardest categories to create alpha from in the Data Brain category.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 26\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n PL15523\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI noticed that news datasets often have very high turnover, probably due to hourly or minutely update frequency. Are there any methods to capture the signal effectively?\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 25\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n HV77283\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThank you for this fantastic series! It has been incredibly helpful in exploring news and social media datasets for creating unique alphas. These datasets play a crucial role in reducing self-correlation, adding a valuable dimension to my alpha strategies. Looking forward to applying these insights!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 9\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AC63290\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n\"Finding Alphas\" explores leveraging news data for Alpha generation. Chapter 22 highlights sentiment, novelty, relevance, \"no news is good news,\" and news momentum. On the BRAIN platform, use the Ravenpack dataset fields like \"nws18_bee\" for sentiment and \"rp_nip_assets\" for novelty to develop actionable strategies based on news-driven insights.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 18\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n LK29993\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi PL15523!\n\nNews datasets could have high turno",
+  "headings": [
+    "[BRAIN TIPS] Finding Alphas: News and Social Media",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "NL41370",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11433604068887-NL41370"
+    },
+    {
+      "text": "Finding Alphas",
+      "href": "https://www.amazon.com/Finding-Alphas-Quantitative-Approach-Strategies-dp-1119571219/dp/1119571219/ref=dp_ob_image_bk"
+    },
+    {
+      "text": "[1]",
+      "href": "https://onlinelibrary.wiley.com/doi/10.1002/9781119571278.ch22"
+    },
+    {
+      "text": "nws18_bee",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/news18/data-fields/nws18_bee?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000"
+    },
+    {
+      "text": "rp_nip_assets",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/news18/data-fields/rp_nip_assets?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000"
+    },
+    {
+      "text": "nws18_relevance",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/news18/data-fields/nws18_relevance?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000"
+    },
+    {
+      "text": "nws18_qcm",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/news18/data-fields/nws18_qcm?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media?sort_by=votes"
+    },
+    {
+      "text": "SK90981",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15224150642455-SK90981"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "PL15523",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13159798571671-PL15523"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "DP11917",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243546243735-DP11917"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 69,
+    "html_length": 288509,
+    "text_length": 6775,
+    "anchor_count": 29,
+    "code_block_count": 0
+  }
+}

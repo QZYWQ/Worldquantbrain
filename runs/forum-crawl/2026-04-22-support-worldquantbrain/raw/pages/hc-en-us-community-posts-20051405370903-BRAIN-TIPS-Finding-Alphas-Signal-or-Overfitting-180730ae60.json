@@ -1,0 +1,125 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting",
+  "title": "[BRAIN TIPS] Finding Alphas: Signal or Overfitting? – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:55+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-20051405370903-BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting-180730ae60.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-20051405370903-BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting-180730ae60.txt",
+  "content_excerpt": "[BRAIN TIPS] Finding Alphas: Signal or Overfitting? – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n [BRAIN TIPS] Finding Alphas: Signal or Overfitting?\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 13 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n NL41370\n \n \n \n \n\n \n \n \n2 years ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nOverfitting occurs when a model performs well on the training data but fails to generalize on unseen data(=test data). In the context of an Alpha model, overfitting refers to a situation where the model is highly predictive during the In Sample (IS) period but performs badly during the Semi-OS period. This deterioration in performance can be assessed using the Out Sample (OS) Score, which is calculated based on the Sharpe ratio, Returns/Drawdown ratio, and Turnover of the merged performance using the same formula as the In Sample Score. \n\n \"Finding Alphas\" Chapter 9 summarizes six ways to avoid overfitting in Alpha models, and these ideas can be used in the BRAIN [1]:\n\n \n\nTest Out of Sample: Utilize the capabilities of the BRAIN platform to test the Alpha on Out of Sample data.\n\nIncrease the In Sample Sharpe ratio requirement: Set a higher threshold for the Sharpe ratio during the In Sample period to seek stronger performance.\n\nTest the model over a longer history: Extend the backtesting period from 5 years to 10 years, if possible, to assess performance over a longer time horizon. This longer time horizon is a feature available to users who are converted successfully to Consultants (simulation period extended to 10 years from 5 years).\n\nMake the model elegant: Ensure that the Alpha model follows the principles of simplicity, has economic rationale, and appropriate unit-handling.\n\nMinimize parameters and operations: Simplify the model by reducing the number of parameters and operations to improve generalization and avoid overfitting.\n\nUsing the test period feature in settings to prevent overfitting:\n\nUsing simulation settings, you can divide your In-Sample (IS) period into a Train and Test period. The Train period can be utilized to develop your Alphas and SuperAlphas, while the Test period is ideal for validating them. An Alpha developed based on the simulation results of Training Period and performs well in both periods is likely a strong candidate for submission and may have avoided overfitting.\n\n   By implementing these techniques, you can increase the likelihood of submitting an Alpha model that is less prone to overfitting and shows good performance both during In-Sample and Semi-OS periods.\n\n \n\n[1] Finding Alphas: Chapter 9. Backtest - Signal or Overfitting?\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 9\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n8 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SK90981\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThank you for such wonderful insights on the signal or overfitting. This helps me to avoid overfitting in alpha models.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 8\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n QG16026\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nIn my opinion, it also depends on how you set the threshold for overfitting, for example simulate no more than how many tabs for 1 alpha, do not use too much data and operators\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 34\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n HV77283\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nGreat insights on avoiding overfitting in Alpha models! The strategies like testing out-of-sample data, extending the backtesting period, and simplifying the model make a lot of sense for improving generalization. The use of Train and Test periods in simulations is especially useful for validating model performance.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 8\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AC63290\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nOverfitting in Alpha models arises when strong In-Sample performance fails to generalize to Out-of-Sample data. Techniques to mitigate this include longer backtesting, higher Sharpe ratio thresholds, elegant model design, minimal parameters, and using test periods. Leveraging these strategies ensures robust models with improved performance across various data samples.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 21\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AM60509\n \n \n \n \n \n \n \n \n ",
+  "headings": [
+    "[BRAIN TIPS] Finding Alphas: Signal or Overfitting?",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "NL41370",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11433604068887-NL41370"
+    },
+    {
+      "text": "[1] Finding Alphas: Chapter 9. Backtest - Signal or Overfitting?",
+      "href": "https://onlinelibrary.wiley.com/doi/10.1002/9781119571278.ch9"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting?sort_by=votes"
+    },
+    {
+      "text": "SK90981",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15224150642455-SK90981"
+    },
+    {
+      "text": "QG16026",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22532757009175-QG16026"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "AM60509",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/25127049757975-AM60509"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 70,
+    "html_length": 288793,
+    "text_length": 7109,
+    "anchor_count": 24,
+    "code_block_count": 0
+  }
+}

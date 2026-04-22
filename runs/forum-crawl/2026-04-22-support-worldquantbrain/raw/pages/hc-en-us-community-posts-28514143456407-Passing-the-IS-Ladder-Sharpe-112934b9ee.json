@@ -1,0 +1,203 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe",
+  "title": "Passing the IS-Ladder Sharpe ? – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:26:46+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-28514143456407-Passing-the-IS-Ladder-Sharpe-112934b9ee.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-28514143456407-Passing-the-IS-Ladder-Sharpe-112934b9ee.txt",
+  "content_excerpt": "Passing the IS-Ladder Sharpe ? – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n Passing the IS-Ladder Sharpe ?\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 63 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n RD14646\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nThe IS-Ladder Sharpe test tends to be one of the most formidable criteria in creating a submittable alpha. Over the past couple of months, I have found a few solutions to aid in passing the test but would like the community to share their approach to tackling this.\n\nMy solutions are as follows:\n\nSelf-Boosting: I tend to create alphas with the rank operator generally, so this particular technique might aid in similar settings. The expression looks something like (alpha) * (1 + alpha). \nIt is different from a simple squared alpha because it helps maintain an amicable weight distribution but also strengthens the extreme long and short signals. \n\nDivision over Multiplication: The above method might yet fail to pass the IS-Ladder Sharpe test by some margin. Attempting to further strengthen the extreme long and short signals might just do the trick. We may try something like (alpha) * (0.5 + alpha), but I have found (alpha) / ( N - alpha) easier to work with. N can be kept large to reduce the effect. However, N always has to be > 1 to prevent undefined behavior. I tend to use values of 1.5 and 2 mostly, but in extreme cases, 1.1 helps too. \n\nTry all groupings: Get the best from the lot and try back with methods 1 and 2.\n\nEager to hear your suggestions and opinions.\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 53\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n59 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LH38752\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThank you for providing these tips—I'll definitely be putting them into action! 💡\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 43\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TP14664\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, I sometimes get the error: IS Ladder sharpe is 1.58 below 1.58, and no matter how I optimize it, it just doesn't pass the backtest. How can I improve this?\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 49\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SK72105\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nTP14664 which region is this for? Try using various group neutralizations in pv13,pv29,p30 datasets with your unsubmittable alpha, sometimes they help fit the alpha. However a better way could be to improve your implementation by looking at how the alpha performance could be optimised in terms of sharpe and drawdown.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 17\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TN74933\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, I’m facing the same issue with TP14664. The IS Ladder Sharpe is 1.58, but it’s still showing as below 1.58. The regions affected are usually ASI and GLB. Can someone help me understand or resolve this? Thanks!!!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 12\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n VK91272\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nthank you for sharing such a valuable tip.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 14\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AC63290\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nYour approaches for tackling the IS-Ladder Sharpe test are innovative and practical. Self-boosting through (alpha) * (1 + alpha) effectively enhances extreme signals without disrupting weight distribution, and the division method (alpha) / (N - alpha) offers fine-tuned control for amplifying strong signals while maintaining stability. Experimenting with different values of N, as you've suggested, is a smart way to optimize performance.\n\nTo complement these methods, consider experimenting with dynamic decays tailored to different market conditions, applying neutralization to reduce noise, or leveraging uncorrelated factors like alternative data sources. Regularly validate with diverse groupings to ensure robustness across varying scenarios.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 38\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TT55495\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThank you for sharing your helpful s",
+  "headings": [
+    "Passing the IS-Ladder Sharpe ?",
+    "Comments",
+    "1. Log Transformations for Non-Linearity",
+    "2. Quantile Normalization",
+    "3. Shrinkage Toward Mean",
+    "4. Volatility Adjustment",
+    "5. Non-Linear Combinations",
+    "6. Cross-Validation Across Market Regimes",
+    "7. Regularization Techniques",
+    "8. Factor Neutralization",
+    "9. Use Ensembles",
+    "Final Thoughts",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F28514143456407-Passing-the-IS-Ladder-Sharpe"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "RD14646",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13287756048279-RD14646"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe?sort_by=votes"
+    },
+    {
+      "text": "LH38752",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4842912366615-LH38752"
+    },
+    {
+      "text": "TP14664",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/7143306994583-TP14664"
+    },
+    {
+      "text": "SK72105",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8203727051799-SK72105"
+    },
+    {
+      "text": "TN74933",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/21997837037719-TN74933"
+    },
+    {
+      "text": "VK91272",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11425569673111-VK91272"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "QG16026",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22532757009175-QG16026"
+    },
+    {
+      "text": "deleted user",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243496991767-deleted-user"
+    },
+    {
+      "text": "AM60509",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/25127049757975-AM60509"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "AN57408",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13283630665111-AN57408"
+    },
+    {
+      "text": "DN41247",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22260870579223-DN41247"
+    },
+    {
+      "text": "CT68712",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15219840701719-CT68712"
+    },
+    {
+      "text": "WG92332",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/28757132365207-WG92332"
+    },
+    {
+      "text": "HN32788",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/29126399891991-HN32788"
+    },
+    {
+      "text": "DK30003",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4733983647511-DK30003"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "KP26017",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/14992337006103-KP26017"
+    },
+    {
+      "text": "PN39025",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1532011933942-PN39025"
+    },
+    {
+      "text": "SG25281",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/9122537227927-SG25281"
+    },
+    {
+      "text": "RG93974",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/6573506742551-RG93974"
+    },
+    {
+      "text": "WX16829",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8702256081943-WX16829"
+    },
+    {
+      "text": "Next ›",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe?page=2#comments"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [
+    "(alpha) * (1 + alpha)",
+    "(alpha) / (N - alpha)",
+    "exp(alpha)"
+  ],
+  "meta": {
+    "title_length": 49,
+    "html_length": 505608,
+    "text_length": 22326,
+    "anchor_count": 40,
+    "code_block_count": 3
+  }
+}

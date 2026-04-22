@@ -1,0 +1,246 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647",
+  "title": "2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:26:07+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-39411791834647-8d78a1331f.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-39411791834647-8d78a1331f.txt",
+  "content_excerpt": "2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n 中文论坛\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n 2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业\n \n \n\n \n Pinned\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 3 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n WL13229\n \n \n \n \n\n \n \n \n21 days ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\n欢迎大家留言、讨论、交作业、畅所欲言，严禁抄袭\n\nDay2参考文章1《101个Alpha》：https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2701346\n\n该文章为本节课《使用快速表达式写出策略》的主题提供了很好的样本和思路，展示了如何将文字语言转化成数学语言的多种范例。供参考！\n\nDay2参考文章2之论文资源：Research-paper-1-The-Momentum-of-News\n\nDay2参考文章3之文档资源: Understanding Data in BRAIN: Key Concepts and Tips\n\nDay2参考文章4之了解数据：Understanding Data in BRAIN: Key Concepts and Tips | WorldQuant BRAIN\n\nDay2课后作业(所有必做）:\n\n必做1： 概念辨析，什么是long-count,什么是short-count?平台中的这两个值如何计算得出？\n\n必做2： 参考6tips文章，研究出datafield  anl4_cff_flag 的更新频率，并解释理由。同时请举出一个现实生活中的例子，什么样的数据可能跟它的更新频率类似（举例：我认为体检信息跟它的更新频率类似，因为.........）\n\n提示：先根据字段描述定性了解该数据字段，并最好附上回测结果截图进行说明。\n\n必做3： 解释 ts_std_dev(x, d) operator 能测出数据更新频率的逻辑.\n\n必做4：建议（非强制）使用get datafields批量生成Alpha，并对所有alpha进行回测。但要求在下节课前必须实现20次以上回测（截图Alpha id）。\n\n必做5：使用 AI，同时输入“BRAIN的运算符”和“数据字段的搜索结果”（你需要自行想出搜索关键词），请求 AI 帮助你实现这个 Alpha 想法:\n\n市场存在“新闻动量”,基于公司层面新闻文本的“情绪/倾向性”打分,当前新闻更正面的公司，未来一段时间,继续出现更正面的新闻；相反亦然。核心:新闻反映并预告了公司基本面的持续性，但市场对“新闻本身”和“新闻的可持续性”都存在低反应，导致在短期内（尤以硬新闻、信息不透明股票为甚）可以系统性赚取风险调整后的超额收益。\n\n你需要展示你的 Alpha 表达式，并以三种方式实现该想法，也就是说你需要给出 3 个 Alpha 表达式。不允许混信号，不允许不假思索使用AI，需对AI反馈进行如下截图，以证明思考。\n\n请特别注意，不要踩点提交，且最好每天都保持提交，因为challenge score每天仅更新一次且上限为2000分/日。\n\nCourse 2作业截止时间：北京时间次节课当日16：00\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 5\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n49 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n JX85650\n \n \n \n \n\n \n \n \n21 days ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\ntask1:\n\nLong Count (做多数量): 指你的 Alpha 模型在特定日期给出的信号值为正，从而被分配了正权重（即建议买入）的股票总数。\n\nShort Count (做空数量): 指你的 Alpha 模型在特定日期给出的信号值为负，从而被分配了负权重（即建议卖出）的股票总数。\n\n根据编写的 Alpha 表达式自动计算和统计出来的。\n\ntask2：\n\n我认为四六级跟它的更新频率类似，因为四六级每年有两次考试两次考试的间隔有六个月，而在模拟的结果来看分别在每年的一月和七月进行细致的总结与反馈。\n\n \n\ntask3：\n\n这是因为我们可以巧妙地利用数据自身的特性来间接推断其更新模式。其背后的逻辑是：一个不更新的数据，它的值在一段时间内是恒定的，而恒定序列的标准差为零。\n\ntask4:\n\ntask5:\n\n1.rank(assets_curr / assets_curr)\n2.(assets_curr - delay(assets_curr, 5)) / assets_curr\n3.(assets_curr / ts_std_dev(assets_curr, 10)) / assets_curr\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 0\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n JX85650\n \n \n \n \n\n \n \n \n21 days ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TT73161\n \n \n \n \n\n \n \n \n21 days ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n第一题：longcount就是做多shortcount就是做空，或者说是正向与负向\n\n第二题：使用ts_backfill(anl4_cff_flag,10)然后进行逐个检查就可以找到更新频率，大概是三个月更新一次，差不多相当于财务报告吧，三个月一次更新\n\n第三题：因为这个公式是计算数据系列x在过去d天内的标准差，测量该期间值与均值的偏差程度。\n\n第四题：回测过十万提交五十多\n\n \n\n# Alpha1 【成交量最高·短期最强】5日量价新闻动量（高频换手，量能最优） alpha1 = ts_zscore(ts_delta(ts_mean(news_all_vwap, 5), 5)) \n\n# Alpha2 【IC最优·中期稳健】10日衰减量价动量（量价共振，收益最稳） alpha2 = ts_zscore(ts_decay(ts_delta(news_all_vwap, 10), 10)) \n\n# Alpha3 【长期超额·低回撤】20日量价持续动量（成交量稳定，夏普最高） alpha3 = ts_zscore(multiply(ts_delta(news_all_vwap, 10), ts_corr(news_all_vwap, ts_delay(news_all_vwap, 5), 20)))\n\n \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n RY66723\n \n \n \n \n\n \n \n \n21 days ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\ntask1\nlong count  有多少只股票的最终权重是正的（做多）    \nshort  count 有多少只股票的最终权重是负的（做空）\n1.先计算alpha初始值，2做横截面处理（比如做市场中性化market neutralization）3 做normalize   权重绝对值和=1   计算各支股票权重，weight>0 long count weight <0 short count \n\ntask2\n\n更新频率大概4年，现实生活中  美国总统选举4年一次\n\ntask3\n ts_std_dev(x, d)  这样一个算子，可以计算字段 x在过去d天内的标准差，如果标准差为0那说明它在过去d天内没有变化，不为0说明有变化了\nts_std_dev(X, N) != 0 ? 1 : 0    如果X在最近N天内没有变化 输出 0 归为short count，如果X在最近N天内有变化 输出 1 归为 long count  \nN=2，Long Count = 80\nN=5，Long Count = 180\nN=22，Long Count = 900\nN=66，Long Count = 2500\n如果在top3000 universe  内它的数据是这样 那表示X可能是季度更新的字段\n看一下long count /long count +short count 数据，以及其对应的N就是数据更新一轮的更新期\n\ntask4\n\ntask5\n\nrank(\n    ts_mean(rp_css_earnings, 20)\n) * rank(\n    -ts_std_dev(rp_css_earnings, 20)\n)\n\nts_zscore(\n    ts_mean(rp_css_business, 5) - ts_mean(rp_css_business, 20),\n    20\n)\n\ngroup_neutralize(\n    ts_zscore(\n        ts_mean(vec_avg(nws18_qcm), 5),\n        20\n    ),\n    industry\n)\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 0\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n WP22781\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n21 days ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n1. long-count指的是有多少只股票被做多，short-count指的是有多少只股票被做空。这两个值由表达式计算出的alpha向量经过中性化和标准化得到，大于0的股票会被计入long-count，小于0的股票会被计入short-count。\n\n2. anl4_cff_flag是按月更新。它是一个分析师数据，",
+  "headings": [
+    "2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F39411791834647"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "中文论坛",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B"
+    },
+    {
+      "text": "WL13229",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/12285040305687-WL13229"
+    },
+    {
+      "text": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2701346",
+      "href": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2701346"
+    },
+    {
+      "text": "Research-paper-1-The-Momentum-of-News",
+      "href": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3267337"
+    },
+    {
+      "text": "Day2参考文章3之文档资源: Understanding Data in BRAIN: Key Concepts and Tips",
+      "href": "https://platform.worldquantbrain.com/learn/documentation/create-alphas/data"
+    },
+    {
+      "text": "Understanding Data in BRAIN: Key Concepts and Tips | WorldQuant BRAIN",
+      "href": "https://platform.worldquantbrain.com/learn/documentation/understanding-data/data"
+    },
+    {
+      "text": "6tips文章",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset"
+    },
+    {
+      "text": "anl4_cff_flag",
+      "href": "https://platform.worldquantbrain.com/data/data-fields/anl4_cff_flag"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647-2026%E5%B9%B4IQC%E4%B8%93%E8%BE%91-BRAIN-x-AI-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E9%87%8F%E5%8C%96-%E7%B3%BB%E5%88%97%E8%AF%BE%E7%A8%8BCourse-2%E4%BD%9C%E4%B8%9A?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647-2026%E5%B9%B4IQC%E4%B8%93%E8%BE%91-BRAIN-x-AI-%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E9%87%8F%E5%8C%96-%E7%B3%BB%E5%88%97%E8%AF%BE%E7%A8%8BCourse-2%E4%BD%9C%E4%B8%9A?sort_by=votes"
+    },
+    {
+      "text": "JX85650",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/37938064348951-JX85650"
+    },
+    {
+      "text": "TT73161",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38959916796695-TT73161"
+    },
+    {
+      "text": "RY66723",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38929720495639-RY66723"
+    },
+    {
+      "text": "WP22781",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/27539587469847-WP22781"
+    },
+    {
+      "text": "JY54491",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39201390712983-JY54491"
+    },
+    {
+      "text": "Yuan mufeng(WY79989)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/36911535584535-Yuan-mufeng-WY79989"
+    },
+    {
+      "text": "AH48715",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39201521807767-AH48715"
+    },
+    {
+      "text": "YangJinCheng(JY23122)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/36994403368727-YangJinCheng-JY23122"
+    },
+    {
+      "text": "zhaoshuhuan(SZ39803)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38925791350935-zhaoshuhuan-SZ39803"
+    },
+    {
+      "text": "Lvkedang(LK40475)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39407272982551-Lvkedang-LK40475"
+    },
+    {
+      "text": "wang zi han(EW54062)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38184974050199-wang-zi-han-EW54062"
+    },
+    {
+      "text": "MZ20078",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38268265718935-MZ20078"
+    },
+    {
+      "text": "RZ17601",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39176055253015-RZ17601"
+    },
+    {
+      "text": "UY63967",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39201562846487-UY63967"
+    },
+    {
+      "text": "YW86963",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/32387847394327-YW86963"
+    },
+    {
+      "text": "WL34145",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39090261491735-WL34145"
+    },
+    {
+      "text": "GG53278",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38717393614359-GG53278"
+    },
+    {
+      "text": "YT67641",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38899142637079-YT67641"
+    },
+    {
+      "text": "yangyang(YY81639)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39035793911575-yangyang-YY81639"
+    },
+    {
+      "text": "YC68196",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/33143118064791-YC68196"
+    },
+    {
+      "text": "YD31594",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39091734174871-YD31594"
+    },
+    {
+      "text": "MEI HONGBING(PM51382)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39201534978967-MEI-HONGBING-PM51382"
+    },
+    {
+      "text": "YY86331",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39379864271255-YY86331"
+    },
+    {
+      "text": "KZ43348",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/37853275319447-KZ43348"
+    },
+    {
+      "text": "RZ26713",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/38097104353943-RZ26713"
+    },
+    {
+      "text": "Yijiao Cao(YC10653)",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39148201740823-Yijiao-Cao-YC10653"
+    },
+    {
+      "text": "WY22254",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39210972300823-WY22254"
+    },
+    {
+      "text": "ZM92249",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39201012408855-ZM92249"
+    },
+    {
+      "text": "anl4_cff_flag",
+      "href": "https://platform.worldquantbrain.com/data/data-fields/anl4_cff_flag?_gl=1*1viv4fx*_gcl_au*MzQzNTc5NTQ0LjE3NzQwOTM4MzAuODU0NzIxNjYuMTc3NDkzNTIwNS4xNzc0OTM1MjA1*_ga*MTc3NDA5NDE5NDEzNTA0NTYxZTJhMDZiZWU4*_ga_FXKNEPLB1N*czE3NzUwMjQzNzkkbzEzJGcxJHQxNzc1MDI2MjQ1JGo2MCRsMCRoMA.."
+    },
+    {
+      "text": "XS16169",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39201562982551-XS16169"
+    },
+    {
+      "text": "Next ›",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647?page=2#comments"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [
+    "anl4_cff_flag",
+    "ts_std_dev(x, d)",
+    "x",
+    "anl4_cff_flag是季度更新",
+    "anl4",
+    "cff",
+    "ts_rank(group_rank(net_income / market_cap, industry), 252)",
+    "方式三："
+  ],
+  "meta": {
+    "title_length": 63,
+    "html_length": 523061,
+    "text_length": 28930,
+    "anchor_count": 52,
+    "code_block_count": 8
+  }
+}

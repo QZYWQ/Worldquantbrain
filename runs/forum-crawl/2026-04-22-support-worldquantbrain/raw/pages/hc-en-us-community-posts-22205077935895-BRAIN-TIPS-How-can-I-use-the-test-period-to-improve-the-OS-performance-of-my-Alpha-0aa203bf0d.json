@@ -1,0 +1,121 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha",
+  "title": "[BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha? – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:44+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-22205077935895-BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha-0aa203bf0d.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-22205077935895-BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha-0aa203bf0d.txt",
+  "content_excerpt": "[BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha? – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n [BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha?\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 16 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n NL41370\n \n \n \n \n\n \n \n \n2 years ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nWhy is test period important?\n\nA good In Sample (IS) performance of an Alpha doesn't guarantee good Out Sample (OS) performance because the Alpha was developed using the IS data, which means it was specifically designed to fit the IS data well. The distinction between fitting and overfitting is delicate and can often lead to significant degradation of the Alpha's performance in OS.\n\nOne solution to tackle this issue is Validation. Validation involves comparing the performance of your Alpha in scenarios that differ from the data it was originally trained on. It then assesses the stability of the performance during this test period, which provides an idea about the robustness of the Alpha and its performance in the Out Sample (OS).\n\nUsing the Test Period feature on the platform, you can split the IS period into training and test period. Test Period option is available under Simulation settings while simulating an Alpha. You can then create Alphas using the training data and check its performance in the test period to see if your Alpha is overfitted or not.\n\nHow to perform Validation on BRAIN?\n\nSplit the IS period into a training and test period. As a rule of thumb, an 80-20 split between training and test data is ideal. For example, if you have a 5-year period, setting the test period as 1 year can help achieve this configuration.\n\nUse the training data period (4-year period in this case) to develop your Alpha\n\nSimulate your Alpha and compute Alpha stats for the training IS period.\n\nThe stats for test period are hidden by default. Compare the stats for test period with training period by clicking the “Show test period button” on top of the Simulation results.\n\n \n\nBest Practices\n\nIf there is a decrease of more than 50% in performance stats (such as Sharpe ratio, fitness, etc.) during the test period compared to the training period, it may indicate overfitting\n\nUse multiple/ longer test periods (20%, 30%, 40% of total IS period) to enhance confidence in observed training performance\n\nAvoid fitting your Alphas specifically to the test period. To ensure this, evaluate the stats of the test period only after you have completed the Alpha backtesting and are satisfied with the performance in the training period\n\nUse validation along with rank tests and sub/super universe tests  to assess the robustness of Alpha performance\n\nCompare similar implementations of an Alpha idea using validation; submit the Alpha with the most stable performance in training and test periods.\n\nYou can accept or reject Alpha ideas based on drastic performance decline in the test period, which could be indicative of potential poor OS performance.\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 13\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n8 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n VS18359\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, \nThank you so much for sharing your valuable tips on Test Period of an Alpha, which help in deciding the quality of Alpha i.e OS. Could you please explain it by taking an example, which is quite helpful.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 13\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n PL15523\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nYou can use it based on the following example: For example, you have an alpha with sharpe 2 on the entire data. Now you cover the test for 2 years, you optimize the train to get sharpe 2, however when you turn on the test period you see sharpe is only 0.5, which proves that the alpha has been overfitted.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 27\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n AC63290\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThank you for the detailed explanation and support regarding the importance of the test period and validation in developing robust Alphas. The guidelines on splitting the IS period, evaluating performance, and identifying overfitting are incredibly helpful. The suggestion to use multiple test periods and avoid fitting Alphas specifically to the test data provides a clear p",
+  "headings": [
+    "[BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha?",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "NL41370",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11433604068887-NL41370"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha?sort_by=votes"
+    },
+    {
+      "text": "VS18359",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4730368641431-VS18359"
+    },
+    {
+      "text": "PL15523",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13159798571671-PL15523"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "SP61833",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11866729002647-SP61833"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 104,
+    "html_length": 290750,
+    "text_length": 8303,
+    "anchor_count": 23,
+    "code_block_count": 0
+  }
+}

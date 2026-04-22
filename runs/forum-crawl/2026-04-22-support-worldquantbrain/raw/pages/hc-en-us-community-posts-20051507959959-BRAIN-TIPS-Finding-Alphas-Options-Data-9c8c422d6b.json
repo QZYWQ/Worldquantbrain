@@ -1,0 +1,145 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data",
+  "title": "[BRAIN TIPS] Finding Alphas: Options Data – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:28:09+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-20051507959959-BRAIN-TIPS-Finding-Alphas-Options-Data-9c8c422d6b.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-20051507959959-BRAIN-TIPS-Finding-Alphas-Options-Data-9c8c422d6b.txt",
+  "content_excerpt": "[BRAIN TIPS] Finding Alphas: Options Data – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n [BRAIN TIPS] Finding Alphas: Options Data\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 19 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n NL41370\n \n \n \n \n\n \n \n \n1 year ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nIn this article, we will cover the following topic: “Stock Returns Information from the Stock Options Market”. We recommend reading the book “Finding Alphas” chapter 23 for a more detailed understanding of this content.\n\n \n\nStock Returns Information from the Stock Options Market \n\nThe equity options market provides a lot of useful information for seeking to predict stock returns. Equity options contribute to price discovery because options traders tend to align their strategies more precisely with the sign and magnitude of their information. Trade information in equity options may provide more refined and precise signals of an underlying asset’s value than a trade in the asset itself.\n\n \n\nVolatility skew\n\nThe implied volatility of stock options is the volatility value of the underlying instrument that, when used as an input in an option pricing model like the Black-Scholes model, produces a theoretical option value that matches the current market price of the option. It is derived from the market prices of options and reflects the market's expectations for future volatility. The volatility skew is the difference in implied volatility between high and low strike price. Reverse skews occur when the implied volatility is higher on lower options strikes, and forward skews occur in the opposite situation. To create Alphas based on this concept, note the fact that researchers have shown that there is a negative association between volatility skews and individual stock returns at the company level.\n\nThe BRAIN platform provides a large range of option analytics data and volatility data. In volatility data, not only historical volatility data but also implied volatility and volatility skew data are provided, so feel free to use these data to develop your own Alphas.\n\nHere is an Alpha example:\n\n \n\nVolatility Spread\n\nAccording to put-call parity, for European options (which can be exercised only at expiration), the following equality holds:\n\nCall prices–Put prices = Spot price–Discount factor*Strike price\n\nFor American options (which can be exercised at any time prior to expiration), this equation takes the form of:\n\nSpot price >= Call prices–Put prices+Discount factor*Strike price\n\nFrom these relations, we can discover that for European options call and put options have the same implied volatility, and for American options call and put option have a “volatility spread” which derives from early-exercise premium. This spread can be used in various ways. For example, you may form this into sentiment score, since volatility spread represents the potential impact of the expected news, by measuring the overall net buying pressure. (When volatility gets bigger the demand of a call option is getting bigger than the corresponding put option.)\n\nFor BRAIN consultants, the BRAIN platform offers much larger range of additional datasets than user level datasets. Volatility spread data (mdl777_2400_rmi) is also in consultant dataset named model77.\n\n \n\nOptions trading volume\n\nThe option to stock volume ratio (O/S ratio) provides the theoretical and practical evidence that represents the private information that an information-based trader can use. This research states that information-based traders prefer options trading when they expect bad news due to capital restrictions and short costs.\n\nOptions trading volume is also included in consultant dataset, which are opt6_cvolu (call option) and opt6_pvolu (put option) in Forecasted Volatility for Equity Options (option6) dataset.\n\n \n\nOption open interest\n\nOpen interest is the number of outstanding options contracts on a given underlying asset. Researchers found that options traders are buying more (fewer) call options (put options) when underlying assets is the near-term are bullish. In their practical research, they showed there is strong negative relation between put option open interest and expected underlying asset returns.\n\nAn Alpha using Put-Call Open Interest ratio is presented on the Alpha Examples for Beginners, so you can use it to develop your own Alpha. If you want to use more specific data, try browsing the consultant dataset Implied Volatility and Pricing for Equity Options (option4). This dataset includes option open interest as opt4_call_openinterest (call optio",
+  "headings": [
+    "[BRAIN TIPS] Finding Alphas: Options Data",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "NL41370",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11433604068887-NL41370"
+    },
+    {
+      "text": "option analytics data",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/option9"
+    },
+    {
+      "text": "volatility data",
+      "href": "https://platform.worldquantbrain.com/data/data-sets/option8"
+    },
+    {
+      "text": "",
+      "href": "https://www.youtube.com/embed/XqdcIayjAug?start=192&end=382"
+    },
+    {
+      "text": "Put-Call Open Interest ratio",
+      "href": "https://platform.worldquantbrain.com/learn/documentation/create-alphas/19-alpha-examples#put-call-open-interest-ratio-pcr-oi"
+    },
+    {
+      "text": "Alpha Examples for Beginners",
+      "href": "https://platform.worldquantbrain.com/learn/documentation/create-alphas/19-alpha-examples"
+    },
+    {
+      "text": "search for “option” in the BRAIN community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/search?query=option&utf8=%E2%9C%93"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data?sort_by=votes"
+    },
+    {
+      "text": "SK90981",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15224150642455-SK90981"
+    },
+    {
+      "text": "deleted user",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243496991767-deleted-user"
+    },
+    {
+      "text": "DP11917",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243546243735-DP11917"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "CT68712",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15219840701719-CT68712"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 60,
+    "html_length": 291417,
+    "text_length": 9707,
+    "anchor_count": 29,
+    "code_block_count": 0
+  }
+}

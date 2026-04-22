@@ -1,0 +1,129 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975",
+  "title": "【远程控制电脑】免费+高质量+可手机控制 – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:25:58+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-35220740797975-49aac44931.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-35220740797975-49aac44931.txt",
+  "content_excerpt": "【远程控制电脑】免费+高质量+可手机控制 – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n 中文论坛\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n 【远程控制电脑】免费+高质量+可手机控制\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 14 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n ZZ37826\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n6 months ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\n由于alpha模拟很多人是24小时进行的，一般来说，自己的笔记本是带来带去的，所以一般来说都是租服务器或者自己搞个不经常用的台式机/笔记本等，这种情况下，用市面上熟知的远程软件基本都是需要花钱才能高清远程，否则只能降速或者体验感非常差。\n\n本文带来免费+高质量的远程体验，而且原理非常简单。\n\n所用到的工具：一台被控制的Windows电脑，Tailscale软件，控制方可以是windows/mac/手机等各种设备。\n\n原理是：通过tailscale创造局域网，然后通过windows原生自带的远程连接进行控制。\n\nTailscale只需要搜索并且正常注册登录即可，只要登录一个相同的账号，就可以拿到局域网IP。\n\ntailscale需要多端下载并登录一个账号，因为他的作用是把各种设备连到一个局域网中。\n\n然后windows自带的远程连接，输入tailscale中的设定的IP即可远程控制：\n\n在连接之后，会要求输入账号密码，需要注意，这个账号密码是：被控制windows的邮箱（你的用户名邮箱）+密码（你自己设置开机密码）。\n\n控制方除了需要下载tailscale之外，还需要下载windows原生的控制APP（包括windows，mac，安卓，ios等都有这个控制APP，在应用商店里，我自己实测所有APP都有）。\n\n在安卓端叫做：Windows APP：\n\n \n\n在IOS和苹果端叫做：Windows APP Mobile，或者在应用商店直接搜索windows远程控制，基本就能搜出来。\n\n在windows端，就直接内置搜索即可（如果搜不到，应该需要升级到专业版，网上有很多教程，可以直接升级）：\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 107\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n13 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n CC85858\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n6 months ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n-                                                                                                                                                                                              学生、工作党必备。用手机就能操控电脑跑代码了                                                                                                                                                                                                                                                                    -\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 85\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n BO66171\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n6 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nOkay on that'!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 2\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n DL74068\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n6 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nwindows app 个人账户无法登录。。\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n ZZ37826\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n6 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n============================================================================\n\n============================================================================\n\nDL74068 应该把电脑版本升级到专业版就可以了，可以去网上搜索一下如何升级，或者直接去网上找找如何去使用windows原生的远程连接，应该也会有非常多的教程。因为我自己用来登录的邮箱也只是qq邮箱，而不是学校邮箱。在此，也只是提供一个思路，具体如何做，互联网上的教程还是非常多的，只需要跟着最新的教程来即可。\n\n============================================================================\n\n============================================================================\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 84\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TZ69297\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n6 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n用向日葵远程控制很方便\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n GH19967\n \n \n \n \n\n \n \n \n6 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n具体流程有吗？完全连不上啊，电脑对电脑，手机对电脑都连不上，求大神指导\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n YX86102\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n5 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nToDesk也很好用！而且是免费的，手机端PC端都可以实现互联\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 2\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n MC52342\n \n \n \n \n\n \n \n \n5 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nteamviewer seems better\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n ZZ37826\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n4 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n==================================================================================\n\nYX86102\n\nTodesk新手可以用，说实在的，用起来吧，ToDesk免费版那个画面总觉得有点糊，动动鼠标或者滚动网页的时候，时不时会卡一下，不如Windows自带的远程桌面那么跟手。要是控制的电脑没接显示器，它那个虚拟显示还容易出毛病，有些窗口就显示不正常。而且它得通过人家的服务器中转，速度不稳定不说，心里对安全性也多少有点打鼓，不像系统自带的直接在局域网里点对点连，又稳当又放心。\n\n==================================================================================\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 67\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n ZZ37826\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n4 months ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nGH19967\n\n具体流程可以百度一下，网上还是有许多非常详细的教程的，我因为已经安装过了，没办法提供教程了，只是在这里给大家提供一个别样的思路。\n\n=========================================================================",
+  "headings": [
+    "【远程控制电脑】免费+高质量+可手机控制",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F35220740797975"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "中文论坛",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B"
+    },
+    {
+      "text": "ZZ37826",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/33841678941207-ZZ37826"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975--%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%94%B5%E8%84%91-%E5%85%8D%E8%B4%B9-%E9%AB%98%E8%B4%A8%E9%87%8F-%E5%8F%AF%E6%89%8B%E6%9C%BA%E6%8E%A7%E5%88%B6?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975--%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%94%B5%E8%84%91-%E5%85%8D%E8%B4%B9-%E9%AB%98%E8%B4%A8%E9%87%8F-%E5%8F%AF%E6%89%8B%E6%9C%BA%E6%8E%A7%E5%88%B6?sort_by=votes"
+    },
+    {
+      "text": "CC85858",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/29142660537879-CC85858"
+    },
+    {
+      "text": "BO66171",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/29304800940567-BO66171"
+    },
+    {
+      "text": "DL74068",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/34201696872215-DL74068"
+    },
+    {
+      "text": "TZ69297",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/32915865536279-TZ69297"
+    },
+    {
+      "text": "GH19967",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/34856715207063-GH19967"
+    },
+    {
+      "text": "YX86102",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/33909593680279-YX86102"
+    },
+    {
+      "text": "MC52342",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/36485521112343-MC52342"
+    },
+    {
+      "text": "ZW16380",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/33963962493335-ZW16380"
+    },
+    {
+      "text": "JY55846",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/36672290796311-JY55846"
+    },
+    {
+      "text": "FZ60707",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/30189772741399-FZ60707"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 39,
+    "html_length": 340162,
+    "text_length": 6661,
+    "anchor_count": 25,
+    "code_block_count": 0
+  }
+}

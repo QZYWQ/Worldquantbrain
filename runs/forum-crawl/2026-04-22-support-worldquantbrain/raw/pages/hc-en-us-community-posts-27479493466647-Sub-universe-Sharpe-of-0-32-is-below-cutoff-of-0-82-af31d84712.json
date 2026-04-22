@@ -1,0 +1,166 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82",
+  "title": "Sub-universe Sharpe of 0.32 is below cutoff of 0.82. – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:04+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82-af31d84712.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82-af31d84712.txt",
+  "content_excerpt": "Sub-universe Sharpe of 0.32 is below cutoff of 0.82. – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n Sub-universe Sharpe of 0.32 is below cutoff of 0.82.\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 25 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SH94314\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nPlease let me know what error this is, and how to fix it.\n\n\"Sub-universe Sharpe of 0.32 is below cutoff of 0.82.\"\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 13\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n21 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n MB13430\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThe error, \"Sub-universe Sharpe of 0.32 is below cutoff of 0.82,\" indicates that your alpha failed the sub-universe Sharpe test, which is a robustness check performed on the BRAIN platform before submission. This test ensures that your alpha performs consistently across different subsets of the universe, particularly more liquid (or smaller) universes.\n\nFor example, if your alpha is designed for the USA TOP3000 universe, the platform also evaluates its performance on the smaller, more liquid USA TOP1000 universe. If the alpha's performance in the smaller universe is significantly worse (e.g., a lower Sharpe ratio), it suggests that the alpha relies heavily on less liquid stocks. This is a warning sign, as such alphas are less likely to perform reliably in out-of-sample testing or in real-world conditions.\n\nTo address this issue, you’ll need to improve your alpha’s robustness by ensuring it works well across different universes and isn’t overly reliant on specific subsets of stocks, like smaller or less liquid ones.\n\nThe sub-universe Sharpe test uses this formula to determine the cutoff:\n\nsubuniverse_sharpe >= 0.75 * sqrt(subuniverse_size / alpha_universe_size) * alpha_sharpe\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 16\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n AG20578\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nAlso this article in Learn section might help Sub Universe Test\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 5\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n QG16026\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, the easiest way is you re-sim that alpha on illiquid market. Another way is multiply alpha by volume or adv20\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 42\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SH94314\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nQG16026 Thanks a lot for your sharing, i will test it to see how effective it is, i encountered quite a few of these errors when building alpha\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 6\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n PH82915\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nDiversify signals:\nIncorporate additional features or data sources that are relevant to the underperforming sub-universe.\nFor example, if your alpha struggles in a particular region, include region-specific data (e.g., local market factors or news sentiment).\nReduce noise:\nApply feature selection techniques to remove irrelevant or overly noisy features that may hurt performance in certain sub-universes.\nBlend multiple alphas:\nCombine your alpha with others that complement its weaknesses in specific sub-universes.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 38\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n PH82915\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nExample Actions\n\nIf the sub-universe is low-cap stocks, and your alpha struggles:\n\nAdd features that are specific to low-cap stocks, such as liquidity or earnings surprises.\n\nReduce reliance on volatile signals like price momentum, which might not work well for low-cap assets.\n\nIf the sub-universe is a specific region (e.g., Europe):\n\nInclude regional economic indicators or adjust your features to account for different trading hours or market structure.\n\nTest whether excluding the region improves overall performance.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 38\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SH94314\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nPH82915 Your explanation is too abstract and I don't really understand this, can you give a more specific example?\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 19\n \n \n\n \n",
+  "headings": [
+    "Sub-universe Sharpe of 0.32 is below cutoff of 0.82.",
+    "Comments",
+    "Example Actions",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "SH94314",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/26938963990935-SH94314"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82?sort_by=votes"
+    },
+    {
+      "text": "MB13430",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1532959643302-MB13430"
+    },
+    {
+      "text": "AG20578",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/12243980162327-AG20578"
+    },
+    {
+      "text": "Sub Universe Test",
+      "href": "https://platform.worldquantbrain.com/learn/documentation/interpret-results/alpha-submission#sub-universe-test"
+    },
+    {
+      "text": "QG16026",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22532757009175-QG16026"
+    },
+    {
+      "text": "PH82915",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1532005543462-PH82915"
+    },
+    {
+      "text": "TN74933",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/21997837037719-TN74933"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "CT68712",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15219840701719-CT68712"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "KP26017",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/14992337006103-KP26017"
+    },
+    {
+      "text": "Consultant Submission Tests | WorldQuant",
+      "href": "https://platform.worldquantbrain.com/learn/documentation/consultant-information/consultant-submission-tests#sub-universe"
+    },
+    {
+      "text": "TD17989",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13680660215831-TD17989"
+    },
+    {
+      "text": "FC45157",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/29624745451031-FC45157"
+    },
+    {
+      "text": "AC63290",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13665148618903-AC63290"
+    },
+    {
+      "text": "WX16829",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8702256081943-WX16829"
+    },
+    {
+      "text": "VK91272",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11425569673111-VK91272"
+    },
+    {
+      "text": "NG78013",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/16142990999575-NG78013"
+    },
+    {
+      "text": "NN89351",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1533055233262-NN89351"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 71,
+    "html_length": 413377,
+    "text_length": 12250,
+    "anchor_count": 34,
+    "code_block_count": 0
+  }
+}

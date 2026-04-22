@@ -1,0 +1,141 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers",
+  "title": "Comparing Stocks to Peers – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:27:37+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-23581999495831-Comparing-Stocks-to-Peers-1f8c8bb55c.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-23581999495831-Comparing-Stocks-to-Peers-1f8c8bb55c.txt",
+  "content_excerpt": "Comparing Stocks to Peers – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n Comparing Stocks to Peers\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 12 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SA89201\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nOne of the example alphas gave the hint of comparing a stock to its \"peers\" instead of to the market as a whole. Beyond neutralization choice, what are some other ways to do so? \n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 4\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n12 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n AG20578\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi!\n\nBeyond neutralization choice, there are more ways to compare a stock to its \"peers\". Consider using group operators, like group_zscroe or group_rank.\n\nAdditionally, you're not limited to the standard groups of industry, sector, or market found in the settings. Explore the DataExplorer to discover available grouping fields. You can also use the bucket operator to create custom groups!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 3\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n QG16026\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI would like to ask that when comparing with cross-sectional functions, does it mean that alpha is long only? Because as I understand, the weights will be scaled from 0 to 1, which means that all are positive weights. But I don't quite understand because in theory the total weight must be 0. I hope to get an answer.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 31\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LN78195\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nRegarding cross-sectional functions, how do you ensure total weight neutrality when weights are scaled positively? Would love to hear more about how this is implemented effectively.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 12\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n deleted user\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, I would like to ask if the functions when deployed normally and its group by market are similar? For example: rank and group rank (x, market) or scale and group scale (x,market)\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 18\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n DP11917\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI would like to ask if there are any other functions besides cross sectional functions that help remove outliers?\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 19\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n LK29993\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi QG16026 and LN78195!\n\n1) Not all cross-sectional functions will result in values in the range of 0 to 1. For example, the output of the zscore operator could include negative values too.\n\n2) I believe you're referring to the rank operator for outputs in the range of 0 to 1. Even though at the alpha expression level, the output will be in the range of 0 to 1, there will be a neutralization step that takes place after that based on your Neutralization setting. This neutralization step will subtract the mean from each of the Alpha values, so that the sum of the total Alpha values is zero. \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n LK29993\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi TK95999! Group operators are a type of cross-sectional operator but at a finer level, where the cross-sectional operation is applied within each group (as defined by the group operator), rather than across the entire universe (as defined in the simulation settings). \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n LK29993\n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi DP11917! Time series operators can work too.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 1\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n CC40930\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\n \n\nBeyond neutralization, you can compare a stock to its peers using group-based operators like group_mean(), group_max(), or group_min(), which allow you to compare a stock's performance to others within the same group (e.g., sector, industry, or region). Another approach could be using z-scores or pe",
+  "headings": [
+    "Comparing Stocks to Peers",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F23581999495831-Comparing-Stocks-to-Peers"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "SA89201",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23337995463191-SA89201"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers?sort_by=votes"
+    },
+    {
+      "text": "AG20578",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/12243980162327-AG20578"
+    },
+    {
+      "text": "group operators",
+      "href": "https://platform.worldquantbrain.com/learn/data-and-operators/operators#group-operators"
+    },
+    {
+      "text": "grouping fields.",
+      "href": "https://platform.worldquantbrain.com/data/data-fields?delay=1&instrumentType=EQUITY&limit=20&offset=0&region=USA&type=GROUP&universe=TOP3000"
+    },
+    {
+      "text": "bucket operator",
+      "href": "https://platform.worldquantbrain.com/learn/data-and-operators/detailed-operator-descriptions#bucket"
+    },
+    {
+      "text": "QG16026",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22532757009175-QG16026"
+    },
+    {
+      "text": "LN78195",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4647202315159-LN78195"
+    },
+    {
+      "text": "deleted user",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243496991767-deleted-user"
+    },
+    {
+      "text": "DP11917",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/18243546243735-DP11917"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "CT68712",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15219840701719-CT68712"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [
+    "group_mean()",
+    "group_max()",
+    "group_min()"
+  ],
+  "meta": {
+    "title_length": 44,
+    "html_length": 322779,
+    "text_length": 7263,
+    "anchor_count": 27,
+    "code_block_count": 3
+  }
+}

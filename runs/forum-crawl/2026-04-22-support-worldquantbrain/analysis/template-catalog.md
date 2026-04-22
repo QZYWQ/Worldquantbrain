@@ -1,0 +1,349 @@
+# WorldQuant Forum Template Catalog
+
+- Generated at: `2026-04-22T10:35:54+0800`
+- Crawl root: `runs/forum-crawl/2026-04-22-support-worldquantbrain`
+- Pages crawled: `100`
+
+## Family Summary
+
+| family | scope | support | promotion | source | transform | time | group / neutralization | risk |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Dataset Evaluation / Freshness | skill | 100 | skill-candidate | bounds, coverage, datafield, distribution, frequency, long count, short count, update frequency | abs, code, decay 0, scale_down, ts_median, ts_std_dev | 1000, 22, 252, 5, 5 years, 66, month, quarter, week | none, universe size | coverage, missing data, update frequency |
+| Validation / Overfitting Discipline | skill | 100 | skill-candidate | is, os, out of sample, test, train, validation | compare, multiple test periods, rank test, split | 10 years, 5 years, longer history | os, subuniverse, test period | overfitting, test period |
+| Low-Parameter Robustness | skill | 100 | skill-candidate | elegant, minimal parameters, simple, single dataset | code, rank, simple model, ts_rank | 20, 252, 5, 60 | n/a | complexity, overfitting |
+| NaN Handling / Missingness | skill | 100 | skill-candidate | backfill, coverage, group value, missing data, nan, non-nan | code, group_max, if_else, is_nan, to_nan, trade_when, ts_backfill | group operators, off, on, time series operators | group operator, group value | coverage, turnover, volatility |
+| Statistical Neutralization Overlay | skill | 100 | skill-candidate | common factors | orthogonal, pca, statistical neutralization | any, cross-sectional | pca, statistical | common factor, correlation |
+| Price / Volume Short Horizon | kb | 100 | kb-candidate | adv20, close, high, low, open, price volume, sharesout, volume, vwap | code, decay, rank, scale, trade_when, ts_delta, ts_rank | 20, 252, 5, 60, lookback, short-term | group_neutralize, group_rank, industry, subindustry | cost, overfitting, rank test, subuniverse, test period, turnover |
+| Fundamental / Model Slow Ratio | kb | 100 | kb-candidate | assets, assets_curr, cash, cashflow, debt, equity, fnd6_ceq, liabilities, mdl110_score, mdl110_value, mdl_analyst_sentiment, net income, revenue | backfill, code, group_rank, rank, ratio, ts_delay, ts_mean | 126, 252, 504, 63, 84, months, quarter, quarterly | group_neutralize, group_rank, growth, industry, leverage, value | coverage, outlier, subuniverse, weight |
+| Event Trigger / Low Turnover | kb | 100 | kb-candidate | close_at_event, entry price, event, exit trade, low turnover, signal, trigger | code, if_else, rank, trade_when, ts_delta, ts_mean, ts_sum | 20, 5, 60, entry, event, exit | group_neutralize, group_rank, industry | exit, turnover |
+| Options / Volatility | kb | 100 | kb-candidate | delta, gamma, implied volatility, iv, open interest, options, skew | code, group_rank, rank, ts_delta, ts_mean, ts_rank | 20, 252, 5, 60, event | group_neutralize, group_rank, industry | coverage, overfitting, turnover |
+| Alpha and Risk Factors | kb | 100 | kb-candidate | beta, momentum, quality, risk factors, size, value | code, group_neutralize, group_rank, neutralize, rank, ts_rank | 252, 504, cross-sectional | factor, group_rank, industry, style | correlation, self-correlation |
+| Sentiment / News Attention | kb | 100 | kb-candidate | attention, buzz, news, sentiment, snt_buzz, social media | code, group_rank, rank, trade_when, ts_delta, ts_mean | 126, 21, 252, 63, event | group_neutralize, group_rank, industry | coverage, noise, overfitting, turnover |
+
+## Recommendations
+
+- **Dataset Evaluation / Freshness** -> `skill-candidate`. Reusable field-discovery workflow for checking coverage, freshness, bounds, and distribution before alpha design.
+  - Top evidence: `[BRAIN TIPS] 6 ways to quickly evaluate a new dataset – WorldQuant BRAIN-CN` (https://support.worldquantbrain.com/hc/zh-cn/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset)
+- **Validation / Overfitting Discipline** -> `skill-candidate`. Reusable workflow for deciding whether a family survives holdout checks.
+  - Top evidence: `[BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha? – WorldQuant BRAIN` (https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha)
+- **Low-Parameter Robustness** -> `skill-candidate`. Keeps the first batch disciplined and avoids overbuilding a weak thesis.
+  - Top evidence: `[BRAIN TIPS] Finding Alphas: Signal or Overfitting? – WorldQuant BRAIN` (https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting)
+- **NaN Handling / Missingness** -> `skill-candidate`. Reusable decision rule for handling missing data without destroying signal or coverage.
+  - Top evidence: `[BRAIN TIPS] Demystifying Simulation Settings: NaN Handling – WorldQuant BRAIN` (https://support.worldquantbrain.com/hc/en-us/community/posts/17518270719511--BRAIN-TIPS-Demystifying-Simulation-Settings-NaN-Handling)
+- **Statistical Neutralization Overlay** -> `skill-candidate`. Workflow rule for stripping hidden common risk factors from a family.
+  - Top evidence: `The Hidden Risk Filter: How Statistical Neutralization Sharpens Your Signals – WorldQuant BRAIN` (https://support.worldquantbrain.com/hc/en-us/community/posts/35254553150231-The-Hidden-Risk-Filter-How-Statistical-Neutralization-Sharpens-Your-Signals)
+- **Price / Volume Short Horizon** -> `kb-candidate`. Useful for short-horizon momentum/reversal and volume-shock ideas.
+  - Top evidence: `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN-CN` (https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647)
+- **Fundamental / Model Slow Ratio** -> `kb-candidate`. Slow fundamental and model-data signals usually need ratio form and grouping discipline.
+  - Top evidence: `[BRAIN TIPS] Finding Alphas: Fundamental and Model Data – WorldQuant BRAIN` (https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data)
+- **Event Trigger / Low Turnover** -> `kb-candidate`. Template family for event-driven alphas that need explicit entry/exit control and sparse triggers.
+  - Top evidence: `How to record entry price and exit trade – WorldQuant BRAIN` (https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade)
+- **Options / Volatility** -> `kb-candidate`. Options data often needs tight horizon control and a careful liquidity check.
+  - Top evidence: `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN-CN` (https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647)
+- **Alpha and Risk Factors** -> `kb-candidate`. Helps distinguish alpha from known risk factor exposure.
+  - Top evidence: `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN-CN` (https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647)
+- **Sentiment / News Attention** -> `kb-candidate`. Attention shocks can be useful if they are smoothed and validated across windows.
+  - Top evidence: `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN-CN` (https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647)
+
+## Page Matches
+
+- `[BRAIN TIPS] 6 ways to quickly evaluate a new dataset – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset`
+  - Matched: Dataset Evaluation / Freshness (63), Fundamental / Model Slow Ratio (34), Price / Volume Short Horizon (29), Event Trigger / Low Turnover (23)
+- `Options, Relationship and Vector Datafields 2023 IQC培训视频回放 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE`
+  - Matched: Price / Volume Short Horizon (24), Options / Volatility (18), Event Trigger / Low Turnover (17), Dataset Evaluation / Freshness (16)
+- `[BRAIN TIPS] Demystifying Simulation Settings: NaN Handling – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/17518270719511--BRAIN-TIPS-Demystifying-Simulation-Settings-NaN-Handling`
+  - Matched: NaN Handling / Missingness (54), Fundamental / Model Slow Ratio (33), Price / Volume Short Horizon (32), Event Trigger / Low Turnover (32)
+- `[BRAIN TIPS] Demystifying Simulation Settings: Pasteurization – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization`
+  - Matched: Price / Volume Short Horizon (26), Fundamental / Model Slow Ratio (23), Options / Volatility (19), Event Trigger / Low Turnover (19)
+- `[BRAIN TIPS] Liquidity of a Universe – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/18572825645463--BRAIN-TIPS-Liquidity-of-a-Universe`
+  - Matched: Price / Volume Short Horizon (25), Event Trigger / Low Turnover (23), Fundamental / Model Slow Ratio (20), Alpha and Risk Factors (19)
+- `[BRAIN TIPS] Exploring Sources for Alpha Ideas – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/18572883332247--BRAIN-TIPS-Exploring-Sources-for-Alpha-Ideas`
+  - Matched: Price / Volume Short Horizon (28), Event Trigger / Low Turnover (20), Fundamental / Model Slow Ratio (18), Options / Volatility (16)
+- `【Alpha灵感启示录】合集（持续更新收录中） – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD`
+  - Matched: Price / Volume Short Horizon (31), Fundamental / Model Slow Ratio (27), Alpha and Risk Factors (26), Options / Volatility (22)
+- `[BRAIN TIPS] Sequencing Multiple Operators in an Expression – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/19344464221335--BRAIN-TIPS-Sequencing-Multiple-Operators-in-an-Expression`
+  - Matched: Price / Volume Short Horizon (26), Event Trigger / Low Turnover (21), Options / Volatility (19), Alpha and Risk Factors (17)
+- `BRAIN 版本更新记录 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `reducing production correlation without reducing sharpe or fitness much – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/19609241215511-reducing-production-correlation-without-reducing-sharpe-or-fitness-much`
+  - Matched: Price / Volume Short Horizon (24), Fundamental / Model Slow Ratio (20), Event Trigger / Low Turnover (20), Alpha and Risk Factors (19)
+- `📣 新徽章："Top Commenter" 🏅 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `[BRAIN TIPS] Finding Alphas: Price Volume Data – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20051361858327--BRAIN-TIPS-Finding-Alphas-Price-Volume-Data`
+  - Matched: Price / Volume Short Horizon (45), Fundamental / Model Slow Ratio (25), Event Trigger / Low Turnover (24), Dataset Evaluation / Freshness (22)
+- `[BRAIN TIPS] Finding Alphas: Fundamental and Model Data – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data`
+  - Matched: Fundamental / Model Slow Ratio (61), Price / Volume Short Horizon (24), Event Trigger / Low Turnover (24), Dataset Evaluation / Freshness (17)
+- `[BRAIN TIPS] Finding Alphas: Signal or Overfitting? – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting`
+  - Matched: Price / Volume Short Horizon (28), Validation / Overfitting Discipline (27), Low-Parameter Robustness (24), Event Trigger / Low Turnover (21)
+- `[BRAIN TIPS] Finding Alphas: News and Social Media – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media`
+  - Matched: Dataset Evaluation / Freshness (25), Price / Volume Short Horizon (25), Fundamental / Model Slow Ratio (25), NaN Handling / Missingness (21)
+- `[BRAIN TIPS] Finding Alphas: Alpha and Risk Factors – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20051458087575--BRAIN-TIPS-Finding-Alphas-Alpha-and-Risk-Factors`
+  - Matched: Alpha and Risk Factors (28), Price / Volume Short Horizon (28), Sentiment / News Attention (23), Options / Volatility (19)
+- `[BRAIN TIPS] Finding Alphas: Options Data – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data`
+  - Matched: Price / Volume Short Horizon (28), Options / Volatility (27), Fundamental / Model Slow Ratio (23), Event Trigger / Low Turnover (20)
+- `[BRAIN TIPS] Generate insights from a research paper using GPT – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT`
+  - Matched: Price / Volume Short Horizon (26), Event Trigger / Low Turnover (25), Fundamental / Model Slow Ratio (18), Alpha and Risk Factors (16)
+- `[BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha? – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha`
+  - Matched: Validation / Overfitting Discipline (33), Price / Volume Short Horizon (24), Fundamental / Model Slow Ratio (18), Event Trigger / Low Turnover (17)
+- `can sentiment factor be used directly? – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (17), Dataset Evaluation / Freshness (13), Sentiment / News Attention (13)
+- `Comparing Stocks to Peers – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers`
+  - Matched: Fundamental / Model Slow Ratio (27), Price / Volume Short Horizon (25), Options / Volatility (21), Event Trigger / Low Turnover (21)
+- `Incorporating Volatility into Chinese Market Trades – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/23726331730327-Incorporating-Volatility-into-Chinese-Market-Trades`
+  - Matched: Price / Volume Short Horizon (38), Options / Volatility (26), Event Trigger / Low Turnover (24), Fundamental / Model Slow Ratio (18)
+- `【Alpha Idea】The Information Content of Option Demand – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand`
+  - Matched: Price / Volume Short Horizon (22), Options / Volatility (15), Fundamental / Model Slow Ratio (15), Event Trigger / Low Turnover (15)
+- `Day 1 homework – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/24748801122583-Day-1-homework`
+  - Matched: Price / Volume Short Horizon (21), Fundamental / Model Slow Ratio (18), Event Trigger / Low Turnover (17), Validation / Overfitting Discipline (14)
+- `[BRAIN TIPS] How does the combo logic benefit Super Alphas? – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/26583211467031--BRAIN-TIPS-How-does-the-combo-logic-benefit-Super-Alphas`
+  - Matched: Price / Volume Short Horizon (22), Event Trigger / Low Turnover (20), Fundamental / Model Slow Ratio (18), Dataset Evaluation / Freshness (15)
+- `How to reduce self correlation and production correlation – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/26750743873943-How-to-reduce-self-correlation-and-production-correlation`
+  - Matched: Fundamental / Model Slow Ratio (26), Alpha and Risk Factors (25), Price / Volume Short Horizon (24), Sentiment / News Attention (21)
+- `ATOM2024 GLB Theme multiplier – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/27102345814039-ATOM2024-GLB-Theme-multiplier`
+  - Matched: Fundamental / Model Slow Ratio (23), Price / Volume Short Horizon (21), Event Trigger / Low Turnover (20), Alpha and Risk Factors (16)
+- `How to record entry price and exit trade – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade`
+  - Matched: Event Trigger / Low Turnover (39), Price / Volume Short Horizon (33), Fundamental / Model Slow Ratio (25), Dataset Evaluation / Freshness (19)
+- `Learning fast expression, seeing the output of operators on the data – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/27402122384663-Learning-fast-expression-seeing-the-output-of-operators-on-the-data`
+  - Matched: Dataset Evaluation / Freshness (30), Fundamental / Model Slow Ratio (25), Price / Volume Short Horizon (23), Event Trigger / Low Turnover (20)
+- `Sub-universe Sharpe of 0.32 is below cutoff of 0.82. – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82`
+  - Matched: Price / Volume Short Horizon (31), Alpha and Risk Factors (20), Event Trigger / Low Turnover (20), Fundamental / Model Slow Ratio (17)
+- `How i find o/s ratio positive and last 2 years pnl positive – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/27619597071639-How-i-find-o-s-ratio-positive-and-last-2-years-pnl-positive`
+  - Matched: Fundamental / Model Slow Ratio (31), Price / Volume Short Horizon (25), Event Trigger / Low Turnover (23), Low-Parameter Robustness (19)
+- `Reduce correlation by combining some fields from other datasets – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets`
+  - Matched: Price / Volume Short Horizon (32), Fundamental / Model Slow Ratio (25), Event Trigger / Low Turnover (25), Dataset Evaluation / Freshness (24)
+- `How to increase Sharpe without overfitting? – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting`
+  - Matched: Price / Volume Short Horizon (43), Alpha and Risk Factors (33), Options / Volatility (31), Event Trigger / Low Turnover (31)
+- `Passing the IS-Ladder Sharpe ? – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe`
+  - Matched: Price / Volume Short Horizon (33), Alpha and Risk Factors (27), Options / Volatility (23), Fundamental / Model Slow Ratio (23)
+- `My weight is continuously decreasing,I have tried everything can anyone give some suggestions so that it starts increasing? – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/28583502008599-My-weight-is-continuously-decreasing-I-have-tried-everything-can-anyone-give-some-suggestions-so-that-it-starts-increasing`
+  - Matched: Fundamental / Model Slow Ratio (33), Price / Volume Short Horizon (27), Event Trigger / Low Turnover (24), Dataset Evaluation / Freshness (23)
+- `新人成长血泪史！VF0.5->0.56->0.91：我踩过的坑和汗水 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4`
+  - Matched: Price / Volume Short Horizon (27), Fundamental / Model Slow Ratio (22), Event Trigger / Low Turnover (17), Alpha and Risk Factors (16)
+- `🖊️ Passing Submission Test: How to improve Fitness – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness`
+  - Matched: Price / Volume Short Horizon (40), Fundamental / Model Slow Ratio (27), Options / Volatility (26), Event Trigger / Low Turnover (26)
+- `How to start Alpha research using the BRAIN Tutorial🧑‍🏫🪄 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial`
+  - Matched: Price / Volume Short Horizon (30), Fundamental / Model Slow Ratio (24), Event Trigger / Low Turnover (19), Sentiment / News Attention (18)
+- `【远程控制电脑】免费+高质量+可手机控制 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975`
+  - Matched: Price / Volume Short Horizon (21), Fundamental / Model Slow Ratio (18), Event Trigger / Low Turnover (17), Dataset Evaluation / Freshness (15)
+- `The Hidden Risk Filter: How Statistical Neutralization Sharpens Your Signals – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/35254553150231-The-Hidden-Risk-Filter-How-Statistical-Neutralization-Sharpens-Your-Signals`
+  - Matched: Price / Volume Short Horizon (23), Event Trigger / Low Turnover (22), Alpha and Risk Factors (21), Fundamental / Model Slow Ratio (20)
+- `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 1作业 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/39200810917015`
+  - Matched: Dataset Evaluation / Freshness (23), Price / Volume Short Horizon (20), Fundamental / Model Slow Ratio (19), Event Trigger / Low Turnover (14)
+- `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647`
+  - Matched: Fundamental / Model Slow Ratio (58), Price / Volume Short Horizon (54), Sentiment / News Attention (43), Options / Volatility (40)
+- `新手课代码分享 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/39467969845783`
+  - Matched: Price / Volume Short Horizon (35), Fundamental / Model Slow Ratio (28), Options / Volatility (25), Event Trigger / Low Turnover (25)
+- `IQC 2026 2025 Webinar Recording (26th Mar) – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `IQC 2026 2025 Webinar Recording (2nd Apr) – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `26年Q1 Genius定级已更新，Q2赛季加油！ – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/39728815499543`
+  - Matched: Price / Volume Short Horizon (21), Event Trigger / Low Turnover (17), Fundamental / Model Slow Ratio (16), Options / Volatility (14)
+- `IQC 2026 2025 Webinar Recording (9th Apr) – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr`
+  - Matched: Price / Volume Short Horizon (24), Event Trigger / Low Turnover (20), Fundamental / Model Slow Ratio (18), Dataset Evaluation / Freshness (16)
+- `Posts – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts`
+  - Matched: Fundamental / Model Slow Ratio (26), Price / Volume Short Horizon (23), Dataset Evaluation / Freshness (16), Alpha and Risk Factors (16)
+- `Posts – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=all`
+  - Matched: Fundamental / Model Slow Ratio (26), Price / Volume Short Horizon (23), Dataset Evaluation / Freshness (16), Alpha and Risk Factors (16)
+- `Posts – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=not_planned`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (14), Fundamental / Model Slow Ratio (13), Options / Volatility (12)
+- `Posts – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=planned`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (14), Fundamental / Model Slow Ratio (13), Options / Volatility (12)
+- `New post – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/new?community_post%5Btopic_id%5D=18068926798871`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (12)
+- `New post – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/posts/new`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (12)
+- `中文论坛 – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B`
+  - Matched: Price / Volume Short Horizon (18), Fundamental / Model Slow Ratio (17), Dataset Evaluation / Freshness (15), Options / Volatility (9)
+- `Quant-Chess-Football – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/13587235460759-Quant-Chess-Football`
+  - Matched: Price / Volume Short Horizon (20), Dataset Evaluation / Freshness (17), Fundamental / Model Slow Ratio (15), Options / Volatility (11)
+- `Global Research webinars (Users) – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/13629734679319-Global-Research-webinars-Users`
+  - Matched: Price / Volume Short Horizon (25), Fundamental / Model Slow Ratio (20), Alpha and Risk Factors (18), Dataset Evaluation / Freshness (17)
+- `Research Papers for Users – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/13724934223127-Research-Papers-for-Users`
+  - Matched: Fundamental / Model Slow Ratio (21), Dataset Evaluation / Freshness (19), Price / Volume Short Horizon (18), Alpha and Risk Factors (16)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=completed`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (9)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=votes`
+  - Matched: Price / Volume Short Horizon (26), Event Trigger / Low Turnover (24), Dataset Evaluation / Freshness (17), Fundamental / Model Slow Ratio (17)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=all`
+  - Matched: Price / Volume Short Horizon (28), Event Trigger / Low Turnover (23), Dataset Evaluation / Freshness (17), Alpha and Risk Factors (17)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=planned`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (9)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?before=bGFzdF9wYWdl`
+  - Matched: Event Trigger / Low Turnover (29), Price / Volume Short Horizon (27), Fundamental / Model Slow Ratio (21), Sentiment / News Attention (18)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=none`
+  - Matched: Price / Volume Short Horizon (28), Event Trigger / Low Turnover (23), Alpha and Risk Factors (19), Fundamental / Model Slow Ratio (19)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=comments`
+  - Matched: Event Trigger / Low Turnover (32), Price / Volume Short Horizon (31), Dataset Evaluation / Freshness (15), Options / Volatility (15)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?after=ZAAAAAAAAAAAZPtpUGUAAAAAaZfRrFLkEAAA`
+  - Matched: Price / Volume Short Horizon (23), Fundamental / Model Slow Ratio (21), Alpha and Risk Factors (16), Dataset Evaluation / Freshness (15)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=recent_activity`
+  - Matched: Event Trigger / Low Turnover (38), Price / Volume Short Horizon (28), Options / Volatility (21), Fundamental / Model Slow Ratio (20)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS`
+  - Matched: Price / Volume Short Horizon (28), Event Trigger / Low Turnover (23), Dataset Evaluation / Freshness (17), Alpha and Risk Factors (17)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=answered`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (9)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=created_at`
+  - Matched: Price / Volume Short Horizon (28), Event Trigger / Low Turnover (23), Dataset Evaluation / Freshness (17), Alpha and Risk Factors (17)
+- `BRAIN TIPS – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=not_planned`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (9)
+- `General Discussion – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/4405602640663-General-Discussion`
+  - Matched: Price / Volume Short Horizon (19), Dataset Evaluation / Freshness (18), Fundamental / Model Slow Ratio (15), Validation / Overfitting Discipline (14)
+- `Getting started with Research – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics/4419282859415-Getting-started-with-Research`
+  - Matched: Price / Volume Short Horizon (26), Fundamental / Model Slow Ratio (26), Event Trigger / Low Turnover (15), Dataset Evaluation / Freshness (13)
+- `Topics – WorldQuant BRAIN`
+  - URL: `https://support.worldquantbrain.com/hc/en-us/community/topics`
+  - Matched: Price / Volume Short Horizon (18), Fundamental / Model Slow Ratio (15), Dataset Evaluation / Freshness (14), Options / Volatility (12)
+- `[BRAIN TIPS] 6 ways to quickly evaluate a new dataset – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset`
+  - Matched: Dataset Evaluation / Freshness (63), Fundamental / Model Slow Ratio (34), Price / Volume Short Horizon (29), Event Trigger / Low Turnover (23)
+- `Options, Relationship and Vector Datafields 2023 IQC培训视频回放 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE`
+  - Matched: Price / Volume Short Horizon (26), Options / Volatility (20), Dataset Evaluation / Freshness (18), Fundamental / Model Slow Ratio (18)
+- `【Alpha灵感启示录】合集（持续更新收录中） – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD`
+  - Matched: Price / Volume Short Horizon (31), Fundamental / Model Slow Ratio (27), Alpha and Risk Factors (26), Options / Volatility (22)
+- `BRAIN 版本更新记录 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `📣 新徽章："Top Commenter" 🏅 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `【Alpha Idea】The Information Content of Option Demand – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand`
+  - Matched: Price / Volume Short Horizon (22), Options / Volatility (15), Fundamental / Model Slow Ratio (15), Event Trigger / Low Turnover (15)
+- `新人成长血泪史！VF0.5->0.56->0.91：我踩过的坑和汗水 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4`
+  - Matched: Price / Volume Short Horizon (27), Fundamental / Model Slow Ratio (20), Event Trigger / Low Turnover (17), Alpha and Risk Factors (16)
+- `🖊️ Passing Submission Test: How to improve Fitness – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness`
+  - Matched: Price / Volume Short Horizon (40), Options / Volatility (26), Event Trigger / Low Turnover (26), Fundamental / Model Slow Ratio (25)
+- `How to start Alpha research using the BRAIN Tutorial🧑‍🏫🪄 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial`
+  - Matched: Price / Volume Short Horizon (30), Fundamental / Model Slow Ratio (22), Event Trigger / Low Turnover (19), Sentiment / News Attention (18)
+- `【远程控制电脑】免费+高质量+可手机控制 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/35220740797975`
+  - Matched: Price / Volume Short Horizon (21), Event Trigger / Low Turnover (17), Fundamental / Model Slow Ratio (16), Options / Volatility (14)
+- `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 1作业 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/39200810917015`
+  - Matched: Dataset Evaluation / Freshness (21), Price / Volume Short Horizon (20), Fundamental / Model Slow Ratio (19), Event Trigger / Low Turnover (14)
+- `2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647`
+  - Matched: Fundamental / Model Slow Ratio (58), Price / Volume Short Horizon (54), Sentiment / News Attention (43), Options / Volatility (40)
+- `新手课代码分享 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783`
+  - Matched: Price / Volume Short Horizon (35), Fundamental / Model Slow Ratio (28), Options / Volatility (25), Event Trigger / Low Turnover (25)
+- `IQC 2026 2025 Webinar Recording (26th Mar) – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `IQC 2026 2025 Webinar Recording (2nd Apr) – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr`
+  - Matched: Price / Volume Short Horizon (18), Event Trigger / Low Turnover (14), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13)
+- `26年Q1 Genius定级已更新，Q2赛季加油！ – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/39728815499543`
+  - Matched: Price / Volume Short Horizon (21), Event Trigger / Low Turnover (17), Fundamental / Model Slow Ratio (16), Options / Volatility (14)
+- `IQC 2026 2025 Webinar Recording (9th Apr) – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr`
+  - Matched: Price / Volume Short Horizon (24), Event Trigger / Low Turnover (20), Fundamental / Model Slow Ratio (18), Dataset Evaluation / Freshness (16)
+- `帖子 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts`
+  - Matched: Fundamental / Model Slow Ratio (26), Price / Volume Short Horizon (23), Dataset Evaluation / Freshness (16), Alpha and Risk Factors (16)
+- `新建帖子 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/posts/new`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (12)
+- `中文论坛 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B`
+  - Matched: Price / Volume Short Horizon (18), Fundamental / Model Slow Ratio (15), Dataset Evaluation / Freshness (13), Options / Volatility (9)
+- `Quant-Chess-Football – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics/13587235460759-Quant-Chess-Football`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (13), Fundamental / Model Slow Ratio (13), Options / Volatility (9)
+- `Global Research webinars (Users) – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics/13629734679319-Global-Research-webinars-Users`
+  - Matched: Price / Volume Short Horizon (25), Alpha and Risk Factors (18), Fundamental / Model Slow Ratio (18), Options / Volatility (16)
+- `Research Papers for Users – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics/13724934223127-Research-Papers-for-Users`
+  - Matched: Price / Volume Short Horizon (18), Dataset Evaluation / Freshness (17), Fundamental / Model Slow Ratio (17), Alpha and Risk Factors (14)
+- `BRAIN TIPS – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics/18068926798871-BRAIN-TIPS`
+  - Matched: Price / Volume Short Horizon (28), Event Trigger / Low Turnover (23), Alpha and Risk Factors (17), Sentiment / News Attention (16)
+- `General Discussion – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics/4405602640663-General-Discussion`
+  - Matched: Price / Volume Short Horizon (19), Dataset Evaluation / Freshness (16), Validation / Overfitting Discipline (14), Fundamental / Model Slow Ratio (13)
+- `Getting started with Research – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics/4419282859415-Getting-started-with-Research`
+  - Matched: Price / Volume Short Horizon (26), Fundamental / Model Slow Ratio (24), Event Trigger / Low Turnover (15), Dataset Evaluation / Freshness (13)
+- `主题 – WorldQuant BRAIN-CN`
+  - URL: `https://support.worldquantbrain.com/hc/zh-cn/community/topics`
+  - Matched: Price / Volume Short Horizon (18), Fundamental / Model Slow Ratio (15), Dataset Evaluation / Freshness (14), Options / Volatility (12)

@@ -1,0 +1,217 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+  "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+  "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+  "title": "🖊️ Passing Submission Test: How to improve Fitness – WorldQuant BRAIN-CN",
+  "kind": "post",
+  "depth": 2,
+  "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:28:59+0800",
+  "html_path": "raw/pages/hc-zh-cn-community-posts-30873523677847-Passing-Submission-Test-How-to-improve-Fitness-8ea3ae2cfe.html",
+  "text_path": "raw/pages/hc-zh-cn-community-posts-30873523677847-Passing-Submission-Test-How-to-improve-Fitness-8ea3ae2cfe.txt",
+  "content_excerpt": "🖊️ Passing Submission Test: How to improve Fitness – WorldQuant BRAIN-CN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n 跳到主内容\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n 提交请求\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n 我的活动\n 我的个人资料\n \n 退出\n \n\n \n\n \n \n \n \n\n \n 简体中文\n \n \n \n \n \n \n \n English (United States)\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN-CN\n \n \n\n \n \n\n \n 社区\n \n \n\n \n \n\n \n Getting started with Research\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n 🖊️ Passing Submission Test: How to improve Fitness\n \n \n\n \n 置顶的\n \n\n \n 被推荐的\n \n \n \n \n \n\n \n\n \n \n \n \n\n \n关注74 人关注\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n\n \n\n \n \n PL51876\n \n \n \n \n\n \n \n \n13天前\n\n \n已编辑于\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nWelcome to IQC 2026 !\n\nFitness is often the most challenging metric to master. Let's explore how to optimize it:\n\nAccording to the formula, you can enhance fitness by increasing the Sharpe ratio (or Returns) and reducing Turnover.\n\nHowever, improving one factor typically negatively impacts the other. For instance, lowering turnover can limit trades and reduce returns.\n\nTherefore, we must strike for a balance.\n\nOne approach is to focus on improving one factor first, such as the Sharpe ratio or Returns, and then reducing turnover to achieve a desirable fitness level (ideally >0.8). From there, you can continue to optimize until you pass the fitness test.\n\nFor more tips on improving fitness, check out more of our community.\n\nMore to explore:\n\n[1/3] Intermediate Pack - Understanding Results – WorldQuant BRAIN\n\n[2/3] Intermediate Pack - Improving your Alpha Idea – WorldQuant BRAIN\n\n[3/3] Intermediate Pack -Conditional Operators – WorldQuant BRAIN\n\nHappy research!\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 29\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n \n\n \n关于\n\n \n \n \n\n \n Newsletter\n \n \n\n \n \n \n\n \n\n \n\n \n\n 评论\n \n\n \n29 条评论\n\n \n \n\n \n 排序方式\n \n \n \n \n \n \n 日期\n \n 投票数\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n RR73861\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1年前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nit can help in fitness Sharpe ratios\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 15\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n NH16784\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1年前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nin my personal experience, beginners should focus on reducing turnover rather than increasing sharpe or return. reducing turnover from 50% to 25% is much easier than increasing sharpe from 2 -> 3; techniques you can use are increasing decay, using group_operator and neutralization, but personally for beginners, increasing decay is the easiest.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 22\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n MS18311\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1年前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHow i improve fitness in all alpha anyone tell me and help to create better sharp and fitness alphas\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 10\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SV11672\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1年前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThis is a very practical and balanced approach to optimizing fitness! Finding the right balance between Sharpe ratio and turnover is crucial, as improving one can negatively impact the other. The step-by-step approach of focusing on one factor first and then optimizing the other is a great way to achieve a desirable fitness level. Thanks for sharing these valuable insights!\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 16\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n VK58294\n \n \n \n \n\n \n \n \n8个月前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nwhat about the sharpe ratio\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 5\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n MA14841\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n7个月前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThanks! It was very helpful. \n\nCan you advise, if i am trying to get into master- which is more important- High Sharpe or High Fitness, what should be the levels i should try to achieve.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 12\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n YZ14671\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n6个月前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThis is a very practical and balanced approach to optimizing fitness! \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 7\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n KK62051\n \n \n \n \n\n \n \n \n5个月前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nit can help in fitness Sharpe ratios.thank you\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 4\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n DN66609\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n5个月前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nGreat insight\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 5\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n CN36144\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n5个月前\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nWell done.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 4\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TM92286\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n",
+  "headings": [
+    "🖊️ Passing Submission Test: How to improve Fitness",
+    "评论",
+    "没有找到您要找的？"
+  ],
+  "anchors": [
+    {
+      "text": "跳到主内容",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "FAQ",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "提交请求",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/requests/new"
+    },
+    {
+      "text": "我的活动",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/requests"
+    },
+    {
+      "text": "我的个人资料",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/39817559344663"
+    },
+    {
+      "text": "退出",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fzh-cn"
+    },
+    {
+      "text": "English (United States)",
+      "href": "https://support.worldquantbrain.com/hc/change_language/en-us?return_to=%2Fhc%2Fen-us%2Fcommunity%2Fposts%2F30873523677847--Passing-Submission-Test-How-to-improve-Fitness"
+    },
+    {
+      "text": "Getting started with Research",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/4419282859415-Getting-started-with-Research"
+    },
+    {
+      "text": "PL51876",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/11449922392343-PL51876"
+    },
+    {
+      "text": "[1/3] Intermediate Pack - Understanding Results – WorldQuant BRAIN",
+      "href": "https://support.worldquantbrain.com/hc/en-us/articles/14220836385687--1-3-Intermediate-Pack-Understanding-Results"
+    },
+    {
+      "text": "[2/3] Intermediate Pack - Improving your Alpha Idea – WorldQuant BRAIN",
+      "href": "https://support.worldquantbrain.com/hc/en-us/articles/14221266172567--2-3-Intermediate-Pack-Improving-your-Alpha-Idea"
+    },
+    {
+      "text": "[3/3] Intermediate Pack -Conditional Operators – WorldQuant BRAIN",
+      "href": "https://support.worldquantbrain.com/hc/en-us/articles/14221488648855--3-3-Intermediate-Pack-Conditional-Operators"
+    },
+    {
+      "text": "Newsletter",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/search?content_tags=01JNDF3QPQY0V309ACNGPYRNHJ&utf8=%E2%9C%93"
+    },
+    {
+      "text": "日期",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness?sort_by=created_at"
+    },
+    {
+      "text": "投票数",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness?sort_by=votes"
+    },
+    {
+      "text": "RR73861",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/1919735773845-RR73861"
+    },
+    {
+      "text": "NH16784",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/22216089101591-NH16784"
+    },
+    {
+      "text": "MS18311",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/4602797735575-MS18311"
+    },
+    {
+      "text": "SV11672",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/8280880704023-SV11672"
+    },
+    {
+      "text": "VK58294",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/34404722522135-VK58294"
+    },
+    {
+      "text": "MA14841",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/31498027115671-MA14841"
+    },
+    {
+      "text": "YZ14671",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/32445708868375-YZ14671"
+    },
+    {
+      "text": "KK62051",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/35923052886423-KK62051"
+    },
+    {
+      "text": "DN66609",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/34847866421399-DN66609"
+    },
+    {
+      "text": "CN36144",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/26521055500183-CN36144"
+    },
+    {
+      "text": "TM92286",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/30708769095319-TM92286"
+    },
+    {
+      "text": "KM11612",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/35564119363351-KM11612"
+    },
+    {
+      "text": "BENTA BOCHERE ONTIRI(BB91633)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/35922043888151-BENTA-BOCHERE-ONTIRI-BB91633"
+    },
+    {
+      "text": "Claret Nyambura Kihara(CN82384)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/35243112633367-Claret-Nyambura-Kihara-CN82384"
+    },
+    {
+      "text": "ERIC MUKUNDI KINYUA(EK15533)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/34126957601943-ERIC-MUKUNDI-KINYUA-EK15533"
+    },
+    {
+      "text": "Fidel Castro Oloo(FO52107)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/36370958858903-Fidel-Castro-Oloo-FO52107"
+    },
+    {
+      "text": "SD99406",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/21041140594071-SD99406"
+    },
+    {
+      "text": "YK52660",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/9671120315927-YK52660"
+    },
+    {
+      "text": "Gichuki(VW62253)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/33979921774743-Gichuki-VW62253"
+    },
+    {
+      "text": "Isaack Thuranira(IT65940)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/38740661448343-Isaack-Thuranira-IT65940"
+    },
+    {
+      "text": "DW41857",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/32577767586199-DW41857"
+    },
+    {
+      "text": "Vivek pandey(VP12828)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/31006754492567-Vivek-pandey-VP12828"
+    },
+    {
+      "text": "DO79415",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/38837358812951-DO79415"
+    },
+    {
+      "text": "ELIAS MURITHI(EM56318)",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/39482217442583-ELIAS-MURITHI-EM56318"
+    },
+    {
+      "text": "CM46415",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/31131934096151-CM46415"
+    },
+    {
+      "text": "SK67673",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/39467671706391-SK67673"
+    },
+    {
+      "text": "ET77958",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/39829640941719-ET77958"
+    },
+    {
+      "text": "YM36840",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/profiles/39837829461399-YM36840"
+    },
+    {
+      "text": "新建帖子",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/new"
+    }
+  ],
+  "code_blocks": [],
+  "meta": {
+    "title_length": 72,
+    "html_length": 473190,
+    "text_length": 10231,
+    "anchor_count": 47,
+    "code_block_count": 0
+  }
+}

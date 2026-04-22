@@ -1,0 +1,209 @@
+{
+  "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets",
+  "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets",
+  "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets",
+  "title": "Reduce correlation by combining some fields from other datasets – WorldQuant BRAIN",
+  "kind": "post",
+  "depth": 1,
+  "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+  "source": "discovered",
+  "fetched_at": "2026-04-22T10:26:54+0800",
+  "html_path": "raw/pages/hc-en-us-community-posts-27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets-e4667878d7.html",
+  "text_path": "raw/pages/hc-en-us-community-posts-27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets-e4667878d7.txt",
+  "content_excerpt": "Reduce correlation by combining some fields from other datasets – WorldQuant BRAIN\n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n\n Skip to main content\n\n \n\n \n \n\n \n \n \n \n\n \n\n \n \n \n f\n \n \n BRAIN platform\n\n Community\n \n\n FAQ\n\n \n Submit a request\n \n \n \n\n \n \n PZ96147\n \n \n \n \n \n\n My activities\n My profile\n \n Sign out\n \n\n \n\n \n \n \n \n\n \n English (United States)\n \n \n \n \n \n \n \n 简体中文\n \n \n \n \n\n \n\n \n\n \n\n \n \n\n \n\n \n \n \n \n\n \n WorldQuant BRAIN\n \n \n\n \n \n\n \n Community\n \n \n\n \n \n\n \n BRAIN TIPS\n \n \n\n \n\n \n\n \n \n \n \n \n \n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n\n Reduce correlation by combining some fields from other datasets\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n \n \n \n\n \nFollowFollowed by 38 people\n\n \n \n\n \n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LN92324\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n\n \n\n \n\nHi everyone. While generating alpha I found that some datasets have much higher correlations than others. Should I reduce the correlations of those alphas by combining some Fields from other datasets in the same category? Or from other datasets in different categories? Will this cause performance degradation on the OS?\n\n \n \n \n\n \n\n \n\n \n \n \n \n \n \n \n \n \n \n\n \n 23\n\n \n \n\n \n\n \n \n\n \n\n \n\n \n \n\n \n \n\n \n\n \n\n Comments\n \n\n \n35 comments\n\n \n \n\n \n Sort by\n \n \n \n \n \n \n Date\n \n Votes\n \n \n \n\n \n \n\n \n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n VV63697\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI think it is preferred to use data from a single dataset rather than other categories but as long as your alpha is fundamentally strong and not overfitted the OS performance will be good in either of the cases so it's up to you which one to use.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 17\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n SK72105\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nIn addition to what VV63697 said - while the combination should make sense you should also check for coverage of both the data fields from different categories while combining them to make an alpha. At times the coverage may be lower for one dataset and combining it with another datafield may lead to a good IS sharpe but with low coverage - and this could just be a case of overfitting possibly due to one of the datafield used or because of the smaller amount of coverage, and could possibly erode the performance of your original alpha idea. \n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 12\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TN33707\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nYou can try unlinear-combination, such as using if/else combination. It will be best if you can filter some condition with logic back ground. Eg: if price_volume is high correlation alpha, you want to combine with social media is low correlation alpha:\n\nIf(arg_max(close,5) <1  (date with near the peak of alpha)\n\nthen social media data (near peak mean more favor on social media)\n\nelse reversal idea (keep price-volume high correlation idea)\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 18\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LN92324\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nThanks for your reply. I think I will aim to use only a single Dataset with alpha sets that are easy to generate alpha for submission and only mix in other datasets with more specific and difficult to generate alpha data.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 14\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n LI36776\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nIt probably makes your OS performance worse, if you're just adding noise.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 10\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n TN48752\n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \nEdited\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nHi, you can create alpha on new regions like twn, hkg, kor or jpn, amr. These regions still have low alpha submitted in pool consultant. Balance between the amount of data and operator used because it can affect tie break genius, however if the correlation is high it will reduce the value factor.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 33\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n VK91272\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nI think you should use data from a single dataset rather than other categories but as long as your alpha is fundamentally strong and not overfitted the OS performance.\n\n \n\n \n\n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n 10\n \n \n\n \n \n\n \n\n \n \n \n \n \n\n \n\n \n\n \n\n \n\n \n \n\n \n\n \n\n \n\n \n\n \n\n \n \n \n\n \n\n \n\n \n \n BA51127\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n1 year ago\n\n \n \n \n\n \n\n \n \n \n\n \n\n \n\nCombining fields from other datasets to reduce correlation should be done with caution. The key is to ensure that the data combination is fundamentally justified and enhances the alpha's signal rather than introducing noise, which could potentially degrade the performance in the operating ",
+  "headings": [
+    "Reduce correlation by combining some fields from other datasets",
+    "Comments",
+    "Didn't find what you were looking for?"
+  ],
+  "anchors": [
+    {
+      "text": "Skip to main content",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets#main-content"
+    },
+    {
+      "text": "",
+      "href": "https://support.worldquantbrain.com/hc/en-us"
+    },
+    {
+      "text": "BRAIN platform",
+      "href": "https://platform.worldquantbrain.com/"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/zh-cn/community/topics"
+    },
+    {
+      "text": "Submit a request",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests/new"
+    },
+    {
+      "text": "My activities",
+      "href": "https://support.worldquantbrain.com/hc/en-us/requests"
+    },
+    {
+      "text": "My profile",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/39817559344663"
+    },
+    {
+      "text": "Sign out",
+      "href": "https://support.worldquantbrain.com/access/logout?return_to=https%3A%2F%2Fsupport.worldquantbrain.com%2Fhc%2Fen-us"
+    },
+    {
+      "text": "简体中文",
+      "href": "https://support.worldquantbrain.com/hc/change_language/zh-cn?return_to=%2Fhc%2Fzh-cn%2Fcommunity%2Fposts%2F27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets"
+    },
+    {
+      "text": "Community",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics"
+    },
+    {
+      "text": "BRAIN TIPS",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+    },
+    {
+      "text": "LN92324",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4601131163927-LN92324"
+    },
+    {
+      "text": "Date",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets?sort_by=created_at"
+    },
+    {
+      "text": "Votes",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets?sort_by=votes"
+    },
+    {
+      "text": "VV63697",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22631087402903-VV63697"
+    },
+    {
+      "text": "SK72105",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8203727051799-SK72105"
+    },
+    {
+      "text": "TN33707",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/5427498076567-TN33707"
+    },
+    {
+      "text": "LI36776",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/12626102601111-LI36776"
+    },
+    {
+      "text": "TN48752",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13714359745431-TN48752"
+    },
+    {
+      "text": "VK91272",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11425569673111-VK91272"
+    },
+    {
+      "text": "BA51127",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8958551180311-BA51127"
+    },
+    {
+      "text": "QG16026",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/22532757009175-QG16026"
+    },
+    {
+      "text": "AM60509",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/25127049757975-AM60509"
+    },
+    {
+      "text": "TT55495",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/13132630342807-TT55495"
+    },
+    {
+      "text": "CC40930",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/17789930292503-CC40930"
+    },
+    {
+      "text": "HN32788",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/29126399891991-HN32788"
+    },
+    {
+      "text": "AK52014",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4609576979735-AK52014"
+    },
+    {
+      "text": "KP26017",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/14992337006103-KP26017"
+    },
+    {
+      "text": "DS74354",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/7510379603863-DS74354"
+    },
+    {
+      "text": "NT29269",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/7428096353815-NT29269"
+    },
+    {
+      "text": "WX16829",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/8702256081943-WX16829"
+    },
+    {
+      "text": "SY65468",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23932095260567-SY65468"
+    },
+    {
+      "text": "NG78013",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/16142990999575-NG78013"
+    },
+    {
+      "text": "CT68712",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15219840701719-CT68712"
+    },
+    {
+      "text": "GN51437",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/27847996673431-GN51437"
+    },
+    {
+      "text": "LK29993",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/15761819009303-LK29993"
+    },
+    {
+      "text": "NN89351",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/1533055233262-NN89351"
+    },
+    {
+      "text": "VN28696",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/26423189019799-VN28696"
+    },
+    {
+      "text": "LH38752",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/4842912366615-LH38752"
+    },
+    {
+      "text": "HV77283",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/23521701737751-HV77283"
+    },
+    {
+      "text": "HJ33503",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/26939975866775-HJ33503"
+    },
+    {
+      "text": "DH50715",
+      "href": "https://support.worldquantbrain.com/hc/en-us/profiles/11113805224343-DH50715"
+    },
+    {
+      "text": "Next ›",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets?page=2#comments"
+    },
+    {
+      "text": "New post",
+      "href": "https://support.worldquantbrain.com/hc/en-us/community/posts/new"
+    }
+  ],
+  "code_blocks": [
+    "group_neutralize",
+    "zscore",
+    "regression_neut"
+  ],
+  "meta": {
+    "title_length": 82,
+    "html_length": 501525,
+    "text_length": 18251,
+    "anchor_count": 44,
+    "code_block_count": 3
+  }
+}

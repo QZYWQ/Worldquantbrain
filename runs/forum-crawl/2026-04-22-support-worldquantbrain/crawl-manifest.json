@@ -1,0 +1,2021 @@
+{
+  "generated_at": "2026-04-22T10:30:00+0800",
+  "output_root": "runs/forum-crawl/2026-04-22-support-worldquantbrain",
+  "browser_binary": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "browser_profile_source_root": "/Users/zpdedn/Library/Application Support/Google/Chrome",
+  "browser_profile_source_directory": "Profile 1",
+  "browser_profile_cache_root": "/Users/zpdedn/.cache/worldquant-forum-crawler/Profile_1-bundle",
+  "seeds": [
+    "https://support.worldquantbrain.com/hc/en-us/community/topics",
+    "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS"
+  ],
+  "max_pages": 100,
+  "max_depth": 2,
+  "page_wait_seconds": 20,
+  "poll_interval": 1.0,
+  "page_count": 100,
+  "error_count": 0,
+  "pages": [
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "title": "Topics – WorldQuant BRAIN",
+      "kind": "topic-index",
+      "depth": 0,
+      "via": null,
+      "source": "seed",
+      "fetched_at": "2026-04-22T10:24:53+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-64c34bf648.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-64c34bf648.txt",
+      "meta": {
+        "title_length": 25,
+        "html_length": 89482,
+        "text_length": 2961,
+        "anchor_count": 37,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 0,
+      "via": null,
+      "source": "seed",
+      "fetched_at": "2026-04-22T10:24:55+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-be9818b172.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-be9818b172.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 142864,
+        "text_length": 6555,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "title": "主题 – WorldQuant BRAIN-CN",
+      "kind": "topic-index",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:24:57+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-f43d47e5dc.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-f43d47e5dc.txt",
+      "meta": {
+        "title_length": 24,
+        "html_length": 89039,
+        "text_length": 2586,
+        "anchor_count": 37,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts",
+      "title": "Posts – WorldQuant BRAIN",
+      "kind": "page",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:00+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-547419730b.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-547419730b.txt",
+      "meta": {
+        "title_length": 24,
+        "html_length": 128407,
+        "text_length": 7218,
+        "anchor_count": 70,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/new",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/new",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/new",
+      "title": "New post – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:01+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-new-b07cf70856.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-new-b07cf70856.txt",
+      "meta": {
+        "title_length": 27,
+        "html_length": 79462,
+        "text_length": 849,
+        "anchor_count": 11,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/4405602640663-General-Discussion",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/4405602640663-General-Discussion",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/4405602640663-General-Discussion",
+      "title": "General Discussion – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:04+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-4405602640663-General-Discussion-be711296a4.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-4405602640663-General-Discussion-be711296a4.txt",
+      "meta": {
+        "title_length": 37,
+        "html_length": 141788,
+        "text_length": 6178,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B",
+      "title": "中文论坛 – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:05+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-12913416465431-E4-B8-AD-E6-96-87-E8-AE-BA-E5-9D-9B-38b7610de3.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-12913416465431-E4-B8-AD-E6-96-87-E8-AE-BA-E5-9D-9B-38b7610de3.txt",
+      "meta": {
+        "title_length": 23,
+        "html_length": 146102,
+        "text_length": 5775,
+        "anchor_count": 52,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/4419282859415-Getting-started-with-Research",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/4419282859415-Getting-started-with-Research",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/4419282859415-Getting-started-with-Research",
+      "title": "Getting started with Research – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:08+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-4419282859415-Getting-started-with-Research-856d73639b.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-4419282859415-Getting-started-with-Research-856d73639b.txt",
+      "meta": {
+        "title_length": 48,
+        "html_length": 142250,
+        "text_length": 6289,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13724934223127-Research-Papers-for-Users",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13724934223127-Research-Papers-for-Users",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13724934223127-Research-Papers-for-Users",
+      "title": "Research Papers for Users – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:10+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-13724934223127-Research-Papers-for-Users-cc6e382769.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-13724934223127-Research-Papers-for-Users-cc6e382769.txt",
+      "meta": {
+        "title_length": 44,
+        "html_length": 138932,
+        "text_length": 5898,
+        "anchor_count": 49,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13629734679319-Global-Research-webinars-Users",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13629734679319-Global-Research-webinars-Users",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13629734679319-Global-Research-webinars-Users",
+      "title": "Global Research webinars (Users) – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:12+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-13629734679319-Global-Research-webinars-Users-d9f0bdbc25.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-13629734679319-Global-Research-webinars-Users-d9f0bdbc25.txt",
+      "meta": {
+        "title_length": 51,
+        "html_length": 142187,
+        "text_length": 6201,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13587235460759-Quant-Chess-Football",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13587235460759-Quant-Chess-Football",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/13587235460759-Quant-Chess-Football",
+      "title": "Quant-Chess-Football – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:14+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-13587235460759-Quant-Chess-Football-89c679ab61.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-13587235460759-Quant-Chess-Football-89c679ab61.txt",
+      "meta": {
+        "title_length": 39,
+        "html_length": 111761,
+        "text_length": 2339,
+        "anchor_count": 29,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr",
+      "title": "IQC 2026 2025 Webinar Recording (9th Apr) – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:18+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr-a104ad049f.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr-a104ad049f.txt",
+      "meta": {
+        "title_length": 60,
+        "html_length": 244195,
+        "text_length": 2720,
+        "anchor_count": 23,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr",
+      "title": "IQC 2026 2025 Webinar Recording (2nd Apr) – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:20+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr-230fc00c96.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr-230fc00c96.txt",
+      "meta": {
+        "title_length": 60,
+        "html_length": 110668,
+        "text_length": 1506,
+        "anchor_count": 18,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar",
+      "title": "IQC 2026 2025 Webinar Recording (26th Mar) – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:21+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar-524fc5d55d.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar-524fc5d55d.txt",
+      "meta": {
+        "title_length": 61,
+        "html_length": 110677,
+        "text_length": 1509,
+        "anchor_count": 18,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+      "title": "🖊️ Passing Submission Test: How to improve Fitness – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:26+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-30873523677847-Passing-Submission-Test-How-to-improve-Fitness-227353dede.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-30873523677847-Passing-Submission-Test-How-to-improve-Fitness-227353dede.txt",
+      "meta": {
+        "title_length": 69,
+        "html_length": 475542,
+        "text_length": 10589,
+        "anchor_count": 47,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial",
+      "title": "How to start Alpha research using the BRAIN Tutorial🧑‍🏫🪄 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:30+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial-8741160a9f.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial-8741160a9f.txt",
+      "meta": {
+        "title_length": 75,
+        "html_length": 452660,
+        "text_length": 10302,
+        "anchor_count": 49,
+        "code_block_count": 7
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4",
+      "title": "新人成长血泪史！VF0.5->0.56->0.91：我踩过的坑和汗水 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:34+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-30684190103319-E6-96-B0-E4-BA-BA-E6-88-90-E9-95-BF-E8-A1-80-E6-B3-AA-E5-8F-B2-VF0-5-0-56-0-91-E6-88-91-E8-B8-A9-E8-BF-87-E7-9A-84-E5-9D-91-E5-92-8C-E6-B1-97-E6-B0-B4-17ad7867c2.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-30684190103319-E6-96-B0-E4-BA-BA-E6-88-90-E9-95-BF-E8-A1-80-E6-B3-AA-E5-8F-B2-VF0-5-0-56-0-91-E6-88-91-E8-B8-A9-E8-BF-87-E7-9A-84-E5-9D-91-E5-92-8C-E6-B1-97-E6-B0-B4-17ad7867c2.txt",
+      "meta": {
+        "title_length": 53,
+        "html_length": 501165,
+        "text_length": 14013,
+        "anchor_count": 43,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand",
+      "title": "【Alpha Idea】The Information Content of Option Demand – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:36+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-23941370595991-Alpha-Idea-The-Information-Content-of-Option-Demand-f2937c4a59.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-23941370595991-Alpha-Idea-The-Information-Content-of-Option-Demand-f2937c4a59.txt",
+      "meta": {
+        "title_length": 71,
+        "html_length": 242514,
+        "text_length": 2644,
+        "anchor_count": 20,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter",
+      "title": "📣 新徽章：\"Top Commenter\" 🏅 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:38+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20022067378711-E6-96-B0-E5-BE-BD-E7-AB-A0-Top-Commenter-9727fb7f4f.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20022067378711-E6-96-B0-E5-BE-BD-E7-AB-A0-Top-Commenter-9727fb7f4f.txt",
+      "meta": {
+        "title_length": 42,
+        "html_length": 106437,
+        "text_length": 1265,
+        "anchor_count": 13,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95",
+      "title": "BRAIN 版本更新记录 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:40+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-19420568914839-BRAIN-E7-89-88-E6-9C-AC-E6-9B-B4-E6-96-B0-E8-AE-B0-E5-BD-95-880f3ae12a.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-19420568914839-BRAIN-E7-89-88-E6-9C-AC-E6-9B-B4-E6-96-B0-E8-AE-B0-E5-BD-95-880f3ae12a.txt",
+      "meta": {
+        "title_length": 31,
+        "html_length": 106467,
+        "text_length": 1177,
+        "anchor_count": 14,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD",
+      "title": "【Alpha灵感启示录】合集（持续更新收录中） – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:44+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-19273239621399-Alpha-E7-81-B5-E6-84-9F-E5-90-AF-E7-A4-BA-E5-BD-95-E5-90-88-E9-9B-86-E6-8C-81-E7-BB-AD-E6-9B-B4-E6-96-B0-E6-94-B6-E5-BD-95-E4-B8-AD-d30bb19ff4.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-19273239621399-Alpha-E7-81-B5-E6-84-9F-E5-90-AF-E7-A4-BA-E5-BD-95-E5-90-88-E9-9B-86-E6-8C-81-E7-BB-AD-E6-9B-B4-E6-96-B0-E6-94-B6-E5-BD-95-E4-B8-AD-d30bb19ff4.txt",
+      "meta": {
+        "title_length": 42,
+        "html_length": 353255,
+        "text_length": 8847,
+        "anchor_count": 167,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE",
+      "title": "Options, Relationship and Vector Datafields 2023 IQC培训视频回放 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:47+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC-E5-9F-B9-E8-AE-AD-E8-A7-86-E9-A2-91-E5-9B-9E-E6-94-BE-d2b1913a46.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC-E5-9F-B9-E8-AE-AD-E8-A7-86-E9-A2-91-E5-9B-9E-E6-94-BE-d2b1913a46.txt",
+      "meta": {
+        "title_length": 77,
+        "html_length": 241793,
+        "text_length": 1982,
+        "anchor_count": 22,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset",
+      "title": "[BRAIN TIPS] 6 ways to quickly evaluate a new dataset – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:51+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-11807866133911-BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset-51955fc6ac.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-11807866133911-BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset-51955fc6ac.txt",
+      "meta": {
+        "title_length": 72,
+        "html_length": 355055,
+        "text_length": 9925,
+        "anchor_count": 32,
+        "code_block_count": 1
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39728815499543",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39728815499543",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39728815499543",
+      "title": "26年Q1 Genius定级已更新，Q2赛季加油！ – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:55+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-39728815499543-a2ffaaaaa7.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-39728815499543-a2ffaaaaa7.txt",
+      "meta": {
+        "title_length": 44,
+        "html_length": 251077,
+        "text_length": 2078,
+        "anchor_count": 19,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35220740797975",
+      "title": "【远程控制电脑】免费+高质量+可手机控制 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:25:58+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-35220740797975-49aac44931.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-35220740797975-49aac44931.txt",
+      "meta": {
+        "title_length": 39,
+        "html_length": 340162,
+        "text_length": 6661,
+        "anchor_count": 25,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39467969845783",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39467969845783",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39467969845783",
+      "title": "新手课代码分享 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:01+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-39467969845783-24b13dde1c.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-39467969845783-24b13dde1c.txt",
+      "meta": {
+        "title_length": 26,
+        "html_length": 259147,
+        "text_length": 7255,
+        "anchor_count": 19,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39200810917015",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39200810917015",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39200810917015",
+      "title": "2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 1作业 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:03+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-39200810917015-38ed066894.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-39200810917015-38ed066894.txt",
+      "meta": {
+        "title_length": 63,
+        "html_length": 485600,
+        "text_length": 10713,
+        "anchor_count": 52,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/39411791834647",
+      "title": "2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:07+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-39411791834647-8d78a1331f.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-39411791834647-8d78a1331f.txt",
+      "meta": {
+        "title_length": 63,
+        "html_length": 523061,
+        "text_length": 28930,
+        "anchor_count": 52,
+        "code_block_count": 8
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/new?community_post%5Btopic_id%5D=18068926798871",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/new?community_post%5Btopic_id%5D=18068926798871",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/new?community_post%5Btopic_id%5D=18068926798871",
+      "title": "New post – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:09+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-new-48506878d4.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-new-48506878d4.txt",
+      "meta": {
+        "title_length": 27,
+        "html_length": 79566,
+        "text_length": 849,
+        "anchor_count": 11,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=created_at",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=created_at",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=created_at",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:11+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-dd4627343e.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-dd4627343e.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 143115,
+        "text_length": 6555,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=recent_activity",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=recent_activity",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=recent_activity",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:13+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-ada58dba7e.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-ada58dba7e.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 143018,
+        "text_length": 6563,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=votes",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=votes",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=votes",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:14+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-337e325911.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-337e325911.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 143366,
+        "text_length": 6670,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=comments",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=comments",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?sort_by=comments",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:16+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-925a2f8a47.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-925a2f8a47.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 143020,
+        "text_length": 6501,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=all",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=all",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=all",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:18+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-3d340cd755.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-3d340cd755.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 143102,
+        "text_length": 6555,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=planned",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=planned",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=planned",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:20+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-4f72b3a178.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-4f72b3a178.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 101014,
+        "text_length": 1127,
+        "anchor_count": 21,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=not_planned",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=not_planned",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=not_planned",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:22+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-fc01709704.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-fc01709704.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 101042,
+        "text_length": 1131,
+        "anchor_count": 21,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=completed",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=completed",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=completed",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:23+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-0c6a545eea.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-0c6a545eea.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 101028,
+        "text_length": 1129,
+        "anchor_count": 21,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=answered",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=answered",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=answered",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:25+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-cf91e17566.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-cf91e17566.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 101027,
+        "text_length": 1128,
+        "anchor_count": 21,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=none",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=none",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?filter_by=none",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:27+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-914d9cb70b.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-914d9cb70b.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 143041,
+        "text_length": 6561,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518270719511--BRAIN-TIPS-Demystifying-Simulation-Settings-NaN-Handling",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518270719511--BRAIN-TIPS-Demystifying-Simulation-Settings-NaN-Handling",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518270719511--BRAIN-TIPS-Demystifying-Simulation-Settings-NaN-Handling",
+      "title": "[BRAIN TIPS] Demystifying Simulation Settings: NaN Handling – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:30+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-17518270719511-BRAIN-TIPS-Demystifying-Simulation-Settings-NaN-Handling-096c484aa3.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-17518270719511-BRAIN-TIPS-Demystifying-Simulation-Settings-NaN-Handling-096c484aa3.txt",
+      "meta": {
+        "title_length": 78,
+        "html_length": 396331,
+        "text_length": 14357,
+        "anchor_count": 33,
+        "code_block_count": 3
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/17518278995991--BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization",
+      "title": "[BRAIN TIPS] Demystifying Simulation Settings: Pasteurization – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:34+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-17518278995991-BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization-46b25ebf9d.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-17518278995991-BRAIN-TIPS-Demystifying-Simulation-Settings-Pasteurization-46b25ebf9d.txt",
+      "meta": {
+        "title_length": 80,
+        "html_length": 318157,
+        "text_length": 9089,
+        "anchor_count": 27,
+        "code_block_count": 1
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35254553150231-The-Hidden-Risk-Filter-How-Statistical-Neutralization-Sharpens-Your-Signals",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35254553150231-The-Hidden-Risk-Filter-How-Statistical-Neutralization-Sharpens-Your-Signals",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/35254553150231-The-Hidden-Risk-Filter-How-Statistical-Neutralization-Sharpens-Your-Signals",
+      "title": "The Hidden Risk Filter: How Statistical Neutralization Sharpens Your Signals – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:37+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-35254553150231-The-Hidden-Risk-Filter-How-Statistical-Neutralization-Sharpens-Your-Signals-3438864b7c.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-35254553150231-The-Hidden-Risk-Filter-How-Statistical-Neutralization-Sharpens-Your-Signals-3438864b7c.txt",
+      "meta": {
+        "title_length": 95,
+        "html_length": 274860,
+        "text_length": 4237,
+        "anchor_count": 20,
+        "code_block_count": 1
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28583502008599-My-weight-is-continuously-decreasing-I-have-tried-everything-can-anyone-give-some-suggestions-so-that-it-starts-increasing",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28583502008599-My-weight-is-continuously-decreasing-I-have-tried-everything-can-anyone-give-some-suggestions-so-that-it-starts-increasing",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28583502008599-My-weight-is-continuously-decreasing-I-have-tried-everything-can-anyone-give-some-suggestions-so-that-it-starts-increasing",
+      "title": "My weight is continuously decreasing,I have tried everything can anyone give some suggestions so that it starts increasing? – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:41+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-28583502008599-My-weight-is-continuously-decreasing-I-have-tried-everything-can-anyone-give-some-suggestions-so-that-it-starts-increasing-d92a22d987.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-28583502008599-My-weight-is-continuously-decreasing-I-have-tried-everything-can-anyone-give-some-suggestions-so-that-it-starts-increasing-d92a22d987.txt",
+      "meta": {
+        "title_length": 142,
+        "html_length": 507673,
+        "text_length": 21529,
+        "anchor_count": 38,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/28514143456407-Passing-the-IS-Ladder-Sharpe",
+      "title": "Passing the IS-Ladder Sharpe ? – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:46+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-28514143456407-Passing-the-IS-Ladder-Sharpe-112934b9ee.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-28514143456407-Passing-the-IS-Ladder-Sharpe-112934b9ee.txt",
+      "meta": {
+        "title_length": 49,
+        "html_length": 505608,
+        "text_length": 22326,
+        "anchor_count": 40,
+        "code_block_count": 3
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27841757470359-How-to-increase-Sharpe-without-overfitting",
+      "title": "How to increase Sharpe without overfitting? – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:50+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-27841757470359-How-to-increase-Sharpe-without-overfitting-5471e24d8d.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-27841757470359-How-to-increase-Sharpe-without-overfitting-5471e24d8d.txt",
+      "meta": {
+        "title_length": 62,
+        "html_length": 501783,
+        "text_length": 17315,
+        "anchor_count": 43,
+        "code_block_count": 4
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets",
+      "title": "Reduce correlation by combining some fields from other datasets – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:26:54+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets-e4667878d7.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-27630690341399-Reduce-correlation-by-combining-some-fields-from-other-datasets-e4667878d7.txt",
+      "meta": {
+        "title_length": 82,
+        "html_length": 501525,
+        "text_length": 18251,
+        "anchor_count": 44,
+        "code_block_count": 3
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27619597071639-How-i-find-o-s-ratio-positive-and-last-2-years-pnl-positive",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27619597071639-How-i-find-o-s-ratio-positive-and-last-2-years-pnl-positive",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27619597071639-How-i-find-o-s-ratio-positive-and-last-2-years-pnl-positive",
+      "title": "How i find o/s ratio positive and last 2 years pnl positive – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:00+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-27619597071639-How-i-find-o-s-ratio-positive-and-last-2-years-pnl-positive-d7a9c77ca7.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-27619597071639-How-i-find-o-s-ratio-positive-and-last-2-years-pnl-positive-d7a9c77ca7.txt",
+      "meta": {
+        "title_length": 78,
+        "html_length": 401403,
+        "text_length": 11362,
+        "anchor_count": 33,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82",
+      "title": "Sub-universe Sharpe of 0.32 is below cutoff of 0.82. – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:04+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82-af31d84712.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-27479493466647-Sub-universe-Sharpe-of-0-32-is-below-cutoff-of-0-82-af31d84712.txt",
+      "meta": {
+        "title_length": 71,
+        "html_length": 413377,
+        "text_length": 12250,
+        "anchor_count": 34,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27402122384663-Learning-fast-expression-seeing-the-output-of-operators-on-the-data",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27402122384663-Learning-fast-expression-seeing-the-output-of-operators-on-the-data",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27402122384663-Learning-fast-expression-seeing-the-output-of-operators-on-the-data",
+      "title": "Learning fast expression, seeing the output of operators on the data – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:08+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-27402122384663-Learning-fast-expression-seeing-the-output-of-operators-on-the-data-534ae8cbec.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-27402122384663-Learning-fast-expression-seeing-the-output-of-operators-on-the-data-534ae8cbec.txt",
+      "meta": {
+        "title_length": 87,
+        "html_length": 423447,
+        "text_length": 13727,
+        "anchor_count": 35,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27360764713111-How-to-record-entry-price-and-exit-trade",
+      "title": "How to record entry price and exit trade – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:12+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-27360764713111-How-to-record-entry-price-and-exit-trade-35de23f516.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-27360764713111-How-to-record-entry-price-and-exit-trade-35de23f516.txt",
+      "meta": {
+        "title_length": 59,
+        "html_length": 410162,
+        "text_length": 13001,
+        "anchor_count": 32,
+        "code_block_count": 23
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27102345814039-ATOM2024-GLB-Theme-multiplier",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27102345814039-ATOM2024-GLB-Theme-multiplier",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/27102345814039-ATOM2024-GLB-Theme-multiplier",
+      "title": "ATOM2024 GLB Theme multiplier – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:17+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-27102345814039-ATOM2024-GLB-Theme-multiplier-4f6cb75799.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-27102345814039-ATOM2024-GLB-Theme-multiplier-4f6cb75799.txt",
+      "meta": {
+        "title_length": 48,
+        "html_length": 382883,
+        "text_length": 10532,
+        "anchor_count": 31,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/26750743873943-How-to-reduce-self-correlation-and-production-correlation",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/26750743873943-How-to-reduce-self-correlation-and-production-correlation",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/26750743873943-How-to-reduce-self-correlation-and-production-correlation",
+      "title": "How to reduce self correlation and production correlation – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:21+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-26750743873943-How-to-reduce-self-correlation-and-production-correlation-bae3fc090a.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-26750743873943-How-to-reduce-self-correlation-and-production-correlation-bae3fc090a.txt",
+      "meta": {
+        "title_length": 76,
+        "html_length": 497270,
+        "text_length": 16722,
+        "anchor_count": 44,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/26583211467031--BRAIN-TIPS-How-does-the-combo-logic-benefit-Super-Alphas",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/26583211467031--BRAIN-TIPS-How-does-the-combo-logic-benefit-Super-Alphas",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/26583211467031--BRAIN-TIPS-How-does-the-combo-logic-benefit-Super-Alphas",
+      "title": "[BRAIN TIPS] How does the combo logic benefit Super Alphas? – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:26+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-26583211467031-BRAIN-TIPS-How-does-the-combo-logic-benefit-Super-Alphas-6a1ac276db.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-26583211467031-BRAIN-TIPS-How-does-the-combo-logic-benefit-Super-Alphas-6a1ac276db.txt",
+      "meta": {
+        "title_length": 78,
+        "html_length": 443258,
+        "text_length": 15854,
+        "anchor_count": 40,
+        "code_block_count": 2
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/24748801122583-Day-1-homework",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/24748801122583-Day-1-homework",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/24748801122583-Day-1-homework",
+      "title": "Day 1 homework – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:30+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-24748801122583-Day-1-homework-bc864aca8e.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-24748801122583-Day-1-homework-bc864aca8e.txt",
+      "meta": {
+        "title_length": 33,
+        "html_length": 322635,
+        "text_length": 7885,
+        "anchor_count": 25,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23726331730327-Incorporating-Volatility-into-Chinese-Market-Trades",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23726331730327-Incorporating-Volatility-into-Chinese-Market-Trades",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23726331730327-Incorporating-Volatility-into-Chinese-Market-Trades",
+      "title": "Incorporating Volatility into Chinese Market Trades – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:33+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-23726331730327-Incorporating-Volatility-into-Chinese-Market-Trades-87771f52c4.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-23726331730327-Incorporating-Volatility-into-Chinese-Market-Trades-87771f52c4.txt",
+      "meta": {
+        "title_length": 70,
+        "html_length": 314178,
+        "text_length": 7022,
+        "anchor_count": 27,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23581999495831-Comparing-Stocks-to-Peers",
+      "title": "Comparing Stocks to Peers – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:37+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-23581999495831-Comparing-Stocks-to-Peers-1f8c8bb55c.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-23581999495831-Comparing-Stocks-to-Peers-1f8c8bb55c.txt",
+      "meta": {
+        "title_length": 44,
+        "html_length": 322779,
+        "text_length": 7263,
+        "anchor_count": 27,
+        "code_block_count": 3
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/23100726090007-can-sentiment-factor-be-used-directly",
+      "title": "can sentiment factor be used directly? – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:40+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-23100726090007-can-sentiment-factor-be-used-directly-4c758442da.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-23100726090007-can-sentiment-factor-be-used-directly-4c758442da.txt",
+      "meta": {
+        "title_length": 57,
+        "html_length": 256028,
+        "text_length": 2857,
+        "anchor_count": 21,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/22205077935895--BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha",
+      "title": "[BRAIN TIPS] How can I use the test period to improve the OS performance of my Alpha? – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:44+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-22205077935895-BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha-0aa203bf0d.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-22205077935895-BRAIN-TIPS-How-can-I-use-the-test-period-to-improve-the-OS-performance-of-my-Alpha-0aa203bf0d.txt",
+      "meta": {
+        "title_length": 104,
+        "html_length": 290750,
+        "text_length": 8303,
+        "anchor_count": 23,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051361858327--BRAIN-TIPS-Finding-Alphas-Price-Volume-Data",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051361858327--BRAIN-TIPS-Finding-Alphas-Price-Volume-Data",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051361858327--BRAIN-TIPS-Finding-Alphas-Price-Volume-Data",
+      "title": "[BRAIN TIPS] Finding Alphas: Price Volume Data – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:48+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20051361858327-BRAIN-TIPS-Finding-Alphas-Price-Volume-Data-e5bc2b2553.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20051361858327-BRAIN-TIPS-Finding-Alphas-Price-Volume-Data-e5bc2b2553.txt",
+      "meta": {
+        "title_length": 65,
+        "html_length": 319898,
+        "text_length": 9660,
+        "anchor_count": 28,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051403346583--BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data",
+      "title": "[BRAIN TIPS] Finding Alphas: Fundamental and Model Data – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:52+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20051403346583-BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data-5b0a7e2b6d.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20051403346583-BRAIN-TIPS-Finding-Alphas-Fundamental-and-Model-Data-5b0a7e2b6d.txt",
+      "meta": {
+        "title_length": 74,
+        "html_length": 309989,
+        "text_length": 9912,
+        "anchor_count": 29,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051405370903--BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting",
+      "title": "[BRAIN TIPS] Finding Alphas: Signal or Overfitting? – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:55+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20051405370903-BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting-180730ae60.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20051405370903-BRAIN-TIPS-Finding-Alphas-Signal-or-Overfitting-180730ae60.txt",
+      "meta": {
+        "title_length": 70,
+        "html_length": 288793,
+        "text_length": 7109,
+        "anchor_count": 24,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20457074342807--BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT",
+      "title": "[BRAIN TIPS] Generate insights from a research paper using GPT – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:27:59+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20457074342807-BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT-36a76865c2.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20457074342807-BRAIN-TIPS-Generate-insights-from-a-research-paper-using-GPT-36a76865c2.txt",
+      "meta": {
+        "title_length": 81,
+        "html_length": 308242,
+        "text_length": 8371,
+        "anchor_count": 25,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051406364695--BRAIN-TIPS-Finding-Alphas-News-and-Social-Media",
+      "title": "[BRAIN TIPS] Finding Alphas: News and Social Media – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:02+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20051406364695-BRAIN-TIPS-Finding-Alphas-News-and-Social-Media-852642a85a.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20051406364695-BRAIN-TIPS-Finding-Alphas-News-and-Social-Media-852642a85a.txt",
+      "meta": {
+        "title_length": 69,
+        "html_length": 288509,
+        "text_length": 6775,
+        "anchor_count": 29,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051458087575--BRAIN-TIPS-Finding-Alphas-Alpha-and-Risk-Factors",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051458087575--BRAIN-TIPS-Finding-Alphas-Alpha-and-Risk-Factors",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051458087575--BRAIN-TIPS-Finding-Alphas-Alpha-and-Risk-Factors",
+      "title": "[BRAIN TIPS] Finding Alphas: Alpha and Risk Factors – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:05+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20051458087575-BRAIN-TIPS-Finding-Alphas-Alpha-and-Risk-Factors-610e9472c6.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20051458087575-BRAIN-TIPS-Finding-Alphas-Alpha-and-Risk-Factors-610e9472c6.txt",
+      "meta": {
+        "title_length": 70,
+        "html_length": 271188,
+        "text_length": 7511,
+        "anchor_count": 22,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/20051507959959--BRAIN-TIPS-Finding-Alphas-Options-Data",
+      "title": "[BRAIN TIPS] Finding Alphas: Options Data – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:09+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-20051507959959-BRAIN-TIPS-Finding-Alphas-Options-Data-9c8c422d6b.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-20051507959959-BRAIN-TIPS-Finding-Alphas-Options-Data-9c8c422d6b.txt",
+      "meta": {
+        "title_length": 60,
+        "html_length": 291417,
+        "text_length": 9707,
+        "anchor_count": 29,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19344464221335--BRAIN-TIPS-Sequencing-Multiple-Operators-in-an-Expression",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19344464221335--BRAIN-TIPS-Sequencing-Multiple-Operators-in-an-Expression",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19344464221335--BRAIN-TIPS-Sequencing-Multiple-Operators-in-an-Expression",
+      "title": "[BRAIN TIPS] Sequencing Multiple Operators in an Expression – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:13+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-19344464221335-BRAIN-TIPS-Sequencing-Multiple-Operators-in-an-Expression-527fdd617a.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-19344464221335-BRAIN-TIPS-Sequencing-Multiple-Operators-in-an-Expression-527fdd617a.txt",
+      "meta": {
+        "title_length": 78,
+        "html_length": 305087,
+        "text_length": 6800,
+        "anchor_count": 25,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19609241215511-reducing-production-correlation-without-reducing-sharpe-or-fitness-much",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19609241215511-reducing-production-correlation-without-reducing-sharpe-or-fitness-much",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/19609241215511-reducing-production-correlation-without-reducing-sharpe-or-fitness-much",
+      "title": "reducing production correlation without reducing sharpe or fitness much – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:16+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-19609241215511-reducing-production-correlation-without-reducing-sharpe-or-fitness-much-b11ef4ad9f.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-19609241215511-reducing-production-correlation-without-reducing-sharpe-or-fitness-much-b11ef4ad9f.txt",
+      "meta": {
+        "title_length": 90,
+        "html_length": 315166,
+        "text_length": 6276,
+        "anchor_count": 26,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/18572883332247--BRAIN-TIPS-Exploring-Sources-for-Alpha-Ideas",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/18572883332247--BRAIN-TIPS-Exploring-Sources-for-Alpha-Ideas",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/18572883332247--BRAIN-TIPS-Exploring-Sources-for-Alpha-Ideas",
+      "title": "[BRAIN TIPS] Exploring Sources for Alpha Ideas – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:20+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-18572883332247-BRAIN-TIPS-Exploring-Sources-for-Alpha-Ideas-0748f865d6.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-18572883332247-BRAIN-TIPS-Exploring-Sources-for-Alpha-Ideas-0748f865d6.txt",
+      "meta": {
+        "title_length": 65,
+        "html_length": 315321,
+        "text_length": 7059,
+        "anchor_count": 37,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts/18572825645463--BRAIN-TIPS-Liquidity-of-a-Universe",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/18572825645463--BRAIN-TIPS-Liquidity-of-a-Universe",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts/18572825645463--BRAIN-TIPS-Liquidity-of-a-Universe",
+      "title": "[BRAIN TIPS] Liquidity of a Universe – WorldQuant BRAIN",
+      "kind": "post",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:24+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-18572825645463-BRAIN-TIPS-Liquidity-of-a-Universe-fc0ae26347.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-18572825645463-BRAIN-TIPS-Liquidity-of-a-Universe-fc0ae26347.txt",
+      "meta": {
+        "title_length": 55,
+        "html_length": 295549,
+        "text_length": 6045,
+        "anchor_count": 23,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?after=ZAAAAAAAAAAAZPtpUGUAAAAAaZfRrFLkEAAA",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?after=ZAAAAAAAAAAAZPtpUGUAAAAAaZfRrFLkEAAA",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?after=ZAAAAAAAAAAAZPtpUGUAAAAAaZfRrFLkEAAA",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:26+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-abcc6cf34c.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-abcc6cf34c.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 143230,
+        "text_length": 6414,
+        "anchor_count": 55,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?before=bGFzdF9wYWdl",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?before=bGFzdF9wYWdl",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS?before=bGFzdF9wYWdl",
+      "title": "BRAIN TIPS – WorldQuant BRAIN",
+      "kind": "topic",
+      "depth": 1,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/topics/18068926798871-BRAIN-TIPS",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:28+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-8f77339094.html",
+      "text_relpath": "raw/pages/hc-en-us-community-topics-18068926798871-BRAIN-TIPS-8f77339094.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 142493,
+        "text_length": 6540,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts",
+      "title": "帖子 – WorldQuant BRAIN-CN",
+      "kind": "page",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:30+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-a85c888663.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-a85c888663.txt",
+      "meta": {
+        "title_length": 24,
+        "html_length": 127369,
+        "text_length": 6286,
+        "anchor_count": 70,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/new",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/new",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/new",
+      "title": "新建帖子 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:32+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-new-5445d34f49.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-new-5445d34f49.txt",
+      "meta": {
+        "title_length": 26,
+        "html_length": 79193,
+        "text_length": 744,
+        "anchor_count": 11,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/4405602640663-General-Discussion",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/4405602640663-General-Discussion",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/4405602640663-General-Discussion",
+      "title": "General Discussion – WorldQuant BRAIN-CN",
+      "kind": "topic",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:34+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-4405602640663-General-Discussion-77395c57af.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-4405602640663-General-Discussion-77395c57af.txt",
+      "meta": {
+        "title_length": 40,
+        "html_length": 140966,
+        "text_length": 5484,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/12913416465431-%E4%B8%AD%E6%96%87%E8%AE%BA%E5%9D%9B",
+      "title": "中文论坛 – WorldQuant BRAIN-CN",
+      "kind": "topic",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:36+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-12913416465431-E4-B8-AD-E6-96-87-E8-AE-BA-E5-9D-9B-c2b7849926.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-12913416465431-E4-B8-AD-E6-96-87-E8-AE-BA-E5-9D-9B-c2b7849926.txt",
+      "meta": {
+        "title_length": 26,
+        "html_length": 145232,
+        "text_length": 5033,
+        "anchor_count": 52,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/18068926798871-BRAIN-TIPS",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/18068926798871-BRAIN-TIPS",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/18068926798871-BRAIN-TIPS",
+      "title": "BRAIN TIPS – WorldQuant BRAIN-CN",
+      "kind": "topic",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:39+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-18068926798871-BRAIN-TIPS-89fd4915ff.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-18068926798871-BRAIN-TIPS-89fd4915ff.txt",
+      "meta": {
+        "title_length": 32,
+        "html_length": 142005,
+        "text_length": 5826,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/4419282859415-Getting-started-with-Research",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/4419282859415-Getting-started-with-Research",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/4419282859415-Getting-started-with-Research",
+      "title": "Getting started with Research – WorldQuant BRAIN-CN",
+      "kind": "topic",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:41+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-4419282859415-Getting-started-with-Research-4e83ddf5d8.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-4419282859415-Getting-started-with-Research-4e83ddf5d8.txt",
+      "meta": {
+        "title_length": 51,
+        "html_length": 141444,
+        "text_length": 5609,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13724934223127-Research-Papers-for-Users",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13724934223127-Research-Papers-for-Users",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13724934223127-Research-Papers-for-Users",
+      "title": "Research Papers for Users – WorldQuant BRAIN-CN",
+      "kind": "topic",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:43+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-13724934223127-Research-Papers-for-Users-761833b663.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-13724934223127-Research-Papers-for-Users-761833b663.txt",
+      "meta": {
+        "title_length": 47,
+        "html_length": 138130,
+        "text_length": 5220,
+        "anchor_count": 49,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13629734679319-Global-Research-webinars-Users",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13629734679319-Global-Research-webinars-Users",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13629734679319-Global-Research-webinars-Users",
+      "title": "Global Research webinars (Users) – WorldQuant BRAIN-CN",
+      "kind": "topic",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:45+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-13629734679319-Global-Research-webinars-Users-074b112437.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-13629734679319-Global-Research-webinars-Users-074b112437.txt",
+      "meta": {
+        "title_length": 54,
+        "html_length": 141355,
+        "text_length": 5501,
+        "anchor_count": 53,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13587235460759-Quant-Chess-Football",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13587235460759-Quant-Chess-Football",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/topics/13587235460759-Quant-Chess-Football",
+      "title": "Quant-Chess-Football – WorldQuant BRAIN-CN",
+      "kind": "topic",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:47+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-topics-13587235460759-Quant-Chess-Football-a682698a0d.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-topics-13587235460759-Quant-Chess-Football-a682698a0d.txt",
+      "meta": {
+        "title_length": 42,
+        "html_length": 111344,
+        "text_length": 1998,
+        "anchor_count": 29,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr",
+      "title": "IQC 2026 2025 Webinar Recording (9th Apr) – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:50+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr-3eaca3e4ba.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-39730259578263-IQC-2026-2025-Webinar-Recording-9th-Apr-3eaca3e4ba.txt",
+      "meta": {
+        "title_length": 63,
+        "html_length": 243678,
+        "text_length": 2560,
+        "anchor_count": 23,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr",
+      "title": "IQC 2026 2025 Webinar Recording (2nd Apr) – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:52+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr-0eb8065b85.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-39600824640279-IQC-2026-2025-Webinar-Recording-2nd-Apr-0eb8065b85.txt",
+      "meta": {
+        "title_length": 63,
+        "html_length": 110343,
+        "text_length": 1353,
+        "anchor_count": 18,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar",
+      "title": "IQC 2026 2025 Webinar Recording (26th Mar) – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:55+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar-16a5d34b23.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-39600725182487-IQC-2026-2025-Webinar-Recording-26th-Mar-16a5d34b23.txt",
+      "meta": {
+        "title_length": 64,
+        "html_length": 110360,
+        "text_length": 1356,
+        "anchor_count": 18,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30873523677847--Passing-Submission-Test-How-to-improve-Fitness",
+      "title": "🖊️ Passing Submission Test: How to improve Fitness – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:28:59+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-30873523677847-Passing-Submission-Test-How-to-improve-Fitness-8ea3ae2cfe.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-30873523677847-Passing-Submission-Test-How-to-improve-Fitness-8ea3ae2cfe.txt",
+      "meta": {
+        "title_length": 72,
+        "html_length": 473190,
+        "text_length": 10231,
+        "anchor_count": 47,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial",
+      "title": "How to start Alpha research using the BRAIN Tutorial🧑‍🏫🪄 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:04+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial-aa7ff400bc.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-30928810917271-How-to-start-Alpha-research-using-the-BRAIN-Tutorial-aa7ff400bc.txt",
+      "meta": {
+        "title_length": 78,
+        "html_length": 450465,
+        "text_length": 9963,
+        "anchor_count": 50,
+        "code_block_count": 7
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/30684190103319-%E6%96%B0%E4%BA%BA%E6%88%90%E9%95%BF%E8%A1%80%E6%B3%AA%E5%8F%B2-VF0-5-0-56-0-91-%E6%88%91%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E5%92%8C%E6%B1%97%E6%B0%B4",
+      "title": "新人成长血泪史！VF0.5->0.56->0.91：我踩过的坑和汗水 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:09+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-30684190103319-E6-96-B0-E4-BA-BA-E6-88-90-E9-95-BF-E8-A1-80-E6-B3-AA-E5-8F-B2-VF0-5-0-56-0-91-E6-88-91-E8-B8-A9-E8-BF-87-E7-9A-84-E5-9D-91-E5-92-8C-E6-B1-97-E6-B0-B4-69b4077d47.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-30684190103319-E6-96-B0-E4-BA-BA-E6-88-90-E9-95-BF-E8-A1-80-E6-B3-AA-E5-8F-B2-VF0-5-0-56-0-91-E6-88-91-E8-B8-A9-E8-BF-87-E7-9A-84-E5-9D-91-E5-92-8C-E6-B1-97-E6-B0-B4-69b4077d47.txt",
+      "meta": {
+        "title_length": 56,
+        "html_length": 498742,
+        "text_length": 13647,
+        "anchor_count": 43,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/23941370595991--Alpha-Idea-The-Information-Content-of-Option-Demand",
+      "title": "【Alpha Idea】The Information Content of Option Demand – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:11+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-23941370595991-Alpha-Idea-The-Information-Content-of-Option-Demand-6746935ed5.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-23941370595991-Alpha-Idea-The-Information-Content-of-Option-Demand-6746935ed5.txt",
+      "meta": {
+        "title_length": 74,
+        "html_length": 242113,
+        "text_length": 2493,
+        "anchor_count": 20,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/20022067378711--%E6%96%B0%E5%BE%BD%E7%AB%A0-Top-Commenter",
+      "title": "📣 新徽章：\"Top Commenter\" 🏅 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:13+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-20022067378711-E6-96-B0-E5-BE-BD-E7-AB-A0-Top-Commenter-257c5e84a9.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-20022067378711-E6-96-B0-E5-BE-BD-E7-AB-A0-Top-Commenter-257c5e84a9.txt",
+      "meta": {
+        "title_length": 45,
+        "html_length": 106182,
+        "text_length": 1121,
+        "anchor_count": 13,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/19420568914839-BRAIN-%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95",
+      "title": "BRAIN 版本更新记录 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:15+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-19420568914839-BRAIN-E7-89-88-E6-9C-AC-E6-9B-B4-E6-96-B0-E8-AE-B0-E5-BD-95-9c7bbdca39.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-19420568914839-BRAIN-E7-89-88-E6-9C-AC-E6-9B-B4-E6-96-B0-E8-AE-B0-E5-BD-95-9c7bbdca39.txt",
+      "meta": {
+        "title_length": 34,
+        "html_length": 106209,
+        "text_length": 1030,
+        "anchor_count": 14,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/19273239621399--Alpha%E7%81%B5%E6%84%9F%E5%90%AF%E7%A4%BA%E5%BD%95-%E5%90%88%E9%9B%86-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E6%94%B6%E5%BD%95%E4%B8%AD",
+      "title": "【Alpha灵感启示录】合集（持续更新收录中） – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:18+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-19273239621399-Alpha-E7-81-B5-E6-84-9F-E5-90-AF-E7-A4-BA-E5-BD-95-E5-90-88-E9-9B-86-E6-8C-81-E7-BB-AD-E6-9B-B4-E6-96-B0-E6-94-B6-E5-BD-95-E4-B8-AD-0d4d823e0d.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-19273239621399-Alpha-E7-81-B5-E6-84-9F-E5-90-AF-E7-A4-BA-E5-BD-95-E5-90-88-E9-9B-86-E6-8C-81-E7-BB-AD-E6-9B-B4-E6-96-B0-E6-94-B6-E5-BD-95-E4-B8-AD-0d4d823e0d.txt",
+      "meta": {
+        "title_length": 45,
+        "html_length": 352225,
+        "text_length": 8588,
+        "anchor_count": 171,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC%E5%9F%B9%E8%AE%AD%E8%A7%86%E9%A2%91%E5%9B%9E%E6%94%BE",
+      "title": "Options, Relationship and Vector Datafields 2023 IQC培训视频回放 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:21+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC-E5-9F-B9-E8-AE-AD-E8-A7-86-E9-A2-91-E5-9B-9E-E6-94-BE-3b7df3e515.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-15440162031639-Options-Relationship-and-Vector-Datafields-2023-IQC-E5-9F-B9-E8-AE-AD-E8-A7-86-E9-A2-91-E5-9B-9E-E6-94-BE-3b7df3e515.txt",
+      "meta": {
+        "title_length": 80,
+        "html_length": 241291,
+        "text_length": 1801,
+        "anchor_count": 23,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/11807866133911--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset",
+      "title": "[BRAIN TIPS] 6 ways to quickly evaluate a new dataset – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:25+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-11807866133911-BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset-ad3d3a9c06.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-11807866133911-BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset-ad3d3a9c06.txt",
+      "meta": {
+        "title_length": 75,
+        "html_length": 353698,
+        "text_length": 9661,
+        "anchor_count": 35,
+        "code_block_count": 1
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39728815499543",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39728815499543",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39728815499543",
+      "title": "26年Q1 Genius定级已更新，Q2赛季加油！ – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:28+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-39728815499543-0c0f480e32.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-39728815499543-0c0f480e32.txt",
+      "meta": {
+        "title_length": 47,
+        "html_length": 250636,
+        "text_length": 1923,
+        "anchor_count": 19,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/35220740797975",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/35220740797975",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/35220740797975",
+      "title": "【远程控制电脑】免费+高质量+可手机控制 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:32+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-35220740797975-73cc5f15c2.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-35220740797975-73cc5f15c2.txt",
+      "meta": {
+        "title_length": 42,
+        "html_length": 338971,
+        "text_length": 6432,
+        "anchor_count": 27,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39467969845783",
+      "title": "新手课代码分享 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:35+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-39467969845783-062f6b5dc2.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-39467969845783-062f6b5dc2.txt",
+      "meta": {
+        "title_length": 29,
+        "html_length": 258617,
+        "text_length": 7104,
+        "anchor_count": 19,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39200810917015",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39200810917015",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39200810917015",
+      "title": "2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 1作业 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:44+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-39200810917015-904101b466.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-39200810917015-904101b466.txt",
+      "meta": {
+        "title_length": 66,
+        "html_length": 483145,
+        "text_length": 10297,
+        "anchor_count": 52,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647",
+      "final_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647",
+      "canonical_url": "https://support.worldquantbrain.com/hc/zh-cn/community/posts/39411791834647",
+      "title": "2026年IQC专辑《BRAIN x AI 零基础入门量化》系列课程Course 2作业 – WorldQuant BRAIN-CN",
+      "kind": "post",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/zh-cn/community/topics",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:54+0800",
+      "html_relpath": "raw/pages/hc-zh-cn-community-posts-39411791834647-85a49b3e3c.html",
+      "text_relpath": "raw/pages/hc-zh-cn-community-posts-39411791834647-85a49b3e3c.txt",
+      "meta": {
+        "title_length": 66,
+        "html_length": 520663,
+        "text_length": 28586,
+        "anchor_count": 52,
+        "code_block_count": 8
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=all",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=all",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=all",
+      "title": "Posts – WorldQuant BRAIN",
+      "kind": "page",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/posts",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:56+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-7dab7794e0.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-7dab7794e0.txt",
+      "meta": {
+        "title_length": 24,
+        "html_length": 128569,
+        "text_length": 7218,
+        "anchor_count": 70,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=planned",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=planned",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=planned",
+      "title": "Posts – WorldQuant BRAIN",
+      "kind": "page",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/posts",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:29:58+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-f10a7577a5.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-f10a7577a5.txt",
+      "meta": {
+        "title_length": 24,
+        "html_length": 88339,
+        "text_length": 2431,
+        "anchor_count": 41,
+        "code_block_count": 0
+      }
+    },
+    {
+      "url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=not_planned",
+      "final_url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=not_planned",
+      "canonical_url": "https://support.worldquantbrain.com/hc/en-us/community/posts?filter_by=not_planned",
+      "title": "Posts – WorldQuant BRAIN",
+      "kind": "page",
+      "depth": 2,
+      "via": "https://support.worldquantbrain.com/hc/en-us/community/posts",
+      "source": "discovered",
+      "fetched_at": "2026-04-22T10:30:00+0800",
+      "html_relpath": "raw/pages/hc-en-us-community-posts-9ce9b03ab5.html",
+      "text_relpath": "raw/pages/hc-en-us-community-posts-9ce9b03ab5.txt",
+      "meta": {
+        "title_length": 24,
+        "html_length": 88367,
+        "text_length": 2435,
+        "anchor_count": 41,
+        "code_block_count": 0
+      }
+    }
+  ],
+  "errors": []
+}
