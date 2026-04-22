@@ -1,0 +1,51 @@
+{
+  "capture_id": "2026-04-21-revenue-smoothed-history-position-batch-02",
+  "topic": "revenue_smoothed_history_position_follow_up",
+  "captured_at": "2026-04-22 01:28:00 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-21-sales-delta-fundamental.md",
+    "expression_family": "./runs/expression-families/2026-04-21-revenue-smoothed-history-position-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "The 126d probe was captured from the official IS Summary aggregate view after the revenue 63d baseline.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for this probe.",
+      "Submit Alpha stayed disabled in the captured UI state."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "revenue_sm126_hist504_indrank_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(revenue, 126), 504), industry)",
+      "ui_context": "Simulation 13 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.19,
+        "fitness": 0.06,
+        "turnover": "2.52%",
+        "returns": "1.05%",
+        "drawdown": "12.45%",
+        "margin": "8.30‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The slower 126d smoother did not rescue the revenue family. It reduced turnover, but it also weakened Sharpe, Fitness, and returns versus the 63d baseline."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "revenue_sm63_hist504_indrank_us3k_d1_v1",
+    "winner_by_fitness": "revenue_sm63_hist504_indrank_us3k_d1_v1",
+    "branch_takeaway": "The 126d probe made the revenue branch clearly worse than the 63d baseline. The revenue smoothed-history family is dead and should not be polished further."
+  }
+}

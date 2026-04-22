@@ -1,0 +1,57 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-22-operating-income-smoothed-history-position-batch-11",
+  "topic": "operating-income-smoothed-history-position",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "alphas": [
+    {
+      "name": "operating_income_sm63_hist504_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)",
+      "ui_context": "Simulation 19 IS Summary / TEST",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.23,
+        "fitness": 0.93,
+        "turnover": 3.28,
+        "returns": 7.10,
+        "drawdown": 8.31,
+        "margin": 43.31,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": -0.37,
+        "fitness": -0.14,
+        "turnover": 2.80,
+        "returns": -1.81,
+        "drawdown": 6.17,
+        "margin": -12.93
+      },
+      "notes": "The 63d smoothed-history operating-income branch stays strong on IS but fails the test-period view. Submit Alpha remained disabled and no visible Check Submission or non-null subuniverse evidence appeared in the captured UI state."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_sm63_hist504_us3k_d1_v1",
+    "winner_by_fitness": "operating_income_sm63_hist504_us3k_d1_v1",
+    "branch_takeaway": "The 63d/504 operating-income variant is a solid IS anchor but not submission-ready because the TEST view is negative and no official submission evidence appeared. The next meaningful step is to compare the 126d/252d control or another ridge point before deciding whether to keep the family alive."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "capture_id": "2026-04-22-capital-structure-balance-sheet-batch-03",
+  "topic": "capital_structure_balance_sheet_follow_up",
+  "captured_at": "2026-04-22 06:07:42 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY"
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-22-capital-structure-balance-sheet.md",
+    "expression_family": "./runs/expression-families/2026-04-22-capital-structure-balance-sheet-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "Simulation 17 provided the liquidity fallback baseline after the leverage subindustry branch.",
+      "The current visible TEST readout stayed weak but positive, while the IS view remained negative.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for this batch.",
+      "Submit Alpha stayed disabled in the captured UI state."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "assets_curr_liabilities_curr_sm63_hist504_indrank_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(assets_curr / liabilities_curr, 63), 504), industry)",
+      "ui_context": "Simulation 17 IS Summary / TEST",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.72,
+        "fitness": -0.29,
+        "turnover": "2.82%",
+        "returns": "-2.02%",
+        "drawdown": "11.29%",
+        "margin": "-14.36‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": 0.45,
+        "fitness": 0.17,
+        "turnover": "2.48%",
+        "returns": "1.73%",
+        "drawdown": "3.73%",
+        "margin": "13.99‱"
+      },
+      "notes": "The liquidity baseline is a weak IS result, but the TEST view is mildly positive enough that one structural follow-up on subindustry is still worth trying before killing the capital-structure lane."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "assets_curr_liabilities_curr_sm63_hist504_indrank_us3k_d1_v1",
+    "winner_by_fitness": "assets_curr_liabilities_curr_sm63_hist504_indrank_us3k_d1_v1",
+    "branch_takeaway": "The liquidity baseline is not submission-ready, but it is still alive enough to justify one structural subindustry follow-up. If that next branch fails to improve the lane, the capital-structure family should be killed instead of polished further."
+  }
+}

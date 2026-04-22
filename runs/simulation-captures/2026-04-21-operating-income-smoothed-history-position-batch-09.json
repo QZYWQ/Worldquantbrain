@@ -1,0 +1,56 @@
+{
+  "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-09",
+  "topic": "operating_income_smoothed_history_position_follow_up_batch_09",
+  "captured_at": "2026-04-21 23:55:50 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "expression_family": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "Simulation 12 was rerun on the 81d smoothing probe inside the 504-history operating_income ridge.",
+      "The IS view was explicitly selected before capture; the visible test-period/overall readout remained negative.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for this probe.",
+      "Submit Alpha stayed disabled in the captured UI state."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "operating_income_smoothed81_history_position_504_industry",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 81), 504), industry)",
+      "ui_context": "Simulation 12 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.96,
+        "fitness": 0.63,
+        "turnover": "2.92%",
+        "returns": "5.43%",
+        "drawdown": "8.23%",
+        "margin": "37.23‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The visible IS summary is materially weaker than the 78d/84d ridge anchors. The test-period/overall readout shown in the UI was negative, so this probe does not move the family toward submit readiness."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_smoothed81_history_position_504_industry",
+    "winner_by_fitness": "operating_income_smoothed81_history_position_504_industry",
+    "branch_takeaway": "The 81d probe failed to improve the operating_income smoothed-history ridge. IS Sharpe and Fitness fell below the 78d/84d controls, the shown test-period/overall readout stayed negative, and no submission evidence appeared. The right move is to stop polishing this ridge and branch to a distinct non-analyst family instead of chasing one more smoothing tweak."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-22-price-volume-short-horizon-batch-01",
+  "topic": "price-volume-short-horizon",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08
+  },
+  "alphas": [
+    {
+      "name": "pv_close_vwap_proxy_v1",
+      "expression": "group_rank(ts_zscore(close - vwap, 10), industry)",
+      "metrics": {
+        "sharpe": -1.49,
+        "fitness": -0.44,
+        "turnover": 86.34,
+        "returns": -7.48,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Real TRAIN summary from Simulation 19. Test period and overall stats were hidden by default. Submit was disabled."
+    }
+  ]
+}

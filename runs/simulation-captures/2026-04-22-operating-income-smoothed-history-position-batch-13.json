@@ -1,0 +1,57 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-22-operating-income-smoothed-history-position-batch-13",
+  "topic": "operating-income-smoothed-history-position",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "alphas": [
+    {
+      "name": "operating_income_sm21_hist252_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 21), 252), industry)",
+      "ui_context": "Simulation 19 IS Summary / TEST",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 1.28,
+        "fitness": 0.89,
+        "turnover": 4.53,
+        "returns": 6.00,
+        "drawdown": 8.27,
+        "margin": 26.48,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": -0.12,
+        "fitness": -0.02,
+        "turnover": 4.01,
+        "returns": -0.45,
+        "drawdown": 4.42,
+        "margin": -2.25
+      },
+      "notes": "The 21d/252d operating-income probe improved the TEST view versus the 126d/252d control, but it is still negative and Submit Alpha remained disabled. No visible Check Submission or non-null subuniverse evidence appeared in the captured UI state."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_sm21_hist252_us3k_d1_v1",
+    "winner_by_fitness": "operating_income_sm21_hist252_us3k_d1_v1",
+    "branch_takeaway": "The 21d/252d control is the least-bad operating-income control so far, but it still fails the TEST view. That means the operating-income lane should be branched away from now rather than kept alive for more polishing."
+  }
+}

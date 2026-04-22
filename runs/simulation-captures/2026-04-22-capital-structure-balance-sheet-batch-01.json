@@ -1,0 +1,89 @@
+{
+  "capture_id": "2026-04-22-capital-structure-balance-sheet-batch-01",
+  "topic": "capital_structure_balance_sheet_follow_up",
+  "captured_at": "2026-04-22 02:33:10 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY"
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-22-capital-structure-balance-sheet.md",
+    "expression_family": "./runs/expression-families/2026-04-22-capital-structure-balance-sheet-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "Simulation 15 provided the 63d leverage sign-control anchor with visible IS and TEST summaries.",
+      "Simulation 16 is the 21d clone. Its visible IS aggregate is much weaker than the 63d anchor.",
+      "The settings modal confirmed Fast Expression / Equity / USA / TOP3000 / Subindustry / 1Y test period with decay 4 and truncation 0.08.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for this batch.",
+      "Submit Alpha stayed disabled in the captured UI state."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "liabilities_assets_sm63_hist504_indrank_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), industry)",
+      "ui_context": "Simulation 15 IS Summary / TEST",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.37,
+        "fitness": 0.12,
+        "turnover": "2.50%",
+        "returns": "1.35%",
+        "drawdown": "7.07%",
+        "margin": "10.76‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": 0.60,
+        "fitness": 0.29,
+        "turnover": "2.24%",
+        "returns": "2.95%",
+        "drawdown": "6.05%",
+        "margin": "26.35‱"
+      },
+      "notes": "The 63d sign-control anchor is the best live anchor in the batch, but it is still far from submission-ready and it did not expose real Check Submission evidence."
+    },
+    {
+      "name": "liabilities_assets_sm21_hist504_indrank_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(liabilities / assets, 21), 504), industry)",
+      "ui_context": "Simulation 16 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.03,
+        "fitness": 0.0,
+        "turnover": "3.19%",
+        "returns": "0.10%",
+        "drawdown": "9.21%",
+        "margin": "0.64‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The 21d smoothing probe collapsed the leverage branch into a weak value proxy. The current visible IS aggregate is materially worse than the 63d anchor."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "liabilities_assets_sm63_hist504_indrank_us3k_d1_v1",
+    "winner_by_fitness": "liabilities_assets_sm63_hist504_indrank_us3k_d1_v1",
+    "branch_takeaway": "The leverage lane has a weak but real 63d anchor, while the 21d smoothing probe collapses badly. The next meaningful check is the planned subindustry branch; more same-family smoothing is not the right use of time."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "capture_id": "2026-04-22-operating-income-smoothed-history-position-batch-10",
+  "topic": "operating_income_smoothed_history_position_follow_up_batch_10",
+  "captured_at": "2026-04-22 01:53:30 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "expression_family": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "Simulation 13 still held the 78d smoothed-history probe on the operating_income ridge.",
+      "The IS view was explicitly selected before capture; the TEST view was also checked and remained negative.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for this probe.",
+      "Submit Alpha stayed disabled in the captured UI state.",
+      "The name field was stale and should not be treated as the alpha's final name."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "operating_income_smoothed78_history_position_504_subindustry",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 78), 504), subindustry)",
+      "ui_context": "Simulation 13 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.98,
+        "fitness": 0.62,
+        "turnover": "2.88%",
+        "returns": "5.08%",
+        "drawdown": "7.39%",
+        "margin": "35.24‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 4,
+          "fail": 3,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The 78d probe improved over earlier operating-income smoothing attempts but still did not move the family toward submission readiness. The visible TEST aggregate was negative at Sharpe -0.29 / Fitness -0.09 / Turnover 2.54% / Returns -1.34% / Drawdown 5.23% / Margin -10.54‱."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_smoothed78_history_position_504_subindustry",
+    "winner_by_fitness": "operating_income_smoothed78_history_position_504_subindustry",
+    "branch_takeaway": "The 78d subindustry probe is still only a backup-quality result. It does not expose real Check Submission evidence, the TEST view is negative, and Submit Alpha remains disabled. The correct next move is to stop polishing this ridge and move the live research lane to the verified balance-sheet / capital-structure branch."
+  }
+}

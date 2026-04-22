@@ -107,19 +107,66 @@ group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)
 - `72d` stayed competitive on visible Sharpe/Fitness, but it gave back a bit of turnover and margin.
 - `90d` drifted off the ridge and should be treated as a right-tail probe rather than the new center.
 
+## Batch 09 Update
+
+- `81d` smoothing did not improve the ridge and underperformed the current controls:
+  `group_rank(ts_rank(ts_mean(operating_income, 81), 504), industry)`
+- The visible IS summary landed at `Sharpe 0.96 / Fitness 0.63 / Turnover 2.92% / Returns 5.43% / Margin 37.23‱`.
+- With the test period shown, the visible aggregate readout stayed negative and `Submit Alpha` remained disabled.
+- No visible `Check Submission` evidence or non-null subuniverse verdict appeared for this probe.
+- The `81d` point should not replace the `78d`/`84d` ridge anchors.
+
+## Batch 10 Update
+
+- The current live probe in Simulation 13 is the `78d` subindustry variant:
+  `group_rank(ts_rank(ts_mean(operating_income, 78), 504), subindustry)`
+- The visible IS summary improved to `Sharpe 0.98 / Fitness 0.62 / Turnover 2.88% / Returns 5.08% / Margin 35.24‱`.
+- The TEST view remained negative at `Sharpe -0.29 / Fitness -0.09 / Turnover 2.54% / Returns -1.34% / Margin -10.54‱`.
+- `IS Testing Status` still showed `4 PASS / 3 FAIL / 1 PENDING`, with `Check Submission` and `Submit Alpha` still disabled.
+- This is a real backup result, not a submission-ready ridge.
+
+## Batch 11 Update
+
+- Simulation 19 is now the `63d` / `504d` operating-income smoothing probe:
+  `group_rank(ts_rank(ts_mean(operating_income, 63), 504), industry)`
+- IS summary:
+  `Sharpe 1.23 / Fitness 0.93 / Turnover 3.28% / Returns 7.10% / Drawdown 8.31% / Margin 43.31‱`
+- TEST summary:
+  `Sharpe -0.37 / Fitness -0.14 / Turnover 2.80% / Returns -1.81% / Drawdown 6.17% / Margin -12.93‱`
+- `IS Testing Status` shows `5 PASS / 2 FAIL / 1 PENDING`, but `Check Submission` and `Submit Alpha` are still disabled and no non-null subuniverse evidence appeared.
+- This is a strong IS anchor, but the negative TEST view keeps it below submission readiness.
+
+## Batch 12 Update
+
+- The `126d` / `252d` operating-income control is now the current live probe:
+  `group_rank(ts_rank(ts_mean(operating_income, 126), 252), industry)`
+- IS summary:
+  `Sharpe 1.25 / Fitness 0.91 / Turnover 2.96% / Returns 6.64% / Drawdown 8.52% / Margin 44.89‱`
+- TEST summary:
+  `Sharpe -0.60 / Fitness -0.27 / Turnover 2.57% / Returns -2.50% / Drawdown 5.61% / Margin -19.43‱`
+- `IS Testing Status` shows `4 PASS / 3 FAIL / 1 PENDING`, and `Check Submission` / `Submit Alpha` are still disabled.
+- This control is weaker on TEST than the current IS anchor, so it is not submission-ready and does not change the branch decision.
+
+## Batch 13 Update
+
+- The `21d` / `252d` operating-income control has now been tested:
+  `group_rank(ts_rank(ts_mean(operating_income, 21), 252), industry)`
+- IS summary:
+  `Sharpe 1.28 / Fitness 0.89 / Turnover 4.53% / Returns 6.00% / Drawdown 8.27% / Margin 26.48‱`
+- TEST summary:
+  `Sharpe -0.12 / Fitness -0.02 / Turnover 4.01% / Returns -0.45% / Drawdown 4.42% / Margin -2.25‱`
+- `IS Testing Status` shows `5 PASS / 2 FAIL / 1 PENDING`, and `Check Submission` / `Submit Alpha` are still disabled.
+- This is the least-bad operating-income control so far, but it still fails TEST, so the lane should be branched away from now.
+
 ## Optimization Order
 
-1. Keep the history rank fixed at `504d` and sweep only the smoothing window in a tighter band around the `78d`/`84d` ridge, for example `81d` and `87d`, before changing neutralization or adding more operators.
-2. Keep the family interpretable; do not stack extra transforms on top of smoothing until the local ridge shape is clearer or submission-style evidence appears.
-3. If the family stops improving or the platform still withholds submission-style evidence, then stop polishing this field family and branch to the next non-analyst lane.
+1. Stop polishing operating-income and branch to a new forum-backed family.
+2. Keep only one or two leading variants live at a time; do not reopen the dead revenue, capital-structure, or price-volume lanes.
+3. Use the forum-backed branch to reset the information source and reduce correlation distance from this stalled lane.
 
 ## Next Simulation Batch
 
-- Baseline:
-  `group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)`
-- Variant 1:
-  `group_rank(ts_rank(ts_mean(operating_income, 78), 504), industry)`
-- Variant 2:
-  `group_rank(ts_rank(ts_mean(operating_income, 81), 504), industry)`
-- Variant 3:
-  `group_rank(ts_rank(ts_mean(operating_income, 87), 504), industry)`
+- Live comparison:
+  branch to a new forum-backed family instead of continuing operating-income.
+- Backup comparison:
+  use the next family to search for a distinct information source, template, or horizon rather than more operating-income polishing.

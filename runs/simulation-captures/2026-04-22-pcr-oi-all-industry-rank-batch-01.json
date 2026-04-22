@@ -1,0 +1,90 @@
+{
+  "capture_id": "2026-04-22-pcr-oi-all-industry-rank-batch-01",
+  "topic": "pcr_oi_all_industry_rank_follow_up",
+  "captured_at": "2026-04-22 11:29:58 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-20-event-option-volume-gate.md",
+    "expression_family": "./runs/expression-families/2026-04-22-pcr-oi-all-industry-rank-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "Simulation 17 first exposed the direct-rank pcr_oi_all baseline, then a 5-day smoothing follow-up was run in the same session.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured.",
+      "Submit Alpha stayed disabled."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_oi_all_tsrank20_industry",
+      "expression": "group_rank(ts_rank(pcr_oi_all, 20), industry)",
+      "ui_context": "Simulation 17 IS / TEST Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.19,
+        "fitness": 0.03,
+        "turnover": "26.81%",
+        "returns": "0.54%",
+        "drawdown": "6.89%",
+        "margin": "0.41‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": 1.32,
+        "fitness": 0.44,
+        "turnover": "28.60%",
+        "returns": "3.15%",
+        "drawdown": "1.32%",
+        "margin": "2.20‱"
+      },
+      "notes": "The TEST view is materially stronger than the IS view, but the family is not submission-ready because the in-sample readout is weak and no official submission evidence appeared."
+    },
+    {
+      "name": "pcr_oi_all_tsrank20_industry_tsmean5",
+      "expression": "group_rank(ts_rank(ts_mean(pcr_oi_all, 5), 20), industry)",
+      "ui_context": "Simulation 17 IS / TEST Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.15,
+        "fitness": -0.02,
+        "turnover": "20.55%",
+        "returns": "-0.42%",
+        "drawdown": "9.70%",
+        "margin": "-0.41‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": -1.52,
+        "fitness": -0.64,
+        "turnover": "19.98%",
+        "returns": "-3.51%",
+        "drawdown": "4.19%",
+        "margin": "-3.51‱"
+      },
+      "notes": "Adding a light smoothing layer immediately broke both IS and TEST, so the branch is not worth further same-family polishing."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "pcr_oi_all_tsrank20_industry",
+    "winner_by_fitness": "pcr_oi_all_tsrank20_industry",
+    "branch_takeaway": "Keep the direct-rank baseline as a documented exploratory control, but kill the options smoothing branch. The baseline is still weak on IS, and the first smoothing follow-up turned clearly negative on both IS and TEST, so this family should not be polished further in its current form."
+  }
+}
