@@ -52,3 +52,9 @@
 - Status: `REVIEW`
 - Destination guidance: keep the skill layer unchanged for now, keep the reusable templates in KB, and keep the project runs as the evidence layer.
 
+## Deeper Skill Verdict
+
+- The five `skill-candidate` heuristics from the crawl are real workflow rules, but most of the same discipline already exists in the current WorldQuant skill's hypothesis-first, early-triage, and branch/kill guidance.
+- Because of that overlap, there is no urgent case for a broad skill rewrite just to absorb these forum findings.
+- The one skill-level hook that may still be worth adding later is a narrow `forum-backed template mining` workflow: crawl evidence, split it into workflow rule / template family / project-local snippet, and only promote items after they recur across threads or cycles.
+- Until that narrower hook proves repeatedly useful, keep the forum-mining logic as project + KB material rather than hard-coding it into the skill core.
