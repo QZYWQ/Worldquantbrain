@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-23T20:00:00+08:00",
+  "defaults": {
+    "mode": "direct_local_factory"
+  },
+  "items": [
+    {
+      "id": "analyst-eps-sibling-qfv4-001",
+      "family_key": "analyst_eps_sibling_qfv4_industry",
+      "task_type": "local_factory_run",
+      "status": "pending",
+      "priority": 100,
+      "inputs": {
+        "read_files": [
+          "runs/field-search-packs/analyst-sibling-search-pack.md",
+          "runs/expression-families/analyst-sibling-branch.md",
+          "runs/expression-families/primary-direction-baselines.md",
+          "harness/alpha-success-policy.json",
+          "runs/learning-loops/2026-04-23-seed-expander-203907.json",
+          "runs/learning-loops/2026-04-23-daily-alpha-runner-203907.json"
+        ],
+        "field_search_pack": "runs/field-search-packs/analyst-sibling-search-pack.md",
+        "family_doc": "runs/expression-families/analyst-sibling-branch.md",
+        "priority_manifest": "runs/learning-loops/2026-04-23-seed-expander-203907.json"
+      },
+      "constraints": {
+        "official_simulate_forbidden": true,
+        "candidate_batch_forbidden": true,
+        "banned_topics": [
+          "news-attention",
+          "buzz",
+          "historical_volatility_20",
+          "sales_delta",
+          "operating_income",
+          "analyst-disagreement",
+          "price-volume short horizon",
+          "capital-structure",
+          "balance-sheet"
+        ]
+      },
+      "execution": {
+        "mode": "direct_local_factory",
+        "factory_args": {
+          "include_topic": ["analyst_eps_sibling_qfv4_industry"],
+          "publish_queue": true
+        }
+      }
+    },
+    {
+      "id": "fundamental-slow-ratio-equity-cap-hold-001",
+      "family_key": "fundamental_model_slow_ratio_equity_cap",
+      "task_type": "queue_triage",
+      "status": "hold",
+      "priority": 40,
+      "inputs": {
+        "read_files": [
+          "runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-follow-up.md",
+          "runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md",
+          "runs/learning-loops/2026-04-23-seed-expander-203907.json",
+          "runs/learning-loops/2026-04-23-daily-alpha-runner-203907.json"
+        ]
+      },
+      "constraints": {
+        "official_simulate_forbidden": true,
+        "candidate_batch_forbidden": true,
+        "hold_reason": "official follow-up smoothing/simple branch already killed"
+      }
+    }
+  ]
+}

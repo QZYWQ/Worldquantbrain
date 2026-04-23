@@ -1,0 +1,126 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-22-event-trigger-low-turnover-returns-volatility-gate-batch-01",
+  "topic": "event_trigger_low_turnover_returns_volatility_gate_follow_up_batch_01",
+  "captured_at": "2026-04-23 00:32:54 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-22-event-trigger-low-turnover-volatility-gate.md",
+    "expression_family": "./runs/expression-families/2026-04-22-event-trigger-low-turnover-volatility-gate-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "This batch is the returns-based volatility fallback opened after the historical_volatility_20 branch was killed.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch.",
+      "Submit Alpha remained disabled for all four runs."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "returns_vol_vwap_pressure_gate20_signal10",
+      "expression": "trade_when(ts_rank(ts_std_dev(returns, 5), 20) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+      "ui_context": "Simulation 4 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.74,
+        "fitness": -0.18,
+        "turnover": "37.70%",
+        "returns": "-2.26%",
+        "drawdown": "10.96%",
+        "margin": "-1.20‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Baseline returns-volatility gate; best visible Sharpe and Fitness in the batch, but still far from viable."
+    },
+    {
+      "name": "returns_vol_vwap_pressure_gate10_signal10",
+      "expression": "trade_when(ts_rank(ts_std_dev(returns, 5), 10) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+      "ui_context": "Simulation 1 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.79,
+        "fitness": -0.18,
+        "turnover": "44.47%",
+        "returns": "-2.41%",
+        "drawdown": "15.70%",
+        "margin": "-1.08‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Faster gate window raised turnover and did not improve the visible edge."
+    },
+    {
+      "name": "returns_vol_vwap_pressure_gate30_signal10",
+      "expression": "trade_when(ts_rank(ts_std_dev(returns, 5), 30) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+      "ui_context": "Simulation 2 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -1.09,
+        "fitness": -0.31,
+        "turnover": "43.23%",
+        "returns": "-3.47%",
+        "drawdown": "18.38%",
+        "margin": "-1.60‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Slower gate degraded Sharpe and Fitness versus the 20d baseline."
+    },
+    {
+      "name": "returns_vol_vwap_pressure_gate20_signal20",
+      "expression": "trade_when(ts_rank(ts_std_dev(returns, 5), 20) > 0.5, group_rank(ts_zscore(close - vwap, 20), industry), -1)",
+      "ui_context": "Simulation 3 aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -1.34,
+        "fitness": -0.42,
+        "turnover": "43.32%",
+        "returns": "-4.31%",
+        "drawdown": "19.07%",
+        "margin": "-1.99‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Smoothing the VWAP pressure leg made the family materially worse."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "returns_vol_vwap_pressure_gate20_signal10",
+    "winner_by_fitness": "returns_vol_vwap_pressure_gate20_signal10",
+    "branch_takeaway": "The returns-volatility fallback did not rescue the event-trigger pressure thesis. The 20d gate baseline was the least-bad visible result, but every variant stayed decisively negative on Sharpe and Fitness, with no visible Check Submission evidence and no non-null subuniverse pass. The correct posture is to kill this branch and rotate to another KB-backed family rather than polishing the returns-vol lane further."
+  }
+}

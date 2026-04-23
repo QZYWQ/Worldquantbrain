@@ -1,0 +1,58 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-23-fundamental-model-slow-ratio-cashflow-assets-batch-01",
+  "topic": "fundamental_model_slow_ratio_cashflow_assets_follow_up_batch_01",
+  "captured_at": "2026-04-23 10:20 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SUBINDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF"
+  },
+  "evidence": {
+    "expression_family": "./runs/expression-families/2026-04-23-fundamental-model-slow-ratio-cashflow-follow-up.md",
+    "research_queue": "./runs/research-queues/2026-04-23-fundamental-model-slow-ratio-cashflow.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "The run displayed the visible label 'Single Data Set Alpha'.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for this run.",
+      "Submit Alpha stayed disabled in the captured UI state."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "cashflow_assets_subindustry_90",
+      "expression": "ts_rank(group_rank(cashflow / assets, subindustry), 90)",
+      "ui_context": "Aggregate IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.13,
+        "fitness": -0.02,
+        "turnover": "9.45%",
+        "returns": "-0.31%",
+        "drawdown": "3.95%",
+        "margin": "-0.65‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Negative 90d probe for the cashflow/assets sibling; keep it killed and do not widen this branch."
+    }
+  ]
+}

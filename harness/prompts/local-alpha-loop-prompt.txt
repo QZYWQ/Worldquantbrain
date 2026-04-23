@@ -1,0 +1,45 @@
+你正在执行本地 WorldQuant alpha loop 的单个任务。
+
+元数据
+- run_id: {{run_id}}
+- item_id: {{item_id}}
+- family_key: {{family_key}}
+- task_type: {{task_type}}
+- project_root: {{project_root}}
+- artifact_dir: {{artifact_dir}}
+
+本轮允许的文件读取范围
+{{read_files}}
+
+本轮约束
+{{constraints}}
+
+输入 JSON
+{{inputs_json}}
+
+硬约束
+- 不要伪造任何 Sharpe / Fitness / Turnover / Weight / Self-correlation / Test Period / submission 状态
+- 不要写 candidate-batch JSON
+- 不要触碰官方 simulate 或别的官方会话
+- 不要扩大到队列外的别的 family
+- 不要把本地评分说成可提交
+- 如果需要输出结果，只能写到当前 artifact_dir
+
+输出格式固定
+结论: branch / hold / kill
+理由:
+- 只写 3 条，必须是证据型理由
+最值得的下一步:
+- 只有在结论是 branch 时才写 1 条；否则写 `无，停止这条本地推进`
+实际读取文件:
+- 列出本次实际读取的文件路径
+实际生成文件:
+- 列出本次实际生成的文件路径
+实际运行命令:
+- 原样列出你实际执行的命令
+
+如果你是外部执行器，请把最终判定写入 `{{artifact_dir}}/result.json`，格式为：
+{
+  "result": "branch|hold|kill",
+  "notes": ["..."]
+}

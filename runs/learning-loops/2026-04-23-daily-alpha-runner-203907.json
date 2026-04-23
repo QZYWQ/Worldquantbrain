@@ -1,0 +1,155 @@
+{
+  "all_budget_items": [],
+  "daily_budget_items": [],
+  "family_runs": [],
+  "generated_at": "2026-04-23T20:39:28",
+  "objective": "maximize_internal_submit_ready_per_official_slot",
+  "run_id": "2026-04-23-daily-alpha-runner-203907",
+  "selected_families": [
+    {
+      "baseline_expressions": [
+        "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)"
+      ],
+      "best_outcome": {
+        "alpha_id": "E5repQ81",
+        "alpha_name": "anl4_afv4_median_60d_industry",
+        "capture_id": "candidate-check-status",
+        "capture_mode": "candidate-check-status",
+        "capture_path": "harness/artifacts/2026-04-19/ALPHA-CAND-002/candidate-check-status.json",
+        "capture_topic": "candidate-check-status",
+        "classification": null,
+        "evidence_level": "partial_gate_checks",
+        "evidence_sources": [
+          "candidate-batch",
+          "candidate-check-status"
+        ],
+        "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)",
+        "failing_gates": [],
+        "family_doc_path": null,
+        "family_key": "analyst_eps_sibling_qfv4_industry",
+        "family_topic": "analyst_eps_sibling_qfv4_industry",
+        "gate_results": {
+          "CONCENTRATED_WEIGHT": "PASS",
+          "HIGH_TURNOVER": null,
+          "LOW_FITNESS": "PASS",
+          "LOW_SHARPE": null,
+          "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+          "LOW_TURNOVER": null,
+          "MATCHES_COMPETITION": null,
+          "SELF_CORRELATION": "PASS"
+        },
+        "has_full_gate_coverage": false,
+        "metrics": {
+          "fitness": 1.4,
+          "max_weight": null,
+          "returns": 0.0935,
+          "self_corr": null,
+          "sharpe": 1.93,
+          "turnover": 0.1768
+        },
+        "missing_gates": [
+          "LOW_SHARPE",
+          "LOW_TURNOVER",
+          "HIGH_TURNOVER",
+          "MATCHES_COMPETITION"
+        ],
+        "notes": [
+          "Despite higher field crowding metadata, the annual-median analyst4 control materially outperformed both qfv4 siblings and the first-cycle baseline in the holdout slice. Visible IS gates passed and self-correlation remained pending at capture time.",
+          "Metrics below came from real platform alpha objects returned by the logged-in WorldQuant BRAIN session.",
+          "Self-correlation remained pending at capture time for all three second-cycle sibling runs.",
+          "No Check Submission result was recorded in this batch.",
+          "A later official /alphas/{id}/check refresh in this session resolved concentrated weight PASS, self-correlation PASS, low fitness PASS, and low sub-universe sharpe PASS. The official alpha object lagged behind and still showed self-correlation PENDING, so /check is treated as the fresher source.",
+          "Official alpha detail showed test sharpe 1.23, fitness 0.59, and returns 0.0407. Holdout was materially stronger than the first-cycle baseline and both qfv4 siblings.",
+          "Official candidate checks came from GET /alphas/{id}/check and GET /alphas/{id}/correlations/self inside the logged-in browser session.",
+          "For qMm6xPVv and QP59baMg, the self-correlation detail endpoint returned records=[], min=null, and max=null while the check endpoint returned SELF_CORRELATION=PASS.",
+          "For E5repQ81, early retries returned empty bodies, but a later /alphas/{id}/check refresh in this session returned SELF_CORRELATION=PASS while the alpha object still lagged with PENDING.",
+          "For all three candidates, the self-correlation detail endpoint returned records=[], min=null, and max=null once it returned JSON."
+        ],
+        "passing_gates": [
+          "LOW_FITNESS",
+          "CONCENTRATED_WEIGHT",
+          "LOW_SUB_UNIVERSE_SHARPE",
+          "SELF_CORRELATION"
+        ],
+        "pending_gates": [],
+        "simulation_id": "VXAGQc3958PcBGvR1KK3tE",
+        "status": null,
+        "strong_candidate_evidence": true,
+        "submit_ready": false,
+        "supporting_capture_ids": [
+          "official-alpha-cycle-02-analyst-sibling-batch-01",
+          "official-alpha-cycle-02-analyst-sibling-candidates",
+          "candidate-check-status"
+        ],
+        "supporting_paths": [
+          "runs/simulation-captures/analyst-sibling-branch.json",
+          "runs/candidate-batches/analyst-sibling-candidates.json",
+          "harness/artifacts/2026-04-19/ALPHA-CAND-002/candidate-check-status.json"
+        ],
+        "tests": {
+          "check_submission_pass": null,
+          "subuniverse_pass": true,
+          "test_period_pass": null
+        }
+      },
+      "candidate_outcome_count": 3,
+      "capture_paths": [
+        "harness/artifacts/2026-04-19/ALPHA-CAND-002/candidate-check-status.json"
+      ],
+      "decision_lines": [],
+      "doc_paths": [
+        "runs/expression-families/analyst-sibling-branch.md"
+      ],
+      "explicit_state_hints": [],
+      "failing_gate_histogram": {},
+      "family_key": "analyst_eps_sibling_qfv4_industry",
+      "full_gate_outcome_count": 0,
+      "official_outcome_count": 3,
+      "pending_gate_histogram": {},
+      "reason": "candidate evidence is clean on the common subset, but full submission gates are still missing",
+      "state": "branch",
+      "strong_candidate_evidence_count": 3,
+      "submit_ready_count": 0,
+      "topics": [
+        "analyst_eps_sibling_qfv4_industry"
+      ]
+    }
+  ],
+  "settings": {
+    "allowed_states": [
+      "exploit",
+      "branch",
+      "explore"
+    ],
+    "family_filter": [],
+    "family_limit": 1,
+    "family_priority_file": "harness/artifacts/alpha-seed-expander/2026-04-23-seed-expander-203907/manifest.json",
+    "max_candidates": 240,
+    "max_depth": 2,
+    "max_official_per_family": 2,
+    "max_per_family": 2,
+    "max_per_template": 2,
+    "max_total": 8,
+    "min_score": 55.0,
+    "official_budget": 2,
+    "official_similarity_threshold": 0.88,
+    "per_seed": 24,
+    "priority_family_keys_loaded": [
+      "analyst_eps_sibling_qfv4_industry",
+      "analyst_eps_price_industry",
+      "fundamental_model_slow_ratio_equity_cap",
+      "fundamental_model_slow_ratio_cashflow",
+      "fundamental_model_slow_ratio"
+    ],
+    "reject_dead_similarity": 0.92,
+    "similarity_threshold": 0.94
+  },
+  "success_state_counts": {
+    "candidate_outcome_memory": 11,
+    "combined_outcome_memory": 100,
+    "family_docs": 22,
+    "family_registry_summary": 23,
+    "official_outcome_memory": 109,
+    "submit_ready_ledger": 0
+  }
+}

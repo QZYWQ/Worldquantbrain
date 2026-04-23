@@ -1,0 +1,107 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-12",
+  "topic": "fundamental_model_slow_ratio_equity_cap_structural_batch_12",
+  "captured_at": "2026-04-23 14:22:28 CST (+0800)",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SUBINDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF"
+  },
+  "evidence": {
+    "expression_family": "./runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md",
+    "research_queue": "./runs/research-queues/2026-04-23-fundamental-model-slow-ratio-equity-cap.md",
+    "simulation_id": "UmHBJ61G565b75d8EbL7Ij",
+    "alpha_id": "2rn6NegP",
+    "notes": [
+      "This test used the current logged-in official WorldQuant BRAIN simulate session.",
+      "The branch tested the simpler smoothed cross-sectional structure rather than the earlier raw-ratio anchor.",
+      "The resulting alpha was materially weaker on full IS and is treated as a structural kill."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "shareholders_equity_total_2_cap_industry_grouprank_tsmean84",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2 / cap, 84), industry)",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.34,
+        "is_fitness": 0.15,
+        "is_turnover": 0.0135,
+        "is_returns": 0.0258,
+        "is_drawdown": 0.1182,
+        "is_margin": 0.003833,
+        "test_sharpe": 0.23,
+        "test_fitness": 0.08,
+        "test_turnover": 0.0119,
+        "test_returns": 0.0155,
+        "test_drawdown": 0.0932,
+        "test_margin": 0.002605
+      },
+      "checks": [
+        {
+          "name": "LOW_SHARPE",
+          "result": "FAIL",
+          "limit": 1.25,
+          "value": 0.34
+        },
+        {
+          "name": "LOW_FITNESS",
+          "result": "FAIL",
+          "limit": 1.0,
+          "value": 0.15
+        },
+        {
+          "name": "LOW_TURNOVER",
+          "result": "PASS",
+          "limit": 0.01,
+          "value": 0.0135
+        },
+        {
+          "name": "HIGH_TURNOVER",
+          "result": "PASS",
+          "limit": 0.7,
+          "value": 0.0135
+        },
+        {
+          "name": "CONCENTRATED_WEIGHT",
+          "result": "PASS"
+        },
+        {
+          "name": "LOW_SUB_UNIVERSE_SHARPE",
+          "result": "FAIL",
+          "limit": 0.15,
+          "value": 0.14
+        },
+        {
+          "name": "SELF_CORRELATION",
+          "result": "PENDING"
+        },
+        {
+          "name": "MATCHES_COMPETITION",
+          "result": "PASS",
+          "competitions": [
+            "Challenge",
+            "IQC2026S1"
+          ]
+        }
+      ],
+      "notes": "This expression is weaker than the raw-ratio industry 90d anchor on both IS and test-period views. Treat the simplified smoothed cross-sectional branch as killed."
+    }
+  ]
+}

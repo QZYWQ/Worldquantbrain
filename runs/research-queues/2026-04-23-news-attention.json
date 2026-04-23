@@ -1,0 +1,78 @@
+{
+  "_instructions": [
+    "Copy this file into runs/research-queues/YYYY-MM-DD-topic.json before editing.",
+    "Use this only for pre-backtest prioritization.",
+    "These scores are heuristics, not real simulation metrics.",
+    "Ranges: idea_strength 0-3, dataset_freshness 0-2, correlation_novelty 0-3, metric_headroom 0-2, execution_simplicity 0-1."
+  ],
+  "generated_at": "2026-04-23T02:35:09",
+  "items": [
+    {
+      "candidate_id": "1806212dc32a3d3a",
+      "convergence_score": 79.91,
+      "correlation_novelty": 0,
+      "coupling_risk": 0.0,
+      "current_status": "refine",
+      "dataset_freshness": 2,
+      "decision": "review",
+      "execution_simplicity": 0,
+      "expression": "group_rank(ts_mean(nws18_relevance, 63), subindustry)",
+      "family_category": "sentiment_news",
+      "family_fit_score": 69.08,
+      "family_topic": "news_attention_bee_stability",
+      "health_score": 100.0,
+      "idea_strength": 1,
+      "metric_headroom": 0,
+      "mutations": [
+        "group[industry->subindustry]",
+        "token[\\bnws18_bee\\b->nws18_relevance]"
+      ],
+      "name": "1806212dc32a3d3a",
+      "next_step": "Compare this news_attention_bee_stability variant against the family anchor and drop it if the ridge weakens.",
+      "notes": "score=58.69; health=100.00; convergence=79.91; novelty=21.47; overfit=23.53; coupling=0.00; template=group+token; mutations=group[industry->subindustry] | token[\\bnws18_bee\\b->nws18_relevance]",
+      "novelty_score": 21.47,
+      "overfit_risk": 23.53,
+      "score": 58.69,
+      "source_doc": "runs/expression-families/2026-04-23-news-attention-bee-stability.md",
+      "stability_score": 76.0,
+      "template_id": "group+token"
+    },
+    {
+      "candidate_id": "29200c08efeed782",
+      "convergence_score": 77.37,
+      "correlation_novelty": 0,
+      "coupling_risk": 0.0,
+      "current_status": "refine",
+      "dataset_freshness": 2,
+      "decision": "review",
+      "execution_simplicity": 0,
+      "expression": "group_rank(ts_mean(nws18_qcm, 63), subindustry)",
+      "family_category": "sentiment_news",
+      "family_fit_score": 66.73,
+      "family_topic": "news_attention_bee_stability",
+      "health_score": 100.0,
+      "idea_strength": 1,
+      "metric_headroom": 0,
+      "mutations": [
+        "group[industry->subindustry]",
+        "token[\\bnws18_bee\\b->nws18_qcm]"
+      ],
+      "name": "29200c08efeed782",
+      "next_step": "Compare this news_attention_bee_stability variant against the family anchor and drop it if the ridge weakens.",
+      "notes": "score=56.52; health=100.00; convergence=77.37; novelty=18.19; overfit=26.81; coupling=0.00; template=group+token; mutations=group[industry->subindustry] | token[\\bnws18_bee\\b->nws18_qcm]",
+      "novelty_score": 18.19,
+      "overfit_risk": 26.81,
+      "score": 56.52,
+      "source_doc": "runs/expression-families/2026-04-23-news-attention-bee-stability.md",
+      "stability_score": 76.0,
+      "template_id": "group+token"
+    }
+  ],
+  "selection_policy": {
+    "max_per_family": 4,
+    "max_per_template": 2,
+    "max_total": 12,
+    "min_score": 56.0,
+    "similarity_threshold": 0.94
+  }
+}

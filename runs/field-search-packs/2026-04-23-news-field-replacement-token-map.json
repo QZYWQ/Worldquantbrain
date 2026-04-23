@@ -1,0 +1,30 @@
+[
+  {
+    "pattern": "\\bscl12_buzz\\b",
+    "replacements": ["snt_buzz", "nws18_bee"]
+  },
+  {
+    "pattern": "\\bsnt_buzz\\b",
+    "replacements": ["nws18_bee", "nws18_qcm", "nws18_relevance"]
+  },
+  {
+    "pattern": "\\bsnt_buzz_fast_d1\\b",
+    "replacements": ["nws18_bee", "nws18_qcm"]
+  },
+  {
+    "pattern": "\\bnws18_bee\\b",
+    "replacements": ["nws18_qcm", "nws18_relevance", "nws18_nip"]
+  },
+  {
+    "pattern": "\\bnws18_qcm\\b",
+    "replacements": ["nws18_bee", "nws18_relevance"]
+  },
+  {
+    "pattern": "\\bnws18_relevance\\b",
+    "replacements": ["nws18_bee", "nws18_qcm"]
+  },
+  {
+    "pattern": "\\bnws18_nip\\b",
+    "replacements": ["nws18_bee", "nws18_relevance"]
+  }
+]

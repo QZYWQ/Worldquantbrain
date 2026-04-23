@@ -1,0 +1,111 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-11",
+  "topic": "fundamental_model_slow_ratio_equity_cap_follow_up_batch_11_api_checks",
+  "captured_at": "2026-04-23 14:05:47 CST (+0800)",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SUBINDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF"
+  },
+  "evidence": {
+    "expression_family": "./runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-follow-up.md",
+    "research_queue": "./runs/research-queues/2026-04-23-fundamental-model-slow-ratio-equity-cap.md",
+    "simulation_id": "3jvMzT5ji4ue8YoCEpvAlp9",
+    "alpha_id": "ZYWzZlgZ",
+    "request_ids": {
+      "simulation_complete": 1087,
+      "alpha_detail": 1088
+    },
+    "notes": [
+      "Metrics and checks below came from the logged-in official WorldQuant BRAIN simulate session via direct alpha API inspection.",
+      "A short re-poll after the initial read still left SELF_CORRELATION in PENDING state.",
+      "This capture explains the visible UI summary of 5 PASS / 2 FAIL / 1 PENDING."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "shareholders_equity_total_2_cap_industry_90",
+      "expression": "ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90)",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.89,
+        "is_fitness": 0.6,
+        "is_turnover": 0.1465,
+        "is_returns": 0.0671,
+        "is_drawdown": 0.1017,
+        "is_margin": 0.000915,
+        "test_sharpe": 1.43,
+        "test_fitness": 1.1,
+        "test_turnover": 0.1434,
+        "test_returns": 0.0844,
+        "test_drawdown": 0.0497,
+        "test_margin": 0.001177
+      },
+      "checks": [
+        {
+          "name": "LOW_SHARPE",
+          "result": "FAIL",
+          "limit": 1.25,
+          "value": 0.89
+        },
+        {
+          "name": "LOW_FITNESS",
+          "result": "FAIL",
+          "limit": 1.0,
+          "value": 0.6
+        },
+        {
+          "name": "LOW_TURNOVER",
+          "result": "PASS",
+          "limit": 0.01,
+          "value": 0.1465
+        },
+        {
+          "name": "HIGH_TURNOVER",
+          "result": "PASS",
+          "limit": 0.7,
+          "value": 0.1465
+        },
+        {
+          "name": "CONCENTRATED_WEIGHT",
+          "result": "PASS"
+        },
+        {
+          "name": "LOW_SUB_UNIVERSE_SHARPE",
+          "result": "PASS",
+          "limit": 0.39,
+          "value": 0.71
+        },
+        {
+          "name": "SELF_CORRELATION",
+          "result": "PENDING"
+        },
+        {
+          "name": "MATCHES_COMPETITION",
+          "result": "PASS",
+          "competitions": [
+            "Challenge",
+            "IQC2026S1"
+          ]
+        }
+      ],
+      "notes": "The visible shown-test-period card is stronger than the full-IS gate values. The current blockers are LOW_SHARPE and LOW_FITNESS, while SELF_CORRELATION is not resolved yet."
+    }
+  ]
+}

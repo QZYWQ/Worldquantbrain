@@ -7,7 +7,7 @@ PROJECT_ROOT="$(cd -- "${HARNESS_ROOT}/.." && pwd)"
 
 cd "$PROJECT_ROOT"
 
-bash -n ./harness/init.sh ./harness/coding-session.sh ./harness/lib/*.sh ./harness/tests/*.sh
+bash -n ./harness/init.sh ./harness/coding-session.sh ./harness/run-local-alpha-loop.sh ./harness/lib/*.sh ./harness/tests/*.sh
 python3 -m py_compile harness/lib/*.py
 
 tests=(
@@ -15,6 +15,11 @@ tests=(
   "surface-contract.sh"
   "verification-registry.sh"
   "content-validator.sh"
+  "alpha-family-factory.sh"
+  "alpha-success-core.sh"
+  "alpha-daily-runner.sh"
+  "alpha-seed-family-expander.sh"
+  "local-alpha-loop.sh"
   "read-only-parallel.sh"
   "read-only-surface.sh"
   "module-boundaries.sh"

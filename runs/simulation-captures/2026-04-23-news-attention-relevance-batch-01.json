@@ -1,0 +1,57 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-23-news-attention-relevance-batch-01",
+  "topic": "news_attention_relevance_63d_branch_batch_01",
+  "captured_at": "2026-04-23 03:19:01 CST (+0800)",
+  "capture_mode": "manual-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-23-news-attention-field-pack.md",
+    "research_queue": "./runs/research-queues/2026-04-23-news-attention.md",
+    "notes": [
+      "Metrics below were observed in the live official WorldQuant BRAIN simulate UI earlier in this session, before the browser session expired.",
+      "The alpha was the 63d relevance baseline on subindustry: group_rank(ts_mean(nws18_relevance, 63), subindustry).",
+      "A red banner also appeared in the live UI: Operator ts_mean does not support event inputs.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for this run.",
+      "Submit Alpha remained disabled in the captured UI state."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "news_attention_relevance_63d_branch_v1",
+      "expression": "group_rank(ts_mean(nws18_relevance, 63), subindustry)",
+      "ui_context": "IS Summary / TRAIN",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": -0.44,
+        "fitness": -0.18,
+        "turnover": "4.64%",
+        "returns": "-1.99%",
+        "drawdown": "16.75%",
+        "margin": "-8.59‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "The relevance baseline is weak and the live UI also reported an operator compatibility problem. Kill the news family unless a later live run shows real submission-style evidence."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "news_attention_relevance_63d_branch_v1",
+    "winner_by_fitness": "news_attention_relevance_63d_branch_v1",
+    "branch_takeaway": "The relevance baseline is weak on the visible summary and there is no submission-style evidence. Combined with the weak qcm control, this news-attention lane is a kill candidate unless a later official check produces real subuniverse and submission evidence."
+  }
+}

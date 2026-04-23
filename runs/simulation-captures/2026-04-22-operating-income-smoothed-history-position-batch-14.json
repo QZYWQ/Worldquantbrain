@@ -1,0 +1,169 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-22-operating-income-smoothed-history-position-batch-14",
+  "topic": "operating_income_smoothed_history_position_follow_up_batch_14",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1
+  },
+  "evidence": {
+    "field_pack": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "expression_family": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+    "notes": [
+      "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+      "The live batch used Simulation 1 / 3 / 5 / 6 for the 84d, 72d, 90d, and 78d operating-income ridge points.",
+      "IS view was selected before capture and TEST was also checked for each member.",
+      "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch.",
+      "Simulation 1 was in tutorial mode and retained the tutorial checks overlay; the metrics are still real but the name field was restated to match the 84d control."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "operating_income_sm84_hist504_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 84), 504), industry)",
+      "ui_context": "Simulation 1 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.96,
+        "fitness": 0.64,
+        "turnover": "2.89%",
+        "returns": "5.49%",
+        "drawdown": "8.36%",
+        "margin": "38.02‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": -0.35,
+        "fitness": -0.13,
+        "turnover": "2.53%",
+        "returns": "-1.74%",
+        "drawdown": "6.04%",
+        "margin": "-13.75‱"
+      },
+      "notes": "The 84d control sits on the flat part of the operating-income ridge. It is real IS data, but TEST stayed negative and Submit Alpha remained disabled."
+    },
+    {
+      "name": "operating_income_sm72_hist504_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 72), 504), industry)",
+      "ui_context": "Simulation 3 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.96,
+        "fitness": 0.63,
+        "turnover": "3.02%",
+        "returns": "5.44%",
+        "drawdown": "8.23%",
+        "margin": "36.02‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": -0.39,
+        "fitness": -0.15,
+        "turnover": "2.66%",
+        "returns": "-1.92%",
+        "drawdown": "6.08%",
+        "margin": "-14.41‱"
+      },
+      "notes": "The 72d variant trails the newer 84d/90d pair on visible Fitness. It is still a real result, but the TEST view remains negative and no submission evidence appeared."
+    },
+    {
+      "name": "operating_income_sm90_hist504_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 90), 504), industry)",
+      "ui_context": "Simulation 5 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.96,
+        "fitness": 0.64,
+        "turnover": "2.84%",
+        "returns": "5.52%",
+        "drawdown": "8.52%",
+        "margin": "38.86‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 4,
+          "fail": 3,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": -0.29,
+        "fitness": -0.10,
+        "turnover": "2.49%",
+        "returns": "-1.46%",
+        "drawdown": "6.07%",
+        "margin": "-11.75‱"
+      },
+      "notes": "The 90d variant is the cleanest efficiency anchor in the visible ridge: same Sharpe/Fitness as the control, better turnover, better returns, and better margin, with only a slightly worse drawdown. TEST stayed negative."
+    },
+    {
+      "name": "operating_income_sm78_hist504_us3k_d1_v1",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 78), 504), industry)",
+      "ui_context": "Simulation 6 IS Summary",
+      "classification": "Needs Improvement",
+      "metrics": {
+        "sharpe": 0.96,
+        "fitness": 0.63,
+        "turnover": "2.95%",
+        "returns": "5.41%",
+        "drawdown": "8.15%",
+        "margin": "36.75‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "test": {
+        "sharpe": -0.42,
+        "fitness": -0.17,
+        "turnover": "2.59%",
+        "returns": "-2.08%",
+        "drawdown": "6.13%",
+        "margin": "-16.05‱"
+      },
+      "notes": "The 78d probe is still a backup-quality point on the ridge. It did not reveal any non-null subuniverse result and the TEST view stayed negative."
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "operating_income_sm90_hist504_us3k_d1_v1",
+    "winner_by_fitness": "operating_income_sm90_hist504_us3k_d1_v1",
+    "branch_takeaway": "The operating-income ridge is very flat on Sharpe and Fitness, but the 90d variant is the cleanest visible efficiency anchor. The 84d control is close behind, 72d and 78d trail on Fitness, and none of the four exposes Check Submission or a non-null subuniverse verdict, so this is still polish-only rather than candidate-level."
+  }
+}

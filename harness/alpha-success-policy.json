@@ -1,0 +1,69 @@
+{
+  "_instructions": [
+    "Default success-rate-first policy for local alpha mining.",
+    "This file does not contain official results. It only controls local scheduling and triage."
+  ],
+  "objective": "maximize_internal_submit_ready_per_official_slot",
+  "submit_ready": {
+    "require_real_official_checks": true,
+    "require_no_failed_checks": true,
+    "require_self_correlation_resolved": true,
+    "require_self_correlation_non_fail": true,
+    "ignore_shown_test_period_for_final_decision": true
+  },
+  "family_states": [
+    "explore",
+    "branch",
+    "hold",
+    "kill",
+    "exploit"
+  ],
+  "failure_checks": [
+    "LOW_SHARPE",
+    "LOW_FITNESS",
+    "LOW_SUB_UNIVERSE_SHARPE",
+    "HIGH_TURNOVER",
+    "LOW_TURNOVER",
+    "CONCENTRATED_WEIGHT",
+    "SELF_CORRELATION"
+  ],
+  "hard_exclude_topic_patterns": [
+    "news-attention",
+    "buzz",
+    "historical_volatility_20",
+    "sales_delta",
+    "operating_income",
+    "analyst-disagreement",
+    "price-volume short horizon",
+    "capital-structure",
+    "balance-sheet"
+  ],
+  "killed_template_markers": [
+    "smoothing/simple",
+    "smoothed-history",
+    "simple smoothed cross-sectional",
+    "near-duplicate window",
+    "structural smoothing"
+  ],
+  "budget": {
+    "official_budget": 8,
+    "max_official_per_family": 2,
+    "max_anchor_per_family": 1,
+    "max_control_per_family": 1,
+    "max_structural_follow_up_per_family": 1,
+    "official_similarity_threshold": 0.88
+  },
+  "priors": {
+    "fail_similarity_penalty_start": 0.55,
+    "fail_similarity_hard_drop": 0.82,
+    "submit_ready_bonus": 20.0,
+    "exploit_state_bonus": 12.0,
+    "branch_state_bonus": 6.0,
+    "hold_state_penalty": 18.0,
+    "kill_state_penalty": 100.0,
+    "low_sharpe_penalty": 8.0,
+    "low_fitness_penalty": 8.0,
+    "low_sub_universe_penalty": 10.0,
+    "self_correlation_penalty": 14.0
+  }
+}

@@ -97,3 +97,16 @@ group_rank(ts_rank(ts_mean(operating_income / sales, 126), 252), industry)
 - Backup comparison:
   if the batch is weak, return to the forum crawl for a different KB candidate rather than extending the same profitability ratio.
 
+## TEST Update
+
+- Simulation 20 was switched to TEST view on the logged-in official WorldQuant BRAIN simulate UI.
+- TEST aggregate data: `Sharpe -0.12 / Fitness -0.02 / Turnover 4.03% / Returns -0.35% / Drawdown 2.83% / Margin -1.75‱`.
+- No visible `Check Submission` evidence or non-null `subuniverse_pass` appeared.
+- `Submit Alpha` stayed disabled in the captured UI state.
+
+## Decision
+
+- Kill the `operating_income / sales` ratio family.
+- Keep the 21d train-side win as a negative control only.
+- Branch the next live research to `event_trigger_low_turnover_volatility_gate` instead of polishing this lane further.
+

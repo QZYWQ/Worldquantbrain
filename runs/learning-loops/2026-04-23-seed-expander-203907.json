@@ -1,0 +1,1155 @@
+{
+  "all_families": [
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)",
+        "group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), industry)",
+        "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)"
+      ],
+      "candidate_field_count": 5,
+      "candidate_fields": [
+        "anl4_qfv4_median_eps",
+        "anl4_qfv4_eps_mean",
+        "anl4_afv4_median_eps",
+        "anl4_afv4_dts_spe",
+        "close"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/analyst-sibling-branch.md"
+      ],
+      "family_key": "analyst_eps_sibling_qfv4_industry",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/analyst-sibling-search-pack.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 4,
+      "next_action_codes": [
+        "anl4_qfv4_median_eps",
+        "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)",
+        "anl4_qfv4_eps_mean",
+        "anl4_afv4_median_eps"
+      ],
+      "official_outcome_count": 3,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 3 official outcomes",
+        "best recorded fitness contributes 2.80",
+        "field-pack exposes 5 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language"
+      ],
+      "priority_score": 69.8,
+      "reason": "candidate evidence is clean on the common subset, but full submission gates are still missing",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "analyst_eps_sibling_qfv4_industry"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_rank(est_eps/close, 60), industry)",
+        "group_rank(ts_rank(est_eps/close, 20), industry)",
+        "group_rank(ts_rank(est_eps/close, 120), industry)"
+      ],
+      "candidate_field_count": 4,
+      "candidate_fields": [
+        "est_eps",
+        "close",
+        "<analyst recommendation field from search results>",
+        "<earnings surprise field from search results>"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/primary-direction-baselines.md"
+      ],
+      "family_key": "analyst_eps_price_industry",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/primary-direction-search-pack.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 2,
+      "next_action_codes": [
+        "est_eps",
+        "group_rank(ts_rank(est_eps/close, 60), industry)"
+      ],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 4 official outcomes",
+        "best recorded fitness contributes 2.44",
+        "field-pack exposes 4 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language"
+      ],
+      "priority_score": 66.94,
+      "reason": "candidate evidence is clean on the common subset, but full submission gates are still missing",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "analyst_eps_price_industry"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-follow-up.md",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md"
+      ],
+      "family_key": "fundamental_model_slow_ratio_equity_cap",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 3,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 13,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 3 full gate records",
+        "family has 13 official outcomes",
+        "best recorded fitness contributes 1.20"
+      ],
+      "priority_score": 47.2,
+      "reason": "family docs explicitly keep this family in branch",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "fundamental_model_slow_ratio_equity_cap_follow_up",
+        "fundamental_model_slow_ratio_equity_cap_structural_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-cashflow-follow-up.md"
+      ],
+      "family_key": "fundamental_model_slow_ratio_cashflow",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 4 official outcomes",
+        "best recorded fitness contributes 0.26"
+      ],
+      "priority_score": 34.26,
+      "reason": "family docs explicitly keep this family in branch",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "fundamental_model_slow_ratio_cashflow_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-follow-up.md"
+      ],
+      "family_key": "fundamental_model_slow_ratio",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 0,
+      "priority_reasons": [
+        "family state contributes +20 from `explore`"
+      ],
+      "priority_score": 20.0,
+      "reason": "no official outcomes or explicit hold/kill decision found",
+      "state": "explore",
+      "submit_ready_count": 0,
+      "topics": [
+        "fundamental_model_slow_ratio_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 4,
+      "baseline_ideas": [
+        "trade_when(volume > adv20, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+        "trade_when(volume > ts_mean(volume, 10), group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+        "trade_when(volume > ts_mean(volume, 20), group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+        "trade_when(volume > adv20, group_rank(ts_zscore(close - vwap, 20), industry), -1)"
+      ],
+      "candidate_field_count": 6,
+      "candidate_fields": [
+        "volume",
+        "adv20",
+        "close",
+        "vwap",
+        "returns",
+        "historical_volatility_20"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-event-trigger-low-turnover-volume-gate-follow-up.md"
+      ],
+      "family_key": "event_trigger_low_turnover_volume_gate",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-22-event-trigger-low-turnover-volume-gate.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 3,
+      "next_action_codes": [
+        "volume",
+        "close - vwap",
+        "trade_when(volume > adv20, group_rank(ts_zscore(close - vwap, 10), industry), -1)"
+      ],
+      "official_outcome_count": 1,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 1 official outcomes",
+        "field-pack exposes 6 candidate fields",
+        "field-pack provides 4 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language"
+      ],
+      "priority_score": 16.5,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "event_trigger_low_turnover_volume_gate_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "trade_when(pcr_vol_all > ts_mean(pcr_vol_all, 20), group_rank(-pcr_oi_all, industry), -1)",
+        "trade_when(pcr_vol_all > ts_mean(pcr_vol_all, 10), group_rank(-pcr_oi_all, industry), -1)",
+        "trade_when(pcr_vol_all > ts_mean(pcr_vol_all, 20), group_rank(-pcr_vol_all, industry), -1)"
+      ],
+      "candidate_field_count": 2,
+      "candidate_fields": [
+        "pcr_vol_all",
+        "pcr_oi_all"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-20-event-option-volume-gate.md"
+      ],
+      "family_key": "event_option_volume_gate",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-20-event-option-volume-gate.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 5,
+      "next_action_codes": [
+        "pcr_vol_all",
+        "pcr_oi_all",
+        "trade_when(pcr_vol_all > ts_mean(pcr_vol_all, 20), group_rank(-pcr_oi_all, industry), -1)",
+        "10d",
+        "ts_mean(pcr_oi_all, 5)"
+      ],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 4 official outcomes",
+        "field-pack exposes 2 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language"
+      ],
+      "priority_score": 14.5,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "event_option_volume_gate"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-revenue-smoothed-history-position-follow-up.md"
+      ],
+      "family_key": "revenue_smoothed_history_position",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 2,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 2 official outcomes",
+        "best recorded fitness contributes 0.22"
+      ],
+      "priority_score": -16.78,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "revenue_smoothed_history_position_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [],
+      "family_key": "news_attention_qcm_branch",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 1,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 1 official outcomes"
+      ],
+      "priority_score": -18.5,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": []
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [],
+      "family_key": "news_attention_qcm_vecavg_63d_branch",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 1,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 1 official outcomes"
+      ],
+      "priority_score": -18.5,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": []
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [],
+      "family_key": "news_attention_relevance_63d_branch",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 1,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 1 official outcomes"
+      ],
+      "priority_score": -18.5,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": []
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "trade_when(ts_rank(historical_volatility_20, 20) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+        "trade_when(ts_rank(historical_volatility_20, 10) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+        "trade_when(ts_rank(ts_std_dev(returns, 5), 20) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)"
+      ],
+      "candidate_field_count": 5,
+      "candidate_fields": [
+        "historical_volatility_20",
+        "returns",
+        "close",
+        "vwap",
+        "industry"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-event-trigger-low-turnover-volatility-gate-follow-up.md"
+      ],
+      "family_key": "event_trigger_low_turnover_volatility_gate",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-22-event-trigger-low-turnover-volatility-gate.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 3,
+      "next_action_codes": [
+        "historical_volatility_20",
+        "close - vwap",
+        "trade_when(ts_rank(historical_volatility_20, 20) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)"
+      ],
+      "official_outcome_count": 8,
+      "priority_reasons": [
+        "family state contributes -120 from `kill`",
+        "family has 8 official outcomes",
+        "field-pack exposes 5 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language"
+      ],
+      "priority_score": -80.5,
+      "reason": "family docs explicitly kill this family",
+      "state": "kill",
+      "submit_ready_count": 0,
+      "topics": [
+        "event_trigger_low_turnover_volatility_gate_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-price-volume-short-horizon-follow-up.md"
+      ],
+      "family_key": "price_volume_short_horizon",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 3,
+      "priority_reasons": [
+        "family state contributes -120 from `kill`",
+        "family has 3 official outcomes"
+      ],
+      "priority_score": -115.5,
+      "reason": "family docs explicitly kill this family",
+      "state": "kill",
+      "submit_ready_count": 0,
+      "topics": [
+        "price_volume_short_horizon_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-pcr-oi-all-industry-rank-follow-up.md"
+      ],
+      "family_key": "pcr_oi_all_industry_rank",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 2,
+      "priority_reasons": [
+        "family state contributes -120 from `kill`",
+        "family has 2 official outcomes",
+        "best recorded fitness contributes 0.06"
+      ],
+      "priority_score": -116.94,
+      "reason": "family docs explicitly kill this family",
+      "state": "kill",
+      "submit_ready_count": 0,
+      "topics": [
+        "pcr_oi_all_industry_rank_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_mean(nws18_bee, 63), industry)",
+        "group_rank(ts_mean(nws18_bee, 21), industry)",
+        "group_rank(ts_mean(nws18_bee, 126), industry)"
+      ],
+      "candidate_field_count": 4,
+      "candidate_fields": [
+        "nws18_bee",
+        "nws18_qcm",
+        "nws18_relevance",
+        "nws18_nip"
+      ],
+      "doc_paths": [],
+      "family_key": "news_attention",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-23-news-attention-field-pack.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 5,
+      "next_action_codes": [
+        "nws18_bee",
+        "group_rank(ts_mean(nws18_bee, 63), industry)",
+        "21d",
+        "126d",
+        "252d"
+      ],
+      "official_outcome_count": 0,
+      "priority_reasons": [
+        "family state contributes +20 from `explore`",
+        "field-pack exposes 4 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -147.5,
+      "reason": "field-search pack exists but no family registry row was found",
+      "state": "explore",
+      "submit_ready_count": 0,
+      "topics": [
+        "news_attention"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-news-attention-bee-stability.md"
+      ],
+      "family_key": "news_attention_bee_stability",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 0,
+      "priority_reasons": [
+        "family state contributes +20 from `explore`",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -180.0,
+      "reason": "no official outcomes or explicit hold/kill decision found",
+      "state": "explore",
+      "submit_ready_count": 0,
+      "topics": [
+        "news_attention_bee_stability"
+      ]
+    },
+    {
+      "baseline_idea_count": 6,
+      "baseline_ideas": [
+        "group_rank(ts_mean(scl12_buzz, 5), industry)",
+        "group_rank(ts_mean(scl12_buzz, 10), industry)",
+        "group_rank(ts_mean(scl12_buzz, 20), industry)",
+        "group_rank(ts_mean(snt_buzz, 63), industry)",
+        "group_rank(ts_mean(snt_buzz, 21), industry)",
+        "group_rank(ts_mean(snt_buzz, 126), industry)"
+      ],
+      "candidate_field_count": 5,
+      "candidate_fields": [
+        "scl12_buzz",
+        "scl12_buzz_fast_d1",
+        "snt_buzz",
+        "snt_buzz_fast_d1",
+        "snt_value"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-20-sentiment-buzz-stability.md",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-sentiment-buzz-stability-follow-up.md"
+      ],
+      "family_key": "sentiment_buzz_stability",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-20-sentiment-buzz-stability.md",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-21-sentiment-buzz-stability.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 10,
+      "next_action_codes": [
+        "scl12_buzz",
+        "group_rank(ts_mean(scl12_buzz, 5), industry)",
+        "group_rank(ts_mean(scl12_buzz, 10), industry)",
+        "group_rank(ts_mean(scl12_buzz, 20), industry)",
+        "group_rank(ts_rank(scl12_buzz, 10), industry)",
+        "snt_buzz",
+        "group_rank(ts_mean(snt_buzz, 63), industry)",
+        "21d",
+        "126d",
+        "snt_value"
+      ],
+      "official_outcome_count": 8,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 8 official outcomes",
+        "best recorded fitness contributes 0.28",
+        "field-pack exposes 4 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack contains explicit official/verified language",
+        "field-pack exposes 3 candidate fields",
+        "field-pack argues for diversification or material distinctness",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -154.72,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "sentiment_buzz_stability",
+        "sentiment_buzz_stability_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(-ts_rank(anl4_afv4_dts_spe, 60), industry)",
+        "group_rank(-ts_rank(anl4_qfv4_dts_spe, 60), industry)",
+        "group_rank(ts_rank(anl4_afv4_dts_spe, 60), industry)"
+      ],
+      "candidate_field_count": 4,
+      "candidate_fields": [
+        "anl4_afv4_dts_spe",
+        "anl4_qfv4_dts_spe",
+        "close",
+        "<sentiment fallback field to re-verify>"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/analyst-disagreement-branch.md"
+      ],
+      "family_key": "analyst_disagreement_dts_spe_industry",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/analyst-disagreement-search-pack.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 4,
+      "next_action_codes": [
+        "anl4_afv4_dts_spe",
+        "group_rank(-ts_rank(anl4_afv4_dts_spe, 60), industry)",
+        "anl4_qfv4_dts_spe",
+        "120d"
+      ],
+      "official_outcome_count": 6,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 6 official outcomes",
+        "best recorded fitness contributes 0.08",
+        "field-pack exposes 4 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -181.42,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "analyst_disagreement_dts_spe_industry"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_delta(revenue, 63), industry)",
+        "group_rank(ts_delta(revenue, 21), industry)",
+        "group_rank(ts_delta(revenue, 126), industry)"
+      ],
+      "candidate_field_count": 3,
+      "candidate_fields": [
+        "revenue",
+        "sales",
+        "operating_income"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-sales-delta-fundamental.md"
+      ],
+      "family_key": "sales_delta_fundamental",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-21-sales-delta-fundamental.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 5,
+      "next_action_codes": [
+        "revenue",
+        "group_rank(ts_delta(revenue, 63), industry)",
+        "63d",
+        "21d",
+        "126d"
+      ],
+      "official_outcome_count": 8,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 8 official outcomes",
+        "best recorded fitness contributes 1.04",
+        "field-pack exposes 3 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -182.46,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "sales_delta_fundamental"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md"
+      ],
+      "family_key": "operating_income_smoothed_history_position",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 14,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 14 official outcomes",
+        "best recorded fitness contributes 1.78",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -212.22,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "operating_income_smoothed_history_position_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-operating-income-history-position-follow-up.md"
+      ],
+      "family_key": "operating_income_history_position",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 4 official outcomes",
+        "best recorded fitness contributes 1.74",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -212.26,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "operating_income_history_position_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-operating-income-delta-follow-up.md"
+      ],
+      "family_key": "operating_income_delta",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes -20 from `hold`",
+        "family has 4 official outcomes",
+        "best recorded fitness contributes 1.46",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -212.54,
+      "reason": "official evidence exists but no submit-ready outcome is recorded",
+      "state": "hold",
+      "submit_ready_count": 0,
+      "topics": [
+        "operating_income_delta_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_rank(ts_mean(fnd6_teq / assets, 63), 504), industry)",
+        "group_rank(ts_rank(ts_mean(fnd6_teq / assets, 21), 504), industry)",
+        "group_rank(ts_rank(ts_mean(fnd6_teq / assets, 126), 504), industry)"
+      ],
+      "candidate_field_count": 6,
+      "candidate_fields": [
+        "fnd6_teq",
+        "assets",
+        "liabilities",
+        "equity",
+        "assets_curr",
+        "liabilities_curr"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-capital-structure-balance-sheet-follow-up.md"
+      ],
+      "family_key": "capital_structure_balance_sheet",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-22-capital-structure-balance-sheet.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 5,
+      "next_action_codes": [
+        "fnd6_teq",
+        "group_rank(ts_rank(ts_mean(fnd6_teq / assets, 63), 504), industry)",
+        "liabilities / assets",
+        "21d",
+        "subindustry"
+      ],
+      "official_outcome_count": 5,
+      "priority_reasons": [
+        "family state contributes -120 from `kill`",
+        "family has 5 official outcomes",
+        "best recorded fitness contributes 0.24",
+        "field-pack exposes 6 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -279.26,
+      "reason": "family docs explicitly kill this family",
+      "state": "kill",
+      "submit_ready_count": 0,
+      "topics": [
+        "capital_structure_balance_sheet_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_rank(operating_income / sales, 252), industry)",
+        "group_rank(ts_rank(ts_mean(operating_income / sales, 21), 252), industry)",
+        "group_rank(ts_rank(ts_mean(operating_income / sales, 63), 252), industry)"
+      ],
+      "candidate_field_count": 2,
+      "candidate_fields": [
+        "operating_income",
+        "sales"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-operating-income-sales-ratio-follow-up.md"
+      ],
+      "family_key": "operating_income_sales_ratio",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-22-operating-income-sales-ratio.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": true,
+      "next_action_code_count": 5,
+      "next_action_codes": [
+        "operating_income / sales",
+        "group_rank(ts_rank(operating_income / sales, 252), industry)",
+        "21d",
+        "63d",
+        "126d"
+      ],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes -120 from `kill`",
+        "family has 4 official outcomes",
+        "best recorded fitness contributes 0.60",
+        "field-pack exposes 2 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language",
+        "hard exclude topic pattern matched this family"
+      ],
+      "priority_score": -284.9,
+      "reason": "family docs explicitly kill this family",
+      "state": "kill",
+      "submit_ready_count": 0,
+      "topics": [
+        "operating_income_sales_ratio_follow_up"
+      ]
+    }
+  ],
+  "counts": {
+    "family_count": 24,
+    "family_registry_count": 23,
+    "field_pack_count": 12,
+    "shortlist_count": 5
+  },
+  "generated_at": "2026-04-23T20:39:07",
+  "objective": "prioritize materially different seed families before daily local mining",
+  "priority_family_keys": [
+    "analyst_eps_sibling_qfv4_industry",
+    "analyst_eps_price_industry",
+    "fundamental_model_slow_ratio_equity_cap",
+    "fundamental_model_slow_ratio_cashflow",
+    "fundamental_model_slow_ratio"
+  ],
+  "run_id": "2026-04-23-seed-expander-203907",
+  "settings": {
+    "allowed_states": [
+      "exploit",
+      "branch",
+      "explore"
+    ],
+    "hard_exclude_topic_patterns": [
+      "news-attention",
+      "buzz",
+      "historical_volatility_20",
+      "sales_delta",
+      "operating_income",
+      "analyst-disagreement",
+      "price-volume short horizon",
+      "capital-structure",
+      "balance-sheet"
+    ],
+    "shortlist_limit": 8
+  },
+  "shortlist": [
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)",
+        "group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), industry)",
+        "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)"
+      ],
+      "candidate_field_count": 5,
+      "candidate_fields": [
+        "anl4_qfv4_median_eps",
+        "anl4_qfv4_eps_mean",
+        "anl4_afv4_median_eps",
+        "anl4_afv4_dts_spe",
+        "close"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/analyst-sibling-branch.md"
+      ],
+      "family_key": "analyst_eps_sibling_qfv4_industry",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/analyst-sibling-search-pack.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 4,
+      "next_action_codes": [
+        "anl4_qfv4_median_eps",
+        "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)",
+        "anl4_qfv4_eps_mean",
+        "anl4_afv4_median_eps"
+      ],
+      "official_outcome_count": 3,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 3 official outcomes",
+        "best recorded fitness contributes 2.80",
+        "field-pack exposes 5 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language"
+      ],
+      "priority_score": 69.8,
+      "reason": "candidate evidence is clean on the common subset, but full submission gates are still missing",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "analyst_eps_sibling_qfv4_industry"
+      ]
+    },
+    {
+      "baseline_idea_count": 3,
+      "baseline_ideas": [
+        "group_rank(ts_rank(est_eps/close, 60), industry)",
+        "group_rank(ts_rank(est_eps/close, 20), industry)",
+        "group_rank(ts_rank(est_eps/close, 120), industry)"
+      ],
+      "candidate_field_count": 4,
+      "candidate_fields": [
+        "est_eps",
+        "close",
+        "<analyst recommendation field from search results>",
+        "<earnings surprise field from search results>"
+      ],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/primary-direction-baselines.md"
+      ],
+      "family_key": "analyst_eps_price_industry",
+      "field_pack_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/primary-direction-search-pack.md"
+      ],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 2,
+      "next_action_codes": [
+        "est_eps",
+        "group_rank(ts_rank(est_eps/close, 60), industry)"
+      ],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 4 official outcomes",
+        "best recorded fitness contributes 2.44",
+        "field-pack exposes 4 candidate fields",
+        "field-pack provides 3 baseline ideas",
+        "field-pack already names concrete next-action expressions/fields",
+        "field-pack explicitly marks this lane as the first or primary seed",
+        "field-pack frames part of the lane as secondary/control only",
+        "field-pack argues for diversification or material distinctness",
+        "field-pack contains explicit official/verified language"
+      ],
+      "priority_score": 66.94,
+      "reason": "candidate evidence is clean on the common subset, but full submission gates are still missing",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "analyst_eps_price_industry"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-follow-up.md",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md"
+      ],
+      "family_key": "fundamental_model_slow_ratio_equity_cap",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 3,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 13,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 3 full gate records",
+        "family has 13 official outcomes",
+        "best recorded fitness contributes 1.20"
+      ],
+      "priority_score": 47.2,
+      "reason": "family docs explicitly keep this family in branch",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "fundamental_model_slow_ratio_equity_cap_follow_up",
+        "fundamental_model_slow_ratio_equity_cap_structural_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-cashflow-follow-up.md"
+      ],
+      "family_key": "fundamental_model_slow_ratio_cashflow",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 4,
+      "priority_reasons": [
+        "family state contributes +28 from `branch`",
+        "family has 4 official outcomes",
+        "best recorded fitness contributes 0.26"
+      ],
+      "priority_score": 34.26,
+      "reason": "family docs explicitly keep this family in branch",
+      "state": "branch",
+      "submit_ready_count": 0,
+      "topics": [
+        "fundamental_model_slow_ratio_cashflow_follow_up"
+      ]
+    },
+    {
+      "baseline_idea_count": 0,
+      "baseline_ideas": [],
+      "candidate_field_count": 0,
+      "candidate_fields": [],
+      "doc_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-follow-up.md"
+      ],
+      "family_key": "fundamental_model_slow_ratio",
+      "field_pack_paths": [],
+      "full_gate_outcome_count": 0,
+      "hard_excluded": false,
+      "next_action_code_count": 0,
+      "next_action_codes": [],
+      "official_outcome_count": 0,
+      "priority_reasons": [
+        "family state contributes +20 from `explore`"
+      ],
+      "priority_score": 20.0,
+      "reason": "no official outcomes or explicit hold/kill decision found",
+      "state": "explore",
+      "submit_ready_count": 0,
+      "topics": [
+        "fundamental_model_slow_ratio_follow_up"
+      ]
+    }
+  ]
+}

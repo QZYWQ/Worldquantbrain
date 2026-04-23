@@ -1,0 +1,185 @@
+{
+  "candidate_count": 294,
+  "capture_count": 58,
+  "capture_docs": [
+    {
+      "capture_id": "2026-04-20-event-option-volume-gate-batch-01",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": true,
+      "path": "runs/simulation-captures/2026-04-20-event-option-volume-gate-batch-01.json",
+      "topic": "event_option_volume_gate"
+    },
+    {
+      "capture_id": "2026-04-20-sentiment-buzz-stability-batch-01",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": true,
+      "path": "runs/simulation-captures/2026-04-20-sentiment-buzz-stability-batch-01.json",
+      "topic": "sentiment_buzz_stability"
+    },
+    {
+      "capture_id": "2026-04-21-operating-income-follow-up-batch-03",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": false,
+      "path": "runs/simulation-captures/2026-04-21-operating-income-follow-up-batch-03.json",
+      "topic": "operating_income_follow_up"
+    },
+    {
+      "capture_id": "2026-04-21-operating-income-history-position-batch-04",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": false,
+      "path": "runs/simulation-captures/2026-04-21-operating-income-history-position-batch-04.json",
+      "topic": "operating_income_history_position_follow_up"
+    },
+    {
+      "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-05",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": false,
+      "path": "runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-05.json",
+      "topic": "operating_income_smoothed_history_position_follow_up_batch_05"
+    },
+    {
+      "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-06",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": false,
+      "path": "runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-06.json",
+      "topic": "operating_income_smoothed_history_position_follow_up_batch_06"
+    },
+    {
+      "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-07",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": false,
+      "path": "runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-07.json",
+      "topic": "operating_income_smoothed_history_position_follow_up_batch_07"
+    },
+    {
+      "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-08",
+      "expression_count": 4,
+      "has_check_submission": false,
+      "is_dead": false,
+      "path": "runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-08.json",
+      "topic": "operating_income_smoothed_history_position_follow_up_batch_08"
+    },
+    {
+      "capture_id": "2026-04-21-operating-income-smoothed-history-position-batch-09",
+      "expression_count": 1,
+      "has_check_submission": false,
+      "is_dead": true,
+      "path": "runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-09.json",
+      "topic": "operating_income_smoothed_history_position_follow_up_batch_09"
+    },
+    {
+      "capture_id": "2026-04-21-revenue-smoothed-history-position-batch-01",
+      "expression_count": 1,
+      "has_check_submission": false,
+      "is_dead": true,
+      "path": "runs/simulation-captures/2026-04-21-revenue-smoothed-history-position-batch-01.json",
+      "topic": "revenue_smoothed_history_position_follow_up"
+    }
+  ],
+  "dead_count": 44,
+  "family_count": 1,
+  "family_docs": [
+    {
+      "baseline_expression": "ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90)",
+      "category": "fundamental",
+      "delay": "1",
+      "expression_count": 6,
+      "is_dead": false,
+      "path": "runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md",
+      "region": "USA",
+      "title": "Fundamental / Model Slow Ratio Equity / Cap Structural Follow-up",
+      "topic": "fundamental_model_slow_ratio_equity_cap_structural_follow_up",
+      "universe": "TOP3000",
+      "variant_count": 5
+    }
+  ],
+  "first_candidates": [
+    {
+      "candidate_id": "e261d662628b6140",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 252), subindustry)",
+      "score": 58.13,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "e8dd4863a27e97c8",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 504), subindustry)",
+      "score": 58.13,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "88837f86709e4b6b",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 504), industry)",
+      "score": 57.9,
+      "template_id": "window"
+    },
+    {
+      "candidate_id": "db742fbf7fcf2cff",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 72), subindustry)",
+      "score": 57.88,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "affe75b0214e1fa2",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 78), subindustry)",
+      "score": 57.88,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "1602b38fa8f12097",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 81), subindustry)",
+      "score": 57.88,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "6e113fb0b59eee42",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 84), subindustry)",
+      "score": 57.88,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "3d13e7d2cece271b",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 90), subindustry)",
+      "score": 57.88,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "0ea5f33dd3f4bf94",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 21), subindustry)",
+      "score": 57.88,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "e7e8cf4052756a89",
+      "decision": "review",
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 20), subindustry)",
+      "score": 57.88,
+      "template_id": "group+window"
+    }
+  ],
+  "generated_at": "2026-04-23T14:11:17",
+  "history_count": 92,
+  "seed_count": 6,
+  "settings": {
+    "max_candidates": 1500,
+    "max_depth": 2,
+    "per_seed": 300,
+    "reject_dead_similarity": 0.94,
+    "seed_limit": 0
+  }
+}

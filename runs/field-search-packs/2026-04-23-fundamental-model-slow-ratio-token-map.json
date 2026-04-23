@@ -1,0 +1,18 @@
+[
+  {
+    "pattern": "\\bnet_income\\b",
+    "replacements": [
+      "mdl110_score",
+      "mdl110_value",
+      "mdl_analyst_sentiment",
+      "assets",
+      "assets_curr",
+      "cash",
+      "cashflow",
+      "debt",
+      "equity",
+      "liabilities",
+      "fnd6_ceq"
+    ]
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "_instructions": [
+    "Copy this file into runs/research-queues/YYYY-MM-DD-topic.json before editing.",
+    "Use this only for pre-backtest prioritization.",
+    "These scores are heuristics, not real simulation metrics.",
+    "Ranges: idea_strength 0-3, dataset_freshness 0-2, correlation_novelty 0-3, metric_headroom 0-2, execution_simplicity 0-1."
+  ],
+  "generated_at": "2026-04-23T14:14:55",
+  "items": [
+    {
+      "candidate_id": "e261d662628b6140",
+      "convergence_score": 68.62,
+      "correlation_novelty": 0,
+      "coupling_risk": 0.0,
+      "current_status": "refine",
+      "dataset_freshness": 1,
+      "decision": "review",
+      "execution_simplicity": 0,
+      "expression": "group_rank(ts_mean(shareholders_equity_total_2/cap, 252), subindustry)",
+      "family_category": "fundamental",
+      "family_fit_score": 69.3,
+      "family_topic": "fundamental_model_slow_ratio_equity_cap_structural_follow_up",
+      "health_score": 100.0,
+      "idea_strength": 1,
+      "metric_headroom": 0,
+      "mutations": [
+        "group[industry->subindustry]",
+        "ts_mean[63->252]"
+      ],
+      "name": "e261d662628b6140",
+      "next_step": "Compare this fundamental_model_slow_ratio_equity_cap_structural_follow_up variant against the family anchor and drop it if the ridge weakens.",
+      "notes": "score=58.13; health=100.00; convergence=68.62; novelty=20.40; overfit=14.31; coupling=0.00; template=group+window; mutations=group[industry->subindustry] | ts_mean[63->252]",
+      "novelty_score": 20.4,
+      "overfit_risk": 14.31,
+      "score": 58.13,
+      "source_doc": "runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md",
+      "stability_score": 76.0,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "8cdd03004d5e9dab",
+      "convergence_score": 65.77,
+      "correlation_novelty": 0,
+      "coupling_risk": 0.0,
+      "current_status": "refine",
+      "dataset_freshness": 1,
+      "decision": "review",
+      "execution_simplicity": 0,
+      "expression": "ts_rank(group_rank(ts_mean(shareholders_equity_total_2/cap, 504), subindustry), 252)",
+      "family_category": "fundamental",
+      "family_fit_score": 70.41,
+      "family_topic": "fundamental_model_slow_ratio_equity_cap_structural_follow_up",
+      "health_score": 100.0,
+      "idea_strength": 1,
+      "metric_headroom": 0,
+      "mutations": [
+        "group[industry->subindustry]",
+        "ts_mean[63->504]"
+      ],
+      "name": "8cdd03004d5e9dab",
+      "next_step": "Compare this fundamental_model_slow_ratio_equity_cap_structural_follow_up variant against the family anchor and drop it if the ridge weakens.",
+      "notes": "score=57.30; health=100.00; convergence=65.77; novelty=11.57; overfit=8.68; coupling=0.00; template=group+window; mutations=group[industry->subindustry] | ts_mean[63->504]",
+      "novelty_score": 11.57,
+      "overfit_risk": 8.68,
+      "score": 57.3,
+      "source_doc": "runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md",
+      "stability_score": 76.0,
+      "template_id": "group+window"
+    },
+    {
+      "candidate_id": "753db15ea26de7c0",
+      "convergence_score": 65.35,
+      "correlation_novelty": 0,
+      "coupling_risk": 0.0,
+      "current_status": "refine",
+      "dataset_freshness": 1,
+      "decision": "review",
+      "execution_simplicity": 1,
+      "expression": "group_rank(shareholders_equity_total_2/cap, subindustry)",
+      "family_category": "fundamental",
+      "family_fit_score": 70.57,
+      "family_topic": "fundamental_model_slow_ratio_equity_cap_structural_follow_up",
+      "health_score": 100.0,
+      "idea_strength": 1,
+      "metric_headroom": 0,
+      "mutations": [
+        "group[industry->subindustry]"
+      ],
+      "name": "753db15ea26de7c0",
+      "next_step": "Compare this fundamental_model_slow_ratio_equity_cap_structural_follow_up variant against the family anchor and drop it if the ridge weakens.",
+      "notes": "score=56.24; health=100.00; convergence=65.35; novelty=11.14; overfit=2.48; coupling=0.00; template=group; mutations=group[industry->subindustry]",
+      "novelty_score": 11.14,
+      "overfit_risk": 2.48,
+      "score": 56.24,
+      "source_doc": "runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md",
+      "stability_score": 58.0,
+      "template_id": "group"
+    }
+  ],
+  "selection_policy": {
+    "max_per_family": 8,
+    "max_per_template": 4,
+    "max_total": 8,
+    "min_score": 56.0,
+    "similarity_threshold": 0.9
+  }
+}
