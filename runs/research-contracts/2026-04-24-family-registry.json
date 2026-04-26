@@ -1,0 +1,2487 @@
+[
+  {
+    "family_key": "analyst_eps_price_industry",
+    "state": "branch",
+    "reason": "candidate evidence is clean on the common subset, but full submission gates are still missing",
+    "topics": [
+      "analyst_eps_price_industry"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/primary-direction-baselines.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-19/ALPHA-CAND-001/candidate-check-status.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 4,
+    "candidate_outcome_count": 4,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 3,
+    "failing_gate_histogram": {
+      "LOW_FITNESS": 1
+    },
+    "pending_gate_histogram": {
+      "SELF_CORRELATION": 1
+    },
+    "best_outcome": {
+      "family_key": "analyst_eps_price_industry",
+      "family_topic": "analyst_eps_price_industry",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-19/ALPHA-CAND-001/candidate-check-status.json",
+      "capture_id": "candidate-check-status",
+      "capture_topic": "candidate-check-status",
+      "capture_mode": "candidate-check-status",
+      "alpha_name": "eps_average_120d_industry",
+      "alpha_id": "d5l07rpX",
+      "simulation_id": "1Gaxcw8TE4iKcpMip0SqdyW",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), industry)",
+      "classification": null,
+      "status": null,
+      "metrics": {
+        "sharpe": 1.67,
+        "fitness": 1.22,
+        "turnover": 0.1281,
+        "returns": 0.0681,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": "PASS",
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PASS",
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [
+        "LOW_FITNESS",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_gate_checks",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": true,
+      "notes": [
+        "Slow window improves visible IS metrics but breaks badly in holdout. This looks like a robustness warning, not a submit candidate.",
+        "Metrics below came from real platform alpha objects returned by the logged-in WorldQuant BRAIN session.",
+        "Self-correlation remained pending at capture time for all four runs.",
+        "No check-submission result was recorded in this batch.",
+        "Official /alphas/{id}/check resolved concentrated weight PASS and self-correlation PASS. Official endpoints did not expose a numeric max_weight or a boolean test_period_pass.",
+        "Official alpha detail showed test sharpe -0.19, fitness -0.04, and returns -0.0056. Holdout turned negative.",
+        "Official alpha checks came from GET /alphas/{id}/check inside the logged-in browser session.",
+        "Official self-correlation detail came from GET /alphas/{id}/correlations/self inside the logged-in browser session.",
+        "For this batch, the self-correlation detail endpoint returned records=[], min=null, and max=null when it returned JSON at all."
+      ],
+      "evidence_sources": [
+        "candidate-batch",
+        "candidate-check-status"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/primary-direction-baseline.json",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/primary-cycle-candidates.json",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-19/ALPHA-CAND-001/candidate-check-status.json"
+      ],
+      "supporting_capture_ids": [
+        "official-alpha-cycle-01-primary-direction-batch-01",
+        "official-alpha-cycle-01-primary-candidates",
+        "candidate-check-status"
+      ]
+    }
+  },
+  {
+    "family_key": "analyst_eps_sibling_qfv4_industry",
+    "state": "hold",
+    "reason": "candidate evidence is strong, but the qfv4 sibling line is now frozen because the annual-median control outperforms it on holdout and there is no budget left for near-neighbor polishing",
+    "topics": [
+      "analyst_eps_sibling_qfv4_industry"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/analyst-sibling-branch.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-19/ALPHA-CAND-002/candidate-check-status.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)"
+    ],
+    "decision_lines": [
+      "Freeze this family; qfv4 siblings are weaker than the annual-median control and should not receive more near-neighbor budget."
+    ],
+    "explicit_state_hints": [
+      "hold"
+    ],
+    "official_outcome_count": 3,
+    "candidate_outcome_count": 3,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 3,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "analyst_eps_sibling_qfv4_industry",
+      "family_topic": "analyst_eps_sibling_qfv4_industry",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-19/ALPHA-CAND-002/candidate-check-status.json",
+      "capture_id": "candidate-check-status",
+      "capture_topic": "candidate-check-status",
+      "capture_mode": "candidate-check-status",
+      "alpha_name": "anl4_afv4_median_60d_industry",
+      "alpha_id": "E5repQ81",
+      "simulation_id": "VXAGQc3958PcBGvR1KK3tE",
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)",
+      "classification": null,
+      "status": null,
+      "metrics": {
+        "sharpe": 1.93,
+        "fitness": 1.4,
+        "turnover": 0.1768,
+        "returns": 0.0935,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": "PASS",
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PASS",
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [
+        "LOW_FITNESS",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_gate_checks",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": true,
+      "notes": [
+        "Despite higher field crowding metadata, the annual-median analyst4 control materially outperformed both qfv4 siblings and the first-cycle baseline in the holdout slice. Visible IS gates passed and self-correlation remained pending at capture time.",
+        "Metrics below came from real platform alpha objects returned by the logged-in WorldQuant BRAIN session.",
+        "Self-correlation remained pending at capture time for all three second-cycle sibling runs.",
+        "No Check Submission result was recorded in this batch.",
+        "A later official /alphas/{id}/check refresh in this session resolved concentrated weight PASS, self-correlation PASS, low fitness PASS, and low sub-universe sharpe PASS. The official alpha object lagged behind and still showed self-correlation PENDING, so /check is treated as the fresher source.",
+        "Official alpha detail showed test sharpe 1.23, fitness 0.59, and returns 0.0407. Holdout was materially stronger than the first-cycle baseline and both qfv4 siblings.",
+        "Official candidate checks came from GET /alphas/{id}/check and GET /alphas/{id}/correlations/self inside the logged-in browser session.",
+        "For qMm6xPVv and QP59baMg, the self-correlation detail endpoint returned records=[], min=null, and max=null while the check endpoint returned SELF_CORRELATION=PASS.",
+        "For E5repQ81, early retries returned empty bodies, but a later /alphas/{id}/check refresh in this session returned SELF_CORRELATION=PASS while the alpha object still lagged with PENDING.",
+        "For all three candidates, the self-correlation detail endpoint returned records=[], min=null, and max=null once it returned JSON."
+      ],
+      "evidence_sources": [
+        "candidate-batch",
+        "candidate-check-status"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/analyst-sibling-branch.json",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/analyst-sibling-candidates.json",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-19/ALPHA-CAND-002/candidate-check-status.json"
+      ],
+      "supporting_capture_ids": [
+        "official-alpha-cycle-02-analyst-sibling-batch-01",
+        "official-alpha-cycle-02-analyst-sibling-candidates",
+        "candidate-check-status"
+      ]
+    }
+  },
+  {
+    "family_key": "fundamental_model_slow_ratio_cashflow",
+    "state": "branch",
+    "reason": "family docs explicitly keep this family in branch",
+    "topics": [
+      "fundamental_model_slow_ratio_cashflow_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-cashflow-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-cashflow-assets-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-cashflow-cap-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-cashflow-cap-batch-02.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-cashflow-cap-industry-batch-01.json"
+    ],
+    "baseline_expressions": [
+      "ts_rank(group_rank(cashflow / cap, subindustry), 90)"
+    ],
+    "decision_lines": [
+      "Branch: `cashflow / cap` only; `subindustry` remains the stronger anchor than `industry`.",
+      "Drop: `cashflow / assets`.",
+      "Do not expand into new numerators or a wider family until the cap lane proves sturdier."
+    ],
+    "explicit_state_hints": [
+      "branch"
+    ],
+    "official_outcome_count": 4,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "fundamental_model_slow_ratio_cashflow",
+      "family_topic": "fundamental_model_slow_ratio_cashflow",
+      "family_doc_path": "./runs/expression-families/2026-04-23-fundamental-model-slow-ratio-cashflow-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-cashflow-cap-industry-batch-01.json",
+      "capture_id": "2026-04-23-fundamental-model-slow-ratio-cashflow-cap-industry-batch-01",
+      "capture_topic": "fundamental_model_slow_ratio_cashflow_cap_industry_follow_up_batch_01",
+      "capture_mode": "manual-ui",
+      "alpha_name": "cashflow_cap_industry_90",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "ts_rank(group_rank(cashflow / cap, industry), 90)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 0.4,
+        "fitness": 0.13,
+        "turnover": "13.49%",
+        "returns": "1.36%",
+        "drawdown": "6.40%",
+        "margin": "2.02‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Slightly weaker than the subindustry 90d anchor, so keep subindustry as the stronger branch unless a smoother variant improves it.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "This is the industry-group variant of the cashflow/cap branch.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for this run."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-cashflow-cap-industry-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-23-fundamental-model-slow-ratio-cashflow-cap-industry-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "actual_sales_delta_fundamental",
+    "state": "hold",
+    "reason": "official actual-sales batch failed on baseline, sign inversion, 21d, and 126d controls, so freeze this family and pivot the active main to operating_income_history_position",
+    "topics": [
+      "actual_sales_delta_fundamental"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-24-actual-sales-delta-fundamental.md",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-24-actual-sales-delta-fundamental.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-24-actual-sales-delta-fundamental-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/session-briefs/2026-04-24-actual-sales-live-search.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/session-briefs/data-fields-USA-TOP3000-20260423.network-response"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_delta(actual_sales_value_quarterly, 63), industry)"
+    ],
+    "decision_lines": [
+      "Freeze this family after batch 01; the baseline was the best IS variant but still failed hard on holdout and gates.",
+      "Do not allocate more budget here unless a genuinely new actual-sales field source appears."
+    ],
+    "explicit_state_hints": [
+      "hold"
+    ],
+    "official_outcome_count": 4,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {
+      "LOW_SHARPE": 4,
+      "LOW_FITNESS": 4,
+      "LOW_SUB_UNIVERSE_SHARPE": 2
+    },
+    "pending_gate_histogram": {
+      "SELF_CORRELATION": 4
+    },
+    "best_outcome": {
+      "family_key": "actual_sales_delta_fundamental",
+      "family_topic": "actual_sales_delta_fundamental",
+      "family_doc_path": "./runs/expression-families/2026-04-24-actual-sales-delta-fundamental.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-24-actual-sales-delta-fundamental-batch-01.json",
+      "capture_id": "2026-04-24-actual-sales-delta-fundamental-batch-01",
+      "capture_topic": "actual_sales_delta_fundamental_batch_01_api_checks",
+      "capture_mode": "network-api",
+      "alpha_name": "actual_sales_value_quarterly_63d_industry",
+      "alpha_id": "88K2zgwo",
+      "simulation_id": "aS019fzE4jd8wXq8EvNb5F",
+      "expression": "group_rank(ts_delta(actual_sales_value_quarterly, 63), industry)",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "sharpe": 0.35,
+        "fitness": 0.13,
+        "turnover": 0.0489,
+        "returns": 0.0169,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Baseline is the best IS variant in the family, but the holdout turned negative and the family stayed well below submission quality.",
+        "The sign-inverted control recovered holdout but failed IS and the low-sub-universe-sharpe gate, so the branch is now frozen.",
+        "Official alpha detail and /check came from the logged-in WorldQuant BRAIN session."
+      ]
+    }
+  },
+  {
+    "family_key": "fundamental_model_slow_ratio_equity_cap",
+    "state": "hold",
+    "reason": "candidate evidence is strong, but the neutralization-axis probe failed full-IS Sharpe/Fitness and the family is frozen for the current budget",
+    "topics": [
+      "fundamental_model_slow_ratio_equity_cap_follow_up",
+      "fundamental_model_slow_ratio_equity_cap_structural_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-follow-up.md",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-structural-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-02.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-03.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-04.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-05.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-06.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-07.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-08.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-09.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-10.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-11.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-12.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-13.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-24-fundamental-model-slow-ratio-equity-cap-batch-14.json"
+    ],
+    "baseline_expressions": [
+      "ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90)"
+    ],
+    "decision_lines": [
+      "Branch: `shareholders_equity_total_2 / cap`.",
+      "Current best anchor: `ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90)`.",
+      "The grouping control flipped the branch: `industry 90` materially beats `subindustry 90` on the shown-test-period aggregate view while keeping the same visible IS testing status.",
+      "Inside the verified `industry` window sweep, the ordering is `90 > 84 > 63` on the shown-test-period aggregate view.",
+      "Demote: `subindustry` variants to controls, with `subindustry 90` the strongest backup inside that grouping.",
+      "Demote: `cashflow / cap` to backup only.",
+      "Hold: `total_assets_amount / cap` as a weaker accessible sibling; verified sibling ordering is `90 > 84 > 63`, and the full sibling branch stays materially below the equity / cap anchor.",
+      "Kill: `working_capital / cap` on first official control.",
+      "Kill the structural smoothing/simple branch tested in this note.",
+      "Keep the broader `shareholders_equity_total_2 / cap` family in `branch` only because the earlier raw-ratio `industry 90d` anchor still dominates these follow-ups on official evidence.",
+      "Next probe: `ts_rank(group_neutralize(shareholders_equity_total_2 / cap, industry), 90)`; freeze the family if it does not improve full-IS Sharpe/Fitness over the current raw-ratio anchor.",
+      "Freeze this family after the neutralization-axis probe; the full-IS gate did not improve over the raw-ratio anchor."
+    ],
+    "explicit_state_hints": [
+      "hold"
+    ],
+    "official_outcome_count": 14,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 4,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {
+      "LOW_FITNESS": 4,
+      "LOW_SHARPE": 4,
+      "LOW_SUB_UNIVERSE_SHARPE": 2
+    },
+    "pending_gate_histogram": {
+      "SELF_CORRELATION": 4
+    },
+    "best_outcome": {
+      "family_key": "fundamental_model_slow_ratio_equity_cap",
+      "family_topic": "fundamental_model_slow_ratio_equity_cap",
+      "family_doc_path": "./runs/expression-families/2026-04-23-fundamental-model-slow-ratio-equity-cap-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-11.json",
+      "capture_id": "2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-11",
+      "capture_topic": "fundamental_model_slow_ratio_equity_cap_follow_up_batch_11_api_checks",
+      "capture_mode": "network-api",
+      "alpha_name": "shareholders_equity_total_2_cap_industry_90",
+      "alpha_id": "ZYWzZlgZ",
+      "simulation_id": "3jvMzT5ji4ue8YoCEpvAlp9",
+      "expression": "ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90)",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.89,
+        "is_fitness": 0.6,
+        "is_turnover": 0.1465,
+        "is_returns": 0.0671,
+        "is_drawdown": 0.1017,
+        "is_margin": 0.000915,
+        "test_sharpe": 1.43,
+        "test_fitness": 1.1,
+        "test_turnover": 0.1434,
+        "test_returns": 0.0844,
+        "test_drawdown": 0.0497,
+        "test_margin": 0.001177
+      },
+      "tests": {},
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "full_submission_gates",
+      "has_full_gate_coverage": true,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The visible shown-test-period card is stronger than the full-IS gate values. The current blockers are LOW_SHARPE and LOW_FITNESS, while SELF_CORRELATION is not resolved yet.",
+        "Metrics and checks below came from the logged-in official WorldQuant BRAIN simulate session via direct alpha API inspection.",
+        "A short re-poll after the initial read still left SELF_CORRELATION in PENDING state.",
+        "This capture explains the visible UI summary of 5 PASS / 2 FAIL / 1 PENDING."
+      ],
+      "evidence_sources": [
+        "network-api"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-11.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-23-fundamental-model-slow-ratio-equity-cap-batch-11"
+      ]
+    }
+  },
+  {
+    "family_key": "fundamental_model_slow_ratio",
+    "state": "hold",
+    "reason": "baseline fields are absent from the current saved Data Explorer truth, so the lane is frozen until a new field source or new family is authorized",
+    "topics": [
+      "fundamental_model_slow_ratio_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-fundamental-model-slow-ratio-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/session-briefs/data-fields-USA-TOP3000-20260423.network-response"
+    ],
+    "baseline_expressions": [
+      "ts_rank(group_rank(ts_mean(net_income / market_cap, 63), subindustry), 252)"
+    ],
+    "decision_lines": [
+      "Freeze this family; the baseline fields `net_income`, `market_cap`, `mdl110_score`, `mdl110_value`, and `mdl_analyst_sentiment` do not appear in the saved USA TOP3000 Data Explorer truth, so this lane fails the field-existence gate.",
+      "Do not allocate more probes unless a new official field source or a genuinely new family is authorized."
+    ],
+    "explicit_state_hints": [
+      "hold"
+    ],
+    "official_outcome_count": 0,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": null
+  },
+  {
+    "family_key": "news_attention_bee_stability",
+    "state": "hold",
+    "reason": "accessible news fields are VECTOR at 0.5 coverage and the lane is hard-excluded, so the family is frozen until field readiness is closed",
+    "topics": [
+      "news_attention_bee_stability"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-23-news-attention-bee-stability.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/session-briefs/data-fields-USA-TOP3000-20260423.network-response",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/learning-loops/2026-04-23-seed-expander-203907.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_mean(nws18_bee, 63), industry)"
+    ],
+    "decision_lines": [
+      "Freeze this family; the accessible news fields `nws18_bee`, `nws18_qcm`, `nws18_relevance`, and `nws18_nip` are all VECTOR with 0.5 coverage in the saved USA TOP3000 Data Explorer truth.",
+      "The seed expander marked this lane `hard_excluded=true`, so do not spend more budget before field type and coverage readiness is closed."
+    ],
+    "explicit_state_hints": [
+      "hold"
+    ],
+    "official_outcome_count": 0,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": null
+  },
+  {
+    "family_key": "analyst_disagreement_dts_spe_industry",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "analyst_disagreement_dts_spe_industry"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/analyst-disagreement-branch.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-20/ALPHA-CAND-003/candidate-check-status.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/analyst-disagreement-branch.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(-ts_rank(anl4_afv4_dts_spe, 60), industry)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 6,
+    "candidate_outcome_count": 4,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "analyst_disagreement_dts_spe_industry",
+      "family_topic": "analyst_disagreement_dts_spe_industry",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-20/ALPHA-CAND-003/candidate-check-status.json",
+      "capture_id": "2026-04-20-analyst-disagreement-check-status",
+      "capture_topic": "analyst_disagreement_dts_spe_industry",
+      "capture_mode": "candidate-check-status",
+      "alpha_name": "analyst_disagreement_afv4_direct_60",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(anl4_afv4_dts_spe, 60), industry)",
+      "classification": "Needs Improvement",
+      "status": "blocked",
+      "metrics": {
+        "sharpe": 0.21,
+        "fitness": 0.04,
+        "turnover": 0.1106,
+        "returns": "0.55%",
+        "drawdown": "3.61%",
+        "margin": "0.99‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Direct-sign control flipped the branch positive, but the aggregate IS metrics remained far below submission quality.",
+        "The disagreement batch still lacks real subuniverse/check evidence. The candidate-batch validator requires non-null subuniverse_pass, so no candidate batch JSON should be written from placeholders.",
+        "This was the least bad disagreement variant on aggregate IS, but the resumed 2026-04-20 session still does not provide real submission-check evidence for candidate promotion."
+      ],
+      "evidence_sources": [
+        "manual-ui",
+        "candidate-check-status"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/analyst-disagreement-branch.json",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/harness/artifacts/2026-04-20/ALPHA-CAND-003/candidate-check-status.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-19-analyst-disagreement-branch",
+        "2026-04-20-analyst-disagreement-check-status"
+      ]
+    }
+  },
+  {
+    "family_key": "event_option_volume_gate",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "event_option_volume_gate"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-20-event-option-volume-gate.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-20-event-option-volume-gate-batch-01.json"
+    ],
+    "baseline_expressions": [
+      "trade_when(pcr_vol_all > ts_mean(pcr_vol_all, 20), group_rank(-pcr_oi_all, industry), -1)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 4,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "event_option_volume_gate",
+      "family_topic": "event_option_volume_gate",
+      "family_doc_path": "./runs/expression-families/2026-04-20-event-option-volume-gate.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-20-event-option-volume-gate-batch-01.json",
+      "capture_id": "2026-04-20-event-option-volume-gate-batch-01",
+      "capture_topic": "event_option_volume_gate",
+      "capture_mode": "manual-ui",
+      "alpha_name": "event_option_volume_gate_vol_rank",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "trade_when(pcr_vol_all > ts_mean(pcr_vol_all, 20), group_rank(-pcr_vol_all, industry), -1)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": -0.1,
+        "fitness": -0.02,
+        "turnover": "18.37%",
+        "returns": "-0.68%",
+        "drawdown": "24.92%",
+        "margin": "-0.74‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Using pcr_vol_all for both the gate and the ranking leg was the least bad branch, but it was still negative and came with meaningfully higher turnover and drawdown.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "Simulation 13 was submitted from the code editor in this session before its results were captured.",
+        "Simulation 10 showed aggregate IS Testing Status counts directly in the results view, but Simulations 11-13 only exposed aggregate IS summary metrics in the visible UI state.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-20-event-option-volume-gate-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-20-event-option-volume-gate-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "event_trigger_low_turnover_volume_gate",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "event_trigger_low_turnover_volume_gate_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-event-trigger-low-turnover-volume-gate-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-event-trigger-low-turnover-volume-gate-batch-01.json"
+    ],
+    "baseline_expressions": [
+      "trade_when(volume > adv20, group_rank(ts_zscore(close - vwap, 10), industry), -1)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 1,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "event_trigger_low_turnover_volume_gate",
+      "family_topic": "event_trigger_low_turnover_volume_gate",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-event-trigger-low-turnover-volume-gate-batch-01.json",
+      "capture_id": "2026-04-22-event-trigger-low-turnover-volume-gate-batch-01",
+      "capture_topic": "event-trigger-low-turnover-volume-gate",
+      "capture_mode": null,
+      "alpha_name": "volume_gate_vwap_pressure_adv20_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "trade_when(volume > adv20, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+      "classification": null,
+      "status": null,
+      "metrics": {
+        "sharpe": -1.52,
+        "fitness": -0.5,
+        "turnover": 42.17,
+        "returns": -4.65,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Visible Simulation 20 results stayed weak, and Submit Alpha was still disabled. No visible Check Submission evidence or non-null subuniverse_pass surfaced in the browser session."
+      ],
+      "evidence_sources": [],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-event-trigger-low-turnover-volume-gate-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-22-event-trigger-low-turnover-volume-gate-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "news_attention_qcm_branch",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [],
+    "doc_paths": [],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-qcm-batch-01.json"
+    ],
+    "baseline_expressions": [],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 1,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "news_attention_qcm_branch",
+      "family_topic": "news_attention_qcm_branch",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-qcm-batch-01.json",
+      "capture_id": "2026-04-23-news-attention-qcm-batch-01",
+      "capture_topic": "news_attention_qcm_branch_batch_01",
+      "capture_mode": "manual-ui",
+      "alpha_name": "news_attention_qcm_vecavg_zsmean20_indrank_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_neutralize(ts_zscore(ts_mean(vec_avg(nws18_qcm), 5), 20), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": -1.29,
+        "fitness": -0.32,
+        "turnover": "40.09%",
+        "returns": "-2.52%",
+        "drawdown": "2.83%",
+        "margin": "-1.26‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 4,
+          "fail": 3,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "This qcm branch is a negative control. The right next move is to kill this line and move the next live batch to the simpler relevance / qcm 63d subindustry comparison.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "Simulation 4 was run on the qcm branch with the nested vec_avg / ts_zscore / ts_mean / group_neutralize structure.",
+        "The IS summary was viewed before capture; Show test period was enabled and the test-period segment appeared in the chart.",
+        "Visible testing status counts were 4 PASS / 3 FAIL / 1 PENDING.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for this run.",
+        "Submit Alpha remained disabled in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-qcm-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-23-news-attention-qcm-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "news_attention_qcm_vecavg_63d_branch",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [],
+    "doc_paths": [],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-qcm-vecavg-batch-02.json"
+    ],
+    "baseline_expressions": [],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 1,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "news_attention_qcm_vecavg_63d_branch",
+      "family_topic": "news_attention_qcm_vecavg_63d_branch",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-qcm-vecavg-batch-02.json",
+      "capture_id": "2026-04-23-news-attention-qcm-vecavg-batch-02",
+      "capture_topic": "news_attention_qcm_vecavg_63d_branch_batch_02",
+      "capture_mode": "manual-ui",
+      "alpha_name": "news_attention_qcm_vecavg_63d_branch_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_mean(vec_avg(nws18_qcm), 63), subindustry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": -0.75,
+        "fitness": -0.32,
+        "turnover": "6.75%",
+        "returns": "-2.34%",
+        "drawdown": "11.16%",
+        "margin": "-6.92‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "This qcm 63d vec_avg fallback is still weak and has no submission-style evidence. Kill the news family if the relevance baseline remains weak as well.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "The live page was on the qcm 63d vec_avg fallback expression when captured.",
+        "The IS Summary was visible and the TRAIN period was selected.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for this run.",
+        "Submit Alpha remained disabled in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-qcm-vecavg-batch-02.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-23-news-attention-qcm-vecavg-batch-02"
+      ]
+    }
+  },
+  {
+    "family_key": "news_attention_relevance_63d_branch",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [],
+    "doc_paths": [],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-relevance-batch-01.json"
+    ],
+    "baseline_expressions": [],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 1,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "news_attention_relevance_63d_branch",
+      "family_topic": "news_attention_relevance_63d_branch",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-relevance-batch-01.json",
+      "capture_id": "2026-04-23-news-attention-relevance-batch-01",
+      "capture_topic": "news_attention_relevance_63d_branch_batch_01",
+      "capture_mode": "manual-ui",
+      "alpha_name": "news_attention_relevance_63d_branch_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_mean(nws18_relevance, 63), subindustry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": -0.44,
+        "fitness": -0.18,
+        "turnover": "4.64%",
+        "returns": "-1.99%",
+        "drawdown": "16.75%",
+        "margin": "-8.59‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The relevance baseline is weak and the live UI also reported an operator compatibility problem. Kill the news family unless a later live run shows real submission-style evidence.",
+        "Metrics below were observed in the live official WorldQuant BRAIN simulate UI earlier in this session, before the browser session expired.",
+        "The alpha was the 63d relevance baseline on subindustry: group_rank(ts_mean(nws18_relevance, 63), subindustry).",
+        "A red banner also appeared in the live UI: Operator ts_mean does not support event inputs.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for this run.",
+        "Submit Alpha remained disabled in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-23-news-attention-relevance-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-23-news-attention-relevance-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "operating_income_delta",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "operating_income_delta_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-operating-income-delta-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-follow-up-batch-03.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_delta(operating_income, 126), industry)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 4,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "operating_income_delta",
+      "family_topic": "operating_income_delta",
+      "family_doc_path": "./runs/expression-families/2026-04-21-operating-income-delta-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-follow-up-batch-03.json",
+      "capture_id": "2026-04-21-operating-income-follow-up-batch-03",
+      "capture_topic": "operating_income_follow_up",
+      "capture_mode": "manual-ui",
+      "alpha_name": "operating_income_history_position_252_industry",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(operating_income, 252), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 1.13,
+        "fitness": 0.73,
+        "turnover": "5.16%",
+        "returns": "5.17%",
+        "drawdown": "8.84%",
+        "margin": "20.05‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Switching from profitability delta to profitability history-position produced the first material step-up in both Sharpe and Fitness and became the new live winner.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "The follow-up batch reused Simulation 4-7 and was captured from the official IS Summary aggregate section after each rerun completed.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-follow-up-batch-03.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-21-operating-income-follow-up-batch-03"
+      ]
+    }
+  },
+  {
+    "family_key": "operating_income_history_position",
+    "state": "hold",
+    "reason": "official live API and ridge batches still fail holdout, so freeze this family for the current budget",
+    "topics": [
+      "operating_income_history_position_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-operating-income-history-position-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-history-position-batch-04.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-24-operating-income-history-position-batch-05.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(operating_income, 252), industry)"
+    ],
+    "decision_lines": [
+      "Freeze this family; the live API check on Gr37elr0 still fails LOW_SHARPE / LOW_FITNESS.",
+      "The later 84d/72d/90d/78d ridge sweep remained TEST-negative, so do not spend more same-source budget.",
+      "Pivot the next research hour to a genuinely new family or information source."
+    ],
+    "explicit_state_hints": [
+      "hold"
+    ],
+    "official_outcome_count": 8,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "operating_income_history_position",
+      "family_topic": "operating_income_history_position",
+      "family_doc_path": "./runs/expression-families/2026-04-21-operating-income-history-position-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-history-position-batch-04.json",
+      "capture_id": "2026-04-21-operating-income-history-position-batch-04",
+      "capture_topic": "operating_income_history_position_follow_up",
+      "capture_mode": "manual-ui",
+      "alpha_name": "operating_income_smoothed63_history_position_252_industry",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 63), 252), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 1.25,
+        "fitness": 0.87,
+        "turnover": "3.63%",
+        "returns": "6.11%",
+        "drawdown": "8.19%",
+        "margin": "33.63‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Adding a 63-day mean before the 252-day history rank produced the best combined Sharpe, Fitness, turnover, and margin of the entire operating-income branch so far.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "This batch reused Simulation 4-7 for the operating-income history-position window and smoothing sweep.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch.",
+        "Fresh live API check on Gr37elr0 still shows LOW_SHARPE FAIL / LOW_FITNESS FAIL / UNITS WARNING."
+      ],
+      "evidence_sources": [
+        "manual-ui",
+        "live-api-recheck"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-history-position-batch-04.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-21-operating-income-history-position-batch-04"
+      ]
+    }
+  },
+  {
+    "family_key": "operating_income_smoothed_history_position",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "operating_income_smoothed_history_position_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-05.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-06.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-07.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-09.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-smoothed-history-position-batch-10.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-smoothed-history-position-batch-11.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-smoothed-history-position-batch-12.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-smoothed-history-position-batch-13.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-smoothed-history-position-batch-14.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(ts_mean(operating_income, 63), 252), industry)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 14,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "operating_income_smoothed_history_position",
+      "family_topic": "operating_income_smoothed_history_position",
+      "family_doc_path": "./runs/expression-families/2026-04-21-operating-income-smoothed-history-position-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-smoothed-history-position-batch-13.json",
+      "capture_id": "2026-04-22-operating-income-smoothed-history-position-batch-13",
+      "capture_topic": "operating-income-smoothed-history-position",
+      "capture_mode": null,
+      "alpha_name": "operating_income_sm21_hist252_us3k_d1_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 21), 252), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 1.28,
+        "fitness": 0.89,
+        "turnover": 4.53,
+        "returns": 6.0,
+        "drawdown": 8.27,
+        "margin": 26.48,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Lighter 21-day smoothing lifted Sharpe to the batch high, but it gave back turnover efficiency, margin, and some Fitness versus the slower variants.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "This batch reused Simulation 4-7 for the smoothed operating-income history-position sweep.",
+        "Simulation 4 was the unchanged control expression and reproduced the prior batch aggregate metrics.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch.",
+        "The 21d/252d operating-income probe improved the TEST view versus the 126d/252d control, but it is still negative and Submit Alpha remained disabled. No visible Check Submission or non-null subuniverse evidence appeared in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-operating-income-smoothed-history-position-batch-05.json",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-smoothed-history-position-batch-13.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-21-operating-income-smoothed-history-position-batch-05",
+        "2026-04-22-operating-income-smoothed-history-position-batch-13"
+      ]
+    }
+  },
+  {
+    "family_key": "revenue_smoothed_history_position",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "revenue_smoothed_history_position_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-revenue-smoothed-history-position-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-revenue-smoothed-history-position-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-revenue-smoothed-history-position-batch-02.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(ts_mean(revenue, 63), 504), industry)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 2,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "revenue_smoothed_history_position",
+      "family_topic": "revenue_smoothed_history_position",
+      "family_doc_path": "./runs/expression-families/2026-04-21-revenue-smoothed-history-position-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-revenue-smoothed-history-position-batch-01.json",
+      "capture_id": "2026-04-21-revenue-smoothed-history-position-batch-01",
+      "capture_topic": "revenue_smoothed_history_position_follow_up",
+      "capture_mode": "manual-ui",
+      "alpha_name": "revenue_sm63_hist504_indrank_us3k_d1_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(ts_mean(revenue, 63), 504), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 0.31,
+        "fitness": 0.11,
+        "turnover": "3.22%",
+        "returns": "1.70%",
+        "drawdown": "12.35%",
+        "margin": "10.57‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The 63d revenue smoother was weak but still positive on the aggregate IS readout. It did not move close to candidate territory.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "The 63d baseline was captured from the official IS Summary aggregate view before the 126d rerun.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for this probe.",
+        "Submit Alpha stayed disabled in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-revenue-smoothed-history-position-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-21-revenue-smoothed-history-position-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "sales_delta_fundamental",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "sales_delta_fundamental"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-sales-delta-fundamental.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sales-delta-fundamental-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sales-delta-fundamental-batch-02.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_delta(revenue, 63), industry)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 8,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "sales_delta_fundamental",
+      "family_topic": "sales_delta_fundamental",
+      "family_doc_path": "./runs/expression-families/2026-04-21-sales-delta-fundamental.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sales-delta-fundamental-batch-02.json",
+      "capture_id": "2026-04-21-sales-delta-fundamental-batch-02",
+      "capture_topic": "sales_delta_fundamental",
+      "capture_mode": "manual-ui",
+      "alpha_name": "operating_income_delta_126_industry",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_delta(operating_income, 126), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 0.95,
+        "fitness": 0.52,
+        "turnover": "4.73%",
+        "returns": "3.72%",
+        "drawdown": "11.45%",
+        "margin": "15.72‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The profitability fallback was the clear batch winner and the only branch that justified another real batch instead of an immediate family kill.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "All four members of batch 2 were read from the official IS Summary aggregate view while switching among Simulation 4-7 in the browser.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sales-delta-fundamental-batch-02.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-21-sales-delta-fundamental-batch-02"
+      ]
+    }
+  },
+  {
+    "family_key": "sentiment_buzz_stability",
+    "state": "hold",
+    "reason": "official evidence exists but no submit-ready outcome is recorded",
+    "topics": [
+      "sentiment_buzz_stability",
+      "sentiment_buzz_stability_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-20-sentiment-buzz-stability.md",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-21-sentiment-buzz-stability-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-20-sentiment-buzz-stability-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sentiment-buzz-stability-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sentiment-buzz-stability-batch-02.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sentiment-buzz-stability-batch-03.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sentiment-buzz-stability-batch-04.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_mean(scl12_buzz, 5), industry)",
+      "group_rank(ts_mean(snt_buzz, 63), industry)"
+    ],
+    "decision_lines": [],
+    "explicit_state_hints": [],
+    "official_outcome_count": 8,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "sentiment_buzz_stability",
+      "family_topic": "sentiment_buzz_stability",
+      "family_doc_path": "./runs/expression-families/2026-04-21-sentiment-buzz-stability-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sentiment-buzz-stability-batch-01.json",
+      "capture_id": "2026-04-21-sentiment-buzz-stability-batch-01",
+      "capture_topic": "sentiment_buzz_stability_follow_up_batch_01",
+      "capture_mode": "manual-ui",
+      "alpha_name": "snt_buzz_sm63_indrank_us3k_d1_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_mean(snt_buzz, 63), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 0.39,
+        "fitness": 0.14,
+        "turnover": "3.68%",
+        "returns": "1.65%",
+        "drawdown": "3.54%",
+        "margin": "8.95‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": {
+          "pass": 5,
+          "fail": 2,
+          "pending": 1
+        },
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The 63d baseline is directionally better than the older crowed buzz lane but still far from candidate quality. It should stay in the exploratory branch until the 21d/126d/252d controls finish, then be killed or branched based on the ridge shape.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "Simulation 12 was run on the 63d smoothing baseline for snt_buzz with industry neutralization.",
+        "The IS summary was explicitly viewed before capture; Show test period was enabled and the test-period segment appeared in the chart.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for this run.",
+        "Submit Alpha remained disabled in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-21-sentiment-buzz-stability-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-21-sentiment-buzz-stability-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "capital_structure_balance_sheet",
+    "state": "kill",
+    "reason": "family docs explicitly kill this family",
+    "topics": [
+      "capital_structure_balance_sheet_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-capital-structure-balance-sheet-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-capital-structure-balance-sheet-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-capital-structure-balance-sheet-batch-02.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-capital-structure-balance-sheet-batch-03.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-capital-structure-balance-sheet-batch-04.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(ts_mean(fnd6_teq / assets, 63), 504), industry)"
+    ],
+    "decision_lines": [
+      "Kill the capital-structure lane.",
+      "Keep the branch-threshold lesson local for now; it is useful as a workflow rule, but it is not a submission-ready alpha family."
+    ],
+    "explicit_state_hints": [
+      "kill"
+    ],
+    "official_outcome_count": 5,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "capital_structure_balance_sheet",
+      "family_topic": "capital_structure_balance_sheet",
+      "family_doc_path": "./runs/expression-families/2026-04-22-capital-structure-balance-sheet-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-capital-structure-balance-sheet-batch-01.json",
+      "capture_id": "2026-04-22-capital-structure-balance-sheet-batch-01",
+      "capture_topic": "capital_structure_balance_sheet_follow_up",
+      "capture_mode": "manual-ui",
+      "alpha_name": "liabilities_assets_sm63_hist504_indrank_us3k_d1_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 0.37,
+        "fitness": 0.12,
+        "turnover": "2.50%",
+        "returns": "1.35%",
+        "drawdown": "7.07%",
+        "margin": "10.76‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The 63d sign-control anchor is the best live anchor in the batch, but it is still far from submission-ready and it did not expose real Check Submission evidence.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "Simulation 15 provided the 63d leverage sign-control anchor with visible IS and TEST summaries.",
+        "Simulation 16 is the 21d clone. Its visible IS aggregate is much weaker than the 63d anchor.",
+        "The settings modal confirmed Fast Expression / Equity / USA / TOP3000 / Subindustry / 1Y test period with decay 4 and truncation 0.08.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for this batch.",
+        "Submit Alpha stayed disabled in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-capital-structure-balance-sheet-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-22-capital-structure-balance-sheet-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "event_trigger_low_turnover_volatility_gate",
+    "state": "kill",
+    "reason": "family docs explicitly kill this family",
+    "topics": [
+      "event_trigger_low_turnover_volatility_gate_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-event-trigger-low-turnover-volatility-gate-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-event-trigger-low-turnover-returns-volatility-gate-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-event-trigger-low-turnover-volatility-gate-batch-01.json"
+    ],
+    "baseline_expressions": [
+      "trade_when(ts_rank(historical_volatility_20, 20) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)"
+    ],
+    "decision_lines": [
+      "Kill the field-based volatility-gated pressure branch.",
+      "Do not continue polishing `historical_volatility_20` gate timing or the `close - vwap` smoother.",
+      "If this event-trigger idea is still worth preserving, switch the baseline to the `returns`-based volatility gate rather than adding more complexity to the dead field-based line."
+    ],
+    "explicit_state_hints": [
+      "kill"
+    ],
+    "official_outcome_count": 8,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "event_trigger_low_turnover_volatility_gate",
+      "family_topic": "event_trigger_low_turnover_volatility_gate",
+      "family_doc_path": "./runs/expression-families/2026-04-22-event-trigger-low-turnover-volatility-gate-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-event-trigger-low-turnover-returns-volatility-gate-batch-01.json",
+      "capture_id": "2026-04-22-event-trigger-low-turnover-returns-volatility-gate-batch-01",
+      "capture_topic": "event_trigger_low_turnover_returns_volatility_gate_follow_up_batch_01",
+      "capture_mode": "manual-ui",
+      "alpha_name": "returns_vol_vwap_pressure_gate20_signal10",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "trade_when(ts_rank(ts_std_dev(returns, 5), 20) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": -0.74,
+        "fitness": -0.18,
+        "turnover": "37.70%",
+        "returns": "-2.26%",
+        "drawdown": "10.96%",
+        "margin": "-1.20‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Baseline returns-volatility gate; best visible Sharpe and Fitness in the batch, but still far from viable.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "This batch is the returns-based volatility fallback opened after the historical_volatility_20 branch was killed.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured for any member of this batch.",
+        "Submit Alpha remained disabled for all four runs."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-event-trigger-low-turnover-returns-volatility-gate-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-22-event-trigger-low-turnover-returns-volatility-gate-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "operating_income_sales_ratio",
+    "state": "kill",
+    "reason": "family docs explicitly kill this family",
+    "topics": [
+      "operating_income_sales_ratio_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-operating-income-sales-ratio-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-sales-ratio-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-sales-ratio-batch-02.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-sales-ratio-batch-03.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-sales-ratio-batch-04.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(operating_income / sales, 252), industry)"
+    ],
+    "decision_lines": [
+      "Kill the `operating_income / sales` ratio family.",
+      "Keep the 21d train-side win as a negative control only.",
+      "Branch the next live research to `event_trigger_low_turnover_volatility_gate` instead of polishing this lane further."
+    ],
+    "explicit_state_hints": [
+      "kill"
+    ],
+    "official_outcome_count": 4,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "operating_income_sales_ratio",
+      "family_topic": "operating_income_sales_ratio",
+      "family_doc_path": "./runs/expression-families/2026-04-22-operating-income-sales-ratio-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-sales-ratio-batch-02.json",
+      "capture_id": "2026-04-22-operating-income-sales-ratio-batch-02",
+      "capture_topic": "operating-income-sales-ratio",
+      "capture_mode": "manual-ui",
+      "alpha_name": "oi_sales_tsmean21_tsrank252_industry",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(ts_mean(operating_income / sales, 21), 252), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 0.69,
+        "fitness": 0.3,
+        "turnover": 4.46,
+        "returns": 2.41,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The 21d ratio was the best train-side variant in batch 02, but the TEST view turned negative and the Submit Alpha button stayed disabled. The family should be killed instead of polished further.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "Simulation 20 was switched to TEST view for the 21d smoothed ratio variant.",
+        "No visible Check Submission evidence or non-null subuniverse verdict appeared.",
+        "Submit Alpha stayed disabled in the captured UI state."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-operating-income-sales-ratio-batch-02.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-22-operating-income-sales-ratio-batch-02"
+      ]
+    }
+  },
+  {
+    "family_key": "pcr_oi_all_industry_rank",
+    "state": "kill",
+    "reason": "family docs explicitly kill this family",
+    "topics": [
+      "pcr_oi_all_industry_rank_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-pcr-oi-all-industry-rank-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-pcr-oi-all-industry-rank-batch-01.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(pcr_oi_all, 20), industry)"
+    ],
+    "decision_lines": [
+      "Kill the `pcr_oi_all` direct-rank options branch.",
+      "Keep the baseline capture as a local lesson on how a promising TEST view can still collapse on IS.",
+      "Return to a stronger family or a different forum-backed template rather than spending more sims on this lane."
+    ],
+    "explicit_state_hints": [
+      "kill"
+    ],
+    "official_outcome_count": 2,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "pcr_oi_all_industry_rank",
+      "family_topic": "pcr_oi_all_industry_rank",
+      "family_doc_path": "./runs/expression-families/2026-04-22-pcr-oi-all-industry-rank-follow-up.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-pcr-oi-all-industry-rank-batch-01.json",
+      "capture_id": "2026-04-22-pcr-oi-all-industry-rank-batch-01",
+      "capture_topic": "pcr_oi_all_industry_rank_follow_up",
+      "capture_mode": "manual-ui",
+      "alpha_name": "pcr_oi_all_tsrank20_industry",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_rank(pcr_oi_all, 20), industry)",
+      "classification": "Needs Improvement",
+      "status": null,
+      "metrics": {
+        "sharpe": 0.19,
+        "fitness": 0.03,
+        "turnover": "26.81%",
+        "returns": "0.54%",
+        "drawdown": "6.89%",
+        "margin": "0.41‱",
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "visible_status_counts": null,
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The TEST view is materially stronger than the IS view, but the family is not submission-ready because the in-sample readout is weak and no official submission evidence appeared.",
+        "Metrics below came from the logged-in official WorldQuant BRAIN simulate UI in this session.",
+        "Simulation 17 first exposed the direct-rank pcr_oi_all baseline, then a 5-day smoothing follow-up was run in the same session.",
+        "No visible Check Submission evidence or non-null subuniverse verdict was captured.",
+        "Submit Alpha stayed disabled."
+      ],
+      "evidence_sources": [
+        "manual-ui"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-pcr-oi-all-industry-rank-batch-01.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-22-pcr-oi-all-industry-rank-batch-01"
+      ]
+    }
+  },
+  {
+    "family_key": "price_volume_short_horizon",
+    "state": "kill",
+    "reason": "family docs explicitly kill this family",
+    "topics": [
+      "price_volume_short_horizon_follow_up"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-22-price-volume-short-horizon-follow-up.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-price-volume-short-horizon-batch-01.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-price-volume-short-horizon-batch-02.json",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-price-volume-short-horizon-batch-03.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_zscore(ts_sum(close - ts_delay(close, 1), 20), 20), industry)"
+    ],
+    "decision_lines": [
+      "Kill the price-volume short-horizon family.",
+      "Keep the baseline and direct-momentum captures as negative controls only.",
+      "Branch the next live work back to a stronger family rather than polishing this lane further."
+    ],
+    "explicit_state_hints": [
+      "kill"
+    ],
+    "official_outcome_count": 3,
+    "candidate_outcome_count": 0,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 0,
+    "failing_gate_histogram": {},
+    "pending_gate_histogram": {},
+    "best_outcome": {
+      "family_key": "price_volume_short_horizon",
+      "family_topic": "price_volume_short_horizon",
+      "family_doc_path": null,
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-price-volume-short-horizon-batch-02.json",
+      "capture_id": "2026-04-22-price-volume-short-horizon-batch-02",
+      "capture_topic": "price-volume-short-horizon",
+      "capture_mode": null,
+      "alpha_name": "pv_smoothed_momentum_v1",
+      "alpha_id": null,
+      "simulation_id": null,
+      "expression": "group_rank(ts_zscore(ts_sum(close - ts_delay(close, 1), 20), 20), industry)",
+      "classification": null,
+      "status": null,
+      "metrics": {
+        "sharpe": -0.87,
+        "fitness": -0.39,
+        "turnover": 28.27,
+        "returns": -5.8,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": null,
+        "LOW_FITNESS": null,
+        "LOW_TURNOVER": null,
+        "HIGH_TURNOVER": null,
+        "CONCENTRATED_WEIGHT": null,
+        "LOW_SUB_UNIVERSE_SHARPE": null,
+        "SELF_CORRELATION": null,
+        "MATCHES_COMPETITION": null
+      },
+      "passing_gates": [],
+      "failing_gates": [],
+      "pending_gates": [],
+      "missing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION",
+        "MATCHES_COMPETITION"
+      ],
+      "evidence_level": "partial_tests",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "Real TRAIN summary from Simulation 19. Test period and overall stats were hidden by default when test period is specified. Submit was disabled."
+      ],
+      "evidence_sources": [],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-22-price-volume-short-horizon-batch-02.json"
+      ],
+      "supporting_capture_ids": [
+        "2026-04-22-price-volume-short-horizon-batch-02"
+      ]
+    }
+  },
+  {
+    "family_key": "actual_eps_value_close_industry",
+    "state": "freeze",
+    "reason": "live baseline and 120d controls are self-correlated to existing alpha d5l07rpX; sign flip is a hard reject; quarterly alias is weaker and still pending; no submission path remains under the current budget",
+    "topics": [
+      "actual_eps_value_close_industry"
+    ],
+    "doc_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/field-search-packs/2026-04-24-actual-eps-value-close-industry.md",
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-24-actual-eps-value-close-industry.md"
+    ],
+    "capture_paths": [
+      "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-24-actual-eps-value-close-industry-batch-01.json"
+    ],
+    "baseline_expressions": [
+      "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)"
+    ],
+    "decision_lines": [
+      "Freeze this family; the baseline and 120d controls both self-correlate to existing alpha d5l07rpX, the sign flip is dead, and the quarterly alias is weaker.",
+      "Do not spend more budget on near-neighbor polishing inside this family."
+    ],
+    "explicit_state_hints": [
+      "freeze"
+    ],
+    "official_outcome_count": 4,
+    "candidate_outcome_count": 4,
+    "full_gate_outcome_count": 0,
+    "submit_ready_count": 0,
+    "strong_candidate_evidence_count": 2,
+    "failing_gate_histogram": {
+      "SELF_CORRELATION": 3,
+      "LOW_FITNESS": 2,
+      "LOW_SHARPE": 1,
+      "LOW_SUB_UNIVERSE_SHARPE": 1
+    },
+    "pending_gate_histogram": {
+      "SELF_CORRELATION": 1
+    },
+    "best_outcome": {
+      "family_key": "actual_eps_value_close_industry",
+      "family_topic": "actual_eps_value_close_industry",
+      "family_doc_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/expression-families/2026-04-24-actual-eps-value-close-industry.md",
+      "capture_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-24-actual-eps-value-close-industry-batch-01.json",
+      "capture_id": "2026-04-24-actual-eps-value-close-industry-batch-01",
+      "capture_topic": "actual_eps_value_close_industry_live_controls",
+      "capture_mode": "network-api",
+      "alpha_name": null,
+      "alpha_id": "Gr372wO3",
+      "simulation_id": "4ufxlEaIz59898s141UZ2LNA",
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "classification": null,
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "sharpe": 1.59,
+        "fitness": 1.17,
+        "turnover": 0.1716,
+        "returns": 0.0926,
+        "max_weight": null,
+        "self_corr": 0.7818
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "PASS",
+        "LOW_FITNESS": "PASS",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "FAIL",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "SELF_CORRELATION"
+      ],
+      "pending_gates": [],
+      "missing_gates": [],
+      "evidence_level": "partial_gate_checks",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": true,
+      "notes": [
+        "The alpha detail page initially lagged with SELF_CORRELATION=PENDING, but the fresher /check endpoint resolved FAIL against d5l07rpX at 0.7818.",
+        "This is still the best IS performer in the family, but it is blocked by self-correlation against an existing alpha."
+      ],
+      "evidence_sources": [
+        "network-api",
+        "official_check"
+      ],
+      "supporting_paths": [
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/2026-04-24-actual-eps-value-close-industry-batch-01.json",
+        "/Users/zpdedn/Documents/project/Worldquantbrain/runs/submission-memos/2026-04-24-actual-eps-live-recheck.md"
+      ],
+      "supporting_capture_ids": [
+        "actual-eps-value-close-industry-batch-01"
+      ]
+    }
+  }
+]

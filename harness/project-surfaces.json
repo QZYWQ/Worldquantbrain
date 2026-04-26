@@ -33,6 +33,9 @@
       "description": "The durable run tree should retain its tracked directory skeleton so fresh clones keep the output map.",
       "tracked_readmes": [
         "runs/README.md",
+        "runs/field-readiness/README.md",
+        "runs/evidence-ladders/README.md",
+        "runs/research-contracts/README.md",
         "runs/research-queues/README.md",
         "runs/field-search-packs/README.md",
         "runs/expression-families/README.md",

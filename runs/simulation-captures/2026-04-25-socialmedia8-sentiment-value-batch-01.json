@@ -1,0 +1,61 @@
+{
+  "capture_id": "2026-04-25-socialmedia8-sentiment-value-batch-01",
+  "topic": "socialmedia8-sentiment-value",
+  "captured_at": "2026-04-25",
+  "status": "freeze-after-first-read",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "ON",
+    "unitHandling": "VERIFY"
+  },
+  "evidence": {
+    "simulate_page": "https://platform.worldquantbrain.com/simulate",
+    "field_page": "https://platform.worldquantbrain.com/data/data-fields/snt_social_value?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000",
+    "field_search_pack": "runs/field-search-packs/2026-04-25-socialmedia8-sentiment-value.md",
+    "expression_family": "runs/expression-families/2026-04-25-socialmedia8-sentiment-value.md",
+    "notes": [
+      "The alpha was simulated from the official logged-in WorldQuant BRAIN Simulate page.",
+      "The page was checked with test-period view enabled to read both IS and TEST summaries.",
+      "The official Data Explorer field page shows snt_social_value under socialmedia8 / Social Media Data for Equity with 86% coverage and 100% date coverage."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "snt_social_value",
+      "expression": "snt_social_value",
+      "metrics": {
+        "sharpe": 0.37,
+        "fitness": 0.09,
+        "turnover": 0.2681,
+        "returns": 0.0142,
+        "drawdown": 0.045,
+        "margin": 0.000106
+      },
+      "test_metrics": {
+        "sharpe": -1.21,
+        "fitness": -0.45,
+        "turnover": 0.2586,
+        "returns": -0.035,
+        "drawdown": 0.045,
+        "margin": -0.000271
+      },
+      "notes": [
+        "IS summary is weak and the TEST summary is negative, so the family does not clear the continuation floor.",
+        "Year-by-year read shows deterioration in 2023, which reinforces the stop decision.",
+        "The batch stops after the first read; no cosmetic follow-up variants were launched."
+      ]
+    }
+  ],
+  "decision": {
+    "status": "stop",
+    "reason": "The first official batch is not strong enough to justify continuing this family: IS is only 0.37 / 0.09, TEST is -1.21 / -0.45, and the year-by-year read deteriorates into 2023."
+  }
+}

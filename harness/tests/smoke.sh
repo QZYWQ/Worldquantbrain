@@ -106,6 +106,12 @@ assert_eq "ALPHA-QUEUE-001" "$next_id" "next should return the first actionable 
 
 summary_output="$(./harness/coding-session.sh cycle-summary)"
 assert_output_contains "Next actionable feature: ALPHA-QUEUE-001" "$summary_output"
+assert_output_contains "Incubation Summary" "$summary_output"
+assert_output_contains "pcr_oi_720" "$summary_output"
+
+status_output="$(./harness/coding-session.sh status)"
+assert_output_contains "Incubation Summary" "$status_output"
+assert_output_contains "Cold pool balance: 0.5" "$status_output"
 
 resume_output="$(./harness/coding-session.sh resume-brief)"
 resume_rel_path="$(printf '%s\n' "$resume_output" | tail -n 1)"

@@ -1,39 +1,28 @@
 {
   "schema_version": "1.0",
   "cycle_id": "official-alpha-cycle-04",
-  "generated_at": "2026-04-21",
-  "purpose": "Fundamentals-first research queue for the next non-analyst follow-up cycle after the failed sentiment and option fallback lanes.",
-  "primary_direction": "sales_delta_fundamental",
+  "generated_at": "2026-04-24T15:00:21+08:00",
+  "purpose": "Operating-income fallback queue after the actual-sales batch failed its first viability run.",
+  "primary_direction": "operating_income_history_position",
   "selection_principles": [
-    "Prefer a real family change over more analyst-level clone polishing while E5repQ81 remains locked.",
+    "Prefer a real family change over more analyst clone polishing; the verified actual-sales branch failed its first batch, so move to the next dense fundamentals branch.",
     "Prefer denser fundamentals fields over sparse event fields for the next recovery branch.",
     "Use one cheap first batch to test sign and structural viability before adding heavy cleaning layers.",
     "Keep one slower fundamentals fallback and one simpler structural backup so the queue reflects real opportunity cost."
   ],
   "official_verification_boundary": {
-    "official_platform_account_checks_completed_in_this_session": false,
+    "official_platform_account_checks_completed_in_this_session": true,
     "verified_facts": [
-      "The prior non-analyst sentiment buzz lane failed to produce a viable candidate in the 2026-04-20 real capture.",
-      "The prior event option volume gate lane also failed cleanly in the 2026-04-20 real capture."
+      "The official Data page in this session confirmed operating_income is available on fundamental6 for USA / TOP3000 / D1 with 50% coverage, 100% date coverage, and 45,767 alphas.",
+      "The first actual-sales batch in this session completed on the official simulate endpoint and failed on baseline, sign-inverted, 21d, and 126d controls.",
+      "The operating-income fallback branch remains the next active line with prior official evidence already recorded in the project."
     ],
     "still_unverified": [
-      "No sales or revenue-style fundamentals field has been freshly verified yet on the official Data page in this cycle.",
-      "No current fundamentals-field crowding or coverage numbers have been captured yet for USA / D1 / TOP3000 in this cycle.",
-      "No new Check Submission result exists yet for any fourth-cycle branch."
+      "No new Check Submission result exists yet for the operating-income branch.",
+      "No new actual-sales annual control was run after the first batch failed and the family froze."
     ]
   },
   "items": [
-    {
-      "name": "sales_delta_fundamental",
-      "idea_strength": 2,
-      "dataset_freshness": 1,
-      "correlation_novelty": 3,
-      "metric_headroom": 2,
-      "execution_simplicity": 1,
-      "current_status": "new_direction",
-      "notes": "This is the best next main line because it changes family away from analyst, sentiment, and sparse event data while keeping a clean, explainable medium-horizon thesis. Use it as the first recovery branch after the two failed non-analyst fallback lanes.",
-      "next_step": "Verify one real sales or revenue-style field on the official Data page, then run 21/63/126-day ts_delta baselines with a direct sign control."
-    },
     {
       "name": "operating_income_history_position",
       "idea_strength": 2,
@@ -41,9 +30,9 @@
       "correlation_novelty": 2,
       "metric_headroom": 1,
       "execution_simplicity": 1,
-      "current_status": "hold",
-      "notes": "This is the first slower fundamentals fallback if sales-style fields are unavailable, too sparse, or structurally weak. It keeps the branch interpretable and should be easier to stabilize than another fast noisy lane.",
-      "next_step": "If the sales lane cannot be verified or fails the first viability batch, check operating-income field coverage and open one ts_rank baseline before extra smoothing."
+      "current_status": "active_main",
+      "notes": "This is now the active main after the actual-sales branch failed its first official batch, and the current Data Explorer search confirms operating_income is present with 50% coverage, 100% date coverage, and 45,767 alphas. Keep it as the next dense fundamentals fallback and verify current coverage before extra smoothing.",
+      "next_step": "Verify operating_income coverage on the official Data page, then open one ts_rank baseline before extra smoothing."
     },
     {
       "name": "capital_structure_ratio",
@@ -66,6 +55,17 @@
       "current_status": "hold",
       "notes": "This remains an advanced sibling of the sales-delta thesis, not the opening move. Do not let a second-difference idea displace the simpler first-difference line before the basic sign is known.",
       "next_step": "Only revisit after the first sales-delta family shows clear directional promise; compare first versus second differences directly."
+    },
+    {
+      "name": "actual_sales_delta_fundamental",
+      "idea_strength": 2,
+      "dataset_freshness": 1,
+      "correlation_novelty": 3,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "frozen_after_batch_01",
+      "notes": "First actual-sales batch failed: baseline Sharpe/Fitness were weak, sign control failed, 21d failed, and 126d also failed. Freeze this branch unless a genuinely new actual-sales field source appears.",
+      "next_step": "No further batch under the current budget; annual control was deferred because the first batch already failed."
     }
   ]
 }

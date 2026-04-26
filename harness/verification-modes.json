@@ -88,6 +88,71 @@
       "extra_output_hints": [
         "./harness/artifacts/"
       ]
+    },
+    "field-readiness-json": {
+      "validator": "validate_field_readiness",
+      "template_hint": null,
+      "script_hint": "script://field_readiness_gate.py",
+      "runner_script": "field_readiness_gate.py",
+      "runner_args": [
+        "--run-id",
+        "verify-field-readiness"
+      ],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": true,
+      "extra_output_hints": [
+        "./runs/field-readiness/",
+        "./harness/artifacts/field-readiness/"
+      ]
+    },
+    "account-capability-json": {
+      "validator": "validate_account_capability",
+      "template_hint": "./templates/expression-family.template.md",
+      "script_hint": null,
+      "runner_script": null,
+      "runner_args": [],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": true,
+      "extra_output_hints": [
+        "./harness/artifacts/alpha-mining/",
+        "./runs/session-briefs/"
+      ]
+    },
+    "research-contract-json": {
+      "validator": "validate_research_contract",
+      "template_hint": "./templates/expression-family.template.md",
+      "script_hint": "script://research_contract_gate.py",
+      "runner_script": "research_contract_gate.py",
+      "runner_args": [
+        "--run-id",
+        "verify-research-contracts"
+      ],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": true,
+      "extra_output_hints": [
+        "./runs/research-contracts/",
+        "./harness/artifacts/research-contracts/"
+      ]
+    },
+    "evidence-ladder-json": {
+      "validator": "validate_evidence_ladder",
+      "template_hint": null,
+      "script_hint": "script://evidence_ladder_gate.py",
+      "runner_script": "evidence_ladder_gate.py",
+      "runner_args": [
+        "--run-id",
+        "verify-evidence-ladders"
+      ],
+      "requires_artifacts_dir": false,
+      "target_non_empty": false,
+      "target_json": true,
+      "extra_output_hints": [
+        "./runs/evidence-ladders/",
+        "./harness/artifacts/evidence-ladders/"
+      ]
     }
   }
 }

@@ -1,0 +1,231 @@
+{
+  "capture_id": "2026-04-25-volatility-spread-batch-01",
+  "topic": "volatility-spread",
+  "captured_at": "2026-04-25T16:51:24+08:00",
+  "capture_mode": "official-api",
+  "status": "freeze-after-first-batch",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "ON",
+    "unitHandling": "VERIFY",
+    "instrumentType": "EQUITY",
+    "visualization": false,
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "data_explorer_search": "https://platform.worldquantbrain.com/data/data-fields?delay=1&instrumentType=EQUITY&limit=20&offset=0&region=USA&search=volatility%20spread&universe=TOP3000",
+    "field_pages": {
+      "mdl77_2400_rmi": "https://platform.worldquantbrain.com/data/data-fields/mdl77_2400_rmi?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000",
+      "implied_minus_realized_volatility_2": "https://platform.worldquantbrain.com/data/data-fields/implied_minus_realized_volatility_2?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000"
+    },
+    "simulation_ids": [
+      "https://api.worldquantbrain.com/simulations/3A2RGVceB4Jq99BTA8xsJHK",
+      "https://api.worldquantbrain.com/simulations/bDtvZfN04QuaOH1gBzoeYVO",
+      "https://api.worldquantbrain.com/simulations/2mEy5ce264kn9PEynOFIs3E",
+      "https://api.worldquantbrain.com/simulations/vamMCy94Qc8HU1gnp9EU48"
+    ],
+    "notes": [
+      "The official Data Explorer page shows mdl77_2400_rmi and implied_minus_realized_volatility_2 as Matrix fields under Analysts' Factor Model / Technical Models.",
+      "mdl77_2400_rmi has 83% coverage, 100% date coverage, and 1 visible alpha on the live page.",
+      "implied_minus_realized_volatility_2 has 97% coverage, 100% date coverage, and 11 visible alphas on the live page.",
+      "The two direct fields produce the same IS/Test behavior in this batch, so the sibling field does not add new edge.",
+      "The sign-flip controls only mirror the same weak edge and do not rescue the family."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "mdl77_2400_rmi",
+      "expression": "mdl77_2400_rmi",
+      "alpha_id": "N15E5NGE",
+      "simulation_id": "3A2RGVceB4Jq99BTA8xsJHK",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 0.31,
+        "is_fitness": 0.09,
+        "is_turnover": 0.237,
+        "is_returns": 0.019,
+        "is_drawdown": 0.1732,
+        "is_margin": 0.000161,
+        "train_sharpe": 0.37,
+        "train_fitness": 0.11,
+        "train_turnover": 0.2433,
+        "train_returns": 0.0223,
+        "train_drawdown": 0.1732,
+        "train_margin": 0.000183,
+        "test_sharpe": 0.1,
+        "test_fitness": 0.02,
+        "test_turnover": 0.2121,
+        "test_returns": 0.0062,
+        "test_drawdown": 0.049,
+        "test_margin": 0.000059
+      },
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "Baseline direct field. Weak on IS and even weaker on TEST, so it does not clear the continuation floor."
+      ]
+    },
+    {
+      "name": "neg_mdl77_2400_rmi",
+      "expression": "-mdl77_2400_rmi",
+      "alpha_id": "xAm7PaMw",
+      "simulation_id": "bDtvZfN04QuaOH1gBzoeYVO",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": -0.31,
+        "is_fitness": -0.09,
+        "is_turnover": 0.237,
+        "is_returns": -0.019,
+        "is_drawdown": 0.2174,
+        "is_margin": -0.000161,
+        "train_sharpe": -0.37,
+        "train_fitness": -0.11,
+        "train_turnover": 0.2433,
+        "train_returns": -0.0223,
+        "train_drawdown": 0.2042,
+        "train_margin": -0.000183,
+        "test_sharpe": -0.1,
+        "test_fitness": -0.02,
+        "test_turnover": 0.2121,
+        "test_returns": -0.0062,
+        "test_drawdown": 0.0807,
+        "test_margin": -0.000059
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The sign flip only mirrors the same weak edge in the opposite direction. It does not rescue the family."
+      ]
+    },
+    {
+      "name": "implied_minus_realized_volatility_2",
+      "expression": "implied_minus_realized_volatility_2",
+      "alpha_id": "P0XLw1Xp",
+      "simulation_id": "2mEy5ce264kn9PEynOFIs3E",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 0.31,
+        "is_fitness": 0.09,
+        "is_turnover": 0.237,
+        "is_returns": 0.019,
+        "is_drawdown": 0.1732,
+        "is_margin": 0.000161,
+        "train_sharpe": 0.37,
+        "train_fitness": 0.11,
+        "train_turnover": 0.2433,
+        "train_returns": 0.0223,
+        "train_drawdown": 0.1732,
+        "train_margin": 0.000183,
+        "test_sharpe": 0.1,
+        "test_fitness": 0.02,
+        "test_turnover": 0.2121,
+        "test_returns": 0.0062,
+        "test_drawdown": 0.049,
+        "test_margin": 0.000059
+      },
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The sibling field lands on the same IS/Test profile as the baseline, so it adds no new edge in this window."
+      ]
+    },
+    {
+      "name": "neg_implied_minus_realized_volatility_2",
+      "expression": "-implied_minus_realized_volatility_2",
+      "alpha_id": "ZYWV2zO8",
+      "simulation_id": "vamMCy94Qc8HU1gnp9EU48",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": -0.31,
+        "is_fitness": -0.09,
+        "is_turnover": 0.237,
+        "is_returns": -0.019,
+        "is_drawdown": 0.2174,
+        "is_margin": -0.000161,
+        "train_sharpe": -0.37,
+        "train_fitness": -0.11,
+        "train_turnover": 0.2433,
+        "train_returns": -0.0223,
+        "train_drawdown": 0.2042,
+        "train_margin": -0.000183,
+        "test_sharpe": -0.1,
+        "test_fitness": -0.02,
+        "test_turnover": 0.2121,
+        "test_returns": -0.0062,
+        "test_drawdown": 0.0807,
+        "test_margin": -0.000059
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The sign flip is again just the inverse mirror of the same weak edge."
+      ]
+    }
+  ],
+  "decision": {
+    "status": "freeze",
+    "reason": "The family does not clear the continuation floor. The baseline is weak, the sibling field reproduces the same weak IS/Test profile, and both sign-flip controls only mirror the same edge instead of improving it."
+  },
+  "next_hop": "call_breakeven_60"
+}

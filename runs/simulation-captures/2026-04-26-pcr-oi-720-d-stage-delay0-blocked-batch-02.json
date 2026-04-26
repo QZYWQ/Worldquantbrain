@@ -1,0 +1,51 @@
+{
+  "capture_id": "2026-04-26-pcr-oi-720-d-stage-delay0-blocked-batch-02",
+  "topic": "pcr_oi_720_d_stage_delay0_blocked",
+  "captured_at": "2026-04-26T17:34:04+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 0,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session on the official WorldQuant BRAIN Simulate page.",
+      "The D-stage delay-0 attempt returned an official error and no metrics were produced.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "The lane should be held and the remaining budget reclaimed to cold_pool."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_oi_720_delay0_blocked",
+      "expression": "group_rank(ts_rank(signed_power(ts_rank(pcr_oi_720, 20), 2), 20) + ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "status": "BLOCKED",
+      "stage": "D",
+      "error": "Attempted to use unknown variable \"pcr_oi_720\".",
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The D-stage delay-0 scan is blocked on this account.",
+        "No valid delay curve could be recorded from the current UI."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The D-stage delay-0 scan is blocked because pcr_oi_720 is unknown at delay 0 on this account, so the family should be held and the remaining budget reclaimed to cold_pool."
+  }
+}

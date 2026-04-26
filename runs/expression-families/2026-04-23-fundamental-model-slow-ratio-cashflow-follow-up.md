@@ -14,7 +14,7 @@
 
 ## Hypothesis
 
-The forum lane frames `cashflow / cap` and `cashflow / assets` as the same slow-ratio family. On this account, the cap-normalized version is still alive but weak; the assets-normalized version looks dead.
+The forum lane frames `cashflow / cap` and `cashflow / assets` as the same slow-ratio family. On this account, the cap-normalized version is still alive but weak; the assets-normalized version looks invalid here.
 
 ## Confirmed Or Assumed Inputs
 
@@ -45,8 +45,47 @@ The forum lane frames `cashflow / cap` and `cashflow / assets` as the same slow-
 ## Decision
 
 - Branch: `cashflow / cap` only; `subindustry` remains the stronger anchor than `industry`.
-- Kill: `cashflow / assets`.
+- Drop: `cashflow / assets`.
 - Do not expand into new numerators or a wider family until the cap lane proves sturdier.
+
+## Baseline Expression
+
+```text
+ts_rank(group_rank(cashflow / cap, subindustry), 90)
+```
+
+## Variant 1
+
+- Goal:
+  Keep the same slow-ratio lane but check the recorded 63d control.
+- Main lever:
+  Window axis from `90` to `63`.
+
+```text
+ts_rank(group_rank(cashflow / cap, subindustry), 63)
+```
+
+## Variant 2
+
+- Goal:
+  Check the nearby 84d window.
+- Main lever:
+  Window axis from `90` to `84`.
+
+```text
+ts_rank(group_rank(cashflow / cap, subindustry), 84)
+```
+
+## Variant 3
+
+- Goal:
+  Check the slower 126d window.
+- Main lever:
+  Window axis from `90` to `126`.
+
+```text
+ts_rank(group_rank(cashflow / cap, subindustry), 126)
+```
 
 ## Next Smallest Test Set
 

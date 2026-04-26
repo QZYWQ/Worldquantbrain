@@ -3,6 +3,7 @@
     "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
     "Use only real platform outputs.",
     "Do not fabricate metrics or pass flags.",
+    "If the baseline or first simple control Sharpe is negative, set batch_policy.required_sign_flip_source_index to 0 or 1 and capture the sign-flipped control immediately after it.",
     "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
   ],
   "capture_id": "replace-me-capture-id",
@@ -14,6 +15,10 @@
     "decay": 4,
     "neutralization": "Subindustry",
     "truncation": 0.08
+  },
+  "batch_policy": {
+    "required_sign_flip_source_index": null,
+    "required_sign_flip_reason": "Populate with 0 or 1 when the baseline or first simple control comes back with negative Sharpe."
   },
   "alphas": [
     {

@@ -47,6 +47,26 @@ from alpha_success_core import (
     build_submit_ready_ledger,
     normalize_family_key,
 )
+from complexity_budget_core import (
+    build_complexity_budget_report,
+    index_complexity_budget,
+    render_complexity_budget_md,
+)
+from economic_distinctness_core import (
+    build_economic_distinctness_report,
+    index_economic_distinctness,
+    render_economic_distinctness_md,
+)
+from factor_risk_overlay_core import (
+    build_factor_risk_overlay_report,
+    index_factor_risk_overlay,
+    render_factor_risk_overlay_md,
+)
+from account_capability_core import (
+    build_account_capability_report,
+    index_account_capability,
+    render_account_capability_md,
+)
 from candidate_scorecard import (
     attach_scorecard,
     build_capture_index,
@@ -59,6 +79,38 @@ from research_queue_builder import (
     build_queue_document,
     build_summary as build_queue_summary,
     should_keep_candidate,
+)
+from field_readiness_core import (
+    DEFAULT_COVERAGE_FLOOR_PCT,
+    build_field_readiness_report,
+    index_field_readiness,
+    load_field_search_packs,
+    render_field_readiness_md,
+)
+from evidence_ladder_core import (
+    build_evidence_ladder_report,
+    index_evidence_ladder,
+    render_evidence_ladder_md,
+)
+from mechanism_failure_memory_core import (
+    build_mechanism_failure_memory_report,
+    index_mechanism_failure_memory,
+    render_mechanism_failure_memory_md,
+)
+from research_contract_core import (
+    build_research_contract_report,
+    index_research_contract_report,
+    render_research_contract_md,
+)
+from validation_design_core import (
+    build_validation_design_report,
+    index_validation_design,
+    render_validation_design_md,
+)
+from validation_provenance_core import (
+    build_validation_provenance_report,
+    index_validation_provenance,
+    render_validation_provenance_md,
 )
 
 
@@ -74,6 +126,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("runs/expression-families"),
         help="Directory containing expression-family markdown docs.",
+    )
+    parser.add_argument(
+        "--field-search-pack-dir",
+        type=Path,
+        default=Path("runs/field-search-packs"),
+        help="Directory containing field-search-pack markdown docs.",
     )
     parser.add_argument(
         "--capture-dir",
@@ -127,6 +185,12 @@ def parse_args() -> argparse.Namespace:
         "--include-dead",
         action="store_true",
         help="Include family docs already marked dead. Off by default.",
+    )
+    parser.add_argument(
+        "--coverage-floor-pct",
+        type=float,
+        default=DEFAULT_COVERAGE_FLOOR_PCT,
+        help="Minimum required parseable coverage floor across usable candidate fields.",
     )
     parser.add_argument(
         "--max-candidates",
@@ -357,6 +421,7 @@ def enrich_records_with_success_priors(
     outcome_memory: Sequence[dict[str, Any]],
     submit_ready_ledger: Sequence[dict[str, Any]],
     policy: dict[str, Any],
+    evidence_ladder_by_family: dict[str, dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     registry_by_key = {
         str(item.get("family_key") or ""): item
@@ -389,7 +454,14 @@ def enrich_records_with_success_priors(
         family_topic = str(record.get("family_topic") or "unknown")
         family_key = family_key_for_topic(family_topic)
         registry_entry = registry_by_key.get(family_key, {})
-        family_state = str(registry_entry.get("state") or "explore")
+        ladder_entry = (evidence_ladder_by_family or {}).get(family_key, {})
+        ladder_assessment = ladder_entry.get("assessment", {}) if isinstance(ladder_entry, dict) else {}
+        family_state = str(
+            ladder_assessment.get("effective_state")
+            or registry_entry.get("state")
+            or "explore"
+        )
+        registry_state = str(registry_entry.get("state") or "explore")
         family_reason = str(registry_entry.get("reason") or "no family registry evidence")
         same_family_failed_outcomes = failed_outcomes_by_family.get(family_key, [])
         failure_similarity, failure_match = best_outcome_similarity(
@@ -416,10 +488,14 @@ def enrich_records_with_success_priors(
         enriched_record["success_prior"] = {
             "family_key": family_key,
             "family_state": family_state,
+            "registry_state": registry_state,
             "family_state_reason": family_reason,
             "family_submit_ready_count": submit_ready_count_by_family.get(family_key, 0),
             "family_official_outcome_count": int(registry_entry.get("official_outcome_count", 0) or 0),
             "family_full_gate_outcome_count": int(registry_entry.get("full_gate_outcome_count", 0) or 0),
+            "evidence_ladder_level": ladder_assessment.get("evidence_level"),
+            "evidence_promotion_ceiling": ladder_assessment.get("promotion_ceiling"),
+            "branch_budget_remaining": ladder_assessment.get("branch_budget_remaining"),
             "failure_similarity": round(failure_similarity, 4),
             "failure_match_capture_id": failure_match.get("capture_id") if failure_match else None,
             "failure_match_expression": failure_match.get("expression") if failure_match else None,
@@ -717,6 +793,16 @@ def build_family_summary_records(
     queue_items: Sequence[dict[str, Any]],
     *,
     family_registry: Sequence[dict[str, Any]],
+    field_readiness_by_family: dict[str, dict[str, Any]],
+    account_capability_by_family: dict[str, dict[str, Any]],
+    research_contract_by_family: dict[str, dict[str, Any]],
+    validation_design_by_family: dict[str, dict[str, Any]],
+    factor_risk_overlay_by_family: dict[str, dict[str, Any]],
+    complexity_budget_by_family: dict[str, dict[str, Any]],
+    mechanism_failure_memory_by_family: dict[str, dict[str, Any]],
+    economic_distinctness_by_family: dict[str, dict[str, Any]],
+    validation_provenance_by_family: dict[str, dict[str, Any]],
+    evidence_ladder_by_family: dict[str, dict[str, Any]],
 ) -> list[dict[str, Any]]:
     registry_by_key = {
         str(item.get("family_key") or ""): item
@@ -740,6 +826,156 @@ def build_family_summary_records(
         family_queue = sorted(queue_by_family.get(family.topic, []), key=lambda item: (-score_from_item(item), str(item.get("candidate_id"))))
         family_key = family_key_for_topic(family.topic)
         registry_entry = registry_by_key.get(family_key, {})
+        readiness_entry = field_readiness_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "candidate_fields": [],
+                "usable_candidate_fields": [],
+                "blocked_candidate_fields": [],
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["field-readiness record is missing for this family"],
+                },
+            },
+        )
+        capability_entry = account_capability_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "required_scope": {},
+                "capability_snapshot": {
+                    "observed_combo_count": 0,
+                    "observed_regions": [],
+                    "observed_delays": [],
+                    "observed_universes": [],
+                    "observed_categories": [],
+                    "required_combo": None,
+                    "matching_combo": None,
+                    "public_tier_notes": [],
+                },
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["account-capability record is missing for this family"],
+                },
+            },
+        )
+        contract_entry = research_contract_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "contract": {},
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["research-contract record is missing for this family"],
+                },
+            },
+        )
+        validation_design_entry = validation_design_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "validation_design": {},
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["validation-design record is missing for this family"],
+                },
+            },
+        )
+        factor_risk_entry = factor_risk_overlay_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "factor_profile": {
+                    "expected_risks": [],
+                    "hypothesis_risks": [],
+                    "overlay_risks": [],
+                },
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["factor-risk-overlay record is missing for this family"],
+                },
+            },
+        )
+        complexity_entry = complexity_budget_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "counts": {
+                    "expression_count": 0,
+                    "variant_expression_count": 0,
+                },
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["complexity-budget record is missing for this family"],
+                },
+            },
+        )
+        failure_memory_entry = mechanism_failure_memory_by_family.get(
+            family_key,
+            {
+                "mechanism_profile": {},
+                "assessment": {
+                    "negative_memory_status": "none",
+                    "negative_memory_rank": 0,
+                    "reasons": ["mechanism-failure-memory record is missing for this family"],
+                },
+            },
+        )
+        distinctness_entry = economic_distinctness_by_family.get(
+            family_key,
+            {
+                "nearest_negative_family": None,
+                "changed_axes": [],
+                "field_overlap_pct": 0.0,
+                "expression_similarity": 0.0,
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["economic-distinctness record is missing for this family"],
+                },
+            },
+        )
+        provenance_entry = validation_provenance_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "counts": {
+                    "official_outcome_count": 0,
+                    "local_scored_count": 0,
+                    "local_queue_count": 0,
+                },
+                "assessment": {
+                    "gate_status": "pass",
+                    "strongest_level": "front_gate_only",
+                    "binding_status": "diagnostic",
+                    "reasons": ["validation-provenance record is missing for this family"],
+                },
+            },
+        )
+        evidence_entry = evidence_ladder_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "assessment": {
+                    "evidence_level": "E0_front_gate_only",
+                    "promotion_ceiling": "explore",
+                    "effective_state": "explore",
+                    "branch_budget_remaining": 0,
+                    "official_budget_cap": 1,
+                    "reasons": ["evidence-ladder record is missing for this family"],
+                },
+            },
+        )
+        readiness_assessment = readiness_entry.get("assessment", {})
+        capability_assessment = capability_entry.get("assessment", {})
+        contract_assessment = contract_entry.get("assessment", {})
+        validation_design_assessment = validation_design_entry.get("assessment", {})
+        factor_risk_assessment = factor_risk_entry.get("assessment", {})
+        complexity_assessment = complexity_entry.get("assessment", {})
+        failure_memory_assessment = failure_memory_entry.get("assessment", {})
+        distinctness_assessment = distinctness_entry.get("assessment", {})
+        provenance_assessment = provenance_entry.get("assessment", {})
+        evidence_assessment = evidence_entry.get("assessment", {})
 
         best_local = family_scored[0] if family_scored else None
         local_action = family_action(
@@ -750,10 +986,74 @@ def build_family_summary_records(
             check_submission_count=check_submission_count,
         )
         registry_state = str(registry_entry.get("state") or "explore")
-        action = registry_state if registry_state != "explore" else local_action
+        effective_state = str(evidence_assessment.get("effective_state") or registry_state)
+        readiness_gate_status = str(readiness_assessment.get("gate_status") or "block")
+        capability_gate_status = str(capability_assessment.get("gate_status") or "block")
+        contract_gate_status = str(contract_assessment.get("gate_status") or "block")
+        validation_design_gate_status = str(validation_design_assessment.get("gate_status") or "block")
+        factor_risk_gate_status = str(factor_risk_assessment.get("gate_status") or "block")
+        complexity_gate_status = str(complexity_assessment.get("gate_status") or "block")
+        distinctness_gate_status = str(distinctness_assessment.get("gate_status") or "block")
+        if family.is_dead:
+            action = "kill"
+        elif (
+            readiness_gate_status != "pass"
+            or capability_gate_status != "pass"
+            or contract_gate_status != "pass"
+            or validation_design_gate_status != "pass"
+            or factor_risk_gate_status != "pass"
+            or complexity_gate_status != "pass"
+            or distinctness_gate_status != "pass"
+        ):
+            action = "hold"
+        else:
+            action = effective_state if effective_state != "explore" else local_action
         best_gate_likelihood = None
         if best_local and isinstance(best_local.get("success_prior"), dict):
             best_gate_likelihood = best_local["success_prior"].get("gate_likelihood_score")
+        if family.is_dead:
+            next_step = family_next_step(action)
+        elif (
+            readiness_gate_status != "pass"
+            or capability_gate_status != "pass"
+            or contract_gate_status != "pass"
+            or validation_design_gate_status != "pass"
+            or factor_risk_gate_status != "pass"
+            or complexity_gate_status != "pass"
+            or distinctness_gate_status != "pass"
+        ):
+            gate_messages: list[str] = []
+            if readiness_gate_status != "pass":
+                gate_messages.append(
+                    "field-readiness: " + "; ".join(readiness_assessment.get("reasons", [])[:2])
+                )
+            if capability_gate_status != "pass":
+                gate_messages.append(
+                    "account-capability: " + "; ".join(capability_assessment.get("reasons", [])[:2])
+                )
+            if contract_gate_status != "pass":
+                gate_messages.append(
+                    "research-contract: " + "; ".join(contract_assessment.get("reasons", [])[:2])
+                )
+            if validation_design_gate_status != "pass":
+                gate_messages.append(
+                    "validation-design: " + "; ".join(validation_design_assessment.get("reasons", [])[:2])
+                )
+            if factor_risk_gate_status != "pass":
+                gate_messages.append(
+                    "factor-risk-overlay: " + "; ".join(factor_risk_assessment.get("reasons", [])[:2])
+                )
+            if complexity_gate_status != "pass":
+                gate_messages.append(
+                    "complexity-budget: " + "; ".join(complexity_assessment.get("reasons", [])[:2])
+                )
+            if distinctness_gate_status != "pass":
+                gate_messages.append(
+                    "economic-distinctness: " + "; ".join(distinctness_assessment.get("reasons", [])[:2])
+                )
+            next_step = "Do not schedule local mining until the front gate passes: " + " | ".join(gate_messages)
+        else:
+            next_step = family_next_step(action)
         summaries.append(
             {
                 "topic": family.topic,
@@ -779,9 +1079,83 @@ def build_family_summary_records(
                 "full_gate_outcome_count": int(registry_entry.get("full_gate_outcome_count", 0) or 0),
                 "failing_gate_histogram": dict(registry_entry.get("failing_gate_histogram") or {}),
                 "pending_gate_histogram": dict(registry_entry.get("pending_gate_histogram") or {}),
+                "field_readiness_gate_status": readiness_gate_status,
+                "field_readiness_usable_field_count": len(readiness_entry.get("usable_candidate_fields", [])),
+                "field_readiness_blocked_fields": [
+                    entry.get("field")
+                    for entry in readiness_entry.get("blocked_candidate_fields", [])
+                    if entry.get("field")
+                ],
+                "field_readiness_reasons": list(readiness_assessment.get("reasons", [])),
+                "field_readiness_coverage_floor_pct": readiness_assessment.get("coverage_floor_pct"),
+                "account_capability_gate_status": capability_gate_status,
+                "account_capability_reasons": list(capability_assessment.get("reasons", [])),
+                "account_capability_required_scope": dict(capability_entry.get("required_scope", {})),
+                "account_capability_observed_combo_count": int(
+                    capability_entry.get("capability_snapshot", {}).get("observed_combo_count", 0) or 0
+                ),
+                "account_capability_observed_regions": list(
+                    capability_entry.get("capability_snapshot", {}).get("observed_regions", [])
+                ),
+                "account_capability_observed_delays": list(
+                    capability_entry.get("capability_snapshot", {}).get("observed_delays", [])
+                ),
+                "account_capability_observed_universes": list(
+                    capability_entry.get("capability_snapshot", {}).get("observed_universes", [])
+                ),
+                "account_capability_observed_categories": list(
+                    capability_entry.get("capability_snapshot", {}).get("observed_categories", [])
+                ),
+                "research_contract_gate_status": contract_gate_status,
+                "research_contract_reasons": list(contract_assessment.get("reasons", [])),
+                "research_contract_fields": dict(contract_entry.get("contract", {})),
+                "validation_design_gate_status": validation_design_gate_status,
+                "validation_design_reasons": list(validation_design_assessment.get("reasons", [])),
+                "validation_design_fields": dict(validation_design_entry.get("validation_design", {})),
+                "factor_risk_overlay_gate_status": factor_risk_gate_status,
+                "factor_risk_overlay_reasons": list(factor_risk_assessment.get("reasons", [])),
+                "factor_risk_overlay_expected_risks": list(
+                    factor_risk_entry.get("factor_profile", {}).get("expected_risks", [])
+                ),
+                "factor_risk_overlay_hypothesis_risks": list(
+                    factor_risk_entry.get("factor_profile", {}).get("hypothesis_risks", [])
+                ),
+                "factor_risk_overlay_overlay_risks": list(
+                    factor_risk_entry.get("factor_profile", {}).get("overlay_risks", [])
+                ),
+                "complexity_budget_gate_status": complexity_gate_status,
+                "complexity_budget_reasons": list(complexity_assessment.get("reasons", [])),
+                "complexity_budget_expression_count": int(
+                    complexity_entry.get("counts", {}).get("expression_count", 0) or 0
+                ),
+                "complexity_budget_variant_expression_count": int(
+                    complexity_entry.get("counts", {}).get("variant_expression_count", 0) or 0
+                ),
+                "mechanism_failure_memory_status": failure_memory_assessment.get("negative_memory_status"),
+                "mechanism_failure_memory_rank": failure_memory_assessment.get("negative_memory_rank"),
+                "mechanism_failure_memory_reasons": list(failure_memory_assessment.get("reasons", [])),
+                "mechanism_failure_memory_cluster": failure_memory_entry.get("mechanism_profile", {}).get("mechanism_cluster"),
+                "economic_distinctness_gate_status": distinctness_gate_status,
+                "economic_distinctness_reasons": list(distinctness_assessment.get("reasons", [])),
+                "economic_distinctness_nearest_negative_family": distinctness_entry.get("nearest_negative_family"),
+                "economic_distinctness_changed_axes": list(distinctness_entry.get("changed_axes", [])),
+                "economic_distinctness_field_overlap_pct": distinctness_entry.get("field_overlap_pct"),
+                "economic_distinctness_expression_similarity": distinctness_entry.get("expression_similarity"),
+                "validation_provenance_gate_status": str(
+                    provenance_assessment.get("gate_status") or "pass"
+                ),
+                "validation_provenance_level": provenance_assessment.get("strongest_level"),
+                "validation_provenance_binding_status": provenance_assessment.get("binding_status"),
+                "validation_provenance_reasons": list(provenance_assessment.get("reasons", [])),
+                "evidence_ladder_level": evidence_assessment.get("evidence_level"),
+                "evidence_promotion_ceiling": evidence_assessment.get("promotion_ceiling"),
+                "evidence_effective_state": effective_state,
+                "evidence_branch_budget_remaining": evidence_assessment.get("branch_budget_remaining"),
+                "evidence_official_budget_cap": evidence_assessment.get("official_budget_cap"),
+                "evidence_ladder_reasons": list(evidence_assessment.get("reasons", [])),
                 "local_action": local_action,
                 "action": action,
-                "next_step": family_next_step(action),
+                "next_step": next_step,
             }
         )
 
@@ -800,12 +1174,12 @@ def render_family_summary_md(records: Sequence[dict[str, Any]]) -> str:
     lines = [
         "# Family Factory Summary",
         "",
-        "| family | action | selected | gate score | best local score | live captures | submit-ready | failing gates |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| family | action | readiness | capability | contract | validation | factor | complexity | distinctness | provenance | evidence | selected | gate score | best local score | live captures | submit-ready | failing gates |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for record in records:
         lines.append(
-            "| {topic} | {action} | {selected_count} | {best_gate_likelihood_score} | {best_local_score} | {official_live_capture_count} | {submit_ready_count} | {failing_gates} |".format(
+            "| {topic} | {action} | {field_readiness_gate_status} | {account_capability_gate_status} | {research_contract_gate_status} | {validation_design_gate_status} | {factor_risk_overlay_gate_status} | {complexity_budget_gate_status} | {economic_distinctness_gate_status} | {validation_provenance_level} | {evidence_ladder_level} | {selected_count} | {best_gate_likelihood_score} | {best_local_score} | {official_live_capture_count} | {submit_ready_count} | {failing_gates} |".format(
                 **{
                     **record,
                     "best_gate_likelihood_score": (
@@ -1009,6 +1383,10 @@ def build_official_budget(
     policy_budget = policy.get("budget") if isinstance(policy.get("budget"), dict) else {}
     max_anchor_per_family = int(policy_budget.get("max_anchor_per_family", 1))
     anchor_counts: dict[str, int] = defaultdict(int)
+    per_family_caps = {
+        str(summary["topic"]): int(summary.get("evidence_official_budget_cap", 1) or 1)
+        for summary in family_summaries
+    }
 
     for summary in priority_order:
         if len(picks) >= budget:
@@ -1058,7 +1436,8 @@ def build_official_budget(
             if len(picks) >= budget:
                 break
             family_topic = str(summary["topic"])
-            if family_pick_counts[family_topic] >= max_per_family:
+            family_cap = min(max_per_family, per_family_caps.get(family_topic, 1))
+            if family_pick_counts[family_topic] >= family_cap:
                 continue
             family_records = scored_by_family.get(family_topic, [])
             if not family_records:
@@ -1139,6 +1518,16 @@ def bundle_manifest(
     run_id: str,
     success_policy: dict[str, Any],
     families: Sequence[ParsedFamilyDoc],
+    field_readiness_report: dict[str, Any],
+    account_capability_report: dict[str, Any],
+    research_contract_report: dict[str, Any],
+    validation_design_report: dict[str, Any],
+    factor_risk_overlay_report: dict[str, Any],
+    complexity_budget_report: dict[str, Any],
+    mechanism_failure_memory_report: dict[str, Any],
+    economic_distinctness_report: dict[str, Any],
+    validation_provenance_report: dict[str, Any],
+    evidence_ladder_report: dict[str, Any],
     captures: Sequence[ParsedCapture],
     candidates: Sequence[dict[str, Any]],
     scored: Sequence[dict[str, Any]],
@@ -1156,12 +1545,14 @@ def bundle_manifest(
         "objective": success_policy.get("objective"),
         "settings": {
             "family_dir": str(args.family_dir),
+            "field_search_pack_dir": str(args.field_search_pack_dir),
             "capture_dir": str(args.capture_dir),
             "candidate_batch_dir": str(args.candidate_batch_dir),
             "success_policy": str(args.success_policy),
             "include_topic": list(args.include_topic),
             "exclude_topic": list(args.exclude_topic),
             "include_dead": args.include_dead,
+            "coverage_floor_pct": args.coverage_floor_pct,
             "token_maps": [str(path) for path in args.token_map],
             "max_candidates": args.max_candidates,
             "per_seed": args.per_seed,
@@ -1180,6 +1571,27 @@ def bundle_manifest(
         },
         "counts": {
             "family_count": len(families),
+            "field_readiness_count": len(field_readiness_report.get("items", [])),
+            "field_readiness_pass_count": int(field_readiness_report.get("counts", {}).get("pass_count", 0)),
+            "account_capability_count": len(account_capability_report.get("items", [])),
+            "account_capability_pass_count": int(account_capability_report.get("counts", {}).get("pass_count", 0)),
+            "research_contract_count": len(research_contract_report.get("items", [])),
+            "research_contract_pass_count": int(research_contract_report.get("counts", {}).get("pass_count", 0)),
+            "validation_design_count": len(validation_design_report.get("items", [])),
+            "validation_design_pass_count": int(validation_design_report.get("counts", {}).get("pass_count", 0)),
+            "factor_risk_overlay_count": len(factor_risk_overlay_report.get("items", [])),
+            "factor_risk_overlay_pass_count": int(factor_risk_overlay_report.get("counts", {}).get("pass_count", 0)),
+            "complexity_budget_count": len(complexity_budget_report.get("items", [])),
+            "complexity_budget_pass_count": int(complexity_budget_report.get("counts", {}).get("pass_count", 0)),
+            "mechanism_failure_memory_count": len(mechanism_failure_memory_report.get("items", [])),
+            "negative_failure_memory_count": int(mechanism_failure_memory_report.get("counts", {}).get("negative_family_count", 0)),
+            "economic_distinctness_count": len(economic_distinctness_report.get("items", [])),
+            "economic_distinctness_pass_count": int(economic_distinctness_report.get("counts", {}).get("pass_count", 0)),
+            "validation_provenance_count": len(validation_provenance_report.get("items", [])),
+            "binding_provenance_count": int(validation_provenance_report.get("counts", {}).get("binding_family_count", 0)),
+            "evidence_ladder_count": len(evidence_ladder_report.get("items", [])),
+            "E3_full_is_count": int(evidence_ladder_report.get("counts", {}).get("E3_full_is", 0)),
+            "E4_submit_ready_count": int(evidence_ladder_report.get("counts", {}).get("E4_submit_ready", 0)),
             "capture_count": len(captures),
             "candidate_count": len(candidates),
             "scored_count": len(scored),
@@ -1191,6 +1603,80 @@ def bundle_manifest(
             "official_budget_count": len(official_budget),
         },
         "family_docs": [summarise_family(doc) for doc in families[:20]],
+        "field_readiness": {
+            "coverage_floor_pct": field_readiness_report.get("coverage_floor_pct"),
+            "counts": dict(field_readiness_report.get("counts", {})),
+            "top_blocked": [
+                item
+                for item in field_readiness_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "account_capability": {
+            "counts": dict(account_capability_report.get("counts", {})),
+            "profile": dict(account_capability_report.get("profile", {})),
+            "top_blocked": [
+                item
+                for item in account_capability_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "research_contract": {
+            "counts": dict(research_contract_report.get("counts", {})),
+            "top_blocked": [
+                item
+                for item in research_contract_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "validation_design": {
+            "counts": dict(validation_design_report.get("counts", {})),
+            "top_blocked": [
+                item
+                for item in validation_design_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "factor_risk_overlay": {
+            "counts": dict(factor_risk_overlay_report.get("counts", {})),
+            "top_blocked": [
+                item
+                for item in factor_risk_overlay_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "complexity_budget": {
+            "counts": dict(complexity_budget_report.get("counts", {})),
+            "top_blocked": [
+                item
+                for item in complexity_budget_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "mechanism_failure_memory": {
+            "counts": dict(mechanism_failure_memory_report.get("counts", {})),
+            "top_negative": [
+                item
+                for item in mechanism_failure_memory_report.get("items", [])
+                if int(item.get("assessment", {}).get("negative_memory_rank", 0) or 0) > 0
+            ][:10],
+        },
+        "economic_distinctness": {
+            "counts": dict(economic_distinctness_report.get("counts", {})),
+            "top_blocked": [
+                item
+                for item in economic_distinctness_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "validation_provenance": {
+            "counts": dict(validation_provenance_report.get("counts", {})),
+            "top_families": list(validation_provenance_report.get("items", [])[:10]),
+        },
+        "evidence_ladder": {
+            "counts": dict(evidence_ladder_report.get("counts", {})),
+            "top_families": list(evidence_ladder_report.get("items", [])[:10]),
+        },
         "capture_docs": [summarise_capture(capture) for capture in captures[:20]],
         "top_queue_items": queue_document.get("items", [])[:10],
         "top_official_budget": list(official_budget[:10]),
@@ -1252,6 +1738,35 @@ def main() -> int:
         raise SystemExit("No family docs remain after applying the current include/exclude filters.")
 
     selected_family_keys = {family_key_for_topic(doc.topic) for doc in selected_families}
+    field_packs = load_field_search_packs(args.field_search_pack_dir)
+    selected_field_packs = [pack for pack in field_packs if pack.family_key in selected_family_keys]
+    field_readiness_report = build_field_readiness_report(
+        field_packs=selected_field_packs,
+        family_docs=selected_families,
+        coverage_floor_pct=args.coverage_floor_pct,
+    )
+    field_readiness_by_family = index_field_readiness(field_readiness_report)
+    research_contract_report = build_research_contract_report(family_docs=selected_families)
+    research_contract_by_family = index_research_contract_report(research_contract_report)
+    account_capability_report = build_account_capability_report(
+        family_docs=selected_families,
+        research_contract_report=research_contract_report,
+    )
+    account_capability_by_family = index_account_capability(account_capability_report)
+    validation_design_report = build_validation_design_report(family_docs=selected_families)
+    validation_design_by_family = index_validation_design(validation_design_report)
+    factor_risk_overlay_report = build_factor_risk_overlay_report(
+        family_docs=selected_families,
+        research_contract_report=research_contract_report,
+        validation_design_report=validation_design_report,
+    )
+    factor_risk_overlay_by_family = index_factor_risk_overlay(factor_risk_overlay_report)
+    complexity_budget_report = build_complexity_budget_report(
+        family_docs=selected_families,
+        policy=success_policy,
+    )
+    complexity_budget_by_family = index_complexity_budget(complexity_budget_report)
+
     candidate_batch_dir = args.candidate_batch_dir if args.candidate_batch_dir.exists() else None
     outcome_memory = build_combined_outcome_memory(
         args.capture_dir if args.capture_dir.exists() else [],
@@ -1264,19 +1779,80 @@ def main() -> int:
     ]
     submit_ready_ledger = build_submit_ready_ledger(outcome_memory)
     family_registry = build_family_registry_summary([doc.path for doc in selected_families], outcome_memory)
+    mechanism_failure_memory_report = build_mechanism_failure_memory_report(
+        family_docs=selected_families,
+        family_registry=family_registry,
+        research_contract_report=research_contract_report,
+    )
+    mechanism_failure_memory_by_family = index_mechanism_failure_memory(mechanism_failure_memory_report)
+    economic_distinctness_report = build_economic_distinctness_report(
+        family_docs=selected_families,
+        research_contract_report=research_contract_report,
+        mechanism_failure_memory_report=mechanism_failure_memory_report,
+    )
+    economic_distinctness_by_family = index_economic_distinctness(economic_distinctness_report)
+    ready_selected_families = tuple(
+        doc
+        for doc in selected_families
+        if str(
+            field_readiness_by_family.get(family_key_for_topic(doc.topic), {})
+            .get("assessment", {})
+            .get("gate_status", "block")
+        )
+        == "pass"
+        and str(
+            account_capability_by_family.get(family_key_for_topic(doc.topic), {})
+            .get("assessment", {})
+            .get("gate_status", "block")
+        )
+        == "pass"
+        and str(
+            research_contract_by_family.get(family_key_for_topic(doc.topic), {})
+            .get("assessment", {})
+            .get("gate_status", "block")
+        )
+        == "pass"
+        and str(
+            validation_design_by_family.get(family_key_for_topic(doc.topic), {})
+            .get("assessment", {})
+            .get("gate_status", "block")
+        )
+        == "pass"
+        and str(
+            factor_risk_overlay_by_family.get(family_key_for_topic(doc.topic), {})
+            .get("assessment", {})
+            .get("gate_status", "block")
+        )
+        == "pass"
+        and str(
+            complexity_budget_by_family.get(family_key_for_topic(doc.topic), {})
+            .get("assessment", {})
+            .get("gate_status", "block")
+        )
+        == "pass"
+        and str(
+            economic_distinctness_by_family.get(family_key_for_topic(doc.topic), {})
+            .get("assessment", {})
+            .get("gate_status", "block")
+        )
+        == "pass"
+    )
 
     bank = build_expression_bank(all_family_docs, captures)
     token_rules = merge_token_rules(args.token_map)
-    candidates = build_candidate_pool(
-        selected_families,
-        bank,
-        token_rules,
-        max_candidates=args.max_candidates,
-        per_seed=args.per_seed,
-        max_depth=args.max_depth,
-        reject_dead_similarity=args.reject_dead_similarity,
-        seed_limit=args.seed_limit,
-    )
+    if ready_selected_families:
+        candidates = build_candidate_pool(
+            ready_selected_families,
+            bank,
+            token_rules,
+            max_candidates=args.max_candidates,
+            per_seed=args.per_seed,
+            max_depth=args.max_depth,
+            reject_dead_similarity=args.reject_dead_similarity,
+            seed_limit=args.seed_limit,
+        )
+    else:
+        candidates = []
 
     scored_records = score_candidates(
         candidates,
@@ -1285,15 +1861,44 @@ def main() -> int:
         bank=bank,
         min_score=args.min_score,
     )
+    local_scored_counts: dict[str, int] = defaultdict(int)
+    for record in scored_records:
+        local_scored_counts[family_key_for_topic(str(record.get("family_topic") or ""))] += 1
+    evidence_ladder_report = build_evidence_ladder_report(
+        family_docs=selected_families,
+        outcome_memory=outcome_memory,
+        family_registry=family_registry,
+        local_scored_counts=local_scored_counts,
+    )
+    evidence_ladder_by_family = index_evidence_ladder(evidence_ladder_report)
     scored_records = enrich_records_with_success_priors(
         scored_records,
         family_registry=family_registry,
         outcome_memory=outcome_memory,
         submit_ready_ledger=submit_ready_ledger,
         policy=success_policy,
+        evidence_ladder_by_family=evidence_ladder_by_family,
     )
-
     selected_items, rejection_reasons = select_queue_with_success_priors(scored_records, args)
+    local_queue_counts: dict[str, int] = defaultdict(int)
+    for item in selected_items:
+        local_queue_counts[family_key_for_topic(str(item.get("family_topic") or ""))] += 1
+    validation_provenance_report = build_validation_provenance_report(
+        family_docs=selected_families,
+        outcome_memory=outcome_memory,
+        family_registry=family_registry,
+        local_scored_counts=local_scored_counts,
+        local_queue_counts=local_queue_counts,
+    )
+    validation_provenance_by_family = index_validation_provenance(validation_provenance_report)
+    evidence_ladder_report = build_evidence_ladder_report(
+        family_docs=selected_families,
+        outcome_memory=outcome_memory,
+        family_registry=family_registry,
+        local_scored_counts=local_scored_counts,
+        local_queue_counts=local_queue_counts,
+    )
+    evidence_ladder_by_family = index_evidence_ladder(evidence_ladder_report)
     queue_document = build_queue_document(selected_items, args)
     queue_document["success_policy"] = {
         "objective": success_policy.get("objective"),
@@ -1301,8 +1906,43 @@ def main() -> int:
         "family_registry_count": len(family_registry),
         "official_outcome_count": len(outcome_memory),
         "submit_ready_count": len(submit_ready_ledger),
+        "field_readiness_pass_count": int(field_readiness_report.get("counts", {}).get("pass_count", 0)),
+        "field_readiness_hold_count": int(field_readiness_report.get("counts", {}).get("hold_count", 0)),
+        "field_readiness_block_count": int(field_readiness_report.get("counts", {}).get("block_count", 0)),
+        "account_capability_pass_count": int(account_capability_report.get("counts", {}).get("pass_count", 0)),
+        "account_capability_hold_count": int(account_capability_report.get("counts", {}).get("hold_count", 0)),
+        "account_capability_block_count": int(account_capability_report.get("counts", {}).get("block_count", 0)),
+        "research_contract_pass_count": int(research_contract_report.get("counts", {}).get("pass_count", 0)),
+        "research_contract_hold_count": int(research_contract_report.get("counts", {}).get("hold_count", 0)),
+        "research_contract_block_count": int(research_contract_report.get("counts", {}).get("block_count", 0)),
+        "validation_design_pass_count": int(validation_design_report.get("counts", {}).get("pass_count", 0)),
+        "validation_design_hold_count": int(validation_design_report.get("counts", {}).get("hold_count", 0)),
+        "validation_design_block_count": int(validation_design_report.get("counts", {}).get("block_count", 0)),
+        "factor_risk_overlay_pass_count": int(factor_risk_overlay_report.get("counts", {}).get("pass_count", 0)),
+        "factor_risk_overlay_hold_count": int(factor_risk_overlay_report.get("counts", {}).get("hold_count", 0)),
+        "factor_risk_overlay_block_count": int(factor_risk_overlay_report.get("counts", {}).get("block_count", 0)),
+        "complexity_budget_pass_count": int(complexity_budget_report.get("counts", {}).get("pass_count", 0)),
+        "complexity_budget_hold_count": int(complexity_budget_report.get("counts", {}).get("hold_count", 0)),
+        "complexity_budget_block_count": int(complexity_budget_report.get("counts", {}).get("block_count", 0)),
+        "negative_failure_memory_count": int(
+            mechanism_failure_memory_report.get("counts", {}).get("negative_family_count", 0)
+        ),
+        "economic_distinctness_pass_count": int(
+            economic_distinctness_report.get("counts", {}).get("pass_count", 0)
+        ),
+        "economic_distinctness_hold_count": int(
+            economic_distinctness_report.get("counts", {}).get("hold_count", 0)
+        ),
+        "validation_provenance_binding_family_count": int(
+            validation_provenance_report.get("counts", {}).get("binding_family_count", 0)
+        ),
+        "validation_provenance_hold_count": int(
+            validation_provenance_report.get("counts", {}).get("hold_count", 0)
+        ),
+        "E3_full_is_count": int(evidence_ladder_report.get("counts", {}).get("E3_full_is", 0)),
+        "E4_submit_ready_count": int(evidence_ladder_report.get("counts", {}).get("E4_submit_ready", 0)),
     }
-    score_summary_text = build_score_summary(scored_records, selected_families, args.min_score)
+    score_summary_text = build_score_summary(scored_records, ready_selected_families, args.min_score)
     queue_summary_text = build_queue_summary(selected_items, rejection_reasons, args)
     family_summary_records = build_family_summary_records(
         selected_families,
@@ -1310,6 +1950,16 @@ def main() -> int:
         scored_records,
         selected_items,
         family_registry=family_registry,
+        field_readiness_by_family=field_readiness_by_family,
+        account_capability_by_family=account_capability_by_family,
+        research_contract_by_family=research_contract_by_family,
+        validation_design_by_family=validation_design_by_family,
+        factor_risk_overlay_by_family=factor_risk_overlay_by_family,
+        complexity_budget_by_family=complexity_budget_by_family,
+        mechanism_failure_memory_by_family=mechanism_failure_memory_by_family,
+        economic_distinctness_by_family=economic_distinctness_by_family,
+        validation_provenance_by_family=validation_provenance_by_family,
+        evidence_ladder_by_family=evidence_ladder_by_family,
     )
     family_summary_text = render_family_summary_md(family_summary_records)
     official_budget_items = build_official_budget(
@@ -1324,6 +1974,16 @@ def main() -> int:
     family_registry_text = render_family_registry_md(family_registry)
     outcome_memory_text = render_outcome_memory_md(outcome_memory)
     submit_ready_ledger_text = render_submit_ready_ledger_md(submit_ready_ledger)
+    field_readiness_text = render_field_readiness_md(field_readiness_report)
+    account_capability_text = render_account_capability_md(account_capability_report)
+    research_contract_text = render_research_contract_md(research_contract_report)
+    validation_design_text = render_validation_design_md(validation_design_report)
+    factor_risk_overlay_text = render_factor_risk_overlay_md(factor_risk_overlay_report)
+    complexity_budget_text = render_complexity_budget_md(complexity_budget_report)
+    mechanism_failure_memory_text = render_mechanism_failure_memory_md(mechanism_failure_memory_report)
+    economic_distinctness_text = render_economic_distinctness_md(economic_distinctness_report)
+    validation_provenance_text = render_validation_provenance_md(validation_provenance_report)
+    evidence_ladder_text = render_evidence_ladder_md(evidence_ladder_report)
 
     output_root.mkdir(parents=True, exist_ok=True)
     candidates_path = output_root / "candidates.jsonl"
@@ -1343,6 +2003,26 @@ def main() -> int:
     success_policy_json_path = output_root / "success-policy.json"
     official_budget_json_path = output_root / "official-budget.json"
     official_budget_md_path = output_root / "official-budget.md"
+    field_readiness_json_path = output_root / "field-readiness.json"
+    field_readiness_md_path = output_root / "field-readiness.md"
+    account_capability_json_path = output_root / "account-capability.json"
+    account_capability_md_path = output_root / "account-capability.md"
+    research_contract_json_path = output_root / "research-contract.json"
+    research_contract_md_path = output_root / "research-contract.md"
+    validation_design_json_path = output_root / "validation-design.json"
+    validation_design_md_path = output_root / "validation-design.md"
+    factor_risk_overlay_json_path = output_root / "factor-risk-overlay.json"
+    factor_risk_overlay_md_path = output_root / "factor-risk-overlay.md"
+    complexity_budget_json_path = output_root / "complexity-budget.json"
+    complexity_budget_md_path = output_root / "complexity-budget.md"
+    mechanism_failure_memory_json_path = output_root / "mechanism-failure-memory.json"
+    mechanism_failure_memory_md_path = output_root / "mechanism-failure-memory.md"
+    economic_distinctness_json_path = output_root / "economic-distinctness.json"
+    economic_distinctness_md_path = output_root / "economic-distinctness.md"
+    validation_provenance_json_path = output_root / "validation-provenance.json"
+    validation_provenance_md_path = output_root / "validation-provenance.md"
+    evidence_ladder_json_path = output_root / "evidence-ladder.json"
+    evidence_ladder_md_path = output_root / "evidence-ladder.md"
     manifest_path = output_root / "manifest.json"
 
     write_jsonl(candidates, candidates_path)
@@ -1360,6 +2040,26 @@ def main() -> int:
     dump_json(submit_ready_ledger_json_path, submit_ready_ledger)
     ensure_text(submit_ready_ledger_md_path, submit_ready_ledger_text)
     dump_json(success_policy_json_path, success_policy)
+    dump_json(field_readiness_json_path, field_readiness_report)
+    ensure_text(field_readiness_md_path, field_readiness_text)
+    dump_json(account_capability_json_path, account_capability_report)
+    ensure_text(account_capability_md_path, account_capability_text)
+    dump_json(research_contract_json_path, research_contract_report)
+    ensure_text(research_contract_md_path, research_contract_text)
+    dump_json(validation_design_json_path, validation_design_report)
+    ensure_text(validation_design_md_path, validation_design_text)
+    dump_json(factor_risk_overlay_json_path, factor_risk_overlay_report)
+    ensure_text(factor_risk_overlay_md_path, factor_risk_overlay_text)
+    dump_json(complexity_budget_json_path, complexity_budget_report)
+    ensure_text(complexity_budget_md_path, complexity_budget_text)
+    dump_json(mechanism_failure_memory_json_path, mechanism_failure_memory_report)
+    ensure_text(mechanism_failure_memory_md_path, mechanism_failure_memory_text)
+    dump_json(economic_distinctness_json_path, economic_distinctness_report)
+    ensure_text(economic_distinctness_md_path, economic_distinctness_text)
+    dump_json(validation_provenance_json_path, validation_provenance_report)
+    ensure_text(validation_provenance_md_path, validation_provenance_text)
+    dump_json(evidence_ladder_json_path, evidence_ladder_report)
+    ensure_text(evidence_ladder_md_path, evidence_ladder_text)
     dump_json(
         official_budget_json_path,
         {
@@ -1387,6 +2087,16 @@ def main() -> int:
         run_id=run_id,
         success_policy=success_policy,
         families=selected_families,
+        field_readiness_report=field_readiness_report,
+        account_capability_report=account_capability_report,
+        research_contract_report=research_contract_report,
+        validation_design_report=validation_design_report,
+        factor_risk_overlay_report=factor_risk_overlay_report,
+        complexity_budget_report=complexity_budget_report,
+        mechanism_failure_memory_report=mechanism_failure_memory_report,
+        economic_distinctness_report=economic_distinctness_report,
+        validation_provenance_report=validation_provenance_report,
+        evidence_ladder_report=evidence_ladder_report,
         captures=captures,
         candidates=candidates,
         scored=scored_records,

@@ -12,6 +12,37 @@
 
 Write the plain-language hypothesis behind this expression family.
 
+## Research Contract
+
+- Mechanism:
+- Data category:
+- Idea type:
+- Universe:
+- Liquidity fit:
+- Holding frequency:
+- Delay:
+- Neutralization target:
+- Decay:
+- Truncation:
+- NaN policy:
+- Pasteurization:
+- Unit handling:
+- Coverage floor:
+- Freshness floor days:
+- Factor risk hypothesis:
+- Kill condition:
+
+## Validation Design
+
+- Primary test period:
+- Regime slices:
+- Liquidity slice:
+- Subuniverse gate:
+- Factor overlay:
+- Comparison controls:
+- Promotion rule:
+- Demotion rule:
+
 ## Confirmed Or Assumed Inputs
 
 - Confirmed platform fields:

@@ -1,0 +1,63 @@
+{
+  "capture_id": "2026-04-26-call-breakeven-60-industry-decay2-batch-01",
+  "topic": "call_breakeven_60_b_stage_industry_decay2",
+  "captured_at": "2026-04-26T01:48:58+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The page shows 'Needs Improvement'."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "call_breakeven_60_ts_decay2_rank20_industry",
+      "expression": "group_rank(ts_rank(ts_decay_linear(call_breakeven_60 / close, 2), 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.19,
+        "is_fitness": 0.55,
+        "is_turnover": 0.3391,
+        "is_returns": 0.0725,
+        "is_drawdown": 0.0608,
+        "is_margin": 0.000428,
+        "test_sharpe": 1.26,
+        "test_fitness": 0.44,
+        "test_turnover": 0.3658,
+        "test_returns": 0.0441,
+        "test_drawdown": 0.0205,
+        "test_margin": 0.000241
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The TEST period summary is visible after expanding test period.",
+        "This first B probe is not yet close to submit readiness."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The first planned industry decay-linear repair is below the practical submit floor on both IS and TEST summaries. Continue the B stage with the second planned shape probe instead of escalating or stopping."
+  }
+}

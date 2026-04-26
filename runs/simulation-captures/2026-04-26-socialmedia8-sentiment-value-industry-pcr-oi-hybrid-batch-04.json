@@ -1,0 +1,67 @@
+{
+  "capture_id": "2026-04-26-socialmedia8-sentiment-value-industry-pcr-oi-hybrid-batch-04",
+  "topic": "socialmedia8-sentiment-value-industry-pcr-oi-hybrid",
+  "captured_at": "2026-04-26T04:02:35+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "ON",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Logged-in official WorldQuant BRAIN browser session.",
+      "The C-stage hybrid completed on the official platform and the TEST period view was enabled.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "The C-stage hybrid remained UNSUBMITTED / anonymous."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "socialmedia8_ts_zscore20_plus_pcr_oi_30_industry",
+      "expression": "group_rank(ts_rank(ts_zscore(snt_social_value, 20), 20) + ts_rank(pcr_oi_30, 20), industry)",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "sharpe": 0.01,
+        "fitness": 0.0,
+        "turnover": 0.2859,
+        "returns": 0.0003,
+        "drawdown": 0.0611,
+        "margin": 2e-06,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "test_metrics": {
+        "sharpe": 1.14,
+        "fitness": 0.31,
+        "turnover": 0.3019,
+        "returns": 0.0226,
+        "drawdown": 0.0172,
+        "margin": 0.00015
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": false
+      },
+      "notes": [
+        "TEST clears the C continuation floor and the hybrid is the branch lead for delay robustness.",
+        "IS is still weak and near-flat, so the line is not submit-ready."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The C-stage hybrid clears TEST and is the branch lead, but IS remains too weak to stop here."
+  }
+}

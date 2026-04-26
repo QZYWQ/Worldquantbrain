@@ -7,6 +7,7 @@ and writes a markdown report that is easy to screenshot.
 Credentials are read from one of:
 - ~/brain_credentials.txt  (JSON dict or list)
 - BRAIN_USERNAME / BRAIN_PASSWORD environment variables
+- BRAIN_SESSION_COOKIE and/or BRAIN_AUTH_HEADERS environment variables
 """
 
 from __future__ import annotations
@@ -21,8 +22,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
-import requests
-from requests.auth import HTTPBasicAuth
+try:
+    import requests
+    from requests.auth import HTTPBasicAuth
+except ModuleNotFoundError:
+    requests = None
+    HTTPBasicAuth = None
 
 API_BASE = "https://api.worldquantbrain.com"
 DEFAULT_OUTPUT = Path("~/Downloads/worldquant_alpha_report.md").expanduser()
@@ -50,6 +55,11 @@ DEFAULT_ALPHAS: List[str] = [
 ]
 
 
+def ensure_requests_available() -> None:
+    if requests is None or HTTPBasicAuth is None:
+        raise SystemExit("requests is required for live API calls. Install it in the active Python environment.")
+
+
 def load_credentials() -> tuple[str, str]:
     cred_path = Path.home() / "brain_credentials.txt"
     if cred_path.exists():
@@ -75,6 +85,54 @@ def load_credentials() -> tuple[str, str]:
     if not username or not password:
         raise SystemExit("Username or password is empty.")
     return username, password
+
+
+def _load_json_object_env(name: str) -> Dict[str, str]:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return {}
+
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"{name} must be a JSON object.") from exc
+
+    if not isinstance(data, dict):
+        raise SystemExit(f"{name} must be a JSON object.")
+
+    normalized: Dict[str, str] = {}
+    for key, value in data.items():
+        if value is None:
+            continue
+        normalized[str(key)] = str(value)
+    return normalized
+
+
+def load_explicit_auth() -> Optional[Dict[str, Any]]:
+    headers = _load_json_object_env("BRAIN_AUTH_HEADERS")
+    cookie = os.environ.get("BRAIN_SESSION_COOKIE", "").strip()
+    if cookie.lower().startswith("cookie:"):
+        cookie = cookie.split(":", 1)[1].strip()
+
+    if not headers and not cookie:
+        return None
+
+    return {
+        "headers": headers,
+        "cookie": cookie,
+    }
+
+
+def configure_explicit_auth(session: requests.Session) -> bool:
+    explicit_auth = load_explicit_auth()
+    if explicit_auth is None:
+        return False
+
+    session.headers.update(explicit_auth["headers"])
+    cookie = explicit_auth["cookie"]
+    if cookie:
+        session.headers["Cookie"] = cookie
+    return True
 
 
 def load_alpha_expressions(path: Optional[Path]) -> List[str]:
@@ -110,6 +168,7 @@ def load_settings(path: Optional[Path]) -> Dict[str, Any]:
 
 
 def authenticate_session(session: requests.Session, username: str, password: str) -> None:
+    ensure_requests_available()
     session.auth = HTTPBasicAuth(username, password)
     resp = session.post(f"{API_BASE}/authentication", timeout=60)
     resp.raise_for_status()
@@ -319,9 +378,11 @@ def main() -> int:
         print(report)
         return 0
 
-    username, password = load_credentials()
+    ensure_requests_available()
     session = requests.Session()
-    authenticate_session(session, username, password)
+    if not configure_explicit_auth(session):
+        username, password = load_credentials()
+        authenticate_session(session, username, password)
 
     formatted_results: List[str] = []
     for idx, expression in enumerate(alphas, start=1):

@@ -1,0 +1,68 @@
+{
+  "capture_id": "2026-04-26-call-breakeven-60-industry-zscore-power20-window20-batch-06",
+  "topic": "call_breakeven_60_b_stage_industry_zscore_power20_window20",
+  "captured_at": "2026-04-26T10:32:00+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The page shows 'Needs Improvement'.",
+      "The TEST period summary was captured after selecting the TEST period button.",
+      "The IS summary was rechecked after switching back to the IS period button.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "Testing Status showed 4 PASS / 3 FAIL / 1 PENDING, with visible fails on Sharpe, Fitness, and concentrated weight.",
+      "Properties last saved Sun, 04/26/2026, 10:32 AM."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "call_breakeven_60_zscore_power20_window20_industry",
+      "expression": "group_rank(ts_rank(signed_power(ts_zscore(call_breakeven_60 / close, 20), 2), 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.15,
+        "is_fitness": 0.42,
+        "is_turnover": 0.4065,
+        "is_returns": 0.0546,
+        "is_drawdown": 0.0643,
+        "is_margin": 0.000269,
+        "test_sharpe": 1.83,
+        "test_fitness": 0.67,
+        "test_turnover": 0.4269,
+        "test_returns": 0.0567,
+        "test_drawdown": 0.0168,
+        "test_margin": 0.000265
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": false
+      },
+      "notes": [
+        "The backup nonlinear control is the strongest B-stage TEST branch in this batch.",
+        "The line still remains below submission cutoffs on the visible Testing Status checks and is not submit-ready."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The zscore-power control dominates the other B-stage variants on TEST and becomes the clean B-stage winner for the protected continuation into C."
+  }
+}

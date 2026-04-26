@@ -1,0 +1,66 @@
+{
+  "capture_id": "2026-04-26-pcr-oi-30-industry-decay3-batch-03",
+  "topic": "pcr_oi_30_b_stage_industry_decay3",
+  "captured_at": "2026-04-26T02:31:00+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The page shows 'Needs Improvement'.",
+      "The TEST period summary was captured after selecting the TEST period button.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "Properties last saved Sun, 04/26/2026, 2:31 AM."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_oi_30_ts_decay3_rank20_industry",
+      "expression": "group_rank(ts_rank(ts_decay_linear(pcr_oi_30, 3), 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 0.18,
+        "is_fitness": 0.02,
+        "is_turnover": 0.235,
+        "is_returns": 0.0038,
+        "is_drawdown": 0.0705,
+        "is_margin": 3.3e-05,
+        "test_sharpe": 0.17,
+        "test_fitness": 0.02,
+        "test_turnover": 0.2506,
+        "test_returns": 0.0034,
+        "test_drawdown": 0.02,
+        "test_margin": 2.7e-05
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The TEST period summary was captured after selecting the TEST period button.",
+        "The decay-3 repair is stronger than the mean-5 probe on TEST, but still far below the continuation floor."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The decay-3 B-stage probe improves over mean-5 but still fails the TEST floor and leaves no rescue path inside this source."
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-24-actual-eps-value-close-subindustry-batch-03",
+  "topic": "actual_eps_value_quarterly_subindustry_probe",
+  "captured_at": "2026-04-24 19:49:50 CST (+0800)",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SUBINDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY"
+  },
+  "evidence": {
+    "expression_family": "./runs/expression-families/2026-04-24-actual-eps-value-close-industry.md",
+    "field_search_pack": "./runs/field-search-packs/2026-04-24-actual-eps-value-close-industry.md",
+    "notes": [
+      "This is the quarterly-alias field-axis follow-up to the subindustry probe.",
+      "The alpha detail API returned a stronger TEST slice than the industry baseline, but the official /check endpoint still showed SELF_CORRELATION pending while FITNESS remained below the pass threshold.",
+      "The family is closer than the earlier industry baseline on holdout, but still not submission-ready.",
+      "This captures the last materially distinct field-axis attempt before freezing the family."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "actual_eps_quarterly_close_subindustry_60d",
+      "expression": "group_rank(ts_rank(actual_eps_value_quarterly / close, 60), subindustry)",
+      "simulation_id": "44oKtx6GE4uGbZdAwFkzFoD",
+      "alpha_id": "Gr3NAOaP",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.5,
+        "is_fitness": 0.84,
+        "is_turnover": 0.1768,
+        "is_returns": 0.056,
+        "is_drawdown": 0.0362,
+        "is_margin": 0.000633,
+        "train_sharpe": 1.68,
+        "train_fitness": 1.01,
+        "train_turnover": 0.1775,
+        "train_returns": 0.0645,
+        "train_drawdown": 0.0362,
+        "train_margin": 0.000726,
+        "test_sharpe": 0.67,
+        "test_fitness": 0.24,
+        "test_turnover": 0.1741,
+        "test_returns": 0.0226,
+        "test_drawdown": 0.0245,
+        "test_margin": 0.00026
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "PASS",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_SHARPE",
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The quarterly alias improved the TEST card, but the full-IS Fitness gate still misses the floor and self-correlation is unresolved.",
+        "This is not a submission path."
+      ]
+    }
+  ]
+}

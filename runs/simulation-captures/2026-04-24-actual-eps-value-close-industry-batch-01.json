@@ -1,0 +1,245 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-24-actual-eps-value-close-industry-batch-01",
+  "topic": "actual_eps_value_close_industry_live_controls",
+  "captured_at": "2026-04-24 18:40:19 CST (+0800)",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF"
+  },
+  "evidence": {
+    "expression_family": "./runs/expression-families/2026-04-24-actual-eps-value-close-industry.md",
+    "field_search_pack": "./runs/field-search-packs/2026-04-24-actual-eps-value-close-industry.md",
+    "notes": [
+      "The baseline anchor passed the visible IS gates, but the fresher /check endpoint resolved SELF_CORRELATION=FAIL against d5l07rpX at 0.7818.",
+      "The sign-flip control was a hard reject and also self-correlated against d5l07rpX at 0.7818.",
+      "The quarterly alias control was still pending at capture time and had not yet resolved SELF_CORRELATION.",
+      "The 120d control passed the visible IS gates, but the fresher /check endpoint resolved SELF_CORRELATION=FAIL against d5l07rpX at 0.7965.",
+      "The family is therefore frozen under the current budget; no submission path remains without a materially different branch."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "anl4_af_eps_value_close_industry_60d",
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "simulation_id": "4ufxlEaIz59898s141UZ2LNA",
+      "alpha_id": "Gr372wO3",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "grade": "AVERAGE",
+      "metrics": {
+        "is_sharpe": 1.59,
+        "is_fitness": 1.17,
+        "is_turnover": 0.1716,
+        "is_returns": 0.0926,
+        "is_drawdown": 0.0626,
+        "is_margin": 0.00108,
+        "train_sharpe": 1.71,
+        "train_fitness": 1.33,
+        "train_turnover": 0.1726,
+        "train_returns": 0.1047,
+        "train_drawdown": 0.0626,
+        "train_margin": 0.001213,
+        "test_sharpe": 1.03,
+        "test_fitness": 0.54,
+        "test_turnover": 0.1677,
+        "test_returns": 0.0454,
+        "test_drawdown": 0.0323,
+        "test_margin": 0.000541,
+        "self_corr": 0.7818
+      },
+      "checks": [
+        {"name": "LOW_SHARPE", "result": "PASS", "limit": 1.25, "value": 1.59},
+        {"name": "LOW_FITNESS", "result": "PASS", "limit": 1.0, "value": 1.17},
+        {"name": "LOW_TURNOVER", "result": "PASS", "limit": 0.01, "value": 0.1716},
+        {"name": "HIGH_TURNOVER", "result": "PASS", "limit": 0.7, "value": 0.1716},
+        {"name": "CONCENTRATED_WEIGHT", "result": "PASS"},
+        {"name": "LOW_SUB_UNIVERSE_SHARPE", "result": "PASS", "limit": 0.69, "value": 1.19},
+        {"name": "SELF_CORRELATION", "result": "FAIL", "limit": 0.7, "value": 0.7818},
+        {"name": "MATCHES_COMPETITION", "result": "PASS", "competitions": [
+          {"id": "challenge", "name": "Challenge"},
+          {"id": "IQC2026S1", "name": "International Quant Championship 2026 Stage 1"}
+        ]}
+      ],
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The alpha detail page initially lagged with SELF_CORRELATION=PENDING, but the fresher /check endpoint resolved FAIL.",
+        "This is still the best IS performer in the family, but it is blocked by self-correlation against an existing alpha."
+      ]
+    },
+    {
+      "name": "anl4_af_eps_value_close_industry_sign_flip",
+      "expression": "group_rank(-ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "simulation_id": "48ntHhd5w4q1abFYLzDuarH",
+      "alpha_id": "pw1pLoEx",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "grade": "INFERIOR",
+      "metrics": {
+        "is_sharpe": -1.59,
+        "is_fitness": -1.17,
+        "is_turnover": 0.1716,
+        "is_returns": -0.0926,
+        "is_drawdown": 0.4742,
+        "is_margin": -0.00108,
+        "train_sharpe": -1.71,
+        "train_fitness": -1.33,
+        "train_turnover": 0.1726,
+        "train_returns": -0.1047,
+        "train_drawdown": 0.4414,
+        "train_margin": -0.001213,
+        "test_sharpe": -1.03,
+        "test_fitness": -0.54,
+        "test_turnover": 0.1677,
+        "test_returns": -0.0454,
+        "test_drawdown": 0.0632,
+        "test_margin": -0.000541,
+        "self_corr": 0.7818
+      },
+      "checks": [
+        {"name": "LOW_SHARPE", "result": "FAIL", "limit": 1.25, "value": -1.59},
+        {"name": "LOW_FITNESS", "result": "FAIL", "limit": 1.0, "value": -1.17},
+        {"name": "LOW_TURNOVER", "result": "PASS", "limit": 0.01, "value": 0.1716},
+        {"name": "HIGH_TURNOVER", "result": "PASS", "limit": 0.7, "value": 0.1716},
+        {"name": "CONCENTRATED_WEIGHT", "result": "PASS"},
+        {"name": "LOW_SUB_UNIVERSE_SHARPE", "result": "FAIL", "limit": -0.69, "value": -1.19},
+        {"name": "SELF_CORRELATION", "result": "FAIL", "limit": 0.7, "value": 0.7818},
+        {"name": "MATCHES_COMPETITION", "result": "PASS", "competitions": [
+          {"id": "challenge", "name": "Challenge"},
+          {"id": "IQC2026S1", "name": "International Quant Championship 2026 Stage 1"}
+        ]}
+      ],
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The sign flip was the direct sign control and is a hard reject.",
+        "It also self-correlated against d5l07rpX, so it does not create a useful low-correlation branch."
+      ]
+    },
+    {
+      "name": "anl4_af_eps_value_close_industry_quarterly_alias",
+      "expression": "group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry)",
+      "simulation_id": "qWFj6p74WObZNrhBPG0ZF",
+      "alpha_id": "9qA2nmmq",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "grade": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 1.43,
+        "is_fitness": 0.89,
+        "is_turnover": 0.1647,
+        "is_returns": 0.0636,
+        "is_drawdown": 0.0419,
+        "is_margin": 0.000772,
+        "train_sharpe": 1.67,
+        "train_fitness": 1.14,
+        "train_turnover": 0.1655,
+        "train_returns": 0.0772,
+        "train_drawdown": 0.0419,
+        "train_margin": 0.000933,
+        "test_sharpe": 0.27,
+        "test_fitness": 0.07,
+        "test_turnover": 0.1617,
+        "test_returns": 0.0101,
+        "test_drawdown": 0.0378,
+        "test_margin": 0.000125,
+        "self_corr": null
+      },
+      "checks": [
+        {"name": "LOW_SHARPE", "result": "PASS", "limit": 1.25, "value": 1.43},
+        {"name": "LOW_FITNESS", "result": "FAIL", "limit": 1.0, "value": 0.89},
+        {"name": "LOW_TURNOVER", "result": "PASS", "limit": 0.01, "value": 0.1647},
+        {"name": "HIGH_TURNOVER", "result": "PASS", "limit": 0.7, "value": 0.1647},
+        {"name": "CONCENTRATED_WEIGHT", "result": "PASS"},
+        {"name": "LOW_SUB_UNIVERSE_SHARPE", "result": "PASS", "limit": 0.62, "value": 1.44},
+        {"name": "SELF_CORRELATION", "result": "PENDING"},
+        {"name": "MATCHES_COMPETITION", "result": "PASS", "competitions": [
+          {"id": "challenge", "name": "Challenge"},
+          {"id": "IQC2026S1", "name": "International Quant Championship 2026 Stage 1"}
+        ]}
+      ],
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The quarterly alias is materially weaker on holdout and did not clear the fitness gate.",
+        "At capture time SELF_CORRELATION was still pending, so this variant remains unpromising and unfinished."
+      ]
+    },
+    {
+      "name": "anl4_af_eps_value_close_industry_120d",
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 120), industry)",
+      "simulation_id": "4neI7r8Ce52O9iTdPB6NMqN",
+      "alpha_id": "A1O2Arjg",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "grade": "AVERAGE",
+      "metrics": {
+        "is_sharpe": 1.34,
+        "is_fitness": 1.04,
+        "is_turnover": 0.1288,
+        "is_returns": 0.0778,
+        "is_drawdown": 0.0806,
+        "is_margin": 0.001208,
+        "train_sharpe": 1.42,
+        "train_fitness": 1.16,
+        "train_turnover": 0.1313,
+        "train_returns": 0.0877,
+        "train_drawdown": 0.0806,
+        "train_margin": 0.001336,
+        "test_sharpe": 1.02,
+        "test_fitness": 0.57,
+        "test_turnover": 0.1193,
+        "test_returns": 0.0389,
+        "test_drawdown": 0.0331,
+        "test_margin": 0.000652,
+        "self_corr": 0.7965
+      },
+      "checks": [
+        {"name": "LOW_SHARPE", "result": "PASS", "limit": 1.25, "value": 1.34},
+        {"name": "LOW_FITNESS", "result": "PASS", "limit": 1.0, "value": 1.04},
+        {"name": "LOW_TURNOVER", "result": "PASS", "limit": 0.01, "value": 0.1288},
+        {"name": "HIGH_TURNOVER", "result": "PASS", "limit": 0.7, "value": 0.1288},
+        {"name": "CONCENTRATED_WEIGHT", "result": "PASS"},
+        {"name": "LOW_SUB_UNIVERSE_SHARPE", "result": "PASS", "limit": 0.58, "value": 1.01},
+        {"name": "SELF_CORRELATION", "result": "FAIL", "limit": 0.7, "value": 0.7965},
+        {"name": "MATCHES_COMPETITION", "result": "PASS", "competitions": [
+          {"id": "challenge", "name": "Challenge"},
+          {"id": "IQC2026S1", "name": "International Quant Championship 2026 Stage 1"}
+        ]}
+      ],
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The slower 120d control improves raw IS versus the quarterly alias, but it still self-correlates against d5l07rpX.",
+        "It is therefore not a submission path, only the least-bad local control after the baseline."
+      ]
+    }
+  ]
+}

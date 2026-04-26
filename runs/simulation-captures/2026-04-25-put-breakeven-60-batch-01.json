@@ -1,0 +1,225 @@
+{
+  "capture_id": "2026-04-25-put-breakeven-60-batch-01",
+  "topic": "put_breakeven_60_family_closure",
+  "captured_at": "2026-04-25T06:06:20-04:00",
+  "capture_mode": "network-api",
+  "status": "freeze-after-first-read",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SUBINDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF",
+    "visualization": false
+  },
+  "evidence": {
+    "simulate_page": "https://platform.worldquantbrain.com/simulate",
+    "field_pages": [
+      "https://platform.worldquantbrain.com/data/data-fields/put_breakeven_60?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000",
+      "https://platform.worldquantbrain.com/data/data-fields/put_breakeven_10?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000"
+    ],
+    "official_api": [
+      "https://api.worldquantbrain.com/simulations/3WdE7t74W4VSbmm8AsT9pnY",
+      "https://api.worldquantbrain.com/alphas/blW0d0GZ",
+      "https://api.worldquantbrain.com/simulations/F8hDCehq4h3bAK1uwPwQWg",
+      "https://api.worldquantbrain.com/alphas/A1OXGW3w",
+      "https://api.worldquantbrain.com/simulations/1HVZdsb0x4Jvcchxx9LwMPX",
+      "https://api.worldquantbrain.com/alphas/P0XLGwW7",
+      "https://api.worldquantbrain.com/simulations/1T7dOvdZY4lybs5hJeLhwa3",
+      "https://api.worldquantbrain.com/alphas/akWm1pZO"
+    ],
+    "notes": [
+      "All metrics came from the live official WorldQuant BRAIN alpha API in the logged-in browser session.",
+      "The baseline and the 10-day sibling both failed LOW_SHARPE and LOW_FITNESS, and both sign-flips mirrored the same weakness.",
+      "This batch is enough to freeze the family for the current budget; the remaining lookback or smoothing moves would be cosmetic.",
+      "The next hop should be a different options source, not another repair on this lane."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "put_breakeven_60_baseline",
+      "expression": "group_rank(ts_rank(put_breakeven_60 / close, 10), sector)",
+      "alpha_id": "blW0d0GZ",
+      "simulation_id": "3WdE7t74W4VSbmm8AsT9pnY",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 0.97,
+        "is_fitness": 0.31,
+        "is_turnover": 0.4762,
+        "is_returns": 0.0475,
+        "is_drawdown": 0.0632,
+        "is_margin": 0.000199,
+        "test_sharpe": 1.59,
+        "test_fitness": 0.51,
+        "test_turnover": 0.5,
+        "test_returns": 0.0509,
+        "test_drawdown": 0.0191,
+        "test_margin": 0.000204
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "Positive but not close enough: Sharpe stays below floor and Fitness is far below floor.",
+        "The batch never develops a concentration-safe submit shape from this baseline."
+      ]
+    },
+    {
+      "name": "put_breakeven_60_baseline_signflip",
+      "expression": "-group_rank(ts_rank(put_breakeven_60 / close, 10), sector)",
+      "alpha_id": "A1OXGW3w",
+      "simulation_id": "F8hDCehq4h3bAK1uwPwQWg",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": -0.97,
+        "is_fitness": -0.31,
+        "is_turnover": 0.4762,
+        "is_returns": -0.0475,
+        "is_drawdown": 0.2632,
+        "is_margin": -0.000199,
+        "test_sharpe": -1.59,
+        "test_fitness": -0.51,
+        "test_turnover": 0.5,
+        "test_returns": -0.0509,
+        "test_drawdown": 0.0701,
+        "test_margin": -0.000204
+      },
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "This is the exact mirror of the baseline and does not uncover a usable reverse edge.",
+        "The TEST period also stays negative, so sign control does not rescue the family."
+      ]
+    },
+    {
+      "name": "put_breakeven_10_sibling",
+      "expression": "group_rank(ts_rank(put_breakeven_10 / close, 10), sector)",
+      "alpha_id": "P0XLGwW7",
+      "simulation_id": "1HVZdsb0x4Jvcchxx9LwMPX",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 1.07,
+        "is_fitness": 0.33,
+        "is_turnover": 0.5153,
+        "is_returns": 0.0499,
+        "is_drawdown": 0.0699,
+        "is_margin": 0.000194,
+        "test_sharpe": 1.19,
+        "test_fitness": 0.3,
+        "test_turnover": 0.5344,
+        "test_returns": 0.0346,
+        "test_drawdown": 0.0168,
+        "test_margin": 0.00013
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The 10-day sibling is slightly better on Sharpe but still misses the continuation floor by a wide margin on Fitness.",
+        "Crowding / concentration remains unresolved, so this is not a submit candidate."
+      ]
+    },
+    {
+      "name": "put_breakeven_10_sibling_signflip",
+      "expression": "-group_rank(ts_rank(put_breakeven_10 / close, 10), sector)",
+      "alpha_id": "akWm1pZO",
+      "simulation_id": "1T7dOvdZY4lybs5hJeLhwa3",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": -1.07,
+        "is_fitness": -0.33,
+        "is_turnover": 0.5153,
+        "is_returns": -0.0499,
+        "is_drawdown": 0.2733,
+        "is_margin": -0.000194,
+        "test_sharpe": -1.19,
+        "test_fitness": -0.3,
+        "test_turnover": 0.5344,
+        "test_returns": -0.0346,
+        "test_drawdown": 0.0478,
+        "test_margin": -0.00013
+      },
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The sibling sign-flip is equally negative and confirms the family is not hiding a reverse edge.",
+        "Both TEST and IS remain weak, so further repair budget is not justified."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "put_breakeven_10_sibling",
+    "winner_by_fitness": "put_breakeven_10_sibling",
+    "branch_takeaway": "The put_breakeven_60 family is not submit-ready. The 60-day baseline is modestly positive but too weak on Fitness and concentration, the sign-flip control mirrors the same weakness, and the 10-day sibling does not close the remaining gate. Freeze this family and rotate to a different options source."
+  },
+  "decision": {
+    "status": "stop",
+    "reason": "The family fails the continuation floor: no variant clears LOW_SHARPE, LOW_FITNESS, and CONCENTRATED_WEIGHT together, and the sibling only marginally improves Sharpe without fixing Fitness."
+  }
+}

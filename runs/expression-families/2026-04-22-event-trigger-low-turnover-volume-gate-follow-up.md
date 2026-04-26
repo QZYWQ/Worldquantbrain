@@ -94,7 +94,7 @@ trade_when(volume > adv20, group_rank(ts_zscore(close - vwap, 20), industry), -1
 1. Test the `adv20` gate first because it is the simplest volume benchmark and keeps the batch interpretable.
 2. Compare the faster `10d` and slower `20d` moving-average gates before changing the signal structure.
 3. Only if the gate survives should the signal window be smoothed or the volatility fallback be opened.
-4. If the lane still looks dead, kill it quickly rather than stretching it into another crowded price-volume clone.
+4. If the lane still looks weak, stop here rather than stretching it into another crowded price-volume clone.
 
 ## Next Simulation Batch
 

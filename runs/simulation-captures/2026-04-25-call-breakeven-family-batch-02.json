@@ -1,0 +1,128 @@
+{
+  "capture_id": "2026-04-25-call-breakeven-family-batch-02",
+  "topic": "call_breakeven_60_family_closure",
+  "captured_at": "2026-04-25T01:28:13+08:00",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "data_explorer": "https://platform.worldquantbrain.com/data/data-sets/option9?delay=1&instrumentType=EQUITY&limit=20&offset=0&region=USA&universe=TOP3000",
+    "official_api": [
+      "https://api.worldquantbrain.com/alphas/kqLM6Qdk",
+      "https://api.worldquantbrain.com/alphas/kqLM6Qdk/check",
+      "https://api.worldquantbrain.com/alphas/d5l6r9VE",
+      "https://api.worldquantbrain.com/alphas/d5l6r9VE/check",
+      "https://api.worldquantbrain.com/simulations/2gaUXcdcE4QaaFA3wIOhaFO",
+      "https://api.worldquantbrain.com/simulations/3dWDg6d6r55A8JH1f1XwrGQI"
+    ],
+    "notes": [
+      "These are the final closure probes after the smoothing / neutralization repairs.",
+      "The two newest industry variants are both below the submission floor, so the family is closed for the current budget.",
+      "All metrics below came from the live official WorldQuant BRAIN alpha API in the logged-in browser session."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "call_breakeven_60_ts_mean2_rank20_industry",
+      "expression": "group_rank(ts_rank(ts_mean(call_breakeven_60 / close, 2), 20), industry)",
+      "alpha_id": "kqLM6Qdk",
+      "simulation_id": "2gaUXcdcE4QaaFA3wIOhaFO",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 1.12,
+        "is_fitness": 0.49,
+        "is_turnover": 0.3299,
+        "is_returns": 0.0629,
+        "is_drawdown": 0.0597,
+        "is_margin": 0.000381,
+        "test_sharpe": 1.13,
+        "test_fitness": 0.39,
+        "test_turnover": 0.3319,
+        "test_returns": 0.0396,
+        "test_drawdown": 0.0209,
+        "test_margin": 0.000239
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "Closest industry repair on concentration, but it misses Sharpe and Fitness by a wide margin.",
+        "This line is not close enough to justify more same-family budget."
+      ]
+    },
+    {
+      "name": "call_breakeven_60_ts_mean2_rank60_industry",
+      "expression": "group_rank(ts_rank(ts_mean(call_breakeven_60 / close, 2), 60), industry)",
+      "alpha_id": "d5l6r9VE",
+      "simulation_id": "3dWDg6d6r55A8JH1f1XwrGQI",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 1.04,
+        "is_fitness": 0.53,
+        "is_turnover": 0.2472,
+        "is_returns": 0.0637,
+        "is_drawdown": 0.0513,
+        "is_margin": 0.000515,
+        "test_sharpe": 0.74,
+        "test_fitness": 0.25,
+        "test_turnover": 0.2499,
+        "test_returns": 0.0282,
+        "test_drawdown": 0.0149,
+        "test_margin": 0.000226
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "Longer rank did not rescue the 2-day mean repair; it is worse than the 20d version and still below floor.",
+        "This is the final negative control for the branch."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "call_breakeven_60_ts_mean2_rank20_industry",
+    "winner_by_fitness": "call_breakeven_60_ts_mean2_rank60_industry",
+    "branch_takeaway": "The call_breakeven_60 family does not yield a compliant alpha under the current budget. Smoothing repaired concentration, but the best concentration-safe variants still miss Sharpe / Fitness, and the longer rank variant also loses low-sub-universe Sharpe. Freeze this family and rotate to a new information source."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "capture_id": "2026-04-26-pcr-oi-720-e-stage-gating-repair-batch-01",
+  "topic": "pcr_oi_720_e_stage_gating_repair",
+  "captured_at": "2026-04-26T23:10:34+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 6,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.05,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "alpha_id": "3qn85MxQ",
+    "api_endpoint": "https://api.worldquantbrain.com/alphas/3qn85MxQ",
+    "notes": [
+      "Final repair probe from the logged-in official WorldQuant BRAIN session on the Simulate page.",
+      "The trade_when gate on close delta improved the turnover / fitness balance, but LOW_SHARPE and LOW_FITNESS still failed.",
+      "LOW_SUB_UNIVERSE_SHARPE stayed PASS, so there was no S-1 trigger.",
+      "The hump fallback alpha was negative and discarded."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_oi_720_trade_when_close_delta_10",
+      "expression": "trade_when(ts_delta(close, 10) > 0, group_rank(ts_rank(ts_zscore(ts_mean(pcr_oi_720, 7), 126), 20) + ts_rank(anl4_af_eps_value / close, 60), industry), -1)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 0.87,
+        "is_fitness": 0.44,
+        "is_turnover": 0.1128,
+        "is_returns": 0.0314,
+        "is_drawdown": 0.0781,
+        "is_margin": 0.000558,
+        "test_sharpe": 1.23,
+        "test_fitness": 0.69,
+        "test_turnover": 0.108,
+        "test_returns": 0.0397,
+        "test_drawdown": 0.0196,
+        "test_margin": 0.000735
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": false
+      },
+      "notes": [
+        "Best repair candidate from the final gating sweep.",
+        "The trend gate cut turnover enough to improve Fitness, but it still undercut IS Sharpe and did not clear the low-fitness check."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "Trend gating improved the lane enough to become the best repaired candidate, but LOW_SHARPE and LOW_FITNESS still failed, so the family stays on hold."
+  }
+}

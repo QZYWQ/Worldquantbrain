@@ -1,0 +1,298 @@
+{
+  "_instructions": [
+    "Copy this file into runs/simulation-captures/YYYY-MM-DD-topic.json before editing.",
+    "Use only real platform outputs.",
+    "Do not fabricate metrics or pass flags.",
+    "Attach supporting evidence under harness/artifacts/YYYY-MM-DD/FEATURE-ID/ when this capture is used to complete a harness feature."
+  ],
+  "capture_id": "2026-04-24-operating-income-history-position-batch-05",
+  "topic": "operating_income_history_position_batch_05_api_checks",
+  "captured_at": "2026-04-24T15:13:20+08:00",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF"
+  },
+  "evidence": {
+    "expression_family": "./runs/expression-families/2026-04-21-operating-income-history-position-follow-up.md",
+    "research_queue": "./runs/research-queues/official-alpha-cycle-04.json",
+    "simulation_ids": {
+      "horizon_252d": "18oEdTgXP4rtb8he19Oln9a",
+      "horizon_126d": "2PKpOGamK4YzaoHy5fmTrKK",
+      "horizon_504d": "1h6Eek3ul5adaL216OSCx8Kt",
+      "smoothed_63d_252d": "2Tbvw87Pl4OBbhCRqJj2wbx"
+    },
+    "alpha_ids": {
+      "horizon_252d": "zqJLRwbV",
+      "horizon_126d": "blWKd5k6",
+      "horizon_504d": "LLl2dVVn",
+      "smoothed_63d_252d": "Gr37elr0"
+    },
+    "notes": [
+      "Raw ts_rank windows on operating_income all returned UNITS warnings under unitHandling VERIFY, so the baseline sweep did not produce a clean unit-safe line.",
+      "The 126d window was the strongest of the raw window sweep, but it still failed the submission thresholds and only gave a small positive holdout.",
+      "The smoothed 63d control also returned a UNITS warning and underperformed the earlier batch-04 smoothed winner.",
+      "The prior batch-04 operating-income evidence remains stronger than this new batch, so this run does not create a submit-ready alpha.",
+      "All outputs came from the logged-in official WorldQuant BRAIN session, using the official simulation and alpha endpoints."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "operating_income_ts_rank_252_industry",
+      "expression": "group_rank(ts_rank(operating_income, 252), industry)",
+      "simulation_id": "18oEdTgXP4rtb8he19Oln9a",
+      "alpha_id": "zqJLRwbV",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.77,
+        "is_fitness": 0.44,
+        "is_turnover": 0.0446,
+        "is_returns": 0.0412,
+        "is_drawdown": 0.1172,
+        "is_margin": 0.001849,
+        "test_sharpe": -0.21,
+        "test_fitness": -0.06,
+        "test_turnover": 0.0402,
+        "test_returns": -0.0086,
+        "test_drawdown": 0.0395,
+        "test_margin": -0.000428
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "This raw 252d history-position window triggered a unit warning and did not reach submission quality.",
+        "It is useful as a diagnostic, not as a candidate."
+      ]
+    },
+    {
+      "name": "operating_income_ts_rank_126_industry",
+      "expression": "group_rank(ts_rank(operating_income, 126), industry)",
+      "simulation_id": "2PKpOGamK4YzaoHy5fmTrKK",
+      "alpha_id": "blWKd5k6",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.97,
+        "is_fitness": 0.52,
+        "is_turnover": 0.0544,
+        "is_returns": 0.0365,
+        "is_drawdown": 0.0737,
+        "is_margin": 0.00134,
+        "test_sharpe": 0.15,
+        "test_fitness": 0.03,
+        "test_turnover": 0.0509,
+        "test_returns": 0.0044,
+        "test_drawdown": 0.0254,
+        "test_margin": 0.000174
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "This was the best raw window in the batch, but the holdout remained far below the submission floor.",
+        "It is still not a submit candidate.",
+        "UNITS warning indicates the raw operating_income unit shape is not clean under VERIFY."
+      ]
+    },
+    {
+      "name": "operating_income_ts_rank_504_industry",
+      "expression": "group_rank(ts_rank(operating_income, 504), industry)",
+      "simulation_id": "1h6Eek3ul5adaL216OSCx8Kt",
+      "alpha_id": "LLl2dVVn",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.74,
+        "is_fitness": 0.46,
+        "is_turnover": 0.0385,
+        "is_returns": 0.0487,
+        "is_drawdown": 0.124,
+        "is_margin": 0.002525,
+        "test_sharpe": -0.07,
+        "test_fitness": -0.01,
+        "test_turnover": 0.0333,
+        "test_returns": -0.0037,
+        "test_drawdown": 0.0579,
+        "test_margin": -0.000223
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "This slower window also returned a unit warning and missed the submission floor.",
+        "It is weaker than the 126d raw window and far weaker than the prior smoothed winner."
+      ]
+    },
+    {
+      "name": "operating_income_smooth63_rank252_industry",
+      "expression": "group_rank(ts_rank(ts_mean(operating_income, 63), 252), industry)",
+      "simulation_id": "2Tbvw87Pl4OBbhCRqJj2wbx",
+      "alpha_id": "Gr37elr0",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.71,
+        "is_fitness": 0.4,
+        "is_turnover": 0.0316,
+        "is_returns": 0.0403,
+        "is_drawdown": 0.1135,
+        "is_margin": 0.002553,
+        "test_sharpe": -0.43,
+        "test_fitness": -0.16,
+        "test_turnover": 0.0288,
+        "test_returns": -0.0182,
+        "test_drawdown": 0.0476,
+        "test_margin": -0.001266
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The smoothed control did not improve on the earlier batch-04 winner and still failed the holdout badly.",
+        "This is the clearest freeze signal in the batch."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "capture_id": "2026-04-24-capital-expenditure-amount-close-industry-batch-01",
+  "topic": "capital_expenditure_amount_close_industry",
+  "captured_at": "2026-04-24T15:56:54+08:00",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-24-capital-expenditure-amount-close-industry.md",
+    "expression_family": "./runs/expression-families/2026-04-24-capital-expenditure-amount-close-industry.md",
+    "notes": [
+      "Metrics came from the logged-in official WorldQuant BRAIN simulate API in this session.",
+      "The first capex baseline completed as alpha om9kLgo6 with a weak IS readout, so the family was frozen rather than expanded into more near-duplicate polishing.",
+      "Self-correlation was still pending at capture time, but the IS Sharpe and Fitness were already below the submission floor."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "capital_expenditure_amount_close_industry_84d",
+      "expression": "group_rank(ts_rank(capital_expenditure_amount / close, 84), industry)",
+      "simulation_id": "348RZu4P94Kx95O12rbWB4kg",
+      "alpha_id": "om9kLgo6",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.75,
+        "is_fitness": 0.53,
+        "is_turnover": 0.1535,
+        "is_returns": 0.0781,
+        "is_drawdown": 0.1364,
+        "is_margin": 0.001018,
+        "test_sharpe": 1.43,
+        "test_fitness": 1.26,
+        "test_turnover": 0.1497,
+        "test_returns": 0.1163,
+        "test_drawdown": 0.0507,
+        "test_margin": 0.001554,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The price-normalized capex estimate branch is directionally better on TEST than on IS, but the IS Sharpe and Fitness are still below the submission floor.",
+        "The family was frozen after the first completed batch instead of being expanded into same-axis polishing."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "capital_expenditure_amount_close_industry_84d",
+    "winner_by_fitness": "capital_expenditure_amount_close_industry_84d",
+    "branch_takeaway": "The capex estimate idea is not a submit candidate in its current 84d industry-neutral form. TEST is healthy, but IS Sharpe 0.75 and Fitness 0.53 are too weak, so this branch should be frozen and the next research hour should move to a different normalization or a different field family."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "capture_id": "2026-04-26-call-breakeven-60-delay0-blocked-batch-08",
+  "topic": "call_breakeven_60_d_stage_delay0_blocked",
+  "captured_at": "2026-04-26T11:15:31+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 0,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The delay-0 D-stage attempt returned an official error and no metrics were produced.",
+      "The platform also rejected delay 2 as an illegal setting on this account, so no delay curve could be completed from the current UI.",
+      "Check Submission and Submit Alpha remained disabled."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "call_breakeven_60_delay0_blocked",
+      "expression": "group_rank(ts_rank(signed_power(ts_zscore(call_breakeven_60 / close, 20), 2), 20) + ts_rank(pcr_oi_30, 20), industry)",
+      "status": "BLOCKED",
+      "stage": "D",
+      "error": "Attempted to use unknown variable \"call_breakeven_60\".",
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The D-stage delay-0 scan is blocked on this account.",
+        "Delay 2 was rejected as a non-legal option, so no valid Sharpe decay curve could be recorded from the current UI."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The D-stage delay scan is blocked on this account, so the family must be held and the remaining budget reclaimed to cold_pool."
+  }
+}

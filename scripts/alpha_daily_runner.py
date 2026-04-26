@@ -21,7 +21,19 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Sequence
 
-from alpha_success_core import build_success_rate_state
+from alpha_mining_core import load_family_docs
+from alpha_success_core import build_success_rate_state, normalize_family_key
+from account_capability_core import build_account_capability_report, index_account_capability
+from complexity_budget_core import build_complexity_budget_report, index_complexity_budget
+from economic_distinctness_core import build_economic_distinctness_report, index_economic_distinctness
+from evidence_ladder_core import build_evidence_ladder_report, index_evidence_ladder
+from factor_risk_overlay_core import build_factor_risk_overlay_report, index_factor_risk_overlay
+from field_readiness_core import build_field_readiness_report, index_field_readiness, load_field_search_packs
+from mechanism_failure_memory_core import build_mechanism_failure_memory_report, index_mechanism_failure_memory
+from research_allocator_core import allocate_family_records
+from research_contract_core import build_research_contract_report, index_research_contract_report
+from validation_design_core import build_validation_design_report, index_validation_design
+from validation_provenance_core import build_validation_provenance_report, index_validation_provenance
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -39,6 +51,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("runs/expression-families"),
         help="Directory containing expression-family markdown docs.",
+    )
+    parser.add_argument(
+        "--field-search-pack-dir",
+        type=Path,
+        default=Path("runs/field-search-packs"),
+        help="Directory containing field-search-pack markdown docs.",
     )
     parser.add_argument(
         "--capture-dir",
@@ -185,6 +203,12 @@ def parse_args() -> argparse.Namespace:
         help="Optional JSON manifest with priority_family_keys used to override family scheduling order.",
     )
     parser.add_argument(
+        "--coverage-floor-pct",
+        type=float,
+        default=70.0,
+        help="Minimum required parseable coverage floor across usable candidate fields.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Select families and write the summary without invoking the family factory.",
@@ -305,12 +329,23 @@ def load_priority_family_keys(path: Path | None) -> tuple[str, ...]:
     return tuple(ordered)
 
 
+def load_success_policy(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        raise SystemExit(f"Success policy not found: {path}")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise SystemExit(f"Success policy must be a JSON object: {path}")
+    return payload
+
+
 def _factory_command(args: argparse.Namespace, topic: str, run_id: str) -> list[str]:
     command = [
         sys.executable,
         str(FACTORY_SCRIPT),
         "--family-dir",
         str(args.family_dir),
+        "--field-search-pack-dir",
+        str(args.field_search_pack_dir),
         "--capture-dir",
         str(args.capture_dir),
         "--candidate-batch-dir",
@@ -352,6 +387,8 @@ def _factory_command(args: argparse.Namespace, topic: str, run_id: str) -> list[
         str(args.max_official_per_family),
         "--official-similarity-threshold",
         str(args.official_similarity_threshold),
+        "--coverage-floor-pct",
+        str(args.coverage_floor_pct),
     ]
     return command
 
@@ -394,6 +431,19 @@ def build_daily_manifest(
     *,
     run_id: str,
     selected_families: Sequence[dict[str, Any]],
+    excluded_families: Sequence[dict[str, Any]],
+    allocator_deferred_families: Sequence[dict[str, Any]],
+    field_readiness_report: dict[str, Any],
+    account_capability_report: dict[str, Any],
+    research_contract_report: dict[str, Any],
+    validation_design_report: dict[str, Any],
+    factor_risk_overlay_report: dict[str, Any],
+    complexity_budget_report: dict[str, Any],
+    mechanism_failure_memory_report: dict[str, Any],
+    economic_distinctness_report: dict[str, Any],
+    validation_provenance_report: dict[str, Any],
+    evidence_ladder_report: dict[str, Any],
+    research_allocator_report: dict[str, Any],
     family_runs: Sequence[dict[str, Any]],
     success_state: dict[str, Any],
     priority_family_keys: Sequence[str],
@@ -431,6 +481,8 @@ def build_daily_manifest(
             "family_filter": list(dict.fromkeys(args.family_filter)),
             "family_priority_file": str(args.family_priority_file) if args.family_priority_file else None,
             "priority_family_keys_loaded": list(priority_family_keys),
+            "field_search_pack_dir": str(args.field_search_pack_dir),
+            "coverage_floor_pct": args.coverage_floor_pct,
             "max_candidates": args.max_candidates,
             "per_seed": args.per_seed,
             "max_depth": args.max_depth,
@@ -452,7 +504,49 @@ def build_daily_manifest(
             "submit_ready_ledger": len(success_state.get("submit_ready_ledger", [])),
             "family_registry_summary": len(success_state.get("family_registry_summary", [])),
         },
+        "field_readiness": {
+            "counts": dict(field_readiness_report.get("counts", {})),
+        },
+        "account_capability": {
+            "counts": dict(account_capability_report.get("counts", {})),
+            "profile": dict(account_capability_report.get("profile", {})),
+            "top_blocked": [
+                item
+                for item in account_capability_report.get("items", [])
+                if str(item.get("assessment", {}).get("gate_status") or "") != "pass"
+            ][:10],
+        },
+        "research_contract": {
+            "counts": dict(research_contract_report.get("counts", {})),
+        },
+        "validation_design": {
+            "counts": dict(validation_design_report.get("counts", {})),
+        },
+        "factor_risk_overlay": {
+            "counts": dict(factor_risk_overlay_report.get("counts", {})),
+        },
+        "complexity_budget": {
+            "counts": dict(complexity_budget_report.get("counts", {})),
+        },
+        "mechanism_failure_memory": {
+            "counts": dict(mechanism_failure_memory_report.get("counts", {})),
+        },
+        "economic_distinctness": {
+            "counts": dict(economic_distinctness_report.get("counts", {})),
+        },
+        "validation_provenance": {
+            "counts": dict(validation_provenance_report.get("counts", {})),
+        },
+        "evidence_ladder": {
+            "counts": dict(evidence_ladder_report.get("counts", {})),
+        },
+        "research_allocator": {
+            "counts": dict(research_allocator_report.get("counts", {})),
+            "selected_family_keys": list(research_allocator_report.get("selected_family_keys", [])),
+        },
         "selected_families": list(selected_families),
+        "excluded_families": list(excluded_families),
+        "allocator_deferred_families": list(allocator_deferred_families),
         "family_runs": list(family_runs),
         "daily_budget_items": daily_budget_items,
         "all_budget_items": all_budget_items,
@@ -466,8 +560,20 @@ def render_daily_manifest_md(manifest: dict[str, Any]) -> str:
         f"- Run id: {manifest['run_id']}",
         f"- Objective: {manifest['objective']}",
         f"- Selected families: {len(manifest.get('selected_families', []))}",
+        f"- Excluded by front gate: {len(manifest.get('excluded_families', []))}",
+        f"- Deferred by allocator: {len(manifest.get('allocator_deferred_families', []))}",
         f"- Family runs: {len(manifest.get('family_runs', []))}",
         f"- Daily budget items: {len(manifest.get('daily_budget_items', []))}",
+        f"- Field-readiness pass count: {manifest.get('field_readiness', {}).get('counts', {}).get('pass_count', 0)}",
+        f"- Account-capability pass count: {manifest.get('account_capability', {}).get('counts', {}).get('pass_count', 0)}",
+        f"- Research-contract pass count: {manifest.get('research_contract', {}).get('counts', {}).get('pass_count', 0)}",
+        f"- Validation-design pass count: {manifest.get('validation_design', {}).get('counts', {}).get('pass_count', 0)}",
+        f"- Factor-risk-overlay pass count: {manifest.get('factor_risk_overlay', {}).get('counts', {}).get('pass_count', 0)}",
+        f"- Complexity-budget pass count: {manifest.get('complexity_budget', {}).get('counts', {}).get('pass_count', 0)}",
+        f"- Economic-distinctness pass count: {manifest.get('economic_distinctness', {}).get('counts', {}).get('pass_count', 0)}",
+        f"- Binding provenance families: {manifest.get('validation_provenance', {}).get('counts', {}).get('binding_family_count', 0)}",
+        f"- E3/E4 evidence count: {manifest.get('evidence_ladder', {}).get('counts', {}).get('E3_full_is', 0) + manifest.get('evidence_ladder', {}).get('counts', {}).get('E4_submit_ready', 0)}",
+        f"- Allocator selected count: {manifest.get('research_allocator', {}).get('counts', {}).get('selected_count', 0)}",
         "",
         "## Selected Families",
         "",
@@ -475,9 +581,65 @@ def render_daily_manifest_md(manifest: dict[str, Any]) -> str:
     for row in manifest.get("selected_families", []):
         lines.append(
             f"- {row['family_key']} [{row['state']}] "
+            f"effective={row.get('effective_state')} "
+            f"readiness={row.get('field_readiness_gate_status')} "
+            f"capability={row.get('account_capability_gate_status')} "
+            f"contract={row.get('research_contract_gate_status')} "
+            f"validation={row.get('validation_design_gate_status')} "
+            f"factor={row.get('factor_risk_overlay_gate_status')} "
+            f"complexity={row.get('complexity_budget_gate_status')} "
+            f"distinctness={row.get('economic_distinctness_gate_status')} "
+            f"provenance={row.get('validation_provenance_level')} "
+            f"allocator={row.get('research_allocator_status')} "
+            f"evidence={row.get('evidence_ladder_level')} "
             f"outcomes={row['official_outcome_count']} full_gates={row['full_gate_outcome_count']} "
             f"submit_ready={row['submit_ready_count']}"
         )
+    lines.append("")
+    lines.append("## Front Gate Exclusions")
+    lines.append("")
+    if not manifest.get("excluded_families"):
+        lines.append("- No selected family was excluded by the front gates.")
+    else:
+        for row in manifest.get("excluded_families", []):
+            lines.append(
+                f"- {row['family_key']} "
+                f"readiness={row.get('field_readiness_gate_status')} "
+                f"capability={row.get('account_capability_gate_status')} "
+                f"contract={row.get('research_contract_gate_status')} "
+                f"validation={row.get('validation_design_gate_status')} "
+                f"factor={row.get('factor_risk_overlay_gate_status')} "
+                f"complexity={row.get('complexity_budget_gate_status')} "
+                f"distinctness={row.get('economic_distinctness_gate_status')} "
+                f"evidence={row.get('evidence_ladder_level')}"
+            )
+            for reason in row.get("field_readiness_reasons", [])[:2]:
+                lines.append(f"  - {reason}")
+            for reason in row.get("account_capability_reasons", [])[:2]:
+                lines.append(f"  - {reason}")
+            for reason in row.get("research_contract_reasons", [])[:2]:
+                lines.append(f"  - {reason}")
+            for reason in row.get("validation_design_reasons", [])[:2]:
+                lines.append(f"  - {reason}")
+            for reason in row.get("factor_risk_overlay_reasons", [])[:2]:
+                lines.append(f"  - {reason}")
+            for reason in row.get("complexity_budget_reasons", [])[:2]:
+                lines.append(f"  - {reason}")
+            for reason in row.get("economic_distinctness_reasons", [])[:2]:
+                lines.append(f"  - {reason}")
+    lines.append("")
+    lines.append("## Allocator Deferred")
+    lines.append("")
+    if not manifest.get("allocator_deferred_families"):
+        lines.append("- No family was deferred by the research allocator.")
+    else:
+        for row in manifest.get("allocator_deferred_families", []):
+            lines.append(
+                f"- {row['family_key']} "
+                f"allocator={row.get('research_allocator_status')} "
+                f"reason={row.get('research_allocator_reason')} "
+                f"cluster={row.get('allocator_cluster_key')}"
+            )
     lines.append("")
     lines.append("## Family Runs")
     lines.append("")
@@ -507,22 +669,357 @@ def main() -> int:
     run_id = default_run_id(args)
     allowed_states = _allowed_states(args)
     priority_family_keys = load_priority_family_keys(args.family_priority_file)
+    success_policy = load_success_policy(args.success_policy)
     success_state = build_success_rate_state(
         family_dir=args.family_dir,
         capture_dir=args.capture_dir,
         candidate_batch_dir=args.candidate_batch_dir,
         candidate_check_dir=args.candidate_check_dir,
     )
+    family_docs = load_family_docs(args.family_dir, include_dead=True)
+    evidence_ladder_report = build_evidence_ladder_report(
+        family_docs=family_docs,
+        outcome_memory=success_state.get("combined_outcome_memory", []),
+        family_registry=success_state.get("family_registry_summary", []),
+    )
+    evidence_by_family = index_evidence_ladder(evidence_ladder_report)
+    registry_rows_with_evidence: list[dict[str, Any]] = []
+    for row in success_state["family_registry_summary"]:
+        family_key = str(row.get("family_key") or "")
+        assessment = evidence_by_family.get(family_key, {}).get("assessment", {})
+        enriched = dict(row)
+        enriched["registry_state"] = str(row.get("state") or "explore")
+        enriched["state"] = str(assessment.get("effective_state") or row.get("state") or "explore")
+        enriched["effective_state"] = enriched["state"]
+        enriched["evidence_ladder_level"] = assessment.get("evidence_level")
+        enriched["evidence_promotion_ceiling"] = assessment.get("promotion_ceiling")
+        enriched["evidence_branch_budget_remaining"] = assessment.get("branch_budget_remaining")
+        registry_rows_with_evidence.append(enriched)
     selected_families = select_family_rows(
-        success_state["family_registry_summary"],
+        registry_rows_with_evidence,
         allowed_states=allowed_states,
         explicit_family_filter=args.family_filter,
         priority_family_keys=priority_family_keys,
-        family_limit=args.family_limit,
+        family_limit=len(registry_rows_with_evidence),
     )
 
     if not selected_families:
         raise SystemExit("No families matched the current daily runner filters.")
+
+    selected_family_keys = {
+        str(family.get("family_key") or "")
+        for family in selected_families
+        if str(family.get("family_key") or "")
+    }
+    selected_docs = [
+        doc
+        for doc in family_docs
+        if normalize_family_key(str(getattr(doc, "topic", "") or "")) in selected_family_keys
+    ]
+    field_packs = load_field_search_packs(args.field_search_pack_dir)
+    selected_field_packs = [
+        pack
+        for pack in field_packs
+        if str(getattr(pack, "family_key", "") or "") in selected_family_keys
+    ]
+    field_readiness_report = build_field_readiness_report(
+        field_packs=selected_field_packs,
+        family_docs=selected_docs,
+        coverage_floor_pct=args.coverage_floor_pct,
+    )
+    research_contract_report = build_research_contract_report(family_docs=selected_docs)
+    account_capability_report = build_account_capability_report(
+        family_docs=selected_docs,
+        research_contract_report=research_contract_report,
+    )
+    validation_design_report = build_validation_design_report(family_docs=selected_docs)
+    factor_risk_overlay_report = build_factor_risk_overlay_report(
+        family_docs=selected_docs,
+        research_contract_report=research_contract_report,
+        validation_design_report=validation_design_report,
+    )
+    complexity_budget_report = build_complexity_budget_report(
+        family_docs=selected_docs,
+        policy=success_policy,
+    )
+    mechanism_failure_memory_report = build_mechanism_failure_memory_report(
+        family_docs=selected_docs,
+        family_registry=success_state.get("family_registry_summary", []),
+        research_contract_report=research_contract_report,
+    )
+    economic_distinctness_report = build_economic_distinctness_report(
+        family_docs=selected_docs,
+        research_contract_report=research_contract_report,
+        mechanism_failure_memory_report=mechanism_failure_memory_report,
+    )
+    validation_provenance_report = build_validation_provenance_report(
+        family_docs=selected_docs,
+        outcome_memory=success_state.get("combined_outcome_memory", []),
+        family_registry=success_state.get("family_registry_summary", []),
+    )
+    readiness_by_family = index_field_readiness(field_readiness_report)
+    capability_by_family = index_account_capability(account_capability_report)
+    contract_by_family = index_research_contract_report(research_contract_report)
+    validation_design_by_family = index_validation_design(validation_design_report)
+    factor_risk_by_family = index_factor_risk_overlay(factor_risk_overlay_report)
+    complexity_by_family = index_complexity_budget(complexity_budget_report)
+    failure_memory_by_family = index_mechanism_failure_memory(mechanism_failure_memory_report)
+    distinctness_by_family = index_economic_distinctness(economic_distinctness_report)
+    provenance_by_family = index_validation_provenance(validation_provenance_report)
+
+    gate_selected_families: list[dict[str, Any]] = []
+    excluded_families: list[dict[str, Any]] = []
+    for family in selected_families:
+        family_key = str(family.get("family_key") or "")
+        readiness_entry = readiness_by_family.get(
+            family_key,
+            {
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["field-readiness record is missing for this family"],
+                }
+            },
+        )
+        capability_entry = capability_by_family.get(
+            family_key,
+            {
+                "family_key": family_key,
+                "required_scope": {},
+                "capability_snapshot": {
+                    "observed_combo_count": 0,
+                    "observed_regions": [],
+                    "observed_delays": [],
+                    "observed_universes": [],
+                    "observed_categories": [],
+                    "required_combo": None,
+                    "matching_combo": None,
+                    "public_tier_notes": [],
+                },
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["account-capability record is missing for this family"],
+                },
+            },
+        )
+        contract_entry = contract_by_family.get(
+            family_key,
+            {
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["research-contract record is missing for this family"],
+                }
+            },
+        )
+        validation_design_entry = validation_design_by_family.get(
+            family_key,
+            {
+                "validation_design": {},
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["validation-design record is missing for this family"],
+                },
+            },
+        )
+        factor_risk_entry = factor_risk_by_family.get(
+            family_key,
+            {
+                "factor_profile": {
+                    "expected_risks": [],
+                    "hypothesis_risks": [],
+                    "overlay_risks": [],
+                },
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["factor-risk-overlay record is missing for this family"],
+                },
+            },
+        )
+        complexity_entry = complexity_by_family.get(
+            family_key,
+            {
+                "counts": {
+                    "expression_count": 0,
+                    "variant_expression_count": 0,
+                },
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["complexity-budget record is missing for this family"],
+                },
+            },
+        )
+        failure_memory_entry = failure_memory_by_family.get(
+            family_key,
+            {
+                "mechanism_profile": {},
+                "assessment": {
+                    "negative_memory_status": "none",
+                    "negative_memory_rank": 0,
+                    "reasons": ["mechanism-failure-memory record is missing for this family"],
+                },
+            },
+        )
+        distinctness_entry = distinctness_by_family.get(
+            family_key,
+            {
+                "changed_axes": [],
+                "field_overlap_pct": 0.0,
+                "expression_similarity": 0.0,
+                "nearest_negative_family": None,
+                "assessment": {
+                    "gate_status": "block",
+                    "reasons": ["economic-distinctness record is missing for this family"],
+                },
+            },
+        )
+        provenance_entry = provenance_by_family.get(
+            family_key,
+            {
+                "counts": {
+                    "official_outcome_count": 0,
+                    "local_scored_count": 0,
+                    "local_queue_count": 0,
+                },
+                "assessment": {
+                    "gate_status": "pass",
+                    "strongest_level": "front_gate_only",
+                    "binding_status": "diagnostic",
+                    "reasons": ["validation-provenance record is missing for this family"],
+                },
+            },
+        )
+        enriched = dict(family)
+        enriched["field_readiness_gate_status"] = str(
+            readiness_entry.get("assessment", {}).get("gate_status") or "block"
+        )
+        enriched["field_readiness_reasons"] = list(
+            readiness_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["account_capability_gate_status"] = str(
+            capability_entry.get("assessment", {}).get("gate_status") or "block"
+        )
+        enriched["account_capability_reasons"] = list(
+            capability_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["account_capability_required_scope"] = dict(capability_entry.get("required_scope", {}))
+        enriched["account_capability_observed_combo_count"] = int(
+            capability_entry.get("capability_snapshot", {}).get("observed_combo_count", 0) or 0
+        )
+        enriched["account_capability_observed_regions"] = list(
+            capability_entry.get("capability_snapshot", {}).get("observed_regions", [])
+        )
+        enriched["account_capability_observed_delays"] = list(
+            capability_entry.get("capability_snapshot", {}).get("observed_delays", [])
+        )
+        enriched["account_capability_observed_universes"] = list(
+            capability_entry.get("capability_snapshot", {}).get("observed_universes", [])
+        )
+        enriched["account_capability_observed_categories"] = list(
+            capability_entry.get("capability_snapshot", {}).get("observed_categories", [])
+        )
+        enriched["research_contract_gate_status"] = str(
+            contract_entry.get("assessment", {}).get("gate_status") or "block"
+        )
+        enriched["research_contract_reasons"] = list(
+            contract_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["research_contract_fields"] = dict(contract_entry.get("contract", {}))
+        enriched["validation_design_gate_status"] = str(
+            validation_design_entry.get("assessment", {}).get("gate_status") or "block"
+        )
+        enriched["validation_design_reasons"] = list(
+            validation_design_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["validation_design_fields"] = dict(validation_design_entry.get("validation_design", {}))
+        enriched["factor_risk_overlay_gate_status"] = str(
+            factor_risk_entry.get("assessment", {}).get("gate_status") or "block"
+        )
+        enriched["factor_risk_overlay_reasons"] = list(
+            factor_risk_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["factor_risk_overlay_expected_risks"] = list(
+            factor_risk_entry.get("factor_profile", {}).get("expected_risks", [])
+        )
+        enriched["factor_risk_overlay_hypothesis_risks"] = list(
+            factor_risk_entry.get("factor_profile", {}).get("hypothesis_risks", [])
+        )
+        enriched["factor_risk_overlay_overlay_risks"] = list(
+            factor_risk_entry.get("factor_profile", {}).get("overlay_risks", [])
+        )
+        enriched["complexity_budget_gate_status"] = str(
+            complexity_entry.get("assessment", {}).get("gate_status") or "block"
+        )
+        enriched["complexity_budget_reasons"] = list(
+            complexity_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["complexity_budget_expression_count"] = int(
+            complexity_entry.get("counts", {}).get("expression_count", 0) or 0
+        )
+        enriched["complexity_budget_variant_expression_count"] = int(
+            complexity_entry.get("counts", {}).get("variant_expression_count", 0) or 0
+        )
+        enriched["mechanism_failure_memory_status"] = failure_memory_entry.get("assessment", {}).get("negative_memory_status")
+        enriched["mechanism_failure_memory_rank"] = failure_memory_entry.get("assessment", {}).get("negative_memory_rank")
+        enriched["mechanism_failure_memory_reasons"] = list(
+            failure_memory_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["mechanism_failure_memory_cluster"] = failure_memory_entry.get("mechanism_profile", {}).get("mechanism_cluster")
+        enriched["economic_distinctness_gate_status"] = str(
+            distinctness_entry.get("assessment", {}).get("gate_status") or "block"
+        )
+        enriched["economic_distinctness_reasons"] = list(
+            distinctness_entry.get("assessment", {}).get("reasons", [])
+        )
+        enriched["economic_distinctness_nearest_negative_family"] = distinctness_entry.get("nearest_negative_family")
+        enriched["economic_distinctness_changed_axes"] = list(distinctness_entry.get("changed_axes", []))
+        enriched["economic_distinctness_field_overlap_pct"] = distinctness_entry.get("field_overlap_pct")
+        enriched["economic_distinctness_expression_similarity"] = distinctness_entry.get("expression_similarity")
+        enriched["validation_provenance_gate_status"] = str(
+            provenance_entry.get("assessment", {}).get("gate_status") or "pass"
+        )
+        enriched["validation_provenance_level"] = provenance_entry.get("assessment", {}).get("strongest_level")
+        enriched["validation_provenance_binding_status"] = provenance_entry.get("assessment", {}).get("binding_status")
+        enriched["validation_provenance_reasons"] = list(
+            provenance_entry.get("assessment", {}).get("reasons", [])
+        )
+        evidence_entry = evidence_by_family.get(family_key, {})
+        evidence_assessment = evidence_entry.get("assessment", {}) if isinstance(evidence_entry, dict) else {}
+        enriched["effective_state"] = str(
+            evidence_assessment.get("effective_state") or enriched.get("state") or "explore"
+        )
+        enriched["evidence_ladder_level"] = evidence_assessment.get("evidence_level")
+        enriched["evidence_promotion_ceiling"] = evidence_assessment.get("promotion_ceiling")
+        enriched["evidence_branch_budget_remaining"] = evidence_assessment.get("branch_budget_remaining")
+        enriched["allocator_state_allowed"] = enriched["effective_state"] in allowed_states
+        if (
+            enriched["field_readiness_gate_status"] == "pass"
+            and enriched["account_capability_gate_status"] == "pass"
+            and enriched["research_contract_gate_status"] == "pass"
+            and enriched["validation_design_gate_status"] == "pass"
+            and enriched["factor_risk_overlay_gate_status"] == "pass"
+            and enriched["complexity_budget_gate_status"] == "pass"
+            and enriched["economic_distinctness_gate_status"] == "pass"
+        ):
+            gate_selected_families.append(enriched)
+        else:
+            excluded_families.append(enriched)
+
+    if not gate_selected_families:
+        raise SystemExit("No families matched the current daily runner filters after front-gate checks.")
+
+    research_allocator_report = allocate_family_records(
+        records=gate_selected_families,
+        family_limit=args.family_limit,
+        policy=success_policy,
+    )
+    selected_families = list(research_allocator_report.get("selected_items", []))
+    allocator_deferred_families = [
+        row
+        for row in research_allocator_report.get("items", [])
+        if str(row.get("research_allocator_status") or "").startswith("deferred")
+    ]
+
+    if not selected_families:
+        raise SystemExit("No family survived the research allocator in the current daily runner filters.")
 
     family_runs: list[dict[str, Any]] = []
     if not args.dry_run:
@@ -534,6 +1031,19 @@ def main() -> int:
     manifest = build_daily_manifest(
         run_id=run_id,
         selected_families=selected_families,
+        excluded_families=excluded_families,
+        allocator_deferred_families=allocator_deferred_families,
+        field_readiness_report=field_readiness_report,
+        account_capability_report=account_capability_report,
+        research_contract_report=research_contract_report,
+        validation_design_report=validation_design_report,
+        factor_risk_overlay_report=factor_risk_overlay_report,
+        complexity_budget_report=complexity_budget_report,
+        mechanism_failure_memory_report=mechanism_failure_memory_report,
+        economic_distinctness_report=economic_distinctness_report,
+        validation_provenance_report=validation_provenance_report,
+        evidence_ladder_report=evidence_ladder_report,
+        research_allocator_report=research_allocator_report,
         family_runs=family_runs,
         success_state=success_state,
         priority_family_keys=priority_family_keys,

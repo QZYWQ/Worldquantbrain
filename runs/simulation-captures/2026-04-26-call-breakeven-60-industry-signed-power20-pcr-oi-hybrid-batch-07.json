@@ -1,0 +1,66 @@
+{
+  "capture_id": "2026-04-26-call-breakeven-60-industry-signed-power20-pcr-oi-hybrid-batch-07",
+  "topic": "call_breakeven_60_c_stage_signed_power20_plus_pcr_oi_30_industry",
+  "captured_at": "2026-04-26T11:10:21+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The page showed 'Needs Improvement'.",
+      "The TEST metrics were read back from the official alpha JSON response.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "Properties last saved Sun, 04/26/2026, 11:10 AM."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "call_breakeven_60_signed_power20_plus_pcr_oi_30_industry",
+      "expression": "group_rank(ts_rank(signed_power(ts_zscore(call_breakeven_60 / close, 20), 2), 20) + ts_rank(pcr_oi_30, 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 0.94,
+        "is_fitness": 0.3,
+        "is_turnover": 0.3142,
+        "is_returns": 0.0315,
+        "is_drawdown": 0.0375,
+        "is_margin": 0.000201,
+        "test_sharpe": 0.92,
+        "test_fitness": 0.24,
+        "test_turnover": 0.3307,
+        "test_returns": 0.0224,
+        "test_drawdown": 0.0194,
+        "test_margin": 0.000136
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": false
+      },
+      "notes": [
+        "The C-stage hybrid clears the C floor but still remains below visible submission gates.",
+        "It is the official continuation candidate carried forward from the B-stage zscore-power lead."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The C-stage hybrid is real and clears the C floor, but it is still exploratory rather than submit-ready."
+  }
+}

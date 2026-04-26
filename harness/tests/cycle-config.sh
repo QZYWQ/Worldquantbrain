@@ -30,6 +30,15 @@ assert_output_contains() {
   fi
 }
 
+assert_file_contains() {
+  local needle="$1"
+  local path="$2"
+  if ! grep -Fq "$needle" "$path"; then
+    printf 'Expected file to contain: %s\nFile: %s\n' "$needle" "$path" >&2
+    exit 1
+  fi
+}
+
 assert_command_fails() {
   if "$@"; then
     printf 'Expected command to fail but it succeeded: %s\n' "$*" >&2
@@ -57,7 +66,11 @@ cat > ./harness/config.env <<EOF
 EXTERNAL_KB_ROOT="$TMP_ROOT/custom-kb"
 EOF
 
-./harness/init.sh >/dev/null
+init_output="$(./harness/init.sh)"
+assert_output_contains "Incubation Summary" "$init_output"
+assert_output_contains "pcr_oi_720" "$init_output"
+assert_file_contains "Current Incubation Summary" "./runs/research-contracts/current-incubation-summary.md"
+assert_file_contains "pcr_oi_720" "./runs/research-contracts/current-incubation-summary.md"
 
 current_cycle="$(./harness/coding-session.sh cycle-current)"
 if [ "$current_cycle" != "./harness/cycles/official-alpha-cycle-01.json" ]; then
@@ -120,6 +133,8 @@ EOF
 summary_output="$(./harness/coding-session.sh cycle-summary)"
 assert_output_contains "Cycle type: official" "$summary_output"
 assert_output_contains "Next actionable feature:" "$summary_output"
+assert_output_contains "Incubation Summary" "$summary_output"
+assert_output_contains "pcr_oi_720" "$summary_output"
 
 rm ./harness/active-cycle.txt
 

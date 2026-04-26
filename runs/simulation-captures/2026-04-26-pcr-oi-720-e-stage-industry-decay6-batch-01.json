@@ -1,0 +1,66 @@
+{
+  "capture_id": "2026-04-26-pcr-oi-720-e-stage-industry-decay6-batch-01",
+  "topic": "pcr_oi_720_e_stage_industry_decay6",
+  "captured_at": "2026-04-26T22:45:24+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 6,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.05,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "alpha_id": "ZYWOgoMY",
+    "api_endpoint": "https://api.worldquantbrain.com/alphas/ZYWOgoMY",
+    "notes": [
+      "Run from the logged-in browser session on the official WorldQuant BRAIN Simulate page.",
+      "The probe used the pcr_oi_720 smoothing repair with mean 7 and decay 6 under Industry neutralization.",
+      "LOW_SUB_UNIVERSE_SHARPE stayed PASS while LOW_FITNESS remained below the floor.",
+      "The lane remains on hold; no S-1 trigger was needed."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_oi_720_industry_decay6",
+      "expression": "group_rank(ts_rank(signed_power(ts_zscore(ts_mean(pcr_oi_720, 7), 126), 2), 20) + ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.36,
+        "is_fitness": 0.8,
+        "is_turnover": 0.1388,
+        "is_returns": 0.0512,
+        "is_drawdown": 0.0443,
+        "is_margin": 0.000738,
+        "test_sharpe": 1.24,
+        "test_fitness": 0.6,
+        "test_turnover": 0.135,
+        "test_returns": 0.0358,
+        "test_drawdown": 0.0301,
+        "test_margin": 0.000531
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": false
+      },
+      "notes": [
+        "Current best repaired candidate in the E-stage lane.",
+        "Turnover improved versus the earlier Industry baseline, but Fitness still fails."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "Decay-6 smoothing improved the lane and preserved sub-universe behavior, but the family still needs a genuinely new lever before it can be considered submit-ready."
+  }
+}

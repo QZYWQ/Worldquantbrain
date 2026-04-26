@@ -1,0 +1,24 @@
+{
+  "_instructions": [
+    "Copy this file into runs/research-queues/YYYY-MM-DD-topic.json before editing.",
+    "Use this only for pre-backtest prioritization.",
+    "These scores are heuristics, not real simulation metrics.",
+    "Ranges: idea_strength 0-3, dataset_freshness 0-2, correlation_novelty 0-3, metric_headroom 0-2, execution_simplicity 0-1."
+  ],
+  "generated_at": "2026-04-23T22:14:44",
+  "items": [],
+  "selection_policy": {
+    "max_per_family": 6,
+    "max_per_template": 2,
+    "max_total": 6,
+    "min_score": 55.0,
+    "similarity_threshold": 0.94
+  },
+  "success_policy": {
+    "family_registry_count": 1,
+    "objective": "maximize_internal_submit_ready_per_official_slot",
+    "official_outcome_count": 3,
+    "policy_path": "harness/alpha-success-policy.json",
+    "submit_ready_count": 0
+  }
+}

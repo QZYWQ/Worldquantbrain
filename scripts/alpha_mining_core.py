@@ -222,6 +222,14 @@ def extract_section(text: str, heading: str) -> str:
     return text[start:end].strip()
 
 
+def strip_section(text: str, heading: str) -> str:
+    pattern = re.compile(
+        rf"^##\s+{re.escape(heading)}\s*$.*?(?=^##\s+|\Z)",
+        re.MULTILINE | re.DOTALL,
+    )
+    return re.sub(pattern, "", text)
+
+
 def extract_bullets(section_text: str) -> tuple[str, ...]:
     bullets: list[str] = []
     for line in section_text.splitlines():
@@ -330,7 +338,7 @@ def parse_family_doc(path: Path) -> ParsedFamilyDoc:
         baseline_expression=baseline_expression,
         variant_expressions=variant_expressions,
         all_expressions=tuple(dict.fromkeys(code_blocks)),
-        is_dead=has_kill_marker(raw_text),
+        is_dead=has_kill_marker(strip_section(raw_text, "Research Contract")),
         raw_text=raw_text,
     )
 

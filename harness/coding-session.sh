@@ -81,6 +81,8 @@ show_status() {
   fi
   print_section "Pending Summary"
   print_pending_summary
+  print_section "Incubation Summary"
+  incubation_summary_report
 }
 
 run_doctor() {
@@ -102,6 +104,8 @@ show_cycle_summary() {
   local doctor_output
   run_preflight_base
   cycle_summary_report
+  print_section "Incubation Summary"
+  incubation_summary_report
   if doctor_output="$(state_doctor_report 2>&1)"; then
     printf 'Doctor: clean\n'
   else

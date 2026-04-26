@@ -312,3 +312,122 @@
 **Consequences**:
 - The project now has one durable source of truth for git-facing workspace boundaries.
 - Future surface changes must update the contract and will be caught quickly if `.gitignore` or tracked directory skeletons drift.
+
+## 2026-04-24 | ALPHA-DECISION-020 | Freeze the capex estimate close-normalized branch after batch 01
+
+**Context**: The logged-in official WorldQuant BRAIN API resolved the new capex baseline `group_rank(ts_rank(capital_expenditure_amount / close, 84), industry)` as alpha `om9kLgo6` from simulation `348RZu4P94Kx95O12rbWB4kg`. The alpha stayed `UNSUBMITTED`, with IS Sharpe `0.75`, Fitness `0.53`, and `SELF_CORRELATION` still `PENDING`, while TEST was stronger but not enough to rescue the branch.
+
+**Decision**: Freeze `capital_expenditure_amount_close_industry` after batch 01. Do not spend more budget on same-axis polishing of the 84d close-normalized variant; move future research to a different normalization or a different field family.
+
+**Rationale**: The branch is below the submission floor on the official IS gates, and the drawdown is too high to treat it as a near-pass. The low-crowding field is worth remembering, but the current formulation is not a submission candidate.
+
+**Consequences**:
+- `runs/simulation-captures/2026-04-24-capital-expenditure-amount-close-industry-batch-01.json` records the official capture.
+- `runs/expression-families/2026-04-24-capital-expenditure-amount-close-industry.md` now carries the batch result and frozen posture.
+- The current research posture remains: no submit-ready alpha yet.
+
+## 2026-04-26 | ALPHA-DECISION-021 | Adopt incubation protocol v0.3
+
+**decision_id**: `incubation-protocol-adopted-v0.3`
+
+**Context**: The project had a strong stop / freeze posture, but it lacked a protected mid-layer for families that need minimum-depth exploration before a permanent kill or freeze. That gap was causing shallow families to be terminated before the B / C / D / E path could finish.
+
+**Decision**: Adopt `harness/incubation-protocol.json` as the canonical incubation rule source for the project. The new state machine is `S-1 -> S0 -> A -> B -> C -> D -> E -> exploit / hold / kill`, with `screen_kill` reserved for S-1 / S0 pure-noise exits only.
+
+**Key Rules**:
+- Inhibition Rule: if `min_depth_completed == false`, do not write a permanent stop memo and do not mark the family as a permanent `freeze` or `kill`.
+- Cold-pool reclaim: reclaimed budget stays in `cold_pool` until a family completes an incubation cycle or the release window opens, then it is released by priority to new scouting candidates first.
+- Causal template: every E-stage alpha must carry a short causal statement, mechanism class, falsifier, reverse-event test, and literature tags.
+- Global corr proxy: use the three anchor pools plus the anchor-diversity penalty and periodic calibration; do not treat a shallow anchor pool as low risk.
+- Sign-flip control still applies through A, B, C, and D whenever the baseline or first simple control is negative.
+
+**Rationale**: The new protocol preserves the existing front-door gate and sign-flip discipline while adding a protected middle layer that can carry families to a minimum evidence depth before any permanent stop decision.
+
+**Consequences**:
+- New family work can be incubated without weakening the existing freeze / kill discipline.
+- Budget reclaim and release are now explicit, rather than being handled as an implicit side effect of a stop memo.
+- Future helpers must read the ledger and protocol before they decide whether a family is eligible for a permanent stop.
+
+## 2026-04-26 | ALPHA-DECISION-022 | Close the `pcr_oi_720` session and open the qfv4 scout queue
+
+**decision_id**: `pcr_oi_720-session-close`
+
+**Context**: `pcr_oi_720` completed the protected A/B/C path and the final E-stage repair sweep, but the ledger still keeps the family on hold and `harness/progress.md` had not yet been cleared back to idle.
+
+**Decision**: Mark the session idle, leave the ledger state untouched, and pivot the next research hour to the analyst qfv4 sibling scout queue.
+
+**Summary**: `pcr_oi_720` 已完成 A/B/C/E 阶段及三轮 E 阶段修复，最佳候选 `ZYWOgoMY`（TEST Sharpe `1.24` / Fitness `0.60`），因 `LOW_FITNESS` 持续未通过，家族转为 hold，会话收尾。
+
+**Consequences**:
+- `harness/progress.md` now shows no active feature and idle session status.
+- `runs/research-queues/2026-04-26-s1-analyst-qfv4-scout.md` records the next S-1 scout queue.
+- Fresh windows should treat the qfv4 analyst sibling pair as the next live source probe, not the retired `pcr_oi_720` lane.
+
+## 2026-04-27 | ALPHA-DECISION-023 | Pivot from the closed qfv4 scout to a profitability / value scout
+
+**decision_id**: `s1-profitability-value-scout`
+
+**Context**: The qfv4 scout batch is now closed with all three candidates failing TEST on the simple S0 baseline, while the live Data Explorer search surfaced a cleaner low-crowding profitability/value cluster with higher coverage than the frozen EPS and operating-income lanes.
+
+**Decision**: Start the next S-1 scout on `proforma_earnings_to_price`, with `return_on_invested_capital_4` as the primary pure-fundamental backup and `cash_earnings_return_on_equity` / `mdl177_growthanalystmodel_qga_niroe_alt` as controls. Keep `harness/progress.md` idle and do not touch the ledger until a field clears S0.
+
+**Rationale**: The profitability/value cluster offers lower visible crowding and better coverage than the dead qfv4 branch, while staying outside the options / sentiment lanes the current session should avoid.
+
+**Consequences**:
+- `harness/progress.md` and `runs/research-contracts/current-incubation-summary.md` now point to the profitability / value scout.
+- The next S-1 baseline should be the simple `ts_rank(<field>, 20)` shape, not more qfv4 polishing.
+- The ledger remains untouched until a candidate earns a real S0 result.
+## 2026-04-27 | ALPHA-DECISION-024 | Retire `proforma_earnings_to_price` after failed sign-flip and rotate to cash fallback
+
+**decision_id**: `proforma-earnings-to-price-signflip-fail`
+
+**Context**: The official Simulate control `-ts_rank(proforma_earnings_to_price, 20)` completed as alpha `QP21klOp`, but the TEST period turned negative.
+
+**Decision**: Retire `proforma_earnings_to_price`, do not register an incubate family, and pivot the next research hour to `cash_earnings_return_on_equity`.
+
+**Summary**: `QP21klOp` came back IS Sharpe `0.93` / Fitness `0.32`, TEST Sharpe `-0.57` / Fitness `-0.13`.
+
+**Consequences**:
+- `runs/submission-memos/2026-04-27-proforma-earnings-to-price-signflip.md` records the official result.
+- `runs/research-contracts/current-incubation-summary.md`, `runs/research-queues/2026-04-27-s1-profitability-value-scout.md`, and `harness/progress.md` pivot the queue to `cash_earnings_return_on_equity`.
+- The ledger stays unchanged because no field cleared S0 into incubate.
+## 2026-04-27 | ALPHA-DECISION-025 | Retire `cash_earnings_return_on_equity` after weak sign-flip and rotate to mdl177 fallback
+
+**decision_id**: `cash-earnings-return-on-equity-signflip-fail`
+
+**Context**: The official Simulate baseline `ts_rank(cash_earnings_return_on_equity, 20)` came back weak and negative on TEST. The mandatory sign-flip recovered TEST sign, but the line still failed the continuation floor on IS Sharpe and Fitness.
+
+**Decision**: Retire `cash_earnings_return_on_equity` for the current budget and pivot the next research hour to `mdl177_growthanalystmodel_qga_niroe_alt`.
+
+**Summary**: `A1gRMvZd` came back IS Sharpe `-0.05` / Fitness `0`, TEST Sharpe `-0.47` / Fitness `-0.09`; `0meb06eK` came back IS Sharpe `0.05` / Fitness `0`, TEST Sharpe `0.47` / Fitness `0.09`.
+
+**Consequences**:
+- `runs/research-contracts/2026-04-27-cash-earnings-return-on-equity-prescreen-results.md` records the official result.
+- `runs/research-queues/2026-04-27-s1-profitability-value-scout.md`, `runs/research-contracts/current-incubation-summary.md`, and `harness/progress.md` now pivot to `mdl177_growthanalystmodel_qga_niroe_alt`.
+- The ledger stays unchanged because no field cleared S0 into incubate.
+## 2026-04-27 | ALPHA-DECISION-026 | Close the profitability/value scout after mdl177 stays too weak and pivot to growth potential rerating
+
+**decision_id**: `profitability-value-scout-close-after-mdl177`
+
+**Context**: The last profitability/value fallback `mdl177_growthanalystmodel_qga_niroe_alt` was tested after the earlier cash/proforma/ROI fallback chain failed. The official baseline `ts_rank(mdl177_growthanalystmodel_qga_niroe_alt, 20)` came back positive but still too weak to justify opening incubate.
+
+**Decision**: Close the profitability/value family for the current budget, leave the ledger untouched, and pivot the next research hour to `growth_potential_rank_derivative`.
+
+**Summary**: `leQLXVle` came back IS Sharpe `0.34` / Fitness `0.06`, TEST Sharpe `0.66` / Fitness `0.18`, Turnover `42.25%`.
+
+**Consequences**:
+- `runs/research-contracts/2026-04-27-mdl177-growthanalystmodel-qga-niroe-alt-prescreen-results.md` records the official result.
+- `runs/research-contracts/current-incubation-summary.md`, `runs/research-queues/2026-04-27-s1-profitability-value-scout.md`, and `harness/progress.md` now mark the profitability/value lane as closed and point the next session to `growth_potential_rank_derivative`.
+- The ledger stays unchanged because no field cleared S0 into incubate.
+
+## 2026-04-27 | ALPHA-DECISION-027 | Record S-1 Data Explorer verification rule outside the protocol JSON schema
+
+**decision_id**: `s1-precheck-dataexplorer-verification-note`
+
+**Context**: `harness/incubation-protocol.json` already exposes the S-1 threshold block, but it does not provide a dedicated extension slot for the new precheck flag without risking schema drift.
+
+**Decision**: Keep `protocol_version` at `0.3` for now and record the new rule here instead of mutating the JSON schema.
+
+**Rule to carry forward**: S-1 scouting must verify the field in Data Explorer before scout generation; a search miss should be treated as `pending_verification`, not `source_missing`.
+
+**Consequences**: A future protocol revision can add `s1_precheck_require_dataexplorer_verification: true` and the matching verification note once the schema layer is ready.

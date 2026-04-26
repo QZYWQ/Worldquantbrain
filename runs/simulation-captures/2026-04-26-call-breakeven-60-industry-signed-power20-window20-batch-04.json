@@ -1,0 +1,67 @@
+{
+  "capture_id": "2026-04-26-call-breakeven-60-industry-signed-power20-window20-batch-04",
+  "topic": "call_breakeven_60_b_stage_industry_signed_power20_window20",
+  "captured_at": "2026-04-26T10:11:00+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The page shows 'Needs Improvement'.",
+      "The TEST period summary was captured after selecting the TEST period button.",
+      "The IS summary was rechecked after switching back to the IS period button.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "Properties last saved Sun, 04/26/2026, 10:11 AM."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "call_breakeven_60_signed_power_rank20_window20_industry",
+      "expression": "group_rank(ts_rank(signed_power(ts_rank(call_breakeven_60 / close, 20), 2), 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.2,
+        "is_fitness": 0.44,
+        "is_turnover": 0.4274,
+        "is_returns": 0.0578,
+        "is_drawdown": 0.06,
+        "is_margin": 0.00027,
+        "test_sharpe": 1.77,
+        "test_fitness": 0.62,
+        "test_turnover": 0.4481,
+        "test_returns": 0.0551,
+        "test_drawdown": 0.0184,
+        "test_margin": 0.000246
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The first protected B-stage signed-power branch clears the B floor on TEST.",
+        "This is the current lead branch and should anchor the remaining B-stage comparison."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The 20d signed-power branch is a live B-stage survivor and already clears the protocol floor on TEST, so the family stays alive and the remaining B budget should be used only as controlled comparison." 
+  }
+}

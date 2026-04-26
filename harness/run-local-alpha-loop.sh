@@ -12,6 +12,28 @@ SUCCESS_POLICY_PATH="${PROJECT_ROOT}/harness/alpha-success-policy.json"
 RUN_ID=""
 MAX_ROUNDS=3
 
+validate_simulation_capture_json_tree() {
+  python3 - "$PROJECT_ROOT" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+project_root = Path(sys.argv[1]).resolve()
+capture_root = project_root / "runs" / "simulation-captures"
+if not capture_root.exists():
+    raise SystemExit(f"Missing simulation capture directory: {capture_root}")
+
+for path in sorted(capture_root.rglob("*.json")):
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            json.load(handle)
+    except json.JSONDecodeError as exc:
+        raise SystemExit(
+            f"Invalid simulation capture JSON: {path}: {exc.msg} at line {exc.lineno} column {exc.colno}"
+        )
+PY
+}
+
 usage() {
   cat <<'USAGE'
 Usage:
@@ -66,6 +88,8 @@ while [ "$#" -gt 0 ]; do
       ;;
   esac
 done
+
+validate_simulation_capture_json_tree
 
 mkdir -p "$ARTIFACT_ROOT"
 LOCK_DIR="${ARTIFACT_ROOT}/.local-alpha-loop.lock"

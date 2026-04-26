@@ -1,0 +1,66 @@
+{
+  "capture_id": "2026-04-26-pcr-vol-90-industry-decay3-batch-03",
+  "topic": "pcr_vol_90_b_stage_industry_decay3",
+  "captured_at": "2026-04-26T02:49:00+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The TEST period summary was captured after selecting the TEST period button.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "Properties last saved Sun, 04/26/2026, 2:49 AM.",
+      "The decay-3 repair is the branch continuation and materially outperforms the mean-5 sibling on TEST."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_vol_90_ts_decay3_rank20_industry",
+      "expression": "group_rank(ts_rank(ts_decay_linear(pcr_vol_90, 3), 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": -0.52,
+        "is_fitness": -0.08,
+        "is_turnover": 0.6025,
+        "is_returns": -0.0134,
+        "is_drawdown": 0.0556,
+        "is_margin": -4.5e-05,
+        "test_sharpe": 1.42,
+        "test_fitness": 0.3,
+        "test_turnover": 0.632,
+        "test_returns": 0.0287,
+        "test_drawdown": 0.0103,
+        "test_margin": 9.1e-05
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The TEST period summary was captured by selecting the TEST period button.",
+        "The decay-3 repair is the clear branch continuation and the lead candidate for C."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The decay-3 B-stage probe is the clear branch lead and becomes the C-stage continuation."
+  }
+}

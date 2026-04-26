@@ -1,0 +1,53 @@
+{
+  "capture_id": "2026-04-26-pcr-vol-90-delay0-blocked-batch-05",
+  "topic": "pcr_vol_90_d_stage_delay0_blocked",
+  "captured_at": "2026-04-26T03:15:10+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 0,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The settings modal exposed only delay values 0 and 1, and delay 0 was selected for the robustness scan.",
+      "Clicking Simulate produced the official error banner: Attempted to use unknown variable \"pcr_vol_90\".",
+      "The results pane stayed blank and no official metrics were produced.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "This delay point is blocked on this account, so the D-stage delay curve cannot be completed from the current UI."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_vol_90_ts_decay3_plus_pcr_oi_30_industry_delay0",
+      "expression": "group_rank(ts_rank(ts_decay_linear(pcr_vol_90, 3), 20) + ts_rank(pcr_oi_30, 20), industry)",
+      "status": "BLOCKED",
+      "stage": "D",
+      "error": "Attempted to use unknown variable \"pcr_vol_90\".",
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The delay-0 variant is invalid on this account.",
+        "No simulation result metrics were produced."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "Delay 0 is blocked for pcr_vol_90 on this account, so the family cannot complete a D-stage decay curve from the current UI and must be held."
+  }
+}

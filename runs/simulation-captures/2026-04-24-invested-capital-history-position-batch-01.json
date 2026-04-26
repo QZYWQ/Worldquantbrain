@@ -1,0 +1,158 @@
+{
+  "capture_id": "2026-04-24-invested-capital-history-position-batch-01",
+  "topic": "invested_capital_history_position",
+  "captured_at": "2026-04-24T15:46:03+08:00",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF"
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-24-invested-capital-history-position.md",
+    "expression_family": "./runs/expression-families/2026-04-24-invested-capital-history-position.md",
+    "notes": [
+      "Metrics came from the logged-in official WorldQuant BRAIN simulate API in this session.",
+      "The baseline and sign-flip diagnostics both returned a TS-rank unit warning against the invested-capital symbol field.",
+      "After the two diagnostic probes, the family was frozen rather than expanded into more near-duplicate polishing."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "invested_capital_history_position_252_industry",
+      "expression": "group_rank(ts_rank(fnd6_newa1v1300_icapt, 252), industry)",
+      "simulation_id": "1Vu7gyaoJ5cW9KGQ1Po97uU",
+      "alpha_id": "j2dM3gbZ",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": -0.25,
+        "is_fitness": -0.06,
+        "is_turnover": 0.0235,
+        "is_returns": -0.008,
+        "is_drawdown": 0.0799,
+        "is_margin": -0.000682,
+        "test_sharpe": -0.23,
+        "test_fitness": -0.05,
+        "test_turnover": 0.0218,
+        "test_returns": -0.007,
+        "test_drawdown": 0.0262,
+        "test_margin": -0.000641
+      },
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The baseline is negative on both IS and test and also fails low-sub-universe-sharpe.",
+        "The TS-rank unit warning means the raw history-position formulation is not a clean fit for this field shape."
+      ]
+    },
+    {
+      "name": "invested_capital_history_position_252_industry_sign_flip",
+      "expression": "group_rank(-ts_rank(fnd6_newa1v1300_icapt, 252), industry)",
+      "simulation_id": "2q6QSycjK4JA9QP5Xb3KHbS",
+      "alpha_id": "zqJLYdK1",
+      "ui_context": "Official alpha detail API after simulation completion",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "metrics": {
+        "is_sharpe": 0.25,
+        "is_fitness": 0.06,
+        "is_turnover": 0.0235,
+        "is_returns": 0.008,
+        "is_drawdown": 0.0492,
+        "is_margin": 0.000682,
+        "test_sharpe": 0.23,
+        "test_fitness": 0.05,
+        "test_turnover": 0.0218,
+        "test_returns": 0.007,
+        "test_drawdown": 0.0319,
+        "test_margin": 0.000641
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "passing_gates": [
+        "LOW_TURNOVER",
+        "HIGH_TURNOVER",
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "MATCHES_COMPETITION"
+      ],
+      "failing_gates": [
+        "LOW_SHARPE",
+        "LOW_FITNESS"
+      ],
+      "pending_gates": [
+        "SELF_CORRELATION"
+      ],
+      "missing_gates": [],
+      "evidence_level": "official_checks_pending_self_correlation",
+      "has_full_gate_coverage": false,
+      "submit_ready": false,
+      "strong_candidate_evidence": false,
+      "notes": [
+        "The sign flip repaired the low-sub-universe-sharpe check, but IS and test stayed far below the submission floor.",
+        "The same TS-rank unit warning remains, so the family is still not a clean candidate."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "winner_by_sharpe": "invested_capital_history_position_252_industry_sign_flip",
+    "winner_by_fitness": "invested_capital_history_position_252_industry_sign_flip",
+    "branch_takeaway": "This family does not deserve more budget in its raw history-position form. The baseline is negative and fails low-sub-universe-sharpe; the sign flip recovers sub-universe but still misses Sharpe/Fitness badly while keeping the same TS-rank unit warning. Freeze the family and move to a cleaner information source instead of polishing this one further."
+  }
+}

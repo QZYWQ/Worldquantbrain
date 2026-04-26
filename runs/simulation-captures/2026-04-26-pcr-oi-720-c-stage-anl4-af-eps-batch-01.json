@@ -1,0 +1,124 @@
+{
+  "capture_id": "2026-04-26-pcr-oi-720-c-stage-anl4-af-eps-batch-01",
+  "topic": "pcr_oi_720_c_stage_anl4_af_eps_hybrid",
+  "captured_at": "2026-04-26T17:27:34+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session on the official WorldQuant BRAIN Simulate page.",
+      "The batch used the orthogonal analyst-estimate field anl4_af_eps_value from Data Explorer.",
+      "The simulations completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "The test period was captured from the official alpha details endpoint."
+    ],
+    "data_explorer": "https://platform.worldquantbrain.com/data/search/data-fields?delay=1&instrumentType=EQUITY&limit=20&offset=0&region=USA&search=anl4_af_eps_value&universe=TOP3000"
+  },
+  "alphas": [
+    {
+      "name": "pcr_oi_720_anl4_af_eps_20d_industry",
+      "expression": "group_rank(ts_rank(signed_power(ts_rank(pcr_oi_720, 20), 2), 20) + ts_rank(anl4_af_eps_value / close, 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.09,
+        "is_fitness": 0.46,
+        "is_turnover": 0.2997,
+        "is_returns": 0.0526,
+        "is_drawdown": 0.078,
+        "is_margin": 0.000351,
+        "test_sharpe": 0.91,
+        "test_fitness": 0.31,
+        "test_turnover": 0.3152,
+        "test_returns": 0.0355,
+        "test_drawdown": 0.0334,
+        "test_margin": 0.000225
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "20d analyst-horizon variant.",
+        "Clears the C continuation floor but is not the best TEST Sharpe in the batch."
+      ]
+    },
+    {
+      "name": "pcr_oi_720_anl4_af_eps_60d_industry",
+      "expression": "group_rank(ts_rank(signed_power(ts_rank(pcr_oi_720, 20), 2), 20) + ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.32,
+        "is_fitness": 0.64,
+        "is_turnover": 0.2545,
+        "is_returns": 0.0603,
+        "is_drawdown": 0.0599,
+        "is_margin": 0.000474,
+        "test_sharpe": 0.99,
+        "test_fitness": 0.37,
+        "test_turnover": 0.2699,
+        "test_returns": 0.0369,
+        "test_drawdown": 0.0227,
+        "test_margin": 0.000273
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "60d analyst-horizon variant.",
+        "Winner on TEST Sharpe and the strongest overall continuation in this batch."
+      ]
+    },
+    {
+      "name": "pcr_oi_720_anl4_af_eps_120d_industry",
+      "expression": "group_rank(ts_rank(signed_power(ts_rank(pcr_oi_720, 20), 2), 20) + ts_rank(anl4_af_eps_value / close, 120), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.08,
+        "is_fitness": 0.48,
+        "is_turnover": 0.2406,
+        "is_returns": 0.0484,
+        "is_drawdown": 0.0686,
+        "is_margin": 0.000403,
+        "test_sharpe": 0.77,
+        "test_fitness": 0.24,
+        "test_turnover": 0.2569,
+        "test_returns": 0.0243,
+        "test_drawdown": 0.0252,
+        "test_margin": 0.000189
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "120d analyst-horizon variant.",
+        "Still clears the C continuation floor, but trails the 60d winner."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The orthogonal analyst-estimate hybrid clearly beats the B-stage leader; the 60d variant is the best continuation and should become the D-stage branch lead."
+  }
+}

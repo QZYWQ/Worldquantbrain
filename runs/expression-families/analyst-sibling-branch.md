@@ -81,11 +81,17 @@ group_rank(ts_rank(anl4_qfv4_median_eps/close, 120), industry)
 - Self-correlation:
   Still the main family-level risk until official checks say otherwise.
 
+## Current Decision
+
+- Freeze this family.
+- The annual-median control `anl4_afv4_median_60d_industry` is the stronger line on holdout, so the qfv4 siblings should not receive more near-neighbor budget.
+- Do not run more qfv4 window or mean variants unless a genuinely new analyst thesis appears.
+
 ## Optimization Order
 
 1. Compare qfv4 median and qfv4 mean against the first-cycle baseline before changing multiple structural levers.
 2. Keep the annual-median analyst4 line only as a control to test whether the lower-crowding quarterly siblings are truly different.
-3. Only open the disagreement-style branch after the level siblings either survive or clearly fail.
+3. Only open a new analyst branch if it is not just another qfv4 near-neighbor.
 
 ## Next Simulation Batch
 
@@ -97,3 +103,7 @@ group_rank(ts_rank(anl4_qfv4_median_eps/close, 120), industry)
   `group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)`
 - Variant 3:
   `group_rank(ts_rank(anl4_qfv4_median_eps/close, 120), industry)`
+
+## Stop Condition
+
+- If the qfv4 family is revisited, the first question must be whether it is still a distinct thesis rather than a holdout-polishing variant.

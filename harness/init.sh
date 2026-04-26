@@ -50,6 +50,9 @@ fi
 print_section "Pending Summary"
 print_pending_summary
 
+print_section "Incubation Summary"
+incubation_summary_report
+
 if [ "$doctor_status" -eq 0 ]; then
   print_section "State Doctor"
 else

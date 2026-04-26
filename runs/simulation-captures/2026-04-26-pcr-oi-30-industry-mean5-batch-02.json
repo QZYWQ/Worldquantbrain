@@ -1,0 +1,66 @@
+{
+  "capture_id": "2026-04-26-pcr-oi-30-industry-mean5-batch-02",
+  "topic": "pcr_oi_30_b_stage_industry_mean5",
+  "captured_at": "2026-04-26T02:28:00+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The page shows 'Needs Improvement'.",
+      "The TEST period summary was captured after selecting the TEST period button.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "Properties last saved Sun, 04/26/2026, 2:28 AM."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "pcr_oi_30_ts_mean5_rank20_industry",
+      "expression": "group_rank(ts_rank(ts_mean(pcr_oi_30, 5), 20), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 0.06,
+        "is_fitness": 0.0,
+        "is_turnover": 0.2037,
+        "is_returns": 0.0014,
+        "is_drawdown": 0.0596,
+        "is_margin": 1.3e-05,
+        "test_sharpe": 0.03,
+        "test_fitness": 0.0,
+        "test_turnover": 0.196,
+        "test_returns": 0.0005,
+        "test_drawdown": 0.0234,
+        "test_margin": 5e-06
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The TEST period summary was captured by selecting the TEST period button.",
+        "The mean-5 repair is weaker than the decay-3 sibling and is not the branch continuation."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The mean-5 B-stage probe fails the continuation floor on TEST and does not justify more same-source budget."
+  }
+}

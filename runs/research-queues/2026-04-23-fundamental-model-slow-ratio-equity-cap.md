@@ -1,16 +1,16 @@
 # Fundamental / Model Slow Ratio Equity / Cap Queue
 
 - Date: `2026-04-23`
-- Status: `branch / industry-90 anchor promoted / model shortlist invalid on this account`
+- Status: `frozen / analyst sibling frozen / neutralization probe failed`
 
 ## Current Decision
 
-The active live lane is now `shareholders_equity_total_2 / cap`, not the earlier local `mdl110_* / market_cap` shortlist. The `industry 90d` variant is now the strongest verified anchor, and the earlier `subindustry 90d` result becomes the nearest grouping control rather than the lead branch.
+The analyst sibling qfv4 line is frozen and out of budget. The former active live lane `shareholders_equity_total_2 / cap` has now been frozen as well after the neutralization-axis probe failed the full-IS improvement stop condition. No active main remains on this lane.
 
 ## Family Order
 
-1. `shareholders_equity_total_2 / cap` - branch
-2. `total_assets_amount / cap` - sibling control after the industry window sweep
+1. `shareholders_equity_total_2 / cap` - frozen after failed neutralization probe
+2. `total_assets_amount / cap` - frozen sibling control
 3. `cashflow / cap` - backup only
 4. `working_capital / cap` - kill
 5. `mdl110_* / market_cap` - kill on this account
@@ -39,10 +39,11 @@ The active live lane is now `shareholders_equity_total_2 / cap`, not the earlier
 - `working_capital / cap, industry 90d` is killed on first official control.
 - `Check Submission` is still disabled on the verified `63d` and `84d` runs.
 - `Check Submission` is still disabled on the verified `90d` run.
-- Latest blocker: rerunning the main `shareholders_equity_total_2 / cap, industry 90d` anchor surfaced `不正确的身份认证信息。`; official simulate is currently blocked by session authentication rather than by a new alpha result.
+- Historical blocker: rerunning the main `shareholders_equity_total_2 / cap, industry 90d` anchor surfaced `不正确的身份认证信息。`; official simulate was temporarily blocked by session authentication rather than by a new alpha result.
 - Recovery status: authentication was restored and the anchor was rerun, but the visible anchor state stayed unchanged at `5 PASS / 2 FAIL / 1 PENDING`, with `Check Submission` still disabled.
 - Direct API confirmation for anchor alpha `ZYWzZlgZ` now removes the ambiguity in that split: `LOW_SHARPE` failed at `0.89 < 1.25`, `LOW_FITNESS` failed at `0.60 < 1.0`, and `SELF_CORRELATION` remained `PENDING` on a short re-poll at `2026-04-23 14:05:47 CST (+0800)`.
-- Decision implication: keep the family in `branch`, but do not spend more official tests on near-duplicate window controls until a same-family structural change has a credible path to improve full-IS Sharpe/Fitness rather than only the shown test-period card.
+- The neutralization-axis probe completed on `2026-04-24` as alpha `VkYR9LvA`: full-IS `Sharpe 0.86 / Fitness 0.62`, test-period `Sharpe 1.56 / Fitness 1.40`, and the gate readout still failed `LOW_SHARPE` / `LOW_FITNESS`.
+- Decision implication: freeze the family; the neutralization probe improved the test card but not the official gate, so there is no active main left on this lane.
 - Structural follow-up check 1 is now killed on official evidence: `group_rank(ts_mean(shareholders_equity_total_2 / cap, 84), industry)` produced `Sharpe 0.34 / Fitness 0.15` on full IS and additionally failed `LOW_SUB_UNIVERSE_SHARPE`.
 - Structural follow-up check 2 is also killed on official evidence: `ts_rank(group_rank(ts_mean(shareholders_equity_total_2 / cap, 63), industry), 252)` produced `Sharpe 0.18 / Fitness 0.06` on full IS and also failed `LOW_SUB_UNIVERSE_SHARPE`, despite a stronger shown-test-period card.
-- Updated implication: the current best official line is still the raw-ratio `industry 90d` anchor, and this branch should stop official testing until there is a materially different same-family idea with better local justification than the now-killed smoothing/simple variants.
+- Updated implication: the raw-ratio `industry 90d` anchor remains the best official line inside the family, but the family is now frozen because the neutralization-axis probe did not improve full-IS Sharpe/Fitness.

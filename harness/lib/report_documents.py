@@ -61,6 +61,18 @@ def render_list(items, fallback: str = "- none"):
     return rendered
 
 
+def fresh_window_protocol_lines() -> list[str]:
+    return [
+        "## Fresh-Window Protocol",
+        "",
+        "- Reload the project truth in this order: `./AGENTS.md`, `./00-项目总索引.md`, `./02-工作流索引.md`, `./harness/AGENTS.md`, `./runs/research-contracts/window-bootstrap-and-signflip-protocol.md`, then the latest family registry, next-step decision, freeze / stop / closure memo, official live recheck / submission memo, and simulation capture.",
+        "- Treat chat memory as advisory only; the project files are binding when they exist.",
+        "- If baseline or first simple control Sharpe is negative, flip the final executable expression before any lookback, smoothing, neutralization, or group retune.",
+        "- When you write a simulation capture that needs that flip, set `batch_policy.required_sign_flip_source_index` to `0` or `1` and capture the sign-flipped control immediately after the negative source control.",
+        "",
+    ]
+
+
 def normalize_source_ref(ref, external_kb_root: Path) -> str:
     text = str(ref).strip()
     if not text:
@@ -360,6 +372,8 @@ def write_resume_brief_document(
             ]
         )
 
+    lines.extend(fresh_window_protocol_lines())
+
     lines.extend(
         [
             "## Current Cycle Snapshot",
@@ -509,6 +523,8 @@ def write_session_open_document(
                 "",
             ]
         )
+
+    lines.extend(fresh_window_protocol_lines())
 
     lines.extend(
         [

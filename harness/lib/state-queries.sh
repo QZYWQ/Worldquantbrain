@@ -119,3 +119,10 @@ print_feature_brief() {
 print_pending_summary() {
   python3 "$(state_query_script)" print-pending-summary "$(feature_file_path)"
 }
+
+incubation_summary_report() {
+  python3 "$(state_query_script)" \
+    incubation-summary \
+    "$(resolve_project_path './runs/research-contracts/family-budget-ledger.json')" \
+    "$(progress_file_path)"
+}

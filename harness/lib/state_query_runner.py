@@ -33,6 +33,49 @@ def normalize_source_ref(ref, external_kb_root: Path) -> str:
     return f"kb://{relative.as_posix()}"
 
 
+def parse_frontmatter(path: Path):
+    try:
+        text = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return {}
+
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return {}
+
+    result = {}
+    for line in lines[1:]:
+        if line.strip() == "---":
+            break
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        result[key.strip()] = value.strip()
+    return result
+
+
+def format_scalar(value, default="none") -> str:
+    if value is None or value == "":
+        return default
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, float):
+        return format(value, "g")
+    return str(value)
+
+
+def format_stage_budget(stage_budget) -> str:
+    if not isinstance(stage_budget, dict):
+        return "n/a"
+
+    parts = []
+    for stage in ["S-1", "S0", "A", "B", "C", "D", "E"]:
+        value = stage_budget.get(stage, 0)
+        if value:
+            parts.append(f"{stage}={format_scalar(value, '0')}")
+    return ", ".join(parts) if parts else "none"
+
+
 def command_list_cycle_rel_paths(project_root: Path, active_cycle: str) -> int:
     root = project_root.resolve()
     paths = ["./harness/feature_list.json"]
@@ -233,6 +276,55 @@ def command_print_pending_summary(feature_path: Path) -> int:
     return 0
 
 
+def command_incubation_summary(ledger_path: Path, progress_path: Path) -> int:
+    ledger = read_json(ledger_path)
+    policy = ledger.get("policy", {})
+    summary = ledger.get("summary", {})
+    counts = summary.get("registry_state_counts", {})
+    progress = parse_frontmatter(progress_path)
+
+    active_lanes = [
+        entry
+        for entry in ledger.get("entries", [])
+        if entry.get("budget_action") == "incubate"
+    ]
+    active_lanes.sort(key=lambda entry: (entry.get("priority", 999), entry.get("family_key", "")))
+
+    print(f"- Mode: {format_scalar(policy.get('mode'), 'unknown')}")
+    print(f"- Active main: {format_scalar(policy.get('active_main'))}")
+    print(f"- Active challenger: {format_scalar(policy.get('active_challenger'))}")
+    print(f"- Cold pool balance: {format_scalar(policy.get('cold_pool_balance'))}")
+    print(f"- Emergency reserve slots: {format_scalar(policy.get('emergency_reserve_slots'))}")
+    print(
+        "- Registry states: "
+        f"branch={counts.get('branch', 0)}, hold={counts.get('hold', 0)}, kill={counts.get('kill', 0)}"
+    )
+    print(f"- Submit-ready families: {format_scalar(policy.get('submit_ready_families', 0), '0')}")
+    print(
+        "- Progress snapshot: "
+        f"active_feature={format_scalar(progress.get('active_feature'))}, "
+        f"active_status={format_scalar(progress.get('active_status'), 'idle')}, "
+        f"last_verified_feature={format_scalar(progress.get('last_verified_feature'))}"
+    )
+    if not active_lanes:
+        print("- Active incubation lanes: none")
+    else:
+        print("- Active incubation lanes:")
+        for entry in active_lanes:
+            stop_eligible = entry.get("stop_eligible")
+            if stop_eligible is None:
+                stop_eligible = entry.get("min_depth_completed", False)
+            print(
+                "  - "
+                f"{entry.get('family_key')} | stage={entry.get('incubation_stage')} | "
+                f"stage_budget={format_stage_budget(entry.get('stage_budget'))} | "
+                f"screen={format_scalar(entry.get('screen_result'))} | "
+                f"min_depth_completed={format_scalar(entry.get('min_depth_completed', False), 'false')} | "
+                f"stop_eligible={format_scalar(stop_eligible, 'false')}"
+            )
+    return 0
+
+
 def build_parser():
     parser = argparse.ArgumentParser(description="Run read-only harness state queries.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -294,6 +386,10 @@ def build_parser():
     print_pending_summary = subparsers.add_parser("print-pending-summary")
     print_pending_summary.add_argument("feature_path")
 
+    incubation_summary = subparsers.add_parser("incubation-summary")
+    incubation_summary.add_argument("ledger_path")
+    incubation_summary.add_argument("progress_path")
+
     return parser
 
 
@@ -330,6 +426,8 @@ def main(argv=None):
         return command_print_feature_brief(Path(args.feature_path), args.feature_id, Path(args.external_kb_root))
     if args.command == "print-pending-summary":
         return command_print_pending_summary(Path(args.feature_path))
+    if args.command == "incubation-summary":
+        return command_incubation_summary(Path(args.ledger_path), Path(args.progress_path))
 
     raise SystemExit(f"Unsupported command: {args.command}")
 

@@ -1,0 +1,450 @@
+{
+  "protocol_version": "0.3",
+  "name": "incubation-protocol",
+  "generated_at": "2026-04-26T00:00:00+08:00",
+  "state_machine": {
+    "states": [
+      "S-1",
+      "S0",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "hold",
+      "kill",
+      "exploit"
+    ],
+    "terminal_actions": [
+      "screen_kill",
+      "hold",
+      "kill",
+      "exploit"
+    ],
+    "transition_rules": [
+      {
+        "from": "S-1",
+        "to": "S0",
+        "when": [
+          "new_source == true",
+          "distinctness_score >= parameters.prescreen_s_minus_1.distinctness_min",
+          "signal_presence_score >= parameters.prescreen_s_minus_1.signal_presence_min"
+        ],
+        "notes": "Only genuinely new sources use S-1; already-incubated families skip this step."
+      },
+      {
+        "from": "S-1",
+        "to": "screen_kill",
+        "when": [
+          "pure_noise == true"
+        ],
+        "notes": "Screen-kill is allowed here, but it is not a permanent stop memo."
+      },
+      {
+        "from": "S0",
+        "to": "A",
+        "when": [
+          "weak_signal == true",
+          "stop_eligible == false"
+        ],
+        "notes": "Cheap signal existence check only; do not burn deep budget yet."
+      },
+      {
+        "from": "S0",
+        "to": "screen_kill",
+        "when": [
+          "pure_noise == true"
+        ],
+        "notes": "Screen-kill only; never write a permanent stop memo for S-1 / S0 pure noise."
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "when": [
+          "baseline_simulated == true",
+          "sign_flip_simulated == true"
+        ],
+        "notes": "The negative-Sharpe sign-flip rule still applies before B-stage polishing."
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "when": [
+          "nonlinear_shape_family_explored == true",
+          "variant_count >= 2",
+          "window_count >= 2"
+        ],
+        "notes": "B must include at least two transforms across at least two windows."
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "when": [
+          "cross_field_hybrid_simulated == true",
+          "global_corr_proxy_reviewed == true"
+        ],
+        "notes": "C introduces one foreign field class before delay robustness work."
+      },
+      {
+        "from": "D",
+        "to": "E",
+        "when": [
+          "delay_robustness_scan_complete == true",
+          "sharpe_decay_curve_recorded == true"
+        ],
+        "notes": "D must output a Sharpe decay curve across the delay scan."
+      },
+      {
+        "from": "E",
+        "to": "exploit",
+        "when": [
+          "causal_template_valid == true",
+          "reverse_event_test_pass == true",
+          "global_corr_risk_score <= parameters.global_corr_proxy.green_max"
+        ],
+        "notes": "Green-zone exit only."
+      },
+      {
+        "from": "E",
+        "to": "hold",
+        "when": [
+          "causal_template_valid == true",
+          "reverse_event_test_pass == false OR global_corr_risk_score > parameters.global_corr_proxy.green_max"
+        ],
+        "notes": "Hold is allowed when the E-stage review is valid but not yet green enough to exploit."
+      },
+      {
+        "from": "E",
+        "to": "kill",
+        "when": [
+          "stop_eligible == true",
+          "(screen_result == pure_noise OR no_rescue_path == true)"
+        ],
+        "notes": "Permanent kill is allowed only after minimum depth, or after a pure-noise screen-kill path."
+      }
+    ],
+    "eligibility_rules": {
+      "min_depth_completed_definition": "true only after the family has progressed through the protected incubation path far enough to support an E-stage review or a documented screen-kill exception.",
+      "stop_eligible_definition": "true when min_depth_completed == true; S-1 / S0 pure-noise exits use screen-kill instead of a permanent stop memo.",
+      "screen_kill_policy": "screen_kill returns the lane to the scout pool; it is not a permanent stop memo and does not set freeze or kill."
+    }
+  },
+  "global_corr_proxy_config": {
+    "parameter_ref": "parameters.global_corr_proxy",
+    "anchor_pools": [
+      "official_outcome_memory",
+      "submit_ready_ledger",
+      "high_confidence_incubates"
+    ],
+    "formula_notes": [
+      "weight residual correlation, crowded-cluster density, and source overlap together",
+      "apply the anchor-diversity penalty when the anchor pool is too shallow",
+      "recalibrate against an open-source factor dataset on the configured cadence"
+    ],
+    "anchor_diversity_check": {
+      "parameter_ref": "parameters.global_corr_proxy.anchor_diversity_check",
+      "enabled": true,
+      "trigger": "if anchor pool has fewer than 3 source clusters or fewer than 5 total anchors",
+      "risk_uplift_rule": "take the more conservative of add +0.10 or multiply by 1.15",
+      "implementation_notes": {
+        "call_sites": [
+          "C-stage global_corr review",
+          "E-stage global_corr review"
+        ],
+        "inputs": [
+          "official_outcome_memory anchors",
+          "submit_ready_ledger anchors",
+          "high_confidence_incubates anchors"
+        ],
+        "pseudo_code": [
+          "anchors = load_anchor_pool()",
+          "source_cluster_count = count_unique(anchors.source_cluster_id)",
+          "anchor_count = len(anchors)",
+          "if source_cluster_count < 3 or anchor_count < 5: risk_score = max(risk_score + 0.10, risk_score * 1.15)",
+          "risk_score = min(risk_score, 1.0)"
+        ]
+      }
+    },
+    "calibration_log": {
+      "parameter_ref": "parameters.global_corr_proxy.calibration",
+      "log_path": "harness/state/global_corr_calibration_log.json"
+    }
+  },
+  "multi_test_correction_config": {
+    "parameter_ref": "parameters.multi_test_correction",
+    "within_stage": {
+      "method": "Westfall-Young maxT stepdown",
+      "bootstrap": "moving block bootstrap",
+      "block_length_formula": "clamp(round(max_lookback / 4), 5, 20)",
+      "alpha_spending": "stagewise alpha spending across the protected incubation path"
+    },
+    "across_families": {
+      "group_key": "source_cluster_id",
+      "method": "Benjamini-Yekutieli",
+      "fdr_target": "parameter_ref: parameters.multi_test_correction.cross_family_fdr_target"
+    },
+    "effect_floor_policy": "do not waive the absolute effect floor just because the correction passed"
+  },
+  "budget_reclaim_rules": {
+    "parameter_ref": "parameters.budget_reclaim",
+    "reclaim_trigger": [
+      "all_variants_below_absolute_effect_floor",
+      "stage_corrected_p_values_non_significant",
+      "E_stage_has_no_rescue_path"
+    ],
+    "cold_pool_release_policy": {
+      "parameter_ref": "parameters.budget_reclaim.cold_pool_release_policy",
+      "summary": "Release reclaimed budget after each completed incubation cycle or every 7 days, cap each release at 50% of the pool, route first to new scouting candidates, then to hold-pool families that already completed minimum depth.",
+      "window_days": "parameter_ref: parameters.budget_reclaim.cold_pool_release_policy.window_days",
+      "priority_order": "parameter_ref: parameters.budget_reclaim.cold_pool_release_policy.priority_order",
+      "max_release_fraction": "parameter_ref: parameters.budget_reclaim.cold_pool_release_policy.max_release_fraction",
+      "emergency_reserve": {
+        "slots": "parameter_ref: parameters.budget_reclaim.cold_pool_release_policy.emergency_reserve_slots",
+        "isolated": true
+      },
+      "execution": {
+        "trigger": [
+          "cycle-close completed",
+          "seven-day review reached"
+        ],
+        "executor": "human operator or session owner",
+        "pseudo_code": [
+          "release_amount = min(cold_pool_balance * 0.50, cold_pool_balance)",
+          "if trigger_fired and release_amount > 0: move_units_from_cold_pool_to_priority_queue(release_amount)",
+          "priority_queue = new_scouting_candidates_first_then_hold_pool_completed_min_depth",
+          "never_touch_emergency_reserve = True"
+        ]
+      }
+    },
+    "same_window_transfer_penalty": {
+      "formula": "effective_alpha = nominal_alpha * planned_looks / (planned_looks + transferred_looks)",
+      "applies_when": "same_window_transfer_is_unavoidable"
+    }
+  },
+  "prescreen_s_minus_1": {
+    "parameter_ref": "parameters.prescreen_s_minus_1",
+    "method": "cross_sectional_snapshot_only",
+    "distinctness_score": {
+      "formula": "1 - max(avg_abs_corr(candidate_snapshot_weights, anchor_snapshot_weights))",
+      "source": "cross-sectional weight snapshots only",
+      "backtest_allowed": false
+    },
+    "signal_presence_score": {
+      "formula": "0.4*field_autocorr + 0.3*detrended_variance_ratio + 0.3*cross_universe_rank_ic_sign_consistency",
+      "normalization": "all component scores normalized to [0, 1]"
+    },
+    "thresholds": {
+      "distinctness_min": "parameter_ref: parameters.prescreen_s_minus_1.distinctness_min",
+      "signal_presence_min": "parameter_ref: parameters.prescreen_s_minus_1.signal_presence_min",
+      "crowded_category_bonus": "parameter_ref: parameters.prescreen_s_minus_1.crowded_category_bonus"
+    },
+    "crowded_categories": [
+      "options",
+      "social"
+    ],
+    "implementation_notes": {
+      "call_site": "S-1 scouting only; zero-simulation snapshot pass before any backtest",
+      "inputs": [
+        "candidate cross-sectional snapshot weights",
+        "anchor cross-sectional snapshot weights",
+        "field autocorr",
+        "detrended variance ratio",
+        "cross-universe rank IC sign consistency"
+      ],
+      "pseudo_code": [
+        "candidate_snapshot = build_cross_sectional_snapshot(candidate_field)",
+        "anchor_snapshot = build_cross_sectional_snapshot(anchor_pool)",
+        "distinctness = 1 - max(avg_abs_corr(candidate_snapshot.weights, anchor_snapshot.weights))",
+        "signal_presence = 0.4*field_autocorr + 0.3*detrended_variance_ratio + 0.3*cross_universe_rank_ic_sign_consistency",
+        "if crowded_category: threshold_bonus = 0.05",
+        "return distinctness, signal_presence, threshold_bonus"
+      ]
+    }
+  },
+  "causal_hypothesis_template": {
+    "parameter_ref": "parameters.causal_hypothesis_template",
+    "required_fields": [
+      "causal_statement",
+      "mechanism_class",
+      "falsifier",
+      "reverse_event_test",
+      "literature_tags"
+    ],
+    "causal_statement_max_length": 50,
+    "decision_rules": {
+      "missing_statement": "kill",
+      "statement_overlength": "kill",
+      "mechanism_mismatch": "kill",
+      "missing_reverse_event_test": "kill",
+      "reverse_event_test_fail": "hold",
+      "all_checks_pass_and_green_corr": "exploit"
+    },
+    "stage_gate": "E only"
+  },
+  "absolute_effect_floors": {
+    "parameter_ref": "parameters.absolute_effect_floors",
+    "scope": "TEST metrics",
+    "floors": {
+      "B": {
+        "test_sharpe": 0.25,
+        "test_fitness": 0.08
+      },
+      "C": {
+        "test_sharpe": 0.35,
+        "test_fitness": 0.1
+      },
+      "D": {
+        "test_sharpe": 0.5,
+        "test_fitness": 0.15
+      },
+      "E": {
+        "test_sharpe": 0.75,
+        "test_fitness": 0.2
+      }
+    },
+    "note": "These are tunable initial values, not immutable truth."
+  },
+  "stage_budget_caps": {
+    "parameter_ref": "parameters.stage_budget_caps",
+    "caps": {
+      "S-1": {
+        "max_variants": 2,
+        "max_budget_units": 1
+      },
+      "S0": {
+        "max_variants": 2,
+        "max_budget_units": 1
+      },
+      "A": {
+        "max_variants": 2,
+        "max_budget_units": 2
+      },
+      "B": {
+        "max_variants": 4,
+        "max_budget_units": 3
+      },
+      "C": {
+        "max_variants": 3,
+        "max_budget_units": 3
+      },
+      "D": {
+        "max_variants": 3,
+        "max_budget_units": 2
+      },
+      "E": {
+        "max_variants": 1,
+        "max_budget_units": 1
+      }
+    },
+    "note": "Budget caps are configurable defaults; do not hard-code them elsewhere."
+  },
+  "parallel_limits": {
+    "parameter_ref": "parameters.parallel_limits",
+    "default_max_parallel_families": 2,
+    "default_max_parallel_variants_per_family": 2,
+    "default_max_parallel_calibrations": 1,
+    "note": "Keep the default concurrency at two or below unless the protocol is revised."
+  },
+  "parameters": {
+    "global_corr_proxy": {
+      "green_max": 0.3,
+      "yellow_max": 0.55,
+      "red_min": 0.55,
+      "anchor_diversity_check": {
+        "enabled": true,
+        "min_source_cluster_count": 3,
+        "min_anchor_count": 5,
+        "additive_risk_uplift": 0.1,
+        "multiplicative_risk_uplift": 1.15,
+        "conservative_rule": "take_max"
+      },
+      "calibration": {
+        "enabled": true,
+        "every_new_outputs": 5,
+        "every_days": 14,
+        "source": "open_source_factor_dataset"
+      }
+    },
+    "multi_test_correction": {
+      "within_stage": {
+        "method": "Westfall-Young maxT stepdown",
+        "bootstrap": "moving block bootstrap",
+        "block_length_formula": "clamp(round(max_lookback / 4), 5, 20)"
+      },
+      "cross_family_fdr_target": 0.1
+    },
+    "budget_reclaim": {
+      "cold_pool_release_policy": {
+        "window_days": 7,
+        "priority_order": [
+          "new scouting candidates ordered by S-1 score descending",
+          "hold-pool families that already have min_depth_completed == true"
+        ],
+        "max_release_fraction": 0.5,
+        "emergency_reserve_slots": 3
+      },
+      "same_window_transfer_penalty_formula": "effective_alpha = nominal_alpha * planned_looks / (planned_looks + transferred_looks)"
+    },
+    "prescreen_s_minus_1": {
+      "distinctness_min": 0.6,
+      "signal_presence_min": 0.4,
+      "crowded_category_bonus": 0.05
+    },
+    "causal_hypothesis_template": {
+      "causal_statement_max_length": 50
+    },
+    "absolute_effect_floors": {
+      "B": {
+        "test_sharpe": 0.25,
+        "test_fitness": 0.08
+      },
+      "C": {
+        "test_sharpe": 0.35,
+        "test_fitness": 0.1
+      },
+      "D": {
+        "test_sharpe": 0.5,
+        "test_fitness": 0.15
+      },
+      "E": {
+        "test_sharpe": 0.75,
+        "test_fitness": 0.2
+      }
+    },
+    "stage_budget_caps": {
+      "S-1": {
+        "max_variants": 2,
+        "max_budget_units": 1
+      },
+      "S0": {
+        "max_variants": 2,
+        "max_budget_units": 1
+      },
+      "A": {
+        "max_variants": 2,
+        "max_budget_units": 2
+      },
+      "B": {
+        "max_variants": 4,
+        "max_budget_units": 3
+      },
+      "C": {
+        "max_variants": 3,
+        "max_budget_units": 3
+      },
+      "D": {
+        "max_variants": 3,
+        "max_budget_units": 2
+      },
+      "E": {
+        "max_variants": 1,
+        "max_budget_units": 1
+      }
+    },
+    "parallel_limits": {
+      "default_max_parallel_families": 2,
+      "default_max_parallel_variants_per_family": 2,
+      "default_max_parallel_calibrations": 1
+    }
+  }
+}

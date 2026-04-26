@@ -1,0 +1,126 @@
+{
+  "capture_id": "2026-04-24-sales-acceleration-batch-01",
+  "topic": "sales_acceleration",
+  "captured_at": "2026-04-24 23:39:08 CST (+0800)",
+  "capture_mode": "network-api",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "instrument_type": "EQUITY",
+    "language": "FASTEXPR",
+    "decay": 4,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unit_handling": "VERIFY",
+    "nan_handling": "OFF",
+    "test_period": "P1Y"
+  },
+  "evidence": {
+    "field_pack": "./runs/field-search-packs/2026-04-24-sales-acceleration.md",
+    "expression_family": "./runs/expression-families/2026-04-24-sales-acceleration.md",
+    "official_endpoints": [
+      "POST https://api.worldquantbrain.com/simulations",
+      "GET https://api.worldquantbrain.com/simulations/4boeSf4z34IibQbWuCCQWFy",
+      "GET https://api.worldquantbrain.com/simulations/3KxIea7zd4vp976PMbgTc1U",
+      "GET https://api.worldquantbrain.com/alphas/om9XLvzv",
+      "GET https://api.worldquantbrain.com/alphas/1YnRXKlW",
+      "GET https://api.worldquantbrain.com/alphas/om9XLvzv/recordsets/yearly-stats",
+      "GET https://api.worldquantbrain.com/alphas/1YnRXKlW/recordsets/yearly-stats"
+    ],
+    "notes": [
+      "The baseline second-difference revenue family lost directly to the first-difference control on the official IS detail API.",
+      "The control improved IS versus the baseline but still failed the holdout slice and kept the same UNITS warning.",
+      "All metrics and gate results were taken from the logged-in official WorldQuant BRAIN browser/API session.",
+      "No submission-worthy evidence was found, so this family is frozen after batch 01."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "sales_accel_revenue_63_second_diff_industry",
+      "expression": "group_rank(ts_delta(ts_delta(revenue, 63), 63), industry)",
+      "ui_context": "Official alpha detail API",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "alpha_id": "om9XLvzv",
+      "simulation_id": "4boeSf4z34IibQbWuCCQWFy",
+      "metrics": {
+        "sharpe": -0.12,
+        "fitness": -0.02,
+        "turnover": 0.0557,
+        "returns": -0.0041,
+        "drawdown": 0.1189,
+        "margin": -0.000146,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The second-difference baseline was negative on IS and negative on TEST, so it is not a candidate path.",
+        "The official alpha detail API exposed the same UNITS warning seen in the browser.",
+        "Use this line only as a killed control when comparing against the first-difference sibling."
+      ]
+    },
+    {
+      "name": "sales_accel_revenue_63_first_diff_industry",
+      "expression": "group_rank(ts_delta(revenue, 63), industry)",
+      "ui_context": "Official alpha detail API",
+      "classification": "INFERIOR",
+      "status": "UNSUBMITTED",
+      "alpha_id": "1YnRXKlW",
+      "simulation_id": "3KxIea7zd4vp976PMbgTc1U",
+      "metrics": {
+        "sharpe": 0.16,
+        "fitness": 0.04,
+        "turnover": 0.0483,
+        "returns": 0.0076,
+        "drawdown": 0.1626,
+        "margin": 0.000313,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "PASS",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "UNITS": "WARNING",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The control beat the second-difference baseline on IS, but its TEST slice was still deeply negative.",
+        "The control also kept the same UNITS warning and remained far below submit-ready quality.",
+        "This is the best member of the batch, but it is still a dead end for submission."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "winner_by_is": "sales_accel_revenue_63_first_diff_industry",
+    "winner_by_fitness": "sales_accel_revenue_63_first_diff_industry",
+    "branch_takeaway": "Second difference did not beat the first-difference control, and the control itself still failed holdout. Freeze sales_acceleration after batch 01 and do not spend more budget on window polishing or sign-flip cleanup."
+  }
+}

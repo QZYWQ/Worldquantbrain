@@ -118,19 +118,24 @@ The forum-backed slow-ratio lane is still valid on this account, but the usable 
 
 ## Decision
 
-- Branch: `shareholders_equity_total_2 / cap`.
-- Current best anchor: `ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90)`.
+- Frozen: `shareholders_equity_total_2 / cap`.
+- Current best official line (not submit-ready): `ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90)`.
 - The grouping control flipped the branch: `industry 90` materially beats `subindustry 90` on the shown-test-period aggregate view while keeping the same visible IS testing status.
 - Inside the verified `industry` window sweep, the ordering is `90 > 84 > 63` on the shown-test-period aggregate view.
 - Demote: `subindustry` variants to controls, with `subindustry 90` the strongest backup inside that grouping.
 - Demote: `cashflow / cap` to backup only.
 - Hold: `total_assets_amount / cap` as a weaker accessible sibling; verified sibling ordering is `90 > 84 > 63`, and the full sibling branch stays materially below the equity / cap anchor.
 - Kill: `working_capital / cap` on first official control.
+- Freeze this family: the neutralization-axis probe did not improve full-IS Sharpe/Fitness over the raw-ratio anchor, so there is no remaining official budget here.
 
-## Next Smallest Test Set
+## Neutralization Probe Result
 
-- Revisit the `shareholders_equity_total_2 / cap, industry 90` anchor after pending checks resolve.
-- If another sibling is needed later, return only after a fresh reason to branch away from the anchor.
+- Axis: group / neutralization only; same numerator, denominator, and 90d horizon.
+- Alpha: `VkYR9LvA`
+- Full-IS: `Sharpe 0.86 / Fitness 0.62`
+- Test-period: `Sharpe 1.56 / Fitness 1.40`
+- Gate readout: `LOW_SHARPE FAIL`, `LOW_FITNESS FAIL`, `LOW_TURNOVER PASS`, `HIGH_TURNOVER PASS`, `CONCENTRATED_WEIGHT PASS`, `LOW_SUB_UNIVERSE_SHARPE PASS`, `SELF_CORRELATION PENDING`, `MATCHES_COMPETITION PASS`.
+- Decision: freeze this family; the probe improved the test card but not the official full-IS gate.
 
 ## Latest Blocker
 
@@ -162,6 +167,7 @@ The forum-backed slow-ratio lane is still valid on this account, but the usable 
 - `MATCHES_COMPETITION`: `PASS` for `Challenge` and `IQC2026S1`.
 - The binding blockers are the full-IS values, not the shown-test-period card: IS `Sharpe 0.89 / Fitness 0.60` versus shown-test-period `Sharpe 1.43 / Fitness 1.10`.
 - Short re-polling after the API read still left `SELF_CORRELATION` at `PENDING`, so there is still no new submission-state transition to act on.
+- The neutralization-axis control above has now been run and failed the full-IS improvement stop condition, so freeze the family and stop additional official tests under current budget.
 
 ## Structural Branch Check
 

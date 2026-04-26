@@ -1,0 +1,49 @@
+{
+  "capture_id": "2026-04-25-sentiment-focus-rank-batch-01",
+  "topic": "sentiment_focus_rank",
+  "captured_at": "2026-04-25",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Subindustry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "ON",
+    "unitHandling": "VERIFY"
+  },
+  "evidence": {
+    "simulate_page": "https://platform.worldquantbrain.com/simulate",
+    "field_search_pack": "runs/field-search-packs/2026-04-25-sentiment-focus-rank.md",
+    "expression_family": "runs/expression-families/2026-04-25-sentiment-focus-rank.md",
+    "notes": [
+      "Baseline result was visible on Simulation 1.",
+      "Simulation 2 was started and then canceled after the baseline read was clearly too weak to justify further same-family polishing."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "sentiment_focus_rank_baseline",
+      "expression": "snt1_d1_dynamicfocusrank",
+      "metrics": {
+        "sharpe": 0.13,
+        "fitness": 0.04,
+        "turnover": 0.0907,
+        "returns": 0.0120,
+        "drawdown": 0.2173,
+        "margin": 0.000264,
+        "max_weight": null,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": "Weak first read; freeze after baseline and do not spend more same-family budget on cosmetic field swaps."
+    }
+  ]
+}

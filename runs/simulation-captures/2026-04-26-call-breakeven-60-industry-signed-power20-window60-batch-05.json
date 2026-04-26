@@ -1,0 +1,67 @@
+{
+  "capture_id": "2026-04-26-call-breakeven-60-industry-signed-power20-window60-batch-05",
+  "topic": "call_breakeven_60_b_stage_industry_signed_power20_window60",
+  "captured_at": "2026-04-26T10:22:00+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "Industry",
+    "truncation": 0.08,
+    "testPeriod": "P1Y",
+    "pasteurization": "ON",
+    "language": "FASTEXPR",
+    "nanHandling": "OFF",
+    "unitHandling": "VERIFY",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Run from the logged-in browser session.",
+      "The simulation completed on the official platform and remained UNSUBMITTED / anonymous.",
+      "The page shows 'Needs Improvement'.",
+      "The TEST period summary was captured after selecting the TEST period button.",
+      "The IS summary was rechecked after switching back to the IS period button.",
+      "Check Submission and Submit Alpha remained disabled.",
+      "Properties last saved Sun, 04/26/2026, 10:22 AM."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "call_breakeven_60_signed_power_rank20_window60_industry",
+      "expression": "group_rank(ts_rank(signed_power(ts_rank(call_breakeven_60 / close, 20), 2), 60), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "metrics": {
+        "is_sharpe": 1.17,
+        "is_fitness": 0.47,
+        "is_turnover": 0.3928,
+        "is_returns": 0.0624,
+        "is_drawdown": 0.0645,
+        "is_margin": 0.000318,
+        "test_sharpe": 1.22,
+        "test_fitness": 0.38,
+        "test_turnover": 0.4151,
+        "test_returns": 0.0401,
+        "test_drawdown": 0.0210,
+        "test_margin": 0.000193
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "The 60d signed-power sibling also clears the B floor on TEST.",
+        "It is weaker than the 20d signed-power lead on both TEST Sharpe and TEST Fitness."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The 60d signed-power sibling is a valid B-stage survivor, but it trails the 20d signed-power lead and should remain the secondary branch unless the backup transform clearly dominates."
+  }
+}

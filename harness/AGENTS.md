@@ -25,6 +25,8 @@ Every long-running session should begin in this order:
 5. `./harness/coding-session.sh session-open`
 6. `./harness/coding-session.sh start`
 
+For alpha-family work in a fresh or memory-poor window, also load `./runs/research-contracts/current-incubation-summary.md`, then `./runs/research-contracts/window-bootstrap-and-signflip-protocol.md` before choosing a family or writing a batch.
+
 Before trusting a harness change, run:
 
 - `./harness/tests/all.sh`
@@ -36,6 +38,48 @@ For a fast minimum confidence check while iterating on one narrow behavior, run:
 If the task is about long-session governance rules rather than harness commands themselves, route through:
 
 - `../03-代理工程化规则索引.md`
+
+## Incubation Protocol
+
+The canonical incubation rules live in `./harness/incubation-protocol.json`.
+
+- Treat that JSON file as the only source of truth for incubation stages, thresholds, stop eligibility, reclaim rules, and stage caps.
+- Do not invent incubation thresholds inside shell helpers, reports, or ad hoc notes.
+- `legacy_flags.freeze_all_others` in budget snapshots is deprecated and snapshot-only; it must not participate in any go/kill decision or override the incubation protocol.
+- Inhibition Rule: if `min_depth_completed == false`, do not write a permanent stop memo and do not mark the family as a permanent `freeze` or `kill`.
+- S-1 / S0 pure-noise exits may be screen-killed, but that is not the same thing as a permanent stop memo.
+- The existing negative-Sharpe sign-flip rule still applies through A, B, C, and D; incubation adds a protected middle layer and does not weaken the front-door gate.
+- All stage budgets, release windows, and thresholds come from the protocol, not from local judgment.
+- Cold-pool release is manual until a dedicated helper lands: at each `cycle-close` or seven-day review, the operator checks `family-budget-ledger.json` plus the protocol, releases at most 50% of `cold_pool_balance` into the priority queue, and never spends `emergency_reserve_slots` on the scheduled release path.
+- D-stage platform blocks are an execution-layer hold condition, not a signal-quality verdict: if the current lane hits an unavailable delay-0 path, unknown variable, or similar platform limitation, record hold + reclaim in the session notes, suppress same-source retry variants for that lane in the current session, and wait for a genuinely new field, delay, or mechanism before trying again.
+- After the first official Check Submission failure, rescue is bounded: allow at most two targeted rescue variants per lane, each changing only one major lever and aimed at the dominant failing check; if the same core failure persists after those variants, stop spending reclaimed budget on the lane and branch away.
+- These are execution-layer policies; do not encode them into `incubation-protocol.json`.
+- Implementation note for `state-helpers.sh`: read the current ledger plus the protocol to display state; do not invent stop eligibility locally.
+
+### Implementation Note for `state-helpers.sh` [P0]
+
+`state-helpers.sh` still rewrites `progress.md` on session start/finish, so it must be updated before the new incubate / screen-kill semantics become executable truth.
+
+- Functions to change:
+  - `update_progress_start`
+  - `update_progress_finish`
+  - any helper that renders session-state summaries from `progress.md`
+- Required read path:
+  1. load `./harness/incubation-protocol.json`
+  2. load `./runs/research-contracts/family-budget-ledger.json`
+  3. if a family-state summary is shown, read it from the ledger row and the protocol, not from ad hoc shell logic
+- Required write path:
+  1. preserve unknown frontmatter keys already present in `progress.md`
+  2. only mutate session fields (`current_session`, `active_feature`, `active_status`, `current_branch`, `current_head`, `last_verified_feature`, `last_verified_at`)
+  3. never infer `stop_eligible`, `freeze`, `kill`, or `hold` from progress alone
+- Pseudocode:
+  - `ledger = json_load("runs/research-contracts/family-budget-ledger.json")`
+  - `protocol = json_load("harness/incubation-protocol.json")`
+  - `family_row = find_row(ledger, feature_id)`
+  - `display_state = family_row["registry_state"]`
+  - `display_stage = family_row["stage_budget"] or family_row["incubation_stage"]`
+  - `stop_eligible = protocol_derived_min_depth_check(family_row, protocol)`
+  - `write_progress(preserve_existing_frontmatter=True, update_session_fields_only=True)`
 
 ## Core Rules
 

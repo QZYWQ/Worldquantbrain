@@ -1,0 +1,1148 @@
+{
+  "generated_at": "2026-04-27T01:46:24+08:00",
+  "source_registry": "runs/research-contracts/2026-04-26-family-registry-incubation-update.md",
+  "policy": {
+    "mode": "multi-family-incubation",
+    "active_main": null,
+    "active_challenger": null,
+    "freeze_all_others": false,
+    "emergency_reserve_slots": 3,
+    "cold_pool_balance": 1,
+    "cold_pool_release_policy": {
+      "window_days": 7,
+      "priority_order": [
+        "new scouting candidates ordered by S-1 score descending",
+        "hold-pool families that already have min_depth_completed == true"
+      ],
+      "max_release_fraction": 0.5,
+      "emergency_reserve_isolated": true,
+      "summary": "Reclaimed budget stays in cold_pool until the family cycle closes or seven days pass, then it is released first to new scouting candidates and then to hold-pool families that already cleared minimum depth.",
+      "execution_trigger": [
+        "cycle-close completed",
+        "seven-day review reached"
+      ],
+      "executor": "human operator or session owner",
+      "emergency_reserve_isolation": "scheduled release must not draw from emergency reserve"
+    },
+    "legacy_flags": {
+      "freeze_all_others": true,
+      "budget_stop_rule": "Do not allocate new mining budget until a new active line is authorized and reaches a real official submit-ready state.",
+      "locked_reference_alphas": [
+        "qMmpvp8v",
+        "E5repQ81"
+      ],
+      "freeze_all_others_deprecated": true,
+      "freeze_all_others_scope": "legacy_snapshot_only",
+      "go_kill_decision_scope": "incubation_protocol_only",
+      "note": "freeze_all_others is retained only as a historical snapshot flag; it must not override incubation decisions."
+    },
+    "submit_ready_families": 0
+  },
+  "summary": {
+    "family_count": 30,
+    "action_counts": {
+      "active-main": 0,
+      "active-challenger": 0,
+      "freeze": 21,
+      "seal": 5,
+      "incubate": 4,
+      "probe-only": 0
+    },
+    "registry_state_counts": {
+      "branch": 2,
+      "hold": 23,
+      "kill": 5,
+      "freeze": 0,
+      "incubate": 0,
+      "exploit": 0
+    },
+    "action_counts_note": "freeze/seal counts are legacy snapshot labels only; use registry_state_counts for incubation semantics."
+  },
+  "entries": [
+    {
+      "family_key": "actual_sales_delta_fundamental",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 4,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_delta(actual_sales_value_quarterly, 63), industry); sharpe=0.35; fitness=0.13; turnover=4.89%; evidence=official_checks",
+      "best_outcome_status": "UNSUBMITTED",
+      "budget_instruction": "Freeze this family; the first actual-sales batch failed across baseline/sign/21d/126d, so do not allocate more budget here unless a genuinely new actual-sales field source appears.",
+      "budget_reason": "All four controls failed or weakened materially, and the branch should not receive more budget under the current cycle.",
+      "next_review_trigger": "Revisit only if a new actual-sales field source appears.",
+      "evidence_note": "Official batch-01 capture `runs/simulation-captures/2026-04-24-actual-sales-delta-fundamental-batch-01.json` records the failed baseline, sign, 21d, and 126d controls.",
+      "budget_account": "legacy/actual_sales_delta_fundamental",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "fundamental_model_slow_ratio_equity_cap",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 15,
+      "full_gate_outcome_count": 4,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 90); evidence=full_submission_gates",
+      "best_outcome_status": "UNSUBMITTED",
+      "budget_instruction": "Freeze this family; the neutralization-axis probe failed to improve full-IS Sharpe/Fitness over the raw-ratio anchor, so do not allocate more budget here.",
+      "budget_reason": "The former active main is still below LOW_SHARPE / LOW_FITNESS and the neutralization-axis probe did not improve the official gate.",
+      "next_review_trigger": "Revisit only if a genuinely new information source appears.",
+      "evidence_note": "full_submission_gates",
+      "budget_account": "legacy/fundamental_model_slow_ratio_equity_cap",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "analyst_eps_sibling_qfv4_industry",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 3,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry); sharpe=1.93; fitness=1.4; turnover=0.1768; evidence=partial_gate_checks",
+      "best_outcome_status": null,
+      "budget_instruction": "Freeze this family; qfv4 siblings underperform the annual-median control, so do not spend more budget on near-neighbor polishing.",
+      "budget_reason": "The line has candidate-quality evidence, but the annual-median control is stronger on holdout and the family has no remaining one-axis path worth paying for.",
+      "next_review_trigger": "Revisit only if a genuinely new analyst thesis appears.",
+      "evidence_note": "partial_gate_checks",
+      "budget_account": "legacy/analyst_eps_sibling_qfv4_industry",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "analyst_disagreement_dts_spe_industry",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 6,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(anl4_afv4_dts_spe, 60), industry); sharpe=0.21; fitness=0.04; turnover=0.1106; evidence=partial_tests",
+      "best_outcome_status": "blocked",
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/analyst_disagreement_dts_spe_industry",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "analyst_eps_price_industry",
+      "registry_state": "branch",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 4,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(earnings_per_share_average/close, 120), industry); sharpe=1.67; fitness=1.22; turnover=0.1281; evidence=partial_gate_checks",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_gate_checks",
+      "budget_account": "legacy/analyst_eps_price_industry",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "event_option_volume_gate",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 4,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=trade_when(pcr_vol_all > ts_mean(pcr_vol_all, 20), group_rank(-pcr_vol_all, industry), -1); sharpe=-0.1; fitness=-0.02; turnover=18.37%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/event_option_volume_gate",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "event_trigger_low_turnover_volume_gate",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 1,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=trade_when(volume > adv20, group_rank(ts_zscore(close - vwap, 10), industry), -1); sharpe=-1.52; fitness=-0.5; turnover=42.17; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/event_trigger_low_turnover_volume_gate",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "fundamental_model_slow_ratio_cashflow",
+      "registry_state": "branch",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 4,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=ts_rank(group_rank(cashflow / cap, industry), 90); sharpe=0.4; fitness=0.13; turnover=13.49%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/fundamental_model_slow_ratio_cashflow",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "news_attention_qcm_branch",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 1,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_neutralize(ts_zscore(ts_mean(vec_avg(nws18_qcm), 5), 20), industry); sharpe=-1.29; fitness=-0.32; turnover=40.09%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/news_attention_qcm_branch",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "news_attention_qcm_vecavg_63d_branch",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 1,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_mean(vec_avg(nws18_qcm), 63), subindustry); sharpe=-0.75; fitness=-0.32; turnover=6.75%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/news_attention_qcm_vecavg_63d_branch",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "news_attention_relevance_63d_branch",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 1,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_mean(nws18_relevance, 63), subindustry); sharpe=-0.44; fitness=-0.18; turnover=4.64%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/news_attention_relevance_63d_branch",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "operating_income_delta",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 4,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(operating_income, 252), industry); sharpe=1.13; fitness=0.73; turnover=5.16%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/operating_income_delta",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "operating_income_history_position",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 8,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(ts_mean(operating_income, 63), 252), industry); sharpe=1.25; fitness=0.87; turnover=3.63%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "Freeze this family; the live API check on Gr37elr0 and the later ridge batches still fail holdout, so do not allocate more same-source budget unless a genuinely new information source appears.",
+      "budget_reason": "The 63d/252d anchor now has a live API check (Gr37elr0) showing LOW_SHARPE FAIL / LOW_FITNESS FAIL, and the later 504d ridge batches stayed TEST-negative. No active main remains inside the current registry.",
+      "next_review_trigger": "Revisit only if a genuinely new information source appears.",
+      "evidence_note": "partial_tests; refreshed with official live API recheck on Gr37elr0",
+      "budget_account": "legacy/operating_income_history_position",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "operating_income_smoothed_history_position",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 15,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(ts_mean(operating_income, 21), 252), industry); sharpe=1.28; fitness=0.89; turnover=4.53; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/operating_income_smoothed_history_position",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "revenue_smoothed_history_position",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 2,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(ts_mean(revenue, 63), 504), industry); sharpe=0.31; fitness=0.11; turnover=3.22%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/revenue_smoothed_history_position",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "sales_delta_fundamental",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 8,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_delta(operating_income, 126), industry); sharpe=0.95; fitness=0.52; turnover=4.73%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/sales_delta_fundamental",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "sentiment_buzz_stability",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 8,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_mean(snt_buzz, 63), industry); sharpe=0.39; fitness=0.14; turnover=3.68%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "No new batches, no additional smoothing, and no fresh parameter search unless the active lines fail first.",
+      "budget_reason": "Freeze this family and stop spending budget on near-duplicate polishing.",
+      "next_review_trigger": "Revisit only if the active lines change state or a new information source appears.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/sentiment_buzz_stability",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "fundamental_model_slow_ratio",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 0,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "no outcome summary",
+      "best_outcome_status": null,
+      "budget_instruction": "Freeze this family; the baseline fields are absent from the saved USA TOP3000 Data Explorer truth, so no legal probe remains under current constraints.",
+      "budget_reason": "`net_income`, `market_cap`, `mdl110_score`, `mdl110_value`, and `mdl_analyst_sentiment` are missing from the saved field truth, so this lane fails the field-existence gate.",
+      "next_review_trigger": "Revisit only if a new official field source appears or a genuinely new family is authorized.",
+      "evidence_note": "Saved Data Explorer capture `runs/session-briefs/data-fields-USA-TOP3000-20260423.network-response` does not contain the baseline fields.",
+      "budget_account": "legacy/fundamental_model_slow_ratio",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "news_attention_bee_stability",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 0,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "no outcome summary",
+      "best_outcome_status": null,
+      "budget_instruction": "Freeze this family; the accessible news18 fields are VECTOR at 0.5 coverage and the lane is hard-excluded, so do not spend more budget here.",
+      "budget_reason": "`nws18_bee`, `nws18_qcm`, `nws18_relevance`, and `nws18_nip` are all VECTOR with 0.5 coverage, and the seed expander marked the family `hard_excluded=true`.",
+      "next_review_trigger": "Revisit only if field type and coverage evidence improves or a genuinely new family is authorized.",
+      "evidence_note": "Saved Data Explorer capture `runs/session-briefs/data-fields-USA-TOP3000-20260423.network-response` and `runs/learning-loops/2026-04-23-seed-expander-203907.json` both block this lane.",
+      "budget_account": "legacy/news_attention_bee_stability",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_freeze",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "capital_structure_balance_sheet",
+      "registry_state": "kill",
+      "budget_action": "seal",
+      "priority": 4,
+      "official_outcome_count": 5,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(ts_mean(liabilities / assets, 63), 504), industry); sharpe=0.37; fitness=0.12; turnover=2.50%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "Do not reopen unless a genuinely new information source appears. No parameter polishing, no close cousin branch.",
+      "budget_reason": "Family is explicitly killed in the docs or registry and should stay out of the budget loop.",
+      "next_review_trigger": "Revisit only if a genuinely new information source is discovered.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/capital_structure_balance_sheet",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_seal",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "event_trigger_low_turnover_volatility_gate",
+      "registry_state": "kill",
+      "budget_action": "seal",
+      "priority": 4,
+      "official_outcome_count": 8,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=trade_when(ts_rank(ts_std_dev(returns, 5), 20) > 0.5, group_rank(ts_zscore(close - vwap, 10), industry), -1); sharpe=-0.74; fitness=-0.18; turnover=37.70%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "Do not reopen unless a genuinely new information source appears. No parameter polishing, no close cousin branch.",
+      "budget_reason": "Family is explicitly killed in the docs or registry and should stay out of the budget loop.",
+      "next_review_trigger": "Revisit only if a genuinely new information source is discovered.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/event_trigger_low_turnover_volatility_gate",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_seal",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "operating_income_sales_ratio",
+      "registry_state": "kill",
+      "budget_action": "seal",
+      "priority": 4,
+      "official_outcome_count": 4,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(ts_mean(operating_income / sales, 21), 252), industry); sharpe=0.69; fitness=0.3; turnover=4.46; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "Do not reopen unless a genuinely new information source appears. No parameter polishing, no close cousin branch.",
+      "budget_reason": "Family is explicitly killed in the docs or registry and should stay out of the budget loop.",
+      "next_review_trigger": "Revisit only if a genuinely new information source is discovered.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/operating_income_sales_ratio",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_seal",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "pcr_oi_all_industry_rank",
+      "registry_state": "kill",
+      "budget_action": "seal",
+      "priority": 4,
+      "official_outcome_count": 2,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(pcr_oi_all, 20), industry); sharpe=0.19; fitness=0.03; turnover=26.81%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "Do not reopen unless a genuinely new information source appears. No parameter polishing, no close cousin branch.",
+      "budget_reason": "Family is explicitly killed in the docs or registry and should stay out of the budget loop.",
+      "next_review_trigger": "Revisit only if a genuinely new information source is discovered.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/pcr_oi_all_industry_rank",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_seal",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "price_volume_short_horizon",
+      "registry_state": "kill",
+      "budget_action": "seal",
+      "priority": 4,
+      "official_outcome_count": 3,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_zscore(ts_sum(close - ts_delay(close, 1), 20), 20), industry); sharpe=-0.87; fitness=-0.39; turnover=28.27; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_instruction": "Do not reopen unless a genuinely new information source appears. No parameter polishing, no close cousin branch.",
+      "budget_reason": "Family is explicitly killed in the docs or registry and should stay out of the budget loop.",
+      "next_review_trigger": "Revisit only if a genuinely new information source is discovered.",
+      "evidence_note": "partial_tests",
+      "budget_account": "legacy/price_volume_short_horizon",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "legacy_seal",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      }
+    },
+    {
+      "family_key": "call_breakeven_60",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 1,
+      "official_outcome_count": 15,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "group_rank(ts_rank(signed_power(ts_zscore(call_breakeven_60 / close, 20), 2), 20) + ts_rank(pcr_oi_30, 20), industry); sharpe=0.92; fitness=0.24; evidence=official_checks",
+      "best_outcome_status": "UNSUBMITTED",
+      "budget_account": "hold/call_breakeven_60",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 3,
+        "C": 1,
+        "D": 1,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "incubate",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      },
+      "budget_instruction": "Hold after the D-stage delay-0 block; reclaim the remaining budget to cold_pool.",
+      "budget_reason": "The C-stage hybrid cleared the TEST floor, but the only legal D-stage delay path is blocked on this account.",
+      "next_review_trigger": "Revisit only if this account later exposes a valid delay path.",
+      "evidence_note": "runs/submission-memos/2026-04-25-call-breakeven-live-recheck.md; runs/submission-memos/2026-04-25-call-breakeven-family-stop.md; runs/simulation-captures/2026-04-26-call-breakeven-60-industry-decay2-batch-01.json; runs/simulation-captures/2026-04-26-call-breakeven-60-industry-mean5-batch-02.json; runs/simulation-captures/2026-04-26-call-breakeven-60-pcr-oi-hybrid-batch-03.json; runs/simulation-captures/2026-04-26-call-breakeven-60-industry-signed-power20-window20-batch-04.json; runs/simulation-captures/2026-04-26-call-breakeven-60-industry-signed-power20-window60-batch-05.json; runs/simulation-captures/2026-04-26-call-breakeven-60-industry-zscore-power20-window20-batch-06.json; runs/simulation-captures/2026-04-26-call-breakeven-60-industry-signed-power20-pcr-oi-hybrid-batch-07.json; runs/simulation-captures/2026-04-26-call-breakeven-60-delay0-blocked-batch-08.json; runs/submission-memos/2026-04-26-call-breakeven-60-d-stage-delay0-blocked.md",
+      "incubation_stage": "D",
+      "screen_result": "pass_s0",
+      "min_depth_completed": false,
+      "stop_eligible": false,
+      "overfit_risk": "medium-high",
+      "global_corr_risk_score": 0.54
+    },
+    {
+      "family_key": "pcr_oi_30",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 2,
+      "official_outcome_count": 6,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "group_rank(ts_rank(pcr_oi_30, 20), industry); sharpe=0.90; fitness=0.28; turnover=22.71%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_account": "hold/pcr_oi_30",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 2,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "incubate",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      },
+      "budget_instruction": "Hold after the B-stage failure; reclaim the protected B-stage budget to cold_pool and rotate away from this options-tenor source.",
+      "budget_reason": "Both protected B-stage probes failed the TEST floor, so the lane should not receive more same-source budget.",
+      "next_review_trigger": "Revisit only if a genuinely new options-tenor source appears.",
+      "evidence_note": "runs/submission-memos/2026-04-25-pcr-oi-30-live-first-batch.md; runs/submission-memos/2026-04-25-pcr-oi-30-stop-memo.md; runs/simulation-captures/2026-04-26-pcr-oi-30-industry-mean5-batch-02.json; runs/simulation-captures/2026-04-26-pcr-oi-30-industry-decay3-batch-03.json; runs/submission-memos/2026-04-26-pcr-oi-30-b-stage-hold.md",
+      "incubation_stage": "B",
+      "screen_result": "pass_s0",
+      "min_depth_completed": false,
+      "stop_eligible": false,
+      "overfit_risk": "medium-high",
+      "global_corr_risk_score": 0.58
+    },
+    {
+      "family_key": "pcr_vol_90",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 3,
+      "official_outcome_count": 7,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "group_rank(ts_rank(ts_decay_linear(pcr_vol_90, 3), 20) + ts_rank(pcr_oi_30, 20), industry); sharpe=1.27; fitness=0.29; turnover=51.82%; evidence=official_checks",
+      "best_outcome_status": "UNSUBMITTED",
+      "budget_account": "hold/pcr_vol_90",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 2,
+        "C": 1,
+        "D": 1,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "incubate",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      },
+      "budget_instruction": "Hold after the D-stage delay-0 block; reclaim the remaining budget to cold_pool.",
+      "budget_reason": "The C-stage hybrid cleared the TEST floor, but the D-stage delay-0 scan is blocked on this account.",
+      "next_review_trigger": "Revisit only if this account later exposes a valid delay path.",
+      "evidence_note": "runs/submission-memos/2026-04-25-pcr-vol-90-live-first-batch.md; runs/submission-memos/2026-04-25-pcr-vol-90-stop-memo.md; runs/submission-memos/2026-04-26-pcr-vol-90-b-stage-advance.md; runs/submission-memos/2026-04-26-pcr-vol-90-c-stage-hybrid.md; runs/submission-memos/2026-04-26-pcr-vol-90-delay0-blocked.md; runs/simulation-captures/2026-04-26-pcr-vol-90-industry-mean5-batch-02.json; runs/simulation-captures/2026-04-26-pcr-vol-90-industry-decay3-batch-03.json; runs/simulation-captures/2026-04-26-pcr-vol-90-industry-pcr-oi-hybrid-batch-04.json; runs/simulation-captures/2026-04-26-pcr-vol-90-delay0-blocked-batch-05.json",
+      "incubation_stage": "D",
+      "screen_result": "pass_s0",
+      "min_depth_completed": false,
+      "stop_eligible": false,
+      "overfit_risk": "medium-high",
+      "global_corr_risk_score": 0.61
+    },
+    {
+      "family_key": "socialmedia8",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 4,
+      "official_outcome_count": 4,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "group_rank(ts_rank(ts_zscore(snt_social_value, 20), 20) + ts_rank(pcr_oi_30, 20), industry); sharpe=1.14; fitness=0.31; turnover=30.19%; evidence=official_checks",
+      "best_outcome_status": "UNSUBMITTED",
+      "budget_account": "hold/socialmedia8",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 2,
+        "C": 1,
+        "D": 1,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "incubate",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      },
+      "budget_instruction": "Hold after the D-stage delay-0 block; reclaim the remaining budget to cold_pool.",
+      "budget_reason": "The C-stage hybrid clears TEST, but the D-stage delay-0 scan is blocked on this account.",
+      "next_review_trigger": "Revisit only if a genuinely new external field class or mechanism appears.",
+      "evidence_note": "runs/submission-memos/2026-04-25-socialmedia8-sentiment-value-live-first-batch.md; runs/submission-memos/2026-04-25-socialmedia8-sentiment-value-stop-memo.md; runs/submission-memos/2026-04-26-socialmedia8-sentiment-value-b-stage-advance.md; runs/submission-memos/2026-04-26-socialmedia8-sentiment-value-c-stage-hybrid.md; runs/submission-memos/2026-04-26-socialmedia8-sentiment-value-delay0-blocked.md; runs/simulation-captures/2026-04-26-socialmedia8-sentiment-value-industry-mean5-batch-02.json; runs/simulation-captures/2026-04-26-socialmedia8-sentiment-value-industry-zscore20-batch-03.json; runs/simulation-captures/2026-04-26-socialmedia8-sentiment-value-industry-pcr-oi-hybrid-batch-04.json; runs/simulation-captures/2026-04-26-socialmedia8-sentiment-value-delay0-blocked-batch-05.json",
+      "incubation_stage": "D",
+      "screen_result": "pass_s0",
+      "min_depth_completed": false,
+      "stop_eligible": false,
+      "overfit_risk": "high",
+      "global_corr_risk_score": 0.68
+    },
+    {
+      "family_key": "socialmedia12",
+      "registry_state": "hold",
+      "budget_action": "screen_kill",
+      "priority": 5,
+      "official_outcome_count": 2,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "-scl12_sentiment_fast_d1; sharpe=0.51; fitness=0.13; turnover=76.02%; evidence=partial_tests",
+      "best_outcome_status": null,
+      "budget_account": "scout_pool/socialmedia12",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "incubate",
+        "status": "returned_to_scout_pool",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      },
+      "budget_instruction": "The S0 recheck stayed negative on the official page, so screen-kill the lane, return it to the scout pool, and do not spend deeper budget.",
+      "budget_reason": "The lane remains negative on IS and the prior sign-flip control from the original batch already failed, so there is no rescue path worth more budget under the current cycle.",
+      "next_review_trigger": "Revisit only if a genuinely new external field class or mechanism appears.",
+      "evidence_note": "runs/submission-memos/2026-04-25-socialmedia12-sentiment-fast-live-first-batch.md; runs/submission-memos/2026-04-25-socialmedia12-sentiment-fast-stop-memo.md",
+      "incubation_stage": "S0",
+      "screen_result": "screen_kill",
+      "min_depth_completed": false,
+      "stop_eligible": false,
+      "overfit_risk": "high",
+      "global_corr_risk_score": 0.74
+    },
+    {
+      "family_key": "pcr_oi_720",
+      "registry_state": "hold",
+      "budget_action": "freeze",
+      "priority": 1,
+      "official_outcome_count": 17,
+      "full_gate_outcome_count": 0,
+      "submit_ready_count": 0,
+      "best_outcome_summary": "expr=group_rank(ts_rank(ts_zscore(ts_mean(pcr_oi_720, 7), 126), 20) + ts_rank(anl4_af_eps_value / close, 60), industry); is_sharpe=1.36; is_fitness=0.80; test_sharpe=1.24; test_fitness=0.60; evidence=official_simulate",
+      "best_outcome_status": "UNSUBMITTED",
+      "budget_instruction": "Hold after the E-stage gating repair sweep; the lane is still not submit-ready and any further budget should wait for a genuinely new path.",
+      "budget_reason": "The ts_delta trade_when gate improved turnover efficiency but undercut IS Sharpe and still failed the core gates; the hump fallback was inferior, and ZYWOgoMY remains the best viable repair candidate with LOW_SUB_UNIVERSE_SHARPE green.",
+      "next_review_trigger": "Revisit only if a genuinely new gating / normalization path or new foreign field appears.",
+      "evidence_note": "runs/research-contracts/2026-04-26-s1-prescreen-results.md; runs/submission-memos/2026-04-26-pcr-oi-720-a-stage-signflip.md; runs/simulation-captures/2026-04-26-pcr-oi-720-b-stage-window60-fallback-batch-01.json; runs/expression-families/2026-04-26-pcr-oi-720-c-stage.md; runs/simulation-captures/2026-04-26-pcr-oi-720-c-stage-anl4-af-eps-batch-01.json; runs/submission-memos/2026-04-26-pcr-oi-720-c-stage-hybrid.md; runs/submission-memos/2026-04-26-pcr-oi-720-e-stage-check.md; runs/submission-memos/2026-04-26-pcr-oi-720-e-stage-repair.md; api.worldquantbrain.com/alphas/KPwW3LGN; api.worldquantbrain.com/alphas/E5r9KlYr; api.worldquantbrain.com/alphas/3qn8XVVX; api.worldquantbrain.com/alphas/E5r9V5d0; api.worldquantbrain.com/alphas/npOLAKpl; api.worldquantbrain.com/alphas/LLl0X852; runs/submission-memos/2026-04-26-pcr-oi-720-e-stage-neutralization-scan.md; api.worldquantbrain.com/alphas/VkYANndb; runs/submission-memos/2026-04-26-pcr-oi-720-e-stage-sector-scan.md; runs/submission-memos/2026-04-26-pcr-oi-720-e-stage-industry-decay6.md; api.worldquantbrain.com/alphas/ZYWOgoMY; runs/submission-memos/2026-04-26-pcr-oi-720-e-stage-gating-repair.md; runs/simulation-captures/2026-04-26-pcr-oi-720-e-stage-gating-repair-batch-01.json; api.worldquantbrain.com/alphas/leRoGzNn; api.worldquantbrain.com/alphas/3qn85MxQ",
+      "budget_account": "hold/pcr_oi_720",
+      "stage_budget": {
+        "S-1": 0,
+        "S0": 0,
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "reclaim": {
+        "eligible": false,
+        "source": "incubate",
+        "status": "sealed",
+        "release_policy_ref": "policy.cold_pool_release_policy"
+      },
+      "incubation_stage": "D",
+      "screen_result": "pass_s0",
+      "min_depth_completed": false,
+      "stop_eligible": false,
+      "overfit_risk": "medium",
+      "global_corr_risk_score": 0.52
+    }
+  ],
+  "transfer_log": [
+    {
+      "family_key": "call_breakeven_60",
+      "from": "cold_pool",
+      "to": "incubate/call_breakeven_60",
+      "budget_units": 5,
+      "status": "scheduled",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "pcr_oi_30",
+      "from": "cold_pool",
+      "to": "incubate/pcr_oi_30",
+      "budget_units": 5,
+      "status": "scheduled",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "pcr_vol_90",
+      "from": "cold_pool",
+      "to": "incubate/pcr_vol_90",
+      "budget_units": 5,
+      "status": "scheduled",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "socialmedia8",
+      "from": "cold_pool",
+      "to": "incubate/socialmedia8",
+      "budget_units": 5,
+      "status": "scheduled",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "socialmedia12",
+      "from": "cold_pool",
+      "to": "incubate/socialmedia12",
+      "budget_units": 1,
+      "status": "conditional",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "call_breakeven_60",
+      "from": "incubate/call_breakeven_60",
+      "to": "cold_pool",
+      "budget_units": 5,
+      "status": "sealed",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "pcr_oi_30",
+      "from": "incubate/pcr_oi_30",
+      "to": "cold_pool",
+      "budget_units": 5,
+      "status": "sealed",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "pcr_vol_90",
+      "from": "incubate/pcr_vol_90",
+      "to": "cold_pool",
+      "budget_units": 5,
+      "status": "sealed",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "socialmedia12",
+      "from": "incubate/socialmedia12",
+      "to": "scout_pool",
+      "budget_units": 1,
+      "status": "screen_kill",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "call_breakeven_60",
+      "from": "cold_pool",
+      "to": "incubate/call_breakeven_60",
+      "budget_units": 3,
+      "status": "scheduled",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "call_breakeven_60",
+      "from": "incubate/call_breakeven_60",
+      "to": "cold_pool",
+      "budget_units": 1,
+      "status": "sealed",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "socialmedia8",
+      "from": "incubate/socialmedia8",
+      "to": "cold_pool",
+      "budget_units": 5,
+      "status": "sealed",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    },
+    {
+      "family_key": "pcr_oi_720",
+      "from": "cold_pool",
+      "to": "incubate/pcr_oi_720",
+      "budget_units": 0.5,
+      "status": "allocated",
+      "scheduled_for": "2026-04-26",
+      "release_policy_ref": "policy.cold_pool_release_policy"
+    }
+  ]
+}

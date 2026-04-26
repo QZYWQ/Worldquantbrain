@@ -47,6 +47,26 @@ For anything that may have changed or is account-specific, prefer:
 2. then this project directory
 3. then the external knowledge base
 
+## Window Bootstrap Rule
+
+Treat each fresh chat window as stateless until project artifacts are reloaded.
+
+Before any alpha-family decision, reconstruct current truth from project files in this order:
+
+1. `./AGENTS.md`
+2. `./00-项目总索引.md`
+3. `./02-工作流索引.md`
+4. `./harness/AGENTS.md` when the task may span sessions or needs tracked state
+5. `./runs/research-contracts/current-incubation-summary.md`
+6. `./runs/research-contracts/window-bootstrap-and-signflip-protocol.md`
+7. the latest family registry
+8. the latest next-step decision
+9. the latest freeze / stop / closure memo
+10. the latest official live recheck / submission memo
+11. the latest simulation capture
+
+If any of those artifacts are missing, use the best available project evidence and record the gap explicitly.
+
 ## Official Verification Boundaries
 
 You must verify against official WorldQuant BRAIN pages before treating any of these as current truth:
@@ -67,6 +87,7 @@ You must verify against official WorldQuant BRAIN pages before treating any of t
 - Do not copy the entire external knowledge base into this project.
 - Do not claim a line is submission-ready until official checks and real simulation results support that claim.
 - Prefer interpretable alpha families over opaque operator soup.
+- In alpha research, a negative Sharpe on the baseline or first simple control triggers an immediate sign-flip control on the final executable expression, using `-expr` or `-1 * expr`; do not keep polishing the original sign or touch extra lookback/smoothing/group levers until the flipped version has been simulated and compared.
 - Keep session-start artifacts, cycle reports, and post-work notes separate by role.
 
 ## Execution Discipline

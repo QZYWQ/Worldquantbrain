@@ -1,0 +1,259 @@
+{
+  "capture_id": "2026-04-25-option-breakeven-30-batch-01",
+  "topic": "option_breakeven_30",
+  "captured_at": "2026-04-25T20:42:08+08:00",
+  "capture_mode": "chrome-devtools-evaluate-script-official-api",
+  "status": "freeze-after-first-batch",
+  "platform_settings": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 4,
+    "neutralization": "SUBINDUSTRY",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "OFF",
+    "maxTrade": "OFF",
+    "maxPosition": "OFF",
+    "language": "FASTEXPR",
+    "visualization": false,
+    "startDate": "2019-01-01",
+    "endDate": "2023-12-31",
+    "testPeriod": "P1Y"
+  },
+  "evidence": {
+    "data_explorer_search": "https://platform.worldquantbrain.com/data/data-fields?delay=1&instrumentType=EQUITY&limit=20&offset=0&region=USA&search=option%20breakeven&universe=TOP3000",
+    "field_pages": {
+      "option_breakeven_30": "https://platform.worldquantbrain.com/data/data-fields/option_breakeven_30?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000",
+      "option_breakeven_90": "https://platform.worldquantbrain.com/data/data-fields/option_breakeven_90?delay=1&instrumentType=EQUITY&region=USA&universe=TOP3000"
+    },
+    "field_summary": {
+      "option_breakeven_30_coverage": 0.71,
+      "option_breakeven_30_date_coverage": 1.0,
+      "option_breakeven_30_visible_alphas": 384,
+      "option_breakeven_90_coverage": 0.71,
+      "option_breakeven_90_date_coverage": 1.0,
+      "option_breakeven_90_visible_alphas": 325
+    },
+    "simulation_ids": [
+      "https://api.worldquantbrain.com/simulations/3r7pF191F4SP8KXfKKiHDOD",
+      "https://api.worldquantbrain.com/simulations/3jgqXF2g5cza7F3vfvCrJC",
+      "https://api.worldquantbrain.com/simulations/2prfg32MM4KkaiGK318Oedm",
+      "https://api.worldquantbrain.com/simulations/1jKIj2zs58RaRzuVIKJpEj"
+    ],
+    "official_api": [
+      "https://api.worldquantbrain.com/alphas/Jj5a1Okj",
+      "https://api.worldquantbrain.com/alphas/Jj5a1Okj/check",
+      "https://api.worldquantbrain.com/alphas/pw1bpv0g",
+      "https://api.worldquantbrain.com/alphas/pw1bpv0g/check",
+      "https://api.worldquantbrain.com/alphas/LLlowWaM",
+      "https://api.worldquantbrain.com/alphas/LLlowWaM/check",
+      "https://api.worldquantbrain.com/alphas/Gr3j75V3",
+      "https://api.worldquantbrain.com/alphas/Gr3j75V3/check"
+    ],
+    "notes": [
+      "The live official Data Explorer confirms the 30d and 90d option breakeven fields are Matrix fields in USA / D1 / TOP3000.",
+      "option_breakeven_30 remains the strongest raw control, but it still fails LOW_FITNESS and CONCENTRATED_WEIGHT.",
+      "The 90d sibling improves low-sub-universe behavior but drops primary Sharpe/Fitness below the 30d anchor.",
+      "Both sign-flip controls mirror the same edge rather than opening a new branch.",
+      "No submit-ready alpha emerged from this first batch."
+    ]
+  },
+  "alphas": [
+    {
+      "name": "option_breakeven_30_ts_rank20_sector",
+      "expression": "group_rank(ts_rank(option_breakeven_30 / close, 20), sector)",
+      "simulation_id": "3r7pF191F4SP8KXfKKiHDOD",
+      "alpha_id": "Jj5a1Okj",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 1.48,
+        "is_fitness": 0.54,
+        "is_turnover": 0.3801,
+        "is_returns": 0.0501,
+        "is_drawdown": 0.0516,
+        "is_margin": 0.000263,
+        "train_sharpe": 1.36,
+        "train_fitness": 0.49,
+        "train_turnover": 0.3739,
+        "train_returns": 0.049,
+        "train_drawdown": 0.0516,
+        "train_margin": 0.000262,
+        "test_sharpe": 2.25,
+        "test_fitness": 0.82,
+        "test_turnover": 0.4046,
+        "test_returns": 0.0541,
+        "test_drawdown": 0.0181,
+        "test_margin": 0.000267
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "PASS",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "Best raw control in the batch, but still blocked by low fitness and concentrated weight."
+      ]
+    },
+    {
+      "name": "option_breakeven_30_ts_rank20_sector_sign_flip",
+      "expression": "-group_rank(ts_rank(option_breakeven_30 / close, 20), sector)",
+      "simulation_id": "3jgqXF2g5cza7F3vfvCrJC",
+      "alpha_id": "pw1bpv0g",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": -1.48,
+        "is_fitness": -0.54,
+        "is_turnover": 0.3801,
+        "is_returns": -0.0501,
+        "is_drawdown": 0.2687,
+        "is_margin": -0.000263,
+        "train_sharpe": -1.36,
+        "train_fitness": -0.49,
+        "train_turnover": 0.3739,
+        "train_returns": -0.049,
+        "train_drawdown": 0.2123,
+        "train_margin": -0.000262,
+        "test_sharpe": -2.25,
+        "test_fitness": -0.82,
+        "test_turnover": 0.4046,
+        "test_returns": -0.0541,
+        "test_drawdown": 0.0642,
+        "test_margin": -0.000267
+      },
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "Mirror control only; it confirms the same weak edge in reverse."
+      ]
+    },
+    {
+      "name": "option_breakeven_90_ts_rank20_sector",
+      "expression": "group_rank(ts_rank(option_breakeven_90 / close, 20), sector)",
+      "simulation_id": "2prfg32MM4KkaiGK318Oedm",
+      "alpha_id": "LLlowWaM",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": 1.22,
+        "is_fitness": 0.49,
+        "is_turnover": 0.3555,
+        "is_returns": 0.0567,
+        "is_drawdown": 0.0661,
+        "is_margin": 0.000319,
+        "train_sharpe": 1.14,
+        "train_fitness": 0.46,
+        "train_turnover": 0.3495,
+        "train_returns": 0.0568,
+        "train_drawdown": 0.0661,
+        "train_margin": 0.000325,
+        "test_sharpe": 1.99,
+        "test_fitness": 0.77,
+        "test_turnover": 0.3791,
+        "test_returns": 0.0564,
+        "test_drawdown": 0.0192,
+        "test_margin": 0.000297
+      },
+      "tests": {
+        "subuniverse_pass": true,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "PASS",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "The 90d sibling lowers turnover and keeps sub-universe healthy, but primary Sharpe/Fitness still miss the floor."
+      ]
+    },
+    {
+      "name": "option_breakeven_90_ts_rank20_sector_sign_flip",
+      "expression": "-group_rank(ts_rank(option_breakeven_90 / close, 20), sector)",
+      "simulation_id": "1jKIj2zs58RaRzuVIKJpEj",
+      "alpha_id": "Gr3j75V3",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "classification": "INFERIOR",
+      "metrics": {
+        "is_sharpe": -1.22,
+        "is_fitness": -0.49,
+        "is_turnover": 0.3555,
+        "is_returns": -0.0567,
+        "is_drawdown": 0.2962,
+        "is_margin": -0.000319,
+        "train_sharpe": -1.14,
+        "train_fitness": -0.46,
+        "train_turnover": 0.3495,
+        "train_returns": -0.0568,
+        "train_drawdown": 0.2464,
+        "train_margin": -0.000325,
+        "test_sharpe": -1.99,
+        "test_fitness": -0.77,
+        "test_turnover": 0.3791,
+        "test_returns": -0.0564,
+        "test_drawdown": 0.0634,
+        "test_margin": -0.000297
+      },
+      "tests": {
+        "subuniverse_pass": false,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "gate_results": {
+        "LOW_SHARPE": "FAIL",
+        "LOW_FITNESS": "FAIL",
+        "LOW_TURNOVER": "PASS",
+        "HIGH_TURNOVER": "PASS",
+        "CONCENTRATED_WEIGHT": "FAIL",
+        "LOW_SUB_UNIVERSE_SHARPE": "FAIL",
+        "SELF_CORRELATION": "PENDING",
+        "MATCHES_COMPETITION": "PASS"
+      },
+      "notes": [
+        "Mirror control only; it confirms the same weak edge in reverse."
+      ]
+    }
+  ],
+  "decision": {
+    "status": "freeze",
+    "reason": "The 30d baseline is the only positive control, but it still fails LOW_FITNESS and CONCENTRATED_WEIGHT. The 90d sibling improves sub-universe behavior but drops core Sharpe/Fitness, and both sign flips only mirror the same edge. Freeze the family and rotate to a fresh source instead of polishing the same options-consensus lane."
+  },
+  "next_hop": "option4 open-interest / volatility-spread branch after fresh official field verification"
+}
