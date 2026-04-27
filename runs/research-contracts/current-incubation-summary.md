@@ -1,6 +1,6 @@
 # Current Incubation Summary
 
-Snapshot timestamp: 2026-04-27T03:20:13+08:00
+Snapshot timestamp: 2026-04-27T12:46:15+0800
 
 This file is the compact first-read surface for fresh windows. Load this before the
 full ledger or the longer bootstrap protocol when you only need the current truth.
@@ -15,6 +15,7 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - Registry state counts: branch=2, hold=23, kill=5
 - Progress status: idle
 - Progress last verified feature: growth_potential_rank_derivative
+- LENS勘探完成 → pv13候选待进入S-1
 
 ## S-1 Scout Queue
 
