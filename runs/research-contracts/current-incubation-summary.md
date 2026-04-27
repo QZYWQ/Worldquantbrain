@@ -1,6 +1,6 @@
 # Current Incubation Summary
 
-Snapshot timestamp: 2026-04-27T16:37:50+0800
+Snapshot timestamp: 2026-04-27T17:08:32+0800
 
 This file is the compact first-read surface for fresh windows. Load this before the
 full ledger or the longer bootstrap protocol when you only need the current truth.
@@ -14,12 +14,12 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - Emergency reserve slots: 3
 - Registry state counts: branch=2, hold=23, kill=5, incubate=3
 - Progress status: idle
-- Progress last verified feature: pv13_c_stage_hybrid_top3
-- LENS勘探完成 → pv13候选已完成C阶段（A保持，C未促发）
+- Progress last verified feature: pv13_de_stage_hold
+- LENS勘探完成 → pv13候选完成D/E检查（主候选两轮修复后仍hold，次级候选同样hold）
 
 ## S-1 Scout Queue
 
-- pv13 top-3 lifecycle: 3/3 passed on 2026-04-27; S-1.5 dedupe cleared, S0 scan passed, A-stage sign-flip controls passed, B-stage shape exploration completed, and C-stage hybrid exploration ran to completion. No C variant displaced the A anchors, so the family stays in incubate with the original customer-centrality anchor still working best.
+- pv13 top-3 lifecycle: 3/3 passed on 2026-04-27; S-1.5 dedupe cleared, S0 scan passed, A-stage sign-flip controls passed, B-stage shape exploration completed, and C-stage hybrid exploration ran to completion. The D/E follow-up also held, so the family stays in incubate with the original customer-centrality anchor still working best.
 
 - `growth_potential_rank_derivative`: screened on 2026-04-27; cleared S-1 but failed the S0 continuation floor after the sign-flip control, so the lane did not open incubate.
 - `mdl177_growthanalystmodel_qga_niroe_alt`: final profitability/value fallback; 100% coverage, 28 visible users, and 58 visible alphas at TOP3000, but `ts_rank(..., 20)` only reached `leQLXVle` with IS Sharpe `0.34` / Fitness `0.06` and TEST Sharpe `0.66` / Fitness `0.18`, so retire this lane.
@@ -27,6 +27,13 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - `proforma_earnings_to_price`: sign-flip failed TEST, retire.
 - `return_on_invested_capital_4`: raw baseline too weak, retire.
 - The qfv4 scout batch was executed on 2026-04-27, all three candidates failed the simple S0 baseline, and the follow-up growth probe also failed S0 after the sign-flip control, so no new live probe is queued yet.
+
+## D/E Check
+
+- `pv13_ustomergraphrank_page_rank`: D-stage platform check passed; E-stage hold after two repairs. `ts_rank(pv13_ustomergraphrank_page_rank, 150)` -> `mLrL87Yx` (`IS 0.89 / TEST 1.01`, Fitness `1.61 / 1.77`, Turnover `3.55%`) failed `LOW_SHARPE` and `LOW_SUB_UNIVERSE_SHARPE`; `ts_rank(pv13_ustomergraphrank_page_rank, 180)` -> `blolJAAr` (`IS 0.90 / TEST 1.03`, Fitness `1.63 / 1.82`, Turnover `3.14%`) still failed `LOW_SHARPE`; `group_rank(ts_rank(pv13_ustomergraphrank_page_rank, 180), industry)` -> `JjgjWwwA` (`IS 0.86 / TEST 0.99`, Fitness `1.53 / 1.73`, Turnover `2.04%`) fixed sub-universe but still failed `LOW_SHARPE`.
+- `pv13_com_page_rank`: `ts_rank(pv13_com_page_rank, 150)` -> `zqPqm9xO` (`IS 0.77 / TEST 0.79`, Fitness `1.32 / 1.26`, Turnover `3.58%`) failed `LOW_SHARPE` and `LOW_SUB_UNIVERSE_SHARPE`; hold.
+- `min_depth_completed` remains `false`.
+
 
 ## A-Stage Incubate Lanes
 
@@ -48,7 +55,7 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - The C-stage batch used the customer-centrality anchor and the competitor-centrality anchor as parents, with three hybrid shapes tested under `group_rank(..., industry)`.
 - Best C hybrid: `group_rank(0.7 * ts_rank(pv13_ustomergraphrank_page_rank, 150) + 0.3 * ts_rank(pv13_com_page_rank, 150), industry)` -> `TEST 0.99 / Fitness 1.72 / Turnover 2.12%`.
 - Simple additive and product variants both landed below that weighted hybrid, and none of the three beat the customer-centrality A anchor.
-- C-stage conclusion: hold the current A-stage anchor; no D-stage promotion.
+- C-stage conclusion: hold the current A-stage anchor; the later D/E follow-up on the lead lane also held, so the family stays incubate.
 
 ## Held Incubation Lane
 
@@ -76,11 +83,14 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 11. `./runs/research-queues/2026-04-27-s1-growth-potential-rerating-scout.md`
 12. `./runs/research-queues/2026-04-27-frozen-pipeline.md`
 13. `./runs/research-contracts/family-budget-ledger.json`
+14. `./runs/research-contracts/2026-04-27-d-stage-pv13-check.md`
+15. `./runs/research-contracts/2026-04-27-de-stage-pv13-results.md`
+16. `./runs/learning-loops/2026-04-27-de-stage-pv13-outcome.md`
 
 ## Notes
 
 - The file is intentionally compact so fresh windows can skip the full ledger until needed.
 - Refresh it whenever the ledger, the active incubation lane, or the scout queue changes.
 - `pcr_oi_720` is held, no longer active, and should not be treated as the next session starter.
-- The pv13 relationship-data family completed B-stage shape exploration and a C-stage hybrid scan; the original customer-centrality A anchor remains current best.
+- The pv13 relationship-data family completed B-stage shape exploration, a C-stage hybrid scan, and a bounded D/E follow-up; the original customer-centrality A anchor remains current best, and the lead lane stayed in hold.
 - `min_depth_completed` remains `false` for the new pv13 lanes until the protocol's deeper-stage gate is reached.

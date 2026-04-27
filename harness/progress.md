@@ -1,12 +1,12 @@
 ---
-last_updated: 2026-04-27T16:37:50+0800
+last_updated: 2026-04-27T17:08:32+0800
 current_session: 28
 active_feature: null
 active_status: idle
 current_branch: main
-current_head: a77b4a4
-last_verified_feature: pv13_c_stage_hybrid_top3
-last_verified_at: 2026-04-27T16:37:50+0800
+current_head: 108ed48
+last_verified_feature: pv13_de_stage_hold
+last_verified_at: 2026-04-27T17:08:32+0800
 ---
 
 # Harness Progress
@@ -16,7 +16,7 @@ last_verified_at: 2026-04-27T16:37:50+0800
 - No active feature.
 - Session status: idle
 - Branch: main
-- Head: a77b4a4
+- Head: 108ed48
 
 ## Recent Activity
 
@@ -30,9 +30,9 @@ last_verified_at: 2026-04-27T16:37:50+0800
 
 ## Resume Checklist
 
-- Review `runs/research-contracts/2026-04-27-a-stage-pv13-results.md`.
-- Check `runs/research-contracts/2026-04-27-s1-growth-potential-rerating-prescreen-results.md` before opening the next scout.
-- Start the next S-1 scout only after confirming no active feature.
+- Review `runs/research-contracts/2026-04-27-d-stage-pv13-check.md`.
+- Review `runs/research-contracts/2026-04-27-de-stage-pv13-results.md`.
+- Start the next scout only after confirming no active feature.
 
 ## Notes
 
@@ -43,3 +43,4 @@ last_verified_at: 2026-04-27T16:37:50+0800
 2026-04-27 A-stage bootstrap + sign-flip for pv13 top-3 completed → 3 passed, 0 failed
 2026-04-27 B-stage shape exploration for pv13 top-3 completed → 12 reviewed, 0 promoted, 3 A anchors retained
 2026-04-27 C-stage hybrid scan for pv13 top-3 completed → 3 reviewed, 0 promoted, weighted hybrid TEST 0.99 / Fitness 1.72, A anchor retained
+2026-04-27 D/E stage for pv13 top-3 completed → 1 passed, 2 held

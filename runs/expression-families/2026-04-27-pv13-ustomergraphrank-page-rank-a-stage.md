@@ -48,3 +48,10 @@ Relationship-graph state variables should lead the slower accounting / analyst f
 - Best C hybrid: `group_rank(0.7 * ts_rank(pv13_ustomergraphrank_page_rank, 150) + 0.3 * ts_rank(pv13_com_page_rank, 150), industry)` -> TEST `0.99`, Fitness `1.72`, Turnover `2.12%`
 - Decision: hold; the weighted hybrid cleaned up turnover, but it still did not beat the A-stage anchor.
 - Observation: same-domain hybridization helped efficiency more than raw edge, so keep the original customer PageRank anchor as the working best.
+## D/E Follow-up
+- D-stage field check: PASS. `pv13_ustomergraphrank_page_rank` is reachable in Data Explorer as a Matrix on USA / TOP3000 with delay 1, 79% coverage, and 900 visible alphas.
+- E-stage submission gate: HOLD after two repairs.
+  - `ts_rank(pv13_ustomergraphrank_page_rank, 150)` -> `mLrL87Yx` (`IS 0.89 / TEST 1.01`, Fitness `1.61 / 1.77`, Turnover `3.55%`) failed `LOW_SHARPE` and `LOW_SUB_UNIVERSE_SHARPE`.
+  - `ts_rank(pv13_ustomergraphrank_page_rank, 180)` -> `blolJAAr` (`IS 0.90 / TEST 1.03`, Fitness `1.63 / 1.82`, Turnover `3.14%`) still failed `LOW_SHARPE`.
+  - `group_rank(ts_rank(pv13_ustomergraphrank_page_rank, 180), industry)` -> `JjgjWwwA` (`IS 0.86 / TEST 0.99`, Fitness `1.53 / 1.73`, Turnover `2.04%`) fixed sub-universe but still failed `LOW_SHARPE`.
+- Decision: hold. `min_depth_completed` stays `false`.
