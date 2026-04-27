@@ -1,12 +1,12 @@
 ---
-last_updated: 2026-04-27T17:08:32+0800
+last_updated: 2026-04-27T17:32:12+0800
 current_session: 28
 active_feature: null
 active_status: idle
 current_branch: main
-current_head: 108ed48
-last_verified_feature: pv13_de_stage_hold
-last_verified_at: 2026-04-27T17:08:32+0800
+current_head: 53cc24c
+last_verified_feature: recurve_round2_structure_autopsy
+last_verified_at: 2026-04-27T17:32:12+0800
 ---
 
 # Harness Progress
@@ -16,7 +16,7 @@ last_verified_at: 2026-04-27T17:08:32+0800
 - No active feature.
 - Session status: idle
 - Branch: main
-- Head: 108ed48
+- Head: 53cc24c
 
 ## Recent Activity
 
@@ -24,6 +24,7 @@ last_verified_at: 2026-04-27T17:08:32+0800
 - Completed the pv13 top-3 C-stage hybrid scan; three pv13 hybrid variants were reviewed, the weighted customer/competitor blend was best, and none displaced the customer-centrality A anchor.
 - Completed the pv13 top-3 A-stage bootstrap + sign-flip controls; all three baseline winners stayed positive on TEST, all three sign-flip controls failed, and the family is ready to move to B-stage shape exploration.
 - Completed the pv13 top-3 S-1.5 dedupe and S0 scan; all three fields passed, with best TEST Sharpe on `pv13_custretsig_retsig` 60 NONE, `pv13_ustomergraphrank_page_rank` 120 NONE, and `pv13_com_page_rank` 120 NONE.
+- 2026-04-27 RECURVE round 2 structure autopsy completed → 3 legacy families reviewed, 2 key structural gaps identified for pv13
 - Screened `growth_potential_rank_derivative` on 2026-04-27; the S-1 proxy passed, but S0 failed after the sign-flip control, so the session stays idle.
 - Closed the `pcr_oi_720` session after the final E-stage repair sweep ended on hold.
 - Closed the qfv4 scout batch after all three candidates failed the simple S0 baseline.
@@ -44,3 +45,4 @@ last_verified_at: 2026-04-27T17:08:32+0800
 2026-04-27 B-stage shape exploration for pv13 top-3 completed → 12 reviewed, 0 promoted, 3 A anchors retained
 2026-04-27 C-stage hybrid scan for pv13 top-3 completed → 3 reviewed, 0 promoted, weighted hybrid TEST 0.99 / Fitness 1.72, A anchor retained
 2026-04-27 D/E stage for pv13 top-3 completed → 1 passed, 2 held
+2026-04-27 RECURVE round 2 completed → 3 legacy families reviewed, 2 structural gaps prioritized for pv13
