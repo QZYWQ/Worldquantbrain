@@ -1,12 +1,12 @@
 ---
-last_updated: 2026-04-27T12:56:10+0800
+last_updated: 2026-04-27T13:50:24+0800
 current_session: 28
 active_feature: null
 active_status: idle
 current_branch: main
 current_head: a77b4a4
-last_verified_feature: pv13_s1_prescreen
-last_verified_at: 2026-04-27T12:56:01+0800
+last_verified_feature: pv13_s0_scan
+last_verified_at: 2026-04-27T13:50:24+0800
 ---
 
 # Harness Progress
@@ -20,7 +20,7 @@ last_verified_at: 2026-04-27T12:56:01+0800
 
 ## Recent Activity
 
-- Closed the profitability/value scout after `mdl177_growthanalystmodel_qga_niroe_alt` returned `leQLXVle` with IS Sharpe `0.34` / Fitness `0.06`, TEST Sharpe `0.66` / Fitness `0.18`, and `42.25%` turnover; the lane did not clear the incubate bar.
+- Completed the pv13 top-3 S-1.5 dedupe and S0 scan; all three fields passed, with best TEST Sharpe on `pv13_custretsig_retsig` 60 NONE, `pv13_ustomergraphrank_page_rank` 120 NONE, and `pv13_com_page_rank` 120 NONE.
 - Screened `growth_potential_rank_derivative` on 2026-04-27; the S-1 proxy passed, but S0 failed after the sign-flip control, so the session stays idle.
 - Closed the `pcr_oi_720` session after the final E-stage repair sweep ended on hold.
 - Closed the qfv4 scout batch after all three candidates failed the simple S0 baseline.
@@ -36,3 +36,4 @@ last_verified_at: 2026-04-27T12:56:01+0800
 - One feature per session.
 2026-04-27 LENS pv13 field recon completed → 165 pv13 fields reviewed, 3 high-priority candidates ready for S-1
 2026-04-27 S-1 prescreen for pv13 top-3 completed → 3 passed, 0 failed
+2026-04-27 S-1.5 dedupe + S0 scan for pv13 top-3 completed → 3 passed, 0 failed
