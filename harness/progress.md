@@ -1,12 +1,12 @@
 ---
-last_updated: 2026-04-27T19:07:32+0800
+last_updated: 2026-04-28T02:57:08+0800
 current_session: 28
 active_feature: null
 active_status: idle
 current_branch: main
 current_head: 5ac7f29
-last_verified_feature: pv13_structure_reforge_hold
-last_verified_at: 2026-04-27T17:57:03+0800
+last_verified_feature: pv13_domain_closure_hold
+last_verified_at: 2026-04-28T02:57:08+0800
 ---
 
 # Harness Progress
@@ -53,3 +53,7 @@ last_verified_at: 2026-04-27T17:57:03+0800
 2026-04-27 pv13 remaining batch diversity fix completed → top 5 now spans 5 fields with a 2-per-field cap
 2026-04-27 batch S0 live integration completed — run_live wired for real submission flow, resume, cadence, test-mode, and progress tracking
 2026-04-27 pv13 batch S0 smoke run — 4/4 simulations submitted, 0/4 completed within polling window; results pending resume
+2026-04-27 pv13 batch S0 smoke run resume — 4/4 completed (akAjJWMx, O0bQe82p, om38wP2J, MPKMqobL)
+2026-04-27 pv13 batch S0 live completed — 4 simulations, 0 candidates passed S0 threshold (current batch truncated after first completed wave)
+2026-04-27 pv13 batch S0 live resumed — 16 completed live records reconciled, 0 live S0 passes, remaining batch still active
+2026-04-28 pv13 batch S0 final report — domain ceiling confirmed (IS <= 0.91), domain moved to hold. 24/50 simulations completed. Next: skeleton optimization + new domain LENS recon.
