@@ -796,12 +796,14 @@ def _ensure_requests_available() -> None:
 def _build_live_session(config: dict[str, Any]) -> "requests.Session":
     _ensure_requests_available()
     session = requests.Session()
+    session.trust_env = False
     session.headers.update(
         {
             "Accept": "application/json",
             "Content-Type": "application/json",
         }
     )
+    session.proxies.clear()
 
     auth_headers = config.get("auth_headers")
     if isinstance(auth_headers, dict):
@@ -1046,7 +1048,22 @@ def poll_result(alpha_id: str) -> dict[str, Any] | None:
     retry_429_count = 0
 
     for attempt in range(1, SIMULATION_POLL_MAX_RETRIES + 1):
-        response = session.get(url, timeout=LIVE_REQUEST_TIMEOUT_SECONDS)
+        try:
+            response = session.get(url, timeout=LIVE_REQUEST_TIMEOUT_SECONDS)
+        except Exception as exc:
+            if requests is not None and isinstance(exc, requests.exceptions.RequestException):
+                logger.warning(
+                    "poll transient network error alpha_id=%s attempt=%d error=%s",
+                    alpha_id,
+                    attempt,
+                    exc,
+                )
+                if attempt < SIMULATION_POLL_MAX_RETRIES:
+                    _sleep_live(SIMULATION_POLL_INTERVAL, "poll network retry")
+                    continue
+                logger.warning("poll exhausted network retries alpha_id=%s", alpha_id)
+                return None
+            raise
         status_code = response.status_code
 
         if status_code == 401:

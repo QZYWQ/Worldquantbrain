@@ -1,0 +1,39 @@
+{
+  "batch_id": "2026-04-27-pv13-smoke-batch-01",
+  "source": "pv13 remaining top-2 smoke run",
+  "source_report": "runs/research-contracts/2026-04-27-pv13-remaining-field_candidates.json",
+  "fields": [
+    {
+      "name": "pv13_revere_index_value",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 1.0,
+      "user_count": 295,
+      "alpha_count": 425,
+      "priority": "medium",
+      "description": "Value of specified index for the date"
+    },
+    {
+      "name": "pv13_revere_key_sector_total",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 1.0,
+      "user_count": 1801,
+      "alpha_count": 3318,
+      "priority": "high",
+      "description": "Number of key focus sectors for the company"
+    }
+  ],
+  "template_overrides": [
+    "ts_rank({field}, {decay})",
+    "ts_rank(ts_mean({field}, 63), {decay})"
+  ],
+  "param_overrides": {
+    "decays": [
+      60
+    ],
+    "neutralizations": [
+      null
+    ]
+  }
+}
