@@ -13,6 +13,8 @@ set -euo pipefail
 # - scripts/alpha_family_factory.py
 # - scripts/worldquant_alpha_report.py
 # - scripts/alpha_daily_runner.py
+# - scripts/dedupe_gate.py
+# - scripts/result_ledger.py
 
 FIELD="${1:-}"
 if [[ -z "${FIELD}" ]]; then
@@ -107,17 +109,22 @@ fi
 
 BASELINE="ts_rank(${FIELD}, ${ACTIVE_DECAY})"
 SIGN_FLIP="-ts_rank(${FIELD}, ${ACTIVE_DECAY})"
+CANDIDATE_EXPRESSION="${BASELINE}"
+EXPR="${CANDIDATE_EXPRESSION}"
 
-printf '%s\n' "${BASELINE}" > "${WORK}/alphas.txt"
-printf '%s\n' "${SIGN_FLIP}" >> "${WORK}/alphas.txt"
+# Step 1.5: Dedupe gate.
+echo "[LITE] Running dedupe gate..."
+# PLACEHOLDER: python3 scripts/dedupe_gate.py check --expression "$EXPR" --field "$FIELD"
+
+printf '%s
+' "${BASELINE}" > "${WORK}/alphas.txt"
+printf '%s
+' "${SIGN_FLIP}" >> "${WORK}/alphas.txt"
 
 if [[ "${LIVE_EXECUTION}" == "1" ]]; then
   # Step 3: Live execution placeholder.
   # Fill this command only when live API use is explicitly allowed.
-  # python3 "${ROOT}/scripts/worldquant_alpha_report.py" \
-  #   --input "${WORK}/alphas.txt" \
-  #   --settings "${WORK}/settings.json" \
-  #   --output "${WORK}/worldquant_alpha_report.md"
+  # python3 "${ROOT}/scripts/worldquant_alpha_report.py"   #   --input "${WORK}/alphas.txt"   #   --settings "${WORK}/settings.json"   #   --output "${WORK}/worldquant_alpha_report.md"
   :
 else
   cat > "${WORK}/dry-run.md" <<DRYRUN
