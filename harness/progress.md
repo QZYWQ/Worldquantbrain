@@ -49,3 +49,4 @@ last_verified_at: 2026-04-27T17:57:03+0800
 2026-04-27 RECURVE round 2 completed → 3 legacy families reviewed, 2 structural gaps prioritized for pv13
 2026-04-27 pv13 structural reforge completed → 3 sims reviewed, 0 breakthroughs, lead lane retained
 2026-04-27 batch S0 scan pipeline designed — scripts/batch_s0_scan.py + field_candidates_template.json + workflow doc
+2026-04-27 pv13 remaining field candidates prepared — 10 fields → batch_s0_scan dry-run completed → Top 5: pv13_revere_index_value (repeated neutralization variants)
