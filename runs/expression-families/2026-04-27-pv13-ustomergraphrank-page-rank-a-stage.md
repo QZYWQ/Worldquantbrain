@@ -43,3 +43,8 @@ Relationship-graph state variables should lead the slower accounting / analyst f
 - Decision: A-stage anchor remains the current best; B improved modestly but not enough to promote.
 - Observation: `ts_zscore` was dead, so the `ts_scale` direction stayed pruned.
 
+## C-Stage Follow-up
+- Hybrid companion: `pv13_com_page_rank`
+- Best C hybrid: `group_rank(0.7 * ts_rank(pv13_ustomergraphrank_page_rank, 150) + 0.3 * ts_rank(pv13_com_page_rank, 150), industry)` -> TEST `0.99`, Fitness `1.72`, Turnover `2.12%`
+- Decision: hold; the weighted hybrid cleaned up turnover, but it still did not beat the A-stage anchor.
+- Observation: same-domain hybridization helped efficiency more than raw edge, so keep the original customer PageRank anchor as the working best.

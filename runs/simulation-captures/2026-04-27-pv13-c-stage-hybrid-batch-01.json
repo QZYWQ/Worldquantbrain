@@ -1,0 +1,129 @@
+{
+  "capture_id": "2026-04-27-pv13-c-stage-hybrid-batch-01",
+  "topic": "pv13_c_stage_hybrid",
+  "captured_at": "2026-04-27T16:37:50+08:00",
+  "capture_mode": "browser-ui",
+  "platform_settings": {
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "neutralization": "NONE",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR",
+    "testPeriod": "P1Y",
+    "visualization": false,
+    "maxTrade": "OFF",
+    "maxPosition": "OFF"
+  },
+  "evidence": {
+    "page": "https://platform.worldquantbrain.com/simulate",
+    "notes": [
+      "Official WorldQuant BRAIN simulate page was used in the logged-in browser session.",
+      "Three C-stage hybrid submissions were posted through the official api.worldquantbrain.com simulations endpoint.",
+      "Each simulation completed anonymously and remained UNSUBMITTED.",
+      "The page stayed on the official simulate surface while the API results were polled back."
+    ]
+  },
+  "alphas": [
+    {
+      "alpha_id": "kq1qN9eP",
+      "name": "pv13_c_stage_sum_industry",
+      "expression": "group_rank(ts_rank(pv13_ustomergraphrank_page_rank, 150) + ts_rank(pv13_com_page_rank, 150), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "C",
+      "metrics": {
+        "is_sharpe": 0.88,
+        "is_fitness": 1.59,
+        "is_turnover": 0.0253,
+        "is_returns": 0.4058,
+        "is_drawdown": 0.6301,
+        "is_margin": 0.032098,
+        "test_sharpe": 0.97,
+        "test_fitness": 1.68,
+        "test_turnover": 0.0238,
+        "test_returns": 0.3738,
+        "test_drawdown": 0.4017,
+        "test_margin": 0.031418,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "Simple additive hybrid with industry grouping.",
+        "Best of the additive variants on TEST Sharpe, but still below the existing A-stage customer anchor."
+      ]
+    },
+    {
+      "alpha_id": "npZpv5Ad",
+      "name": "pv13_c_stage_weighted_industry",
+      "expression": "group_rank(0.7 * ts_rank(pv13_ustomergraphrank_page_rank, 150) + 0.3 * ts_rank(pv13_com_page_rank, 150), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "C",
+      "metrics": {
+        "is_sharpe": 0.88,
+        "is_fitness": 1.59,
+        "is_turnover": 0.0232,
+        "is_returns": 0.4058,
+        "is_drawdown": 0.6276,
+        "is_margin": 0.034985,
+        "test_sharpe": 0.99,
+        "test_fitness": 1.72,
+        "test_turnover": 0.0212,
+        "test_returns": 0.3793,
+        "test_drawdown": 0.4024,
+        "test_margin": 0.03582,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "Weighted additive hybrid that leans toward the customer centrality lane.",
+        "Best overall C-stage hybrid, but it still does not beat the A-stage customer anchor."
+      ]
+    },
+    {
+      "alpha_id": "1YaYWk0M",
+      "name": "pv13_c_stage_product_industry",
+      "expression": "group_rank(ts_rank(pv13_ustomergraphrank_page_rank, 150) * ts_rank(pv13_com_page_rank, 150), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "C",
+      "metrics": {
+        "is_sharpe": 0.88,
+        "is_fitness": 1.58,
+        "is_turnover": 0.0339,
+        "is_returns": 0.4045,
+        "is_drawdown": 0.6306,
+        "is_margin": 0.023864,
+        "test_sharpe": 0.97,
+        "test_fitness": 1.67,
+        "test_turnover": 0.0318,
+        "test_returns": 0.3724,
+        "test_drawdown": 0.4015,
+        "test_margin": 0.023389,
+        "self_corr": null
+      },
+      "tests": {
+        "subuniverse_pass": null,
+        "test_period_pass": null,
+        "check_submission_pass": null
+      },
+      "notes": [
+        "Nonlinear interaction test.",
+        "No advantage over the weighted additive hybrid on TEST or fitness."
+      ]
+    }
+  ],
+  "batch_observation": {
+    "takeaway": "The weighted customer+competitor hybrid was the best C-stage shape, but it only reached TEST Sharpe 0.99 and Fitness 1.72. The hybrid stayed below the existing A-stage customer-centrality anchor, so the pv13 family remains incubate with the original A anchor retained."
+  }
+}

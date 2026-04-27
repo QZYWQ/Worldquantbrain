@@ -43,3 +43,8 @@ Relationship-graph state variables should lead the slower accounting / analyst f
 - Decision: A-stage anchor remains the current best; B only matched TEST / Fitness and shaved a little turnover.
 - Observation: `ts_zscore` was dead, so the `ts_scale` direction stayed pruned.
 
+## C-Stage Follow-up
+- Hybrid companion: `pv13_ustomergraphrank_page_rank`
+- Best C hybrid: `group_rank(0.7 * ts_rank(pv13_ustomergraphrank_page_rank, 150) + 0.3 * ts_rank(pv13_com_page_rank, 150), industry)` -> TEST `0.99`, Fitness `1.72`, Turnover `2.12%`
+- Decision: hold; the competitor lane helped shape the hybrid, but the combined expression still did not surpass the customer-centrality anchor.
+- Observation: the competitor rank remains a useful secondary ingredient, not a replacement for the stronger customer PageRank anchor.
