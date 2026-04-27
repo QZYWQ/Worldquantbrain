@@ -1,12 +1,12 @@
 ---
-last_updated: 2026-04-27T17:35:23+0800
+last_updated: 2026-04-27T17:57:03+0800
 current_session: 28
 active_feature: null
 active_status: idle
 current_branch: main
 current_head: 5ac7f29
-last_verified_feature: recurve_round2_structure_autopsy
-last_verified_at: 2026-04-27T17:35:23+0800
+last_verified_feature: pv13_structure_reforge_hold
+last_verified_at: 2026-04-27T17:57:03+0800
 ---
 
 # Harness Progress
@@ -28,6 +28,7 @@ last_verified_at: 2026-04-27T17:35:23+0800
 - Screened `growth_potential_rank_derivative` on 2026-04-27; the S-1 proxy passed, but S0 failed after the sign-flip control, so the session stays idle.
 - Closed the `pcr_oi_720` session after the final E-stage repair sweep ended on hold.
 - Closed the qfv4 scout batch after all three candidates failed the simple S0 baseline.
+- Completed the pv13 structural reforge experiments; three peer-context/state-construction variants were reviewed, P1 was best but none beat the anchor, and the family remains on hold.
 
 ## Resume Checklist
 
@@ -46,3 +47,4 @@ last_verified_at: 2026-04-27T17:35:23+0800
 2026-04-27 C-stage hybrid scan for pv13 top-3 completed → 3 reviewed, 0 promoted, weighted hybrid TEST 0.99 / Fitness 1.72, A anchor retained
 2026-04-27 D/E stage for pv13 top-3 completed → 1 passed, 2 held
 2026-04-27 RECURVE round 2 completed → 3 legacy families reviewed, 2 structural gaps prioritized for pv13
+2026-04-27 pv13 structural reforge completed → 3 sims reviewed, 0 breakthroughs, lead lane retained

@@ -55,3 +55,11 @@ Relationship-graph state variables should lead the slower accounting / analyst f
   - `ts_rank(pv13_ustomergraphrank_page_rank, 180)` -> `blolJAAr` (`IS 0.90 / TEST 1.03`, Fitness `1.63 / 1.82`, Turnover `3.14%`) still failed `LOW_SHARPE`.
   - `group_rank(ts_rank(pv13_ustomergraphrank_page_rank, 180), industry)` -> `JjgjWwwA` (`IS 0.86 / TEST 0.99`, Fitness `1.53 / 1.73`, Turnover `2.04%`) fixed sub-universe but still failed `LOW_SHARPE`.
 - Decision: hold. `min_depth_completed` stays `false`.
+
+## Structure Reforge
+- Experiment date: 2026-04-27
+- Goal: test whether peer context and state construction can recover Sharpe without leaving pv13
+- P0: `group_rank(ts_rank(pv13_ustomergraphrank_page_rank, 150), industry)` -> Alpha `kq1qY1eL`, TEST `0.98`, Fitness `1.70`, Turnover `1.84%`
+- P1: `group_rank(ts_rank(ts_mean(pv13_ustomergraphrank_page_rank, 63), 252), industry)` -> Alpha `zqPqLrMo`, TEST `0.99`, Fitness `1.73`, Turnover `1.56%`
+- P2: `ts_rank(group_rank(pv13_ustomergraphrank_page_rank / pv13_com_page_rank, industry), 90)` -> Alpha `1YaY2MGK`, TEST `0.90`, Fitness `1.50`, Turnover `4.19%`
+- Decision: no breakthrough; `group_rank` and `ts_mean` improved turnover, but none of the three variants beat the A-stage anchor. Keep `ts_rank(pv13_ustomergraphrank_page_rank, 150)` as the working best and leave `min_depth_completed=false`.

@@ -1,6 +1,6 @@
 # Current Incubation Summary
 
-Snapshot timestamp: 2026-04-27T17:08:32+0800
+Snapshot timestamp: 2026-04-27T17:57:03+0800
 
 This file is the compact first-read surface for fresh windows. Load this before the
 full ledger or the longer bootstrap protocol when you only need the current truth.
@@ -14,8 +14,8 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - Emergency reserve slots: 3
 - Registry state counts: branch=2, hold=23, kill=5, incubate=3
 - Progress status: idle
-- Progress last verified feature: pv13_de_stage_hold
-- LENS勘探完成 → pv13候选完成D/E检查（主候选两轮修复后仍hold，次级候选同样hold）
+- Progress last verified feature: pv13_structure_reforge_hold
+- LENS勘探完成 → pv13候选完成D/E检查（主候选两轮修复后仍hold，次级候选同样hold）；pv13结构重构三变体已跑完，未突破
 
 ## S-1 Scout Queue
 
@@ -56,6 +56,11 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - Best C hybrid: `group_rank(0.7 * ts_rank(pv13_ustomergraphrank_page_rank, 150) + 0.3 * ts_rank(pv13_com_page_rank, 150), industry)` -> `TEST 0.99 / Fitness 1.72 / Turnover 2.12%`.
 - Simple additive and product variants both landed below that weighted hybrid, and none of the three beat the customer-centrality A anchor.
 - C-stage conclusion: hold the current A-stage anchor; the later D/E follow-up on the lead lane also held, so the family stays incubate.
+
+## Structure Reforge Scan
+
+- `pv13_ustomergraphrank_page_rank`: three peer-context/state-construction variants were tested on the lead lane; the best was `group_rank(ts_rank(ts_mean(pv13_ustomergraphrank_page_rank, 63), 252), industry)` at TEST `0.99` / Fitness `1.73`, but none beat the customer-centrality anchor.
+- The reforge batch did not cross the breakthrough threshold, so the family stays held with the original A-stage/B-stage anchor still current best.
 
 ## Held Incubation Lane
 
