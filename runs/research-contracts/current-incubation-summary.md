@@ -1,6 +1,6 @@
 # Current Incubation Summary
 
-Snapshot timestamp: 2026-04-27T17:57:03+0800
+Snapshot timestamp: 2026-04-28T02:57:08+0800
 
 This file is the compact first-read surface for fresh windows. Load this before the
 full ledger or the longer bootstrap protocol when you only need the current truth.
@@ -12,14 +12,15 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - Active challenger: none
 - Cold pool balance: 1
 - Emergency reserve slots: 3
-- Registry state counts: branch=2, hold=23, kill=5, incubate=3
+- Registry state counts: branch=2, hold=26, kill=5, incubate=0
 - Progress status: idle
-- Progress last verified feature: pv13_structure_reforge_hold
-- LENS勘探完成 → pv13候选完成D/E检查（主候选两轮修复后仍hold，次级候选同样hold）；pv13结构重构三变体已跑完，未突破
+- Progress last verified feature: pv13_domain_closure_hold
+- LENS勘探完成 → pv13批量 S0 live 收尾完成，24 条结果回收，信号天花板确认；当前无活跃孵化候选，无活跃批量扫描。下一步：骨架优化 + 新域 LENS 勘探
+- pv13 域: hold — 天花板确认，IS <= 0.91；无活跃孵化候选，无活跃批量扫描。下一步：骨架优化 + 新域 LENS 勘探
 
 ## S-1 Scout Queue
 
-- pv13 top-3 lifecycle: 3/3 passed on 2026-04-27; S-1.5 dedupe cleared, S0 scan passed, A-stage sign-flip controls passed, B-stage shape exploration completed, and C-stage hybrid exploration ran to completion. The D/E follow-up also held, so the family stays in incubate with the original customer-centrality anchor still working best.
+- pv13 top-3 lifecycle: 3/3 passed on 2026-04-27; S-1.5 dedupe cleared, S0 scan passed, A-stage sign-flip controls passed, B-stage shape exploration completed, and C-stage hybrid exploration ran to completion. The D/E follow-up also held, so the family is now held with the original customer-centrality anchor preserved as historical best.
 
 - `growth_potential_rank_derivative`: screened on 2026-04-27; cleared S-1 but failed the S0 continuation floor after the sign-flip control, so the lane did not open incubate.
 - `mdl177_growthanalystmodel_qga_niroe_alt`: final profitability/value fallback; 100% coverage, 28 visible users, and 58 visible alphas at TOP3000, but `ts_rank(..., 20)` only reached `leQLXVle` with IS Sharpe `0.34` / Fitness `0.06` and TEST Sharpe `0.66` / Fitness `0.18`, so retire this lane.
@@ -35,11 +36,11 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - `min_depth_completed` remains `false`.
 
 
-## A-Stage Incubate Lanes
+## A-Stage Hold Lanes
 
-- `pv13_custretsig_retsig`: stage `A`, state `incubate`, min depth `false`; baseline `ts_rank(pv13_custretsig_retsig, 60)` -> `O0b0Kr6q` (`IS 0.60 / TEST 0.77`, Fitness `0.40 / 0.53`, Turnover `63.97%`); sign flip `-ts_rank(pv13_custretsig_retsig, 60)` -> `WjajWKmd` (`IS -0.60 / TEST -0.77`, Fitness `-0.40 / -0.53`, Turnover `63.97%`); B-stage explored; current best remains the A-stage anchor.
-- `pv13_ustomergraphrank_page_rank`: stage `A`, state `incubate`, min depth `false`; baseline `ts_rank(pv13_ustomergraphrank_page_rank, 120)` -> `e7d78nmO` (`IS 0.89 / TEST 0.99`, Fitness `1.60 / 1.72`, Turnover `3.83%`); sign flip `-ts_rank(pv13_ustomergraphrank_page_rank, 120)` -> `blolo7LN` (`IS -0.89 / TEST -0.99`, Fitness `-1.60 / -1.72`, Turnover `3.83%`); B-stage explored; current best remains the A-stage anchor.
-- `pv13_com_page_rank`: stage `A`, state `incubate`, min depth `false`; baseline `ts_rank(pv13_com_page_rank, 120)` -> `pwVwondq` (`IS 0.78 / TEST 0.79`, Fitness `1.34 / 1.26`, Turnover `3.96%`); sign flip `-ts_rank(pv13_com_page_rank, 120)` -> `e7d7dzA6` (`IS -0.78 / TEST -0.79`, Fitness `-1.34 / -1.26`, Turnover `3.96%`); B-stage explored; current best remains the A-stage anchor.
+- `pv13_custretsig_retsig`: stage `A`, state `hold`, min depth `false`; baseline `ts_rank(pv13_custretsig_retsig, 60)` -> `O0b0Kr6q` (`IS 0.60 / TEST 0.77`, Fitness `0.40 / 0.53`, Turnover `63.97%`); sign flip `-ts_rank(pv13_custretsig_retsig, 60)` -> `WjajWKmd` (`IS -0.60 / TEST -0.77`, Fitness `-0.40 / -0.53`, Turnover `63.97%`); B-stage explored; current best remains the A-stage anchor.
+- `pv13_ustomergraphrank_page_rank`: stage `A`, state `hold`, min depth `false`; baseline `ts_rank(pv13_ustomergraphrank_page_rank, 120)` -> `e7d78nmO` (`IS 0.89 / TEST 0.99`, Fitness `1.60 / 1.72`, Turnover `3.83%`); sign flip `-ts_rank(pv13_ustomergraphrank_page_rank, 120)` -> `blolo7LN` (`IS -0.89 / TEST -0.99`, Fitness `-1.60 / -1.72`, Turnover `3.83%`); B-stage explored; current best remains the A-stage anchor.
+- `pv13_com_page_rank`: stage `A`, state `hold`, min depth `false`; baseline `ts_rank(pv13_com_page_rank, 120)` -> `pwVwondq` (`IS 0.78 / TEST 0.79`, Fitness `1.34 / 1.26`, Turnover `3.96%`); sign flip `-ts_rank(pv13_com_page_rank, 120)` -> `e7d7dzA6` (`IS -0.78 / TEST -0.79`, Fitness `-1.34 / -1.26`, Turnover `3.96%`); B-stage explored; current best remains the A-stage anchor.
 
 
 
@@ -55,7 +56,7 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - The C-stage batch used the customer-centrality anchor and the competitor-centrality anchor as parents, with three hybrid shapes tested under `group_rank(..., industry)`.
 - Best C hybrid: `group_rank(0.7 * ts_rank(pv13_ustomergraphrank_page_rank, 150) + 0.3 * ts_rank(pv13_com_page_rank, 150), industry)` -> `TEST 0.99 / Fitness 1.72 / Turnover 2.12%`.
 - Simple additive and product variants both landed below that weighted hybrid, and none of the three beat the customer-centrality A anchor.
-- C-stage conclusion: hold the current A-stage anchor; the later D/E follow-up on the lead lane also held, so the family stays incubate.
+- C-stage conclusion: hold the current A-stage anchor; the later D/E follow-up on the lead lane also held, so the family stays held.
 
 ## Structure Reforge Scan
 
@@ -99,3 +100,5 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - `pcr_oi_720` is held, no longer active, and should not be treated as the next session starter.
 - The pv13 relationship-data family completed B-stage shape exploration, a C-stage hybrid scan, and a bounded D/E follow-up; the original customer-centrality A anchor remains current best, and the lead lane stayed in hold.
 - `min_depth_completed` remains `false` for the new pv13 lanes until the protocol's deeper-stage gate is reached.
+
+- 2026-04-28 pv13 batch S0 final report — domain ceiling confirmed (IS <= 0.91), domain moved to hold. 24/50 simulations completed. Next: skeleton optimization + new domain LENS recon.
