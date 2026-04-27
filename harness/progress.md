@@ -51,3 +51,4 @@ last_verified_at: 2026-04-27T17:57:03+0800
 2026-04-27 batch S0 scan pipeline designed — scripts/batch_s0_scan.py + field_candidates_template.json + workflow doc
 2026-04-27 pv13 remaining field candidates prepared — 10 fields → batch_s0_scan dry-run completed → Top 5: pv13_revere_index_value (repeated neutralization variants)
 2026-04-27 pv13 remaining batch diversity fix completed → top 5 now spans 5 fields with a 2-per-field cap
+2026-04-27 batch S0 live integration completed — run_live wired for real submission flow, resume, cadence, test-mode, and progress tracking
