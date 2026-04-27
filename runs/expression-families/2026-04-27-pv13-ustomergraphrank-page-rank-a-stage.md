@@ -36,3 +36,10 @@ Relationship-graph state variables should lead the slower accounting / analyst f
 ## Next Step
 - Use the original expression only for B-stage follow-up.
 - Prefer one-axis shape changes first; do not touch the source family identity yet.
+
+## B-Stage Follow-up
+- B best: `ts_rank(pv13_ustomergraphrank_page_rank, 150)` -> TEST `1.01`, Fitness `1.77`, Turnover `3.37%`.
+- Structure control: `group_neutralize(ts_rank(pv13_ustomergraphrank_page_rank, 150), subindustry)` -> TEST `0.20`, Fitness `0.04`.
+- Decision: A-stage anchor remains the current best; B improved modestly but not enough to promote.
+- Observation: `ts_zscore` was dead, so the `ts_scale` direction stayed pruned.
+
