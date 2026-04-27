@@ -1,0 +1,110 @@
+{
+  "_instructions": "Template for field candidate lists. See batch-s0-workflow.md for field descriptions.",
+  "batch_id": "2026-04-27-pv13-remaining-batch-01",
+  "source": "LENS pv13 remaining high-priority fields",
+  "source_report": "runs/research-contracts/2026-04-27-lens-pv13-field-recon.md",
+  "fields": [
+    {
+      "name": "pv13_ustomergraphrank_auth_rank",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.7906,
+      "user_count": 384,
+      "alpha_count": 570,
+      "priority": "high",
+      "description": "the HITS authority score of customers"
+    },
+    {
+      "name": "pv13_ustomergraphrank_hub_rank",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.7906,
+      "user_count": 594,
+      "alpha_count": 956,
+      "priority": "high",
+      "description": "the HITS hub score of customers"
+    },
+    {
+      "name": "pv13_ompetitorgraphrank_hub_rank",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.8966,
+      "user_count": 798,
+      "alpha_count": 1398,
+      "priority": "high",
+      "description": "the HITS hub score of competitors"
+    },
+    {
+      "name": "rel_num_comp",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.8902,
+      "user_count": 1110,
+      "alpha_count": 1912,
+      "priority": "high",
+      "description": "number of the instrument's competitors"
+    },
+    {
+      "name": "pv13_com_rk_au",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.8966,
+      "user_count": 1205,
+      "alpha_count": 2201,
+      "priority": "high",
+      "description": "the HITS authority score of competitors"
+    },
+    {
+      "name": "rel_num_cust",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.5068,
+      "user_count": 1009,
+      "alpha_count": 2416,
+      "priority": "high",
+      "description": "number of the instrument's customers"
+    },
+    {
+      "name": "rel_ret_part",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.7097,
+      "user_count": 1189,
+      "alpha_count": 2746,
+      "priority": "high",
+      "description": "Averaged one-day return of the instrument's partners"
+    },
+    {
+      "name": "pv13_revere_key_sector_total",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 1.0,
+      "user_count": 1801,
+      "alpha_count": 3318,
+      "priority": "high",
+      "description": "Number of key focus sectors for the company"
+    },
+    {
+      "name": "rel_num_part",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 0.7837,
+      "user_count": 2454,
+      "alpha_count": 6416,
+      "priority": "high",
+      "description": "number of the instrument's partners"
+    },
+    {
+      "name": "pv13_revere_index_value",
+      "source_domain": "pv13",
+      "type": "MATRIX",
+      "coverage": 1.0,
+      "user_count": 295,
+      "alpha_count": 425,
+      "priority": "medium",
+      "description": "Value of specified index for the date"
+    }
+  ],
+  "template_overrides": [],
+  "param_overrides": {}
+}
