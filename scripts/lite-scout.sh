@@ -53,11 +53,61 @@ JSON
 BASELINE="ts_rank(${FIELD}, 60)"
 SIGN_FLIP="-ts_rank(${FIELD}, 60)"
 
+# run_s0_param_scan()
+# 对给定字段执行 6 组轻量参数扫描 (Decay × Neutralization)
+# 参数: $1 = 字段名
+# 输出: 全局变量 BEST_TEST_SHARPE, BEST_DECAY, BEST_NEUTRALIZATION
+run_s0_param_scan() {
+  local field="$1"
+  local decays=(20 60 120)
+  local neutralizations=("" "Market")
+
+  BEST_TEST_SHARPE=-999
+  BEST_DECAY=60
+  BEST_NEUTRALIZATION=""
+
+  for decay in "${decays[@]}"; do
+    for neut in "${neutralizations[@]}"; do
+      local expression="ts_rank(${field}, ${decay})"
+
+      # PLACEHOLDER: 提交单次 S0 基线模拟
+      # result=$(submit_simulation "$expression" "$neut")
+      # parse_result "$result"  # 提取 TEST Sharpe
+
+      echo "[LITE SCAN] Decay=${decay} Neut=${neut:-None} Expr=${expression}"
+
+      # PLACEHOLDER: 比较并更新最佳值
+      # if [ "$test_sharpe" -gt "$BEST_TEST_SHARPE" ]; then
+      #     BEST_TEST_SHARPE=$test_sharpe
+      #     BEST_DECAY=$decay
+      #     BEST_NEUTRALIZATION=$neut
+      # fi
+    done
+  done
+
+  echo "[LITE SCAN] Best combo: Decay=${BEST_DECAY} Neut=${BEST_NEUTRALIZATION:-None} Sharpe=${BEST_TEST_SHARPE}"
+}
+
 # Step 1: S-1 proxy.
 # TODO: verify the field in Data Explorer and compute distinctness / signal_presence.
 # If the field is not confirmed, write a pending_verification note and exit.
 
 # Step 2: Build the S0 controls.
+if [[ "${LITE_PARAM_SCAN:-1}" -eq 1 ]]; then
+  echo "[LITE] Running 6-combo param scan for S0..."
+  run_s0_param_scan "${FIELD}"
+  ACTIVE_DECAY="${BEST_DECAY}"
+  ACTIVE_NEUTRALIZATION="${BEST_NEUTRALIZATION}"
+  echo "[LITE] Using best scanned combo for downstream sign-flip checks: Decay=${ACTIVE_DECAY} Neut=${ACTIVE_NEUTRALIZATION:-None}"
+else
+  echo "[LITE] Running single baseline S0 (legacy mode)..."
+  ACTIVE_DECAY=60
+  ACTIVE_NEUTRALIZATION=""
+fi
+
+BASELINE="ts_rank(${FIELD}, ${ACTIVE_DECAY})"
+SIGN_FLIP="-ts_rank(${FIELD}, ${ACTIVE_DECAY})"
+
 printf '%s\n' "${BASELINE}" > "${WORK}/alphas.txt"
 printf '%s\n' "${SIGN_FLIP}" >> "${WORK}/alphas.txt"
 
@@ -78,6 +128,9 @@ else
 - S-1 signal minimum: ${S1_SIGNAL_MIN}
 - S0 TEST Sharpe floor: ${S0_TEST_SHARPE_MIN}
 - S0 Fitness floor: ${S0_FITNESS_MIN}
+- LITE param scan: ${LITE_PARAM_SCAN:-1}
+- Active scan decay: ${ACTIVE_DECAY}
+- Active scan neutralization: ${ACTIVE_NEUTRALIZATION:-None}
 - Baseline: ${BASELINE}
 - Sign flip: ${SIGN_FLIP}
 - Live execution: ${LIVE_EXECUTION}
