@@ -1,0 +1,20 @@
+{
+  "_instructions": "Template for field candidate lists. See batch-s0-workflow.md for field descriptions.",
+  "batch_id": "YYYY-MM-DD-domain-batch-NN",
+  "source": "LENS <domain> recon",
+  "source_report": "runs/research-contracts/YYYY-MM-DD-lens-<domain>-recon.md",
+  "fields": [
+    {
+      "name": "field_name_exact_spelling",
+      "source_domain": "fundamental2",
+      "type": "MATRIX",
+      "coverage": 0.95,
+      "user_count": 50,
+      "alpha_count": 20,
+      "priority": "high",
+      "description": "Original platform description"
+    }
+  ],
+  "template_overrides": [],
+  "param_overrides": {}
+}
