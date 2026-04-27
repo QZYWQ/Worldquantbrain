@@ -36,6 +36,7 @@ DEFAULT_SORT_WEIGHTS = {
     "coverage": 0.3,
     "template_complexity": 0.2,
 }
+TOP_FIELD_CAP = 2
 
 
 def get_project_root() -> Path:
@@ -83,6 +84,14 @@ def dedupe_preserve_order(values: Iterable[str]) -> list[str]:
         seen.add(value)
         ordered.append(value)
     return ordered
+
+
+def field_rank_factor(field_rank: int) -> float:
+    if field_rank <= 1:
+        return 1.0
+    if field_rank == 2:
+        return 0.5
+    return 0.2
 
 
 class BatchS0Scanner:
@@ -301,13 +310,13 @@ class BatchS0Scanner:
             coverage = max(min(as_float(candidate.get("coverage"), 0.0), 1.0), 0.0)
             template_complexity = as_int(candidate.get("template_complexity"), 2)
             complexity_score = 1.0 if template_complexity == 1 else 0.5
-            final_score = (
+            raw_score = (
                 self.sort_weights["alpha_count"] * (1.0 / (alpha_count + 1))
                 + self.sort_weights["coverage"] * coverage
                 + self.sort_weights["template_complexity"] * complexity_score
             )
             record = dict(candidate)
-            record["final_score"] = round(final_score, 6)
+            record["final_score"] = round(raw_score, 6)
             record["complexity_score"] = complexity_score
             weighted.append(record)
 
@@ -320,11 +329,46 @@ class BatchS0Scanner:
                 str(item.get("candidate_id", "")),
             )
         )
-        return weighted
+
+        field_counts: dict[str, int] = {}
+        diversified: list[tuple[float, dict[str, Any]]] = []
+        for candidate in weighted:
+            field = str(candidate.get("field") or "")
+            field_rank = field_counts.get(field, 0) + 1
+            field_counts[field] = field_rank
+            adjusted_score = float(candidate["final_score"]) * field_rank_factor(field_rank)
+            diversified.append((adjusted_score, candidate))
+
+        diversified.sort(
+            key=lambda item: (
+                -item[0],
+                int(item[1].get("template_complexity", 2)),
+                -float(item[1]["final_score"]),
+                -float(item[1].get("coverage", 0.0)),
+                int(item[1].get("alpha_count", 0)),
+                str(item[1].get("candidate_id", "")),
+            )
+        )
+        return [candidate for _, candidate in diversified]
+
+    def _select_top_candidates(self, candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        selected: list[dict[str, Any]] = []
+        field_counts: dict[str, int] = {}
+
+        for candidate in candidates:
+            field = str(candidate.get("field") or "")
+            if field_counts.get(field, 0) >= TOP_FIELD_CAP:
+                continue
+            selected.append(candidate)
+            field_counts[field] = field_counts.get(field, 0) + 1
+            if len(selected) >= self.top:
+                break
+
+        return selected
 
     def print_dry_run_plan(self, candidates: list[dict[str, Any]]) -> dict[str, Any]:
         planned = candidates[: self.max_simulations]
-        top_recommendations = planned[: self.top]
+        top_recommendations = self._select_top_candidates(planned)
 
         self.logger.info("dry-run plan start")
         self.logger.info("project_root=%s", self.project_root)
@@ -338,6 +382,7 @@ class BatchS0Scanner:
         )
         self.logger.info("planned_candidates=%d", len(planned))
         self.logger.info("top_recommendations=%d", len(top_recommendations))
+        self.logger.info("top_field_cap=%d", TOP_FIELD_CAP)
         self.logger.info("--- ranked plan ---")
         self.logger.info(
             "%-4s %-28s %-5s %-10s %-4s %-8s %-6s %-11s %-9s %s",
@@ -365,9 +410,9 @@ class BatchS0Scanner:
                 candidate["template_complexity"],
                 candidate.get("final_score", 0.0),
                 candidate["expression"],
-            )
+        )
         if top_recommendations:
-            self.logger.info("--- top %d ---", self.top)
+            self.logger.info("--- top %d (field-capped) ---", self.top)
             for index, candidate in enumerate(top_recommendations, start=1):
                 self.logger.info(
                     "top=%d candidate=%s score=%.3f expr=%s",
@@ -386,11 +431,14 @@ class BatchS0Scanner:
 
     def run_live(self, candidates: list[dict[str, Any]]) -> dict[str, Any]:
         planned = candidates[: self.max_simulations]
+        selected = self._select_top_candidates(planned)
         self.logger.info("live mode placeholder start")
         self.logger.info("planned_candidates=%d", len(planned))
+        self.logger.info("selected_candidates=%d", len(selected))
+        self.logger.info("top_field_cap=%d", TOP_FIELD_CAP)
         self.logger.info("submit cadence: wait 30s before each submission, add 120s after every 5th submission")
 
-        for index, candidate in enumerate(planned, start=1):
+        for index, candidate in enumerate(selected, start=1):
             self.logger.info(
                 "[LIVE PLACEHOLDER] candidate=%s rank=%d expr=%s neut=%s",
                 candidate["candidate_id"],
@@ -409,8 +457,9 @@ class BatchS0Scanner:
         return {
             "mode": "live-placeholder",
             "planned": len(planned),
+            "selected": len(selected),
             "submitted": 0,
-            "top": min(self.top, len(planned)),
+            "top": len(selected),
         }
 
     def run(self) -> dict[str, Any]:

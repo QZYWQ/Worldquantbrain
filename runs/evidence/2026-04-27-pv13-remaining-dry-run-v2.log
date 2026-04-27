@@ -1,0 +1,173 @@
+2026-04-27 19:06:36,299 | INFO | loaded field candidate file=/dev/fd/11
+2026-04-27 19:06:36,299 | INFO | batch_id=2026-04-27-pv13-remaining-batch-01
+2026-04-27 19:06:36,299 | INFO | field_count=10
+2026-04-27 19:06:36,299 | INFO | generated_candidates=240
+2026-04-27 19:06:36,439 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:1:20:None score=0.772 match_level=structural
+2026-04-27 19:06:36,564 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:1:20:Market score=0.772 match_level=structural
+2026-04-27 19:06:36,684 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:1:60:None score=0.772 match_level=structural
+2026-04-27 19:06:36,803 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:1:60:Market score=0.772 match_level=structural
+2026-04-27 19:06:36,920 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:1:120:None score=0.773 match_level=structural
+2026-04-27 19:06:37,036 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:1:120:Market score=0.773 match_level=structural
+2026-04-27 19:06:37,156 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:2:20:None score=0.769 match_level=structural
+2026-04-27 19:06:37,275 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:2:20:Market score=0.769 match_level=structural
+2026-04-27 19:06:37,395 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:2:60:None score=0.760 match_level=structural
+2026-04-27 19:06:37,516 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:2:60:Market score=0.760 match_level=structural
+2026-04-27 19:06:37,638 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:2:120:None score=0.774 match_level=structural
+2026-04-27 19:06:37,760 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_auth_rank:2:120:Market score=0.774 match_level=structural
+2026-04-27 19:06:39,446 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:1:20:None score=0.767 match_level=structural
+2026-04-27 19:06:39,559 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:1:20:Market score=0.767 match_level=structural
+2026-04-27 19:06:39,672 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:1:60:None score=0.767 match_level=structural
+2026-04-27 19:06:39,785 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:1:60:Market score=0.767 match_level=structural
+2026-04-27 19:06:39,900 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:1:120:None score=0.768 match_level=structural
+2026-04-27 19:06:40,014 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:1:120:Market score=0.768 match_level=structural
+2026-04-27 19:06:40,132 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:2:20:None score=0.764 match_level=structural
+2026-04-27 19:06:40,248 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:2:20:Market score=0.764 match_level=structural
+2026-04-27 19:06:40,365 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:2:60:None score=0.756 match_level=structural
+2026-04-27 19:06:40,483 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:2:60:Market score=0.756 match_level=structural
+2026-04-27 19:06:40,603 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:2:120:None score=0.769 match_level=structural
+2026-04-27 19:06:40,722 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ustomergraphrank_hub_rank:2:120:Market score=0.769 match_level=structural
+2026-04-27 19:06:42,376 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:1:20:None score=0.731 match_level=structural
+2026-04-27 19:06:42,492 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:1:20:Market score=0.731 match_level=structural
+2026-04-27 19:06:42,608 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:1:60:None score=0.731 match_level=structural
+2026-04-27 19:06:42,724 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:1:60:Market score=0.731 match_level=structural
+2026-04-27 19:06:42,843 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:1:120:None score=0.733 match_level=structural
+2026-04-27 19:06:42,963 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:1:120:Market score=0.733 match_level=structural
+2026-04-27 19:06:43,084 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:2:20:None score=0.730 match_level=structural
+2026-04-27 19:06:43,207 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:2:20:Market score=0.730 match_level=structural
+2026-04-27 19:06:43,329 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:2:60:None score=0.722 match_level=structural
+2026-04-27 19:06:43,451 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:2:60:Market score=0.722 match_level=structural
+2026-04-27 19:06:43,575 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:2:120:None score=0.735 match_level=structural
+2026-04-27 19:06:43,699 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:2:120:Market score=0.735 match_level=structural
+2026-04-27 19:06:47,253 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:1:20:None score=0.729 match_level=structural
+2026-04-27 19:06:47,326 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:1:20:Market score=0.729 match_level=structural
+2026-04-27 19:06:47,400 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:1:60:None score=0.729 match_level=structural
+2026-04-27 19:06:47,474 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:1:60:Market score=0.729 match_level=structural
+2026-04-27 19:06:47,550 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:1:120:None score=0.731 match_level=structural
+2026-04-27 19:06:47,626 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:1:120:Market score=0.731 match_level=structural
+2026-04-27 19:06:47,705 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:2:20:None score=0.728 match_level=structural
+2026-04-27 19:06:47,784 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:2:20:Market score=0.728 match_level=structural
+2026-04-27 19:06:47,862 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:2:60:None score=0.715 match_level=structural
+2026-04-27 19:06:47,940 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:2:60:Market score=0.715 match_level=structural
+2026-04-27 19:06:48,021 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:2:120:None score=0.735 match_level=structural
+2026-04-27 19:06:48,102 | WARNING | similarity warning candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:2:120:Market score=0.735 match_level=structural
+2026-04-27 19:07:00,131 | INFO | dedupe summary total=240 duplicates=0 warnings=48 remaining=240
+2026-04-27 19:07:00,132 | INFO | dry-run plan start
+2026-04-27 19:07:00,132 | INFO | project_root=/Users/zpdedn/Documents/project/Worldquantbrain
+2026-04-27 19:07:00,132 | INFO | fields_file=/dev/fd/11
+2026-04-27 19:07:00,133 | INFO | ledger_rows=262
+2026-04-27 19:07:00,133 | INFO | templates=ts_rank({field}, {decay}), ts_zscore({field}, {decay}), ts_mean({field}, {decay}), ts_rank(ts_mean({field}, 63), {decay})
+2026-04-27 19:07:00,133 | INFO | decays=20, 60, 120
+2026-04-27 19:07:00,133 | INFO | neutralizations=None, Market
+2026-04-27 19:07:00,133 | INFO | planned_candidates=100
+2026-04-27 19:07:00,133 | INFO | top_recommendations=5
+2026-04-27 19:07:00,133 | INFO | top_field_cap=2
+2026-04-27 19:07:00,133 | INFO | --- ranked plan ---
+2026-04-27 19:07:00,133 | INFO | rank field                        decay neutralization tmp  alpha_cnt coverage complexity  score     expression
+2026-04-27 19:07:00,133 | INFO | 1    pv13_revere_index_value      120   Market     1    425      1.000  1           0.501     ts_rank(pv13_revere_index_value, 120)
+2026-04-27 19:07:00,133 | INFO | 2    pv13_revere_key_sector_total 120   Market     1    3318     1.000  1           0.500     ts_rank(pv13_revere_key_sector_total, 120)
+2026-04-27 19:07:00,133 | INFO | 3    pv13_ompetitorgraphrank_hub_ 120   Market     1    1398     0.897  1           0.469     ts_rank(pv13_ompetitorgraphrank_hub_rank, 120)
+2026-04-27 19:07:00,133 | INFO | 4    pv13_com_rk_au               120   Market     1    2201     0.897  1           0.469     ts_rank(pv13_com_rk_au, 120)
+2026-04-27 19:07:00,133 | INFO | 5    rel_num_comp                 120   Market     1    1912     0.890  1           0.467     ts_rank(rel_num_comp, 120)
+2026-04-27 19:07:00,133 | INFO | 6    pv13_ustomergraphrank_auth_r 120   Market     1    570      0.791  1           0.438     ts_rank(pv13_ustomergraphrank_auth_rank, 120)
+2026-04-27 19:07:00,133 | INFO | 7    pv13_ustomergraphrank_hub_ra 120   Market     1    956      0.791  1           0.438     ts_rank(pv13_ustomergraphrank_hub_rank, 120)
+2026-04-27 19:07:00,133 | INFO | 8    rel_num_part                 120   Market     1    6416     0.784  1           0.435     ts_rank(rel_num_part, 120)
+2026-04-27 19:07:00,133 | INFO | 9    rel_ret_part                 120   Market     1    2746     0.710  1           0.413     ts_rank(rel_ret_part, 120)
+2026-04-27 19:07:00,133 | INFO | 10   rel_num_cust                 120   Market     1    2416     0.507  1           0.352     ts_rank(rel_num_cust, 120)
+2026-04-27 19:07:00,133 | INFO | 11   pv13_revere_index_value      120   None       1    425      1.000  1           0.501     ts_rank(pv13_revere_index_value, 120)
+2026-04-27 19:07:00,133 | INFO | 12   pv13_revere_key_sector_total 120   None       1    3318     1.000  1           0.500     ts_rank(pv13_revere_key_sector_total, 120)
+2026-04-27 19:07:00,133 | INFO | 13   pv13_ompetitorgraphrank_hub_ 120   None       1    1398     0.897  1           0.469     ts_rank(pv13_ompetitorgraphrank_hub_rank, 120)
+2026-04-27 19:07:00,133 | INFO | 14   pv13_com_rk_au               120   None       1    2201     0.897  1           0.469     ts_rank(pv13_com_rk_au, 120)
+2026-04-27 19:07:00,133 | INFO | 15   rel_num_comp                 120   None       1    1912     0.890  1           0.467     ts_rank(rel_num_comp, 120)
+2026-04-27 19:07:00,133 | INFO | 16   pv13_ustomergraphrank_auth_r 120   None       1    570      0.791  1           0.438     ts_rank(pv13_ustomergraphrank_auth_rank, 120)
+2026-04-27 19:07:00,133 | INFO | 17   pv13_ustomergraphrank_hub_ra 120   None       1    956      0.791  1           0.438     ts_rank(pv13_ustomergraphrank_hub_rank, 120)
+2026-04-27 19:07:00,133 | INFO | 18   rel_num_part                 120   None       1    6416     0.784  1           0.435     ts_rank(rel_num_part, 120)
+2026-04-27 19:07:00,134 | INFO | 19   rel_ret_part                 120   None       1    2746     0.710  1           0.413     ts_rank(rel_ret_part, 120)
+2026-04-27 19:07:00,134 | INFO | 20   rel_num_cust                 120   None       1    2416     0.507  1           0.352     ts_rank(rel_num_cust, 120)
+2026-04-27 19:07:00,134 | INFO | 21   pv13_revere_index_value      20    Market     1    425      1.000  1           0.501     ts_rank(pv13_revere_index_value, 20)
+2026-04-27 19:07:00,134 | INFO | 22   pv13_revere_index_value      20    None       1    425      1.000  1           0.501     ts_rank(pv13_revere_index_value, 20)
+2026-04-27 19:07:00,134 | INFO | 23   pv13_revere_index_value      60    Market     1    425      1.000  1           0.501     ts_rank(pv13_revere_index_value, 60)
+2026-04-27 19:07:00,134 | INFO | 24   pv13_revere_index_value      60    None       1    425      1.000  1           0.501     ts_rank(pv13_revere_index_value, 60)
+2026-04-27 19:07:00,134 | INFO | 25   pv13_revere_index_value      120   Market     2    425      1.000  1           0.501     ts_zscore(pv13_revere_index_value, 120)
+2026-04-27 19:07:00,134 | INFO | 26   pv13_revere_index_value      120   None       2    425      1.000  1           0.501     ts_zscore(pv13_revere_index_value, 120)
+2026-04-27 19:07:00,134 | INFO | 27   pv13_revere_index_value      20    Market     2    425      1.000  1           0.501     ts_zscore(pv13_revere_index_value, 20)
+2026-04-27 19:07:00,134 | INFO | 28   pv13_revere_index_value      20    None       2    425      1.000  1           0.501     ts_zscore(pv13_revere_index_value, 20)
+2026-04-27 19:07:00,134 | INFO | 29   pv13_revere_index_value      60    Market     2    425      1.000  1           0.501     ts_zscore(pv13_revere_index_value, 60)
+2026-04-27 19:07:00,134 | INFO | 30   pv13_revere_index_value      60    None       2    425      1.000  1           0.501     ts_zscore(pv13_revere_index_value, 60)
+2026-04-27 19:07:00,134 | INFO | 31   pv13_revere_index_value      120   Market     3    425      1.000  1           0.501     ts_mean(pv13_revere_index_value, 120)
+2026-04-27 19:07:00,134 | INFO | 32   pv13_revere_index_value      120   None       3    425      1.000  1           0.501     ts_mean(pv13_revere_index_value, 120)
+2026-04-27 19:07:00,134 | INFO | 33   pv13_revere_index_value      20    Market     3    425      1.000  1           0.501     ts_mean(pv13_revere_index_value, 20)
+2026-04-27 19:07:00,134 | INFO | 34   pv13_revere_index_value      20    None       3    425      1.000  1           0.501     ts_mean(pv13_revere_index_value, 20)
+2026-04-27 19:07:00,134 | INFO | 35   pv13_revere_index_value      60    Market     3    425      1.000  1           0.501     ts_mean(pv13_revere_index_value, 60)
+2026-04-27 19:07:00,134 | INFO | 36   pv13_revere_index_value      60    None       3    425      1.000  1           0.501     ts_mean(pv13_revere_index_value, 60)
+2026-04-27 19:07:00,134 | INFO | 37   pv13_revere_key_sector_total 20    Market     1    3318     1.000  1           0.500     ts_rank(pv13_revere_key_sector_total, 20)
+2026-04-27 19:07:00,134 | INFO | 38   pv13_revere_key_sector_total 20    None       1    3318     1.000  1           0.500     ts_rank(pv13_revere_key_sector_total, 20)
+2026-04-27 19:07:00,134 | INFO | 39   pv13_revere_key_sector_total 60    Market     1    3318     1.000  1           0.500     ts_rank(pv13_revere_key_sector_total, 60)
+2026-04-27 19:07:00,134 | INFO | 40   pv13_revere_key_sector_total 60    None       1    3318     1.000  1           0.500     ts_rank(pv13_revere_key_sector_total, 60)
+2026-04-27 19:07:00,134 | INFO | 41   pv13_revere_key_sector_total 120   Market     2    3318     1.000  1           0.500     ts_zscore(pv13_revere_key_sector_total, 120)
+2026-04-27 19:07:00,134 | INFO | 42   pv13_revere_key_sector_total 120   None       2    3318     1.000  1           0.500     ts_zscore(pv13_revere_key_sector_total, 120)
+2026-04-27 19:07:00,134 | INFO | 43   pv13_revere_key_sector_total 20    Market     2    3318     1.000  1           0.500     ts_zscore(pv13_revere_key_sector_total, 20)
+2026-04-27 19:07:00,134 | INFO | 44   pv13_revere_key_sector_total 20    None       2    3318     1.000  1           0.500     ts_zscore(pv13_revere_key_sector_total, 20)
+2026-04-27 19:07:00,134 | INFO | 45   pv13_revere_key_sector_total 60    Market     2    3318     1.000  1           0.500     ts_zscore(pv13_revere_key_sector_total, 60)
+2026-04-27 19:07:00,134 | INFO | 46   pv13_revere_key_sector_total 60    None       2    3318     1.000  1           0.500     ts_zscore(pv13_revere_key_sector_total, 60)
+2026-04-27 19:07:00,134 | INFO | 47   pv13_revere_key_sector_total 120   Market     3    3318     1.000  1           0.500     ts_mean(pv13_revere_key_sector_total, 120)
+2026-04-27 19:07:00,134 | INFO | 48   pv13_revere_key_sector_total 120   None       3    3318     1.000  1           0.500     ts_mean(pv13_revere_key_sector_total, 120)
+2026-04-27 19:07:00,134 | INFO | 49   pv13_revere_key_sector_total 20    Market     3    3318     1.000  1           0.500     ts_mean(pv13_revere_key_sector_total, 20)
+2026-04-27 19:07:00,134 | INFO | 50   pv13_revere_key_sector_total 20    None       3    3318     1.000  1           0.500     ts_mean(pv13_revere_key_sector_total, 20)
+2026-04-27 19:07:00,134 | INFO | 51   pv13_revere_key_sector_total 60    Market     3    3318     1.000  1           0.500     ts_mean(pv13_revere_key_sector_total, 60)
+2026-04-27 19:07:00,134 | INFO | 52   pv13_revere_key_sector_total 60    None       3    3318     1.000  1           0.500     ts_mean(pv13_revere_key_sector_total, 60)
+2026-04-27 19:07:00,134 | INFO | 53   pv13_ompetitorgraphrank_hub_ 20    Market     1    1398     0.897  1           0.469     ts_rank(pv13_ompetitorgraphrank_hub_rank, 20)
+2026-04-27 19:07:00,134 | INFO | 54   pv13_ompetitorgraphrank_hub_ 20    None       1    1398     0.897  1           0.469     ts_rank(pv13_ompetitorgraphrank_hub_rank, 20)
+2026-04-27 19:07:00,134 | INFO | 55   pv13_ompetitorgraphrank_hub_ 60    Market     1    1398     0.897  1           0.469     ts_rank(pv13_ompetitorgraphrank_hub_rank, 60)
+2026-04-27 19:07:00,134 | INFO | 56   pv13_ompetitorgraphrank_hub_ 60    None       1    1398     0.897  1           0.469     ts_rank(pv13_ompetitorgraphrank_hub_rank, 60)
+2026-04-27 19:07:00,135 | INFO | 57   pv13_ompetitorgraphrank_hub_ 120   Market     2    1398     0.897  1           0.469     ts_zscore(pv13_ompetitorgraphrank_hub_rank, 120)
+2026-04-27 19:07:00,135 | INFO | 58   pv13_ompetitorgraphrank_hub_ 120   None       2    1398     0.897  1           0.469     ts_zscore(pv13_ompetitorgraphrank_hub_rank, 120)
+2026-04-27 19:07:00,135 | INFO | 59   pv13_ompetitorgraphrank_hub_ 20    Market     2    1398     0.897  1           0.469     ts_zscore(pv13_ompetitorgraphrank_hub_rank, 20)
+2026-04-27 19:07:00,135 | INFO | 60   pv13_ompetitorgraphrank_hub_ 20    None       2    1398     0.897  1           0.469     ts_zscore(pv13_ompetitorgraphrank_hub_rank, 20)
+2026-04-27 19:07:00,135 | INFO | 61   pv13_ompetitorgraphrank_hub_ 60    Market     2    1398     0.897  1           0.469     ts_zscore(pv13_ompetitorgraphrank_hub_rank, 60)
+2026-04-27 19:07:00,135 | INFO | 62   pv13_ompetitorgraphrank_hub_ 60    None       2    1398     0.897  1           0.469     ts_zscore(pv13_ompetitorgraphrank_hub_rank, 60)
+2026-04-27 19:07:00,135 | INFO | 63   pv13_ompetitorgraphrank_hub_ 120   Market     3    1398     0.897  1           0.469     ts_mean(pv13_ompetitorgraphrank_hub_rank, 120)
+2026-04-27 19:07:00,135 | INFO | 64   pv13_ompetitorgraphrank_hub_ 120   None       3    1398     0.897  1           0.469     ts_mean(pv13_ompetitorgraphrank_hub_rank, 120)
+2026-04-27 19:07:00,135 | INFO | 65   pv13_ompetitorgraphrank_hub_ 20    Market     3    1398     0.897  1           0.469     ts_mean(pv13_ompetitorgraphrank_hub_rank, 20)
+2026-04-27 19:07:00,135 | INFO | 66   pv13_ompetitorgraphrank_hub_ 20    None       3    1398     0.897  1           0.469     ts_mean(pv13_ompetitorgraphrank_hub_rank, 20)
+2026-04-27 19:07:00,135 | INFO | 67   pv13_ompetitorgraphrank_hub_ 60    Market     3    1398     0.897  1           0.469     ts_mean(pv13_ompetitorgraphrank_hub_rank, 60)
+2026-04-27 19:07:00,135 | INFO | 68   pv13_ompetitorgraphrank_hub_ 60    None       3    1398     0.897  1           0.469     ts_mean(pv13_ompetitorgraphrank_hub_rank, 60)
+2026-04-27 19:07:00,135 | INFO | 69   pv13_com_rk_au               20    Market     1    2201     0.897  1           0.469     ts_rank(pv13_com_rk_au, 20)
+2026-04-27 19:07:00,135 | INFO | 70   pv13_com_rk_au               20    None       1    2201     0.897  1           0.469     ts_rank(pv13_com_rk_au, 20)
+2026-04-27 19:07:00,135 | INFO | 71   pv13_com_rk_au               60    Market     1    2201     0.897  1           0.469     ts_rank(pv13_com_rk_au, 60)
+2026-04-27 19:07:00,135 | INFO | 72   pv13_com_rk_au               60    None       1    2201     0.897  1           0.469     ts_rank(pv13_com_rk_au, 60)
+2026-04-27 19:07:00,135 | INFO | 73   pv13_com_rk_au               120   Market     2    2201     0.897  1           0.469     ts_zscore(pv13_com_rk_au, 120)
+2026-04-27 19:07:00,135 | INFO | 74   pv13_com_rk_au               120   None       2    2201     0.897  1           0.469     ts_zscore(pv13_com_rk_au, 120)
+2026-04-27 19:07:00,135 | INFO | 75   pv13_com_rk_au               20    Market     2    2201     0.897  1           0.469     ts_zscore(pv13_com_rk_au, 20)
+2026-04-27 19:07:00,135 | INFO | 76   pv13_com_rk_au               20    None       2    2201     0.897  1           0.469     ts_zscore(pv13_com_rk_au, 20)
+2026-04-27 19:07:00,135 | INFO | 77   pv13_com_rk_au               60    Market     2    2201     0.897  1           0.469     ts_zscore(pv13_com_rk_au, 60)
+2026-04-27 19:07:00,135 | INFO | 78   pv13_com_rk_au               60    None       2    2201     0.897  1           0.469     ts_zscore(pv13_com_rk_au, 60)
+2026-04-27 19:07:00,135 | INFO | 79   pv13_com_rk_au               120   Market     3    2201     0.897  1           0.469     ts_mean(pv13_com_rk_au, 120)
+2026-04-27 19:07:00,135 | INFO | 80   pv13_com_rk_au               120   None       3    2201     0.897  1           0.469     ts_mean(pv13_com_rk_au, 120)
+2026-04-27 19:07:00,135 | INFO | 81   pv13_com_rk_au               20    Market     3    2201     0.897  1           0.469     ts_mean(pv13_com_rk_au, 20)
+2026-04-27 19:07:00,135 | INFO | 82   pv13_com_rk_au               20    None       3    2201     0.897  1           0.469     ts_mean(pv13_com_rk_au, 20)
+2026-04-27 19:07:00,135 | INFO | 83   pv13_com_rk_au               60    Market     3    2201     0.897  1           0.469     ts_mean(pv13_com_rk_au, 60)
+2026-04-27 19:07:00,135 | INFO | 84   pv13_com_rk_au               60    None       3    2201     0.897  1           0.469     ts_mean(pv13_com_rk_au, 60)
+2026-04-27 19:07:00,135 | INFO | 85   rel_num_comp                 20    Market     1    1912     0.890  1           0.467     ts_rank(rel_num_comp, 20)
+2026-04-27 19:07:00,135 | INFO | 86   rel_num_comp                 20    None       1    1912     0.890  1           0.467     ts_rank(rel_num_comp, 20)
+2026-04-27 19:07:00,135 | INFO | 87   rel_num_comp                 60    Market     1    1912     0.890  1           0.467     ts_rank(rel_num_comp, 60)
+2026-04-27 19:07:00,135 | INFO | 88   rel_num_comp                 60    None       1    1912     0.890  1           0.467     ts_rank(rel_num_comp, 60)
+2026-04-27 19:07:00,135 | INFO | 89   rel_num_comp                 120   Market     2    1912     0.890  1           0.467     ts_zscore(rel_num_comp, 120)
+2026-04-27 19:07:00,135 | INFO | 90   rel_num_comp                 120   None       2    1912     0.890  1           0.467     ts_zscore(rel_num_comp, 120)
+2026-04-27 19:07:00,135 | INFO | 91   rel_num_comp                 20    Market     2    1912     0.890  1           0.467     ts_zscore(rel_num_comp, 20)
+2026-04-27 19:07:00,136 | INFO | 92   rel_num_comp                 20    None       2    1912     0.890  1           0.467     ts_zscore(rel_num_comp, 20)
+2026-04-27 19:07:00,136 | INFO | 93   rel_num_comp                 60    Market     2    1912     0.890  1           0.467     ts_zscore(rel_num_comp, 60)
+2026-04-27 19:07:00,136 | INFO | 94   rel_num_comp                 60    None       2    1912     0.890  1           0.467     ts_zscore(rel_num_comp, 60)
+2026-04-27 19:07:00,136 | INFO | 95   rel_num_comp                 120   Market     3    1912     0.890  1           0.467     ts_mean(rel_num_comp, 120)
+2026-04-27 19:07:00,136 | INFO | 96   rel_num_comp                 120   None       3    1912     0.890  1           0.467     ts_mean(rel_num_comp, 120)
+2026-04-27 19:07:00,136 | INFO | 97   rel_num_comp                 20    Market     3    1912     0.890  1           0.467     ts_mean(rel_num_comp, 20)
+2026-04-27 19:07:00,136 | INFO | 98   rel_num_comp                 20    None       3    1912     0.890  1           0.467     ts_mean(rel_num_comp, 20)
+2026-04-27 19:07:00,136 | INFO | 99   rel_num_comp                 60    Market     3    1912     0.890  1           0.467     ts_mean(rel_num_comp, 60)
+2026-04-27 19:07:00,136 | INFO | 100  rel_num_comp                 60    None       3    1912     0.890  1           0.467     ts_mean(rel_num_comp, 60)
+2026-04-27 19:07:00,136 | INFO | --- top 5 (field-capped) ---
+2026-04-27 19:07:00,136 | INFO | top=1 candidate=2026-04-27-pv13-remaining-batch-01:pv13_revere_index_value:1:120:Market score=0.501 expr=ts_rank(pv13_revere_index_value, 120)
+2026-04-27 19:07:00,136 | INFO | top=2 candidate=2026-04-27-pv13-remaining-batch-01:pv13_revere_key_sector_total:1:120:Market score=0.500 expr=ts_rank(pv13_revere_key_sector_total, 120)
+2026-04-27 19:07:00,136 | INFO | top=3 candidate=2026-04-27-pv13-remaining-batch-01:pv13_ompetitorgraphrank_hub_rank:1:120:Market score=0.469 expr=ts_rank(pv13_ompetitorgraphrank_hub_rank, 120)
+2026-04-27 19:07:00,136 | INFO | top=4 candidate=2026-04-27-pv13-remaining-batch-01:pv13_com_rk_au:1:120:Market score=0.469 expr=ts_rank(pv13_com_rk_au, 120)
+2026-04-27 19:07:00,136 | INFO | top=5 candidate=2026-04-27-pv13-remaining-batch-01:rel_num_comp:1:120:Market score=0.467 expr=ts_rank(rel_num_comp, 120)
+2026-04-27 19:07:00,136 | INFO | dry-run plan end
+2026-04-27 19:07:00,136 | INFO | summary={"mode": "dry", "planned": 100, "top": 5, "total_after_dedupe": 100}
