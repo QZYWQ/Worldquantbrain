@@ -1,6 +1,6 @@
 # Current Incubation Summary
 
-Snapshot timestamp: 2026-04-27T12:46:15+0800
+Snapshot timestamp: 2026-04-27T12:56:01+0800
 
 This file is the compact first-read surface for fresh windows. Load this before the
 full ledger or the longer bootstrap protocol when you only need the current truth.
@@ -14,10 +14,12 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - Emergency reserve slots: 3
 - Registry state counts: branch=2, hold=23, kill=5
 - Progress status: idle
-- Progress last verified feature: growth_potential_rank_derivative
-- LENS勘探完成 → pv13候选待进入S-1
+- Progress last verified feature: pv13_s1_prescreen
+- LENS勘探完成 → pv13候选已完成S-1预筛（3/3通过，待去重检查）
 
 ## S-1 Scout Queue
+
+- pv13 top-3 S-1 prescreen: 3/3 passed on 2026-04-27; next step is dedupe gate before S0.
 
 - `growth_potential_rank_derivative`: screened on 2026-04-27; cleared S-1 but failed the S0 continuation floor after the sign-flip control, so the lane did not open incubate.
 - `mdl177_growthanalystmodel_qga_niroe_alt`: final profitability/value fallback; 100% coverage, 28 visible users, and 58 visible alphas at TOP3000, but `ts_rank(..., 20)` only reached `leQLXVle` with IS Sharpe `0.34` / Fitness `0.06` and TEST Sharpe `0.66` / Fitness `0.18`, so retire this lane.
