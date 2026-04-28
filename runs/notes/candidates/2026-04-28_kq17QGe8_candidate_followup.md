@@ -327,6 +327,20 @@ group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(
 ## Self-correlation Re-check
 
 - alpha id: E5g7vMjJ
+- checked at: 2026-04-28 19:22:45 CST
+- result: SELF_CORRELATION still PENDING
+- key checks:
+  - LOW_SHARPE: PASS
+  - LOW_FITNESS: PASS
+  - LOW_SUB_UNIVERSE_SHARPE: PASS
+  - MATCHES_COMPETITION: PASS
+  - SELF_CORRELATION: PENDING
+- decision: do not submit and do not run more variants while pending
+- next action: re-check later
+
+## Self-correlation Re-check
+
+- alpha id: E5g7vMjJ
 - checked at: 2026-04-28 19:16:52 CST
 - result: SELF_CORRELATION still PENDING
 - current checks: LOW_SHARPE=PASS, LOW_FITNESS=PASS, LOW_TURNOVER=PASS, HIGH_TURNOVER=PASS, CONCENTRATED_WEIGHT=PASS, LOW_SUB_UNIVERSE_SHARPE=PASS, MATCHES_COMPETITION=PASS, SELF_CORRELATION=PENDING
