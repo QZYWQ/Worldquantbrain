@@ -363,3 +363,13 @@ group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(
 - current checks: LOW_SHARPE=PASS, LOW_FITNESS=PASS, LOW_TURNOVER=PASS, HIGH_TURNOVER=PASS, CONCENTRATED_WEIGHT=PASS, LOW_SUB_UNIVERSE_SHARPE=PASS, MATCHES_COMPETITION=PASS, SELF_CORRELATION=PENDING
 - decision: do not submit and do not run more variants while pending
 - next action: re-check later
+
+## Self-correlation Final Re-check
+
+- alpha id: E5g7vMjJ
+- checked at: 2026-04-28 19:37:16 CST
+- result: SELF_CORRELATION PASS from `/alphas/E5g7vMjJ/check`, value 0.6804 / limit 0.7
+- current checks: LOW_SHARPE=PASS, LOW_FITNESS=PASS, LOW_TURNOVER=PASS, HIGH_TURNOVER=PASS, CONCENTRATED_WEIGHT=PASS, LOW_SUB_UNIVERSE_SHARPE=PASS, SELF_CORRELATION=PASS from `/check`, MATCHES_COMPETITION=PASS
+- endpoint evidence: alpha detail HTTP 200 still shows SELF_CORRELATION=PENDING; `/check` HTTP 200 is populated and shows SELF_CORRELATION=PASS; `/correlations/self` HTTP 200 is populated with 3 records and max correlation 0.6804
+- decision: do not auto-submit; prepare manual submission review memo
+- next action: manual submission review
