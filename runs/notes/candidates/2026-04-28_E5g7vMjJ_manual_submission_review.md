@@ -58,3 +58,18 @@ E5g7vMjJ improved both Sharpe and Fitness versus V2 while keeping turnover contr
 Ready for manual submission review.
 
 Automated submission was not performed.
+
+## Post-submit Status
+
+- checked at: 2026-04-28 19:52:15 CST
+- user action: manually submitted in WorldQuant BRAIN UI
+- alpha detail HTTP status: 200
+- latest alpha status: ACTIVE
+- latest stage: OS
+- latest grade: AVERAGE
+- date submitted: 2026-04-28T07:50:15-04:00
+- latest metrics: Sharpe 1.37, Fitness 1.01, Turnover 0.175, Margin 0.001088, Drawdown 0.0737, Returns 0.0952
+- latest alpha detail checks: LOW_SHARPE=PASS, LOW_FITNESS=PASS, LOW_TURNOVER=PASS, HIGH_TURNOVER=PASS, CONCENTRATED_WEIGHT=PASS, LOW_SUB_UNIVERSE_SHARPE=PASS, MATCHES_COMPETITION=PASS
+- `/alphas/E5g7vMjJ/check`: HTTP 200, SELF_CORRELATION=PASS, value 0.6804 / limit 0.7
+- `/alphas/E5g7vMjJ/correlations/self`: HTTP 200, empty payload after submission
+- note: manual submission was performed by the user; local automation did not submit the alpha.

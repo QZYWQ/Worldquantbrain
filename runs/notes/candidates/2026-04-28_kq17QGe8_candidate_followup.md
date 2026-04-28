@@ -373,3 +373,19 @@ group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(
 - endpoint evidence: alpha detail HTTP 200 still shows SELF_CORRELATION=PENDING; `/check` HTTP 200 is populated and shows SELF_CORRELATION=PASS; `/correlations/self` HTTP 200 is populated with 3 records and max correlation 0.6804
 - decision: do not auto-submit; prepare manual submission review memo
 - next action: manual submission review
+
+## Manual Submission Record
+
+- alpha id: E5g7vMjJ
+- recorded at: 2026-04-28 19:52:15 CST
+- user action: manually submitted in WorldQuant BRAIN UI
+- latest alpha detail HTTP status: 200
+- latest status: ACTIVE
+- latest stage: OS
+- latest grade: AVERAGE
+- date submitted: 2026-04-28T07:50:15-04:00
+- latest checks: LOW_SHARPE=PASS, LOW_FITNESS=PASS, LOW_TURNOVER=PASS, HIGH_TURNOVER=PASS, CONCENTRATED_WEIGHT=PASS, LOW_SUB_UNIVERSE_SHARPE=PASS, MATCHES_COMPETITION=PASS
+- `/alphas/E5g7vMjJ/check`: HTTP 200, SELF_CORRELATION=PASS, value 0.6804 / limit 0.7
+- `/alphas/E5g7vMjJ/correlations/self`: HTTP 200, empty payload after submission
+- decision: submitted manually; no automated submission was performed
+- submission record: `runs/notes/submissions/2026-04-28_E5g7vMjJ_manual_submission_record.md`
