@@ -293,3 +293,15 @@ group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(
 - current lead after fourth round: `corr70_decay5_subindustry` / `E5g7vMjJ`
 - submit now: no, wait for SELF_CORRELATION to resolve and prepare a submission memo only if correlation posture is acceptable
 - next step: monitor or re-check self-correlation for E5g7vMjJ, then prepare a focused submission memo draft for the new lead if the pending check clears.
+
+## Self-correlation Re-check
+
+- alpha id: E5g7vMjJ
+- checked at: 2026-04-28 19:01:04 CST
+- result: SELF_CORRELATION still PENDING
+- LOW_FITNESS: PASS
+- LOW_SUB_UNIVERSE_SHARPE: PASS
+- current non-pass checks: SELF_CORRELATION=PENDING
+- decision: do not submit and do not run more variants yet
+- submit now: no
+- next action: re-check later before any new research batch

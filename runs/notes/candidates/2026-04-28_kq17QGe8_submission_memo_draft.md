@@ -125,3 +125,21 @@ Why it is stronger than V2:
 DO NOT SUBMIT YET.
 
 `E5g7vMjJ` is the new lead candidate, but SELF_CORRELATION is still pending. Submission should wait until correlation posture is known and acceptable. If SELF_CORRELATION clears, prepare a focused submission memo around `E5g7vMjJ` rather than the older V2 expression.
+
+## Self-correlation Re-check
+
+Checked at: 2026-04-28 19:01:04 CST
+
+- alpha id: E5g7vMjJ
+- LOW_SHARPE: PASS
+- LOW_FITNESS: PASS
+- LOW_TURNOVER: PASS
+- HIGH_TURNOVER: PASS
+- CONCENTRATED_WEIGHT: PASS
+- LOW_SUB_UNIVERSE_SHARPE: PASS
+- MATCHES_COMPETITION: PASS
+- SELF_CORRELATION: PENDING
+
+Updated decision: DO NOT SUBMIT YET.
+
+The only current non-pass check is SELF_CORRELATION=PENDING. No additional local variants should be run until this pending status resolves or a later re-check shows a clear failure.
