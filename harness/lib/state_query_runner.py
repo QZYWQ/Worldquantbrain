@@ -10,7 +10,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from cycle_analysis import build_cycle_overview, build_feature_index, dependencies_done, missing_dependencies
+from cycle_analysis import (
+    build_cycle_overview,
+    build_feature_index,
+    build_focus_selection,
+    dependencies_done,
+    missing_dependencies,
+)
 
 
 def read_json(path: Path):
@@ -97,6 +103,7 @@ def command_list_cycle_rel_paths(project_root: Path, active_cycle: str) -> int:
 def command_cycle_summary(feature_path: Path, active_cycle: str, progress_path: Path) -> int:
     payload = read_json(feature_path)
     overview = build_cycle_overview(payload, active_cycle)
+    selection = build_focus_selection(overview)
     counts = overview["counts"]
 
     print(f"Active cycle: {active_cycle}")
@@ -109,6 +116,9 @@ def command_cycle_summary(feature_path: Path, active_cycle: str, progress_path: 
     for key in ["pending", "in_progress", "blocked", "completed"]:
         print(f"- {key}: {counts.get(key, 0)}")
     print(f"Next actionable feature: {overview['next_id']}")
+    print("Evolution bootstrap: ./harness/coding-session.sh evolution-bootstrap")
+    if selection.get("execution_suggestion"):
+        print(f"Execution suggestion: {selection['execution_suggestion']}")
     print(f"Feature total: {overview['feature_total']}")
     print(f"Progress file: {progress_path}")
     return 0

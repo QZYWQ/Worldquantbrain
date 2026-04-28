@@ -28,6 +28,8 @@ tests=(
   "alpha-seed-family-expander.sh"
   "local-alpha-loop-preflight.sh"
   "local-alpha-loop.sh"
+  "evolution-bootstrap.sh"
+  "coding-session-evolution-bootstrap.sh"
   "read-only-parallel.sh"
   "read-only-surface.sh"
   "module-boundaries.sh"

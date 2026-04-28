@@ -1,0 +1,7 @@
+{
+  "base_url": "https://api.worldquantbrain.com",
+  "daily_limit": 4000,
+  "poll_interval_seconds": 30,
+  "timezone": "America/New_York",
+  "warning_threshold": 3200
+}

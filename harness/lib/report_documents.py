@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 
 import argparse
 import json
@@ -48,6 +49,29 @@ def session_brief_rel_path(cycle_path: Path, cycle_rel: str) -> str:
     overview = build_cycle_overview(payload, cycle_rel)
     selection = build_focus_selection(overview)
     return build_session_brief_rel_path(cycle_rel, selection["focus_feature"])
+
+
+def project_root_from_cycle_path(cycle_path: Path) -> Path:
+    resolved = cycle_path.resolve()
+    for parent in resolved.parents:
+        if parent.name == "harness":
+            return parent.parent
+    return resolved.parent
+
+
+def latest_evolution_bootstrap_report_path(cycle_path: Path) -> Path | None:
+    project_root = project_root_from_cycle_path(cycle_path)
+    report_dir = project_root / "runs" / "research-contracts"
+    if not report_dir.exists():
+        return None
+
+    cycle_stem = cycle_path.stem or "bootstrap"
+    matches = sorted(
+        report_dir.glob(f"*-{cycle_stem}-evolution-bootstrap.md"),
+        key=lambda path: path.stat().st_mtime,
+        reverse=True,
+    )
+    return matches[0] if matches else None
 
 
 def render_list(items, fallback: str = "- none"):
@@ -240,6 +264,15 @@ def write_cycle_report_document(
     counts = overview["counts"]
     completed = overview["completed"]
     blocked = overview["blocked"]
+    project_root = project_root_from_cycle_path(cycle_path)
+    bootstrap_report = latest_evolution_bootstrap_report_path(cycle_path)
+    if bootstrap_report is not None:
+        try:
+            bootstrap_rel = f"./{bootstrap_report.relative_to(project_root).as_posix()}"
+        except Exception:
+            bootstrap_rel = bootstrap_report.as_posix()
+    else:
+        bootstrap_rel = "none"
 
     def render_feature(feature):
         parts = [
@@ -284,6 +317,11 @@ def write_cycle_report_document(
             "## Next Actionable Feature",
             "",
             f"- {overview['next_id']}",
+            "",
+            "## Evolution Bootstrap Summary",
+            "",
+            f"- Latest report: {bootstrap_rel}",
+            "- Purpose: offline lineage-aware seed generation for the next candidate batch.",
             "",
             "## Doctor",
             "",
@@ -346,8 +384,19 @@ def write_resume_brief_document(
     blocked = overview["blocked"]
     focus_feature = selection["focus_feature"]
     recommendation_heading = selection["recommendation_heading"]
+    execution_suggestion = selection.get("execution_suggestion")
+    execution_reason = selection.get("execution_reason")
     report_status = "present" if report_path.exists() else "missing"
     bootstrap_warning = "This is the bootstrap fallback cycle, not a formal official alpha cycle."
+    project_root = project_root_from_cycle_path(cycle_path)
+    bootstrap_report = latest_evolution_bootstrap_report_path(cycle_path)
+    if bootstrap_report is not None:
+        try:
+            bootstrap_rel = f"./{bootstrap_report.relative_to(project_root).as_posix()}"
+        except Exception:
+            bootstrap_rel = bootstrap_report.as_posix()
+    else:
+        bootstrap_rel = "none"
 
     lines = [
         "# Resume Brief",
@@ -422,6 +471,29 @@ def write_resume_brief_document(
             "## Recommended Next Action",
             "",
             f"- {recommendation_heading}",
+        ]
+    )
+
+    if execution_suggestion:
+        lines.extend(
+            [
+                "",
+                "## Execution Suggestion",
+                "",
+                f"- Command: {execution_suggestion}",
+            ]
+        )
+        if execution_reason:
+            lines.append(f"- Reason: {execution_reason}")
+
+    lines.extend(
+        [
+            "",
+            "## Evolution Bootstrap",
+            "",
+            f"- Latest report: {bootstrap_rel}",
+            "- When the winner archive is ready, run `./harness/coding-session.sh evolution-bootstrap` to seed the next batch.",
+            "- The bootstrap run stays offline, records lineage-aware generation artifacts under `runs/evolution/`, and writes a readable summary under `runs/research-contracts/`.",
             "",
             "## Focus Feature",
             "",
@@ -614,6 +686,11 @@ def write_session_open_document(
 
     lines.extend(
         [
+            "",
+            "## Evolution Bootstrap",
+            "",
+            "- When the winner archive is ready, run `./harness/coding-session.sh evolution-bootstrap` to seed the next batch.",
+            "- The bootstrap run stays offline, records lineage-aware generation artifacts under `runs/evolution/`, and writes a readable summary under `runs/research-contracts/`.",
             "",
             "## Completion Handoff",
             "",

@@ -102,3 +102,7 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - `min_depth_completed` remains `false` for the new pv13 lanes until the protocol's deeper-stage gate is reached.
 
 - 2026-04-28 pv13 batch S0 final report — domain ceiling confirmed (IS <= 0.91), domain moved to hold. 24/50 simulations completed. Next: skeleton optimization + new domain LENS recon.
+
+## 2026-04-28 Archive Note
+
+- 2026-04-28：离线演化引擎产出一批 A 级候选（20 个），已归档至 runs/evolution/baselines/，推荐提交 top 5 见 runs/recommended_submission.json。

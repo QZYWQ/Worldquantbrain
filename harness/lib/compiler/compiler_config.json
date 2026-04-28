@@ -1,0 +1,298 @@
+{
+  "allowed_identifier_pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+  "comment_markers": [
+    "#",
+    "//"
+  ],
+  "field_pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+  "function_prefix_allowlist": [
+    "group_",
+    "ts_"
+  ],
+  "function_specs": {
+    "abs": {
+      "max_args": 1,
+      "min_args": 1
+    },
+    "bucket": {
+      "max_args": 4,
+      "min_args": 2
+    },
+    "clip": {
+      "max_args": 3,
+      "min_args": 3
+    },
+    "demean": {
+      "max_args": 2,
+      "min_args": 1
+    },
+    "delta": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "delay": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "group_mean": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "group_neutralize": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "group_rank": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "group_sum": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "group_zscore": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "if_else": {
+      "max_args": 3,
+      "min_args": 3
+    },
+    "log": {
+      "max_args": 1,
+      "min_args": 1
+    },
+    "mad": {
+      "max_args": 2,
+      "min_args": 1
+    },
+    "max": {
+      "max_args": null,
+      "min_args": 2
+    },
+    "mean": {
+      "max_args": null,
+      "min_args": 1
+    },
+    "min": {
+      "max_args": null,
+      "min_args": 2
+    },
+    "multiply": {
+      "max_args": null,
+      "min_args": 2
+    },
+    "neutralize": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "power": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "rank": {
+      "max_args": 1,
+      "min_args": 1
+    },
+    "scale": {
+      "max_args": 2,
+      "min_args": 1
+    },
+    "signed_power": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "sqrt": {
+      "max_args": 1,
+      "min_args": 1
+    },
+    "subtract": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "sum": {
+      "max_args": null,
+      "min_args": 1
+    },
+    "trade_when": {
+      "max_args": 3,
+      "min_args": 3
+    },
+    "ts_argmax": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_argmin": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_av_diff": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_backfill": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_corr": {
+      "max_args": 3,
+      "min_args": 3,
+      "window_args": [
+        2
+      ]
+    },
+    "ts_cov": {
+      "max_args": 3,
+      "min_args": 3,
+      "window_args": [
+        2
+      ]
+    },
+    "ts_count_nans": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_decay_linear": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_delta": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_delay": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_mean": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_median": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_min": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_product": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_quantile": {
+      "max_args": 3,
+      "min_args": 3,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_rank": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_regression": {
+      "max_args": 4,
+      "min_args": 4,
+      "window_args": [
+        2
+      ]
+    },
+    "ts_scale": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_std": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_sum": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "ts_zscore": {
+      "max_args": 2,
+      "min_args": 2,
+      "window_args": [
+        1
+      ]
+    },
+    "winsorize": {
+      "max_args": 2,
+      "min_args": 2
+    },
+    "zscore": {
+      "max_args": 1,
+      "min_args": 1
+    }
+  },
+  "known_fields": [],
+  "numeric_limits": {
+    "max": 1000000000,
+    "min": -1000000000
+  },
+  "require_known_field_list": false,
+  "reserved_words": [
+    "and",
+    "or",
+    "not",
+    "True",
+    "False",
+    "None"
+  ],
+  "strict_unknown_function_policy": "error"
+}

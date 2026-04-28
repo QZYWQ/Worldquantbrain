@@ -75,6 +75,8 @@ def build_focus_selection(overview):
     recommendation_heading = "No actionable feature available."
     selection_reason = "No actionable feature is currently available."
     selection_state = "none"
+    execution_suggestion = None
+    execution_reason = None
 
     if len(in_progress) == 1:
         focus_feature = in_progress[0]
@@ -104,12 +106,20 @@ def build_focus_selection(overview):
             f"{focus_feature.get('id')} | {focus_feature.get('title')}"
         )
         selection_state = "next"
+    else:
+        execution_suggestion = "./harness/coding-session.sh evolution-bootstrap"
+        execution_reason = (
+            "No actionable feature is currently available, so seed the next batch offline "
+            "from the winner archive."
+        )
 
     return {
         "focus_feature": focus_feature,
         "recommendation_heading": recommendation_heading,
         "selection_reason": selection_reason,
         "selection_state": selection_state,
+        "execution_suggestion": execution_suggestion,
+        "execution_reason": execution_reason,
     }
 
 

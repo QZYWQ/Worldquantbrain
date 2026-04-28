@@ -620,6 +620,286 @@ def render_loop_markdown(manifest: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def render_evolution_bootstrap_markdown(manifest: dict[str, Any]) -> str:
+    lines = [
+        "# Evolution Bootstrap",
+        "",
+        f"- Run id: {manifest['run_id']}",
+        f"- Stage: {manifest.get('stage_label') or 'F'}",
+        f"- Cycle path: {manifest.get('cycle_path') or 'none'}",
+        f"- Project root: {manifest['project_root']}",
+        f"- Ledger path: {manifest['db_path']}",
+        f"- Output dir: {manifest['output_dir']}",
+        f"- Winner count: {manifest['winner_count']}",
+        f"- Minimum winners: {manifest['min_winners']}",
+        f"- Status: {manifest['status']}",
+    ]
+    if manifest.get("notes"):
+        lines.append("")
+        lines.append("## Notes")
+        for note in manifest["notes"]:
+            lines.append(f"- {note}")
+
+    lines.append("")
+    lines.append("## Artifacts")
+    for artifact in manifest.get("artifacts", []):
+        generation = int(artifact.get("generation") or 0)
+        batch_path = artifact.get("batch_path") or "none"
+        canonical_path = artifact.get("canonical_path") or "none"
+        candidate_count = artifact.get("candidate_count")
+        lines.append(
+            f"- gen_{generation:03d} -> candidates={candidate_count} canonical={canonical_path} batch={batch_path}"
+        )
+
+    if manifest.get("next_batch_path"):
+        lines.append("")
+        lines.append("## Next Input")
+        lines.append(f"- {manifest['next_batch_path']}")
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _bootstrap_report_path(project_root: Path, cycle_path: str | None, generated_at: str) -> Path:
+    cycle_stem = Path(str(cycle_path or "bootstrap")).stem or "bootstrap"
+    try:
+        report_date = datetime.fromisoformat(generated_at).strftime("%Y-%m-%d")
+    except ValueError:
+        report_date = datetime.now().strftime("%Y-%m-%d")
+    return project_root / "runs" / "research-contracts" / f"{report_date}-{cycle_stem}-evolution-bootstrap.md"
+
+
+def render_evolution_bootstrap_contract_markdown(manifest: dict[str, Any]) -> str:
+    lines = [
+        "# Evolution Bootstrap Cycle Report",
+        "",
+        "## Metadata",
+        "",
+        f"- Generated at: {manifest['generated_at']}",
+        f"- Run id: {manifest['run_id']}",
+        f"- Cycle path: {manifest.get('cycle_path') or 'none'}",
+        f"- Project root: {manifest['project_root']}",
+        f"- Ledger path: {manifest['db_path']}",
+        f"- Config path: {manifest['config_path']}",
+        f"- Output dir: {manifest['output_dir']}",
+        f"- Research contract report: {manifest.get('research_contract_report_path') or 'none'}",
+        "",
+        "## Outcome",
+        "",
+        f"- Status: {manifest['status']}",
+        f"- Winner count: {manifest['winner_count']}",
+        f"- Minimum winners: {manifest['min_winners']}",
+        f"- Generations requested: {manifest['generations_requested']}",
+        f"- Next batch generation: {manifest.get('next_batch_generation') or 'none'}",
+        f"- Next batch path: {manifest.get('next_batch_path') or 'none'}",
+    ]
+
+    if manifest.get("notes"):
+        lines.extend(["", "## Notes", ""])
+        lines.extend(f"- {note}" for note in manifest["notes"])
+
+    lines.extend(["", "## Generation Summary", ""])
+    artifacts = manifest.get("artifacts") if isinstance(manifest.get("artifacts"), list) else []
+    if not artifacts:
+        lines.append("- No generation artifacts were produced.")
+    else:
+        for artifact in artifacts:
+            if not isinstance(artifact, dict):
+                continue
+            log_record = artifact.get("log_record") if isinstance(artifact.get("log_record"), dict) else {}
+            generation = int(artifact.get("generation") or log_record.get("generation") or 0)
+            candidate_count = artifact.get("candidate_count") or log_record.get("candidate_count") or 0
+            metrics_bits = []
+            for key in (
+                "children_generated",
+                "children_valid",
+                "children_rejected",
+                "novelty_rejected",
+                "duplicate_rejected_exact",
+                "duplicate_rejected_structural",
+                "crossover_attempts",
+                "crossover_fallbacks",
+                "rescue_mutations",
+            ):
+                value = log_record.get(key)
+                if value is not None:
+                    metrics_bits.append(f"{key}={value}")
+            metrics_text = ", ".join(metrics_bits) if metrics_bits else "no metrics recorded"
+            lines.extend(
+                [
+                    f"- gen_{generation:03d}: candidates={candidate_count}; {metrics_text}",
+                    f"  - canonical: {artifact.get('canonical_path') or 'none'}",
+                    f"  - batch: {artifact.get('batch_path') or 'none'}",
+                    f"  - expr: {artifact.get('expr_dir') or 'none'}",
+                ]
+            )
+
+    lines.extend(
+        [
+            "",
+            "## Follow-Up",
+            "",
+            "- Use the batch manifest for a dry-run sweep before any live submission.",
+            "- Keep the run offline until a human explicitly chooses the next execution path.",
+        ]
+    )
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _resolve_project_path(project_root: Path, raw_path: str | Path) -> Path:
+    path = Path(raw_path).expanduser()
+    if path.is_absolute():
+        return path
+    return (project_root / path).resolve()
+
+
+def command_evolution_bootstrap(args: argparse.Namespace) -> int:
+    project_root = Path(args.project_root).resolve()
+    artifact_root = Path(args.artifact_root).expanduser().resolve()
+    artifact_root.mkdir(parents=True, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
+    run_id = args.run_id or f"{timestamp}-evolution-bootstrap"
+    bundle_root = artifact_root / run_id
+    bundle_root.mkdir(parents=True, exist_ok=True)
+
+    db_path = _resolve_project_path(project_root, args.db_path)
+    config_path = _resolve_project_path(project_root, args.config_path)
+    output_dir = _resolve_project_path(project_root, args.output_dir)
+    cycle_path = str(args.cycle_path).strip() if getattr(args, "cycle_path", None) else ""
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+
+    from harness.lib.evolution import BrainEvolutionEngine
+
+    engine = BrainEvolutionEngine(
+        db_path=str(db_path),
+        output_dir=str(output_dir),
+        config_path=str(config_path),
+    )
+    winners = engine.load_winners()
+    winner_count = len(winners)
+
+    notes: list[str] = []
+    result: dict[str, Any]
+    next_batch_path: str | None = None
+    if winner_count < int(args.min_winners):
+        notes.append(f"winner archive below threshold: {winner_count} < {args.min_winners}")
+        result = {
+            "status": "skipped",
+            "generations": 0,
+            "population_size": 0,
+            "seed": engine.seed,
+            "artifacts": [],
+            "last_generation_metrics": {},
+        }
+    else:
+        result = engine.run(generations=int(args.generations))
+        artifacts = result.get("artifacts") if isinstance(result.get("artifacts"), list) else []
+        for artifact in artifacts:
+            if isinstance(artifact, dict) and artifact.get("batch_path"):
+                next_batch_path = str(artifact["batch_path"])
+                break
+        if not next_batch_path:
+            notes.append("evolution completed but no batch manifest was produced")
+
+    if winner_count >= int(args.min_winners) and result.get("status") == "ok":
+        notes.append(f"evolution run completed with {result.get('generations', 0)} generations")
+
+    artifacts = result.get("artifacts") if isinstance(result.get("artifacts"), list) else []
+    generated_at = now_iso()
+    research_contract_report_path = _bootstrap_report_path(project_root, cycle_path, generated_at)
+    manifest = {
+        "source": "brain_evolution_engine",
+        "stage_label": "F",
+        "run_id": run_id,
+        "generated_at": generated_at,
+        "cycle_path": cycle_path or None,
+        "project_root": project_root.as_posix(),
+        "artifact_root": artifact_root.as_posix(),
+        "artifact_dir": bundle_root.as_posix(),
+        "db_path": db_path.as_posix(),
+        "config_path": config_path.as_posix(),
+        "output_dir": output_dir.as_posix(),
+        "winner_count": winner_count,
+        "min_winners": int(args.min_winners),
+        "generations_requested": int(args.generations),
+        "status": str(result.get("status") or "unknown"),
+        "notes": notes,
+        "next_batch_generation": 1 if next_batch_path else None,
+        "next_batch_path": next_batch_path,
+        "research_contract_report_path": research_contract_report_path.as_posix(),
+        "result": result,
+        "artifacts": artifacts,
+    }
+    generated_files: list[str] = []
+    for artifact in artifacts:
+        if not isinstance(artifact, dict):
+            continue
+        for key in ("canonical_path", "batch_path", "expr_dir"):
+            value = artifact.get(key)
+            if isinstance(value, str) and value.strip():
+                generated_files.append(value)
+
+    result_json_path = bundle_root / "result.json"
+    manifest_json_path = bundle_root / "manifest.json"
+    manifest_md_path = bundle_root / "manifest.md"
+    research_contract_report_path.parent.mkdir(parents=True, exist_ok=True)
+    result_json_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    manifest_json_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    manifest_md_path.write_text(render_evolution_bootstrap_markdown(manifest), encoding="utf-8")
+    research_contract_report_path.write_text(
+        render_evolution_bootstrap_contract_markdown(manifest),
+        encoding="utf-8",
+    )
+
+    learning_loop_root = project_root / "runs" / "learning-loops"
+    learning_loop_root.mkdir(parents=True, exist_ok=True)
+    learning_json_path = learning_loop_root / f"{run_id}.json"
+    learning_md_path = learning_loop_root / f"{run_id}.md"
+    learning_json_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    learning_md_path.write_text(render_evolution_bootstrap_markdown(manifest), encoding="utf-8")
+
+    manifest["generated_files"] = [
+        result_json_path.as_posix(),
+        manifest_json_path.as_posix(),
+        manifest_md_path.as_posix(),
+        research_contract_report_path.as_posix(),
+        learning_json_path.as_posix(),
+        learning_md_path.as_posix(),
+        *generated_files,
+    ]
+
+    result_json_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    manifest_json_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    learning_json_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    print(f"Evolution bootstrap bundle: {bundle_root}")
+    print(f"Evolution bootstrap manifest: {learning_json_path}")
+    print(f"Evolution research-contract report: {research_contract_report_path}")
+    if next_batch_path:
+        print(f"Evolution next batch: {next_batch_path}")
+    else:
+        print("Evolution next batch: none")
+    return 0
+
+
 def command_run_loop(args: argparse.Namespace) -> int:
     project_root = Path(args.project_root).resolve()
     queue_path = Path(args.queue).expanduser().resolve()
@@ -944,6 +1224,18 @@ def build_parser() -> argparse.ArgumentParser:
     loop_parser.add_argument("--run-id", default="")
     loop_parser.add_argument("--max-rounds", type=int, default=3)
     loop_parser.set_defaults(func=command_run_loop)
+
+    evo_parser = subparsers.add_parser("evolution-bootstrap")
+    evo_parser.add_argument("--project-root", required=True)
+    evo_parser.add_argument("--artifact-root", required=True)
+    evo_parser.add_argument("--run-id", default="")
+    evo_parser.add_argument("--db-path", default="runs/evidence/result_ledger.db")
+    evo_parser.add_argument("--config-path", default="harness/lib/evolution/evolution_config.json")
+    evo_parser.add_argument("--output-dir", default="runs/evolution/generations")
+    evo_parser.add_argument("--generations", type=int, default=3)
+    evo_parser.add_argument("--min-winners", type=int, default=10)
+    evo_parser.add_argument("--cycle-path", default="")
+    evo_parser.set_defaults(func=command_evolution_bootstrap)
 
     validate_parser = subparsers.add_parser("validate-queue")
     validate_parser.add_argument("--path", required=True)

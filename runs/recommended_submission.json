@@ -1,0 +1,152 @@
+[
+  {
+    "submission_order": 1,
+    "candidate_id": "gen001-8c5bbca421a8",
+    "source_candidate_id": "gen001-8c5bbca421a8",
+    "expression": "ts_rank(anl4_af_eps_value / close, 60)",
+    "decay": 0,
+    "neutralization": "NONE",
+    "expected_region": "USA",
+    "expected_universe": "TOP3000",
+    "expected_delay": 1,
+    "instrument_type": "EQUITY",
+    "language": "FASTEXPR",
+    "surrogate_score": 0.2630303177072396,
+    "novelty": 0.4,
+    "novelty_bonus": 0.2,
+    "complexity_penalty": 0.23,
+    "avg_winner_similarity": 0.24066666666666658,
+    "max_winner_similarity": 0.6,
+    "operators": [
+      "ts_rank"
+    ],
+    "fields": [
+      "anl4_af_eps_value",
+      "close"
+    ],
+    "source_batch_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "source_canonical_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "reason": "Highest-surrogate simple analyst-price branch on a live-valid field"
+  },
+  {
+    "submission_order": 2,
+    "candidate_id": "gen001-232ac5c76bd9",
+    "source_candidate_id": "gen001-232ac5c76bd9",
+    "expression": "ts_mean(pv13_revere_index_value, 63)",
+    "decay": 0,
+    "neutralization": "NONE",
+    "expected_region": "USA",
+    "expected_universe": "TOP3000",
+    "expected_delay": 1,
+    "instrument_type": "EQUITY",
+    "language": "FASTEXPR",
+    "surrogate_score": 0.21779709952622336,
+    "novelty": 0.33333333333333337,
+    "novelty_bonus": 0.16666666666666669,
+    "complexity_penalty": 0.18000000000000002,
+    "avg_winner_similarity": 0.07033333333333332,
+    "max_winner_similarity": 0.6666666666666666,
+    "operators": [
+      "ts_mean"
+    ],
+    "fields": [
+      "pv13_revere_index_value"
+    ],
+    "source_batch_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "source_canonical_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "reason": "Most orthogonal hedge against the crowded winner set"
+  },
+  {
+    "submission_order": 3,
+    "candidate_id": "gen001-8344235797bd",
+    "source_candidate_id": "gen001-8344235797bd",
+    "expression": "group_rank(ts_sum(earnings_per_share_average/close, 60), industry)",
+    "decay": 0,
+    "neutralization": "NONE",
+    "expected_region": "USA",
+    "expected_universe": "TOP3000",
+    "expected_delay": 1,
+    "instrument_type": "EQUITY",
+    "language": "FASTEXPR",
+    "surrogate_score": 0.2019425413995803,
+    "novelty": 0.33333333333333337,
+    "novelty_bonus": 0.16666666666666669,
+    "complexity_penalty": 0.38,
+    "avg_winner_similarity": 0.23791486291486297,
+    "max_winner_similarity": 0.6666666666666666,
+    "operators": [
+      "group_rank",
+      "ts_sum"
+    ],
+    "fields": [
+      "earnings_per_share_average",
+      "close",
+      "industry"
+    ],
+    "source_batch_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "source_canonical_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "reason": "Live-valid earnings-average branch that adds a group-relative frame"
+  },
+  {
+    "submission_order": 4,
+    "candidate_id": "gen001-bba7a731f511",
+    "source_candidate_id": "gen001-bba7a731f511",
+    "expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), pv13_revere_key_sector_total)",
+    "decay": 0,
+    "neutralization": "NONE",
+    "expected_region": "USA",
+    "expected_universe": "TOP3000",
+    "expected_delay": 1,
+    "instrument_type": "EQUITY",
+    "language": "FASTEXPR",
+    "surrogate_score": 0.19208971915819117,
+    "novelty": 0.33333333333333337,
+    "novelty_bonus": 0.16666666666666669,
+    "complexity_penalty": 0.38,
+    "avg_winner_similarity": 0.298930735930736,
+    "max_winner_similarity": 0.6666666666666666,
+    "operators": [
+      "group_rank",
+      "ts_rank"
+    ],
+    "fields": [
+      "earnings_per_share_average",
+      "close",
+      "pv13_revere_key_sector_total"
+    ],
+    "source_batch_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "source_canonical_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "reason": "Sector-relative earnings-average backup with a slower window"
+  },
+  {
+    "submission_order": 5,
+    "candidate_id": "gen001-7bb07f9b2ffa",
+    "source_candidate_id": "gen001-7bb07f9b2ffa",
+    "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), pv13_revere_key_sector_total)",
+    "decay": 0,
+    "neutralization": "NONE",
+    "expected_region": "USA",
+    "expected_universe": "TOP3000",
+    "expected_delay": 1,
+    "instrument_type": "EQUITY",
+    "language": "FASTEXPR",
+    "surrogate_score": 0.18632826920060896,
+    "novelty": 0.33333333333333337,
+    "novelty_bonus": 0.16666666666666669,
+    "complexity_penalty": 0.38,
+    "avg_winner_similarity": 0.30623809523809525,
+    "max_winner_similarity": 0.6666666666666666,
+    "operators": [
+      "group_rank",
+      "ts_rank"
+    ],
+    "fields": [
+      "anl4_af_eps_value",
+      "close",
+      "pv13_revere_key_sector_total"
+    ],
+    "source_batch_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "source_canonical_file": "runs/evolution/generations/opt-r1/gen_001.json",
+    "reason": "Sector-relative analyst-price backup for breadth"
+  }
+]

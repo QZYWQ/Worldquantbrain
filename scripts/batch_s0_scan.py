@@ -19,12 +19,33 @@ import os
 import sqlite3
 import sys
 import time
+import threading
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+HARNESS_LIB_DIR = PROJECT_ROOT / "harness" / "lib"
+if str(HARNESS_LIB_DIR) not in sys.path:
+    sys.path.insert(0, str(HARNESS_LIB_DIR))
+CONCURRENT_LIB_DIR = HARNESS_LIB_DIR / "concurrent"
+if str(CONCURRENT_LIB_DIR) not in sys.path:
+    sys.path.insert(0, str(CONCURRENT_LIB_DIR))
+
 from dedupe_gate import DedupeGate
 from result_ledger import ResultLedger
+
+try:
+    from strategy_optimizer import StrategyOptimizer
+except ModuleNotFoundError:  # pragma: no cover - harness/lib may not be available in bootstrap-only contexts
+    StrategyOptimizer = None
+
+try:
+    from slot_manager import SlotManager
+    from scheduler import Scheduler
+except ModuleNotFoundError:  # pragma: no cover - concurrent mode is optional in bootstrap-only contexts
+    SlotManager = None
+    Scheduler = None
 
 try:
     import requests
@@ -112,6 +133,13 @@ def normalize_neutralization(value: Any) -> str | None:
     if value in (None, "", "None"):
         return None
     return str(value)
+
+
+def normalize_submission_mode(value: Any, default: str = "manual") -> str:
+    mode = str(value or "").strip().lower()
+    if mode in {"api", "manual"}:
+        return mode
+    return default
 
 
 def dedupe_preserve_order(values: Iterable[str]) -> list[str]:
@@ -254,10 +282,12 @@ def _build_default_live_record(
     submission_ref: str,
     alpha_id: str,
     config: dict[str, Any],
+    submission_mode: str = "manual",
 ) -> dict[str, Any]:
     flat_metrics = _flatten_result_metrics(result)
     test_block = result.get("test") if isinstance(result.get("test"), dict) else {}
     train_block = result.get("train") if isinstance(result.get("train"), dict) else {}
+    normalized_submission_mode = normalize_submission_mode(submission_mode)
     payload = {
         "alpha_id": alpha_id,
         "expression": candidate["expression"],
@@ -287,7 +317,7 @@ def _build_default_live_record(
             0.0,
         ),
         "status": _normalize_result_status(result),
-        "tags": ["batch_s0", "live"],
+        "tags": ["batch_s0", "live", normalized_submission_mode],
         "timestamp": datetime.now().isoformat(timespec="seconds"),
         "raw_json": result,
         "capture_id": candidate["candidate_id"],
@@ -627,6 +657,7 @@ def _candidate_progress_record(
     status: str,
     submission_id: str | None = None,
     alpha_id: str | None = None,
+    submission_mode: str | None = None,
     result: dict[str, Any] | None = None,
     error: str | None = None,
     submitted_at: str | None = None,
@@ -654,6 +685,7 @@ def _candidate_progress_record(
         "status": status,
         "submission_id": submission_id,
         "alpha_id": alpha_id,
+        "submission_mode": normalize_submission_mode(submission_mode, default="manual") if submission_mode is not None else None,
         "submitted_at": submitted_at,
         "completed_at": completed_at,
         "updated_at": updated_at or completed_at or submitted_at or datetime.now().isoformat(timespec="seconds"),
@@ -914,54 +946,61 @@ def _extract_submission_ref(response: Any) -> str | None:
     return None
 
 
-def submit_simulation(expression: str, neutralization: Any) -> str | None:
+def submit_simulation(
+    expression: str,
+    neutralization: Any,
+    *,
+    candidate: dict[str, Any] | None = None,
+    session: "requests.Session" | None = None,
+) -> str | None:
     runtime = LIVE_RUNTIME
     config = runtime.get("config")
     logger = _live_logger()
     if not isinstance(config, dict):
         raise RuntimeError("live runtime is not initialized")
 
-    candidate = runtime.get("current_candidate")
-    if not isinstance(candidate, dict):
-        candidate = {"expression": expression, "neut": neutralization, "decay": 0, "candidate_id": "manual"}
+    candidate_data = candidate if isinstance(candidate, dict) else runtime.get("current_candidate")
+    if not isinstance(candidate_data, dict):
+        candidate_data = {"expression": expression, "neut": neutralization, "decay": 0, "candidate_id": "manual"}
 
     api_base_url = _resolve_api_base_url(config)
     url = _request_url(api_base_url, "/simulations")
-    payload = _build_request_payload(candidate)
+    payload = _build_request_payload(candidate_data)
     payload["regular"] = expression
 
     if runtime.get("test_mode"):
         masked_headers = _build_masked_headers(config)
         _print_test_request("POST", url, masked_headers, payload)
-        test_submission_ref = f"{TEST_MODE_DUMMY_ALPHA_ID}:{candidate.get('candidate_id') or 'candidate'}"
+        test_submission_ref = f"{TEST_MODE_DUMMY_ALPHA_ID}:{candidate_data.get('candidate_id') or 'candidate'}"
         runtime.setdefault("submission_locations", {})[test_submission_ref] = test_submission_ref
         return test_submission_ref
 
     if not api_base_url:
         raise RuntimeError("API_BASE_URL is required for live submissions")
     _ensure_requests_available()
-    session = runtime.get("session")
-    if session is None:
-        session = _refresh_live_session()
+    session_obj = session if session is not None else runtime.get("session")
+    if session_obj is None:
+        session_obj = _refresh_live_session()
 
     reauth_attempted = False
     retry_429_count = 0
     while True:
-        response = session.post(url, json=payload, timeout=LIVE_REQUEST_TIMEOUT_SECONDS)
+        response = session_obj.post(url, json=payload, timeout=LIVE_REQUEST_TIMEOUT_SECONDS)
         status_code = response.status_code
 
         if status_code == 401:
             if reauth_attempted:
                 raise RuntimeError(f"authentication failed after retry: {status_code} {_response_body_preview(response)}")
             reauth_attempted = True
-            runtime["session"] = _refresh_live_session()
-            session = runtime["session"]
+            if session is None:
+                runtime["session"] = _refresh_live_session()
+                session_obj = runtime["session"]
             continue
 
         if status_code == 429:
             retry_429_count += 1
             if retry_429_count > HTTP_429_MAX_RETRIES:
-                logger.error("submission hit 429 too many times candidate=%s", candidate.get("candidate_id"))
+                logger.error("submission hit 429 too many times candidate=%s", candidate_data.get("candidate_id"))
                 return None
             retry_after = response.headers.get("Retry-After")
             wait_seconds = HTTP_429_RETRY_WAIT_SECONDS
@@ -972,7 +1011,7 @@ def submit_simulation(expression: str, neutralization: Any) -> str | None:
                     pass
             logger.warning(
                 "submission 429 candidate=%s retry=%d wait_seconds=%d",
-                candidate.get("candidate_id"),
+                candidate_data.get("candidate_id"),
                 retry_429_count,
                 wait_seconds,
             )
@@ -981,17 +1020,17 @@ def submit_simulation(expression: str, neutralization: Any) -> str | None:
 
         if status_code >= 400:
             raise RuntimeError(
-                f"submission failed status={status_code} candidate={candidate.get('candidate_id')} body={_response_body_preview(response)}"
+                f"submission failed status={status_code} candidate={candidate_data.get('candidate_id')} body={_response_body_preview(response)}"
             )
 
         submission_ref = _extract_submission_ref(response)
         if not submission_ref:
             logger.warning(
                 "submission response missing Location/id candidate=%s body=%s",
-                candidate.get("candidate_id"),
+                candidate_data.get("candidate_id"),
                 _response_body_preview(response),
             )
-            submission_ref = f"{TEST_MODE_DUMMY_SIMULATION_ID}:{candidate.get('candidate_id') or 'candidate'}"
+            submission_ref = f"{TEST_MODE_DUMMY_SIMULATION_ID}:{candidate_data.get('candidate_id') or 'candidate'}"
         runtime.setdefault("submission_locations", {})[submission_ref] = submission_ref
         return submission_ref
 
@@ -1005,7 +1044,12 @@ def _result_has_ready_metrics(result: dict[str, Any]) -> bool:
     return isinstance(result.get("test"), dict) or isinstance(result.get("metrics"), dict) or isinstance(result.get("performance"), dict)
 
 
-def poll_result(alpha_id: str) -> dict[str, Any] | None:
+def poll_result(
+    alpha_id: str,
+    *,
+    candidate: dict[str, Any] | None = None,
+    session: "requests.Session" | None = None,
+) -> dict[str, Any] | None:
     runtime = LIVE_RUNTIME
     config = runtime.get("config")
     logger = _live_logger()
@@ -1013,7 +1057,9 @@ def poll_result(alpha_id: str) -> dict[str, Any] | None:
         raise RuntimeError("live runtime is not initialized")
 
     if runtime.get("test_mode"):
-        candidate = runtime.get("current_candidate") if isinstance(runtime.get("current_candidate"), dict) else {}
+        candidate_data = candidate if isinstance(candidate, dict) else runtime.get("current_candidate")
+        if not isinstance(candidate_data, dict):
+            candidate_data = {}
         test_result = {
             "TEST_MODE_DUMMY": True,
             "status": "TEST_MODE_DUMMY",
@@ -1031,16 +1077,16 @@ def poll_result(alpha_id: str) -> dict[str, Any] | None:
                 "fitness": 0.24,
                 "turnover": 0.12,
             },
-            "expression": candidate.get("expression"),
-            "candidate_id": candidate.get("candidate_id"),
+            "expression": candidate_data.get("expression"),
+            "candidate_id": candidate_data.get("candidate_id"),
         }
         logger.info("[TEST MODE] poll_result alpha_id=%s -> TEST_MODE_DUMMY", alpha_id)
         return test_result
 
     _ensure_requests_available()
-    session = runtime.get("session")
-    if session is None:
-        session = _refresh_live_session()
+    session_obj = session if session is not None else runtime.get("session")
+    if session_obj is None:
+        session_obj = _refresh_live_session()
 
     submission_ref = str(alpha_id)
     url = _resolve_submission_ref_to_url(submission_ref)
@@ -1049,7 +1095,7 @@ def poll_result(alpha_id: str) -> dict[str, Any] | None:
 
     for attempt in range(1, SIMULATION_POLL_MAX_RETRIES + 1):
         try:
-            response = session.get(url, timeout=LIVE_REQUEST_TIMEOUT_SECONDS)
+            response = session_obj.get(url, timeout=LIVE_REQUEST_TIMEOUT_SECONDS)
         except Exception as exc:
             if requests is not None and isinstance(exc, requests.exceptions.RequestException):
                 logger.warning(
@@ -1070,8 +1116,9 @@ def poll_result(alpha_id: str) -> dict[str, Any] | None:
             if reauth_attempted:
                 raise RuntimeError(f"poll authentication failed after retry: {status_code} {_response_body_preview(response)}")
             reauth_attempted = True
-            runtime["session"] = _refresh_live_session()
-            session = runtime["session"]
+            if session is None:
+                runtime["session"] = _refresh_live_session()
+                session_obj = runtime["session"]
             continue
 
         if status_code == 429:
@@ -1136,11 +1183,17 @@ def poll_result(alpha_id: str) -> dict[str, Any] | None:
     return None
 
 
-def write_result_to_ledger(candidate: dict[str, Any], submission_ref: str, result: dict[str, Any]) -> int | None:
+def write_result_to_ledger(
+    candidate: dict[str, Any],
+    submission_ref: str,
+    result: dict[str, Any],
+    *,
+    ledger: ResultLedger | None = None,
+    submission_mode: str = "manual",
+) -> int | None:
     runtime = LIVE_RUNTIME
     logger = _live_logger()
     config = runtime.get("config")
-    ledger = runtime.get("ledger")
     if not isinstance(config, dict):
         raise RuntimeError("live runtime is not initialized")
 
@@ -1154,6 +1207,7 @@ def write_result_to_ledger(candidate: dict[str, Any], submission_ref: str, resul
         submission_ref=submission_ref,
         alpha_id=str(alpha_id),
         config=config,
+        submission_mode=submission_mode,
     )
     payload["raw_json"] = result
 
@@ -1161,14 +1215,15 @@ def write_result_to_ledger(candidate: dict[str, Any], submission_ref: str, resul
         logger.info("[TEST MODE] would insert result into ledger: %s", json.dumps(payload, ensure_ascii=False, sort_keys=True))
         return None
 
-    if not isinstance(ledger, ResultLedger):
+    active_ledger = ledger if isinstance(ledger, ResultLedger) else runtime.get("ledger")
+    if not isinstance(active_ledger, ResultLedger):
         raise RuntimeError("result ledger is not initialized")
 
-    if ledger_has_alpha_id(ledger, str(alpha_id)):
+    if ledger_has_alpha_id(active_ledger, str(alpha_id)):
         logger.info("ledger already contains alpha_id=%s, skipping duplicate insert", alpha_id)
         return None
 
-    row_id = ledger.insert_result(payload)
+    row_id = active_ledger.insert_result(payload)
     logger.info("ledger insert complete row_id=%s alpha_id=%s", row_id, alpha_id)
     return row_id
 
@@ -1181,6 +1236,8 @@ class BatchS0Scanner:
         max_simulations: int = 50,
         run_mode: str = "dry",
         test_mode: bool = False,
+        concurrent: bool = False,
+        use_api: bool = False,
     ) -> None:
         self.project_root = get_project_root()
         self.fields_path = self._resolve_path(fields_path)
@@ -1188,6 +1245,8 @@ class BatchS0Scanner:
         self.max_simulations = max_simulations
         self.run_mode = run_mode
         self.test_mode = test_mode
+        self.concurrent = concurrent
+        self.use_api = use_api
         self.ledger_path = self._resolve_path("runs/evidence/result_ledger.db")
         self.log_path = self._resolve_path("runs/evidence/batch_s0_scan.log")
         self.progress_path = self._resolve_path(PROGRESS_FILE)
@@ -1221,6 +1280,30 @@ class BatchS0Scanner:
         logger.propagate = False
         return logger
 
+    def _load_api_client(self, config: dict[str, Any]) -> Any:
+        if not self.use_api:
+            return None
+        if self.test_mode:
+            self.logger.info("use-api requested but test mode is active; keeping manual test path")
+            return None
+        if str(os.environ.get("WQB_API_ENABLED") or "").strip().lower() not in {"1", "true", "yes", "on"}:
+            raise RuntimeError("--use-api requires WQB_API_ENABLED=true")
+
+        username = config.get("username")
+        password = config.get("password")
+        if not username or not password:
+            raise RuntimeError("--use-api requires BRAIN_USERNAME/BRAIN_PASSWORD or WQ_USERNAME/WQ_PASSWORD credentials")
+
+        auth_mode = str(config.get("auth_mode") or "none").lower()
+        if auth_mode != "basic":
+            raise RuntimeError("--use-api requires username/password credentials; token, cookie, or header auth is not supported")
+
+        from wqb_api_client import WQBApiClient
+
+        client = WQBApiClient()
+        client.set_credentials(str(username), str(password))
+        return client
+
     def load_fields(self) -> dict[str, Any]:
         path = self.fields_path
         if not path.exists():
@@ -1233,10 +1316,34 @@ class BatchS0Scanner:
             raise ValueError("field candidate file must contain a fields array")
 
         self.scan_spec = payload
+        sweep_manifest_path = payload.get("sweep_manifest") or payload.get("param_sweep_manifest")
+        manifest_payload: dict[str, Any] = {}
+        if sweep_manifest_path:
+            manifest_path = self._resolve_path(sweep_manifest_path)
+            if manifest_path.exists():
+                try:
+                    manifest_payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+                    if not isinstance(manifest_payload, dict):
+                        manifest_payload = {}
+                    else:
+                        self.logger.info("loaded sweep manifest=%s", manifest_path)
+                except (OSError, json.JSONDecodeError):
+                    self.logger.warning("failed to load sweep manifest=%s", manifest_path)
+
+        template_overrides = payload.get("template_overrides")
+        if not isinstance(template_overrides, list):
+            template_overrides = manifest_payload.get("template_overrides") if isinstance(manifest_payload.get("template_overrides"), list) else None
         self.templates = dedupe_preserve_order(
-            self._override_list(payload.get("template_overrides"), DEFAULT_TEMPLATES)
+            self._override_list(template_overrides, DEFAULT_TEMPLATES)
         )
-        params = payload.get("param_overrides") if isinstance(payload.get("param_overrides"), dict) else {}
+
+        params = {}
+        manifest_params = manifest_payload.get("param_overrides") if isinstance(manifest_payload.get("param_overrides"), dict) else {}
+        if manifest_params:
+            params.update(manifest_params)
+        payload_params = payload.get("param_overrides") if isinstance(payload.get("param_overrides"), dict) else {}
+        if payload_params:
+            params.update(payload_params)
         self.decays = [as_int(item) for item in params.get("decays", DEFAULT_DECAYS)] or list(DEFAULT_DECAYS)
         self.neutralizations = [normalize_neutralization(item) or "" for item in params.get("neutralizations", DEFAULT_NEUTRALIZATIONS)] or list(DEFAULT_NEUTRALIZATIONS)
         sort_weights = params.get("sort_weights") if isinstance(params.get("sort_weights"), dict) else {}
@@ -1310,8 +1417,14 @@ class BatchS0Scanner:
 
             for template_index, template in enumerate(templates, start=1):
                 template_complexity = self._template_complexity(template)
-                for decay in decays:
-                    expression = template.format(field=field_name, decay=decay)
+                template_has_field_placeholder = "{field}" in template
+                template_has_decay_placeholder = "{decay}" in template
+                effective_decays = decays if template_has_decay_placeholder else [None]
+                for decay in effective_decays:
+                    expression = template.format(
+                        field=field_name if template_has_field_placeholder else field_name,
+                        decay=decay if decay is not None else "",
+                    )
                     for neutralization in neutralizations:
                         neutralization_label = neutralization if neutralization is not None else "None"
                         candidate = {
@@ -1511,6 +1624,263 @@ class BatchS0Scanner:
             "total_after_dedupe": len(candidates),
         }
 
+    def _optimize_strategy(self, completed_count: int, resumed_count: int, submitted_count: int, failed_count: int) -> dict[str, Any] | None:
+        if StrategyOptimizer is None or self.run_mode != "live" or self.test_mode:
+            return None
+        attempted = submitted_count + resumed_count + failed_count
+        if attempted <= 0:
+            return None
+        success_rate = completed_count / attempted
+        optimizer = StrategyOptimizer()
+        parameters = optimizer.optimize(success_rate)
+        return {
+            "success_rate": round(success_rate, 6),
+            "parameters": parameters,
+            "state_path": str(optimizer.state_path),
+        }
+
+    def _run_live_concurrent(
+        self,
+        planned: list[dict[str, Any]],
+        config: dict[str, Any],
+        progress: dict[str, Any],
+        day_key: str,
+        resumed_count: int,
+        completed_count: int,
+        failed_count: int,
+        skipped_completed: int,
+        skipped_active: int,
+        missing_config: list[str],
+    ) -> dict[str, Any]:
+        if SlotManager is None or Scheduler is None:
+            raise RuntimeError("concurrent mode requires harness/lib/concurrent helpers")
+
+        slot_manager = SlotManager()
+        progress_lock = threading.Lock()
+        stats_lock = threading.Lock()
+        ledger_lock = threading.Lock()
+        stats = {
+            "submitted": 0,
+            "completed": completed_count,
+            "failed": failed_count,
+        }
+
+        def _update_progress_locked(record: dict[str, Any]) -> None:
+            with progress_lock:
+                upsert_progress_record(progress, record)
+                progress.setdefault("daily_submissions", {})[day_key] = count_daily_submissions(progress, day_key)
+                save_progress(progress, self.progress_path, test_mode=self.test_mode, logger=self.logger)
+
+        def process_candidate(alpha_expr: str, region: str, **kwargs: Any) -> dict[str, Any]:
+            candidate = kwargs.get("candidate")
+            if not isinstance(candidate, dict):
+                candidate = {"expression": alpha_expr, "neut": None, "candidate_id": "manual"}
+            candidate_id = str(candidate.get("candidate_id") or "")
+            session = None
+            try:
+                session = _build_live_session(config)
+                submission_ref = submit_simulation(
+                    candidate["expression"],
+                    candidate.get("neut"),
+                    candidate=candidate,
+                    session=session,
+                )
+                if not submission_ref:
+                    _update_progress_locked(
+                        _candidate_progress_record(
+                            candidate,
+                            status="submission_failed",
+                            error="submit_simulation returned no submission reference",
+                            submission_mode="manual",
+                        )
+                    )
+                    with stats_lock:
+                        stats["failed"] += 1
+                    return {
+                        "status": "submission_failed",
+                        "candidate_id": candidate_id,
+                        "region": region,
+                    }
+
+                submitted_at = datetime.now().isoformat(timespec="seconds")
+                _update_progress_locked(
+                    _candidate_progress_record(
+                        candidate,
+                        status="submitted",
+                        submission_id=submission_ref,
+                        submission_mode="manual",
+                        submitted_at=submitted_at,
+                    )
+                )
+                with stats_lock:
+                    stats["submitted"] += 1
+
+                _sleep_live(SIMULATION_POLL_INTERVAL, "post-submission poll wait")
+                result = poll_result(submission_ref, candidate=candidate, session=session)
+                if result is None:
+                    _update_progress_locked(
+                        _candidate_progress_record(
+                            candidate,
+                            status="submitted",
+                            submission_id=submission_ref,
+                            submission_mode="manual",
+                            submitted_at=submitted_at,
+                            updated_at=datetime.now().isoformat(timespec="seconds"),
+                        )
+                    )
+                    return {
+                        "status": "pending",
+                        "candidate_id": candidate_id,
+                        "submission_id": submission_ref,
+                        "region": region,
+                    }
+
+                alpha_id = _extract_result_alpha_id(result)
+                if alpha_id in (None, "", "UNKNOWN"):
+                    alpha_id = submission_ref
+
+                if not self.test_mode:
+                    with ledger_lock:
+                        with ResultLedger(self.ledger_path) as local_ledger:
+                            write_result_to_ledger(candidate, submission_ref, result, ledger=local_ledger)
+
+                _update_progress_locked(
+                    _candidate_progress_record(
+                        candidate,
+                        status="completed",
+                        submission_id=submission_ref,
+                        alpha_id=str(alpha_id),
+                        submission_mode="manual",
+                        result=result,
+                        submitted_at=submitted_at,
+                        completed_at=datetime.now().isoformat(timespec="seconds"),
+                    )
+                )
+                with stats_lock:
+                    stats["completed"] += 1
+
+                return {
+                    "status": "completed",
+                    "candidate_id": candidate_id,
+                    "submission_id": submission_ref,
+                    "alpha_id": str(alpha_id),
+                    "region": region,
+                }
+            except Exception as exc:
+                _update_progress_locked(
+                    _candidate_progress_record(
+                        candidate,
+                        status="error",
+                        submission_id=None,
+                        submission_mode="manual",
+                        error=str(exc),
+                        submitted_at=datetime.now().isoformat(timespec="seconds"),
+                    )
+                )
+                with stats_lock:
+                    stats["failed"] += 1
+                if _is_auth_failure_error(exc):
+                    raise
+                return {
+                    "status": "error",
+                    "candidate_id": candidate_id,
+                    "region": region,
+                    "error": str(exc),
+                }
+            finally:
+                if session is not None:
+                    try:
+                        session.close()
+                    except Exception:
+                        pass
+
+        scheduler = Scheduler(
+            slot_manager=slot_manager,
+            submit_func=process_candidate,
+            task_log_path=self._resolve_path("runs/state/scheduler_tasks.jsonl"),
+        )
+
+        scheduled_count = 0
+        completed_ids = progress_completed_candidate_ids(progress)
+        active_ids = progress_active_candidate_ids(progress)
+        for candidate in planned:
+            candidate_id = str(candidate.get("candidate_id") or "")
+            if not candidate_id:
+                self.logger.warning("skip candidate with empty candidate_id expression=%s", candidate.get("expression"))
+                continue
+
+            if candidate_id in completed_ids:
+                skipped_completed += 1
+                self.logger.info("skip completed candidate=%s", candidate_id)
+                continue
+
+            if candidate_id in active_ids:
+                skipped_active += 1
+                self.logger.info("skip active candidate=%s", candidate_id)
+                continue
+
+            region = str(config.get("region") or "USA")
+            while True:
+                with progress_lock:
+                    daily_count = count_daily_submissions(progress, day_key)
+                daily_count += scheduled_count
+                if daily_count >= DAILY_SIMULATION_LIMIT:
+                    self.logger.warning(
+                        "daily simulation limit reached day=%s count=%d limit=%d",
+                        day_key,
+                        daily_count,
+                        DAILY_SIMULATION_LIMIT,
+                    )
+                    break
+                if daily_count >= DAILY_SIMULATION_WARN_AT:
+                    self.logger.warning(
+                        "daily simulation count approaching limit day=%s count=%d warn_at=%d limit=%d",
+                        day_key,
+                        daily_count,
+                        DAILY_SIMULATION_WARN_AT,
+                        DAILY_SIMULATION_LIMIT,
+                    )
+
+                outcome = scheduler.schedule(candidate["expression"], region, candidate=candidate)
+                if outcome.get("status") == "scheduled":
+                    scheduled_count += 1
+                    active_ids.add(candidate_id)
+                    break
+
+                message = str(outcome.get("message") or "")
+                if "slot" in message.lower():
+                    _sleep_live(5, f"waiting for available slot candidate={candidate_id}")
+                    continue
+
+                with stats_lock:
+                    stats["failed"] += 1
+                self.logger.warning("concurrent schedule rejected candidate=%s message=%s", candidate_id, message)
+                break
+
+        task_records = scheduler.wait_all()
+        self.logger.info("concurrent tasks finished count=%d", len(task_records))
+
+        summary = {
+            "mode": "live" if not self.test_mode else "live-test-mode",
+            "planned": len(planned),
+            "resumed": resumed_count,
+            "submitted": stats["submitted"],
+            "completed": stats["completed"],
+            "failed": stats["failed"],
+            "skipped_completed": skipped_completed,
+            "skipped_active": skipped_active,
+            "daily_count": count_daily_submissions(progress, day_key),
+            "missing_config": missing_config,
+            "test_mode": self.test_mode,
+            "concurrent": True,
+            "slot_status": slot_manager.get_status(),
+        }
+        optimizer_summary = self._optimize_strategy(stats["completed"], resumed_count, stats["submitted"], stats["failed"])
+        if optimizer_summary is not None:
+            summary["strategy_optimizer"] = optimizer_summary
+        self.logger.info("live mode end summary=%s", json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return summary
+
     def run_live(self, candidates: list[dict[str, Any]]) -> dict[str, Any]:
         planned = list(candidates[: self.max_simulations])
         candidate_lookup = {str(candidate.get("candidate_id") or ""): candidate for candidate in planned if candidate.get("candidate_id") not in (None, "")}
@@ -1518,13 +1888,21 @@ class BatchS0Scanner:
         progress = load_progress(self.progress_path)
         missing_config = list(config.get("missing_config", []))
         ledger: ResultLedger | None = None
+        api_client: Any | None = None
+        submission_mode_default = "manual"
 
         if not self.test_mode:
-            if not config.get("api_base_url"):
-                raise RuntimeError("API_BASE_URL is required for live mode")
-            if not config.get("has_effective_auth"):
-                raise RuntimeError("No authentication method configured for live mode")
-            ledger = ResultLedger(self.ledger_path)
+            if self.use_api:
+                api_client = self._load_api_client(config)
+                missing_config = [item for item in missing_config if item not in {"API_BASE_URL", "AUTHENTICATION_METHOD"}]
+                ledger = ResultLedger(self.ledger_path)
+                submission_mode_default = "api"
+            else:
+                if not config.get("api_base_url"):
+                    raise RuntimeError("API_BASE_URL is required for live mode")
+                if not config.get("has_effective_auth"):
+                    raise RuntimeError("No authentication method configured for live mode")
+                ledger = ResultLedger(self.ledger_path)
 
         _initialize_live_runtime(self, config, progress, ledger)
         day_key = datetime.now().date().isoformat()
@@ -1543,10 +1921,77 @@ class BatchS0Scanner:
         self.logger.info("ledger_path=%s", self.ledger_path)
         self.logger.info("progress_path=%s", self.progress_path)
         self.logger.info("run_mode=%s test_mode=%s", self.run_mode, self.test_mode)
+        self.logger.info("use_api=%s", self.use_api and not self.test_mode)
         self.logger.info("api_base_url=%s", config.get("api_base_url") or API_BASE_URL or "<missing>")
         self.logger.info("auth_mode=%s", config.get("auth_mode") or "none")
         self.logger.info("missing_config=%s", ", ".join(missing_config) if missing_config else "none")
         self.logger.info("daily_count=%d warn_at=%d limit=%d", daily_count, DAILY_SIMULATION_WARN_AT, DAILY_SIMULATION_LIMIT)
+
+        def _api_is_auth_error(payload: dict[str, Any]) -> bool:
+            status_code = as_int(payload.get("status_code"), 0)
+            error_text = str(payload.get("error") or payload.get("message") or payload.get("detail") or "").strip().lower()
+            return status_code in {401, 403} or any(
+                token in error_text for token in ("authentication", "unauthorized", "credential", "login", "reauth")
+            )
+
+        def _api_submission_error_payload(payload: dict[str, Any]) -> str:
+            return json.dumps(payload, ensure_ascii=False, sort_keys=True)
+
+        def _api_submit_candidate(candidate: dict[str, Any]) -> str | None:
+            if api_client is None:
+                raise RuntimeError("API client is not initialized")
+            status = api_client.get_daily_status()
+            if not bool(status.get("can_simulate")):
+                self.logger.warning(
+                    "api daily simulation limit reached day=%s count=%s limit=%s warning_at=%s",
+                    status.get("day_key"),
+                    status.get("count"),
+                    status.get("limit"),
+                    status.get("warning_at"),
+                )
+                return None
+
+            result = api_client.submit_simulation(
+                candidate["expression"],
+                str(config.get("region") or "USA"),
+                str(config.get("universe") or "TOP3000"),
+                delay=as_int(candidate.get("delay"), as_int(DEFAULT_LIVE_SETTINGS["delay"], 1)),
+                neutralization=_normalize_live_neutralization(candidate.get("neut")),
+                decay=as_int(candidate.get("decay"), 0),
+            )
+            if not isinstance(result, dict):
+                return str(result) if result not in (None, "") else None
+
+            submission_ref = _coalesce(
+                result.get("simulation_id"),
+                result.get("simulationId"),
+                result.get("alpha_id"),
+                result.get("alphaId"),
+                result.get("id"),
+            )
+            if submission_ref not in (None, ""):
+                return str(submission_ref)
+
+            status_code = as_int(result.get("status_code"), 0)
+            if _api_is_auth_error(result):
+                raise RuntimeError(f"API authentication failed: {_api_submission_error_payload(result)}")
+            if status_code >= 429 or status_code >= 500:
+                raise RuntimeError(f"API submission failed: {_api_submission_error_payload(result)}")
+
+            self.logger.warning(
+                "API submission rejected candidate=%s result=%s",
+                candidate.get("candidate_id"),
+                _api_submission_error_payload(result),
+            )
+            return None
+
+        def _api_poll_result(submission_ref: str) -> dict[str, Any] | None:
+            if api_client is None:
+                raise RuntimeError("API client is not initialized")
+            result = api_client.poll_result(submission_ref, max_wait=max(300, SIMULATION_POLL_INTERVAL * SIMULATION_POLL_MAX_RETRIES))
+            if isinstance(result, dict) and _api_is_auth_error(result):
+                raise RuntimeError(f"API authentication failed: {_api_submission_error_payload(result)}")
+            return result
 
         pending_records = progress_pending_records(progress)
         if pending_records:
@@ -1566,24 +2011,51 @@ class BatchS0Scanner:
                     self.logger.warning("resume skipped empty submission reference candidate=%s", candidate.get("candidate_id"))
                     continue
 
+                # Older progress files may not carry submission_mode; default them to manual
+                # so pre-existing hand-run submissions keep their original polling path.
+                record_submission_mode = normalize_submission_mode(record.get("submission_mode"), default="manual")
                 try:
                     LIVE_RUNTIME["current_candidate"] = candidate
-                    result = poll_result(submission_ref)
+                    if record_submission_mode == "api" and api_client is not None:
+                        result = _api_poll_result(submission_ref)
+                    else:
+                        result = poll_result(submission_ref)
                     if result is None:
                         self.logger.info("resume still pending candidate=%s submission=%s", candidate.get("candidate_id"), submission_ref)
+                        continue
+
+                    if isinstance(result, dict) and result.get("error") and record_submission_mode == "api":
+                        self.logger.warning(
+                            "resume api poll returned error candidate=%s submission=%s error=%s",
+                            candidate.get("candidate_id"),
+                            submission_ref,
+                            result.get("error"),
+                        )
+                        error_record = _candidate_progress_record(
+                            candidate,
+                            status="error",
+                            submission_id=submission_ref,
+                            alpha_id=str(record.get("alpha_id") or ""),
+                            submission_mode=record_submission_mode,
+                            error=str(result.get("error") or "API poll failed"),
+                            submitted_at=str(record.get("submitted_at") or record.get("timestamp") or ""),
+                        )
+                        upsert_progress_record(progress, error_record)
+                        failed_count += 1
                         continue
 
                     alpha_id = _extract_result_alpha_id(result)
                     if alpha_id in (None, "", "UNKNOWN"):
                         alpha_id = submission_ref
                     if not self.test_mode:
-                        write_result_to_ledger(candidate, submission_ref, result)
+                        write_result_to_ledger(candidate, submission_ref, result, submission_mode=record_submission_mode)
 
                     completed_record = _candidate_progress_record(
                         candidate,
                         status="completed",
                         submission_id=submission_ref,
                         alpha_id=str(alpha_id),
+                        submission_mode=record_submission_mode,
                         result=result,
                         submitted_at=str(record.get("submitted_at") or record.get("timestamp") or ""),
                         completed_at=datetime.now().isoformat(timespec="seconds"),
@@ -1603,6 +2075,7 @@ class BatchS0Scanner:
                         status="error",
                         submission_id=submission_ref,
                         alpha_id=str(record.get("alpha_id") or ""),
+                        submission_mode=record_submission_mode,
                         error=str(exc),
                         submitted_at=str(record.get("submitted_at") or record.get("timestamp") or ""),
                     )
@@ -1614,6 +2087,22 @@ class BatchS0Scanner:
         completed_candidate_ids = progress_completed_candidate_ids(progress)
 
         try:
+            if self.concurrent and not self.test_mode:
+                if ledger is not None:
+                    ledger.close()
+                    ledger = None
+                return self._run_live_concurrent(
+                    planned=planned,
+                    config=config,
+                    progress=progress,
+                    day_key=day_key,
+                    resumed_count=resumed_count,
+                    completed_count=completed_count,
+                    failed_count=failed_count,
+                    skipped_completed=skipped_completed,
+                    skipped_active=skipped_active,
+                    missing_config=missing_config,
+                )
             for candidate in planned:
                 candidate_id = str(candidate.get("candidate_id") or "")
                 if not candidate_id:
@@ -1630,28 +2119,52 @@ class BatchS0Scanner:
                     self.logger.info("skip active candidate=%s", candidate_id)
                     continue
 
-                daily_count = count_daily_submissions(progress, day_key)
-                if daily_count >= DAILY_SIMULATION_LIMIT:
-                    self.logger.warning(
-                        "daily simulation limit reached day=%s count=%d limit=%d",
-                        day_key,
-                        daily_count,
-                        DAILY_SIMULATION_LIMIT,
-                    )
-                    break
-                if daily_count >= DAILY_SIMULATION_WARN_AT:
-                    self.logger.warning(
-                        "daily simulation count approaching limit day=%s count=%d warn_at=%d limit=%d",
-                        day_key,
-                        daily_count,
-                        DAILY_SIMULATION_WARN_AT,
-                        DAILY_SIMULATION_LIMIT,
-                    )
+                submission_mode = submission_mode_default
+                if api_client is not None:
+                    daily_status = api_client.get_daily_status()
+                    daily_count = as_int(daily_status.get("count"), daily_count)
+                    if not daily_status.get("can_simulate"):
+                        self.logger.warning(
+                            "api daily simulation limit reached day=%s count=%d limit=%d",
+                            daily_status.get("day_key"),
+                            daily_count,
+                            daily_status.get("limit"),
+                        )
+                        break
+                    if daily_count >= DAILY_SIMULATION_WARN_AT:
+                        self.logger.warning(
+                            "api daily simulation count approaching limit day=%s count=%d warn_at=%d limit=%d",
+                            daily_status.get("day_key"),
+                            daily_count,
+                            DAILY_SIMULATION_WARN_AT,
+                            daily_status.get("limit"),
+                        )
+                else:
+                    daily_count = count_daily_submissions(progress, day_key)
+                    if daily_count >= DAILY_SIMULATION_LIMIT:
+                        self.logger.warning(
+                            "daily simulation limit reached day=%s count=%d limit=%d",
+                            day_key,
+                            daily_count,
+                            DAILY_SIMULATION_LIMIT,
+                        )
+                        break
+                    if daily_count >= DAILY_SIMULATION_WARN_AT:
+                        self.logger.warning(
+                            "daily simulation count approaching limit day=%s count=%d warn_at=%d limit=%d",
+                            day_key,
+                            daily_count,
+                            DAILY_SIMULATION_WARN_AT,
+                            DAILY_SIMULATION_LIMIT,
+                        )
 
                 LIVE_RUNTIME["current_candidate"] = candidate
                 submission_ref: str | None = None
                 try:
-                    submission_ref = submit_simulation(candidate["expression"], candidate.get("neut"))
+                    if api_client is not None:
+                        submission_ref = _api_submit_candidate(candidate)
+                    else:
+                        submission_ref = submit_simulation(candidate["expression"], candidate.get("neut"))
                     if not submission_ref:
                         failed_count += 1
                         self.logger.warning("submission returned no reference candidate=%s", candidate_id)
@@ -1659,6 +2172,7 @@ class BatchS0Scanner:
                             candidate,
                             status="submission_failed",
                             error="submit_simulation returned no submission reference",
+                            submission_mode=submission_mode,
                         )
                         upsert_progress_record(progress, error_record)
                         save_progress(progress, self.progress_path, test_mode=self.test_mode, logger=self.logger)
@@ -1670,6 +2184,7 @@ class BatchS0Scanner:
                         candidate,
                         status="submitted",
                         submission_id=submission_ref,
+                        submission_mode=submission_mode,
                         submitted_at=submitted_at,
                     )
                     upsert_progress_record(progress, submission_record)
@@ -1677,7 +2192,10 @@ class BatchS0Scanner:
                     save_progress(progress, self.progress_path, test_mode=self.test_mode, logger=self.logger)
 
                     _sleep_live(SIMULATION_POLL_INTERVAL, "post-submission poll wait")
-                    result = poll_result(submission_ref)
+                    if api_client is not None:
+                        result = _api_poll_result(submission_ref)
+                    else:
+                        result = poll_result(submission_ref)
                     if result is None:
                         self.logger.warning(
                             "poll timeout or pending result candidate=%s submission=%s",
@@ -1688,6 +2206,7 @@ class BatchS0Scanner:
                             candidate,
                             status="submitted",
                             submission_id=submission_ref,
+                            submission_mode=submission_mode,
                             submitted_at=submission_record["submitted_at"],
                             updated_at=datetime.now().isoformat(timespec="seconds"),
                         )
@@ -1695,18 +2214,42 @@ class BatchS0Scanner:
                         save_progress(progress, self.progress_path, test_mode=self.test_mode, logger=self.logger)
                         continue
 
+                    if isinstance(result, dict) and result.get("error"):
+                        if api_client is not None and _api_is_auth_error(result):
+                            raise RuntimeError(f"API authentication failed: {_api_submission_error_payload(result)}")
+                        self.logger.warning(
+                            "poll returned error candidate=%s submission=%s error=%s",
+                            candidate_id,
+                            submission_ref,
+                            result.get("error"),
+                        )
+                        error_record = _candidate_progress_record(
+                            candidate,
+                            status="error",
+                            submission_id=submission_ref,
+                            submission_mode=submission_mode,
+                            error=str(result.get("error") or "poll failed"),
+                            submitted_at=submission_record["submitted_at"],
+                            updated_at=datetime.now().isoformat(timespec="seconds"),
+                        )
+                        upsert_progress_record(progress, error_record)
+                        save_progress(progress, self.progress_path, test_mode=self.test_mode, logger=self.logger)
+                        failed_count += 1
+                        continue
+
                     alpha_id = _extract_result_alpha_id(result)
                     if alpha_id in (None, "", "UNKNOWN"):
                         alpha_id = submission_ref
 
                     if not self.test_mode:
-                        write_result_to_ledger(candidate, submission_ref, result)
+                        write_result_to_ledger(candidate, submission_ref, result, submission_mode=submission_mode)
 
                     completed_record = _candidate_progress_record(
                         candidate,
                         status="completed",
                         submission_id=submission_ref,
                         alpha_id=str(alpha_id),
+                        submission_mode=submission_mode,
                         result=result,
                         submitted_at=submission_record["submitted_at"],
                         completed_at=datetime.now().isoformat(timespec="seconds"),
@@ -1734,11 +2277,24 @@ class BatchS0Scanner:
                         candidate,
                         status="error",
                         submission_id=submission_ref,
+                        submission_mode=submission_mode,
                         error=str(exc),
                         submitted_at=datetime.now().isoformat(timespec="seconds") if submission_ref else None,
                     )
                     upsert_progress_record(progress, error_record)
                     save_progress(progress, self.progress_path, test_mode=self.test_mode, logger=self.logger)
+                    if api_client is not None and requests is not None and isinstance(exc, requests.exceptions.RequestException):
+                        raise
+                    if api_client is not None and any(
+                        token in str(exc)
+                        for token in (
+                            "API authentication failed",
+                            "API submission failed",
+                            "--use-api requires WQB_API_ENABLED=true",
+                            "--use-api requires username/password credentials",
+                        )
+                    ):
+                        raise
                     if _is_auth_failure_error(exc):
                         raise
                     continue
@@ -1749,6 +2305,8 @@ class BatchS0Scanner:
 
         summary = {
             "mode": "live" if not self.test_mode else "live-test-mode",
+            "use_api": bool(api_client is not None),
+            "submission_mode": submission_mode_default if api_client is not None else "manual",
             "planned": len(planned),
             "resumed": resumed_count,
             "submitted": submitted_count,
@@ -1760,6 +2318,9 @@ class BatchS0Scanner:
             "missing_config": missing_config,
             "test_mode": self.test_mode,
         }
+        optimizer_summary = self._optimize_strategy(completed_count, resumed_count, submitted_count, failed_count)
+        if optimizer_summary is not None:
+            summary["strategy_optimizer"] = optimizer_summary
         self.logger.info("live mode end summary=%s", json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return summary
 
@@ -1796,6 +2357,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="When used with --run-mode live, print requests and progress updates without consuming quota",
     )
     parser.add_argument(
+        "--concurrent",
+        action="store_true",
+        help="Enable experimental file-backed concurrent live submissions",
+    )
+    parser.add_argument(
+        "--use-api",
+        action="store_true",
+        default=False,
+        help="Use WQB API client for live submissions (requires WQB_API_ENABLED=true and credentials)",
+    )
+    parser.add_argument(
         "--fields",
         required=True,
         help="Path to field candidates JSON file, relative to the project root unless absolute",
@@ -1813,12 +2385,20 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
+    if args.use_api and args.run_mode != "live":
+        parser.error("--use-api only valid with --run-mode live")
+    if args.use_api and args.concurrent:
+        parser.error("--use-api cannot be combined with --concurrent in this version")
+    if args.use_api and str(os.environ.get("WQB_API_ENABLED") or "").strip().lower() not in {"1", "true", "yes", "on"}:
+        parser.error("--use-api requires WQB_API_ENABLED=true")
     scanner = BatchS0Scanner(
         fields_path=args.fields,
         top=args.top,
         max_simulations=args.max_simulations,
         run_mode=args.run_mode,
         test_mode=args.test_mode,
+        concurrent=args.concurrent,
+        use_api=args.use_api,
     )
     summary = scanner.run()
     scanner.logger.info("summary=%s", json.dumps(summary, sort_keys=True, ensure_ascii=False))

@@ -11,6 +11,13 @@ ARTIFACT_ROOT="${PROJECT_ROOT}/harness/artifacts/automation-runs"
 SUCCESS_POLICY_PATH="${PROJECT_ROOT}/harness/alpha-success-policy.json"
 RUN_ID=""
 MAX_ROUNDS=3
+EVOLUTION_BOOTSTRAP=0
+EVOLUTION_GENERATIONS=3
+EVOLUTION_MIN_WINNERS=10
+EVOLUTION_OUTPUT_DIR="${PROJECT_ROOT}/runs/evolution/generations"
+EVOLUTION_DB_PATH="${PROJECT_ROOT}/runs/evidence/result_ledger.db"
+EVOLUTION_CONFIG_PATH="${PROJECT_ROOT}/harness/lib/evolution/evolution_config.json"
+EVOLUTION_CYCLE_PATH=""
 
 validate_simulation_capture_json_tree() {
   python3 - "$PROJECT_ROOT" <<'PY'
@@ -40,6 +47,10 @@ Usage:
   ./harness/run-local-alpha-loop.sh [--queue PATH] [--queue-template PATH] [--priority-manifest PATH]
                                      [--prompt-template PATH] [--artifact-root PATH]
                                      [--success-policy PATH] [--run-id ID] [--max-rounds N]
+                                     [--evolution-bootstrap] [--evolution-generations N]
+                                     [--evolution-min-winners N] [--evolution-output-dir PATH]
+                                     [--evolution-db-path PATH] [--evolution-config-path PATH]
+                                     [--cycle-path PATH]
 USAGE
 }
 
@@ -75,6 +86,34 @@ while [ "$#" -gt 0 ]; do
       ;;
     --max-rounds)
       MAX_ROUNDS="${2:-}"
+      shift 2
+      ;;
+    --evolution-bootstrap)
+      EVOLUTION_BOOTSTRAP=1
+      shift
+      ;;
+    --evolution-generations)
+      EVOLUTION_GENERATIONS="${2:-}"
+      shift 2
+      ;;
+    --evolution-min-winners)
+      EVOLUTION_MIN_WINNERS="${2:-}"
+      shift 2
+      ;;
+    --evolution-output-dir)
+      EVOLUTION_OUTPUT_DIR="${2:-}"
+      shift 2
+      ;;
+    --evolution-db-path)
+      EVOLUTION_DB_PATH="${2:-}"
+      shift 2
+      ;;
+    --evolution-config-path)
+      EVOLUTION_CONFIG_PATH="${2:-}"
+      shift 2
+      ;;
+    --cycle-path)
+      EVOLUTION_CYCLE_PATH="${2:-}"
       shift 2
       ;;
     -h|--help)
@@ -117,6 +156,22 @@ cmd=(
 )
 if [ -n "$PRIORITY_MANIFEST_PATH" ]; then
   cmd+=(--priority-manifest "$PRIORITY_MANIFEST_PATH")
+fi
+if [ "$EVOLUTION_BOOTSTRAP" -eq 1 ]; then
+  cmd=(
+    python3 "${SCRIPT_DIR}/lib/local_alpha_loop.py" evolution-bootstrap
+    --project-root "$PROJECT_ROOT"
+    --artifact-root "$ARTIFACT_ROOT"
+    --run-id "$RUN_ID"
+    --db-path "$EVOLUTION_DB_PATH"
+    --config-path "$EVOLUTION_CONFIG_PATH"
+    --output-dir "$EVOLUTION_OUTPUT_DIR"
+    --generations "$EVOLUTION_GENERATIONS"
+    --min-winners "$EVOLUTION_MIN_WINNERS"
+  )
+  if [ -n "$EVOLUTION_CYCLE_PATH" ]; then
+    cmd+=(--cycle-path "$EVOLUTION_CYCLE_PATH")
+  fi
 fi
 
 "${cmd[@]}"

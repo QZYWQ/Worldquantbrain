@@ -1,0 +1,935 @@
+{
+  "created_at": "2026-04-28T07:45:37",
+  "fields": [
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "mutation_fallback+mutation",
+      "expression": "bucket(pv13_revere_index_value, 61)",
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback+mutation",
+        "parent_a": "gen000-98703f9fc70d",
+        "parent_b": "gen000-d37a02f0c078",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.18000000000000002,
+        "component_warnings": [],
+        "normalized_expression": "bucket(pv13_revere_index_value, 61)",
+        "novelty": 0.6666666666666667,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.38333333333333336,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.34408677422214345,
+          0.30354714158327556
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "bucket(pv13_revere_index_value, 61)",
+        "source_method": "mutation_fallback+mutation"
+      },
+      "name": "gen001-ff353e8040c3",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "high",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "bucket(pv13_revere_index_value, 61)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "mutation_fallback",
+      "expression": "ts_count_nans(pv13_revere_index_value, 60)",
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-d37a02f0c078",
+        "parent_b": "gen000-2c01a5547503",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.18000000000000002,
+        "component_warnings": [],
+        "normalized_expression": "ts_count_nans(pv13_revere_index_value, 60)",
+        "novelty": 0.6666666666666667,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.38333333333333336,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.30354714158327556,
+          0.32285525620257477
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "ts_count_nans(pv13_revere_index_value, 60)",
+        "source_method": "mutation_fallback"
+      },
+      "name": "gen001-3fd59d915c2f",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "high",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_count_nans(pv13_revere_index_value, 60)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "mutation_fallback",
+      "expression": "ts_rank(sentiment_focus_rank, 60)",
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-02dc766d399f",
+        "parent_b": "gen000-1dfebde44841",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.18000000000000002,
+        "component_warnings": [],
+        "normalized_expression": "ts_rank(sentiment_focus_rank, 60)",
+        "novelty": 0.6666666666666667,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.38333333333333336,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.29419999999999996,
+          0.30806690905468676
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "ts_rank(sentiment_focus_rank, 60)",
+        "source_method": "mutation_fallback"
+      },
+      "name": "gen001-18712db91872",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_rank(sentiment_focus_rank, 60)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "ts_rank(anl4_afv4_median_eps/close, 60)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-8f4229a745ab",
+        "parent_b": "gen000-3940ea21738c",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.23,
+        "component_warnings": [],
+        "normalized_expression": "ts_rank(anl4_afv4_median_eps/close, 60)",
+        "novelty": 0.4,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.2,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.32578306071765,
+          0.3970857239972807
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "ts_rank(anl4_afv4_median_eps/close, 60)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-af24b0eee1d1",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_rank(anl4_afv4_median_eps/close, 60)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "ts_rank(anl4_af_eps_value / close, 60)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-3940ea21738c",
+        "parent_b": "gen000-8f4229a745ab",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.23,
+        "component_warnings": [],
+        "normalized_expression": "ts_rank(anl4_af_eps_value / close, 60)",
+        "novelty": 0.4,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.2,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.3970857239972807,
+          0.32578306071765
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "ts_rank(anl4_af_eps_value / close, 60)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-8c5bbca421a8",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_rank(anl4_af_eps_value / close, 60)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "ts_rank(earnings_per_share_average/close, 120)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-d47401f8f5b1",
+        "parent_b": "gen000-98703f9fc70d",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.23,
+        "component_warnings": [],
+        "normalized_expression": "ts_rank(earnings_per_share_average/close, 120)",
+        "novelty": 0.4,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.2,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.3204552562025748,
+          0.34408677422214345
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "ts_rank(earnings_per_share_average/close, 120)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-92a9530b91f6",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_rank(earnings_per_share_average/close, 120)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "mutation_fallback",
+      "expression": "group_rank(ts_rank(fundamental_model_slow_ratio_equity_cap_follow_up_batch_06/close, 120), industry)",
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-3940ea21738c",
+        "parent_b": "gen000-98703f9fc70d",
+        "timestamp": "2026-04-28T07:45:37"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(fundamental_model_slow_ratio_equity_cap_follow_up_batch_06/close, 120), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.21666666666666667,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.3970857239972807,
+          0.34408677422214345
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(fundamental_model_slow_ratio_equity_cap_follow_up_batch_06/close, 120), industry)",
+        "source_method": "mutation_fallback"
+      },
+      "name": "gen001-5caf569d9422",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(fundamental_model_slow_ratio_equity_cap_follow_up_batch_06/close, 120), industry)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "ts_rank(anl4_qfv4_median_eps/close, 60)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-7ab21f653c53",
+        "parent_b": "gen000-2c01a5547503",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.23,
+        "component_warnings": [],
+        "normalized_expression": "ts_rank(anl4_qfv4_median_eps/close, 60)",
+        "novelty": 0.4,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.2,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.32052950819672127,
+          0.32285525620257477
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "ts_rank(anl4_qfv4_median_eps/close, 60)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-5024e428367d",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_rank(anl4_qfv4_median_eps/close, 60)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "ts_mean(pv13_revere_index_value, 63)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-105e287d56e2",
+        "parent_b": "gen000-7e7e22363d47",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.18000000000000002,
+        "component_warnings": [],
+        "normalized_expression": "ts_mean(pv13_revere_index_value, 63)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.3040999999999999,
+          0.2794362190637113
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "ts_mean(pv13_revere_index_value, 63)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-232ac5c76bd9",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_mean(pv13_revere_index_value, 63)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover+mutation",
+      "expression": "ts_decay_linear(group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry), 20)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-41a0fae20372",
+        "parent_b": "gen000-8155b6b43ab1",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.51,
+        "component_warnings": [],
+        "normalized_expression": "ts_decay_linear(group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry), 20)",
+        "novelty": 0.4285714285714286,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.2142857142857143,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.31083453359315427,
+          0.32043781641523905
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "ts_decay_linear(group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry), 20)",
+        "source_method": "crossover+mutation"
+      },
+      "name": "gen001-9af80385b52d",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_decay_linear(group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry), 20)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover+mutation",
+      "expression": "group_rank(ts_sum(earnings_per_share_average/close, 60), industry)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-3940ea21738c",
+        "parent_b": "gen000-98703f9fc70d",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_sum(earnings_per_share_average/close, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.3970857239972807,
+          0.34408677422214345
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_sum(earnings_per_share_average/close, 60), industry)",
+        "source_method": "crossover+mutation"
+      },
+      "name": "gen001-8344235797bd",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_sum(earnings_per_share_average/close, 60), industry)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "mutation_fallback+mutation",
+      "expression": "ts_mean(group_rank(ts_rank(analyst_eps_sibling_qfv4_industry/close, 60), industry), 120)",
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback+mutation",
+        "parent_a": "gen000-3940ea21738c",
+        "parent_b": "gen000-2c01a5547503",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.51,
+        "component_warnings": [],
+        "normalized_expression": "ts_mean(group_rank(ts_rank(analyst_eps_sibling_qfv4_industry/close, 60), industry), 120)",
+        "novelty": 0.2857142857142857,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.19285714285714284,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.3970857239972807,
+          0.32285525620257477
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "ts_mean(group_rank(ts_rank(analyst_eps_sibling_qfv4_industry/close, 60), industry), 120)",
+        "source_method": "mutation_fallback+mutation"
+      },
+      "name": "gen001-6ee902f128ce",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "ts_mean(group_rank(ts_rank(analyst_eps_sibling_qfv4_industry/close, 60), industry), 120)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), pv13_revere_key_sector_total)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-98703f9fc70d",
+        "parent_b": "gen000-1dfebde44841",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), pv13_revere_key_sector_total)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.34408677422214345,
+          0.30806690905468676
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), pv13_revere_key_sector_total)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-bba7a731f511",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(earnings_per_share_average/close, 120), pv13_revere_key_sector_total)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "group_rank(ts_rank(pv13_revere_key_sector_total / close, 60), industry)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-8f4229a745ab",
+        "parent_b": "gen000-1dfebde44841",
+        "timestamp": "2026-04-28T07:45:37"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(pv13_revere_key_sector_total / close, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.32578306071765,
+          0.30806690905468676
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(pv13_revere_key_sector_total / close, 60), industry)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-91f319d7416f",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(pv13_revere_key_sector_total / close, 60), industry)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-41a0fae20372",
+        "parent_b": "gen000-8155b6b43ab1",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.31083453359315427,
+          0.32043781641523905
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-b7435ad57ee5",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(anl4_qfv4_eps_mean/close, 60), subindustry)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), pv13_revere_key_sector_total)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-8f4229a745ab",
+        "parent_b": "gen000-75c68a165f56",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), pv13_revere_key_sector_total)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.32578306071765,
+          0.28796095617529877
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), pv13_revere_key_sector_total)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-7bb07f9b2ffa",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(anl4_af_eps_value / close, 60), pv13_revere_key_sector_total)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/actual_eps_value_quarterly, 60), industry)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-7ab21f653c53",
+        "parent_b": "gen000-4c9baf3d0c39",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_average/actual_eps_value_quarterly, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.32052950819672127,
+          0.2768484462425755
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(earnings_per_share_average/actual_eps_value_quarterly, 60), industry)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-d10733162255",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(earnings_per_share_average/actual_eps_value_quarterly, 60), industry)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 120), pv13_ustomergraphrank_page_rank)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-a06f786087a7",
+        "parent_b": "gen000-6e06239a466c",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.38,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 120), pv13_ustomergraphrank_page_rank)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.16666666666666669,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.2788049316537121,
+          0.3065693988540351
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 120), pv13_ustomergraphrank_page_rank)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-158310cc493c",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(anl4_af_eps_value / close, 120), pv13_ustomergraphrank_page_rank)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover",
+      "expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), close)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-d47401f8f5b1",
+        "parent_b": "gen000-8f4229a745ab",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.33000000000000007,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), close)",
+        "novelty": 0.19999999999999996,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.09999999999999998,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.3204552562025748,
+          0.32578306071765
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), close)",
+        "source_method": "crossover"
+      },
+      "name": "gen001-fe4e5d8dcb70",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(earnings_per_share_median_value/close, 60), close)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    },
+    {
+      "alpha_count": 1,
+      "coverage": 1.0,
+      "description": "crossover+mutation",
+      "expression": "group_rank(ts_rank(industry/close, 72), industry)",
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-7ab21f653c53",
+        "parent_b": "gen000-2c01a5547503",
+        "timestamp": "2026-04-28T07:45:36"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.33000000000000007,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(industry/close, 72), industry)",
+        "novelty": 0.19999999999999996,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.09999999999999998,
+        "novelty_floor": 0.12,
+        "parent_scores": [
+          0.32052950819672127,
+          0.32285525620257477
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(industry/close, 72), industry)",
+        "source_method": "crossover+mutation"
+      },
+      "name": "gen001-7ad09ab1f8f6",
+      "param_overrides": {
+        "decays": [
+          0
+        ],
+        "neutralizations": [
+          null
+        ]
+      },
+      "priority": "medium",
+      "source_domain": "evolution",
+      "template_overrides": [
+        "group_rank(ts_rank(industry/close, 72), industry)"
+      ],
+      "type": "evolution_candidate",
+      "user_count": 1
+    }
+  ],
+  "generation": 1,
+  "param_overrides": {
+    "decays": [
+      0
+    ],
+    "neutralizations": [
+      null
+    ]
+  },
+  "source": "brain_evolution_engine"
+}

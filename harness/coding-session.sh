@@ -26,6 +26,10 @@ Usage:
   ./harness/coding-session.sh cycle-summary
   ./harness/coding-session.sh cycle-report [PATH]
   ./harness/coding-session.sh cycle-learning-loop [PATH]
+  ./harness/coding-session.sh evolution-bootstrap [PATH] [--run-id ID] [--artifact-root PATH]
+                                     [--evolution-generations N] [--evolution-min-winners N]
+                                     [--evolution-output-dir PATH] [--evolution-db-path PATH]
+                                     [--evolution-config-path PATH]
   ./harness/coding-session.sh cycle-close [PATH]
   ./harness/coding-session.sh resume-brief [PATH]
   ./harness/coding-session.sh session-open [PATH]
@@ -145,6 +149,109 @@ show_cycle_learning_loop() {
   print_section "Learning Loop"
   printf 'Source report: %s\n' "$report_target"
   printf '%s\n' "$bundle_targets"
+}
+
+parse_evolution_bootstrap_args() {
+  EVOLUTION_BOOTSTRAP_CYCLE_PATH=""
+  EVOLUTION_BOOTSTRAP_RUN_ID=""
+  EVOLUTION_BOOTSTRAP_ARTIFACT_ROOT=""
+  EVOLUTION_BOOTSTRAP_GENERATIONS=""
+  EVOLUTION_BOOTSTRAP_MIN_WINNERS=""
+  EVOLUTION_BOOTSTRAP_OUTPUT_DIR=""
+  EVOLUTION_BOOTSTRAP_DB_PATH=""
+  EVOLUTION_BOOTSTRAP_CONFIG_PATH=""
+
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --cycle-path)
+        EVOLUTION_BOOTSTRAP_CYCLE_PATH="${2:-}"
+        shift 2
+        ;;
+      --run-id)
+        EVOLUTION_BOOTSTRAP_RUN_ID="${2:-}"
+        shift 2
+        ;;
+      --artifact-root)
+        EVOLUTION_BOOTSTRAP_ARTIFACT_ROOT="${2:-}"
+        shift 2
+        ;;
+      --evolution-generations)
+        EVOLUTION_BOOTSTRAP_GENERATIONS="${2:-}"
+        shift 2
+        ;;
+      --evolution-min-winners)
+        EVOLUTION_BOOTSTRAP_MIN_WINNERS="${2:-}"
+        shift 2
+        ;;
+      --evolution-output-dir)
+        EVOLUTION_BOOTSTRAP_OUTPUT_DIR="${2:-}"
+        shift 2
+        ;;
+      --evolution-db-path)
+        EVOLUTION_BOOTSTRAP_DB_PATH="${2:-}"
+        shift 2
+        ;;
+      --evolution-config-path)
+        EVOLUTION_BOOTSTRAP_CONFIG_PATH="${2:-}"
+        shift 2
+        ;;
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      *)
+        if [ -z "$EVOLUTION_BOOTSTRAP_CYCLE_PATH" ] && [ "${1#-}" = "$1" ]; then
+          EVOLUTION_BOOTSTRAP_CYCLE_PATH="$1"
+          shift
+        else
+          printf 'Unknown option: %s\n' "$1" >&2
+          exit 2
+        fi
+        ;;
+    esac
+  done
+}
+
+show_evolution_bootstrap() {
+  local cycle_path="${EVOLUTION_BOOTSTRAP_CYCLE_PATH:-}"
+  local cycle_rel
+  local cmd
+
+  run_preflight_base
+  if [ -z "$cycle_path" ]; then
+    cycle_path="$(active_cycle_rel_path)"
+  fi
+
+  cycle_rel="$(normalize_project_rel_path "$cycle_path")" || {
+    printf 'Cycle path must stay inside the project root: %s\n' "$cycle_path" >&2
+    exit 12
+  }
+  sync_runtime_state_for_cycle_rel "$cycle_rel" >/dev/null
+
+  print_section "Evolution Bootstrap"
+  cmd=(./harness/run-local-alpha-loop.sh --evolution-bootstrap --cycle-path "$cycle_rel")
+  if [ -n "${EVOLUTION_BOOTSTRAP_RUN_ID:-}" ]; then
+    cmd+=(--run-id "$EVOLUTION_BOOTSTRAP_RUN_ID")
+  fi
+  if [ -n "${EVOLUTION_BOOTSTRAP_ARTIFACT_ROOT:-}" ]; then
+    cmd+=(--artifact-root "$EVOLUTION_BOOTSTRAP_ARTIFACT_ROOT")
+  fi
+  if [ -n "${EVOLUTION_BOOTSTRAP_GENERATIONS:-}" ]; then
+    cmd+=(--evolution-generations "$EVOLUTION_BOOTSTRAP_GENERATIONS")
+  fi
+  if [ -n "${EVOLUTION_BOOTSTRAP_MIN_WINNERS:-}" ]; then
+    cmd+=(--evolution-min-winners "$EVOLUTION_BOOTSTRAP_MIN_WINNERS")
+  fi
+  if [ -n "${EVOLUTION_BOOTSTRAP_OUTPUT_DIR:-}" ]; then
+    cmd+=(--evolution-output-dir "$EVOLUTION_BOOTSTRAP_OUTPUT_DIR")
+  fi
+  if [ -n "${EVOLUTION_BOOTSTRAP_DB_PATH:-}" ]; then
+    cmd+=(--evolution-db-path "$EVOLUTION_BOOTSTRAP_DB_PATH")
+  fi
+  if [ -n "${EVOLUTION_BOOTSTRAP_CONFIG_PATH:-}" ]; then
+    cmd+=(--evolution-config-path "$EVOLUTION_BOOTSTRAP_CONFIG_PATH")
+  fi
+  "${cmd[@]}"
 }
 
 show_resume_brief() {
@@ -436,6 +543,11 @@ main() {
     cycle-learning-loop)
       shift || true
       show_cycle_learning_loop "${1:-}"
+      ;;
+    evolution-bootstrap)
+      shift || true
+      parse_evolution_bootstrap_args "$@"
+      show_evolution_bootstrap
       ;;
     cycle-close)
       shift || true

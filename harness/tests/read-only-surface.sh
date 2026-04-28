@@ -41,6 +41,8 @@ active_cycle_stem="$(basename "$active_cycle_rel" .json)"
 summary_output="$(./harness/coding-session.sh cycle-summary)"
 assert_output_contains "Active cycle: ${active_cycle_rel}" "$summary_output"
 assert_output_contains "Next actionable feature:" "$summary_output"
+assert_output_contains "Evolution bootstrap: ./harness/coding-session.sh evolution-bootstrap" "$summary_output"
+assert_output_contains "Execution suggestion: ./harness/coding-session.sh evolution-bootstrap" "$summary_output"
 assert_output_contains "Doctor: clean" "$summary_output"
 next_actionable_feature="$(printf '%s\n' "$summary_output" | awk -F': ' '/Next actionable feature:/ {print $2}')"
 [ -n "$next_actionable_feature" ] || {
@@ -68,6 +70,9 @@ resume_path="$PROJECT_COPY/harness/reports/${active_cycle_stem}-resume-brief.md"
 }
 assert_file_contains "# Resume Brief" "$resume_path"
 assert_file_contains "## Recommended Next Action" "$resume_path"
+assert_file_contains "## Execution Suggestion" "$resume_path"
+assert_file_contains "## Evolution Bootstrap" "$resume_path"
+assert_file_contains "./harness/coding-session.sh evolution-bootstrap" "$resume_path"
 
 session_output="$(./harness/coding-session.sh session-open)"
 assert_output_contains "./runs/session-briefs/" "$session_output"
@@ -79,5 +84,6 @@ session_path="$PROJECT_COPY/${session_rel_path#./}"
 }
 assert_file_contains "# Session Brief" "$session_path"
 assert_file_contains "## Verification Plan" "$session_path"
+assert_file_contains "## Evolution Bootstrap" "$session_path"
 
 printf 'Harness read-only surface test passed.\n'
