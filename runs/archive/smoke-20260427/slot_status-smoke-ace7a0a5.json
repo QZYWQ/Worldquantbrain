@@ -1,0 +1,58 @@
+{
+  "max_slots": 1,
+  "protocol_default_max_slots": 2,
+  "recent_events": [
+    {
+      "action": "acquire",
+      "available_after": 0,
+      "available_before": 1,
+      "region": "USA",
+      "timestamp": "2026-04-27T20:09:24+00:00",
+      "total_active": 1
+    },
+    {
+      "action": "release",
+      "available_after": 1,
+      "available_before": 0,
+      "region": "USA",
+      "timestamp": "2026-04-27T20:09:24+00:00",
+      "total_active": 0
+    },
+    {
+      "action": "acquire",
+      "available_after": 0,
+      "available_before": 1,
+      "region": "USA",
+      "timestamp": "2026-04-27T20:09:24+00:00",
+      "total_active": 1
+    },
+    {
+      "action": "acquire_rejected",
+      "available_after": 0,
+      "available_before": 0,
+      "region": "USA",
+      "timestamp": "2026-04-27T20:09:24+00:00",
+      "total_active": 1
+    },
+    {
+      "action": "release",
+      "available_after": 1,
+      "available_before": 0,
+      "region": "USA",
+      "timestamp": "2026-04-27T20:09:25+00:00",
+      "total_active": 0
+    }
+  ],
+  "region_quotas": {
+    "USA": 1
+  },
+  "regions": {
+    "USA": {
+      "active": 0,
+      "quota": 1
+    }
+  },
+  "schema_version": 1,
+  "total_active": 0,
+  "updated_at": "2026-04-27T20:09:25+00:00"
+}

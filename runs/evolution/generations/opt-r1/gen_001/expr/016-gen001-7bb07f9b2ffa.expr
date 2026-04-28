@@ -1,0 +1,3 @@
+# provenance: brain_evolution_engine
+# data: {"candidate_id": "gen001-7bb07f9b2ffa", "created_at": "2026-04-28T07:45:37", "generation": 1, "lineage": {"generation": 1, "method": "crossover", "parent_a": "gen000-8f4229a745ab", "parent_b": "gen000-75c68a165f56", "timestamp": "2026-04-28T07:45:36"}, "surrogate_score": 0.18632826920060896}
+group_rank(ts_rank(anl4_af_eps_value / close, 60), pv13_revere_key_sector_total)

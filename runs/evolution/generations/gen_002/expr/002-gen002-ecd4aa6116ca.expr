@@ -1,0 +1,3 @@
+# provenance: brain_evolution_engine
+# data: {"candidate_id": "gen002-ecd4aa6116ca", "created_at": "2026-04-28T07:20:25", "generation": 2, "lineage": {"generation": 2, "method": "mutation_fallback+mutation", "parent_a": "gen001-0ad9a7e65dab", "parent_b": "gen001-acf220418a34", "timestamp": "2026-04-28T07:20:25"}, "surrogate_score": 0.09393276262979612}
+group_rank(ts_product(earnings_per_share_median_value/close, 72), pcr_oi_30_b_stage_industry_mean5)

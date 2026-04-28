@@ -1,0 +1,3 @@
+# provenance: brain_evolution_engine
+# data: {"candidate_id": "gen002-ca38f2f28d07", "created_at": "2026-04-28T07:20:25", "generation": 2, "lineage": {"generation": 2, "method": "crossover", "parent_a": "gen001-920c4e01b503", "parent_b": "gen001-acf220418a34", "timestamp": "2026-04-28T07:20:24"}, "surrogate_score": -0.020490918570429582}
+group_sum(ts_rank(earnings_per_share_median_value/close, 60), industry)

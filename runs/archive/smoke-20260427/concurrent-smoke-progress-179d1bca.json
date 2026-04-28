@@ -1,0 +1,96 @@
+{
+  "completed_alpha_ids": [
+    "alpha-c1",
+    "alpha-c2"
+  ],
+  "completed_candidate_ids": [
+    "c1",
+    "c2"
+  ],
+  "daily_submissions": {
+    "2026-04-27": 0
+  },
+  "records": [
+    {
+      "alpha_count": null,
+      "alpha_id": "alpha-c1",
+      "batch_id": null,
+      "batch_source": null,
+      "candidate_id": "c1",
+      "completed_at": "2026-04-28T04:15:34",
+      "coverage": null,
+      "decay": null,
+      "expression": "rank(ts_delta(close,5))",
+      "field": null,
+      "neut": "Market",
+      "priority": null,
+      "raw_json": {
+        "alpha": {
+          "id": "alpha-c1"
+        },
+        "metrics": {
+          "fitness": 0.3,
+          "sharpe": 0.5,
+          "turnover": 0.1
+        },
+        "status": "completed"
+      },
+      "result_status": "completed",
+      "source_domain": null,
+      "source_report": null,
+      "status": "completed",
+      "submission_id": "sub-c1",
+      "submitted_at": "2026-04-28T04:15:34",
+      "template": null,
+      "template_complexity": null,
+      "template_index": null,
+      "test_fitness": 0.3,
+      "test_sharpe": 0.5,
+      "turnover": 0.1,
+      "type": null,
+      "updated_at": "2026-04-28T04:15:34",
+      "user_count": null
+    },
+    {
+      "alpha_count": null,
+      "alpha_id": "alpha-c2",
+      "batch_id": null,
+      "batch_source": null,
+      "candidate_id": "c2",
+      "completed_at": "2026-04-28T04:15:34",
+      "coverage": null,
+      "decay": null,
+      "expression": "rank(ts_delta(close,10))",
+      "field": null,
+      "neut": "Market",
+      "priority": null,
+      "raw_json": {
+        "alpha": {
+          "id": "alpha-c2"
+        },
+        "metrics": {
+          "fitness": 0.3,
+          "sharpe": 0.5,
+          "turnover": 0.1
+        },
+        "status": "completed"
+      },
+      "result_status": "completed",
+      "source_domain": null,
+      "source_report": null,
+      "status": "completed",
+      "submission_id": "sub-c2",
+      "submitted_at": "2026-04-28T04:15:34",
+      "template": null,
+      "template_complexity": null,
+      "template_index": null,
+      "test_fitness": 0.3,
+      "test_sharpe": 0.5,
+      "turnover": 0.1,
+      "type": null,
+      "updated_at": "2026-04-28T04:15:34",
+      "user_count": null
+    }
+  ],
+  "updated_at": "2026-04-28T04:15:34"
+}

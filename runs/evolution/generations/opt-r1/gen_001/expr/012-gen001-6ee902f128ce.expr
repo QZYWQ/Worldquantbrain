@@ -1,0 +1,3 @@
+# provenance: brain_evolution_engine
+# data: {"candidate_id": "gen001-6ee902f128ce", "created_at": "2026-04-28T07:45:37", "generation": 1, "lineage": {"generation": 1, "method": "mutation_fallback+mutation", "parent_a": "gen000-3940ea21738c", "parent_b": "gen000-2c01a5547503", "timestamp": "2026-04-28T07:45:36"}, "surrogate_score": 0.20154828988712115}
+ts_mean(group_rank(ts_rank(analyst_eps_sibling_qfv4_industry/close, 60), industry), 120)

@@ -1,0 +1,376 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "gen000-3940ea21738c",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)",
+      "fields": [
+        "anl4_afv4_median_eps",
+        "close",
+        "industry"
+      ],
+      "generation": 0,
+      "lineage": {
+        "generation": 0,
+        "method": "seed",
+        "parent_a": "winner-215",
+        "parent_b": null,
+        "timestamp": "2026-04-28T05:51:27"
+      },
+      "metadata": {
+        "alpha_id": "E5repQ81",
+        "compiler_warnings": [],
+        "complexity_penalty": 1.0,
+        "component_warnings": [],
+        "ledger_row_id": 215,
+        "normalized_expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)",
+        "novelty": 1.0,
+        "parent_scores": [],
+        "risk_penalty": 0.02,
+        "seed_rank": 5,
+        "seed_source": "winner-215",
+        "source_expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)",
+        "source_method": "seed",
+        "source_tags": [],
+        "source_timestamp": "2026-04-19",
+        "source_winner_id": "winner-215",
+        "winner_score": 1.5549524133242691
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 47,
+          "end": 49,
+          "end_col": 49,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 47,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 1,
+      "surrogate_score": 0.7754762066621346,
+      "wqb_expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen000-98703f9fc70d",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), industry)",
+      "fields": [
+        "earnings_per_share_average",
+        "close",
+        "industry"
+      ],
+      "generation": 0,
+      "lineage": {
+        "generation": 0,
+        "method": "seed",
+        "parent_a": "winner-218",
+        "parent_b": null,
+        "timestamp": "2026-04-28T05:51:27"
+      },
+      "metadata": {
+        "alpha_id": "d5l07rpX",
+        "compiler_warnings": [],
+        "complexity_penalty": 1.0,
+        "component_warnings": [],
+        "ledger_row_id": 218,
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), industry)",
+        "novelty": 1.0,
+        "parent_scores": [],
+        "risk_penalty": 0.02,
+        "seed_rank": 4,
+        "seed_source": "winner-218",
+        "source_expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), industry)",
+        "source_method": "seed",
+        "source_tags": [],
+        "source_timestamp": "2026-04-18",
+        "source_winner_id": "winner-218",
+        "winner_score": 1.3782892474071449
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 53,
+          "end": 56,
+          "end_col": 56,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 53,
+          "text": "120",
+          "value": 120
+        }
+      ],
+      "rank": 2,
+      "surrogate_score": 0.6871446237035725,
+      "wqb_expression": "group_rank(ts_rank(earnings_per_share_average/close, 120), industry)"
+    },
+    {
+      "candidate_id": "gen000-8f4229a745ab",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "fields": [
+        "anl4_af_eps_value",
+        "close",
+        "industry"
+      ],
+      "generation": 0,
+      "lineage": {
+        "generation": 0,
+        "method": "seed",
+        "parent_a": "winner-99",
+        "parent_b": null,
+        "timestamp": "2026-04-28T05:51:27"
+      },
+      "metadata": {
+        "alpha_id": "Gr372wO3",
+        "compiler_warnings": [],
+        "complexity_penalty": 1.0,
+        "component_warnings": [],
+        "ledger_row_id": 99,
+        "normalized_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)",
+        "novelty": 1.0,
+        "parent_scores": [],
+        "risk_penalty": 0.02,
+        "seed_rank": 6,
+        "seed_source": "winner-99",
+        "source_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)",
+        "source_method": "seed",
+        "source_tags": [
+          "LOW_FITNESS",
+          "SELF_CORR_RISK"
+        ],
+        "source_timestamp": "2026-04-24 18:40:19 CST (+0800)",
+        "source_winner_id": "winner-99",
+        "winner_score": 1.3172768690588335
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 46,
+          "end": 48,
+          "end_col": 48,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 46,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 3,
+      "surrogate_score": 0.6566384345294167,
+      "wqb_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen000-2c01a5547503",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)",
+      "fields": [
+        "anl4_qfv4_median_eps",
+        "close",
+        "industry"
+      ],
+      "generation": 0,
+      "lineage": {
+        "generation": 0,
+        "method": "seed",
+        "parent_a": "winner-213",
+        "parent_b": null,
+        "timestamp": "2026-04-28T05:51:27"
+      },
+      "metadata": {
+        "alpha_id": "qMm6xPVv",
+        "compiler_warnings": [],
+        "complexity_penalty": 1.0,
+        "component_warnings": [],
+        "ledger_row_id": 213,
+        "normalized_expression": "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)",
+        "novelty": 1.0,
+        "parent_scores": [],
+        "risk_penalty": 0.02,
+        "seed_rank": 1,
+        "seed_source": "winner-213",
+        "source_expression": "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)",
+        "source_method": "seed",
+        "source_tags": [],
+        "source_timestamp": "2026-04-19",
+        "source_winner_id": "winner-213",
+        "winner_score": 1.3075175206752494
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 47,
+          "end": 49,
+          "end_col": 49,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 47,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 4,
+      "surrogate_score": 0.6517587603376247,
+      "wqb_expression": "group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen000-7ab21f653c53",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)",
+      "fields": [
+        "earnings_per_share_average",
+        "close",
+        "industry"
+      ],
+      "generation": 0,
+      "lineage": {
+        "generation": 0,
+        "method": "seed",
+        "parent_a": "winner-110",
+        "parent_b": null,
+        "timestamp": "2026-04-28T05:51:27"
+      },
+      "metadata": {
+        "alpha_id": "qMmld9JE",
+        "compiler_warnings": [],
+        "complexity_penalty": 1.0,
+        "component_warnings": [],
+        "ledger_row_id": 110,
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)",
+        "novelty": 1.0,
+        "parent_scores": [],
+        "risk_penalty": 0.02,
+        "seed_rank": 2,
+        "seed_source": "winner-110",
+        "source_expression": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)",
+        "source_method": "seed",
+        "source_tags": [
+          "LOW_FITNESS",
+          "LOW_SHARPE"
+        ],
+        "source_timestamp": "2026-04-24T20:36:25+08:00",
+        "source_winner_id": "winner-110",
+        "winner_score": 1.2997650273224044
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 53,
+          "end": 55,
+          "end_col": 55,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 53,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 5,
+      "surrogate_score": 0.6478825136612023,
+      "wqb_expression": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen000-d47401f8f5b1",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), industry)",
+      "fields": [
+        "earnings_per_share_median_value",
+        "close",
+        "industry"
+      ],
+      "generation": 0,
+      "lineage": {
+        "generation": 0,
+        "method": "seed",
+        "parent_a": "winner-219",
+        "parent_b": null,
+        "timestamp": "2026-04-28T05:51:27"
+      },
+      "metadata": {
+        "alpha_id": "RRk8k3Ln",
+        "compiler_warnings": [],
+        "complexity_penalty": 1.0,
+        "component_warnings": [],
+        "ledger_row_id": 219,
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), industry)",
+        "novelty": 1.0,
+        "parent_scores": [],
+        "risk_penalty": 0.02,
+        "seed_rank": 3,
+        "seed_source": "winner-219",
+        "source_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), industry)",
+        "source_method": "seed",
+        "source_tags": [],
+        "source_timestamp": "2026-04-18",
+        "source_winner_id": "winner-219",
+        "winner_score": 1.2995175206752494
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 58,
+          "end": 60,
+          "end_col": 60,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 58,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 6,
+      "surrogate_score": 0.6477587603376247,
+      "wqb_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), industry)"
+    }
+  ],
+  "created_at": "2026-04-28T05:51:27",
+  "elite_count": 1,
+  "generation": 0,
+  "population_size": 6,
+  "source": "brain_evolution_engine",
+  "summary": {
+    "avg_surrogate_score": 0.6777765498719294,
+    "candidate_count": 6,
+    "max_surrogate_score": 0.7754762066621346,
+    "min_surrogate_score": 0.6477587603376247,
+    "unique_expression_count": 6
+  }
+}

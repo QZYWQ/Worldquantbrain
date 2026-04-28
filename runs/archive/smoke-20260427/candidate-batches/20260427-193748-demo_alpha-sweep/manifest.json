@@ -1,0 +1,100 @@
+{
+  "batch_id": "20260427-193748-demo_alpha-sweep",
+  "created_at": "2026-04-27T19:37:48+00:00",
+  "keep_original": false,
+  "max_total_variants": 10,
+  "max_variants_per_literal": 3,
+  "param_overrides": {
+    "decays": [
+      5,
+      10
+    ],
+    "neutralizations": []
+  },
+  "rejected_variants": [],
+  "source_expr_path": "/private/tmp/demo_alpha.expr",
+  "source_markers": [
+    "# source: demo"
+  ],
+  "source_sha256": "dd95cc37e4c112903f89cec8a5cc4f14bf8c7a890b18968db7ba75ed474673d7",
+  "template_overrides": [
+    "ts_rank(close, 10) + ts_mean(open, 20)",
+    "ts_rank(close, 20) + ts_mean(open, 20)",
+    "ts_rank(close, 60) + ts_mean(open, 10)",
+    "ts_rank(close, 60) + ts_mean(open, 60)"
+  ],
+  "variants": [
+    {
+      "arg_index": 1,
+      "call_name": "ts_rank",
+      "candidate_file": "runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v001__window-2-15-60-to-10.expr",
+      "candidate_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v001__window-2-15-60-to-10.expr",
+      "candidate_value": 10,
+      "column": 15,
+      "line": 2,
+      "literal_index": 1,
+      "original_value": 60,
+      "role": "window",
+      "source_literal": "60",
+      "template_override": "ts_rank(close, 10) + ts_mean(open, 20)",
+      "valid": true,
+      "variant_id": "demo_alpha__v001__window-2-15-60-to-10",
+      "warnings": [],
+      "wqb_expression": "ts_rank(close, 10) + ts_mean(open, 20)"
+    },
+    {
+      "arg_index": 1,
+      "call_name": "ts_rank",
+      "candidate_file": "runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v002__window-2-15-60-to-20.expr",
+      "candidate_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v002__window-2-15-60-to-20.expr",
+      "candidate_value": 20,
+      "column": 15,
+      "line": 2,
+      "literal_index": 1,
+      "original_value": 60,
+      "role": "window",
+      "source_literal": "60",
+      "template_override": "ts_rank(close, 20) + ts_mean(open, 20)",
+      "valid": true,
+      "variant_id": "demo_alpha__v002__window-2-15-60-to-20",
+      "warnings": [],
+      "wqb_expression": "ts_rank(close, 20) + ts_mean(open, 20)"
+    },
+    {
+      "arg_index": 1,
+      "call_name": "ts_mean",
+      "candidate_file": "runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v003__window-2-35-20-to-10.expr",
+      "candidate_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v003__window-2-35-20-to-10.expr",
+      "candidate_value": 10,
+      "column": 35,
+      "line": 2,
+      "literal_index": 2,
+      "original_value": 20,
+      "role": "window",
+      "source_literal": "20",
+      "template_override": "ts_rank(close, 60) + ts_mean(open, 10)",
+      "valid": true,
+      "variant_id": "demo_alpha__v003__window-2-35-20-to-10",
+      "warnings": [],
+      "wqb_expression": "ts_rank(close, 60) + ts_mean(open, 10)"
+    },
+    {
+      "arg_index": 1,
+      "call_name": "ts_mean",
+      "candidate_file": "runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v004__window-2-35-20-to-60.expr",
+      "candidate_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/20260427-193748-demo_alpha-sweep/variants/demo_alpha__v004__window-2-35-20-to-60.expr",
+      "candidate_value": 60,
+      "column": 35,
+      "line": 2,
+      "literal_index": 2,
+      "original_value": 20,
+      "role": "window",
+      "source_literal": "20",
+      "template_override": "ts_rank(close, 60) + ts_mean(open, 60)",
+      "valid": true,
+      "variant_id": "demo_alpha__v004__window-2-35-20-to-60",
+      "warnings": [],
+      "wqb_expression": "ts_rank(close, 60) + ts_mean(open, 60)"
+    }
+  ]
+}

@@ -1,0 +1,1171 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "gen001-e618a26a23c2",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_delay(anl4_af_eps_value / close, 60), industry)",
+      "fields": [
+        "anl4_af_eps_value",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-3940ea21738c",
+        "parent_b": "gen000-8f4229a745ab",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_delay(anl4_af_eps_value / close, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.15000000000000002,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.45998096532970767,
+          0.36491074762353337
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_delay(anl4_af_eps_value / close, 60), industry)",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "group_rank",
+        "ts_delay"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_delay",
+          "col": 47,
+          "end": 49,
+          "end_col": 49,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 47,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 1,
+      "surrogate_score": 0.13997834259064823,
+      "wqb_expression": "group_rank(ts_delay(anl4_af_eps_value / close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-04156ff798ca",
+      "expected_sharpe_estimate": null,
+      "expression": "group_mean(ts_rank(anl4_af_eps_value / close, 60), industry)",
+      "fields": [
+        "anl4_af_eps_value",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-98703f9fc70d",
+        "parent_b": "gen000-8f4229a745ab",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_mean(ts_rank(anl4_af_eps_value / close, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.15000000000000002,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3893156989628579,
+          0.36491074762353337
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_mean(ts_rank(anl4_af_eps_value / close, 60), industry)",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "group_mean",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 46,
+          "end": 48,
+          "end_col": 48,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 46,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 2,
+      "surrogate_score": 0.12584528931727823,
+      "wqb_expression": "group_mean(ts_rank(anl4_af_eps_value / close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-920c4e01b503",
+      "expected_sharpe_estimate": null,
+      "expression": "group_sum(ts_rank(industry/close, 60), industry)",
+      "fields": [
+        "industry",
+        "close"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-7ab21f653c53",
+        "parent_b": "gen000-2c01a5547503",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_sum(ts_rank(industry/close, 60), industry)",
+        "novelty": 0.5,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.15,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3579060109289618,
+          0.3610070082700998
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_sum(ts_rank(industry/close, 60), industry)",
+        "source_method": "crossover+mutation"
+      },
+      "operators": [
+        "group_sum",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 34,
+          "end": 36,
+          "end_col": 36,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 34,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 3,
+      "surrogate_score": 0.11878260383981228,
+      "wqb_expression": "group_sum(ts_rank(industry/close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-acf220418a34",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), pcr_oi_30_b_stage_industry_mean5)",
+      "fields": [
+        "earnings_per_share_median_value",
+        "close",
+        "pcr_oi_30_b_stage_industry_mean5"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-2c01a5547503",
+        "parent_b": "gen000-d47401f8f5b1",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), pcr_oi_30_b_stage_industry_mean5)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.15000000000000002,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3610070082700998,
+          0.3578070082700997
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), pcr_oi_30_b_stage_industry_mean5)",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 58,
+          "end": 60,
+          "end_col": 60,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 58,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 4,
+      "surrogate_score": 0.11876280330803991,
+      "wqb_expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 60), pcr_oi_30_b_stage_industry_mean5)"
+    },
+    {
+      "candidate_id": "gen001-0ad9a7e65dab",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(anl4_qfv4_eps_mean/fundamental_model_slow_ratio_equity_cap_follow_up_batch_04, 60), industry)",
+      "fields": [
+        "anl4_qfv4_eps_mean",
+        "fundamental_model_slow_ratio_equity_cap_follow_up_batch_04",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-2c01a5547503",
+        "parent_b": "gen000-8155b6b43ab1",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(anl4_qfv4_eps_mean/fundamental_model_slow_ratio_equity_cap_follow_up_batch_04, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.15000000000000002,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3610070082700998,
+          0.3577837552203188
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(anl4_qfv4_eps_mean/fundamental_model_slow_ratio_equity_cap_follow_up_batch_04, 60), industry)",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 98,
+          "end": 100,
+          "end_col": 100,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 98,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 5,
+      "surrogate_score": 0.11875815269808372,
+      "wqb_expression": "group_rank(ts_rank(anl4_qfv4_eps_mean/fundamental_model_slow_ratio_equity_cap_follow_up_batch_04, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-29ca1b8675be",
+      "expected_sharpe_estimate": null,
+      "expression": "zscore(group_rank(ts_rank(earnings_per_share_average/close, 60), industry))",
+      "fields": [
+        "earnings_per_share_average",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-3940ea21738c",
+        "parent_b": "gen000-7ab21f653c53",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.7,
+        "component_warnings": [],
+        "normalized_expression": "zscore(group_rank(ts_rank(earnings_per_share_average/close, 60), industry))",
+        "novelty": 0.16666666666666663,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.09999999999999999,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.45998096532970767,
+          0.3579060109289618
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "zscore(group_rank(ts_rank(earnings_per_share_average/close, 60), industry))",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "zscore",
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 60,
+          "end": 62,
+          "end_col": 62,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 60,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 6,
+      "surrogate_score": 0.10857739525173392,
+      "wqb_expression": "zscore(group_rank(ts_rank(earnings_per_share_average/close, 60), industry))"
+    },
+    {
+      "candidate_id": "gen001-9143243dcfba",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(news_attention_qcm_branch_batch_01/close, 60), industry)",
+      "fields": [
+        "news_attention_qcm_branch_batch_01",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-8155b6b43ab1",
+        "parent_b": "gen000-c800174346e5",
+        "timestamp": "2026-04-28T07:20:24"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(news_attention_qcm_branch_batch_01/close, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.15000000000000002,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3577837552203188,
+          0.3069372966527554
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(news_attention_qcm_branch_batch_01/close, 60), industry)",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 61,
+          "end": 63,
+          "end_col": 63,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 61,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 7,
+      "surrogate_score": 0.10794421037461484,
+      "wqb_expression": "group_rank(ts_rank(news_attention_qcm_branch_batch_01/close, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-be491c77ebc3",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/anl4_afv4_median_eps, 60), industry)",
+      "fields": [
+        "anl4_afv4_median_eps",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-d47401f8f5b1",
+        "parent_b": "gen000-3940ea21738c",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(anl4_afv4_median_eps/anl4_afv4_median_eps, 60), industry)",
+        "novelty": 0.19999999999999996,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.10999999999999999,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3578070082700997,
+          0.45998096532970767
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(anl4_afv4_median_eps/anl4_afv4_median_eps, 60), industry)",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 62,
+          "end": 64,
+          "end_col": 64,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 62,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 8,
+      "surrogate_score": 0.09855759471996141,
+      "wqb_expression": "group_rank(ts_rank(anl4_afv4_median_eps/anl4_afv4_median_eps, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-55fb89976528",
+      "expected_sharpe_estimate": null,
+      "expression": "log(group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry))",
+      "fields": [
+        "anl4_qfv4_median_eps",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-2c01a5547503",
+        "parent_b": "gen000-41a0fae20372",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.7,
+        "component_warnings": [],
+        "normalized_expression": "log(group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry))",
+        "novelty": 0.16666666666666663,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.09999999999999999,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3610070082700998,
+          0.34497937812420576
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "log(group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry))",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "log",
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 51,
+          "end": 53,
+          "end_col": 53,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 51,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 9,
+      "surrogate_score": 0.0861972772788611,
+      "wqb_expression": "log(group_rank(ts_rank(anl4_qfv4_median_eps/close, 60), industry))"
+    },
+    {
+      "candidate_id": "gen001-a374a26a7e09",
+      "expected_sharpe_estimate": null,
+      "expression": "demean(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry))",
+      "fields": [
+        "actual_eps_value_quarterly",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-4c9baf3d0c39",
+        "parent_b": "gen000-98703f9fc70d",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.7,
+        "component_warnings": [],
+        "normalized_expression": "demean(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry))",
+        "novelty": 0.16666666666666663,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.09999999999999999,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.2996645949901007,
+          0.3893156989628579
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "demean(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry))",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "demean",
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 62,
+          "end": 64,
+          "end_col": 64,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 62,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 10,
+      "surrogate_score": 0.08279605879059175,
+      "wqb_expression": "demean(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry))"
+    },
+    {
+      "candidate_id": "gen001-7e85e64de995",
+      "expected_sharpe_estimate": null,
+      "expression": "rank(ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 84))",
+      "fields": [
+        "shareholders_equity_total_2",
+        "cap",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-7ab21f653c53",
+        "parent_b": "gen000-02dc766d399f",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.7,
+        "component_warnings": [],
+        "normalized_expression": "rank(ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 84))",
+        "novelty": 0.16666666666666663,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.09999999999999999,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3579060109289618,
+          0.3228
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "rank(ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 84))",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "rank",
+        "ts_rank",
+        "group_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 70,
+          "end": 72,
+          "end_col": 72,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 70,
+          "text": "84",
+          "value": 84
+        }
+      ],
+      "rank": 11,
+      "surrogate_score": 0.08114120218579239,
+      "wqb_expression": "rank(ts_rank(group_rank(shareholders_equity_total_2 / cap, industry), 84))"
+    },
+    {
+      "candidate_id": "gen001-cb97369f77df",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), anl4_qfv4_median_eps)",
+      "fields": [
+        "anl4_af_eps_value",
+        "close",
+        "anl4_qfv4_median_eps"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-8f4229a745ab",
+        "parent_b": "gen000-2c01a5547503",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), anl4_qfv4_median_eps)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.1,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.36491074762353337,
+          0.3610070082700998
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), anl4_qfv4_median_eps)",
+        "source_method": "crossover"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 46,
+          "end": 48,
+          "end_col": 48,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 46,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 12,
+      "surrogate_score": 0.0771835511787266,
+      "wqb_expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), anl4_qfv4_median_eps)"
+    },
+    {
+      "candidate_id": "gen001-0c5e8247b0bd",
+      "expected_sharpe_estimate": null,
+      "expression": "ts_decay_linear(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry), 120)",
+      "fields": [
+        "actual_eps_value_quarterly",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "mutation_fallback",
+        "parent_a": "gen000-4c9baf3d0c39",
+        "parent_b": "gen000-2c01a5547503",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.7,
+        "component_warnings": [],
+        "normalized_expression": "ts_decay_linear(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry), 120)",
+        "novelty": 0.16666666666666663,
+        "novelty_adjustment": 0.05,
+        "novelty_bonus": 0.09999999999999999,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.2996645949901007,
+          0.3610070082700998
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "ts_decay_linear(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry), 120)",
+        "source_method": "mutation_fallback"
+      },
+      "operators": [
+        "ts_decay_linear",
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 71,
+          "end": 73,
+          "end_col": 73,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 71,
+          "text": "60",
+          "value": 60
+        },
+        {
+          "arg_index": 1,
+          "call_name": "ts_decay_linear",
+          "col": 87,
+          "end": 90,
+          "end_col": 90,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 87,
+          "text": "120",
+          "value": 120
+        }
+      ],
+      "rank": 13,
+      "surrogate_score": 0.07713432065204011,
+      "wqb_expression": "ts_decay_linear(group_rank(ts_rank(actual_eps_value_quarterly / close, 60), industry), 120)"
+    },
+    {
+      "candidate_id": "gen001-4547bc943d0a",
+      "expected_sharpe_estimate": null,
+      "expression": "log(group_rank(group_rank(ts_rank(anl4_af_eps_value / close, 60), subindustry), industry))",
+      "fields": [
+        "anl4_af_eps_value",
+        "close",
+        "subindustry",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-2c01a5547503",
+        "parent_b": "gen000-41a0fae20372",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.7,
+        "component_warnings": [],
+        "normalized_expression": "log(group_rank(group_rank(ts_rank(anl4_af_eps_value / close, 60), subindustry), industry))",
+        "novelty": 0.2857142857142857,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.0857142857142857,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3610070082700998,
+          0.34497937812420576
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "log(group_rank(group_rank(ts_rank(anl4_af_eps_value / close, 60), subindustry), industry))",
+        "source_method": "crossover+mutation"
+      },
+      "operators": [
+        "log",
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 61,
+          "end": 63,
+          "end_col": 63,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 61,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 14,
+      "surrogate_score": 0.07191156299314681,
+      "wqb_expression": "log(group_rank(group_rank(ts_rank(anl4_af_eps_value / close, 60), subindustry), industry))"
+    },
+    {
+      "candidate_id": "gen001-b70221d84e07",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / rel_ret_part, 60), industry)",
+      "fields": [
+        "anl4_af_eps_value",
+        "rel_ret_part",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-8f4229a745ab",
+        "parent_b": "gen000-d47401f8f5b1",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(anl4_af_eps_value / rel_ret_part, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.1,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.36491074762353337,
+          0.3578070082700997
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(anl4_af_eps_value / rel_ret_part, 60), industry)",
+        "source_method": "crossover+mutation"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 53,
+          "end": 55,
+          "end_col": 55,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 53,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 15,
+      "surrogate_score": 0.06954355117872658,
+      "wqb_expression": "group_rank(ts_rank(anl4_af_eps_value / rel_ret_part, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-8d089e14b7f9",
+      "expected_sharpe_estimate": null,
+      "expression": "ts_rank(group_rank(close / cap, industry), 83)",
+      "fields": [
+        "close",
+        "cap",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-02dc766d399f",
+        "parent_b": "gen000-8f4229a745ab",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "ts_rank(group_rank(close / cap, industry), 83)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.1,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3228,
+          0.36491074762353337
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "ts_rank(group_rank(close / cap, industry), 83)",
+        "source_method": "crossover+mutation"
+      },
+      "operators": [
+        "ts_rank",
+        "group_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 43,
+          "end": 45,
+          "end_col": 45,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 43,
+          "text": "83",
+          "value": 83
+        }
+      ],
+      "rank": 16,
+      "surrogate_score": 0.06254214952470664,
+      "wqb_expression": "ts_rank(group_rank(close / cap, industry), 83)"
+    },
+    {
+      "candidate_id": "gen001-cdf044a1f8bc",
+      "expected_sharpe_estimate": null,
+      "expression": "ts_rank(anl4_af_eps_value / close, 120)",
+      "fields": [
+        "anl4_af_eps_value",
+        "close"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-41a0fae20372",
+        "parent_b": "gen000-a06f786087a7",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.9,
+        "component_warnings": [],
+        "normalized_expression": "ts_rank(anl4_af_eps_value / close, 120)",
+        "novelty": 0.4,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.12,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.34497937812420576,
+          0.30227324220494955
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "ts_rank(anl4_af_eps_value / close, 120)",
+        "source_method": "crossover"
+      },
+      "operators": [
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 35,
+          "end": 38,
+          "end_col": 38,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 35,
+          "text": "120",
+          "value": 120
+        }
+      ],
+      "rank": 17,
+      "surrogate_score": 0.06145052406583105,
+      "wqb_expression": "ts_rank(anl4_af_eps_value / close, 120)"
+    },
+    {
+      "candidate_id": "gen001-ee3cadf807a5",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(subindustry/close, 48), industry)",
+      "fields": [
+        "subindustry",
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover+mutation",
+        "parent_a": "gen000-7ab21f653c53",
+        "parent_b": "gen000-c800174346e5",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(subindustry/close, 48), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.1,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3579060109289618,
+          0.3069372966527554
+        ],
+        "risk_penalty": 0.15,
+        "source_expression": "group_rank(ts_rank(subindustry/close, 48), industry)",
+        "source_method": "crossover+mutation"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 38,
+          "end": 40,
+          "end_col": 40,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 38,
+          "text": "48",
+          "value": 48
+        }
+      ],
+      "rank": 18,
+      "surrogate_score": 0.0579686615163434,
+      "wqb_expression": "group_rank(ts_rank(subindustry/close, 48), industry)"
+    },
+    {
+      "candidate_id": "gen001-0d82b922e039",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(earnings_per_share_average/pv13_revere_index_value, 60), industry)",
+      "fields": [
+        "earnings_per_share_average",
+        "pv13_revere_index_value",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-7ab21f653c53",
+        "parent_b": "gen000-d37a02f0c078",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(earnings_per_share_average/pv13_revere_index_value, 60), industry)",
+        "novelty": 0.33333333333333337,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.1,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3579060109289618,
+          0.26726285544436734
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(earnings_per_share_average/pv13_revere_index_value, 60), industry)",
+        "source_method": "crossover"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 71,
+          "end": 73,
+          "end_col": 73,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 71,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 19,
+      "surrogate_score": 0.05703377327466581,
+      "wqb_expression": "group_rank(ts_rank(earnings_per_share_average/pv13_revere_index_value, 60), industry)"
+    },
+    {
+      "candidate_id": "gen001-325aa8aef84c",
+      "expected_sharpe_estimate": null,
+      "expression": "group_rank(ts_rank(close/close, 60), industry)",
+      "fields": [
+        "close",
+        "industry"
+      ],
+      "generation": 1,
+      "lineage": {
+        "generation": 1,
+        "method": "crossover",
+        "parent_a": "gen000-d47401f8f5b1",
+        "parent_b": "gen000-7ab21f653c53",
+        "timestamp": "2026-04-28T07:20:23"
+      },
+      "metadata": {
+        "compiler_warnings": [],
+        "complexity_penalty": 0.8,
+        "component_warnings": [],
+        "normalized_expression": "group_rank(ts_rank(close/close, 60), industry)",
+        "novelty": 0.19999999999999996,
+        "novelty_adjustment": 0.0,
+        "novelty_bonus": 0.059999999999999984,
+        "novelty_floor": 0.08,
+        "parent_scores": [
+          0.3578070082700997,
+          0.3579060109289618
+        ],
+        "risk_penalty": 0.08,
+        "source_expression": "group_rank(ts_rank(close/close, 60), industry)",
+        "source_method": "crossover"
+      },
+      "operators": [
+        "group_rank",
+        "ts_rank"
+      ],
+      "parameters": [
+        {
+          "arg_index": 1,
+          "call_name": "ts_rank",
+          "col": 32,
+          "end": 34,
+          "end_col": 34,
+          "end_line": 1,
+          "line": 1,
+          "role": "window",
+          "start": 32,
+          "text": "60",
+          "value": 60
+        }
+      ],
+      "rank": 20,
+      "surrogate_score": 0.03514260383981228,
+      "wqb_expression": "group_rank(ts_rank(close/close, 60), industry)"
+    }
+  ],
+  "created_at": "2026-04-28T07:20:24",
+  "elite_count": 2,
+  "generation": 1,
+  "population_size": 20,
+  "source": "brain_evolution_engine",
+  "summary": {
+    "avg_surrogate_score": 0.08786258142897088,
+    "candidate_count": 20,
+    "max_surrogate_score": 0.13997834259064823,
+    "min_surrogate_score": 0.03514260383981228,
+    "unique_expression_count": 20
+  }
+}

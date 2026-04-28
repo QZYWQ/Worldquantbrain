@@ -1,0 +1,65 @@
+{
+  "current_parameters": {
+    "exploration_rate": 0.31172647499999995,
+    "mutation_rate": 0.1131408,
+    "temperature": 0.7567733249999999
+  },
+  "history": [
+    {
+      "parameters": {
+        "exploration_rate": 0.3,
+        "mutation_rate": 0.1,
+        "temperature": 0.7
+      },
+      "reason": "batch_complete",
+      "success_rate": 0.2,
+      "timestamp": "2026-04-27T19:38:31+00:00"
+    },
+    {
+      "parameters": {
+        "exploration_rate": 0.345,
+        "mutation_rate": 0.12,
+        "temperature": 0.77
+      },
+      "reason": "batch_complete",
+      "success_rate": 0.2,
+      "timestamp": "2026-04-27T19:43:57+00:00"
+    },
+    {
+      "parameters": {
+        "exploration_rate": 0.39674999999999994,
+        "mutation_rate": 0.144,
+        "temperature": 0.8470000000000001
+      },
+      "reason": "batch_complete",
+      "success_rate": 0.6,
+      "timestamp": "2026-04-27T19:43:57+00:00"
+    },
+    {
+      "parameters": {
+        "exploration_rate": 0.38484749999999995,
+        "mutation_rate": 0.13968,
+        "temperature": 0.8385300000000001
+      },
+      "reason": "batch_complete",
+      "success_rate": 1.0,
+      "timestamp": "2026-04-27T20:15:34+00:00"
+    },
+    {
+      "parameters": {
+        "exploration_rate": 0.34636274999999994,
+        "mutation_rate": 0.125712,
+        "temperature": 0.7966035
+      },
+      "reason": "batch_complete",
+      "success_rate": 1.0,
+      "timestamp": "2026-04-27T21:16:42+00:00"
+    }
+  ],
+  "last_reason": "increase_exploitation",
+  "last_success_rate": 1.0,
+  "optimization_count": 5,
+  "updated_at": "2026-04-27T21:16:42+00:00",
+  "version": 1,
+  "window_size": 5
+}

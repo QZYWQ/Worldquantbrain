@@ -1,0 +1,3 @@
+# provenance: brain_evolution_engine
+# data: {"candidate_id": "gen003-e02628f94f69", "created_at": "2026-04-28T07:45:39", "generation": 3, "lineage": {"generation": 3, "method": "mutation_fallback", "parent_a": "gen002-80edcb1ea5fe", "parent_b": "gen002-ad2bb56d6c33", "timestamp": "2026-04-28T07:45:38"}, "surrogate_score": 0.5547290745406293}
+ts_product(anl4_afv4_median_eps/anl4_qfv4_median_eps, 60)

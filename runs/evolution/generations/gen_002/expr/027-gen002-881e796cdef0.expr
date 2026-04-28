@@ -1,0 +1,3 @@
+# provenance: brain_evolution_engine
+# data: {"candidate_id": "gen002-881e796cdef0", "created_at": "2026-04-28T06:27:47", "generation": 2, "lineage": {"generation": 2, "method": "crossover", "parent_a": "gen001-f634950eb5d5", "parent_b": "gen001-6ded45066434", "timestamp": "2026-04-28T06:27:46"}, "surrogate_score": 0.026898621873100166}
+ts_rank(operating_income/close, 60)

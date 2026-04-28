@@ -1,0 +1,15 @@
+{
+  "alert_count": 0,
+  "alerts": [],
+  "db_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/evidence/result_ledger.db",
+  "degradation_threshold": 0.2,
+  "generated_at": "2026-04-27T20:16:55+00:00",
+  "generated_by": "harness.lib.quality_monitor.AlphaQualityMonitor",
+  "provenance": {
+    "db_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/evidence/result_ledger.db",
+    "degradation_threshold": 0.2,
+    "source": "runs/evidence/result_ledger.db",
+    "window_size": 10
+  },
+  "window_size": 10
+}

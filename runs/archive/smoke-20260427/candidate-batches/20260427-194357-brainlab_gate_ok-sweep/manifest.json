@@ -1,0 +1,60 @@
+{
+  "batch_id": "20260427-194357-brainlab_gate_ok-sweep",
+  "created_at": "2026-04-27T19:43:57+00:00",
+  "keep_original": false,
+  "max_total_variants": 10,
+  "max_variants_per_literal": 4,
+  "param_overrides": {
+    "decays": [
+      5,
+      10
+    ],
+    "neutralizations": []
+  },
+  "rejected_variants": [],
+  "source_expr_path": "/private/tmp/brainlab_gate_ok.expr",
+  "source_markers": [],
+  "source_sha256": "2aa6986b89ba4bca54500b2324456a8ba01ebd6d7da4a9a8446c9b93ddfb08e3",
+  "template_overrides": [
+    "rank(ts_delta(close, 10))",
+    "rank(ts_delta(close, 20))"
+  ],
+  "variants": [
+    {
+      "arg_index": 1,
+      "call_name": "ts_delta",
+      "candidate_file": "runs/candidate-batches/20260427-194357-brainlab_gate_ok-sweep/variants/brainlab_gate_ok__v001__window-1-20-5-to-10.expr",
+      "candidate_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/20260427-194357-brainlab_gate_ok-sweep/variants/brainlab_gate_ok__v001__window-1-20-5-to-10.expr",
+      "candidate_value": 10,
+      "column": 20,
+      "line": 1,
+      "literal_index": 1,
+      "original_value": 5,
+      "role": "window",
+      "source_literal": "5",
+      "template_override": "rank(ts_delta(close, 10))",
+      "valid": true,
+      "variant_id": "brainlab_gate_ok__v001__window-1-20-5-to-10",
+      "warnings": [],
+      "wqb_expression": "rank(ts_delta(close, 10))"
+    },
+    {
+      "arg_index": 1,
+      "call_name": "ts_delta",
+      "candidate_file": "runs/candidate-batches/20260427-194357-brainlab_gate_ok-sweep/variants/brainlab_gate_ok__v002__window-1-20-5-to-20.expr",
+      "candidate_path": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/candidate-batches/20260427-194357-brainlab_gate_ok-sweep/variants/brainlab_gate_ok__v002__window-1-20-5-to-20.expr",
+      "candidate_value": 20,
+      "column": 20,
+      "line": 1,
+      "literal_index": 1,
+      "original_value": 5,
+      "role": "window",
+      "source_literal": "5",
+      "template_override": "rank(ts_delta(close, 20))",
+      "valid": true,
+      "variant_id": "brainlab_gate_ok__v002__window-1-20-5-to-20",
+      "warnings": [],
+      "wqb_expression": "rank(ts_delta(close, 20))"
+    }
+  ]
+}

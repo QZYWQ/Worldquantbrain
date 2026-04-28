@@ -1,0 +1,6 @@
+# provenance: {"batch_id": "20260427-194357-brainlab_gate_ok-sweep", "candidate_value": 20, "column": 20, "line": 1, "original_value": 5, "role": "window", "source_expr_path": "/private/tmp/brainlab_gate_ok.expr", "source_sha256": "2aa6986b89ba4bca54500b2324456a8ba01ebd6d7da4a9a8446c9b93ddfb08e3", "variant_id": "brainlab_gate_ok__v002__window-1-20-5-to-20"}
+# sweep_role: window
+# source_literal: 5
+# candidate_literal: 20
+# literal_location: line 1, column 20
+rank(ts_delta(close,20))

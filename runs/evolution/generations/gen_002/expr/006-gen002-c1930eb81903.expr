@@ -1,0 +1,3 @@
+# provenance: brain_evolution_engine
+# data: {"candidate_id": "gen002-c1930eb81903", "created_at": "2026-04-28T07:20:25", "generation": 2, "lineage": {"generation": 2, "method": "mutation_fallback", "parent_a": "gen001-4547bc943d0a", "parent_b": "gen001-0ad9a7e65dab", "timestamp": "2026-04-28T07:20:24"}, "surrogate_score": 0.06170537170967473}
+rank(group_rank(ts_rank(anl4_qfv4_eps_mean/fundamental_model_slow_ratio_equity_cap_follow_up_batch_04, 60), industry))
