@@ -92,3 +92,36 @@ Third-round variants were run on 2026-04-28. All three simulations completed.
 DO NOT SUBMIT YET.
 
 No third-round variant beat V2 on both Sharpe and fitness. The corr90 smoothing variants improved sub-universe behavior, but their headline metrics are weaker than V2 and LOW_FITNESS still failed. V2 remains the current lead candidate, but the family needs either a cleaner robustness fix or a different branch before submission.
+
+## Fourth-Round Summary
+
+Fourth-round variants were run on 2026-04-28. All three simulations completed.
+
+| Variant | Alpha ID | Sharpe | Fitness | Turnover | Margin | Drawdown | Returns | Platform Notes |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| corr70_decay5_subindustry | E5g7vMjJ | 1.37 | 1.01 | 0.1750 | 0.001088 | 0.0737 | 0.0952 | SELF_CORRELATION=PENDING; LOW_FITNESS and LOW_SUB_UNIVERSE_SHARPE cleared |
+| corr80_decay5_subindustry | xAP6Y5zm | 1.29 | 0.94 | 0.1729 | 0.001057 | 0.0819 | 0.0914 | LOW_FITNESS=FAIL, SELF_CORRELATION=PENDING; LOW_SUB_UNIVERSE_SHARPE cleared |
+| corr90_decay5_industry | 9qavV3w2 | 1.15 | 0.88 | 0.1656 | 0.001167 | 0.1107 | 0.0967 | LOW_SHARPE=FAIL, LOW_FITNESS=FAIL, SELF_CORRELATION=PENDING |
+
+## Updated Lead
+
+The lead changed from V2 / `kq17QGe8` to `corr70_decay5_subindustry` / `E5g7vMjJ`.
+
+```text
+group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 70)), 5), subindustry)
+```
+
+Why it is stronger than V2:
+
+- Sharpe improved from 1.32 to 1.37.
+- Fitness improved from 0.94 to 1.01.
+- Returns improved from 0.0903 to 0.0952.
+- Margin improved from 0.001013 to 0.001088.
+- Turnover stayed controlled at 0.1750.
+- LOW_FITNESS and LOW_SUB_UNIVERSE_SHARPE did not fail.
+
+## Current Submission Decision
+
+DO NOT SUBMIT YET.
+
+`E5g7vMjJ` is the new lead candidate, but SELF_CORRELATION is still pending. Submission should wait until correlation posture is known and acceptable. If SELF_CORRELATION clears, prepare a focused submission memo around `E5g7vMjJ` rather than the older V2 expression.

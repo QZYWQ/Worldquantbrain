@@ -203,3 +203,93 @@ group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(
 - current lead after third round: V2 / `kq17QGe8`
 - submit now: no
 - next step: keep V2 as lead, keep corr90 variants as robustness references, and do not submit until LOW_FITNESS and sub-universe behavior are both acceptable.
+
+## Fourth-Round Results
+
+Baseline V2 / `kq17QGe8` remains the comparison point for this round:
+
+- sharpe: 1.32
+- fitness: 0.94
+- turnover: 0.1783
+- margin: 0.001013
+- drawdown: 0.0582
+- returns: 0.0903
+- platform blockers: LOW_FITNESS=FAIL, LOW_SUB_UNIVERSE_SHARPE=FAIL
+
+### corr70_decay5_subindustry
+
+```text
+group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 70)), 5), subindustry)
+```
+
+- fingerprint: f972f609f569c27be374678af9345ec4
+- alpha_id: E5g7vMjJ
+- simulation status: COMPLETE
+- sharpe: 1.37
+- fitness: 1.01
+- turnover: 0.1750
+- margin: 0.001088
+- drawdown: 0.0737
+- returns: 0.0952
+- grade: AVERAGE
+- platform flags: SELF_CORRELATION=PENDING
+- hopeful: yes
+- internal candidate: yes
+- comparison against V2: improved Sharpe, fitness, margin, and returns while keeping turnover below 0.3; cleared LOW_FITNESS and LOW_SUB_UNIVERSE_SHARPE
+- decision: new lead candidate, pending self-correlation outcome
+
+### corr80_decay5_subindustry
+
+```text
+group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 80)), 5), subindustry)
+```
+
+- fingerprint: 6379de80696ed2806b50dfaa97d8a6ec
+- alpha_id: xAP6Y5zm
+- simulation status: COMPLETE
+- sharpe: 1.29
+- fitness: 0.94
+- turnover: 0.1729
+- margin: 0.001057
+- drawdown: 0.0819
+- returns: 0.0914
+- grade: INFERIOR
+- platform flags: LOW_FITNESS=FAIL, SELF_CORRELATION=PENDING
+- hopeful: yes
+- internal candidate: no
+- comparison against V2: cleared LOW_SUB_UNIVERSE_SHARPE and preserved fitness, but Sharpe stayed below V2 and LOW_FITNESS still failed
+- decision: useful robustness reference, not a lead
+
+### corr90_decay5_industry
+
+```text
+group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 90)), 5), industry)
+```
+
+- fingerprint: d6cbe59cc2f3a6cb8d61aff6bcc9e6fb
+- alpha_id: 9qavV3w2
+- simulation status: COMPLETE
+- sharpe: 1.15
+- fitness: 0.88
+- turnover: 0.1656
+- margin: 0.001167
+- drawdown: 0.1107
+- returns: 0.0967
+- grade: INFERIOR
+- platform flags: LOW_SHARPE=FAIL, LOW_FITNESS=FAIL, SELF_CORRELATION=PENDING
+- hopeful: yes
+- internal candidate: no
+- comparison against V2: weaker Sharpe and fitness despite positive margin/returns; industry neutralization did not recover enough performance
+- decision: reject as a lead branch
+
+## Fourth-Round Decision
+
+- new lead candidate: yes, `corr70_decay5_subindustry` / `E5g7vMjJ`
+- LOW_SUB_UNIVERSE_SHARPE cleared: yes, corr70, corr80, and corr90 industry did not report this failure
+- LOW_FITNESS cleared: yes for corr70 only
+- improved both Sharpe and fitness vs V2: yes, corr70
+- corr70 or corr80 better than corr90: yes, corr70 preserved and improved Sharpe; corr80 preserved robustness but not Sharpe
+- industry neutralization helped: no, it lowered Sharpe and fitness relative to V2 and corr90 subindustry
+- current lead after fourth round: `corr70_decay5_subindustry` / `E5g7vMjJ`
+- submit now: no, wait for SELF_CORRELATION to resolve and prepare a submission memo only if correlation posture is acceptable
+- next step: monitor or re-check self-correlation for E5g7vMjJ, then prepare a focused submission memo draft for the new lead if the pending check clears.
