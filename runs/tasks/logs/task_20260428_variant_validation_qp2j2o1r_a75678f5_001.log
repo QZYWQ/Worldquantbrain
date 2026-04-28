@@ -1,3 +1,0 @@
-{"timestamp": "2026-04-28T17:39:09+08:00", "event": "created", "task_id": "task_20260428_variant_validation_qp2j2o1r_a75678f5_001", "type": "variant_validation", "status": "queued"}
-{"timestamp": "2026-04-28T17:39:12+08:00", "event": "claimed", "task_id": "task_20260428_variant_validation_qp2j2o1r_a75678f5_001", "type": "variant_validation", "status": "claimed", "lease_expires_at": "2026-04-28T19:09:12+08:00"}
-{"timestamp": "2026-04-28T17:39:17+08:00", "event": "heartbeat", "task_id": "task_20260428_variant_validation_qp2j2o1r_a75678f5_001", "type": "variant_validation", "status": "running", "lease_expires_at": "2026-04-28T19:09:17+08:00"}
