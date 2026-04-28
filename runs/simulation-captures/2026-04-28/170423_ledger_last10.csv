@@ -1,0 +1,11 @@
+timestamp,expression,sharpe,fitness,status
+2026-04-28T15:11:32.659558,,0.0,0.0,codex_error
+2026-04-28T15:11:54.766874,,0.0,0.0,codex_error
+2026-04-28T15:20:18.935040,"group_neutralize(-rank(ts_delta(close, 5)) * rank(volume / ts_mean(volume, 20)), subindustry)",1.27,0.39,submitted
+2026-04-28T15:23:25.116018,"rank(ts_delta(close, 5)) * -rank(ts_corr(rank(close), rank(volume), 20))",1.51,0.75,submitted
+2026-04-28T15:24:12.665692,"rank(ts_delta(close, 5) / ts_delay(close, 5), 252) * rank(ts_mean(volume, 20) / ts_mean(volume, 60), 252)",0.0,0.0,error
+2026-04-28T15:24:58.431113,"-ts_rank(decay_linear(rank((close - vwap) / open), 8), 20) * ts_rank(decay_linear(rank(volume / adv20), 5), 10)",0.0,0.0,error
+2026-04-28T15:34:07.572439,"ts_rank(ts_delta(close, 5), 60) * rank(ts_mean(volume, 20) / ts_mean(volume, 60))",-0.96,-0.38,submitted
+2026-04-28T16:27:45.858934,"group_neutralize(-rank(ts_delta(close, 5)) * rank(ts_mean(volume, 5) / ts_mean(volume, 60)), subindustry)",1.17,0.45,submitted
+2026-04-28T16:50:07.604074,,0.0,0.0,codex_empty
+2026-04-28T17:04:18.006111,"group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 20)), 5), subindustry)",1.13,0.64,submitted
