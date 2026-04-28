@@ -327,6 +327,23 @@ group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(
 ## Self-correlation Re-check
 
 - alpha id: E5g7vMjJ
+- checked at: 2026-04-28 19:27:31 CST
+- alpha detail result: SELF_CORRELATION still PENDING
+- `/alphas/E5g7vMjJ/check`: HTTP 200 but empty payload, so no PASS/FAIL evidence
+- `/alphas/E5g7vMjJ/correlations/self`: HTTP 200 but empty payload, so no correlation record evidence
+- key checks from alpha detail:
+  - LOW_SHARPE: PASS
+  - LOW_FITNESS: PASS
+  - LOW_SUB_UNIVERSE_SHARPE: PASS
+  - MATCHES_COMPETITION: PASS
+  - SELF_CORRELATION: PENDING
+- evidence note: prior project captures show `/alphas/{id}/check` can resolve SELF_CORRELATION to PASS or FAIL while an alpha is still UNSUBMITTED, so there is no local evidence that this check only finalizes during or after manual submission
+- decision: do not submit and do not run more variants while pending
+- next action: re-check later, preferably using both alpha detail and `/check`
+
+## Self-correlation Re-check
+
+- alpha id: E5g7vMjJ
 - checked at: 2026-04-28 19:22:45 CST
 - result: SELF_CORRELATION still PENDING
 - key checks:
