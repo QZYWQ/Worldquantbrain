@@ -1,0 +1,51 @@
+{
+  "artifacts": {
+    "candidate_batch": {
+      "mtime_utc": "2026-04-28T14:35:48.616189+00:00",
+      "path": "runs/candidate-batches/2026-04-28/223619_batch_manual_1777386948.json",
+      "sha256": "2eec6e21339e6e5ede8d58d2b91f1f54def26030f096701be98b4a91d4fbd071",
+      "size_bytes": 12486
+    },
+    "fingerprints_snapshot": {
+      "mtime_utc": "2026-04-28T14:30:24.558770+00:00",
+      "path": "runs/simulation-captures/2026-04-28/223619_fingerprints.json",
+      "sha256": "90d8e2ff63e6b33b16e698fef1042b74278e12fd7db3e02c2c3aa91723a297b6",
+      "size_bytes": 1188
+    },
+    "ledger_tail_snapshot": {
+      "mtime_utc": "2026-04-28T14:36:19.276383+00:00",
+      "path": "runs/simulation-captures/2026-04-28/223619_ledger_last10.csv",
+      "sha256": "5eb65fce2bf6177b03d959621e4b2732d616873e07ab315ec8fd92944a5292f5",
+      "size_bytes": 2126
+    },
+    "manifest": {
+      "path": "runs/simulation-captures/2026-04-28/223619_manifest.json"
+    }
+  },
+  "brain_root": "/Users/zpdedn/Documents/project/Worldquantbrain",
+  "date": "2026-04-28",
+  "imported_at": "2026-04-28T22:36:19.274409+08:00",
+  "ledger_tail_rows": 10,
+  "local_time": "22:36:19 CST",
+  "miner_root": "/Users/zpdedn/Documents/github/worldquant-miner",
+  "source": {
+    "fingerprints": {
+      "mtime_utc": "2026-04-28T14:30:24.558770+00:00",
+      "path": "fingerprints.json",
+      "sha256": "90d8e2ff63e6b33b16e698fef1042b74278e12fd7db3e02c2c3aa91723a297b6",
+      "size_bytes": 1188
+    },
+    "latest_batch": {
+      "mtime_utc": "2026-04-28T14:35:48.616189+00:00",
+      "path": "results/batch_manual_1777386948.json",
+      "sha256": "2eec6e21339e6e5ede8d58d2b91f1f54def26030f096701be98b4a91d4fbd071",
+      "size_bytes": 12486
+    },
+    "ledger": {
+      "mtime_utc": "2026-04-28T14:35:43.608496+00:00",
+      "path": "ledger.csv",
+      "sha256": "98a74f1dcb85cb8ba988265115f42d71aa71d9a6134dd58fdce2b115901d33b2",
+      "size_bytes": 7245
+    }
+  }
+}
