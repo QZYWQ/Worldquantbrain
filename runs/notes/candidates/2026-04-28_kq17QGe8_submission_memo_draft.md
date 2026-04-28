@@ -143,3 +143,11 @@ Checked at: 2026-04-28 19:01:04 CST
 Updated decision: DO NOT SUBMIT YET.
 
 The only current non-pass check is SELF_CORRELATION=PENDING. No additional local variants should be run until this pending status resolves or a later re-check shows a clear failure.
+
+## Latest Pending Re-check
+
+Checked at: 2026-04-28 19:06:46 CST
+
+SELF_CORRELATION remains PENDING. All other latest checks remain PASS, including LOW_SHARPE, LOW_FITNESS, LOW_SUB_UNIVERSE_SHARPE, turnover checks, CONCENTRATED_WEIGHT, and MATCHES_COMPETITION.
+
+Updated decision: DO NOT SUBMIT YET. Do not run additional local variants unless SELF_CORRELATION changes to FAIL.
