@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-04-28T17:40:06+08:00",
+  "counts": {
+    "queued": 0,
+    "claimed": 0,
+    "running": 1,
+    "done": 0,
+    "failed": 0,
+    "expired": 0
+  },
+  "last_claimed_task": "task_20260428_variant_validation_qp2j2o1r_a75678f5_001",
+  "last_completed_task": null
+}
