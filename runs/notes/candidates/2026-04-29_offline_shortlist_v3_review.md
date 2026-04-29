@@ -20,6 +20,25 @@ value: `human_review_only; do not run until selected into a future <=3 alpha
 manual batch`. It does not distinguish `hold_for_later` from `deprioritize`, so
 that taxonomy is kept in this memo only.
 
+## User Selection Update
+
+After this review, the user chose option 1: record only the first reviewed
+candidate as the future simulation tracking candidate. This is still
+`DO_NOT_RUN`, no runnable batch has been created, and no simulation approval has
+been granted.
+
+Selected single future candidate:
+
+- `alt_accrual_balance_earnings_certainty_rank_derivative_inventory_turnover_fn_proceeds_from_issuance_of_common_stock_q_126_24_industry`
+- Family: `accruals_asset_growth_balance_sheet`
+- Window / neutralization: 126d, industry-neutralized
+- Expression:
+  `group_neutralize(ts_decay_linear(group_zscore(rank(ts_delta(earnings_certainty_rank_derivative, 126)), sector) + group_zscore(rank(ts_delta(inventory_turnover, 126)), sector) - group_zscore(rank(ts_delta(fn_proceeds_from_issuance_of_common_stock_q, 252)), sector), 24), industry)`
+
+The other two original `run_now_candidates` are retained as review-ranked
+alternates only; they should not be run unless the user explicitly reopens the
+selection.
+
 ## Review Frame
 
 - Input candidates reviewed: 16
@@ -184,7 +203,8 @@ less useful as a first max-3 test.
 
 ## Future Simulation Instruction
 
-Do not run anything from this memo now. If the user later explicitly approves
-simulation, run at most exactly the three `run_now_candidates` above, with no
-variants, no sibling windows, and no runnable batch generated from the full v3
-shortlist.
+Do not run anything from this memo now. After the user's option-1 selection, a
+future explicitly approved simulation should run at most exactly the selected
+single candidate above, with no variants, no sibling windows, and no runnable
+batch generated from the full v3 shortlist. The two remaining original
+`run_now_candidates` are alternates, not approved run items.
