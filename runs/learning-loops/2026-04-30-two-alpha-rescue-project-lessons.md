@@ -7,8 +7,27 @@
 - Source artifacts:
   - `runs/submission-memos/2026-04-30-sales-estimate-count-decay10-submitted.md`
   - `runs/submission-memos/2026-04-30-llgowzmn-pv-range-close-position-ready.md`
+  - `runs/submission-memos/2026-04-30-price-volume-corr-self-corr-stop.md`
   - `runs/simulation-captures/2026-04-30-unsubmitted-near-miss-filter.md`
   - `runs/simulation-captures/2026-04-30-unsubmitted-followup-after-llgowzmn.json`
+
+## Post-Submission Correction
+
+After this note was written, a separate close-delta / close-volume-correlation candidate failed self-correlation after the user submitted `rank(ts_mean(anl4_totassets_flag, 20))`.
+
+Failed candidate:
+
+```text
+group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 70)), 9), subindustry)
+```
+
+Official Check Submission text reported by the user:
+
+```text
+Self-correlation 0.9896 is above cutoff of 0.7 and Sharpe not better by 10.0% or more.
+```
+
+This does not invalidate the two successful rescue lessons below, but it adds an important gate rule: `SELF_CORRELATION: PENDING` is never final. Formula-level family differences are only a triage heuristic; the official realized self-correlation check wins.
 
 ## Executive Lesson
 
@@ -148,6 +167,7 @@ This matters because the correct decision after finding a passing rescued varian
 - When Sub-universe is narrowly low on a price-volume family, stabilize the core measurement window before changing thesis.
 - Once a family has one clean passing representative, lock that representative and suppress near-neighbor submissions.
 - A pending or passing self-correlation check is not enough context by itself; compare against the active submitted family list before marking anything as a candidate.
+- If a later candidate fails self-correlation above `0.95`, stop that branch instead of spending time on cosmetic parameter edits.
 
 ## Next-Session Use
 

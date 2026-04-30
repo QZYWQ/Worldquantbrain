@@ -26,8 +26,30 @@
     "The rescue family combines 10-day close reversal with negative ranked close-volume correlation.",
     "Parent QP2JVEMW had Sharpe 1.24 / Fitness 0.89 and failed LOW_SHARPE + LOW_FITNESS.",
     "Parent zqPMmOEG had Sharpe 1.25 / Fitness 0.98 and failed LOW_FITNESS + LOW_SUB_UNIVERSE_SHARPE.",
-    "The best new variant is zqPX5OkX. It passes all visible hard IS checks except SELF_CORRELATION, which remains PENDING."
+    "The best new variant is zqPX5OkX. It initially passed all visible hard IS checks except SELF_CORRELATION, which remained PENDING.",
+    "Post-submission update: after rank(ts_mean(anl4_totassets_flag, 20)) was submitted, zqPX5OkX failed SELF_CORRELATION with value 0.9896 above the 0.7 cutoff and insufficient Sharpe improvement. Treat this price-volume correlation branch as stopped for submission."
   ],
+  "post_submission_check_update": {
+    "updated_at": "2026-04-30T00:00:00+08:00",
+    "evidence_source": "user-reported official WorldQuant BRAIN Check Submission text",
+    "independent_recheck_performed": false,
+    "submitted_before_check": {
+      "expression": "rank(ts_mean(anl4_totassets_flag, 20))",
+      "alpha_id": "Xg2X2jxl",
+      "status": "user-reported submitted"
+    },
+    "affected_alpha": {
+      "alpha_id": "zqPX5OkX",
+      "expression": "group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 70)), 9), subindustry)"
+    },
+    "self_correlation_check": {
+      "result": "FAIL",
+      "value": 0.9896,
+      "cutoff": 0.7,
+      "message": "Self-correlation 0.9896 is above cutoff of 0.7 and Sharpe not better by 10.0% or more."
+    },
+    "decision": "stop_current_price_volume_correlation_variant_and_near_neighbors"
+  },
   "alphas": [
     {
       "alpha_id": "QP2JVEMW",
@@ -187,8 +209,8 @@
   "decision": {
     "best_alpha_id": "zqPX5OkX",
     "backup_alpha_id": "QP2m2bl5",
-    "status": "near-pass, hold for self-correlation",
+    "status": "stopped after self-correlation failure",
     "do_not_submit_yet": true,
-    "reason": "Visible hard checks pass for zqPX5OkX and QP2m2bl5, but Sub-universe margin is very thin and SELF_CORRELATION is still pending."
+    "reason": "zqPX5OkX failed the official self-correlation gate after the analyst total-assets flag alpha was submitted; self-correlation was 0.9896 versus the 0.7 cutoff, and the Sharpe improvement exemption did not apply."
   }
 }

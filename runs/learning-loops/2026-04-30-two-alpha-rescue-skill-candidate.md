@@ -7,8 +7,10 @@ This file proposes workflow-level heuristics for the WorldQuant BRAIN alpha engi
 ## Source Artifacts
 
 - `runs/learning-loops/2026-04-30-two-alpha-rescue-project-lessons.md`
+- `runs/learning-loops/2026-04-30-self-corr-after-submission-project-lessons.md`
 - `runs/submission-memos/2026-04-30-sales-estimate-count-decay10-submitted.md`
 - `runs/submission-memos/2026-04-30-llgowzmn-pv-range-close-position-ready.md`
+- `runs/submission-memos/2026-04-30-price-volume-corr-self-corr-stop.md`
 - `runs/simulation-captures/2026-04-30-unsubmitted-near-miss-filter.md`
 
 ## Candidate Skill Rule
@@ -18,10 +20,13 @@ When rescuing a near-miss alpha, classify the dominant failing gate before chang
 - If Fitness is slightly low on a slow count / coverage field, try simplifying and shortening the smoothing window before adding group transforms.
 - If Sub-universe Sharpe is slightly low on an otherwise strong price-volume family, try a coherent stability repair: lengthen the core measurement window and increase decay smoothing slightly.
 - If self-correlation passes but with a narrow margin, submit or protect only the best family representative and suppress near-neighbor variants.
+- If self-correlation is pending, keep the candidate as `near-pass` rather than submission-ready. If it later fails above `0.95`, stop the branch instead of trying cosmetic parameter changes.
 
 ## Anti-Pattern To Add
 
 Do not keep polishing a family after one clean representative passes official checks. Same-family near-misses should become evidence, not additional submission targets, unless the first representative later fails fresh official evidence.
+
+Do not treat formula-level differences, such as price-volume versus analyst / fundamental fields, as proof that two candidates can coexist. The official realized self-correlation result overrides semantic family labels.
 
 ## Why This Belongs In Skill Later
 
