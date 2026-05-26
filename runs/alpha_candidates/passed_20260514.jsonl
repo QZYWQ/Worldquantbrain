@@ -1,0 +1,1 @@
+{"id": "kqnROeX8", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.78, "fitness": 1.05, "turnover": 0.5237, "selfcorr": null, "timestamp": "2026-05-14T08:31:23.517246"}

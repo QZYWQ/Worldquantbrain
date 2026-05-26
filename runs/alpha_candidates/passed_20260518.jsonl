@@ -1,0 +1,8 @@
+{"id": "zq5azOZ1", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.87, "fitness": 1.04, "turnover": 0.5325, "selfcorr": null, "timestamp": "2026-05-18T01:07:08.629621"}
+{"id": "zq5azOZ1", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.87, "fitness": 1.04, "turnover": 0.5325, "selfcorr": null, "timestamp": "2026-05-18T01:08:19.532029"}
+{"id": "kqnROeX8", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.78, "fitness": 1.05, "turnover": 0.5237, "selfcorr": null, "timestamp": "2026-05-18T01:10:36.442664"}
+{"id": "kqnROeX8", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.78, "fitness": 1.05, "turnover": 0.5237, "selfcorr": null, "timestamp": "2026-05-18T01:10:45.656914"}
+{"id": "zq5azOZ1", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.87, "fitness": 1.04, "turnover": 0.5325, "selfcorr": null, "timestamp": "2026-05-18T04:17:26.234765"}
+{"id": "kqnROeX8", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.78, "fitness": 1.05, "turnover": 0.5237, "selfcorr": null, "timestamp": "2026-05-18T04:20:13.527210"}
+{"id": "zq5azOZ1", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.87, "fitness": 1.04, "turnover": 0.5325, "selfcorr": null, "timestamp": "2026-05-18T05:10:36.237523"}
+{"id": "kqnROeX8", "expr": "rank(-ts_zscore(close, 5))", "sharpe": 1.78, "fitness": 1.05, "turnover": 0.5237, "selfcorr": null, "timestamp": "2026-05-18T05:12:18.429873"}

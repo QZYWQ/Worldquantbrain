@@ -1,5 +1,9 @@
 # Worldquantbrain Project Agents Guide
 
+> **工作流**: 见 `.langgraph/CLAUDE.md` — 两阶段协议、方法论、skill 分层。
+> **记忆**: OMEGA 自动管理 + `langgraph-cli remember/recall`。
+> 读取本文件后，必须同时读取 `.langgraph/CLAUDE.md`。
+
 ## Purpose
 
 This directory is the formal execution workspace for WorldQuant BRAIN research artifacts.
@@ -88,7 +92,9 @@ You must verify against official WorldQuant BRAIN pages before treating any of t
 - Do not claim a line is submission-ready until official checks and real simulation results support that claim.
 - Prefer interpretable alpha families over opaque operator soup.
 - In alpha research, a negative Sharpe on the baseline or first simple control triggers an immediate sign-flip control on the final executable expression, using `-expr` or `-1 * expr`; do not keep polishing the original sign or touch extra lookback/smoothing/group levers until the flipped version has been simulated and compared.
+- Whenever an alpha is successfully submitted and recorded, create or update the corresponding successful-submission deep-dive document under `./runs/submission-memos/`; include the official post-submit state, expression, settings, real metrics/check evidence, economic hypothesis, operator-by-operator explanation, research path, failure lessons, and user-learning notes. Do not treat `ACTIVE / OS` as final OS pass unless official evidence says so.
 - Keep session-start artifacts, cycle reports, and post-work notes separate by role.
+- After researching and deciding a new alpha direction and plan, execute all subsequent platform operations (simulation, check, rank, submit, favorite) through the integrated pipeline scripts under `./scripts/` (`machine_lib.py`, `discover_check_rank.py`, `alpha_master_upgrade.py`, `run_upgrade.py`, `run_upgrade_v2.py`). Do not bypass these with ad-hoc `curl` or raw API calls; the pipeline scripts encode rate-limiting, error recovery, credential loading, and output routing that raw calls lack.
 
 ## Execution Discipline
 
@@ -152,17 +158,20 @@ Use these routing rules:
 
 ## Skill And Gate Rule
 
-When a task clearly matches a required skill or gate, that skill or gate is execution protocol, not optional advice.
+任务分类由 `.langgraph/CLAUDE.md` 强制路由规则（路径 A-F）统一处理。
+以下为本项目专属补充规则，在路由门分类后生效。
 
-Typical examples:
+### Alpha Research Skill Gate
 
-- design before implementation for ambiguous or structural work
-- verification before any completion or pass claim
-- harness mode for long-running tracked work
+任何 alpha research 行为，包括 idea generation、field search、family design、Fast Expression drafting、metric diagnosis、simulation planning、result triage、optimization、rescue、correlation review、submission review、research memo writing：
+- **必须在路由门路径 D/F 分类后，加载** `/Users/zpdedn/.codex/skills/worldquant-brain-alpha-engineering/SKILL.md`
+- 此 skill 是项目专属领域知识，路由门无法覆盖
 
-Detailed trigger rules live in:
+### Harness Entry Rule
 
-- `./03-代理工程化规则索引.md`
+长运行追踪工作（harness mode）：
+- 路由门分类后，加载 `./harness/AGENTS.md`
+- 按 harness start order 执行
 
 ## Harness Entry Rule
 
@@ -232,3 +241,47 @@ Detailed output routing lives in:
   `./03-代理工程化规则索引.md`
 - long-running harness operations:
   `./harness/AGENTS.md`
+
+<!-- gitnexus:start -->
+# GitNexus — Code Intelligence
+
+This project is indexed by GitNexus as **Worldquantbrain** (14828 symbols, 18233 relationships, 299 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+
+> If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
+
+## Always Do
+
+- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `gitnexus_impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
+- **MUST run `gitnexus_detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows.
+- **MUST warn the user** if impact analysis returns HIGH or CRITICAL risk before proceeding with edits.
+- When exploring unfamiliar code, use `gitnexus_query({query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
+- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `gitnexus_context({name: "symbolName"})`.
+
+## Never Do
+
+- NEVER edit a function, class, or method without first running `gitnexus_impact` on it.
+- NEVER ignore HIGH or CRITICAL risk warnings from impact analysis.
+- NEVER rename symbols with find-and-replace — use `gitnexus_rename` which understands the call graph.
+- NEVER commit changes without running `gitnexus_detect_changes()` to check affected scope.
+
+## Resources
+
+| Resource | Use for |
+|----------|---------|
+| `gitnexus://repo/Worldquantbrain/context` | Codebase overview, check index freshness |
+| `gitnexus://repo/Worldquantbrain/clusters` | All functional areas |
+| `gitnexus://repo/Worldquantbrain/processes` | All execution flows |
+| `gitnexus://repo/Worldquantbrain/process/{name}` | Step-by-step execution trace |
+
+## CLI
+
+| Task | Read this skill file |
+|------|---------------------|
+| Understand architecture / "How does X work?" | `.claude/skills/gitnexus/gitnexus-exploring/SKILL.md` |
+| Blast radius / "What breaks if I change X?" | `.claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md` |
+| Trace bugs / "Why is X failing?" | `.claude/skills/gitnexus/gitnexus-debugging/SKILL.md` |
+| Rename / extract / split / refactor | `.claude/skills/gitnexus/gitnexus-refactoring/SKILL.md` |
+| Tools, resources, schema reference | `.claude/skills/gitnexus/gitnexus-guide/SKILL.md` |
+| Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
+
+<!-- gitnexus:end -->
