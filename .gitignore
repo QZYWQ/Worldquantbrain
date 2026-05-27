@@ -37,3 +37,4 @@ runs/simulation-captures/chrome-session/
 runs/session-briefs/**
 !runs/session-briefs/README.md
 .gitnexus
+.agents/
