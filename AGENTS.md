@@ -1,8 +1,10 @@
 # Worldquantbrain Project Agents Guide
 
-> **工作流**: 见 `.langgraph/CLAUDE.md` — 两阶段协议、方法论、skill 分层。
-> **记忆**: OMEGA 自动管理 + `langgraph-cli remember/recall`。
-> 读取本文件后，必须同时读取 `.langgraph/CLAUDE.md`。
+> **工作流规则**: `.langgraph/CLAUDE.md` — 唯一真源。状态机、路由、方法学、工具编排。
+> **Claude Code 入口**: `CLAUDE.md` — Claude 特定命令、GitNexus、BRAIN API。
+> **项目规则**: 本文件 — 领域硬规则、执行纪律、WorldQuant 特定约束。
+>
+> 三文件分工明确，无重叠。改任何一份不影响另外两份。
 
 ## Purpose
 
@@ -156,22 +158,9 @@ Use these routing rules:
 - long-running or resumable execution:
   `./harness/AGENTS.md`
 
-## Skill And Gate Rule
+## Skill Gate
 
-任务分类由 `.langgraph/CLAUDE.md` 强制路由规则（路径 A-F）统一处理。
-以下为本项目专属补充规则，在路由门分类后生效。
-
-### Alpha Research Skill Gate
-
-任何 alpha research 行为，包括 idea generation、field search、family design、Fast Expression drafting、metric diagnosis、simulation planning、result triage、optimization、rescue、correlation review、submission review、research memo writing：
-- **必须在路由门路径 D/F 分类后，加载** `/Users/zpdedn/.codex/skills/worldquant-brain-alpha-engineering/SKILL.md`
-- 此 skill 是项目专属领域知识，路由门无法覆盖
-
-### Harness Entry Rule
-
-长运行追踪工作（harness mode）：
-- 路由门分类后，加载 `./harness/AGENTS.md`
-- 按 harness start order 执行
+任务分类和路由由 `.langgraph/CLAUDE.md` 统一处理。领域 skill（worldquant-brain-alpha-engineering）由 task-router 工具库自动加载。
 
 ## Harness Entry Rule
 
@@ -231,57 +220,9 @@ Detailed output routing lives in:
 
 ## Pointers
 
-- project map:
-  `./00-项目总索引.md`
-- external knowledge-base routing:
-  `./01-外部知识库映射.md`
-- workflow and output routing:
-  `./02-工作流索引.md`
-- agent governance routing:
-  `./03-代理工程化规则索引.md`
-- long-running harness operations:
-  `./harness/AGENTS.md`
-
-<!-- gitnexus:start -->
-# GitNexus — Code Intelligence
-
-This project is indexed by GitNexus as **Worldquantbrain** (14828 symbols, 18233 relationships, 299 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
-
-> If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
-
-## Always Do
-
-- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `gitnexus_impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
-- **MUST run `gitnexus_detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows.
-- **MUST warn the user** if impact analysis returns HIGH or CRITICAL risk before proceeding with edits.
-- When exploring unfamiliar code, use `gitnexus_query({query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
-- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `gitnexus_context({name: "symbolName"})`.
-
-## Never Do
-
-- NEVER edit a function, class, or method without first running `gitnexus_impact` on it.
-- NEVER ignore HIGH or CRITICAL risk warnings from impact analysis.
-- NEVER rename symbols with find-and-replace — use `gitnexus_rename` which understands the call graph.
-- NEVER commit changes without running `gitnexus_detect_changes()` to check affected scope.
-
-## Resources
-
-| Resource | Use for |
-|----------|---------|
-| `gitnexus://repo/Worldquantbrain/context` | Codebase overview, check index freshness |
-| `gitnexus://repo/Worldquantbrain/clusters` | All functional areas |
-| `gitnexus://repo/Worldquantbrain/processes` | All execution flows |
-| `gitnexus://repo/Worldquantbrain/process/{name}` | Step-by-step execution trace |
-
-## CLI
-
-| Task | Read this skill file |
-|------|---------------------|
-| Understand architecture / "How does X work?" | `.claude/skills/gitnexus/gitnexus-exploring/SKILL.md` |
-| Blast radius / "What breaks if I change X?" | `.claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md` |
-| Trace bugs / "Why is X failing?" | `.claude/skills/gitnexus/gitnexus-debugging/SKILL.md` |
-| Rename / extract / split / refactor | `.claude/skills/gitnexus/gitnexus-refactoring/SKILL.md` |
-| Tools, resources, schema reference | `.claude/skills/gitnexus/gitnexus-guide/SKILL.md` |
-| Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
-
-<!-- gitnexus:end -->
+- project map: `./00-项目总索引.md`
+- external knowledge: `./01-外部知识库映射.md`
+- workflow/output routing: `./02-工作流索引.md`
+- agent governance: `./03-代理工程化规则索引.md`
+- harness operations: `./harness/AGENTS.md`
+- **GitNexus instructions**: `CLAUDE.md` (单份，不在此重复)
