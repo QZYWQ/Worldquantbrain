@@ -1,0 +1,21 @@
+{
+  "active_task": "alpha research — pipeline integration + candidate mining",
+  "task_stack": [
+    "integrate worldquantAPI pipeline code",
+    "document submission queue lessons",
+    "triage unrun candidates"
+  ],
+  "current_path": "C",
+  "current_state": null,
+  "last_decision": "pipeline integration from worldquantAPI into scripts/",
+  "phase": "unknown",
+  "methodology_state": {
+    "tdd": "active",
+    "bdd": "off",
+    "ddd": "passive",
+    "verify_full": "passive"
+  },
+  "domain_skill": "worldquant-brain-alpha-engineering",
+  "last_updated": "2026-05-27T13:00:00+08:00",
+  "outputs_pending_verification": []
+}
