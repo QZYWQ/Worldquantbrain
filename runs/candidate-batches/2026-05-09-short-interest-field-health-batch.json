@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "batch_type": "field_health_diagnostic",
+  "batch_id": "2026-05-09-short-interest-field-health",
+  "target_family": "short_interest_squeeze",
+  "target_field_pack": "2026-05-09-short-interest-ownership-concentration",
+  "region": "USA",
+  "universe": "TOP3000",
+  "delay": 1,
+  "neutralization": "None",
+  "decay": 0,
+  "created_at": "2026-05-09",
+  "purpose": "Field health diagnostic - gate before alpha family mining",
+  "diagnostics": [
+    {
+      "id": "si_raw",
+      "expression": "short_interest",
+      "inspect": ["Long Count", "Short Count", "vs universe TOP3000 (~3000)"]
+    },
+    {
+      "id": "si_nonzero",
+      "expression": "short_interest != 0 ? 1 : 0",
+      "inspect": ["Long Count non-zero rate", "should be > 50%"]
+    },
+    {
+      "id": "si_update_20d",
+      "expression": "ts_std_dev(short_interest, 20) != 0 ? 1 : 0",
+      "inspect": ["Update rate", "should be > 60%"]
+    },
+    {
+      "id": "si_update_60d",
+      "expression": "ts_std_dev(short_interest, 60) != 0 ? 1 : 0",
+      "inspect": ["Quarterly update check", "should be > 80%"]
+    },
+    {
+      "id": "dtc_raw",
+      "expression": "days_to_cover",
+      "inspect": ["Long Count vs universe"]
+    },
+    {
+      "id": "dtc_nonzero",
+      "expression": "days_to_cover != 0 ? 1 : 0",
+      "inspect": ["Non-zero rate", "should be > 30%"]
+    },
+    {
+      "id": "inst_holding_raw",
+      "expression": "institutional_holding",
+      "inspect": ["Long Count vs universe"]
+    },
+    {
+      "id": "holder_count_raw",
+      "expression": "holder_count",
+      "inspect": ["Long Count vs universe"]
+    }
+  ],
+  "baseline_expressions": [
+    {
+      "id": "baseline_short_squeeze",
+      "expression": "-group_rank(ts_zscore(short_interest / ts_mean(short_interest, 60), 20), industry)",
+      "settings": {"decay": 6, "neutralization": "industry", "truncation": 0.08}
+    },
+    {
+      "id": "sign_control_short_squeeze",
+      "expression": "group_rank(ts_zscore(short_interest / ts_mean(short_interest, 60), 20), industry)",
+      "settings": {"decay": 6, "neutralization": "industry", "truncation": 0.08}
+    },
+    {
+      "id": "baseline_days_to_cover",
+      "expression": "-group_rank(ts_zscore(days_to_cover / ts_mean(days_to_cover, 60), 20), industry)",
+      "settings": {"decay": 6, "neutralization": "industry", "truncation": 0.08}
+    },
+    {
+      "id": "sign_control_days_to_cover",
+      "expression": "group_rank(ts_zscore(days_to_cover / ts_mean(days_to_cover, 60), 20), industry)",
+      "settings": {"decay": 6, "neutralization": "industry", "truncation": 0.08}
+    }
+  ],
+  "stop_gates": {
+    "short_interest": {
+      "nonzero_rate_min": 0.50,
+      "update_20d_rate_min": 0.60,
+      "stop_if_failed": true
+    },
+    "days_to_cover": {
+      "nonzero_rate_min": 0.30,
+      "update_20d_rate_min": 0.50,
+      "stop_if_failed": true
+    }
+  }
+}

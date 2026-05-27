@@ -18,6 +18,18 @@ full ledger or the longer bootstrap protocol when you only need the current trut
 - LENS勘探完成 → pv13批量 S0 live 收尾完成，24 条结果回收，信号天花板确认；当前无活跃孵化候选，无活跃批量扫描。下一步：骨架优化 + 新域 LENS 勘探
 - pv13 域: hold — 天花板确认，IS <= 0.91；无活跃孵化候选，无活跃批量扫描。下一步：骨架优化 + 新域 LENS 勘探
 
+## 2026-05-07 Live Submission State
+
+- `A1gVE97w` EPS-quality value candidate was submitted by the user and is now active / OS.
+- `QP2v6rVW` was the same-family backup, but the current official UI now reports self-correlation `0.9221 / 0.7 FAIL`; freeze it and do not submit.
+- Current `Sharpe > 1.1` unsubmitted scan has no confirmed submit-ready replacement after follow-up checks. Treat remaining empty-body / throttled rows as unverified, not PASS.
+- `j29adA79` was tested as the only 2026-05-07 negative-Sharpe sign-flip opportunity worth a minimal control. Sign flip `j29VY7J5` fixed Sharpe/Sub-universe but failed Fitness `0.77`; targeted decay and unit-clean repairs failed, so this lane is stopped.
+- Latest evidence:
+  - `runs/submission-memos/2026-05-07-qp2v6rvw-self-corr-freeze.md`
+  - `runs/submission-memos/2026-05-07-current-unsubmitted-sharpe110-opportunity-scan.md`
+  - `runs/simulation-captures/2026-05-07-current-unsubmitted-sharpe110-followup-checks.json`
+  - `runs/submission-memos/2026-05-07-j29ada79-signflip-repair-stop.md`
+
 ## S-1 Scout Queue
 
 - pv13 top-3 lifecycle: 3/3 passed on 2026-04-27; S-1.5 dedupe cleared, S0 scan passed, A-stage sign-flip controls passed, B-stage shape exploration completed, and C-stage hybrid exploration ran to completion. The D/E follow-up also held, so the family is now held with the original customer-centrality anchor preserved as historical best.

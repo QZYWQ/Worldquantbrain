@@ -1,0 +1,111 @@
+{
+  "synced_at": "2026-05-25T18:21:08.819379",
+  "confirmed_8pass": [
+    {
+      "id": "wpLmjx55",
+      "sharpe": 2.23,
+      "fitness": 1.45,
+      "turnover": 0.249,
+      "sc": 0.9491,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "QPEJ0oA5",
+      "sharpe": 2.23,
+      "fitness": 1.05,
+      "turnover": 0.6892,
+      "sc": 0.1037,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "rKA3eXKo",
+      "sharpe": 2.08,
+      "fitness": 1.13,
+      "turnover": 0.4744,
+      "sc": 0.6369,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "VkOY2jWY",
+      "sharpe": 2.07,
+      "fitness": 1.46,
+      "turnover": 0.0595,
+      "sc": 0.8081,
+      "source": "local_favorite"
+    },
+    {
+      "id": "RRd3e7jn",
+      "sharpe": 1.92,
+      "fitness": 1.09,
+      "turnover": 0.4436,
+      "sc": 0.2366,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "0mzlEp32",
+      "sharpe": 1.87,
+      "fitness": 1.04,
+      "turnover": 0.5325,
+      "sc": 0.5896,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "QPEJW2QG",
+      "sharpe": 1.84,
+      "fitness": 1.1,
+      "turnover": 0.2962,
+      "sc": 0.6804,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "JjbwOAMx",
+      "sharpe": 1.78,
+      "fitness": 1.05,
+      "turnover": 0.5237,
+      "sc": 0.6034,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "0mzWQbPK",
+      "sharpe": 1.64,
+      "fitness": 1.18,
+      "turnover": 0.0394,
+      "sc": 0.9789,
+      "source": "local_ranking"
+    },
+    {
+      "id": "d5dXKzmK",
+      "sharpe": 1.58,
+      "fitness": 1.21,
+      "turnover": 0.1045,
+      "sc": 0.6628,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "kqQ7GX6K",
+      "sharpe": 1.58,
+      "fitness": 1.03,
+      "turnover": 0.3727,
+      "sc": null,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "blvk8vpM",
+      "sharpe": 1.53,
+      "fitness": 1.08,
+      "turnover": 0.0771,
+      "sc": 0.6176,
+      "source": "local_check_May22"
+    },
+    {
+      "id": "d5d8p1x2",
+      "sharpe": 1.5,
+      "fitness": 1.03,
+      "turnover": 0.0204,
+      "sc": 0.458,
+      "source": "local_ranking"
+    }
+  ],
+  "favorited_count": 13,
+  "cleared_count": 11
+}

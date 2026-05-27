@@ -1,0 +1,77 @@
+{
+  "synced_at": "2026-05-26T14:34:17.344897",
+  "total": 875,
+  "active_submitted": 7,
+  "submitted_ids": [
+    "A1kWl0LE",
+    "O0ovYJXg",
+    "0mzWQbPK",
+    "E5kobRlG",
+    "d5d8p1x2",
+    "j21QzK9E",
+    "np3Jrqal"
+  ],
+  "starred_favorites_remaining": 12,
+  "starred_favorites": [
+    {
+      "id": "QPEJ0oA5",
+      "sharpe": 2.23,
+      "fitness": 1.05
+    },
+    {
+      "id": "wpLmjx55",
+      "sharpe": 2.23,
+      "fitness": 1.45
+    },
+    {
+      "id": "rKA3eXKo",
+      "sharpe": 2.08,
+      "fitness": 1.13
+    },
+    {
+      "id": "VkOY2jWY",
+      "sharpe": 2.07,
+      "fitness": 1.46
+    },
+    {
+      "id": "RRd3e7jn",
+      "sharpe": 1.92,
+      "fitness": 1.09
+    },
+    {
+      "id": "0mzlEp32",
+      "sharpe": 1.87,
+      "fitness": 1.04
+    },
+    {
+      "id": "QPEJW2QG",
+      "sharpe": 1.84,
+      "fitness": 1.1
+    },
+    {
+      "id": "JjbwOAMx",
+      "sharpe": 1.78,
+      "fitness": 1.05
+    },
+    {
+      "id": "MPkAX0LM",
+      "sharpe": 1.65,
+      "fitness": 1.18
+    },
+    {
+      "id": "kqQ7GX6K",
+      "sharpe": 1.58,
+      "fitness": 1.03
+    },
+    {
+      "id": "d5dXKzmK",
+      "sharpe": 1.58,
+      "fitness": 1.21
+    },
+    {
+      "id": "blvk8vpM",
+      "sharpe": 1.53,
+      "fitness": 1.08
+    }
+  ]
+}

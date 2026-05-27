@@ -1,0 +1,68 @@
+{
+  "capture_id": "2026-05-06-reverse-close-delta5-selfcorr-rescue",
+  "topic": "reverse_close_delta5_selfcorr_rescue_after_qMPWpknZ",
+  "parent_alpha_id": "qMPWpknZ",
+  "parent_check_failure": {
+    "name": "SELF_CORRELATION",
+    "result": "FAIL",
+    "limit": 0.7,
+    "value": 0.7729,
+    "self_correlated_records": [
+      {
+        "alpha_id": "qMmpvp8v",
+        "name": "returns_sign_flip_5d",
+        "correlation": 0.7729
+      },
+      {
+        "alpha_id": "LLgOWZmn",
+        "name": "LLgOWZmn",
+        "correlation": 0.7566
+      }
+    ]
+  },
+  "rescue_policy": "Two targeted rescue variants only; change the dominant 5-day horizon to reduce PnL overlap while keeping the qblend/pasteurization-off structure.",
+  "candidates": [
+    {
+      "name": "qblend_horizon7_decay2_pasteur_off",
+      "expression": "quantile(rank(rank((-ts_sum(returns, 7)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 7)))), driver=gaussian)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 2,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "OFF",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    },
+    {
+      "name": "qblend_horizon10_decay2_pasteur_off",
+      "expression": "quantile(rank(rank((-ts_sum(returns, 10)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 10)))), driver=gaussian)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 2,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "OFF",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-05-26T01:37:51.031441",
+  "family": "profit_margin",
+  "phase": "densify_upgrade",
+  "anchor": "ts_delta(winsorize(ts_backfill(net_income_avg / revenue, 252), std=4), 21) / ts_mean(winsorize(ts_backfill(net_income_avg / revenue, 252), std=4), 63)",
+  "eight_pass": [],
+  "seven_pass": [
+    {
+      "id": "3qza8nme",
+      "name": "margin_up_df0",
+      "s": 1.31,
+      "f": 0.79,
+      "tvr": 0.1446,
+      "fails": [
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "sc": null
+    },
+    {
+      "id": "YPQ2zXaw",
+      "name": "margin_up_d0",
+      "s": 1.32,
+      "f": 0.82,
+      "tvr": 0.1397,
+      "fails": [
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "sc": null
+    },
+    {
+      "id": "e7Lnl1d6",
+      "name": "margin_up_d3",
+      "s": 1.25,
+      "f": 0.8,
+      "tvr": 0.1182,
+      "fails": [
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "sc": null
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "_instructions": [
+    "SO Expansion for 4 PASS fields from FO Field Health Scout",
+    "Reference: gJmojOQm (unsystematic_risk) used group_rank + densify(bucket(rank(cap))) wrapper",
+    "Pattern: group_rank(ts_zscore(FO_field, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+    "Test neutralization variants: INDUSTRY, SUBINDUSTRY",
+    "Goal: Find self_corr < 0.7, Sharpe >= 1.25, Fitness >= 1.0"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-16-fo-field-so-expansion",
+  "topic": "so_expansion_field_health_pass",
+  "author": "Claude",
+  "source": "fo_field_health_scout_pass",
+  "fields_tested": [
+    "snt1_d1_dynamicfocusrank (S=0.85, F=1.50, sentiment)",
+    "revenue_growth_qoq (S=0.81, F=1.41, expectation)",
+    "fnd6_recco (S=0.77, F=1.31, quality)",
+    "fnd6_rectr (S=0.76, F=1.29, quality)"
+  ],
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "snt1_industry_bucket",
+      "description": "snt1 sentiment with INDUSTRY neutralization + cap bucket",
+      "expression": "group_rank(ts_zscore(snt1_d1_dynamicfocusrank, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "snt1_subindustry_bucket",
+      "description": "snt1 with SUBINDUSTRY neutralization + cap bucket",
+      "expression": "group_rank(ts_zscore(snt1_d1_dynamicfocusrank, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "snt1_industry_reversed",
+      "description": "snt1 reversed sign - low sentiment outperformance",
+      "expression": "-group_rank(ts_zscore(snt1_d1_dynamicfocusrank, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "snt1_industry_bucket_decay6",
+      "description": "snt1 with decay=6 to reduce turnover",
+      "expression": "group_rank(ts_zscore(snt1_d1_dynamicfocusrank, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    },
+    {
+      "name": "revenue_industry_bucket",
+      "description": "revenue_growth_qoq with INDUSTRY neutralization + cap bucket",
+      "expression": "group_rank(ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_subindustry_bucket",
+      "description": "revenue_growth with SUBINDUSTRY neutralization",
+      "expression": "group_rank(ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "revenue_industry_reversed",
+      "description": "revenue growth reversed - low growth outperformance",
+      "expression": "-group_rank(ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_industry_bucket_decay6",
+      "description": "revenue with decay=6",
+      "expression": "group_rank(ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    },
+    {
+      "name": "fnd6_recco_industry_bucket",
+      "description": "fnd6_recco with INDUSTRY neutralization + cap bucket",
+      "expression": "group_rank(ts_zscore(fnd6_recco, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "fnd6_recco_subindustry_bucket",
+      "description": "fnd6_recco with SUBINDUSTRY neutralization",
+      "expression": "group_rank(ts_zscore(fnd6_recco, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "fnd6_recco_industry_reversed",
+      "description": "fnd6_recco reversed - low concentration outperformance",
+      "expression": "-group_rank(ts_zscore(fnd6_recco, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "fnd6_recco_industry_bucket_decay6",
+      "description": "fnd6_recco with decay=6",
+      "expression": "group_rank(ts_zscore(fnd6_recco, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    },
+    {
+      "name": "fnd6_rectr_industry_bucket",
+      "description": "fnd6_rectr with INDUSTRY neutralization + cap bucket",
+      "expression": "group_rank(ts_zscore(fnd6_rectr, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "fnd6_rectr_subindustry_bucket",
+      "description": "fnd6_rectr with SUBINDUSTRY neutralization",
+      "expression": "group_rank(ts_zscore(fnd6_rectr, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "fnd6_rectr_industry_reversed",
+      "description": "fnd6_rectr reversed - low receivable turnover outperformance",
+      "expression": "-group_rank(ts_zscore(fnd6_rectr, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "fnd6_rectr_industry_bucket_decay6",
+      "description": "fnd6_rectr with decay=6",
+      "expression": "group_rank(ts_zscore(fnd6_rectr, 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    }
+  ],
+  "expected_outcomes": {
+    "pass_criteria": "Sharpe >= 1.25, Fitness >= 1.0, self_corr < 0.7",
+    "good_enough": "Sharpe >= 1.0, Fitness >= 0.8, self_corr < 0.7",
+    "kill_criteria": "Sharpe < 1.0 or self_corr >= 0.7"
+  },
+  "notes": "16 candidates total, 4 fields x 4 variants each. Self-correlation check after simulation."
+}

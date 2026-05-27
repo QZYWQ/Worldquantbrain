@@ -1,0 +1,20 @@
+workflow:
+  name: sync-account
+  entry: fetch
+  agents:
+    - name: fetch
+      prompt: "从 BRAIN API 拉取全量 alpha 列表：\n{{ input.instructions }}\n\n使用 machine_lib.login() 获取 session，分页拉取（limit=100）。\n输出：已提交 ACTIVE 数量、未提交 UNSUBMITTED 总数、S>=1.5 数量、S>=1.0 数量。"
+      routes:
+        - to: check_top
+    - name: check_top
+      prompt: "对 S>=1.5 的候选调用 GET /alphas/{id}/check 端点：\n{{ fetch }}\n\n规则：\n1. 间隔 2 秒避免限流\n2. retry-after 出现时等待后重试\n3. 记录每个候选的 8 项 check 结果\n4. 输出 8-PASS / 7-PASS / near-pass 分类。"
+      routes:
+        - to: mark_favorites
+    - name: mark_favorites
+      prompt: "为 8-PASS 候选标记 favorite：\n{{ check_top }}\n\n⚠️ 关键规则：\n1. 必须 PATCH favorite: true（不是 color/tags）\n2. color 值用 YELLOW\n3. 间隔 ≥ 4 秒\n4. 清除之前标记但现已不达标的\n5. 已提交 ACTIVE 的不标记。"
+      routes:
+        - to: report
+    - name: report
+      prompt: "汇总本次同步结果：\n- 标记: {{ mark_favorites }}\n- 检查: {{ check_top }}\n- 拉取: {{ fetch }}\n\n写入 runs/simulation-captures/account-sync-{timestamp}.json，\n并更新 MEMORY.md。"
+      routes:
+        - to: $end

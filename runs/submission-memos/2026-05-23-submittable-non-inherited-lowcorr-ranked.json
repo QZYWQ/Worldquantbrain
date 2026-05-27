@@ -1,0 +1,830 @@
+{
+  "cluster_representatives": [
+    {
+      "alpha_id": "GrkvkVqZ",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "smoothed_op_efficiency_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "smoothed operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.9 * ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),63) + 0.1 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0767,
+        "fitness": 1.06,
+        "returns": 0.059,
+        "sharpe": 1.55,
+        "turnover": 0.0355
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "np3bww78/9qJQPNXV",
+      "rank": 1,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation; smoothed accounting signal",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 97.0,
+        "final": 80.06,
+        "low_self_corr": 65.09,
+        "metric_quality": 56.39,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4722,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.4
+    },
+    {
+      "alpha_id": "kqQRRQ2k",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "smoothed_op_efficiency_downside_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with downside FCF confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.9 * ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),63) + 0.1 * ts_rank(ts_mean(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low,63),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0694,
+        "fitness": 1.04,
+        "returns": 0.0581,
+        "sharpe": 1.53,
+        "turnover": 0.0361
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "A1kdL3gX/9qJQPNXV",
+      "rank": 3,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; downside FCF confirmation; smoothed accounting signal",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 95.0,
+        "final": 78.11,
+        "low_self_corr": 66.43,
+        "metric_quality": 47.13,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4675,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.21
+    },
+    {
+      "alpha_id": "0mzWQbPK",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_168_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.75 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.25 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0751,
+        "fitness": 1.18,
+        "returns": 0.0645,
+        "sharpe": 1.64,
+        "turnover": 0.0394
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "KPkRjvGp",
+      "rank": 4,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 77.05,
+        "low_self_corr": 48.66,
+        "metric_quality": 72.27,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5297,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.18
+    },
+    {
+      "alpha_id": "A1k6KQQd",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_126_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.6 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),126) + 0.4 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0839,
+        "fitness": 1.08,
+        "returns": 0.0603,
+        "sharpe": 1.56,
+        "turnover": 0.0398
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "N1Aoapdo/3qzWJ95O",
+      "rank": 7,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 76.51,
+        "low_self_corr": 60.51,
+        "metric_quality": 51.77,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4882,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.13
+    },
+    {
+      "alpha_id": "pw8gne5q",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_downside_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with downside FCF confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.85 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.15 * ts_rank(ts_mean(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low,63),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0756,
+        "fitness": 1.11,
+        "returns": 0.061,
+        "sharpe": 1.59,
+        "turnover": 0.041
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "MPkAO1Go/58MVb8JM",
+      "rank": 14,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; downside FCF confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 90.0,
+        "final": 72.17,
+        "low_self_corr": 47.2,
+        "metric_quality": 52.57,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5348,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 0.94
+    }
+  ],
+  "filter_policy": {
+    "exclude_old_account_inherited_ids_count": 18,
+    "exclude_price_only_non_economic_22_ids": [
+      "0mzlEp32",
+      "JjbwOAMx"
+    ],
+    "exclude_submitted_alpha_ids": [
+      "A1kWl0LE",
+      "O0ovYJXg",
+      "np3Jrqal"
+    ],
+    "require_interpretable_economic_logic": true,
+    "require_live_8pass": true,
+    "require_live_unsubmitted": true,
+    "require_self_correlation_lte": 0.7,
+    "score_weights": {
+      "economic_logic": 0.25,
+      "low_self_correlation": 0.3,
+      "metric_quality": 0.2,
+      "non_inherited": 0.25
+    }
+  },
+  "generated_at_utc": "2026-05-23T15:13:40.947528+00:00",
+  "mode": "RECORD_ONLY_NO_SUBMIT",
+  "ranked_candidates": [
+    {
+      "alpha_id": "GrkvkVqZ",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "smoothed_op_efficiency_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "smoothed operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.9 * ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),63) + 0.1 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0767,
+        "fitness": 1.06,
+        "returns": 0.059,
+        "sharpe": 1.55,
+        "turnover": 0.0355
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "np3bww78/9qJQPNXV",
+      "rank": 1,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation; smoothed accounting signal",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 97.0,
+        "final": 80.06,
+        "low_self_corr": 65.09,
+        "metric_quality": 56.39,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4722,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.4
+    },
+    {
+      "alpha_id": "np30b6rw",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "smoothed_op_efficiency_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "smoothed operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.85 * ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),63) + 0.15 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0788,
+        "fitness": 1.05,
+        "returns": 0.0585,
+        "sharpe": 1.53,
+        "turnover": 0.0347
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "A1kdL3gX/9qJQPNXV",
+      "rank": 2,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation; smoothed accounting signal",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 97.0,
+        "final": 79.51,
+        "low_self_corr": 64.94,
+        "metric_quality": 53.88,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4727,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.4
+    },
+    {
+      "alpha_id": "kqQRRQ2k",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "smoothed_op_efficiency_downside_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with downside FCF confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.9 * ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),63) + 0.1 * ts_rank(ts_mean(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low,63),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0694,
+        "fitness": 1.04,
+        "returns": 0.0581,
+        "sharpe": 1.53,
+        "turnover": 0.0361
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "A1kdL3gX/9qJQPNXV",
+      "rank": 3,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; downside FCF confirmation; smoothed accounting signal",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 95.0,
+        "final": 78.11,
+        "low_self_corr": 66.43,
+        "metric_quality": 47.13,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4675,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.21
+    },
+    {
+      "alpha_id": "0mzWQbPK",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_168_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.75 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.25 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0751,
+        "fitness": 1.18,
+        "returns": 0.0645,
+        "sharpe": 1.64,
+        "turnover": 0.0394
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "KPkRjvGp",
+      "rank": 4,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 77.05,
+        "low_self_corr": 48.66,
+        "metric_quality": 72.27,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5297,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.18
+    },
+    {
+      "alpha_id": "mLZOOpK9",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "smoothed_op_efficiency_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "smoothed operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.85 * ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),84) + 0.15 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0809,
+        "fitness": 1.0,
+        "returns": 0.0576,
+        "sharpe": 1.48,
+        "turnover": 0.0331
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "YPQdleoo/omVeAnZb",
+      "rank": 5,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation; smoothed accounting signal",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 97.0,
+        "final": 76.61,
+        "low_self_corr": 64.0,
+        "metric_quality": 40.82,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.476,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.28
+    },
+    {
+      "alpha_id": "88nqa60q",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_168_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.3 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0795,
+        "fitness": 1.15,
+        "returns": 0.0635,
+        "sharpe": 1.61,
+        "turnover": 0.0391
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "zqOzZojK",
+      "rank": 6,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 76.58,
+        "low_self_corr": 51.66,
+        "metric_quality": 65.42,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5192,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.15
+    },
+    {
+      "alpha_id": "A1k6KQQd",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_126_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.6 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),126) + 0.4 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0839,
+        "fitness": 1.08,
+        "returns": 0.0603,
+        "sharpe": 1.56,
+        "turnover": 0.0398
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "N1Aoapdo/3qzWJ95O",
+      "rank": 7,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 76.51,
+        "low_self_corr": 60.51,
+        "metric_quality": 51.77,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4882,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.13
+    },
+    {
+      "alpha_id": "MPkAX0LM",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_168_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.8 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.2 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0791,
+        "fitness": 1.18,
+        "returns": 0.0643,
+        "sharpe": 1.65,
+        "turnover": 0.0398
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "KPkRjvGp",
+      "rank": 8,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 76.26,
+        "low_self_corr": 46.89,
+        "metric_quality": 70.96,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5359,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.11
+    },
+    {
+      "alpha_id": "qMgbqzPV",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_126_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),126) + 0.3 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0774,
+        "fitness": 1.12,
+        "returns": 0.0614,
+        "sharpe": 1.6,
+        "turnover": 0.0411
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "N1Aoapdo/3qzWJ95O",
+      "rank": 9,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 76.22,
+        "low_self_corr": 53.23,
+        "metric_quality": 61.25,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5137,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.19
+    },
+    {
+      "alpha_id": "9qJQadYd",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_168_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.6 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.4 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.083,
+        "fitness": 1.05,
+        "returns": 0.0602,
+        "sharpe": 1.51,
+        "turnover": 0.0377
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "zqOzZojK",
+      "rank": 10,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 74.33,
+        "low_self_corr": 58.26,
+        "metric_quality": 44.27,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4961,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.11
+    },
+    {
+      "alpha_id": "P0vEXzgK",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_126_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.6 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.4 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0904,
+        "fitness": 1.04,
+        "returns": 0.0616,
+        "sharpe": 1.48,
+        "turnover": 0.036
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "zqOzZojK",
+      "rank": 11,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 73.9,
+        "low_self_corr": 59.49,
+        "metric_quality": 40.24,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.4918,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.07
+    },
+    {
+      "alpha_id": "GrkvMPbO",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_126_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with FCF expectation confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.65 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.35 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0907,
+        "fitness": 1.03,
+        "returns": 0.0611,
+        "sharpe": 1.47,
+        "turnover": 0.0364
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "zqOzZojK",
+      "rank": 12,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 72.8,
+        "low_self_corr": 56.2,
+        "metric_quality": 39.72,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5033,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.13
+    },
+    {
+      "alpha_id": "j21QzK9E",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_126_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating profitability relative to working-capital resources",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(free_cashflow_max,126),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0908,
+        "fitness": 1.04,
+        "returns": 0.0617,
+        "sharpe": 1.48,
+        "turnover": 0.0367
+      },
+      "origin": "independent operating-profitability S2 result",
+      "parent_alpha_id": null,
+      "rank": 13,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; FCF expectation confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 92.0,
+        "final": 72.41,
+        "low_self_corr": 53.23,
+        "metric_quality": 42.23,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5137,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 1.15
+    },
+    {
+      "alpha_id": "pw8gne5q",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_downside_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with downside FCF confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.85 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.15 * ts_rank(ts_mean(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low,63),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0756,
+        "fitness": 1.11,
+        "returns": 0.061,
+        "sharpe": 1.59,
+        "turnover": 0.041
+      },
+      "origin": "2026-05-23 near-pass rescue",
+      "parent_alpha_id": "MPkAO1Go/58MVb8JM",
+      "rank": 14,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; downside FCF confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 90.0,
+        "final": 72.17,
+        "low_self_corr": 47.2,
+        "metric_quality": 52.57,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5348,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 0.94
+    },
+    {
+      "alpha_id": "e7LAJmdN",
+      "check_summary": {
+        "check_count": 8,
+        "non_pass_checks": [],
+        "pass_count": 8,
+        "status": "CHECKED",
+        "strict_all_pass": true
+      },
+      "cluster": "op_efficiency_downside_fcf",
+      "dateSubmitted": null,
+      "economic_logic": "operating efficiency with downside FCF confirmation",
+      "eligible_record_only": true,
+      "expression": "group_rank(0.85 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),126) + 0.15 * ts_rank(ts_mean(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low,63),252), subindustry)",
+      "metrics": {
+        "drawdown": 0.0664,
+        "fitness": 1.04,
+        "returns": 0.0572,
+        "sharpe": 1.54,
+        "turnover": 0.0435
+      },
+      "origin": "2026-05-23 long-run potential upgrade",
+      "parent_alpha_id": "N1Aoapdo/3qzWJ95O",
+      "rank": 15,
+      "score_reasons": {
+        "economic_logic": "operating income scaled by current assets; downside FCF confirmation",
+        "non_inherited": "new-account independent operating-profitability / FCF direction"
+      },
+      "scores": {
+        "economic_logic": 90.0,
+        "final": 70.34,
+        "low_self_corr": 50.6,
+        "metric_quality": 38.29,
+        "non_inherited": 100.0
+      },
+      "selfCorrelation": 0.5229,
+      "stage": "IS",
+      "status": "UNSUBMITTED",
+      "subUniverseSharpe": 0.91
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "model": "deepseek-v4-pro",
+  "provider": "claude",
+  "base_url": "https://api.deepseek.com/anthropic",
+  "remember_before_run": true,
+  "gitnexus_enabled": true
+}

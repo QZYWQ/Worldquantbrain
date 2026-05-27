@@ -1,0 +1,67 @@
+{
+  "counts": {
+    "block_count": 0,
+    "family_count": 1,
+    "hold_count": 1,
+    "pass_count": 0
+  },
+  "coverage_floor_pct": 70.0,
+  "generated_at": "2026-05-03T00:57:29",
+  "items": [
+    {
+      "assessment": {
+        "account_usable_status": "usable",
+        "coverage_floor_pct": 50.0,
+        "coverage_status": "below_floor",
+        "gate_status": "hold",
+        "missingness_risk": "unknown",
+        "nan_strategy_status": "unknown",
+        "reasons": [
+          "usable candidate-field coverage floor 50.0% is below the required 70.0%"
+        ],
+        "update_frequency_status": "unknown"
+      },
+      "blocked_candidate_fields": [],
+      "candidate_fields": [
+        "fnd6_capxy",
+        "cap",
+        "fnd6_capxs",
+        "capex",
+        "capital_expenditure_amount"
+      ],
+      "coverage_by_field": {
+        "cap": null,
+        "capex": 50.0,
+        "capital_expenditure_amount": 75.24,
+        "fnd6_capxs": 50.0,
+        "fnd6_capxy": null
+      },
+      "family_doc_paths": [
+        "runs/expression-families/2026-05-03-fnd6-capxy-cap-subindustry.md"
+      ],
+      "family_key": "fnd6_capxy_cap_subindustry",
+      "quality_checks": {},
+      "source_field_pack_paths": [
+        "runs/field-search-packs/2026-05-03-fnd6-capxy-cap-subindustry.md"
+      ],
+      "usable_candidate_fields": [
+        "fnd6_capxy",
+        "cap",
+        "fnd6_capxs",
+        "capex",
+        "capital_expenditure_amount"
+      ]
+    }
+  ],
+  "objective": "gate local mining on field readiness before family expansion or queue promotion",
+  "run_id": "2026-05-03-field-readiness",
+  "settings": {
+    "coverage_floor_pct": 70.0,
+    "exclude_topic": [],
+    "family_dir": "runs/expression-families",
+    "field_search_pack_dir": "runs/field-search-packs",
+    "include_topic": [
+      "fnd6_capxy|capxy"
+    ]
+  }
+}

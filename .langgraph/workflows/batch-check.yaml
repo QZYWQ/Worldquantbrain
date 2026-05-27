@@ -1,0 +1,20 @@
+workflow:
+  name: batch-check
+  entry: select
+  agents:
+    - name: select
+      prompt: "从候选池选择待检查的 alpha：\n{{ input.criteria }}\n\n筛选条件示例：S>=1.5 且 status=UNSUBMITTED。\n列出候选项 ID 和当前 IS 指标。"
+      routes:
+        - to: trigger
+    - name: trigger
+      prompt: "批量触发 SC 计算：\n{{ select }}\n\n对每个候选调用 GET /alphas/{id}/check。\n规则：\n1. 间隔 2 秒限流保护\n2. 记录 retry-after 响应\n3. 首次调用触发计算即可（SC 计算需要时间）\n4. 输出：已触发检查的 ID 列表。"
+      routes:
+        - to: wait_and_recheck
+    - name: wait_and_recheck
+      prompt: "等待 SC 计算完成后重新检查：\n{{ trigger }}\n\n1. 等待 30 秒\n2. 对每个候选重新调用 /check\n3. 解析 checks 数组\n4. 输出：8-PASS / FAIL 分类，含具体失败项。"
+      routes:
+        - to: report
+    - name: report
+      prompt: "汇总批量检查结果：\n{{ wait_and_recheck }}\n\n输出：\n- 8-PASS 候选（可提交）\n- 7-PASS 候选（接近通过，列出失败项）\n- FAIL 候选（列出失败原因）\n\n写入 runs/simulation-captures/batch-check-{timestamp}.json。"
+      routes:
+        - to: $end

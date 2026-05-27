@@ -1,0 +1,15 @@
+{
+  "favorites_marked": [
+    {
+      "id": "VkOY2jWY",
+      "sharpe": 2.07,
+      "fitness": 1.46,
+      "turnover": 0.0595,
+      "sc": 0.8081,
+      "label": "MPkAX0LM_densify_cap",
+      "status": "UNSUBMITTED",
+      "expr_preview": "group_neutralize(group_rank(0.8 * ts_rank(divide(operating_i"
+    }
+  ],
+  "total_favorites": 1
+}

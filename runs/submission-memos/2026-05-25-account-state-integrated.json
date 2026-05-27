@@ -1,0 +1,245 @@
+{
+  "document_type": "INTEGRATED_ACCOUNT_STATE",
+  "synced_at": "2026-05-25T17:58:02+08:00",
+  "account": "mcydedn@outlook.com",
+  "user_id": "CM54257",
+  "total_alphas": 738,
+  "api_data_source": "live_api_sync",
+  "local_data_sources": [
+    "runs/submission-memos/2026-05-22-current-submitted-alphas-record.json",
+    "runs/submission-memos/2026-05-22-current-8pass-record.json",
+    "runs/submission-memos/2026-05-23-*.json",
+    "runs/simulation-captures/account-sync-20260525_175802.json",
+    "runs/simulation-captures/upgrade_phase1.json",
+    "runs/simulation-captures/new-account-final-ranking.json"
+  ],
+
+  "summary": {
+    "total_alphas": 738,
+    "active_submitted": 5,
+    "unsubmitted": 733,
+    "positive_sharpe_unsubmitted": 693,
+    "sharpe_ge_1.5_unsubmitted": 78,
+    "sharpe_ge_1.0_unsubmitted": 357,
+    "research_exhausted_families": 14
+  },
+
+  "submitted_active": [
+    {
+      "id": "A1kWl0LE",
+      "sharpe": 1.76,
+      "fitness": 1.56,
+      "turnover": 0.1171,
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 90), industry)",
+      "field_family": "anl4_eps/close",
+      "economic_logic": "分析师预测EPS与股价比值——估值便宜的公司未来收益更高",
+      "submitted_date": "2026-05-22",
+      "status": "ACTIVE/OS"
+    },
+    {
+      "id": "O0ovYJXg",
+      "sharpe": 1.74,
+      "fitness": 1.12,
+      "turnover": "?",
+      "decay": "?",
+      "neutralization": "?",
+      "expression": "?",
+      "field_family": "operating_profitability",
+      "economic_logic": "运营盈利能力因子",
+      "submitted_date": "2026-05-23",
+      "status": "ACTIVE/OS"
+    },
+    {
+      "id": "0mzWQbPK",
+      "sharpe": 1.64,
+      "fitness": 1.18,
+      "turnover": 0.0394,
+      "decay": 3,
+      "neutralization": "SUBINDUSTRY",
+      "expression": "group_rank(0.75 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168) + 0.25 * ts_rank(ts_mean(free_cashflow...",
+      "field_family": "operating_income/(assets_curr+FCF)",
+      "economic_logic": "运营收入/流动资产+自由现金流——核心盈利能力",
+      "submitted_date": "2026-05-24",
+      "status": "ACTIVE/OS"
+    },
+    {
+      "id": "j21QzK9E",
+      "sharpe": 1.48,
+      "fitness": 1.04,
+      "turnover": "?",
+      "decay": "?",
+      "neutralization": "?",
+      "expression": "?",
+      "field_family": "fnd6_rectr/fnd6_recd",
+      "economic_logic": "应收账款/收入比率——收款效率因子",
+      "submitted_date": "2026-05-23",
+      "status": "ACTIVE/OS"
+    },
+    {
+      "id": "np3Jrqal",
+      "sharpe": 1.35,
+      "fitness": 1.28,
+      "turnover": 0.0176,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "expression": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 2.0)), subindustry)",
+      "field_family": "fnd6_rectr/fnd6_recd",
+      "economic_logic": "应收账款/收入(SUBINDUSTRY中性)——与j21QzK9E相同家族不同分组",
+      "submitted_date": "2026-05-23",
+      "status": "ACTIVE/OS"
+    }
+  ],
+
+  "eight_pass_top_unsubmitted": {
+    "note": "以下为本地确认过的8-PASS候选。API当前SC状态为ERROR（需等待计算），但历史记录已确认为PASS。",
+    "confirmed_8pass": [
+      {
+        "id": "wpLmjx55",
+        "sharpe": 2.23,
+        "fitness": 1.45,
+        "turnover": 0.249,
+        "self_corr": 0.9491,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "expression_short": "group_rank(ts_rank(anl4_afv4_median_eps/close, 120), industry)",
+        "field_family": "anl4_eps/close",
+        "economic_logic": "分析师EPS预估中位数/股价——估值因子（与A1kWl0LE同家族改进版）",
+        "note": "⚠️ SC=0.9491自相关0mzWQbPK(已提交). 提交时需检查SC是否仍通过"
+      },
+      {
+        "id": "VkOY2jWY",
+        "sharpe": 2.07,
+        "fitness": 1.46,
+        "turnover": 0.0595,
+        "self_corr": 0.8081,
+        "decay": "?",
+        "neutralization": "SUBINDUSTRY",
+        "expression_short": "group_neutralize(group_rank(0.8*ts_rank(operating_income/assets_curr,168),...), densify(bucket(rank(cap))))",
+        "field_family": "operating_income（upgrade）",
+        "economic_logic": "运营收入/流动性资产→市值分组降敏——densify(bucket(rank(cap)))突破性策略",
+        "note": "⭐ 升级突破: S=1.65→2.07。SC=0.8081通过。operating_income家族已有一个提交但仍通过"
+      },
+      {
+        "id": "d5dXKzmK",
+        "sharpe": 1.58,
+        "fitness": 1.21,
+        "turnover": 0.1045,
+        "self_corr": 0.6628,
+        "decay": 3,
+        "neutralization": "MARKET",
+        "expression_short": "trade_when(sentiment>0.55, group_neutralize(ts_decay_linear(-returns_zscore * ...)))",
+        "field_family": "ts_decay_linear+sentiment+PV组合",
+        "economic_logic": "情绪过滤+价格量型反转——高情绪时的价格反转策略"
+      },
+      {
+        "id": "E5kobRlG",
+        "sharpe": 1.58,
+        "fitness": 1.13,
+        "turnover": 0.0406,
+        "self_corr": 0.6147,
+        "decay": "?",
+        "neutralization": "SUBINDUSTRY",
+        "expression_short": "group_rank(reverse(ts_rank(debt_carrying_value/winsorize(...), ...), industry)",
+        "field_family": "debt_carrying_value/assets",
+        "economic_logic": "负债承担价值/资产——负债率低估修复因子",
+        "note": "低TVR低SC，独立方向"
+      },
+      {
+        "id": "d5d8p1x2",
+        "sharpe": 1.50,
+        "fitness": 1.03,
+        "turnover": 0.0204,
+        "self_corr": 0.458,
+        "decay": 3,
+        "neutralization": "INDUSTRY",
+        "expression_short": "group_rank(reverse(ts_zscore(ts_delta(ts_mean(accrued_liabilities/assets, ...)))))",
+        "field_family": "accrued_liabilities/assets",
+        "economic_logic": "应计负债/资产——负债增长的负向信号",
+        "note": "最低换手率(0.0204)，极度低频"
+      }
+    ]
+  },
+
+  "high_sharpe_unchecked": {
+    "note": "以下为API返回的高Sharpe候选，/check返回SC=ERROR（需等待计算），尚未验证8-PASS。",
+    "top_by_sharpe": [
+      {"id": "QPEJ0oA5", "sharpe": 2.23, "fitness": 1.05, "turnover": 0.6892, "decay": 0},
+      {"id": "rKA3eXKo", "sharpe": 2.08, "fitness": 1.13, "turnover": 0.4744, "decay": 0},
+      {"id": "6Xz8p6kK", "sharpe": 1.97, "fitness": 0.98, "note": "LOW_FITNESS FAIL"},
+      {"id": "qMg1NlnO", "sharpe": 1.93, "fitness": 0.91, "note": "LOW_FITNESS+HT+SC FAIL"},
+      {"id": "RRd3e7jn", "sharpe": 1.92, "fitness": 1.09, "turnover": 0.4436},
+      {"id": "88nojGGl", "sharpe": 1.92, "fitness": 1.05, "note": "SUS+SELF_CORR FAIL"},
+      {"id": "0mzlEp32", "sharpe": 1.87, "fitness": 1.04},
+      {"id": "QPEJW2QG", "sharpe": 1.84, "fitness": 1.10, "turnover": 0.2962, "self_corr": 0.6804},
+      {"id": "Xg1raQLa", "sharpe": 1.83, "fitness": 0.96, "note": "LOW_FITNESS FAIL"},
+      {"id": "6XzYOKvP", "sharpe": 1.79, "fitness": 1.18, "note": "升级候选 N1Aoapdo_rank_d0"}
+    ]
+  },
+
+  "research_exhausted": {
+    "families_submitted_and_consumed": [
+      {
+        "family": "anl4_eps/close",
+        "submitted_id": "A1kWl0LE",
+        "note": "A1kWl0LE已提交。wpLmjx55(S=2.23) SC=0.9491高自相关但有通过概率。其他sibling可能SC FAIL"
+      },
+      {
+        "family": "operating_profitability",
+        "submitted_id": "O0ovYJXg",
+        "note": "已提交，家族成员N1Aoapdo(1.76),3qzWJ95O(1.73),RRdLdmXj(1.66)等SC FAIL概率高"
+      },
+      {
+        "family": "operating_income/(assets_curr+FCF)",
+        "submitted_id": "0mzWQbPK",
+        "note": "0mzWQbPK已提交。MPkAX0LM(1.65)等sibling SC FAIL"
+      },
+      {
+        "family": "fnd6_rectr/fnd6_recd",
+        "submitted_id": "j21QzK9E, np3Jrqal",
+        "note": "两个已提交，差异化方向研发程度：SUBINDUSTRY vs INDUSTRY neutralization"
+      }
+    ],
+    "known_killed_families": [
+      "ts_decay_linear（结构性SC FAIL）",
+      "ts_corr(close,volume,N)（结构性SC）",
+      "ts_corr(returns,...)（结构性SC）",
+      "ts_std_dev(returns,N)（结构性SC）",
+      "volume/ts_mean(volume,N)（结构性SC）",
+      "ts_rank(earnings_per_share/close,N)（结构性SC）",
+      "growth_potential_rank_derivative（CONCENTRATED_WEIGHT）"
+    ],
+    "old_account_families_to_avoid": [
+      "close_delta", "tobins_q_ratio", "assets_cap", "returns_vwap",
+      "eps_family", "sentiment_buzz", "sales_estimate", "total_assets",
+      "unsystematic_risk", "range_family", "revenue_growth",
+      "fnd6_prstkc", "eps_revision", "fnd6_rectr_recd", "fnd6_sppe_siv",
+      "trade_when_sector_vol"
+    ]
+  },
+
+  "available_field_directions": {
+    "note": "以下方向未被旧账户消耗或提交，有研究空间",
+    "high_potential_unused": [
+      "anl4_eps相关（wpLmjx55方向）",
+      "debt_carrying_value/assets（E5kobRlG方向）",
+      "accrued_liabilities/assets（d5d8p1x2方向）",
+      "sentiment+PV复合（d5dXKzmK方向，已通过SC）",
+      "unsystematic_risk（8-PASS候选6Xz8orOP, gJxAgzzg等确认通过）",
+      "fnd6_sppe/siv（8-PASS候选Wj9qxA0N确认通过）",
+      "fnd6_prstkc/pstkc（8-PASS候选RRd3zEPo确认通过）"
+    ]
+  },
+
+  "upgrade_experience": {
+    "note": "对优质候选进行rank/zscore/densify等升级包装的经验总结",
+    "breakthrough": "MPkAX0LM(operating_income) → densify(bucket(rank(cap))) + group_rank → S=2.07 (VkOY2jWY)",
+    "partial": "N1Aoapdo(operating_income) → rank_d0 → S=1.79 (↑0.03) 但SC FAIL",
+    "useful_wrappers": [
+      "densify(bucket(rank(cap))) — 市值分组降敏，效果显著",
+      "rank(x) / zscore(x) — 基础升级",
+      "group_rank(x, industry/subindustry) — 行业中性增强"
+    ]
+  }
+}

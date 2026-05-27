@@ -1,0 +1,145 @@
+{
+  "_instructions": [
+    "SO Expansion for Technical Indicator FO PASS candidates",
+    "Goal: Find self_corr < 0.7, Sharpe >= 1.25, Fitness >= 1.0",
+    "Strategy: Focus on ts_corr(close,volume,60) which had F=1.03 in FO - only FO candidate with F>=1.0",
+    "Also test ts_std_dev_returns_60 (F=0.91 close to threshold)",
+    "Use group_rank structure which worked better than group_neutralize in previous run"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-21-fo-technical-so-expansion",
+  "topic": "so_expansion_technical_indicators",
+  "author": "Claude",
+  "source": "fo_technical_indicator_scout_pass",
+  "fields_tested": [
+    "ts_corr(close,volume,60) - FO S=0.73, F=1.03 (only F>=1.0)",
+    "ts_std_dev_returns_60 - FO S=0.77, F=0.91 (close to threshold)"
+  ],
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "corr60_rank_industry",
+      "description": "ts_corr(close,volume,60) with industry group_rank",
+      "expression": "group_rank(rank(ts_corr(close,volume,60)), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "corr60_rank_market",
+      "description": "ts_corr(close,volume,60) with market group_rank",
+      "expression": "group_rank(rank(ts_corr(close,volume,60)), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "corr60_zscore_industry",
+      "description": "ts_corr with zscore and industry neutralization",
+      "expression": "group_rank(zscore(ts_corr(close,volume,60)), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "corr60_decay6_market",
+      "description": "ts_corr with decay=6",
+      "expression": "group_rank(rank(ts_corr(close,volume,60)), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "corr60_decay15_market",
+      "description": "ts_corr with decay=15",
+      "expression": "group_rank(rank(ts_corr(close,volume,60)), market)",
+      "settings": {"neutralization": "NONE", "decay": 15}
+    },
+    {
+      "name": "corr60_ts_zscore20_industry",
+      "description": "ts_corr with outer ts_zscore",
+      "expression": "group_rank(ts_zscore(ts_corr(close,volume,60), 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "vol60_rank_industry",
+      "description": "volume ratio 60 with industry group_rank",
+      "expression": "group_rank(rank(volume/ts_mean(volume,60)), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "vol60_rank_market",
+      "description": "volume ratio 60 with market group_rank",
+      "expression": "group_rank(rank(volume/ts_mean(volume,60)), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "vol60_decay6_market",
+      "description": "volume ratio 60 with decay=6",
+      "expression": "group_rank(rank(volume/ts_mean(volume,60)), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "vol60_decay15_market",
+      "description": "volume ratio 60 with decay=15",
+      "expression": "group_rank(rank(volume/ts_mean(volume,60)), market)",
+      "settings": {"neutralization": "NONE", "decay": 15}
+    },
+    {
+      "name": "vol60_zscore_industry",
+      "description": "volume ratio with zscore and industry",
+      "expression": "group_rank(zscore(volume/ts_mean(volume,60)), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "vol60_ts_zscore20_industry",
+      "description": "volume ratio with outer ts_zscore",
+      "expression": "group_rank(ts_zscore(volume/ts_mean(volume,60), 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "stddev60_rank_industry",
+      "description": "ts_std_dev(returns,60) with industry group_rank",
+      "expression": "group_rank(rank(ts_std_dev(returns,60)), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "stddev60_rank_market",
+      "description": "ts_std_dev(returns,60) with market group_rank",
+      "expression": "group_rank(rank(ts_std_dev(returns,60)), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "stddev60_decay6_market",
+      "description": "ts_std_dev with decay=6",
+      "expression": "group_rank(rank(ts_std_dev(returns,60)), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "stddev60_decay15_market",
+      "description": "ts_std_dev with decay=15",
+      "expression": "group_rank(rank(ts_std_dev(returns,60)), market)",
+      "settings": {"neutralization": "NONE", "decay": 15}
+    },
+    {
+      "name": "stddev60_zscore_industry",
+      "description": "ts_std_dev with zscore and industry",
+      "expression": "group_rank(zscore(ts_std_dev(returns,60)), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "stddev60_ts_zscore20_industry",
+      "description": "ts_std_dev with outer ts_zscore",
+      "expression": "group_rank(ts_zscore(ts_std_dev(returns,60), 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    }
+  ],
+  "expected_outcomes": {
+    "pass_criteria": "Sharpe >= 1.25, Fitness >= 1.0, self_corr < 0.7",
+    "good_enough": "Sharpe >= 1.0, Fitness >= 0.8, self_corr < 0.7",
+    "kill_criteria": "Sharpe < 1.0 or self_corr >= 0.7"
+  }
+}

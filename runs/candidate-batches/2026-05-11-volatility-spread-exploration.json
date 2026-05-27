@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-11-volatility-spread-exploration",
+  "topic": "volatility_spread_arbitrage",
+  "source": "field_search_pack_2026-04-25",
+  "hypothesis": "The implied-minus-realized volatility spread captures volatility risk premium; stocks with high volatility premium (implied > realized) may outperform as compensation for selling volatility",
+  "family_key": "volatility_spread",
+  "candidates": [
+    {
+      "name": "vol_spread_baseline",
+      "expression": "implied_minus_realized_volatility_2",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "vol_spread_neg",
+      "expression": "-implied_minus_realized_volatility_2",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "vol_spread_group_rank",
+      "expression": "group_rank(implied_minus_realized_volatility_2, industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "vol_spread_group_rank_neg",
+      "expression": "-group_rank(implied_minus_realized_volatility_2, industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "vol_spread_md177_rmi",
+      "expression": "mdl77_2400_rmi",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "vol_spread_md177_rmi_neg",
+      "expression": "-mdl77_2400_rmi",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    }
+  ]
+}

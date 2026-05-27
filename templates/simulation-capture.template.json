@@ -16,6 +16,28 @@
     "neutralization": "Subindustry",
     "truncation": 0.08
   },
+  "competition_context": {
+    "target_competition": "IQC2026S1",
+    "route": "D1",
+    "matches_competition": null,
+    "scoreboard_before": {
+      "is_score": null,
+      "d0_score": null,
+      "d1_score": null,
+      "total_score": null,
+      "captured_at": null,
+      "source": null
+    },
+    "scoreboard_after": {
+      "is_score": null,
+      "d0_score": null,
+      "d1_score": null,
+      "total_score": null,
+      "captured_at": null,
+      "source": null
+    },
+    "route_decision": "D1-first / D0-probe / dual-control / not competition-targeted"
+  },
   "batch_policy": {
     "required_sign_flip_source_index": null,
     "required_sign_flip_reason": "Populate with 0 or 1 when the baseline or first simple control comes back with negative Sharpe."

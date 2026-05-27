@@ -1,0 +1,4409 @@
+{
+  "mode": "RECORD_ONLY_NO_SUBMIT",
+  "timestamp_utc": "2026-05-23T06:31:30.204127+00:00",
+  "account_alpha_count": 102,
+  "inherited_variation_source": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/research-queues/2026-05-22-alpha-variations-results.json",
+  "inherited_variation_id_count": 40,
+  "non_inherited_count": 62,
+  "prefilter": {
+    "status": "UNSUBMITTED",
+    "sharpe_min": 1.1,
+    "fitness_min": 0.8,
+    "turnover_range": [
+      0.01,
+      0.7
+    ],
+    "requires_non_price_field": true
+  },
+  "prefiltered_count": 0,
+  "official_check_attempted_count": 0,
+  "ranked_candidates": [],
+  "weak_non_inherited": [
+    {
+      "alpha_id": "akovjMPv",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:02:42-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "/*\r\n HYPOTHESIS: If the operating income of a company is currently higher than its past 1 year history, buy the company's stock and vice-versa.\r\n \r\n IMPLEMENTATION: Using ts_rank to identify current performance of the company compared to its own history, using the fundamental data field \"operating_income\".\r\n \r\n HINT TO IMPROVE THE ALPHA: Rather than comparing the value directly, can calculating a ratio that includes stock market moves, improve the signal?\r\n */\r\n \r\n ts_rank(operating_income,252)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.0,
+        "fitness": 0.61,
+        "turnover": 0.0476,
+        "returns": 0.0464,
+        "drawdown": 0.0973,
+        "margin": 0.001953,
+        "longCount": 1495,
+        "shortCount": 1471,
+        "subUniverseSharpe": 0.76,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "operating_income"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 32.19,
+      "official_check_score": 0,
+      "complexity": 3,
+      "score_penalty": 0,
+      "total_score": 54.19,
+      "idea_score": 38.09,
+      "reliability_flags": [
+        "low or moderate turnover",
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "MPkmWx86",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:24:24-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "/*\r\n HYPOTHESIS: \"Fair value accounting\" aims to measure and report on-going valuations of assets and liabilities. A recent increase in the fair value of liabilities may indicate a higher cost to be borne by the company in the future. This may deteriorate the company's financial health, potentially leading to lower profitability or financial distress.\r\n \r\n IMPLEMENTATION: Using ts_rank() operator, sell stocks when there is an increase in the fair value of liabilities within a year using fundamental data.\r\n \r\n HINT TO IMPROVE THE ALPHA: Could observing the increase over a shorter period improve accuracy?\r\n */\r\n \r\n -ts_rank(fn_liab_fair_val_l1_a,252)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 0.77,
+        "fitness": 0.36,
+        "turnover": 0.0284,
+        "returns": 0.0278,
+        "drawdown": 0.0724,
+        "margin": 0.00196,
+        "longCount": 638,
+        "shortCount": 616,
+        "subUniverseSharpe": 0.04,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "fn_liab_fair_val_l1_a"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 21.99,
+      "official_check_score": 0,
+      "complexity": 3,
+      "score_penalty": 0,
+      "total_score": 43.99,
+      "idea_score": 32.99,
+      "reliability_flags": [
+        "low or moderate turnover",
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "ZYr5KqAj",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:08:28-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(close, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 10,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.59,
+        "fitness": 0.93,
+        "turnover": 0.4056,
+        "returns": 0.14,
+        "drawdown": 0.0671,
+        "margin": 0.00069,
+        "longCount": 1492,
+        "shortCount": 1502,
+        "subUniverseSharpe": 1.3,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 43.36,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 12,
+      "total_score": 39.36,
+      "idea_score": 29.68,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "price-only or no non-price field"
+    },
+    {
+      "alpha_id": "xAR670LJ",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:16:46-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_max, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.22,
+        "fitness": 0.47,
+        "turnover": 1.0202,
+        "returns": 0.1541,
+        "drawdown": 0.1606,
+        "margin": 0.000302,
+        "longCount": 38,
+        "shortCount": 36,
+        "subUniverseSharpe": 0.65,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 21.38,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 35.38,
+      "idea_score": 32.69,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "xAR6GMqw",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:32:58-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.08,
+        "fitness": 0.43,
+        "turnover": 1.1872,
+        "returns": 0.1842,
+        "drawdown": 0.1477,
+        "margin": 0.00031,
+        "longCount": 7,
+        "shortCount": 6,
+        "subUniverseSharpe": 0.0,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": 17.37,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 33.37,
+      "idea_score": 32.69,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "N1A9obEo",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T23:06:03-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "-ts_delta(close,5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 4,
+        "neutralization": "SECTOR",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.26,
+        "fitness": 0.8,
+        "turnover": 0.3902,
+        "returns": 0.156,
+        "drawdown": 0.1261,
+        "margin": 0.0008,
+        "longCount": 1712,
+        "shortCount": 1427,
+        "subUniverseSharpe": 0.97,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 36.48,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 12,
+      "total_score": 32.48,
+      "idea_score": 26.24,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "price-only or no non-price field"
+    },
+    {
+      "alpha_id": "Wj986ggx",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:44:53-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "assets_curr",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 4,
+        "neutralization": "SECTOR",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.17,
+        "fitness": 0.07,
+        "turnover": 0.0113,
+        "returns": 0.0235,
+        "drawdown": 0.5307,
+        "margin": 0.004162,
+        "longCount": 452,
+        "shortCount": 1996,
+        "subUniverseSharpe": 0.12,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "assets_curr"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 10.35,
+      "official_check_score": 0,
+      "complexity": 1,
+      "score_penalty": 0,
+      "total_score": 32.35,
+      "idea_score": 27.18,
+      "reliability_flags": [
+        "low or moderate turnover",
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "6Xz8p6kK",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:20:13-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(returns, 10)) * rank(-ts_zscore(vwap, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.97,
+        "fitness": 0.98,
+        "turnover": 0.6596,
+        "returns": 0.1646,
+        "drawdown": 0.0776,
+        "margin": 0.000499,
+        "longCount": 1391,
+        "shortCount": 1583,
+        "subUniverseSharpe": 1.63,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 42.78,
+      "official_check_score": 0,
+      "complexity": 8,
+      "score_penalty": 20,
+      "total_score": 30.78,
+      "idea_score": 29.39,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "price-only or no non-price field"
+    },
+    {
+      "alpha_id": "0mzlEp32",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:03:05-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(close, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.87,
+        "fitness": 1.04,
+        "turnover": 0.5325,
+        "returns": 0.1647,
+        "drawdown": 0.0721,
+        "margin": 0.000618,
+        "longCount": 1492,
+        "shortCount": 1502,
+        "subUniverseSharpe": 1.57,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 42.3,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 20,
+      "total_score": 30.3,
+      "idea_score": 29.15,
+      "reliability_flags": [
+        "passes hard metric floor",
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "price-only or no non-price field"
+    },
+    {
+      "alpha_id": "wpLm7RE1",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:18:58-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_max, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.05,
+        "fitness": 0.38,
+        "turnover": 0.6797,
+        "returns": 0.0868,
+        "drawdown": 0.1163,
+        "margin": 0.000255,
+        "longCount": 105,
+        "shortCount": 101,
+        "subUniverseSharpe": 0.61,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 15.72,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 29.72,
+      "idea_score": 29.86,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "JjbwOAMx",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:05:59-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(close, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.78,
+        "fitness": 1.05,
+        "turnover": 0.5237,
+        "returns": 0.181,
+        "drawdown": 0.0842,
+        "margin": 0.000691,
+        "longCount": 1523,
+        "shortCount": 1538,
+        "subUniverseSharpe": 1.48,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 41.51,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 20,
+      "total_score": 29.51,
+      "idea_score": 28.75,
+      "reliability_flags": [
+        "passes hard metric floor",
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "price-only or no non-price field"
+    },
+    {
+      "alpha_id": "qMg1NlnO",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:17:00-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(returns, 5)) * rank(-ts_zscore(vwap, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.93,
+        "fitness": 0.91,
+        "turnover": 0.7233,
+        "returns": 0.1608,
+        "drawdown": 0.0885,
+        "margin": 0.000445,
+        "longCount": 1403,
+        "shortCount": 1571,
+        "subUniverseSharpe": 1.68,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 41.26,
+      "official_check_score": 0,
+      "complexity": 8,
+      "score_penalty": 20,
+      "total_score": 29.26,
+      "idea_score": 28.63,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "below metric prefilter, price-only or no non-price field"
+    },
+    {
+      "alpha_id": "e7LpxQ9N",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:11:00-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "-ts_zscore(close, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.74,
+        "fitness": 0.97,
+        "turnover": 0.5173,
+        "returns": 0.16,
+        "drawdown": 0.0668,
+        "margin": 0.000618,
+        "longCount": 1486,
+        "shortCount": 1508,
+        "subUniverseSharpe": 1.44,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 38.96,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 20,
+      "total_score": 26.96,
+      "idea_score": 27.48,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "price-only or no non-price field"
+    },
+    {
+      "alpha_id": "vRdqvEjb",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:13:12-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "-ts_zscore(close, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.65,
+        "fitness": 0.97,
+        "turnover": 0.5066,
+        "returns": 0.1756,
+        "drawdown": 0.0766,
+        "margin": 0.000693,
+        "longCount": 1516,
+        "shortCount": 1545,
+        "subUniverseSharpe": 1.36,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 38.03,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 20,
+      "total_score": 26.03,
+      "idea_score": 27.02,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "price-only or no non-price field"
+    },
+    {
+      "alpha_id": "j21R2dX9",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:56:03-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.01,
+        "fitness": -0.0,
+        "turnover": 0.3087,
+        "returns": -0.0008,
+        "drawdown": 0.1092,
+        "margin": -5e-06,
+        "longCount": 206,
+        "shortCount": 206,
+        "subUniverseSharpe": 0.42,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_detail_estimate_1qf_v4_nd_fcf_low"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": 1.54,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 25.54,
+      "idea_score": 24.77,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "gJxpJVlv",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T21:58:55-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-returns) ",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 4,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.72,
+        "fitness": 0.83,
+        "turnover": 0.8439,
+        "returns": 0.1954,
+        "drawdown": 0.0796,
+        "margin": 0.000463,
+        "longCount": 1536,
+        "shortCount": 1535,
+        "subUniverseSharpe": 1.38,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 37.3,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 20,
+      "total_score": 25.3,
+      "idea_score": 26.65,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "below metric prefilter, price-only or no non-price field"
+    },
+    {
+      "alpha_id": "blvEXe5M",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:19:41-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-returns)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "MARKET",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.49,
+        "fitness": 0.86,
+        "turnover": 0.7887,
+        "returns": 0.2612,
+        "drawdown": 0.1134,
+        "margin": 0.000662,
+        "longCount": 1560,
+        "shortCount": 1579,
+        "subUniverseSharpe": 1.29,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 36.64,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 20,
+      "total_score": 24.64,
+      "idea_score": 26.32,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "below metric prefilter, price-only or no non-price field"
+    },
+    {
+      "alpha_id": "A1kWmpqg",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:45:01-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.05,
+        "fitness": -0.0,
+        "turnover": 0.4433,
+        "returns": -0.003,
+        "drawdown": 0.1149,
+        "margin": -1.4e-05,
+        "longCount": 59,
+        "shortCount": 60,
+        "subUniverseSharpe": -0.35,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -2.09,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 21.91,
+      "idea_score": 22.95,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "A1kK1PrE",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T21:54:49-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "-returns",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 4,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.44,
+        "fitness": 0.78,
+        "turnover": 0.8183,
+        "returns": 0.2412,
+        "drawdown": 0.1577,
+        "margin": 0.00059,
+        "longCount": 1558,
+        "shortCount": 1513,
+        "subUniverseSharpe": 1.0,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 33.0,
+      "official_check_score": 0,
+      "complexity": 0,
+      "score_penalty": 20,
+      "total_score": 21.0,
+      "idea_score": 24.5,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "below metric prefilter, price-only or no non-price field"
+    },
+    {
+      "alpha_id": "ZYr36WW1",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T09:11:09-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_actuals_advanced_qf_nd_fcf_value, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.25,
+        "fitness": -0.05,
+        "turnover": 0.3756,
+        "returns": -0.0163,
+        "drawdown": 0.2362,
+        "margin": -8.7e-05,
+        "longCount": 207,
+        "shortCount": 206,
+        "subUniverseSharpe": 0.32,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_actuals_advanced_qf_nd_fcf_value"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -3.01,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 20.99,
+      "idea_score": 22.5,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "blvkejkM",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:42:19-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(free_cashflow_min, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.13,
+        "fitness": -0.02,
+        "turnover": 0.3104,
+        "returns": -0.0065,
+        "drawdown": 0.1204,
+        "margin": -4.2e-05,
+        "longCount": 229,
+        "shortCount": 228,
+        "subUniverseSharpe": 0.2,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_min"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -1.28,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 20.72,
+      "idea_score": 21.36,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "88noZ9bW",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:01:26-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(net_other_comprehensive_income_loss_after_tax, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.55,
+        "fitness": 0.29,
+        "turnover": 0.3377,
+        "returns": 0.0954,
+        "drawdown": 0.1897,
+        "margin": 0.000565,
+        "longCount": 7,
+        "shortCount": 7,
+        "subUniverseSharpe": 1.52,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "net_other_comprehensive_income_loss_after_tax"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": 20.18,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 0,
+      "total_score": 20.18,
+      "idea_score": 10.09,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "Grkajje5",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:22:33-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_max, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.67,
+        "fitness": 0.19,
+        "turnover": 0.454,
+        "returns": 0.0367,
+        "drawdown": 0.0766,
+        "margin": 0.000162,
+        "longCount": 234,
+        "shortCount": 223,
+        "subUniverseSharpe": 0.34,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 5.54,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 19.54,
+      "idea_score": 24.77,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "RRd3Vvwe",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:33:40-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "group_neutralize(rank(-ts_zscore(fn_comp_options_grants_fair_value_q, 5)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.33,
+        "fitness": -0.18,
+        "turnover": 0.2369,
+        "returns": -0.072,
+        "drawdown": 1.0083,
+        "margin": -0.000608,
+        "longCount": 2,
+        "shortCount": 2,
+        "subUniverseSharpe": -0.1,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "fn_comp_options_grants_fair_value_q",
+        "industry"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -3.4,
+      "official_check_score": 0,
+      "complexity": 7,
+      "score_penalty": 0,
+      "total_score": 18.6,
+      "idea_score": 20.3,
+      "reliability_flags": [
+        "low or moderate turnover",
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "A1kWm9Kg",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:38:56-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.47,
+        "fitness": 0.11,
+        "turnover": 0.585,
+        "returns": 0.0311,
+        "drawdown": 0.1372,
+        "margin": 0.000106,
+        "longCount": 65,
+        "shortCount": 54,
+        "subUniverseSharpe": 0.5,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": 2.33,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 18.33,
+      "idea_score": 25.16,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "Xg16GrLm",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:10:45-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-returns)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 0.87,
+        "fitness": 0.7,
+        "turnover": 0.6534,
+        "returns": 0.4257,
+        "drawdown": 0.6451,
+        "margin": 0.001303,
+        "longCount": 3139,
+        "shortCount": 0,
+        "subUniverseSharpe": 0.88,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 29.93,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 20,
+      "total_score": 17.93,
+      "idea_score": 22.96,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "below metric prefilter, price-only or no non-price field"
+    },
+    {
+      "alpha_id": "A1kZ1zXd",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:59:24-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_actuals_advanced_qf_nd_fcf_value, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.35,
+        "fitness": 0.09,
+        "turnover": 1.0552,
+        "returns": 0.0679,
+        "drawdown": 0.2913,
+        "margin": 0.000129,
+        "longCount": 38,
+        "shortCount": 37,
+        "subUniverseSharpe": -0.05,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_actuals_advanced_qf_nd_fcf_value"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -0.52,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 15.48,
+      "idea_score": 23.74,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "np3Jqv8l",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:36:10-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.34,
+        "fitness": 0.07,
+        "turnover": 0.844,
+        "returns": 0.0392,
+        "drawdown": 0.2088,
+        "margin": 9.3e-05,
+        "longCount": 24,
+        "shortCount": 22,
+        "subUniverseSharpe": 0.15,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -1.02,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 14.98,
+      "idea_score": 23.49,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "YPQKL6vW",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T09:01:31-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_actuals_advanced_qf_nd_fcf_value, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.32,
+        "fitness": 0.07,
+        "turnover": 0.7059,
+        "returns": 0.0381,
+        "drawdown": 0.2335,
+        "margin": 0.000108,
+        "longCount": 95,
+        "shortCount": 94,
+        "subUniverseSharpe": 0.19,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_actuals_advanced_qf_nd_fcf_value"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -1.14,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 14.86,
+      "idea_score": 23.43,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "P0vaJx6M",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:51:28-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.27,
+        "fitness": 0.06,
+        "turnover": 0.9883,
+        "returns": 0.0434,
+        "drawdown": 0.361,
+        "margin": 8.8e-05,
+        "longCount": 32,
+        "shortCount": 32,
+        "subUniverseSharpe": -0.21,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_detail_estimate_1qf_v4_nd_fcf_low"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -3.34,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": 12.66,
+      "idea_score": 22.33,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "lerqj6A2",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:22:36-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(volume, 5)) * rank(-ts_zscore(close, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.44,
+        "fitness": 0.53,
+        "turnover": 0.652,
+        "returns": 0.0892,
+        "drawdown": 0.0894,
+        "margin": 0.000274,
+        "longCount": 1390,
+        "shortCount": 1604,
+        "subUniverseSharpe": 1.05,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 24.64,
+      "official_check_score": 0,
+      "complexity": 8,
+      "score_penalty": 20,
+      "total_score": 12.64,
+      "idea_score": 20.32,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "below metric prefilter, price-only or no non-price field"
+    },
+    {
+      "alpha_id": "VkO9rG9b",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:27:23-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(free_cashflow_max, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.54,
+        "fitness": -0.16,
+        "turnover": 0.3136,
+        "returns": -0.0284,
+        "drawdown": 0.207,
+        "margin": -0.000181,
+        "longCount": 228,
+        "shortCount": 229,
+        "subUniverseSharpe": -0.27,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -10.97,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 11.03,
+      "idea_score": 16.52,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "ZYr59j3j",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:03:38-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(net_other_comprehensive_income_loss_after_tax, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.33,
+        "fitness": 0.15,
+        "turnover": 0.3414,
+        "returns": 0.0717,
+        "drawdown": 0.3446,
+        "margin": 0.00042,
+        "longCount": 19,
+        "shortCount": 20,
+        "subUniverseSharpe": 0.58,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "net_other_comprehensive_income_loss_after_tax"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": 10.83,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 0,
+      "total_score": 10.83,
+      "idea_score": 5.42,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "lerqnmO8",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:30:26-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_min, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.24,
+        "fitness": 0.04,
+        "turnover": 1.0164,
+        "returns": 0.0313,
+        "drawdown": 0.2275,
+        "margin": 6.2e-05,
+        "longCount": 37,
+        "shortCount": 37,
+        "subUniverseSharpe": 0.07,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_min"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -3.26,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 10.74,
+      "idea_score": 20.37,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "zqOMnVOG",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:15:20-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(net_other_comprehensive_income_loss_after_tax, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.38,
+        "fitness": 0.2,
+        "turnover": 0.3153,
+        "returns": 0.0916,
+        "drawdown": 0.3427,
+        "margin": 0.000581,
+        "longCount": 44,
+        "shortCount": 44,
+        "subUniverseSharpe": -0.19,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "net_other_comprehensive_income_loss_after_tax"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": 9.75,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 9.75,
+      "idea_score": 4.88,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "RRd37Vaj",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:24:44-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(volume, 5)) * rank(-ts_zscore(close, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 10,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.21,
+        "fitness": 0.49,
+        "turnover": 0.5056,
+        "returns": 0.0819,
+        "drawdown": 0.1012,
+        "margin": 0.000324,
+        "longCount": 1437,
+        "shortCount": 1557,
+        "subUniverseSharpe": 0.91,
+        "selfCorrelation": null
+      },
+      "fields": [],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "price_volume_microstructure",
+      "economic_thesis": "Price and volume behavior can capture reversal, liquidity pressure, or crowding, but it is often crowded and parameter-sensitive.",
+      "economic_logic_score": 8,
+      "metric_score": 20.46,
+      "official_check_score": 0,
+      "complexity": 8,
+      "score_penalty": 20,
+      "total_score": 8.46,
+      "idea_score": 18.23,
+      "reliability_flags": [
+        "price-only; weaker economic evidence"
+      ],
+      "reject_reason": "below metric prefilter, price-only or no non-price field"
+    },
+    {
+      "alpha_id": "A1kZRJxW",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:47:51-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.02,
+        "fitness": -0.0,
+        "turnover": 0.6628,
+        "returns": -0.0015,
+        "drawdown": 0.2311,
+        "margin": -5e-06,
+        "longCount": 91,
+        "shortCount": 91,
+        "subUniverseSharpe": -0.01,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_detail_estimate_1qf_v4_nd_fcf_low"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -8.32,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 7.68,
+      "idea_score": 19.84,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "xAR6Y6ab",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:28:21-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "group_rank(-ts_zscore(fn_comp_options_grants_fair_value_q, 5), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.46,
+        "fitness": -0.27,
+        "turnover": 0.3801,
+        "returns": -0.1346,
+        "drawdown": 0.923,
+        "margin": -0.000708,
+        "longCount": 311,
+        "shortCount": 1827,
+        "subUniverseSharpe": -0.15,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "fn_comp_options_grants_fair_value_q",
+        "industry"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -14.48,
+      "official_check_score": 0,
+      "complexity": 6,
+      "score_penalty": 0,
+      "total_score": 7.52,
+      "idea_score": 14.76,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "E5k7LmA0",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:43:26-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 10))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.03,
+        "fitness": -0.0,
+        "turnover": 0.7599,
+        "returns": -0.0028,
+        "drawdown": 0.2424,
+        "margin": -7e-06,
+        "longCount": 23,
+        "shortCount": 23,
+        "subUniverseSharpe": -0.04,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -8.6,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": 7.4,
+      "idea_score": 19.7,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "ZYr51gQ3",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:58:30-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(deferred_federal_income_tax_expense, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.29,
+        "fitness": 0.13,
+        "turnover": 0.3306,
+        "returns": 0.0623,
+        "drawdown": 0.344,
+        "margin": 0.000377,
+        "longCount": 43,
+        "shortCount": 42,
+        "subUniverseSharpe": -0.01,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "deferred_federal_income_tax_expense"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": 7.39,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 7.39,
+      "idea_score": 3.69,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "0mz3mmGK",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:53:48-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low, 10))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.04,
+        "fitness": -0.0,
+        "turnover": 0.5632,
+        "returns": -0.0039,
+        "drawdown": 0.3079,
+        "margin": -1.4e-05,
+        "longCount": 91,
+        "shortCount": 91,
+        "subUniverseSharpe": -0.07,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_detail_estimate_1qf_v4_nd_fcf_low"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -8.88,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": 7.12,
+      "idea_score": 19.56,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "RRdQjdxn",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T09:04:09-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_actuals_advanced_qf_nd_fcf_value, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.06,
+        "fitness": 0.01,
+        "turnover": 0.4884,
+        "returns": 0.0045,
+        "drawdown": 0.2081,
+        "margin": 1.8e-05,
+        "longCount": 208,
+        "shortCount": 205,
+        "subUniverseSharpe": -0.51,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_actuals_advanced_qf_nd_fcf_value"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -9.03,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 6.97,
+      "idea_score": 19.48,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "zqO6vWnO",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:49:25-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.0,
+        "fitness": -0.0,
+        "turnover": 0.451,
+        "returns": -0.0,
+        "drawdown": 0.0847,
+        "margin": -0.0,
+        "longCount": 206,
+        "shortCount": 206,
+        "subUniverseSharpe": -0.34,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_detail_estimate_1qf_v4_nd_fcf_low"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -9.36,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 6.64,
+      "idea_score": 19.32,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "RRd3gEX0",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:35:30-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_min, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.06,
+        "fitness": 0.01,
+        "turnover": 0.451,
+        "returns": 0.0033,
+        "drawdown": 0.0891,
+        "margin": 1.5e-05,
+        "longCount": 230,
+        "shortCount": 226,
+        "subUniverseSharpe": -0.2,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_min"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -7.82,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 6.18,
+      "idea_score": 18.09,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "9qJvn66d",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:33:11-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_min, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.02,
+        "fitness": -0.0,
+        "turnover": 0.676,
+        "returns": -0.0014,
+        "drawdown": 0.1818,
+        "margin": -4e-06,
+        "longCount": 103,
+        "shortCount": 102,
+        "subUniverseSharpe": -0.07,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_min"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -8.56,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 5.44,
+      "idea_score": 17.72,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "blvkePdR",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:40:31-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(free_cashflow_min, 10))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.07,
+        "fitness": -0.01,
+        "turnover": 0.5709,
+        "returns": -0.0056,
+        "drawdown": 0.264,
+        "margin": -2e-05,
+        "longCount": 103,
+        "shortCount": 102,
+        "subUniverseSharpe": -0.03,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_min"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -9.29,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": 4.71,
+      "idea_score": 17.36,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "akoY55e5",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:45:52-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.23,
+        "fitness": -0.04,
+        "turnover": 0.9864,
+        "returns": -0.0371,
+        "drawdown": 0.3825,
+        "margin": -7.5e-05,
+        "longCount": 32,
+        "shortCount": 32,
+        "subUniverseSharpe": 0.25,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_detail_estimate_1qf_v4_nd_fcf_low"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -11.51,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 4.49,
+      "idea_score": 18.25,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "O0oYgmM1",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:47:59-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(deferred_federal_income_tax_expense, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.13,
+        "fitness": 0.03,
+        "turnover": 0.339,
+        "returns": 0.0194,
+        "drawdown": 0.3867,
+        "margin": 0.000114,
+        "longCount": 7,
+        "shortCount": 7,
+        "subUniverseSharpe": 0.27,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "deferred_federal_income_tax_expense"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": 3.7,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 0,
+      "total_score": 3.7,
+      "idea_score": 1.85,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "9qJ1ZGjq",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T09:06:15-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_actuals_advanced_qf_nd_fcf_value, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.23,
+        "fitness": -0.05,
+        "turnover": 1.0492,
+        "returns": -0.0448,
+        "drawdown": 0.4947,
+        "margin": -8.5e-05,
+        "longCount": 38,
+        "shortCount": 37,
+        "subUniverseSharpe": 0.12,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_actuals_advanced_qf_nd_fcf_value"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -12.42,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": 3.58,
+      "idea_score": 17.79,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "zqO6ZvqR",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T09:08:28-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_actuals_advanced_qf_nd_fcf_value, 10))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.24,
+        "fitness": -0.05,
+        "turnover": 0.6315,
+        "returns": -0.0269,
+        "drawdown": 0.3346,
+        "margin": -8.5e-05,
+        "longCount": 95,
+        "shortCount": 94,
+        "subUniverseSharpe": -0.14,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_actuals_advanced_qf_nd_fcf_value"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -13.05,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": 2.95,
+      "idea_score": 17.48,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "omVpkNgv",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:56:53-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(deferred_federal_income_tax_expense, 10))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.01,
+        "fitness": -0.0,
+        "turnover": 0.3076,
+        "returns": -0.002,
+        "drawdown": 0.4124,
+        "margin": -1.3e-05,
+        "longCount": 18,
+        "shortCount": 18,
+        "subUniverseSharpe": 0.78,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "deferred_federal_income_tax_expense"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": 2.94,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 2.94,
+      "idea_score": 1.47,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "E5k7dnd1",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:37:39-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(free_cashflow_min, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.21,
+        "fitness": -0.03,
+        "turnover": 1.0169,
+        "returns": -0.0275,
+        "drawdown": 0.3701,
+        "margin": -5.4e-05,
+        "longCount": 37,
+        "shortCount": 37,
+        "subUniverseSharpe": -0.02,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_min"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -11.91,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": 2.09,
+      "idea_score": 16.05,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "blvkRqar",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T06:31:02-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "group_rank(-ts_zscore(fn_comp_options_grants_fair_value_q, 5), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 10,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.62,
+        "fitness": -0.46,
+        "turnover": 0.266,
+        "returns": -0.1438,
+        "drawdown": 0.936,
+        "margin": -0.001082,
+        "longCount": 304,
+        "shortCount": 1834,
+        "subUniverseSharpe": -0.34,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "fn_comp_options_grants_fair_value_q",
+        "industry"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -20.47,
+      "official_check_score": 0,
+      "complexity": 6,
+      "score_penalty": 0,
+      "total_score": 1.53,
+      "idea_score": 11.77,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "QPEJ6KmM",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:49:56-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(deferred_federal_income_tax_expense, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.0,
+        "fitness": -0.0,
+        "turnover": 0.3187,
+        "returns": -0.0003,
+        "drawdown": 0.318,
+        "margin": -2e-06,
+        "longCount": 18,
+        "shortCount": 18,
+        "subUniverseSharpe": -0.75,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "deferred_federal_income_tax_expense"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": -3.01,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 0,
+      "total_score": -3.01,
+      "idea_score": -1.5,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "6Xz82xL5",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:54:30-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(deferred_federal_income_tax_expense, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.19,
+        "fitness": -0.06,
+        "turnover": 0.3404,
+        "returns": -0.0286,
+        "drawdown": 0.3271,
+        "margin": -0.000168,
+        "longCount": 7,
+        "shortCount": 7,
+        "subUniverseSharpe": -0.25,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "deferred_federal_income_tax_expense"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": -5.1,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": -5.1,
+      "idea_score": -2.55,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "gJxALNng",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:52:19-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(deferred_federal_income_tax_expense, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.24,
+        "fitness": -0.09,
+        "turnover": 0.35,
+        "returns": -0.0529,
+        "drawdown": 0.6599,
+        "margin": -0.000302,
+        "longCount": 42,
+        "shortCount": 44,
+        "subUniverseSharpe": 0.07,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "deferred_federal_income_tax_expense"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": -5.63,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 0,
+      "total_score": -5.63,
+      "idea_score": -2.81,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "mLZ3WYO1",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:13:06-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(net_other_comprehensive_income_loss_after_tax, 10))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.3,
+        "fitness": -0.13,
+        "turnover": 0.3303,
+        "returns": -0.0665,
+        "drawdown": 0.5693,
+        "margin": -0.000403,
+        "longCount": 19,
+        "shortCount": 19,
+        "subUniverseSharpe": -0.5,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "net_other_comprehensive_income_loss_after_tax"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": -9.68,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": -9.68,
+      "idea_score": -4.84,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "blvkgKj6",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:06:59-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(net_other_comprehensive_income_loss_after_tax, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.42,
+        "fitness": -0.23,
+        "turnover": 0.3407,
+        "returns": -0.1008,
+        "drawdown": 0.863,
+        "margin": -0.000592,
+        "longCount": 43,
+        "shortCount": 46,
+        "subUniverseSharpe": 0.29,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "net_other_comprehensive_income_loss_after_tax"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": -10.58,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 0,
+      "total_score": -10.58,
+      "idea_score": -5.29,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "P0vWRqML",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:25:30-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(free_cashflow_max, 10))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.98,
+        "fitness": -0.37,
+        "turnover": 0.5762,
+        "returns": -0.0801,
+        "drawdown": 0.4746,
+        "margin": -0.000278,
+        "longCount": 103,
+        "shortCount": 103,
+        "subUniverseSharpe": -0.57,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -30.36,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": -16.36,
+      "idea_score": 6.82,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "78JAMJpv",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:41:25-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -1.05,
+        "fitness": -0.41,
+        "turnover": 1.1727,
+        "returns": -0.1787,
+        "drawdown": 0.9882,
+        "margin": -0.000305,
+        "longCount": 7,
+        "shortCount": 7,
+        "subUniverseSharpe": -0.0,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -32.52,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": -16.52,
+      "idea_score": 7.74,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "2rJ0VYpw",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:22:51-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(free_cashflow_max, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -1.05,
+        "fitness": -0.38,
+        "turnover": 1.0245,
+        "returns": -0.1312,
+        "drawdown": 0.8029,
+        "margin": -0.000256,
+        "longCount": 37,
+        "shortCount": 37,
+        "subUniverseSharpe": -0.55,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": -32.82,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 8,
+      "total_score": -18.82,
+      "idea_score": 5.59,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "akoY9Jwx",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:09:57-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(net_other_comprehensive_income_loss_after_tax, 5))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.61,
+        "fitness": -0.33,
+        "turnover": 0.341,
+        "returns": -0.0996,
+        "drawdown": 0.5843,
+        "margin": -0.000584,
+        "longCount": 7,
+        "shortCount": 7,
+        "subUniverseSharpe": -1.27,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "net_other_comprehensive_income_loss_after_tax"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "unclear",
+      "economic_thesis": "No clear non-price economic mechanism was detected from fields alone.",
+      "economic_logic_score": 0,
+      "metric_score": -20.67,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": -20.67,
+      "idea_score": -10.34,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    }
+  ],
+  "research_ideas": [
+    {
+      "alpha_id": "akovjMPv",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:02:42-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "/*\r\n HYPOTHESIS: If the operating income of a company is currently higher than its past 1 year history, buy the company's stock and vice-versa.\r\n \r\n IMPLEMENTATION: Using ts_rank to identify current performance of the company compared to its own history, using the fundamental data field \"operating_income\".\r\n \r\n HINT TO IMPROVE THE ALPHA: Rather than comparing the value directly, can calculating a ratio that includes stock market moves, improve the signal?\r\n */\r\n \r\n ts_rank(operating_income,252)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.0,
+        "fitness": 0.61,
+        "turnover": 0.0476,
+        "returns": 0.0464,
+        "drawdown": 0.0973,
+        "margin": 0.001953,
+        "longCount": 1495,
+        "shortCount": 1471,
+        "subUniverseSharpe": 0.76,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "operating_income"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 32.19,
+      "official_check_score": 0,
+      "complexity": 3,
+      "score_penalty": 0,
+      "total_score": 54.19,
+      "idea_score": 38.09,
+      "reliability_flags": [
+        "low or moderate turnover",
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "MPkmWx86",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:24:24-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "/*\r\n HYPOTHESIS: \"Fair value accounting\" aims to measure and report on-going valuations of assets and liabilities. A recent increase in the fair value of liabilities may indicate a higher cost to be borne by the company in the future. This may deteriorate the company's financial health, potentially leading to lower profitability or financial distress.\r\n \r\n IMPLEMENTATION: Using ts_rank() operator, sell stocks when there is an increase in the fair value of liabilities within a year using fundamental data.\r\n \r\n HINT TO IMPROVE THE ALPHA: Could observing the increase over a shorter period improve accuracy?\r\n */\r\n \r\n -ts_rank(fn_liab_fair_val_l1_a,252)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 0.77,
+        "fitness": 0.36,
+        "turnover": 0.0284,
+        "returns": 0.0278,
+        "drawdown": 0.0724,
+        "margin": 0.00196,
+        "longCount": 638,
+        "shortCount": 616,
+        "subUniverseSharpe": 0.04,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "fn_liab_fair_val_l1_a"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 21.99,
+      "official_check_score": 0,
+      "complexity": 3,
+      "score_penalty": 0,
+      "total_score": 43.99,
+      "idea_score": 32.99,
+      "reliability_flags": [
+        "low or moderate turnover",
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "xAR670LJ",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:16:46-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_max, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.22,
+        "fitness": 0.47,
+        "turnover": 1.0202,
+        "returns": 0.1541,
+        "drawdown": 0.1606,
+        "margin": 0.000302,
+        "longCount": 38,
+        "shortCount": 36,
+        "subUniverseSharpe": 0.65,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 21.38,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 35.38,
+      "idea_score": 32.69,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "xAR6GMqw",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:32:58-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.08,
+        "fitness": 0.43,
+        "turnover": 1.1872,
+        "returns": 0.1842,
+        "drawdown": 0.1477,
+        "margin": 0.00031,
+        "longCount": 7,
+        "shortCount": 6,
+        "subUniverseSharpe": 0.0,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": 17.37,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 33.37,
+      "idea_score": 32.69,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "wpLm7RE1",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:18:58-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_max, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 1.05,
+        "fitness": 0.38,
+        "turnover": 0.6797,
+        "returns": 0.0868,
+        "drawdown": 0.1163,
+        "margin": 0.000255,
+        "longCount": 105,
+        "shortCount": 101,
+        "subUniverseSharpe": 0.61,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 15.72,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 29.72,
+      "idea_score": 29.86,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "Wj986ggx",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T22:44:53-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "assets_curr",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 4,
+        "neutralization": "SECTOR",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.17,
+        "fitness": 0.07,
+        "turnover": 0.0113,
+        "returns": 0.0235,
+        "drawdown": 0.5307,
+        "margin": 0.004162,
+        "longCount": 452,
+        "shortCount": 1996,
+        "subUniverseSharpe": 0.12,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "assets_curr"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 10.35,
+      "official_check_score": 0,
+      "complexity": 1,
+      "score_penalty": 0,
+      "total_score": 32.35,
+      "idea_score": 27.18,
+      "reliability_flags": [
+        "low or moderate turnover",
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "A1kWm9Kg",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T07:38:56-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.47,
+        "fitness": 0.11,
+        "turnover": 0.585,
+        "returns": 0.0311,
+        "drawdown": 0.1372,
+        "margin": 0.000106,
+        "longCount": 65,
+        "shortCount": 54,
+        "subUniverseSharpe": 0.5,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_guidances_advanced_af_nd_fcfps_maxguidance"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": 2.33,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 18.33,
+      "idea_score": 25.16,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "j21R2dX9",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:56:03-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "rank(-ts_zscore(anl4_fs_detail_estimate_1qf_v4_nd_fcf_low, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": -0.01,
+        "fitness": -0.0,
+        "turnover": 0.3087,
+        "returns": -0.0008,
+        "drawdown": 0.1092,
+        "margin": -5e-06,
+        "longCount": 206,
+        "shortCount": 206,
+        "subUniverseSharpe": 0.42,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_detail_estimate_1qf_v4_nd_fcf_low"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": 1.54,
+      "official_check_score": 0,
+      "complexity": 4,
+      "score_penalty": 0,
+      "total_score": 25.54,
+      "idea_score": 24.77,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "Grkajje5",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:22:33-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(free_cashflow_max, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.67,
+        "fitness": 0.19,
+        "turnover": 0.454,
+        "returns": 0.0367,
+        "drawdown": 0.0766,
+        "margin": 0.000162,
+        "longCount": 234,
+        "shortCount": 223,
+        "subUniverseSharpe": 0.34,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "free_cashflow_max"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "fundamental_quality_or_balance_sheet",
+      "economic_thesis": "Fundamental statement fields can proxy for quality, financing pressure, asset intensity, or balance-sheet risk.",
+      "economic_logic_score": 22,
+      "metric_score": 5.54,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 19.54,
+      "idea_score": 24.77,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    },
+    {
+      "alpha_id": "A1kZ1zXd",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateCreated": "2026-05-22T08:59:24-04:00",
+      "dateSubmitted": null,
+      "author": "CM54257",
+      "expression": "ts_zscore(anl4_fs_actuals_advanced_qf_nd_fcf_value, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "metrics": {
+        "sharpe": 0.35,
+        "fitness": 0.09,
+        "turnover": 1.0552,
+        "returns": 0.0679,
+        "drawdown": 0.2913,
+        "margin": 0.000129,
+        "longCount": 38,
+        "shortCount": 37,
+        "subUniverseSharpe": -0.05,
+        "selfCorrelation": null
+      },
+      "fields": [
+        "anl4_fs_actuals_advanced_qf_nd_fcf_value"
+      ],
+      "classifications": [
+        {
+          "id": "DATA_USAGE:SINGLE_DATA_SET",
+          "name": "Single Data Set Alpha"
+        }
+      ],
+      "economic_theme": "analyst_or_fundamental_revision",
+      "economic_thesis": "Analyst estimate or accounting fields can capture delayed repricing of changed fundamentals.",
+      "economic_logic_score": 24,
+      "metric_score": -0.52,
+      "official_check_score": 0,
+      "complexity": 2,
+      "score_penalty": 8,
+      "total_score": 15.48,
+      "idea_score": 23.74,
+      "reliability_flags": [
+        "uses non-price field(s)"
+      ],
+      "reject_reason": "below metric prefilter"
+    }
+  ]
+}

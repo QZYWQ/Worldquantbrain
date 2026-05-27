@@ -1,0 +1,66 @@
+{
+  "batch": "2026-05-14-signflip-depth-probes",
+  "capture_id": "candidate-batch-2026-05-14-signflip",
+  "topic": "sign-flip depth probes for May 3-4 negative Sharpe candidates",
+  "source": "user-provided May 3-4 expressions, verified against May 13-14 API scan",
+  "captured_at": "2026-05-14T15:00:00+08:00",
+  "candidates": [
+    {
+      "name": "fnd6_sppe_siv_signflip",
+      "expression": "subtract(0, divide(fnd6_sppe, add(fnd6_siv, 1)))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      },
+      "purpose": "sign-flip of divide(fnd6_sppe, add(fnd6_siv, 1)); parent omnz72x6 S=-0.71 F=-0.43; special charges / siv ratio signal; tests if negative direction is wrong"
+    },
+    {
+      "name": "fnd6_rank_recd_signflip",
+      "expression": "subtract(log(add(fnd6_recd, 1)), fnd6_rank)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      },
+      "purpose": "sign-flip of subtract(reverse(fnd6_rank), log(add(fnd6_recd, 1))); parent KPnqOqWE S=-1.20 F=-0.81; rank / earnings credibility ratio; protocol requires sign-flip before kill"
+    },
+    {
+      "name": "fnd6_rectr_recco_log_signflip",
+      "expression": "subtract(0, log(divide(fnd6_rectr, max(fnd6_recco, 1))))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      },
+      "purpose": "sign-flip of log(divide(fnd6_rectr, max(fnd6_recco, 1))); parent from May 3-4 unknown Sharpe; total returns / cost of capital log ratio; no positive counterpart found in May 13-14 scan"
+    }
+  ]
+}

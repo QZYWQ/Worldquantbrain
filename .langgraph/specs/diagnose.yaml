@@ -1,0 +1,28 @@
+# Diagnose — 路径 E
+spec:
+  name: diagnose
+  version: "2.1"
+  extends: task-router
+  path: E
+  triggers: ["bug", "报错", "不工作", "修复", "调试", "诊断", "error", "异常", "性能"]
+
+states:
+  plan:
+    on_enter: "定位根因。不猜测, 用证据。"
+    tools_from_library:
+      - diagnose               # trigger: bug/error/≥2 fail attempts
+      - gitnexus-context       # 理解错误涉及的符号
+    rules:
+      - "diagnose Phase 1 优先: 建立反馈循环(测试/脚本/复现信号)"
+      - "二分法缩小, 每个假设用 evidence 验证"
+    output: "根因 | 受影响符号 | 修复方案"
+
+  implement:
+    on_enter: "最小修复。不趁机重构。"
+    tools_from_library:
+      - tdd                    # trigger: 非琐碎 bugfix→加回归测试
+    rules:
+      - "最小变更: 只修 bug, 不动无关代码"
+      - "修复后追加测试防复发"
+      - "回归: 确认不引入新问题"
+    output: "[✓] 修复完成 | 测试 PASS | 回归无新问题"

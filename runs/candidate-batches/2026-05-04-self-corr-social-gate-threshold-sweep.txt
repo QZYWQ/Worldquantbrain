@@ -1,0 +1,12 @@
+# Threshold sweep after the first passing socialmedia12 gate rescue.
+# Anchor pass: threshold 0.55 -> bloqmdJK, Sharpe 1.61, Fitness 1.25,
+# SELF_CORRELATION PASS 0.6368. These variants relax the gate to recover
+# Sharpe while watching self-corr.
+
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.50, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)
+
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.45, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)
+
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.40, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)
+
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.35, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)

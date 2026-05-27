@@ -1,0 +1,25 @@
+{
+  "capture_id": "2026-05-09-assets-cap-hump-rescue-probe",
+  "topic": "assets-cap-delta-zscore-industry-hump-rescue",
+  "candidates": [
+    {
+      "name": "hump_backfill_assets_cap_w120_industry",
+      "expression": "hump(group_rank(ts_zscore(ts_delta(ts_backfill(assets, 60) / cap, 2), 120), industry))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 6,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y"
+      }
+    }
+  ]
+}

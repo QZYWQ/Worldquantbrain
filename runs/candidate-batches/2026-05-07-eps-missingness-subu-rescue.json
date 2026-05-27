@@ -1,0 +1,54 @@
+{
+  "capture_id": "2026-05-07-eps-missingness-subu-rescue",
+  "topic": "eps_missingness_sub_universe_rescue",
+  "source_alpha_id": "E5g6Vnx1",
+  "source_expression": "group_rank(-ts_count_nans(eps, 252), industry)",
+  "candidates": [
+    {
+      "name": "same_expression_subindustry_neutralization",
+      "expression": "group_rank(-ts_count_nans(eps, 252), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    },
+    {
+      "name": "subindustry_rank_industry_neutralization",
+      "expression": "group_rank(-ts_count_nans(eps, 252), subindustry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    }
+  ]
+}

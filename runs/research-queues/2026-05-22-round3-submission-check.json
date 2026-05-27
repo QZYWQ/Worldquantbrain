@@ -1,0 +1,236 @@
+[
+  {
+    "alpha_id": "wpLq6rqp",
+    "self_correlation": null,
+    "checks": {
+      "LOW_SHARPE": {
+        "result": "PASS",
+        "value": 1.5
+      },
+      "LOW_FITNESS": {
+        "result": "PASS",
+        "value": 1.38
+      },
+      "LOW_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0395
+      },
+      "HIGH_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0395
+      },
+      "CONCENTRATED_WEIGHT": {
+        "result": "PASS",
+        "value": null
+      },
+      "LOW_SUB_UNIVERSE_SHARPE": {
+        "result": "FAIL",
+        "value": 0.49
+      },
+      "SELF_CORRELATION": {
+        "result": "PENDING",
+        "value": null
+      },
+      "MATCHES_COMPETITION": {
+        "result": "PASS",
+        "value": null
+      }
+    },
+    "all_pass": false
+  },
+  {
+    "alpha_id": "58MxNRak",
+    "self_correlation": null,
+    "checks": {
+      "LOW_SHARPE": {
+        "result": "PASS",
+        "value": 1.5
+      },
+      "LOW_FITNESS": {
+        "result": "PASS",
+        "value": 1.38
+      },
+      "LOW_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0395
+      },
+      "HIGH_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0395
+      },
+      "CONCENTRATED_WEIGHT": {
+        "result": "PASS",
+        "value": null
+      },
+      "LOW_SUB_UNIVERSE_SHARPE": {
+        "result": "FAIL",
+        "value": 0.49
+      },
+      "SELF_CORRELATION": {
+        "result": "PENDING",
+        "value": null
+      },
+      "MATCHES_COMPETITION": {
+        "result": "PASS",
+        "value": null
+      }
+    },
+    "all_pass": false
+  },
+  {
+    "alpha_id": "ZYr6k76Y",
+    "self_correlation": null,
+    "checks": {
+      "LOW_SHARPE": {
+        "result": "FAIL",
+        "value": 1.23
+      },
+      "LOW_FITNESS": {
+        "result": "PASS",
+        "value": 1.1
+      },
+      "LOW_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0503
+      },
+      "HIGH_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0503
+      },
+      "CONCENTRATED_WEIGHT": {
+        "result": "PASS",
+        "value": null
+      },
+      "LOW_SUB_UNIVERSE_SHARPE": {
+        "result": "PASS",
+        "value": 0.96
+      },
+      "SELF_CORRELATION": {
+        "result": "PENDING",
+        "value": null
+      },
+      "MATCHES_COMPETITION": {
+        "result": "PASS",
+        "value": null
+      }
+    },
+    "all_pass": false
+  },
+  {
+    "alpha_id": "E5k1JNar",
+    "self_correlation": null,
+    "checks": {
+      "LOW_SHARPE": {
+        "result": "FAIL",
+        "value": 1.17
+      },
+      "LOW_FITNESS": {
+        "result": "PASS",
+        "value": 1.03
+      },
+      "LOW_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0519
+      },
+      "HIGH_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0519
+      },
+      "CONCENTRATED_WEIGHT": {
+        "result": "PASS",
+        "value": null
+      },
+      "LOW_SUB_UNIVERSE_SHARPE": {
+        "result": "PASS",
+        "value": 0.95
+      },
+      "SELF_CORRELATION": {
+        "result": "PENDING",
+        "value": null
+      },
+      "MATCHES_COMPETITION": {
+        "result": "PASS",
+        "value": null
+      }
+    },
+    "all_pass": false
+  },
+  {
+    "alpha_id": "Jjbql0kx",
+    "self_correlation": null,
+    "checks": {
+      "LOW_SHARPE": {
+        "result": "FAIL",
+        "value": 1.13
+      },
+      "LOW_FITNESS": {
+        "result": "FAIL",
+        "value": 0.98
+      },
+      "LOW_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0413
+      },
+      "HIGH_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0413
+      },
+      "CONCENTRATED_WEIGHT": {
+        "result": "PASS",
+        "value": null
+      },
+      "LOW_SUB_UNIVERSE_SHARPE": {
+        "result": "PASS",
+        "value": 0.94
+      },
+      "SELF_CORRELATION": {
+        "result": "PENDING",
+        "value": null
+      },
+      "MATCHES_COMPETITION": {
+        "result": "PASS",
+        "value": null
+      }
+    },
+    "all_pass": false
+  },
+  {
+    "alpha_id": "Wj9M6eOx",
+    "self_correlation": null,
+    "checks": {
+      "LOW_SHARPE": {
+        "result": "FAIL",
+        "value": 1.17
+      },
+      "LOW_FITNESS": {
+        "result": "PASS",
+        "value": 1.03
+      },
+      "LOW_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0519
+      },
+      "HIGH_TURNOVER": {
+        "result": "PASS",
+        "value": 0.0519
+      },
+      "CONCENTRATED_WEIGHT": {
+        "result": "PASS",
+        "value": null
+      },
+      "LOW_SUB_UNIVERSE_SHARPE": {
+        "result": "PASS",
+        "value": 0.95
+      },
+      "SELF_CORRELATION": {
+        "result": "PENDING",
+        "value": null
+      },
+      "MATCHES_COMPETITION": {
+        "result": "PASS",
+        "value": null
+      }
+    },
+    "all_pass": false
+  }
+]

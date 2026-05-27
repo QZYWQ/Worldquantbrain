@@ -1,0 +1,140 @@
+{
+  "phase": "02_change_rate",
+  "description": "Change rate / delta direction",
+  "started_at": "2026-05-26T11:31:28.508088",
+  "phase_completed_at": "2026-05-26T13:02:55.653247",
+  "results": [
+    {
+      "name": "p2_dr_21_126",
+      "alpha_id": "gJxx8WjO",
+      "sharpe": 0.56,
+      "fitness": 0.26,
+      "turnover": 0.0261,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 126), 63), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_21_252",
+      "alpha_id": "qMggjKEA",
+      "sharpe": 0.7,
+      "fitness": 0.36,
+      "turnover": 0.0215,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 252), 63), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_63_126",
+      "alpha_id": "LLkk7gq6",
+      "sharpe": 0.48,
+      "fitness": 0.2,
+      "turnover": 0.0315,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 126), 21), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_63_252",
+      "alpha_id": "VkOO7bk5",
+      "sharpe": 0.49,
+      "fitness": 0.21,
+      "turnover": 0.026,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 252), 21), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_126_252",
+      "alpha_id": "gJxxQK9v",
+      "sharpe": 0.9,
+      "fitness": 0.54,
+      "turnover": 0.0178,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 252), 126), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_21_126_si",
+      "alpha_id": "j2113apO",
+      "sharpe": 0.8,
+      "fitness": 0.39,
+      "turnover": 0.0287,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 126), 63), subindustry)",
+      "decay": 6,
+      "neutralization": "SUBINDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_zscore",
+      "alpha_id": "MPkkaWYo",
+      "sharpe": 0.49,
+      "fitness": 0.21,
+      "turnover": 0.0341,
+      "expression": "group_rank(ts_zscore(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 126), 63), 126), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_flip",
+      "alpha_id": "6Xzzjw2Y",
+      "sharpe": -0.56,
+      "fitness": -0.26,
+      "turnover": 0.0261,
+      "expression": "-group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 126), 63), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_rev_21_252",
+      "alpha_id": "N1AgRJZp",
+      "sharpe": 1.26,
+      "fitness": 0.96,
+      "turnover": 0.1199,
+      "expression": "group_rank(ts_delta(winsorize(ts_backfill(revenue, 252), std=4), 21) / ts_mean(winsorize(ts_backfill(revenue, 252), std=4), 252), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_rppent",
+      "alpha_id": "d5dd1lbv",
+      "sharpe": 0.36,
+      "fitness": 0.13,
+      "turnover": 0.0248,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(ppent, 252), std=4)), 1)), 126), 63), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_rac",
+      "alpha_id": "RRdd6A9n",
+      "sharpe": 0.51,
+      "fitness": 0.22,
+      "turnover": 0.0253,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets_curr, 252), std=4)), 1)), 126), 63), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p2_dr_roa",
+      "alpha_id": "LLkk5PpL",
+      "sharpe": 0.42,
+      "fitness": 0.16,
+      "turnover": 0.0255,
+      "expression": "group_rank(ts_delta(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(add(winsorize(ts_backfill(ppent, 252), std=4), winsorize(ts_backfill(assets_curr, 252), std=4))), 1)), 126), 63), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    }
+  ]
+}

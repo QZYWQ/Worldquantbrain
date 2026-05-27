@@ -1,0 +1,70 @@
+{
+  "capture_id": "2026-05-09-fitness-rescue-assets-cap",
+  "topic": "fitness rescue for assets/cap alpha family - RESCUED",
+  "source": "official_worldquantbrain_api",
+  "captured_at": "2026-05-09T12:30:00+08:00",
+  "problem": "All 10 unsubmitted alphas from May 8-9 have LOW_FITNESS fail (Fitness 0.61-0.93 < 1.0 threshold)",
+  "root_expression": "group_rank(ts_rank(ts_delta(assets / cap, WINDOW), LOOKBACK), subindustry/industry)",
+  "parent_alpha": "d5EoL81x (Sharpe 1.95, Fitness 0.93)",
+  "key_discovery": "Removing group_rank wrapper increases Fitness from 0.93 to 1.02. group_rank causes noisy boundary effects at subindustry group edges, increasing turnover.",
+  "variants_tested": [
+    {
+      "name": "e7dPWeop",
+      "expression": "ts_rank(ts_delta(assets / cap, 2), 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 6,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "result": "PASS",
+      "is": { "sharpe": 1.96, "fitness": 1.02, "turnover": 0.5433, "returns": 0.1477 },
+      "test": { "sharpe": 3.27, "fitness": 1.78 }
+    },
+    {
+      "name": "leQY59J2_industry",
+      "expression": "group_rank(ts_rank(ts_delta(assets / cap, 2), 20), industry)",
+      "settings": { "decay": 6, "neutralization": "INDUSTRY" },
+      "result": "FAIL",
+      "is": { "sharpe": 1.96, "fitness": 0.97, "turnover": 0.5527 },
+      "test": { "sharpe": 3.24, "fitness": 1.67 },
+      "notes": "Closest with group_rank - 0.97, still below 1.0"
+    },
+    {
+      "name": "RR2ozM31_industry_decay9",
+      "expression": "group_rank(ts_rank(ts_delta(assets / cap, 2), 20), industry)",
+      "settings": { "decay": 9, "neutralization": "INDUSTRY" },
+      "result": "FAIL",
+      "is": { "sharpe": 1.84, "fitness": 0.95, "turnover": 0.4685 },
+      "notes": "Higher decay reduces turnover but also reduces returns"
+    },
+    {
+      "name": "decay_sweep_subindustry",
+      "expression": "group_rank(ts_rank(ts_delta(assets / cap, 2), 20), subindustry)",
+      "settings": { "decay": 3, "neutralization": "SUBINDUSTRY" },
+      "result": "FAIL",
+      "is": { "sharpe": 1.92, "fitness": 0.79, "turnover": 0.7403 },
+      "notes": "Lower decay = higher turnover, HIGH_TURNOVER fail"
+    },
+    {
+      "name": "smooth5",
+      "expression": "group_rank(ts_rank(ts_mean(ts_delta(assets / cap, 2), 5), 20), subindustry)",
+      "settings": { "decay": 6, "neutralization": "SUBINDUSTRY" },
+      "result": "FAIL",
+      "is": { "sharpe": 1.11, "fitness": 0.47, "turnover": 0.3581 },
+      "notes": "Smoothing destroyed the signal"
+    }
+  ],
+  "target": "Fitness >= 1.0 while maintaining Sharpe >= 1.25",
+  "outcome": "ACHIEVED - Alpha e7dPWeop passes all 8 checks (Fitness 1.02, Sharpe 1.96)"
+}

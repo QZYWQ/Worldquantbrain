@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "queue_id": "research-queue-2026-05-13-new-source-rotation",
+  "generated_at": "2026-05-13T23:27:36+0800",
+  "status": "active",
+  "evidence": {
+    "official_field_recheck": "runs/research-contracts/2026-05-13-new-source-official-field-recheck.md",
+    "current_incubation_summary": "runs/research-contracts/current-incubation-summary.md",
+    "external_kb_used": [
+      "kb://02-平台基础/07-Data Explorer 与字段研究工作流.md",
+      "kb://02-平台基础/05-数据字段、覆盖率与数据体检.md",
+      "kb://03-研究方法/02-从假设到表达式.md",
+      "kb://03-研究方法/03-低相关与稳健性.md"
+    ]
+  },
+  "items": [
+    {
+      "name": "mdl77_low_crowding_model_fields",
+      "idea_strength": 3,
+      "dataset_freshness": 2,
+      "correlation_novelty": 3,
+      "metric_headroom": 2,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "Official 2026-05-13 field metadata shows multiple model77 Matrix fields with high/near-full coverage and alphaCount below 10. This is the cleanest new-source lane after current price-volume and EPS-family submissions.",
+      "next_step": "Run the bounded mdl77 probe batch: field-health control, mdl77_2amv baseline/sign control, then two deep-value sibling fields."
+    },
+    {
+      "name": "fn_comp_options_grants_fair_value_q",
+      "idea_strength": 2,
+      "dataset_freshness": 1,
+      "correlation_novelty": 2,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "new_direction",
+      "notes": "Official metadata confirms the field exists, but coverage is only 0.2391 and alphaCount is 320. User-reported Sharpe 0.42 is not enough to justify broad expansion before a sparse-field diagnostic and a sign/backfill control.",
+      "next_step": "Hold until the mdl77 probe finishes; then test one coverage-aware backfill control and its sign flip, not a wide parameter sweep."
+    },
+    {
+      "name": "pv_fast_returns_vwap_composite",
+      "idea_strength": 2,
+      "dataset_freshness": 0,
+      "correlation_novelty": 1,
+      "metric_headroom": 1,
+      "execution_simplicity": 1,
+      "current_status": "structural_failure",
+      "notes": "User-reported Fitness 0.48 is far below the floor, and the source overlaps the active returns/vwap/volume submission family. Treat this as a control, not the next source-rotation lane.",
+      "next_step": "Do not spend first-batch budget here. Revisit only if a structural variant can change the information source or official self-correlation evidence is favorable."
+    },
+    {
+      "name": "mdl77_2400_rmi_volatility_spread_reopen",
+      "idea_strength": 1,
+      "dataset_freshness": 1,
+      "correlation_novelty": 2,
+      "metric_headroom": 0,
+      "execution_simplicity": 1,
+      "current_status": "structural_failure",
+      "notes": "Although current metadata still shows low crowding, this exact volatility-spread lane already failed the 2026-04-25 live first batch and has a stop memo.",
+      "next_step": "Do not reopen with cosmetic changes. Use other mdl77 fields instead."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "065d1dc1ce7bab996af50f158822b742",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "OK",
+        "role": "assistant",
+        "name": "MiniMax AI",
+        "audio_content": "",
+        "reasoning_content": "The user says: \"Return the exact text OK.\" The request is trivial: they want the assistant to output the exact text \"OK\". There's no disallowed content. So I should comply. The user just wants the literal string \"OK\". There's no conflict with policy. So we respond \"OK\".",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "id": "reasoning-text-1",
+            "format": "MiniMax-response-v1",
+            "index": 0,
+            "text": "The user says: \"Return the exact text OK.\" The request is trivial: they want the assistant to output the exact text \"OK\". There's no disallowed content. So I should comply. The user just wants the literal string \"OK\". There's no conflict with policy. So we respond \"OK\"."
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1779296961,
+  "model": "MiniMax-M2.7",
+  "object": "chat.completion",
+  "usage": {
+    "total_tokens": 112,
+    "total_characters": 0,
+    "prompt_tokens": 47,
+    "completion_tokens": 65,
+    "completion_tokens_details": {
+      "reasoning_tokens": 64
+    }
+  },
+  "input_sensitive": false,
+  "output_sensitive": false,
+  "input_sensitive_type": 0,
+  "output_sensitive_type": 0,
+  "output_sensitive_int": 0,
+  "base_resp": {
+    "status_code": 0,
+    "status_msg": ""
+  }
+}

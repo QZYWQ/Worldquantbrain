@@ -1,0 +1,160 @@
+# Platform Operation — 路径 C
+spec:
+  name: platform-operation
+  version: "2.4"
+  extends: task-router
+  path: C
+  triggers: ["提交", "同步", "标记", "API", "批量", "batch", "PATCH", "/check", "挖掘", "升阶", "upgrade", "favorite", "星标", "verify", "验证"]
+
+# ═══════════════════════════════════════════
+# v2.4: preflight 探索状态 + iterate 循环 + 错误分级 + skill 叠加
+# ═══════════════════════════════════════════
+
+states:
+  # ── v2.4 NEW: preflight — 探索性技术验证 ──
+  # 动机: API schema 验证 / 数据可用性检查 等必须调用 API 才能获得
+  # plan 所需的信息。硬禁止 API 会导致"不知道 API 能不能用就开始做计划"的死锁。
+  preflight:
+    order: 1  # 在 classify 和 plan 之间
+    on_enter: |
+      探索性验证：仅允许可逆的只读操作。在 plan 前获取必要的事实数据。
+      此状态不是正式执行——是信息收集。
+    allow:
+      - "GET 请求（只读 API）"
+      - "数据模式探索（schema / endpoint 验证）"
+      - "可用性检查（coverage / rate-limit 探路）"
+      - "读取已有配置 / 账户状态查询"
+      - "Bash: 跑探索性 Python 脚本（API 只读操作）"
+    forbid:
+      - "POST / PATCH / PUT / DELETE（写操作）"
+      - "提交 / 删除 / 修改账户数据"
+      - "Write 创建正式产出文件（临时脚本除外）"
+      - "不做决策——只收集信息"
+    rules:
+      - "探索性脚本用临时路径或 runs/ 目录"
+      - "每步 ≤1分钟（如果 API 慢则只做最关键的查询）"
+      - "收集到足够信息后立即进入 plan"
+      - "禁止在 preflight 中执行正式 batch mining"
+    exit_when: "字段可用性已确认 AND 限流/认证已确认 AND 有足够数据做计划"
+    next: plan
+    self_check: "我只在做信息收集，没在执行正式操作吗？"
+
+  # ── plan ──
+  plan:
+    order: 2
+    tools_from_library:
+      - langgraph-cli-run      # trigger: 批量API(api-batch.yaml)
+    rules:
+      - "基于 preflight 结果声明计划（不是猜测）"
+      - "声明 API 端点 + 方法 + 限流"
+      - "可逆优先: GET→PATCH→POST"
+      - "不可逆操作(submit/delete)标 [H]"
+      - "多步骤序列: 每个子阶段标注 expected 迭代数"
+      - "领域 skill（如项目自有的业务规则 skill）的知识约束并行生效——业务逻辑、数据约束、hard rules——作为计划的硬约束而非可选项"
+    output: "API 操作计划:\n1. [H/M/L] METHOD endpoint — 目的\n..."
+    next: execute
+    self_check: "计划是否基于 preflight 收集的事实而非假设?"
+
+  # ── execute：v2.4 新增循环分支 ──
+  execute:
+    order: 3
+    rules:
+      - "每步: 检查 status code, 记录结果"
+      - "限流: 等待 retry-after"
+      - "错误: 按错误分级处理（不全部暂停）"
+      - "产出: runs/ 对应目录"
+    # ── v2.4 NEW: 错误分级 ──
+    error_taxonomy:
+      expected:
+        description: "预期内的失败——特定操作在特定条件下已知会失败"
+        examples:
+          - "ts_rank 在季度数据上返回 ERROR"
+          - "某字段在特定 region/universe 下不存在"
+          - "quantile 装饰器在不兼容的操作上失败"
+        behavior: "记录 → 跳过当前变体 → 继续下一个"
+        marker: "[EXP]"
+      rate_limit:
+        description: "API 限流——临时性的"
+        examples:
+          - "HTTP 429 + Retry-After header"
+          - "CONCURRENT_SIMULATION_LIMIT_EXCEEDED"
+        behavior: "等待 Retry-After → 重试 → 最多 3 次 → 仍失败则记录+跳过"
+        marker: "[RATE]"
+      system:
+        description: "系统级错误——意外的，需要诊断"
+        examples:
+          - "SSL EOF error"
+          - "JSON parse error on expected 200 response"
+          - "认证失败(401)"
+        behavior: "暂停 → 汇报错误详情 → 等待用户决策"
+        marker: "[SYS]"
+    # ── v2.4 NEW: 循环分支 ──
+    next:
+      - target: verify
+        condition: "所有步骤完成且不符合 iterate 条件"
+      - target: analyze
+        condition: "结果需要诊断优化（关键指标不达标/子集验证未通过/状态检查pending）"
+    self_check: "错误处理用的是正确的分级吗？"
+
+  # ── v2.4 NEW: analyze — 结果诊断后的再规划节点 ──
+  # 动机: 研究本质上是 analyze→replan→execute 循环。
+  # 不需要全部回到 classify，只需要在当前路径内重定向。
+  analyze:
+    order: 4  # execute 和 verify 之间
+    on_enter: "检查 execute 的结果，判断是否需要迭代优化。"
+    allow:
+      - "读取模拟结果"
+      - "分析关键指标"
+      - "诊断瓶颈"
+      - "规划下一轮变体"
+    forbid:
+      - "直接执行优化变体（需先回 execute）"
+      - "修改已完成变体的记录"
+    rules:
+      - "瓶颈诊断: 哪个指标最先失败？→ 定向修复（不是盲扫参数）"
+      - "最多 3 轮迭代（analyze→execute→analyze...）——之后强制 kill/branch"
+      - "领域 skill 的 stop conditions 优先: 相似度>阈值→换方向, 不是同参数微调"
+      - "迭代理由必须 ≤2 行——不是'再试试'而是'因为 X 指标在 Y 阈值下, 用 Z 操作修复'"
+    next:
+      - target: execute
+        condition: "≤3 轮迭代 AND 有明确的定向修复策略"
+      - target: verify
+        condition: "不再需要迭代 OR 已达 3 轮上限"
+    output: "诊断: <瓶颈> | 修复策略: ≤2行 | 本轮迭代: N/3"
+    self_check: "这是定向修复还是盲扫参数？"
+
+  # ── verify ──
+  verify:
+    order: 5
+    tools_from_library:
+      - verify                 # evidence-based completion
+    checks:
+      - "所有操作结果已记录"
+      - "提交: /check 8-PASS 通过"
+      - "账户状态已同步"
+      - "迭代记录: 如果用了 analyze 循环, 记录每轮迭代的理由+结果"
+    output: "## 验证结果\n- 模拟数: N\n- 通过: M\n- 8-PASS: K\n- 记录路径: ..."
+
+  # ── done ──
+  done:
+    order: 6
+    actions:
+      - "omega_store: 关键发现 + 方向确认/终止 + 瓶颈教训"
+      - "保存最终报告"
+    output: "## 完成摘要\n- 方向: ...\n- 最佳候选: ...\n- 决策: keep/submit/branch/kill"
+
+# ═══════════════════════════════════════════
+# v2.4: Skill 叠加规则
+# ═══════════════════════════════════════════
+skill_composition:
+  when_multiple_skills:
+    rule: |
+      路径 C 的 platform-operation spec 控制状态流程（how to execute）。
+      领域 skill（如项目自有的业务规则 skill）控制知识约束（what is valid）。
+      两者并行加载，不互斥。
+  domain_skill_role: "知识约束层——业务规则、数据约束、stop conditions。不对状态转换做门控。"
+  path_spec_role: "执行流程层——状态转换、错误处理、产出路由。不做领域判断。"
+  conflict_resolution: |
+    当领域 skill 的 stop condition 与 execute 的"继续"冲突时：
+    → 领域 skill 优先（stop condition 是 hard rule）
+    → 记录: "[SKILL STOP] <condition> → <action>"

@@ -1,0 +1,112 @@
+{
+  "_instructions": [
+    "FO batch: trade_when_momentum field exploration",
+    "Hypothesis: Momentum trigger on price action combined with trade_when gating",
+    "Reference: gJmojOQm used densify(bucket(rank(cap))) wrapper to pass self-corr",
+    "Field: trade_when(ts_delta(close,5)>0, ts_rank(close,20), -1) - FO S=0.71, F=1.14",
+    "Risk: May have same self-corr issues as trade_when_sector_vol - need SC check first"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-19-trade-when-momentum-expansion",
+  "topic": "trade_when_momentum_price_trigger",
+  "author": "Claude",
+  "source": "hypothesis_driven",
+  "hypothesis": "Price momentum trigger - when recent price rises, take momentum signal, hold -1 day",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "baseline_momentum",
+      "description": "Baseline: trade_when(ts_delta(close,5)>0, ts_rank(close,20), -1)",
+      "expression": "trade_when(ts_delta(close,5)>0, ts_rank(close,20), -1)",
+      "settings": {}
+    },
+    {
+      "name": "reversed_momentum",
+      "description": "Reversed: trade_when(ts_delta(close,5)<0, ts_rank(close,20), -1)",
+      "expression": "trade_when(ts_delta(close,5)<0, ts_rank(close,20), -1)",
+      "settings": {}
+    },
+    {
+      "name": "momentum_densify_bucket",
+      "description": "With gJmojOQm densify/bucket wrapper",
+      "expression": "trade_when(ts_delta(close,5)>0, ts_rank(close,20), -1, densify(bucket(rank(cap))))",
+      "settings": {}
+    },
+    {
+      "name": "momentum_group_rank_sector",
+      "description": "group_rank with sector",
+      "expression": "trade_when(ts_delta(close,5)>0, group_rank(ts_rank(close,20), sector), -1)",
+      "settings": {}
+    },
+    {
+      "name": "momentum_group_rank_industry",
+      "description": "group_rank with industry",
+      "expression": "trade_when(ts_delta(close,5)>0, group_rank(ts_rank(close,20), industry), -1)",
+      "settings": {}
+    },
+    {
+      "name": "momentum_decay15",
+      "description": "With decay=15",
+      "expression": "trade_when(ts_delta(close,5)>0, ts_rank(close,20), -1)",
+      "settings": {
+        "decay": 15
+      }
+    },
+    {
+      "name": "momentum_decay6",
+      "description": "With decay=6",
+      "expression": "trade_when(ts_delta(close,5)>0, ts_rank(close,20), -1)",
+      "settings": {
+        "decay": 6
+      }
+    },
+    {
+      "name": "momentum_volume_trigger",
+      "description": "Volume-based trigger instead of price",
+      "expression": "trade_when(ts_delta(volume,5)>0, ts_rank(close,20), -1)",
+      "settings": {}
+    },
+    {
+      "name": "momentum_zscore_trigger",
+      "description": "Zscore of price change as trigger",
+      "expression": "trade_when(ts_zscore(close,10)>0, ts_rank(close,20), -1)",
+      "settings": {}
+    },
+    {
+      "name": "momentum_corr_trigger",
+      "description": "Correlation trigger - d5nbrQ5J pattern",
+      "expression": "trade_when(ts_corr(close,volume,20)<0, group_rank(ts_rank(close,20), market), -1)",
+      "settings": {}
+    },
+    {
+      "name": "momentum_corr_densify",
+      "description": "Correlation trigger with densify wrapper",
+      "expression": "trade_when(ts_corr(close,volume,20)<0, group_rank(ts_rank(close,20), market), -1, densify(bucket(rank(cap))))",
+      "settings": {}
+    }
+  ],
+  "expected_outcomes": {
+    "sign_positive": "Positive momentum triggers should predict returns",
+    "self_corr_target": "< 0.7 with densify wrapper or decay",
+    "fitness_target": "> 1.0",
+    "sharpe_target": "> 1.25"
+  },
+  "risk_factors": [
+    "trade_when mechanism may have self-corr issues like trade_when_sector_vol",
+    "Need to run SC check after simulation",
+    "FO showed S=0.71, F=1.14 - need to boost"
+  ],
+  "notes": "trade_when_sector_vol (QPn0vn3X) was submitted with S=1.57. This tests different trigger mechanism. SC check required before submission."
+}

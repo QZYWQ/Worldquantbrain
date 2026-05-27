@@ -1,0 +1,18 @@
+{
+  "verified_at": "2026-05-25T18:25:00+08:00",
+  "total_8pass_favorites": 12,
+  "favorites": [
+    {"id": "wpLmjx55", "sharpe": 2.23, "fitness": 1.45, "turnover": 0.249, "sc": 0.9491, "family": "anl4_eps/close"},
+    {"id": "QPEJ0oA5", "sharpe": 2.23, "fitness": 1.05, "turnover": 0.6892, "sc": 0.1037, "family": "close_delta_short"},
+    {"id": "rKA3eXKo", "sharpe": 2.08, "fitness": 1.13, "turnover": 0.4744, "sc": 0.6369, "family": "price_volume_complex"},
+    {"id": "VkOY2jWY", "sharpe": 2.07, "fitness": 1.46, "turnover": 0.0595, "sc": 0.8081, "family": "operating_income_densify"},
+    {"id": "RRd3e7jn", "sharpe": 1.92, "fitness": 1.09, "turnover": 0.4436, "sc": 0.2366, "family": "close_delta_medium"},
+    {"id": "0mzlEp32", "sharpe": 1.87, "fitness": 1.04, "turnover": 0.5325, "sc": 0.5896, "family": "close_zscore_short"},
+    {"id": "QPEJW2QG", "sharpe": 1.84, "fitness": 1.10, "turnover": 0.2962, "sc": 0.6804, "family": "sentiment_pv_complex"},
+    {"id": "JjbwOAMx", "sharpe": 1.78, "fitness": 1.05, "turnover": 0.5237, "sc": 0.6034, "family": "close_zscore_short"},
+    {"id": "d5dXKzmK", "sharpe": 1.58, "fitness": 1.21, "turnover": 0.1045, "sc": 0.6628, "family": "sentiment_pv_reversal"},
+    {"id": "kqQ7GX6K", "sharpe": 1.58, "fitness": 1.03, "turnover": 0.3727, "sc": null, "family": "revenue_delta"},
+    {"id": "blvk8vpM", "sharpe": 1.53, "fitness": 1.08, "turnover": 0.0771, "sc": 0.6176, "family": "sentiment_pv_reversal"},
+    {"id": "d5d8p1x2", "sharpe": 1.50, "fitness": 1.03, "turnover": 0.0204, "sc": 0.458, "family": "accrued_liabilities"}
+  ]
+}

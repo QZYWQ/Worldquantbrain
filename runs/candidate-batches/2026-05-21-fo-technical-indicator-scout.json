@@ -1,0 +1,139 @@
+{
+  "_instructions": [
+    "FO Field Health Scout - Technical Indicators Direction",
+    "Goal: Find 3-5 usable technical indicator expressions with predictive power",
+    "Method: Simple ts_rank test per expression, None neutralization, decay 0",
+    "Key insight from previous run: P1M may be too short for FO stability",
+    "Using testPeriod=P3M for better signal-to-noise ratio",
+    "Skip if alphaId=null (expression syntax error) - record as KILL"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-21-fo-technical-indicator-scout",
+  "topic": "field_health_scout_technical_indicators",
+  "author": "Claude",
+  "source": "technical_indicators_prompt",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "neutralization": "NONE",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "diagnostic_objective": "Find expressions with: (1) non-zero coverage >60%, (2) Sharpe > 0.5 as simple ts_rank, (3) not overlapping with submitted families",
+  "candidates": [
+    {
+      "name": "close_vwap_health",
+      "description": "Price relative to value proxy - mean-reversion signal",
+      "expression": "ts_rank(close/vwap, 20)",
+      "expected_failure": "Already submitted returns_vwap uses different field"
+    },
+    {
+      "name": "returns_health",
+      "description": "Raw returns - momentum signal",
+      "expression": "ts_rank(returns, 20)",
+      "expected_failure": "May be too noisy on its own"
+    },
+    {
+      "name": "volume_ratio_health_20",
+      "description": "Volume relative to 20-day average - behavioral",
+      "expression": "ts_rank(volume/ts_mean(volume,20), 20)",
+      "expected_failure": "May be too crowded with volume-based families"
+    },
+    {
+      "name": "volume_ratio_health_60",
+      "description": "Volume relative to 60-day average - longer-term behavioral",
+      "expression": "ts_rank(volume/ts_mean(volume,60), 20)",
+      "expected_failure": "May be too slow updating"
+    },
+    {
+      "name": "ts_zscore_returns_20_health",
+      "description": "Standardized returns - mean-reversion",
+      "expression": "ts_rank(ts_zscore(returns, 20), 20)",
+      "expected_failure": "Double ts operator may be redundant"
+    },
+    {
+      "name": "ts_zscore_returns_60_health",
+      "description": "Standardized returns 60-day - smoother signal",
+      "expression": "ts_rank(ts_zscore(returns, 60), 20)",
+      "expected_failure": "May be too slow"
+    },
+    {
+      "name": "ts_corr_close_volume_20_health",
+      "description": "Price-volume correlation - sentiment/confidence",
+      "expression": "ts_rank(ts_corr(close,volume,20), 20)",
+      "expected_failure": "May be too noisy"
+    },
+    {
+      "name": "ts_corr_close_volume_60_health",
+      "description": "Price-volume correlation 60-day - smoother",
+      "expression": "ts_rank(ts_corr(close,volume,60), 20)",
+      "expected_failure": "May be too slow"
+    },
+    {
+      "name": "ts_std_dev_returns_20_health",
+      "description": "Volatility signal - risk/uncertainty",
+      "expression": "ts_rank(ts_std_dev(returns,20), 20)",
+      "expected_failure": "Volatility signals often low Sharpe"
+    },
+    {
+      "name": "ts_std_dev_returns_60_health",
+      "description": "Longer volatility - more stable",
+      "expression": "ts_rank(ts_std_dev(returns,60), 20)",
+      "expected_failure": "May be too slow"
+    },
+    {
+      "name": "ts_mean_returns_20_health",
+      "description": "20-day momentum - trend following",
+      "expression": "ts_rank(ts_mean(returns,20), 20)",
+      "expected_failure": "Classic momentum - may be crowded"
+    },
+    {
+      "name": "ts_mean_returns_60_health",
+      "description": "60-day momentum - longer trend",
+      "expression": "ts_rank(ts_mean(returns,60), 20)",
+      "expected_failure": "May be too slow"
+    },
+    {
+      "name": "ts_delta_returns_5_health",
+      "description": "Short-term return change - momentum",
+      "expression": "ts_rank(ts_delta(returns,5), 20)",
+      "expected_failure": "May be too noisy"
+    },
+    {
+      "name": "ts_delta_returns_20_health",
+      "description": "Medium-term return change - trend",
+      "expression": "ts_rank(ts_delta(returns,20), 20)",
+      "expected_failure": "May overlap with momentum families"
+    },
+    {
+      "name": "high_low_health",
+      "description": "Intraday range - volatility proxy",
+      "expression": "ts_rank(high-low, 20)",
+      "expected_failure": "Already submitted as range family"
+    },
+    {
+      "name": "close_low_health",
+      "description": "Close-to-low range - downside pressure",
+      "expression": "ts_rank(close-low, 20)",
+      "expected_failure": "May overlap with range family"
+    }
+  ],
+  "expected_outcomes": {
+    "pass_criteria": "Sharpe > 0.5, non-zero coverage >60%, alphaId exists",
+    "kill_criteria": "alphaId=null (syntax error), Sharpe < 0.3, coverage <50%",
+    "significance": "If 3+ expressions pass, can expand into SO family batches"
+  },
+  "avoid_families": [
+    "returns_vwap (88Ob79jV) - close/vwap is different field but be aware",
+    "range (high-low) - already submitted LLgOWZmn",
+    "ts_decay_linear - KILL, high self-corr",
+    "model51 - KILL, fields don't exist"
+  ],
+  "notes": "Using P3M test period instead of P1M for better signal stability. ts_* operators with longer windows (60) may perform better than 20."
+}

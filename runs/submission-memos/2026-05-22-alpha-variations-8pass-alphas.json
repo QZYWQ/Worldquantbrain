@@ -1,0 +1,232 @@
+[
+  {
+    "original_id": "bloqmdJK_v2",
+    "alpha_id": "d5dXKzmK",
+    "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,15)) > 0.55, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 3,
+      "neutralization": "MARKET",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "metrics": {
+      "sharpe": 1.58,
+      "fitness": 1.21,
+      "turnover": 0.1045,
+      "returns": 0.0737,
+      "drawdown": 0.0345,
+      "margin": 0.00141,
+      "longCount": 1577,
+      "shortCount": 1481
+    },
+    "simulation_status": "COMPLETE",
+    "status": "CHECKED",
+    "self_correlation": null,
+    "checks": [
+      {
+        "name": "LOW_SHARPE",
+        "result": "PASS",
+        "limit": 1.25,
+        "value": 1.58
+      },
+      {
+        "name": "LOW_FITNESS",
+        "result": "PASS",
+        "limit": 1.0,
+        "value": 1.21
+      },
+      {
+        "name": "LOW_TURNOVER",
+        "result": "PASS",
+        "limit": 0.01,
+        "value": 0.1045
+      },
+      {
+        "name": "HIGH_TURNOVER",
+        "result": "PASS",
+        "limit": 0.7,
+        "value": 0.1045
+      },
+      {
+        "name": "CONCENTRATED_WEIGHT",
+        "result": "PASS"
+      },
+      {
+        "name": "LOW_SUB_UNIVERSE_SHARPE",
+        "result": "PASS",
+        "limit": 0.68,
+        "value": 0.9
+      },
+      {
+        "name": "SELF_CORRELATION",
+        "result": "PASS",
+        "limit": 0.7,
+        "value": 0.6628
+      },
+      {
+        "name": "MATCHES_COMPETITION",
+        "result": "PASS",
+        "competitions": [
+          {
+            "id": "challenge",
+            "name": "Challenge"
+          }
+        ]
+      }
+    ],
+    "check_count": 8,
+    "pass_count": 8,
+    "fail_count": 0,
+    "strict_8pass": true,
+    "non_pass_checks": [],
+    "raw_check": {
+      "is": {
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.58
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.21
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.1045
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.1045
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.68,
+            "value": 0.9
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.6628
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ],
+        "selfCorrelated": {
+          "schema": {
+            "name": "selfCorrelation",
+            "title": "Self Correlated",
+            "properties": [
+              {
+                "name": "id",
+                "title": "Id",
+                "type": "string"
+              },
+              {
+                "name": "name",
+                "title": "Name",
+                "type": "string"
+              },
+              {
+                "name": "instrumentType",
+                "title": "Instrument Type",
+                "type": "string"
+              },
+              {
+                "name": "region",
+                "title": "Region",
+                "type": "string"
+              },
+              {
+                "name": "universe",
+                "title": "Universe",
+                "type": "string"
+              },
+              {
+                "name": "correlation",
+                "title": "Correlation",
+                "type": "decimal"
+              },
+              {
+                "name": "sharpe",
+                "title": "Sharpe",
+                "type": "decimal"
+              },
+              {
+                "name": "returns",
+                "title": "Returns",
+                "type": "percent"
+              },
+              {
+                "name": "turnover",
+                "title": "Turnover",
+                "type": "percent"
+              },
+              {
+                "name": "fitness",
+                "title": "Fitness",
+                "type": "decimal"
+              },
+              {
+                "name": "margin",
+                "title": "Margin",
+                "type": "permyriad"
+              }
+            ]
+          },
+          "records": [
+            [
+              "A1kWl0LE",
+              null,
+              "EQUITY",
+              "USA",
+              "TOP3000",
+              0.6628,
+              1.76,
+              0.0978,
+              0.1171,
+              1.56,
+              0.001671
+            ]
+          ],
+          "min": null,
+          "max": 0.6628
+        }
+      }
+    }
+  }
+]

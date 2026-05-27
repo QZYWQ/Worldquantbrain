@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-11-mdl177-value-momentum-composite-batch",
+  "topic": "model77_mdl177_value_momentum_composite",
+  "candidates": [
+    {
+      "name": "mdl177_baseline",
+      "expression": "group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "mdl177_sign_control",
+      "expression": "-group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    }
+  ]
+}

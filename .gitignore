@@ -18,6 +18,22 @@ harness/reports/**
 harness/artifacts/**
 !harness/artifacts/README.md
 
+# Credential files (must never be committed)
+credential.txt
+brain_credentials.txt
+scripts/wqb_session_creds.json
+
+# Playwright MCP debug logs
+.playwright-mcp/
+
+# Browser session data (should not be in project)
+runs/simulation-captures/browser-session/
+runs/simulation-captures/chrome-session/
+
+# Log files
+*.log
+
 # Ephemeral session-start artifacts
 runs/session-briefs/**
 !runs/session-briefs/README.md
+.gitnexus

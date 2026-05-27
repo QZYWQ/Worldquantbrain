@@ -1,0 +1,82 @@
+[
+  {
+    "id": "multi_factor_static_score_derivative",
+    "type": "MATRIX",
+    "coverage": 1.0,
+    "alphaCount": 98,
+    "dataset": "model16",
+    "category": "model",
+    "subcategory": "model-valuation-models",
+    "description": "Change in static multi-factor score compared to previous period."
+  },
+  {
+    "id": "multi_factor_acceleration_score_derivative",
+    "type": "MATRIX",
+    "coverage": 1.0,
+    "alphaCount": 139,
+    "dataset": "model16",
+    "category": "model",
+    "subcategory": "model-valuation-models",
+    "description": "Change in the acceleration of multi-factor score compared to previous period."
+  },
+  {
+    "id": "growth_potential_rank_derivative",
+    "type": "MATRIX",
+    "coverage": 1.0,
+    "alphaCount": 152,
+    "dataset": "model16",
+    "category": "model",
+    "subcategory": "model-valuation-models",
+    "description": "Composite growth score qualifying the stock’s expected medium‑term growth potential"
+  },
+  {
+    "id": "earnings_certainty_rank_derivative",
+    "type": "MATRIX",
+    "coverage": 1.0,
+    "alphaCount": 175,
+    "dataset": "model16",
+    "category": "model",
+    "subcategory": "model-valuation-models",
+    "description": "Measures the sustainability and certainty of earnings quality"
+  },
+  {
+    "id": "fnd2_dfdtxasoprlcarryfwd",
+    "type": "MATRIX",
+    "coverage": 0.6232,
+    "alphaCount": 535,
+    "dataset": "fundamental2",
+    "category": "fundamental",
+    "subcategory": "fundamental-footnotes",
+    "description": "Amount before allocation of valuation allowances of deferred tax asset attributable to deductible operating loss carryforwards."
+  },
+  {
+    "id": "fnd2_dfdfeditxexp",
+    "type": "MATRIX",
+    "coverage": 0.5396,
+    "alphaCount": 203,
+    "dataset": "fundamental2",
+    "category": "fundamental",
+    "subcategory": "fundamental-footnotes",
+    "description": "Income Tax Expense, Deferred - Federal"
+  },
+  {
+    "id": "fnd2_dfdtxastxdfdexpcompbnf",
+    "type": "MATRIX",
+    "coverage": 0.5349,
+    "alphaCount": 348,
+    "dataset": "fundamental2",
+    "category": "fundamental",
+    "subcategory": "fundamental-footnotes",
+    "description": "Amount before allocation of valuation allowances of deferred tax asset attributable to deductible temporary differences from compensation and benefits costs."
+  },
+  {
+    "id": "fnd2_dfdtxastxdfdexprssaccrs",
+    "type": "MATRIX",
+    "coverage": 0.5203,
+    "alphaCount": 421,
+    "dataset": "fundamental2",
+    "category": "fundamental",
+    "subcategory": "fundamental-footnotes",
+    "description": "Amount before allocation of valuation allowances of deferred tax asset attributable to deductible temporary differences from reserves and accruals."
+  }
+]

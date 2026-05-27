@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "queue_id": "research-queue-2026-05-11-v2",
+  "generated_at": "2026-05-11T01:00:00+0800",
+  "status": "ready_to_execute",
+  "note": "Updated after CrossSection academic analysis. news_sentiment STOPPED, social_buzz DEAD. New high-value families added.",
+  "queues": [
+    {
+      "priority": 1,
+      "family": "external_financing_share_dilution",
+      "family_key": "external_financing_share_dilution",
+      "hypothesis": "YoY change in shares outstanding (dilution) is a strong bearish predictor; firms aggressively issuing equity are overvalued; shrinkage outperforms",
+      "source": "CrossSection Academic (mdl77_valueanalystmodel_qva_yoychgshares)",
+      "status": "ready_to_execute",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "model77",
+      "fields_to_diagnose": ["mdl77_valueanalystmodel_qva_yoychgshares"],
+      "baseline_expression": "-group_rank(ts_rank(mdl77_valueanalystmodel_qva_yoychgshares, 20), industry)",
+      "sign_control_expression": "group_rank(ts_rank(mdl77_valueanalystmodel_qva_yoychgshares, 20), industry)",
+      "stop_condition": "If coverage < 70% or ts_rank produces no alpha (alphaId=null), stop family",
+      "estimated_simulations": 4,
+      "blocking_families": []
+    },
+    {
+      "priority": 2,
+      "family": "earnings_quality_value",
+      "family_key": "earnings_quality_value",
+      "hypothesis": "Low Earnings-to-Price combined with high ROE captures the quality-value intersection; proforma_earnings_to_price has 96% coverage but only 1 BRAIN alpha uses it — extremely uncrowded value signal",
+      "source": "CrossSection Academic + BRAIN field discovery",
+      "status": "ready_to_execute",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "fundamental",
+      "fields_to_diagnose": ["proforma_earnings_to_price", "return_on_invested_capital_4"],
+      "baseline_expression": "group_rank(ts_rank(proforma_earnings_to_price, 20), industry)",
+      "sign_control_expression": "-group_rank(ts_rank(proforma_earnings_to_price, 20), industry)",
+      "stop_condition": "If proforma_earnings_to_price coverage < 70%, stop family",
+      "estimated_simulations": 4,
+      "blocking_families": []
+    },
+    {
+      "priority": 3,
+      "family": "model_composite_value_momentum",
+      "family_key": "model_composite_value_momentum",
+      "hypothesis": "Model-generated value-momentum composite signals (mdl177/fscore_total) provide orthogonal alpha not captured by raw price/volume; combining multiple model signals improves robustness",
+      "status": "ready_to_execute",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "model",
+      "fields_to_diagnose": ["mdl177_valuemomemtummodel_vm_compositesn", "fscore_total"],
+      "baseline_expression": "group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "sign_control_expression": "-group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "stop_condition": "If mdl177 coverage < 60%, stop family",
+      "estimated_simulations": 6,
+      "blocking_families": []
+    }
+  ],
+  "frozen_families": [
+    {
+      "family": "news_sentiment_momentum",
+      "reason": "EVENT fields (nws18_*) cannot use ts_zscore/ts_rank/group_rank — confirmed STOP",
+      "memo": "runs/notes/daily/2026-05-11-field-health-diagnostic-results.md"
+    },
+    {
+      "family": "social_buzz_acceleration",
+      "reason": "scl12_* fields accept ts_rank but produce no alpha (alphaId=null) — constant/NaN for TOP3000",
+      "memo": "runs/notes/daily/2026-05-11-field-health-diagnostic-results.md"
+    },
+    {
+      "family": "short_interest_squeeze",
+      "reason": "short_interest fields don't exist in BRAIN (unknown variable)",
+      "memo": "runs/notes/daily/2026-05-09-short-interest-research-decision.md"
+    },
+    {
+      "family": "close_delta_family",
+      "reason": "All 12 variants share same signal source (ts_delta close,1); structural self-correlation expected",
+      "memo": "runs/candidate-batches/2026-05-10-close-delta-family-results.md"
+    },
+    {
+      "family": "eps_quality_yield_backup",
+      "reason": "QP2v6rVW self-corr 0.9221 FAIL; frozen",
+      "memo": "runs/submission-memos/2026-05-07-qp2v6rvw-self-corr-freeze.md"
+    }
+  ],
+  "active_submitted": [
+    {
+      "alpha": "E5g7vMjJ",
+      "family": "price_volume_corr",
+      "sharpe": 1.37,
+      "fitness": 1.01,
+      "status": "ACTIVE"
+    },
+    {
+      "alpha": "A1gVE97w",
+      "family": "eps_quality_yield",
+      "sharpe": 1.63,
+      "fitness": 1.04,
+      "status": "ACTIVE/OS"
+    },
+    {
+      "alpha": "bloqmdJK",
+      "family": "price_volume_social_gate",
+      "sharpe": 1.61,
+      "fitness": 1.25,
+      "status": "UNSUBMITTED (ready to submit — SC PASS, all gates passed)"
+    }
+  ],
+  "execution_blocked_by": ["chrome_cdp_session_auth"],
+  "execution_ready_when": "Chrome CDP session re-authenticates; then run field health diagnostics for external_financing_share_dilution (priority 1)"
+}

@@ -1,0 +1,66 @@
+{
+  "batch": "2026-05-14-fnd6-capital-quality-structural-probes",
+  "capture_id": "candidate-batch-2026-05-14",
+  "topic": "fnd6 capital return quality and capital structure timing signals",
+  "source": "api.worldquantbrain.com/users/self/alphas",
+  "captured_at": "2026-05-14T14:35:00+08:00",
+  "candidates": [
+    {
+      "name": "fnd6_capital_return_quality_signflip_candidate",
+      "expression": "subtract(0, divide(fnd6_rectr, max(fnd6_recd, 1)))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      },
+      "purpose": "fnd6_rectr/fnd6_recd capital return quality ratio; sign-flip candidate (parent Sharpe 0.94, Fitness 0.73, Turn 0.0127); distinct from EPS yield family and any active submission"
+    },
+    {
+      "name": "fnd6_capital_structure_timing_industry_neutral",
+      "expression": "group_neutralize(multiply(sign(fnd6_siv), subtract(fnd6_prclq, ts_mean(fnd6_prclq, 20))), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      },
+      "purpose": "fnd6_siv/prclq capital structure timing signal; Sharpe 0.82, Fitness 0.54, Turn 0.19; industry neutralized; distinct from price-volume family"
+    },
+    {
+      "name": "fnd6_earnings_acceleration_reversal_decay_probe",
+      "expression": "subtract(0, multiply(fnd6_prstkc, max(fnd6_rea, fnd6_reajo)))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      },
+      "purpose": "fnd6_prstkc with fnd6_rea/fnd6_reajo earnings acceleration reversal; sign-flip candidate (parent Sharpe 0.64, Fitness 0.50); decay=6 controls turnover; entirely different mechanism from active returns/vwap/volume submission"
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 # Harness Agents Guide
 
+> **工作流**: 见 `../.langgraph/CLAUDE.md`。本目录的编码规则由项目级工作流统一管理。
+> 读取本文件后，必须同时读取 `../.langgraph/CLAUDE.md`。
+
 ## Purpose
 
 This directory is the long-running execution harness for WorldQuant alpha engineering inside the project workspace.

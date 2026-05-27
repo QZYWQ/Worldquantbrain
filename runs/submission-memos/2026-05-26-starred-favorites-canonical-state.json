@@ -1,0 +1,26 @@
+{
+  "synced_at": "2026-05-26T14:05:08+08:00",
+  "total_alphas": 875,
+  "active_submissions": 6,
+  "submitted_ids": ["A1kWl0LE", "O0ovYJXg", "0mzWQbPK", "d5d8p1x2", "j21QzK9E", "np3Jrqal"],
+  "starred_favorites_total": 13,
+
+  "removed": [
+    {"id": "QPEJ0oA5", "family": "close_delta", "reason": "旧账户已提交家族"},
+    {"id": "RRd3e7jn", "family": "close_delta", "reason": "旧账户已提交家族"},
+    {"id": "MPkAX0LM", "family": "operating_income", "reason": "SC=0.9975 FAIL"}
+  ],
+
+  "submittable_favorites": [
+    {"id": "wpLmjx55", "S": 2.23, "F": 1.45, "TVR": 0.249, "SC": 0.9491, "family": "anl4_eps/close"},
+    {"id": "rKA3eXKo", "S": 2.08, "F": 1.13, "TVR": 0.4744, "SC": 0.6369, "family": "price_volume_complex"},
+    {"id": "VkOY2jWY", "S": 2.07, "F": 1.46, "TVR": 0.0595, "SC": 0.8081, "family": "operating_income_densify"},
+    {"id": "0mzlEp32", "S": 1.87, "F": 1.04, "TVR": 0.5325, "SC": 0.5896, "family": "close_zscore_short"},
+    {"id": "QPEJW2QG", "S": 1.84, "F": 1.10, "TVR": 0.2962, "SC": 0.6804, "family": "sentiment_pv_complex"},
+    {"id": "JjbwOAMx", "S": 1.78, "F": 1.05, "TVR": 0.5237, "SC": 0.6034, "family": "close_zscore_short"},
+    {"id": "E5kobRlG", "S": 1.58, "F": 1.13, "TVR": 0.0406, "SC": 0.6147, "family": "debt_carrying/assets", "best_independent": true},
+    {"id": "kqQ7GX6K", "S": 1.58, "F": 1.03, "TVR": 0.3727, "SC": 0.5509, "family": "revenue_delta"},
+    {"id": "d5dXKzmK", "S": 1.58, "F": 1.21, "TVR": 0.1045, "SC": 0.6628, "family": "sentiment_pv_reversal"},
+    {"id": "blvk8vpM", "S": 1.53, "F": 1.08, "TVR": 0.0771, "SC": 0.6176, "family": "sentiment_pv_reversal"}
+  ]
+}

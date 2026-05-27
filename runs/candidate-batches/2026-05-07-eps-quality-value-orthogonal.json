@@ -1,0 +1,100 @@
+{
+  "capture_id": "2026-05-07-eps-quality-value-orthogonal",
+  "topic": "eps_quality_value_orthogonal",
+  "source_expression": "multiply(add(eps, 50), 50, filter=true)",
+  "expression_family": "runs/expression-families/2026-05-07-eps-quality-value-orthogonal.md",
+  "candidates": [
+    {
+      "name": "eps_yield_60_industry",
+      "expression": "group_rank(ts_rank(eps / close, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    },
+    {
+      "name": "eps_yield_60_industry_sign_control",
+      "expression": "group_rank(-ts_rank(eps / close, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    },
+    {
+      "name": "eps_yield_x_completeness_252_industry",
+      "expression": "group_rank(multiply(ts_rank(eps / close, 60), -ts_count_nans(eps, 252)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    },
+    {
+      "name": "eps_yield_delta_63_rank_252_industry",
+      "expression": "group_rank(ts_rank(ts_delta(eps / close, 63), 252), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    }
+  ]
+}

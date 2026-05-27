@@ -1,0 +1,46 @@
+{
+  "run_dir": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/model-ab/2026-05-20-qwen36-vs-api-offline",
+  "qwen_status": {
+    "ok": true,
+    "elapsed_sec": 125.22,
+    "model": "qwen3.6:27b",
+    "endpoint": "/api/chat",
+    "done_reason": "stop",
+    "eval_count": 972,
+    "prompt_eval_count": 770
+  },
+  "candidate_count": 24,
+  "unique_expression_count": 24,
+  "hypothesis_count": 8,
+  "field_family_count": 2,
+  "field_family_counter": {
+    "model16:model:model-valuation-models": 24,
+    "fundamental2:fundamental:fundamental-footnotes": 15
+  },
+  "operator_count": 16,
+  "operator_counter": {
+    "vec_avg": 14,
+    "multiply": 9,
+    "rank": 8,
+    "ts_rank": 5,
+    "subtract": 4,
+    "group_neutralize": 4,
+    "ts_delta": 3,
+    "add": 3,
+    "divide": 3,
+    "ts_zscore": 2,
+    "group_rank": 2,
+    "log": 1,
+    "group_zscore": 1,
+    "signed_power": 1,
+    "ts_mean": 1,
+    "winsorize": 1
+  },
+  "static_flag_counter": {
+    "group_numeric_second_arg": 2
+  },
+  "api_status": {
+    "available_env_keys": [],
+    "blocked_reason": "No recognized API model key is set in the current environment; API leg not executed."
+  }
+}

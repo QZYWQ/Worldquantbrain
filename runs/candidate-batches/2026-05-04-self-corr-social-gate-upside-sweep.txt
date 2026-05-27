@@ -1,0 +1,9 @@
+# Upside sweep after threshold 0.50 underperformed threshold 0.55.
+# Keep the passing structure and test a more selective social gate plus a
+# faster social window.
+
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.60, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)
+
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.65, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)
+
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,10)) > 0.55, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)

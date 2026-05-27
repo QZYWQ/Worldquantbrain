@@ -1,0 +1,17 @@
+# Ops Analysis — 路径 B
+spec:
+  name: ops-analysis
+  version: "2.1"
+  extends: task-router
+  path: B
+  triggers: ["审计", "扫描", "清理", "安全审查", "冗余", "代码质量", "依赖检查", "项目健康", "重构建议"]
+
+states:
+  plan:
+    tools_from_library:
+      - langgraph-cli-analyze  # 全局项目分析
+      - oh-my-claude-security-auditor  # trigger: 用户说'security'
+    rules:
+      - "全局→深入: 先 analyze, 再 target 具体文件"
+      - "发现分级: P0(立即)/P1(计划)/P2(建议)"
+    output: "## 分析报告\n### P0\n### P1\n### P2"

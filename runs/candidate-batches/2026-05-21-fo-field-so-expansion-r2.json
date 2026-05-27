@@ -1,0 +1,184 @@
+{
+  "_instructions": [
+    "SO Expansion Round 2 for FO-passing fields",
+    "Goal: Find self_corr < 0.7, Sharpe >= 1.25, Fitness >= 1.0",
+    "Strategy: Simpler expressions, test different structures from May-16 failures",
+    "May-16 failures used: group_rank(ts_zscore(field, 66), densify(bucket(...)))",
+    "New approach: group_neutralize, simpler ts operators, different neutralization粒度"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-21-fo-field-so-expansion-r2",
+  "topic": "so_expansion_round2",
+  "author": "Claude",
+  "source": "fo_field_health_scout_pass_r2",
+  "fields_tested": [
+    "snt1_d1_dynamicfocusrank (FO S=0.85, F=1.50)",
+    "revenue_growth_qoq (FO S=0.81, F=1.41)",
+    "fnd6_recco (FO S=0.77, F=1.31)",
+    "fnd6_rectr (FO S=0.76, F=1.29)",
+    "fn_interest_paid_net_q (FO S=0.78, F=1.36)",
+    "eps_revision (FO S=0.75, F=1.26)"
+  ],
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "snt1_group_neutralize_industry",
+      "description": "snt1 with group_neutralize + INDUSTRY - simpler structure",
+      "expression": "group_neutralize(ts_zscore(snt1_d1_dynamicfocusrank, 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "snt1_group_neutralize_subindustry",
+      "description": "snt1 with group_neutralize + SUBINDUSTRY",
+      "expression": "group_neutralize(ts_zscore(snt1_d1_dynamicfocusrank, 20), subindustry)",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "snt1_rank_market",
+      "description": "snt1 simple rank + market neutralization",
+      "expression": "group_rank(rank(snt1_d1_dynamicfocusrank), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "snt1_ts_zscore20_market",
+      "description": "snt1 ts_zscore + market neutralization",
+      "expression": "group_rank(ts_zscore(snt1_d1_dynamicfocusrank, 20), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "revenue_group_neutralize_industry",
+      "description": "revenue growth with group_neutralize + INDUSTRY",
+      "expression": "group_neutralize(ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_group_neutralize_subindustry",
+      "description": "revenue growth with group_neutralize + SUBINDUSTRY",
+      "expression": "group_neutralize(ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 20), subindustry)",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "revenue_rank_market",
+      "description": "revenue rank + market",
+      "expression": "group_rank(rank(ts_delta(revenue, 1) / ts_mean(revenue, 4)), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "revenue_ts_zscore20_market",
+      "description": "revenue ts_zscore + market",
+      "expression": "group_rank(ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 20), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "recco_group_neutralize_industry",
+      "description": "fnd6_recco group_neutralize + INDUSTRY",
+      "expression": "group_neutralize(ts_zscore(fnd6_recco, 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "recco_group_neutralize_subindustry",
+      "description": "fnd6_recco group_neutralize + SUBINDUSTRY",
+      "expression": "group_neutralize(ts_zscore(fnd6_recco, 20), subindustry)",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "recco_rank_market",
+      "description": "fnd6_recco rank + market",
+      "expression": "group_rank(rank(fnd6_recco), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "recco_ts_zscore20_market",
+      "description": "fnd6_recco ts_zscore + market",
+      "expression": "group_rank(ts_zscore(fnd6_recco, 20), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "rectr_group_neutralize_industry",
+      "description": "fnd6_rectr group_neutralize + INDUSTRY",
+      "expression": "group_neutralize(ts_zscore(fnd6_rectr, 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "rectr_group_neutralize_subindustry",
+      "description": "fnd6_rectr group_neutralize + SUBINDUSTRY",
+      "expression": "group_neutralize(ts_zscore(fnd6_rectr, 20), subindustry)",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "rectr_rank_market",
+      "description": "fnd6_rectr rank + market",
+      "expression": "group_rank(rank(fnd6_rectr), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "rectr_ts_zscore20_market",
+      "description": "fnd6_rectr ts_zscore + market",
+      "expression": "group_rank(ts_zscore(fnd6_rectr, 20), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "interest_group_neutralize_industry",
+      "description": "fn_interest_paid_net_q group_neutralize + INDUSTRY",
+      "expression": "group_neutralize(ts_zscore(fn_interest_paid_net_q, 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "interest_group_neutralize_subindustry",
+      "description": "fn_interest_paid_net_q group_neutralize + SUBINDUSTRY",
+      "expression": "group_neutralize(ts_zscore(fn_interest_paid_net_q, 20), subindustry)",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "interest_rank_market",
+      "description": "fn_interest_paid_net_q rank + market",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "interest_ts_zscore20_market",
+      "description": "fn_interest_paid_net_q ts_zscore + market",
+      "expression": "group_rank(ts_zscore(fn_interest_paid_net_q, 20), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "eps_rev_group_neutralize_industry",
+      "description": "eps_revision group_neutralize + INDUSTRY",
+      "expression": "group_neutralize(ts_zscore(ts_delta(eps, 1), 20), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "eps_rev_group_neutralize_subindustry",
+      "description": "eps_revision group_neutralize + SUBINDUSTRY",
+      "expression": "group_neutralize(ts_zscore(ts_delta(eps, 1), 20), subindustry)",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "eps_rev_rank_market",
+      "description": "eps_revision rank + market",
+      "expression": "group_rank(rank(ts_delta(eps, 1)), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "eps_rev_ts_zscore20_market",
+      "description": "eps_revision ts_zscore + market",
+      "expression": "group_rank(ts_zscore(ts_delta(eps, 1), 20), market)",
+      "settings": {"neutralization": "NONE"}
+    }
+  ],
+  "expected_outcomes": {
+    "pass_criteria": "Sharpe >= 1.25, Fitness >= 1.0, self_corr < 0.7",
+    "kill_criteria": "Sharpe < 1.0 or self_corr >= 0.7"
+  }
+}

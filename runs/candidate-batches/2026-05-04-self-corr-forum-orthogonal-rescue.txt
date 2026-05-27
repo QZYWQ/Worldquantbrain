@@ -1,0 +1,15 @@
+# Forum-guided self-correlation rescue candidates for the user-provided
+# price / range / volume alpha. Settings: USA TOP3000 D1, platform
+# neutralization MARKET, platform decay 3, testPeriod P1Y.
+
+# socialmedia12 update gate: keep the strong technical score but only refresh
+# when smoothed fast social sentiment is above the cross-sectional median.
+trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.55, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)
+
+# socialmedia12 weight overlay: directly changes cross-sectional weights with
+# a low-alpha-count, high-coverage social signal.
+group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry)*rank(ts_mean(scl12_sentiment_fast_d1,20)),40),subindustry)
+
+# news18 relevance event gate: tests a lower-coverage but different news
+# relevance mechanism using vector averaging before the event condition.
+trade_when(rank(ts_mean(vec_avg(nws18_relevance),20)) > 0.60, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)

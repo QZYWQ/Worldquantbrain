@@ -1,0 +1,155 @@
+# Intelligent Takeover — 智能接管协议 v1.0
+# 每次会话启动时运行一次，输出全局感知结果。
+# 独立于路由路径，在 classify 前执行。
+spec:
+  name: intelligent-takeover
+  version: "1.0.1"
+  entry: sense
+  priority: highest  # 在 task-router assess 之前执行
+
+# ═══════════════════════════════════════════
+# 四维感知
+# ═══════════════════════════════════════════
+states:
+  sense:
+    order: 0
+    layers:
+      - state    # 项目当前状态
+      - context  # 上次会话上下文
+      - health   # 工具链健康
+      - rules    # 约束规则
+    output: takeover_card  # 一张卡，后面所有路径引用
+
+# ── Layer 1: State — 项目现在处于什么状态 ──
+state:
+  sources:
+    - ".langgraph/state.json"       # 机器可读的项目状态描述符
+    - "git log -1 --oneline"        # 最近变更
+    - "git status --short"          # 工作区脏/净
+    - "ls runs/ output/ out/ build/ 2>/dev/null"  # 是否有产出目录
+  dimensions:
+    lifecycle:
+      newborn:    "git log 为空或不相关, 且无 src|lib|app|tests|docs/ 目录结构"
+      growing:    "有 commit 历史, 或有 src|tests|docs/ 目录结构, 或文件 20-200"
+      mature:     "有产出目录(runs/output/build/) 或 ADR(docs/adr/) 或 CI(.github/workflows/) 或文件 >200"
+      unknown:    "无法判定"
+    activity:
+      active:     "最近 commit < 2天, 或工作区有未提交变更, 或产出目录有今天/昨天的文件"
+      idle:       "最近 commit 2-14天"
+      dormant:    "最近 commit > 14天"
+      unknown:    "无法判定"
+    integrity:
+      clean:      "工作区干净, 无未跟踪的关键文件"
+      dirty:      "有未提交变更, 或有未跟踪的产出文件"
+      broken:     "git status 报错, 或关键文件缺失"
+  output: "lifecycle=..., activity=..., integrity=..."
+
+# ── Layer 2: Context — 上次做到哪了 ──
+context:
+  sources:
+    - ".langgraph/state.json"           # 活跃任务 + 当前路径
+    - "runs/session-briefs/"            # handoff 文件
+    - OMEGA welcome 简报                # 自动注入
+    - ".langgraph/decisions/"           # 关键决策记录
+    # v2.5.1 fallback: 无 state.json 时从证据推断
+    - "git log --oneline -10"           # 最近提交主题
+    - "ls -t runs/ 2>/dev/null | head -5"  # 最近产出
+  recovery:
+    hot:     "有 state.json 且 activity=active → 直接恢复任务栈"
+    warm:    "无 state.json 但有 OMEGA/handoff → 从记忆重建"
+    inferred: "无 state.json 无 OMEGA, 但 git log + 产出目录有明确模式 → 推断当前活跃方向,标注 [inferred]"
+    cold:    "无任何上下文 → 全新评估"
+  output: "recovery=hot|warm|inferred|cold, task_stack=[...], last_path=..., last_decision=..."
+
+# ── Layer 3: Health — 工具链可用吗 ──
+health:
+  checks:
+    credentials: |
+      检测 credential 文件是否存在。
+      同时检查: .env.example / .env.template / credential.txt.example → 存在说明项目期望 credential。
+      如果期望 credential 但不存在 → 标记为 degraded, 标注"credential expected but missing"。
+    api:         "如果 credential 有效 → 发一次最小 GET 验证可达性（可选，preflight 时做）"
+    dependencies: "package.json / pyproject.toml / requirements.txt 是否存在"
+    git:         "git --version 是否可用"
+  levels:
+    full:    "所有检查通过"
+    degraded: "部分不可用（如 API 不可达但本地工具正常）→ 标注哪些路径可用"
+    broken:  "关键工具缺失（如无 git）→ 建议修复后再继续"
+  output: "health=full|degraded|broken, unavailable=[...], affected_paths=[...], expected_but_missing=[...]"
+
+# ── Layer 4: Rules — 什么约束生效 ──
+rules:
+  sources:
+    - "CLAUDE.md"
+    - "AGENTS.md"
+    - "CONTEXT.md"
+    - "README.md"                  # 很多项目把规则写在这里
+    - "docs/*.md"                  # 文档目录中的规则文件
+    - ".langgraph/specs/"
+    - "项目下 *.skill.md（如有）"
+  extraction:
+    hard_rules:    "MUST/MUST NOT/禁止/硬性/Do not/Never" 开头的规则
+    domain_terms:  "项目特有的领域术语表（优先从 CONTEXT.md, 其次 README.md）"
+    stop_conditions: "什么情况下应该停止/切换方向"
+    output_paths:  "产出文件应该放在哪里"
+  output: "hard_rules=N, domain_terms=[...], output_root=..., rules_sources=[...]"
+
+# ═══════════════════════════════════════════
+# 感知输出: Takeover Card
+# ═══════════════════════════════════════════
+takeover_card:
+  format: |
+    ## Takeover Card
+    - lifecycle: newborn|growing|mature
+    - activity:  active|idle|dormant
+    - integrity: clean|dirty|broken
+    - recovery:  hot|warm|cold
+    - health:    full|degraded|broken
+    - rules:     N hard rules loaded
+    - active_task: <from state.json>
+    - recommendation: <一句话建议下一步>
+
+  # 这张卡注入到后续所有路径的上下文中
+  # 路径 spec 在 plan 状态引用 takeover_card 而非重新探测
+
+# ═══════════════════════════════════════════
+# 接管后的行为路由
+# ═══════════════════════════════════════════
+behavior:
+  hot_recovery:
+    condition: "recovery=hot AND active_task 未完成"
+    action: "直接恢复任务栈，回到上次的路径+状态。不重新 classify。"
+  warm_recovery:
+    condition: "recovery=warm"
+    action: "从 handoff/OMEGA 重建任务上下文，然后按用户当前请求 classify。"
+  inferred_recovery:
+    condition: "recovery=inferred"
+    action: "从 git log + 产出目录推断当前活跃方向。展示推断结果给用户确认，标注 [inferred]。确认后按用户请求 classify。"
+  cold_start:
+    condition: "recovery=cold"
+    action: "标准 assess → classify 流程。"
+  degraded_mode:
+    condition: "health=degraded"
+    action: "标注不可用的路径。如果用户请求触发不可用路径 → 提前告知，提供替代方案。特别注意: 如果 credential 期望但缺失, preflight 阶段也跳过 API 探测。"
+  broken_state:
+    condition: "integrity=broken OR health=broken"
+    action: "进入诊断模式——先修复基础设施，再处理用户任务。"
+
+# ═══════════════════════════════════════════
+# state.json — 项目状态描述符（最小 schema）
+# ═══════════════════════════════════════════
+state_descriptor:
+  path: ".langgraph/state.json"
+  schema:
+    active_task: "string | null"        # 当前活跃任务描述
+    task_stack: "[string]"             # 任务栈（支持嵌套）
+    current_path: "A|B|C|D|E|F|null"   # 当前所在路径
+    current_state: "string | null"      # 当前所在状态
+    last_decision: "string | null"      # 最近一次关键决策
+    last_updated: "ISO8601"
+    outputs_pending_verification: "[string]"  # 待验证的产出文件列表
+  update_triggers:
+    - "路径切换时"
+    - "关键决策后"
+    - "产出文件创建后"
+    - "done 状态时"

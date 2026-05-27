@@ -1,0 +1,24 @@
+# Design Planning — 路径 F
+spec:
+  name: design-planning
+  version: "2.1"
+  extends: task-router
+  path: F
+  triggers: ["设计", "架构", "方案", "规划", "怎么实现", "技术选型"]
+
+states:
+  plan:
+    on_enter: "理解现状→分析选项→输出方案。方案确认后进入路径 D 实现。"
+    tools_from_library:
+      - langgraph-cli-analyze  # 全局架构理解
+      - gitnexus-context       # 核心域符号深潜
+      - grill-with-docs        # trigger: CONTEXT.md or 新概念 → 术语收敛+ADR
+      - oh-my-claude-advisor   # gap 分析
+      - oh-my-claude-critic    # plan 审查(执行前)
+      - to-prd                 # trigger: 用户说'PRD'
+      - prototype              # trigger: 数据模型不确定
+    rules:
+      - "必须 ≥2 方案 + tradeoffs"
+      - "grill-with-docs exit 条件满足 → 才进入设计记录"
+    output: "## 方案对比\n| 方案 | 适用 | 成本 | 风险 |\n...\n## 推荐\n## 下一步: 路径 D"
+    exit_when: "决策明确 AND 用户确认 AND critic APPROVED"

@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-11-options-pcr-breakeven-field-health",
+  "topic": "options_pcr_breakeven_field_discovery",
+  "candidates": [
+    {
+      "name": "pcr_oi_30_coverage",
+      "expression": "ts_rank(pcr_oi_30, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "pcr_oi_60_coverage",
+      "expression": "ts_rank(pcr_oi_60, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "pcr_vol_20_coverage",
+      "expression": "ts_rank(pcr_vol_20, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "put_breakeven_60_coverage",
+      "expression": "ts_rank(put_breakeven_60, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "call_breakeven_60_coverage",
+      "expression": "ts_rank(call_breakeven_60, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "option_breakeven_30_coverage",
+      "expression": "ts_rank(option_breakeven_30, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "historical_volatility_20_coverage",
+      "expression": "ts_rank(historical_volatility_20, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "snt1_d1_dynamicfocusrank_coverage",
+      "expression": "ts_rank(snt1_d1_dynamicfocusrank, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    }
+  ]
+}

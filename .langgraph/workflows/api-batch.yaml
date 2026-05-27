@@ -1,0 +1,20 @@
+workflow:
+  name: api-batch
+  entry: plan
+  agents:
+    - name: plan
+      prompt: "分析操作需求，分解为安全可逆的步骤序列：\n{{ input.operation }}"
+      routes:
+        - to: validate
+    - name: validate
+      prompt: "审查计划的安全性和可逆性：\n{{ plan }}\n\n识别所有不可逆操作并标记风险等级。\n不可逆操作必须暂停等待人类确认。"
+      routes:
+        - to: execute
+    - name: execute
+      prompt: "按计划逐步骤执行：\n{{ plan }}\n\n规则：\n1. 遇不可逆操作暂停并汇报\n2. 遇错误暂停并汇报\n3. 每步完成后记录结果\n验证结果: {{ validate }}"
+      routes:
+        - to: record
+    - name: record
+      prompt: "汇总所有执行结果，写入产出目录：\n{{ execute }}"
+      routes:
+        - to: $end

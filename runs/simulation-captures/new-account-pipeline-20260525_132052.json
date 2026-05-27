@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-05-25T13:20:52.325758",
+  "account": "mcydedn@outlook.com",
+  "summary": {
+    "total_alphas": 704,
+    "threshold_pass": 117,
+    "eight_pass": 0,
+    "seven_pass": 3,
+    "needs_work": 32,
+    "favorites_marked": 3
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "alpha_id": "N1Aoapdo",
+      "sharpe": 1.76,
+      "fitness": 1.15,
+      "turnover": 0.0598,
+      "selfcorr": 0.9872,
+      "score": 0.2099666666666667,
+      "status": "7-pass",
+      "failures": [
+        "SELF_CORRELATION"
+      ],
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "expression_preview": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),126), subindustry)"
+    },
+    {
+      "rank": 2,
+      "alpha_id": "e7LpVPdJ",
+      "sharpe": 1.62,
+      "fitness": 1.12,
+      "turnover": 0.3225,
+      "selfcorr": null,
+      "score": 0.25375000000000003,
+      "status": "7-pass",
+      "failures": [
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "expression_preview": "group_rank(ts_delta(revenue, 2) / ts_mean(revenue, 4), market)"
+    },
+    {
+      "rank": 3,
+      "alpha_id": "88nojGGl",
+      "sharpe": 1.92,
+      "fitness": 1.05,
+      "turnover": 0.3685,
+      "selfcorr": null,
+      "score": 0.44475,
+      "status": "7-pass",
+      "failures": [
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "expression_preview": "group_neutralize(ts_decay_linear((rank(high - close) - rank(close - low)) * rank(ts_mean((high - low"
+    }
+  ]
+}

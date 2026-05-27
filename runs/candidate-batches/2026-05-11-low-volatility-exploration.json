@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-11-low-volatility-exploration",
+  "topic": "low_volatility_anomaly",
+  "hypothesis": "Low volatility anomaly - low volatility stocks outperform high volatility stocks in the long run due to investor preference for lottery-like stocks",
+  "family_key": "low_volatility",
+  "candidates": [
+    {
+      "name": "low_vol_group_rank",
+      "expression": "group_rank(-volatility, industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "low_vol_group_rank_neg",
+      "expression": "group_rank(volatility, industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "low_vol_zscore",
+      "expression": "group_rank(-ts_zscore(volatility, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "low_vol_raw",
+      "expression": "-volatility",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "beta_factor",
+      "expression": "group_rank(-beta, industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "beta_vol_combo",
+      "expression": "group_rank(-(beta + volatility) / 2, industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    }
+  ]
+}

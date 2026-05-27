@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0.0",
+  "queue_id": "research-queue-2026-05-09",
+  "generated_at": "2026-05-09T00:00:00+0800",
+  "status": "ready_to_execute",
+  "queues": [
+    {
+      "priority": 1,
+      "family": "short_interest_squeeze",
+      "family_key": "short_interest_squeeze",
+      "hypothesis": "High short interest relative to historical average signals crowded bearish positioning; subsequent short covering creates upward momentum independent of fundamentals",
+      "status": "ready_to_execute",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "short_interest",
+      "fields_to_diagnose": ["short_interest", "days_to_cover", "short_interest_ratio"],
+      "baseline_expression": "-group_rank(ts_zscore(short_interest / ts_mean(short_interest, 60), 20), industry)",
+      "sign_control_expression": "group_rank(ts_zscore(short_interest / ts_mean(short_interest, 60), 20), industry)",
+      "stop_condition": "If short_interest non-zero coverage < 50% OR 20d update rate < 60%, stop family",
+      "field_search_pack": "2026-05-09-short-interest-ownership-concentration",
+      "estimated_simulations": 8,
+      "blocking_families": []
+    },
+    {
+      "priority": 2,
+      "family": "ownership_churn",
+      "family_key": "ownership_churn",
+      "hypothesis": "Institutional ownership percentage changes predict future trading activity and price momentum; increasing ownership signals informed institutional accumulation",
+      "status": "ready_to_execute",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "ownership",
+      "fields_to_diagnose": ["institutional_holding", "holder_count", "top10_holding_pct"],
+      "baseline_expression": "group_rank(ts_delta(institutional_holding, 60), industry)",
+      "sign_control_expression": "-group_rank(ts_delta(institutional_holding, 60), industry)",
+      "stop_condition": "If institutional_holding quarterly coverage < 40% OR update rate < 50%, stop family",
+      "field_search_pack": "2026-05-09-short-interest-ownership-concentration",
+      "estimated_simulations": 8,
+      "blocking_families": ["short_interest_squeeze"]
+    },
+    {
+      "priority": 3,
+      "family": "short_interest_days_to_cover",
+      "family_key": "short_interest_days_to_cover",
+      "hypothesis": "Days-to-cover ratio identifies stocks where short sellers face greatest squeeze risk; high DTC + high SI = squeeze candidate",
+      "status": "hold_for_field_health",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "short_interest",
+      "fields_to_diagnose": ["days_to_cover", "short_interest"],
+      "baseline_expression": "-group_rank(ts_zscore(days_to_cover / ts_mean(days_to_cover, 60), 20), industry)",
+      "sign_control_expression": "group_rank(ts_zscore(days_to_cover / ts_mean(days_to_cover, 60), 20), industry)",
+      "stop_condition": "If days_to_cover non-zero coverage < 30%, stop family",
+      "field_search_pack": "2026-05-09-short-interest-ownership-concentration",
+      "estimated_simulations": 6,
+      "blocking_families": ["short_interest_squeeze"]
+    }
+  ],
+  "frozen_families": [
+    {
+      "family": "pcr_oi_720",
+      "reason": "Multiple rescue attempts (05-02 to 05-07) failed; turnover/Fitness bottleneck unresolved; STOP memo exists",
+      "memo": "2026-05-07-current-unsubmitted-sharpe110-opportunity-scan"
+    },
+    {
+      "family": "assets_cap_hump",
+      "reason": "hump rescue destroyed economics; turnover over-smoothed signal; STOP memo exists",
+      "memo": "2026-05-09-assets-cap-hump-rescue-stop"
+    },
+    {
+      "family": "eps_quality_yield_backup",
+      "reason": "QP2v6rVW self-corr 0.92 FAIL; frozen",
+      "memo": "2026-05-07-qp2v6rvw-self-corr-freeze"
+    }
+  ],
+  "active_submitted": [
+    {
+      "alpha": "E5g7vMjJ",
+      "family": "price_volume_corr",
+      "sharpe": 1.37,
+      "fitness": 1.01,
+      "status": "ACTIVE"
+    },
+    {
+      "alpha": "A1gVE97w",
+      "family": "eps_quality_yield",
+      "sharpe": 1.63,
+      "fitness": 1.04,
+      "status": "ACTIVE/OS"
+    }
+  ],
+  "execution_blocked_by": ["api_rate_limit"],
+  "execution_ready_when": "API rate limit clears; then run field health diagnostics for priority 1 family"
+}

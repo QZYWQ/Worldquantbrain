@@ -1,0 +1,40 @@
+{
+  "synced_at": "2026-05-26T14:06:35.029544",
+  "total": 875,
+  "active_submitted": 6,
+  "unsubmitted": 869,
+  "sharpe_ge_1.5": 95,
+  "favorites": 96,
+  "active_submissions": [
+    {
+      "id": "A1kWl0LE",
+      "sharpe": 1.76,
+      "fitness": 1.56
+    },
+    {
+      "id": "O0ovYJXg",
+      "sharpe": 1.74,
+      "fitness": 1.12
+    },
+    {
+      "id": "0mzWQbPK",
+      "sharpe": 1.64,
+      "fitness": 1.18
+    },
+    {
+      "id": "d5d8p1x2",
+      "sharpe": 1.5,
+      "fitness": 1.03
+    },
+    {
+      "id": "j21QzK9E",
+      "sharpe": 1.48,
+      "fitness": 1.04
+    },
+    {
+      "id": "np3Jrqal",
+      "sharpe": 1.35,
+      "fitness": 1.28
+    }
+  ]
+}

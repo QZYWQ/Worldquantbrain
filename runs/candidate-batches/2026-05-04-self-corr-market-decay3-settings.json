@@ -1,0 +1,17 @@
+{
+  "instrumentType": "EQUITY",
+  "region": "USA",
+  "universe": "TOP3000",
+  "delay": 1,
+  "decay": 3,
+  "neutralization": "MARKET",
+  "truncation": 0.08,
+  "pasteurization": "ON",
+  "unitHandling": "VERIFY",
+  "nanHandling": "OFF",
+  "maxTrade": "OFF",
+  "maxPosition": "OFF",
+  "language": "FASTEXPR",
+  "visualization": false,
+  "testPeriod": "P1Y"
+}

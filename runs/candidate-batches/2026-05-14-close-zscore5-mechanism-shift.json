@@ -1,0 +1,106 @@
+{
+  "capture_id": "2026-05-14-close-zscore5-mechanism-shift",
+  "topic": "close_zscore5_control_mechanism_shift",
+  "parent_control": {
+    "expression": "rank(-ts_zscore(close, 5))",
+    "user_reported_result": {
+      "sharpe": 1.87,
+      "fitness": 1.04,
+      "turnover": 0.5325,
+      "sub_universe_sharpe": 1.57,
+      "self_correlation": 0.8499,
+      "decision": "control_only_structural_selfcorr_fail"
+    }
+  },
+  "research_policy": {
+    "reason": "Do not polish close-zscore5 directly. Use it only as a control and test mechanism shifts that change the price object, event timing, or comparison frame.",
+    "budget_cap": 4,
+    "stop_rule": "If these branches fail Fitness/Turnover or still fail self-correlation above 0.7, stop the close-zscore5 family and rotate to a new information source."
+  },
+  "candidates": [
+    {
+      "name": "close_vwap_residual_reversal_w10_industry",
+      "expression": "group_rank(-ts_zscore((close - vwap) / vwap, 10), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y"
+      }
+    },
+    {
+      "name": "intraday_pressure_reversal_w10_industry",
+      "expression": "group_rank(-ts_zscore((close - open) / open, 10), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y"
+      }
+    },
+    {
+      "name": "range_position_reversal_w10_industry",
+      "expression": "group_rank(-ts_zscore((close - low) / (high - low), 10), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y"
+      }
+    },
+    {
+      "name": "volume_event_close_vwap_residual_reversal",
+      "expression": "trade_when(volume > adv20, group_rank(-ts_zscore((close - vwap) / vwap, 10), industry), -1)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y"
+      }
+    }
+  ]
+}

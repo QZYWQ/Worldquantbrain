@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-14-mdl77-2amv-final-structural-rescue",
+  "topic": "mdl77_2amv_final_structural_rescue",
+  "source": "mdl77_2amv_signflip_refine_2026-05-14",
+  "hypothesis": "mdl77_2amv signal is confirmed but Fitness gap is structural - turnover cannot be reduced via window/neutralization changes without Sharpe/Returns collapse. Final rescue: test decay/hump/trade_when approaches that may reduce trading frequency without killing signal.",
+  "policy": {
+    "route": "D1-first",
+    "budget": "3 candidates - final structural rescue, no more budget after this",
+    "stop_condition": "If best Fitness < 0.7 OR Turnover dropped but Sharpe/Returns collapsed simultaneously → STOP mdl77_2amv, move to fn_comp or new field",
+    "kill_condition": "If all 3 candidates show Fitness < 0.7, kill the lane permanently"
+  },
+  "kill_list": [
+    "mdl77_2deepvaluefactor_coreepsp",
+    "mdl77_2deepvaluefactor_ttmsaleev",
+    "mdl77_2deepvaluefactor_apemtt"
+  ],
+  "candidates": [
+    {
+      "name": "mdl77_2amv_industry_w20_sign_decay5",
+      "expression": " decay(ts_rank(mdl77_2amv, 20), 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 5,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_industry_w20_sign_hump",
+      "expression": " ts_mean(ts_rank(mdl77_2amv, 20), 5) - ts_mean(ts_rank(mdl77_2amv, 20), 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_industry_w20_sign_extreme",
+      "expression": "-group_rank(ts_rank(mdl77_2amv, 20), industry) * (abs(ts_zscore(mdl77_2amv, 20)) > 1.5 ? 1 : 0)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    }
+  ],
+  "stop_conditions": {
+    "fitness_threshold": 0.7,
+    "turnover_target": 0.29,
+    "sharpe_floor": 1.0,
+    "returns_floor": 0.07,
+    "hard_stop": "If best Fitness < 0.7 OR (Turnover dropped significantly AND Sharpe < 1.0 AND Returns < 0.07)"
+  }
+}

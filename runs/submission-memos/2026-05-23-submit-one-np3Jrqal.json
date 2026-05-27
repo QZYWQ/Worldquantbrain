@@ -1,0 +1,1906 @@
+{
+  "mode": "SINGLE_ALPHA_SUBMISSION",
+  "authorization": "User explicitly requested: 从还没提交但是已经8pass的候选中再提交一个... 利用代码提交",
+  "timestamp_utc": "2026-05-23T05:21:10.273157+00:00",
+  "source_8pass_record": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/submission-memos/2026-05-22-current-8pass-record.json",
+  "source_submitted_record": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/submission-memos/2026-05-22-current-submitted-alphas-record.json",
+  "selected_alpha_id": "np3Jrqal",
+  "selection_policy": {
+    "exclude_already_submitted": true,
+    "prefer_interpretable_economic_logic": true,
+    "penalize_parameter_only_siblings": true,
+    "penalize_operator_stacks": true,
+    "require_live_official_check_all_pass": true,
+    "submit_count_limit": 1
+  },
+  "selected_record": {
+    "alpha_id": "np3Jrqal",
+    "local_metrics": {
+      "sharpe": 1.35,
+      "fitness": 1.28,
+      "turnover": 0.0176,
+      "returns": 0.1129,
+      "drawdown": 0.0813,
+      "margin": 0.012814,
+      "longCount": 618,
+      "shortCount": 1108,
+      "subUniverseSharpe": 0.88,
+      "selfCorrelation": null
+    },
+    "live_metrics": {
+      "sharpe": 1.35,
+      "fitness": 1.28,
+      "turnover": 0.0176,
+      "returns": 0.1129,
+      "drawdown": 0.0813,
+      "margin": 0.012814,
+      "longCount": 618,
+      "shortCount": 1108
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31"
+    },
+    "expression": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 2.0)), subindustry)",
+    "status": "UNSUBMITTED",
+    "stage": "IS",
+    "dateSubmitted": null,
+    "live_check_summary": {
+      "check_count": 8,
+      "pass_count": 8,
+      "all_pass": true,
+      "non_pass_checks": [],
+      "checks": [
+        {
+          "name": "LOW_SHARPE",
+          "result": "PASS",
+          "limit": 1.25,
+          "value": 1.35
+        },
+        {
+          "name": "LOW_FITNESS",
+          "result": "PASS",
+          "limit": 1.0,
+          "value": 1.28
+        },
+        {
+          "name": "LOW_TURNOVER",
+          "result": "PASS",
+          "limit": 0.01,
+          "value": 0.0176
+        },
+        {
+          "name": "HIGH_TURNOVER",
+          "result": "PASS",
+          "limit": 0.7,
+          "value": 0.0176
+        },
+        {
+          "name": "CONCENTRATED_WEIGHT",
+          "result": "PASS"
+        },
+        {
+          "name": "LOW_SUB_UNIVERSE_SHARPE",
+          "result": "PASS",
+          "limit": 0.58,
+          "value": 0.88
+        },
+        {
+          "name": "SELF_CORRELATION",
+          "result": "PASS",
+          "limit": 0.7
+        },
+        {
+          "name": "MATCHES_COMPETITION",
+          "result": "PASS",
+          "competitions": [
+            {
+              "id": "challenge",
+              "name": "Challenge"
+            }
+          ]
+        }
+      ]
+    },
+    "live_check_raw": {
+      "is": {
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.35
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.28
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.0176
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0176
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.58,
+            "value": 0.88
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "operator_count_estimate": 4,
+    "selection_notes": [
+      "selected: receivables-quality fundamental ratio with adjacent fnd6_rectr/fnd6_recd variants also passing",
+      "selected: no live self-correlation value reported and low turnover",
+      "selected: stronger sub-universe buffer than 9qJv2LJr while avoiding the tiny-denominator max() shape in omVpZnKm"
+    ]
+  },
+  "shortlist_records": [
+    {
+      "alpha_id": "np3Jrqal",
+      "local_metrics": {
+        "sharpe": 1.35,
+        "fitness": 1.28,
+        "turnover": 0.0176,
+        "returns": 0.1129,
+        "drawdown": 0.0813,
+        "margin": 0.012814,
+        "longCount": 618,
+        "shortCount": 1108,
+        "subUniverseSharpe": 0.88,
+        "selfCorrelation": null
+      },
+      "live_metrics": {
+        "sharpe": 1.35,
+        "fitness": 1.28,
+        "turnover": 0.0176,
+        "returns": 0.1129,
+        "drawdown": 0.0813,
+        "margin": 0.012814,
+        "longCount": 618,
+        "shortCount": 1108
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "expression": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 2.0)), subindustry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.35
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.28
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.0176
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0176
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.58,
+            "value": 0.88
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.35
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.28
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0176
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0176
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.58,
+              "value": 0.88
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "operator_count_estimate": 4,
+      "selection_notes": [
+        "selected: receivables-quality fundamental ratio with adjacent fnd6_rectr/fnd6_recd variants also passing",
+        "selected: no live self-correlation value reported and low turnover",
+        "selected: stronger sub-universe buffer than 9qJv2LJr while avoiding the tiny-denominator max() shape in omVpZnKm"
+      ]
+    },
+    {
+      "alpha_id": "9qJv2LJr",
+      "local_metrics": {
+        "sharpe": 1.33,
+        "fitness": 1.35,
+        "turnover": 0.0162,
+        "returns": 0.128,
+        "drawdown": 0.094,
+        "margin": 0.015769,
+        "longCount": 550,
+        "shortCount": 1254,
+        "subUniverseSharpe": 0.66,
+        "selfCorrelation": null
+      },
+      "live_metrics": {
+        "sharpe": 1.33,
+        "fitness": 1.35,
+        "turnover": 0.0162,
+        "returns": 0.128,
+        "drawdown": 0.094,
+        "margin": 0.015769,
+        "longCount": 550,
+        "shortCount": 1254
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "expression": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 1.0)), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.33
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.35
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.0162
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0162
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.58,
+            "value": 0.66
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.33
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.35
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0162
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0162
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.58,
+              "value": 0.66
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "operator_count_estimate": 4,
+      "selection_notes": [
+        "same mechanism sibling: supports robustness of the selected receivables-quality ratio"
+      ]
+    },
+    {
+      "alpha_id": "omVpZnKm",
+      "local_metrics": {
+        "sharpe": 1.37,
+        "fitness": 1.25,
+        "turnover": 0.0134,
+        "returns": 0.1044,
+        "drawdown": 0.096,
+        "margin": 0.015566,
+        "longCount": 586,
+        "shortCount": 2015,
+        "subUniverseSharpe": 1.08,
+        "selfCorrelation": null
+      },
+      "live_metrics": {
+        "sharpe": 1.37,
+        "fitness": 1.25,
+        "turnover": 0.0134,
+        "returns": 0.1044,
+        "drawdown": 0.096,
+        "margin": 0.015566,
+        "longCount": 586,
+        "shortCount": 2015
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 3,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "expression": "group_neutralize(divide(fnd6_rectr, max(fnd6_recd, 0.000001)), subindustry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.37
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.25
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.0134
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0134
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.59,
+            "value": 1.08
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.37
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.25
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0134
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0134
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.59,
+              "value": 1.08
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "operator_count_estimate": 4,
+      "selection_notes": [
+        "same mechanism sibling: supports robustness of the selected receivables-quality ratio"
+      ]
+    },
+    {
+      "alpha_id": "wpLmjx55",
+      "local_metrics": {
+        "sharpe": 2.23,
+        "fitness": 1.45,
+        "turnover": 0.249,
+        "returns": 0.1056,
+        "drawdown": 0.046,
+        "margin": 0.000848,
+        "longCount": 1501,
+        "shortCount": 1501,
+        "subUniverseSharpe": 1.56,
+        "selfCorrelation": 0.9491
+      },
+      "live_metrics": {
+        "sharpe": 2.23,
+        "fitness": 1.45,
+        "turnover": 0.249,
+        "returns": 0.1056,
+        "drawdown": 0.046,
+        "margin": 0.000848,
+        "longCount": 1501,
+        "shortCount": 1501
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 120), industry)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 2.23
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.45
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.249
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.249
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.97,
+            "value": 1.56
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.9491
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 2.23
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.45
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.249
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.249
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.97,
+              "value": 1.56
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.9491
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ],
+          "selfCorrelated": {
+            "schema": {
+              "name": "selfCorrelation",
+              "title": "Self Correlated",
+              "properties": [
+                {
+                  "name": "id",
+                  "title": "Id",
+                  "type": "string"
+                },
+                {
+                  "name": "name",
+                  "title": "Name",
+                  "type": "string"
+                },
+                {
+                  "name": "instrumentType",
+                  "title": "Instrument Type",
+                  "type": "string"
+                },
+                {
+                  "name": "region",
+                  "title": "Region",
+                  "type": "string"
+                },
+                {
+                  "name": "universe",
+                  "title": "Universe",
+                  "type": "string"
+                },
+                {
+                  "name": "correlation",
+                  "title": "Correlation",
+                  "type": "decimal"
+                },
+                {
+                  "name": "sharpe",
+                  "title": "Sharpe",
+                  "type": "decimal"
+                },
+                {
+                  "name": "returns",
+                  "title": "Returns",
+                  "type": "percent"
+                },
+                {
+                  "name": "turnover",
+                  "title": "Turnover",
+                  "type": "percent"
+                },
+                {
+                  "name": "fitness",
+                  "title": "Fitness",
+                  "type": "decimal"
+                },
+                {
+                  "name": "margin",
+                  "title": "Margin",
+                  "type": "permyriad"
+                }
+              ]
+            },
+            "records": [
+              [
+                "A1kWl0LE",
+                null,
+                "EQUITY",
+                "USA",
+                "TOP3000",
+                0.9491,
+                1.76,
+                0.0978,
+                0.1171,
+                1.56,
+                0.001671
+              ]
+            ],
+            "min": null,
+            "max": 0.9491
+          }
+        }
+      },
+      "operator_count_estimate": 6,
+      "selection_notes": [
+        "not selected: strongest metrics, but same earnings-yield family as already submitted A1kWl0LE",
+        "not selected: recorded self-correlation to A1kWl0LE is high"
+      ]
+    },
+    {
+      "alpha_id": "E5k7R8ZK",
+      "local_metrics": {
+        "sharpe": 1.3,
+        "fitness": 1.3,
+        "turnover": 0.0235,
+        "returns": 0.1249,
+        "drawdown": 0.1389,
+        "margin": 0.010626,
+        "longCount": 1558,
+        "shortCount": 272,
+        "subUniverseSharpe": 0.74,
+        "selfCorrelation": null
+      },
+      "live_metrics": {
+        "sharpe": 1.3,
+        "fitness": 1.3,
+        "turnover": 0.0235,
+        "returns": 0.1249,
+        "drawdown": 0.1389,
+        "margin": 0.010626,
+        "longCount": 1558,
+        "shortCount": 272
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "expression": "rank(ts_mean(anl4_totassets_flag, 30))",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.3
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.3
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.0235
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0235
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.56,
+            "value": 0.74
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.3
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.3
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0235
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0235
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.56,
+              "value": 0.74
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "operator_count_estimate": 5,
+      "selection_notes": []
+    },
+    {
+      "alpha_id": "Wj9qxA0N",
+      "local_metrics": {
+        "sharpe": 1.42,
+        "fitness": 1.14,
+        "turnover": 0.0193,
+        "returns": 0.0802,
+        "drawdown": 0.0712,
+        "margin": 0.00833,
+        "longCount": 359,
+        "shortCount": 1801,
+        "subUniverseSharpe": 0.81,
+        "selfCorrelation": null
+      },
+      "live_metrics": {
+        "sharpe": 1.42,
+        "fitness": 1.14,
+        "turnover": 0.0193,
+        "returns": 0.0802,
+        "drawdown": 0.0712,
+        "margin": 0.00833,
+        "longCount": 359,
+        "shortCount": 1801
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P2Y"
+      },
+      "expression": "rank(group_neutralize(divide(fnd6_sppe, add(abs(fnd6_siv), 2)), industry))",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.42
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.14
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.0193
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0193
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.61,
+            "value": 0.81
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.42
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.14
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0193
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0193
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.61,
+              "value": 0.81
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "operator_count_estimate": 7,
+      "selection_notes": []
+    },
+    {
+      "alpha_id": "RRd3zEPo",
+      "local_metrics": {
+        "sharpe": 1.38,
+        "fitness": 1.14,
+        "turnover": 0.0185,
+        "returns": 0.0846,
+        "drawdown": 0.0452,
+        "margin": 0.009151,
+        "longCount": 805,
+        "shortCount": 1659,
+        "subUniverseSharpe": 1.38,
+        "selfCorrelation": 0.0236
+      },
+      "live_metrics": {
+        "sharpe": 1.38,
+        "fitness": 1.14,
+        "turnover": 0.0185,
+        "returns": 0.0846,
+        "drawdown": 0.0452,
+        "margin": 0.009151,
+        "longCount": 805,
+        "shortCount": 1659
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 15,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31"
+      },
+      "expression": "reverse(group_neutralize(multiply(fnd6_prstkc, quantile(fnd6_pstkc, driver=uniform)), industry))",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.38
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.14
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.0185
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0185
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.6,
+            "value": 1.38
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.0236
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.38
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.14
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0185
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0185
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.6,
+              "value": 1.38
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0236
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ],
+          "selfCorrelated": {
+            "schema": {
+              "name": "selfCorrelation",
+              "title": "Self Correlated",
+              "properties": [
+                {
+                  "name": "id",
+                  "title": "Id",
+                  "type": "string"
+                },
+                {
+                  "name": "name",
+                  "title": "Name",
+                  "type": "string"
+                },
+                {
+                  "name": "instrumentType",
+                  "title": "Instrument Type",
+                  "type": "string"
+                },
+                {
+                  "name": "region",
+                  "title": "Region",
+                  "type": "string"
+                },
+                {
+                  "name": "universe",
+                  "title": "Universe",
+                  "type": "string"
+                },
+                {
+                  "name": "correlation",
+                  "title": "Correlation",
+                  "type": "decimal"
+                },
+                {
+                  "name": "sharpe",
+                  "title": "Sharpe",
+                  "type": "decimal"
+                },
+                {
+                  "name": "returns",
+                  "title": "Returns",
+                  "type": "percent"
+                },
+                {
+                  "name": "turnover",
+                  "title": "Turnover",
+                  "type": "percent"
+                },
+                {
+                  "name": "fitness",
+                  "title": "Fitness",
+                  "type": "decimal"
+                },
+                {
+                  "name": "margin",
+                  "title": "Margin",
+                  "type": "permyriad"
+                }
+              ]
+            },
+            "records": [
+              [
+                "A1kWl0LE",
+                null,
+                "EQUITY",
+                "USA",
+                "TOP3000",
+                0.0236,
+                1.76,
+                0.0978,
+                0.1171,
+                1.56,
+                0.001671
+              ]
+            ],
+            "min": null,
+            "max": 0.0236
+          }
+        }
+      },
+      "operator_count_estimate": 6,
+      "selection_notes": []
+    },
+    {
+      "alpha_id": "d5dXKzmK",
+      "local_metrics": {
+        "sharpe": 1.58,
+        "fitness": 1.21,
+        "turnover": 0.1045,
+        "returns": 0.0737,
+        "drawdown": 0.0345,
+        "margin": 0.00141,
+        "longCount": 1577,
+        "shortCount": 1481,
+        "subUniverseSharpe": 0.9,
+        "selfCorrelation": 0.6628
+      },
+      "live_metrics": {
+        "sharpe": 1.58,
+        "fitness": 1.21,
+        "turnover": 0.1045,
+        "returns": 0.0737,
+        "drawdown": 0.0345,
+        "margin": 0.00141,
+        "longCount": 1577,
+        "shortCount": 1481
+      },
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 3,
+        "neutralization": "MARKET",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,15)) > 0.55, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)",
+      "status": "UNSUBMITTED",
+      "stage": "IS",
+      "dateSubmitted": null,
+      "live_check_summary": {
+        "check_count": 8,
+        "pass_count": 8,
+        "all_pass": true,
+        "non_pass_checks": [],
+        "checks": [
+          {
+            "name": "LOW_SHARPE",
+            "result": "PASS",
+            "limit": 1.25,
+            "value": 1.58
+          },
+          {
+            "name": "LOW_FITNESS",
+            "result": "PASS",
+            "limit": 1.0,
+            "value": 1.21
+          },
+          {
+            "name": "LOW_TURNOVER",
+            "result": "PASS",
+            "limit": 0.01,
+            "value": 0.1045
+          },
+          {
+            "name": "HIGH_TURNOVER",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.1045
+          },
+          {
+            "name": "CONCENTRATED_WEIGHT",
+            "result": "PASS"
+          },
+          {
+            "name": "LOW_SUB_UNIVERSE_SHARPE",
+            "result": "PASS",
+            "limit": 0.68,
+            "value": 0.9
+          },
+          {
+            "name": "SELF_CORRELATION",
+            "result": "PASS",
+            "limit": 0.7,
+            "value": 0.6628
+          },
+          {
+            "name": "MATCHES_COMPETITION",
+            "result": "PASS",
+            "competitions": [
+              {
+                "id": "challenge",
+                "name": "Challenge"
+              }
+            ]
+          }
+        ]
+      },
+      "live_check_raw": {
+        "is": {
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.58
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "PASS",
+              "limit": 1.0,
+              "value": 1.21
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.1045
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.1045
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.68,
+              "value": 0.9
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.6628
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ],
+          "selfCorrelated": {
+            "schema": {
+              "name": "selfCorrelation",
+              "title": "Self Correlated",
+              "properties": [
+                {
+                  "name": "id",
+                  "title": "Id",
+                  "type": "string"
+                },
+                {
+                  "name": "name",
+                  "title": "Name",
+                  "type": "string"
+                },
+                {
+                  "name": "instrumentType",
+                  "title": "Instrument Type",
+                  "type": "string"
+                },
+                {
+                  "name": "region",
+                  "title": "Region",
+                  "type": "string"
+                },
+                {
+                  "name": "universe",
+                  "title": "Universe",
+                  "type": "string"
+                },
+                {
+                  "name": "correlation",
+                  "title": "Correlation",
+                  "type": "decimal"
+                },
+                {
+                  "name": "sharpe",
+                  "title": "Sharpe",
+                  "type": "decimal"
+                },
+                {
+                  "name": "returns",
+                  "title": "Returns",
+                  "type": "percent"
+                },
+                {
+                  "name": "turnover",
+                  "title": "Turnover",
+                  "type": "percent"
+                },
+                {
+                  "name": "fitness",
+                  "title": "Fitness",
+                  "type": "decimal"
+                },
+                {
+                  "name": "margin",
+                  "title": "Margin",
+                  "type": "permyriad"
+                }
+              ]
+            },
+            "records": [
+              [
+                "A1kWl0LE",
+                null,
+                "EQUITY",
+                "USA",
+                "TOP3000",
+                0.6628,
+                1.76,
+                0.0978,
+                0.1171,
+                1.56,
+                0.001671
+              ]
+            ],
+            "min": null,
+            "max": 0.6628
+          }
+        }
+      },
+      "operator_count_estimate": 28,
+      "selection_notes": [
+        "not selected: strict 8-pass, but expression is a high-complexity sentiment/price-volume stack"
+      ]
+    }
+  ],
+  "submit_response": {
+    "status_code": 201,
+    "text": "",
+    "headers": {
+      "Date": "Sat, 23 May 2026 05:21:04 GMT",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Content-Length": "0",
+      "Connection": "keep-alive",
+      "Retry-After": "1.0",
+      "Location": "http://api.worldquantbrain.com:443/alphas/np3Jrqal/submit",
+      "Allow": "GET, POST, PUT, PATCH, HEAD, OPTIONS",
+      "X-Request-Id": "bb0d3da6e9ec462baa4bfb38f3f0d3da",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Vary": "Accept-Language, Cookie, Origin",
+      "Content-Language": "en",
+      "Access-Control-Allow-Origin": "https://platform.worldquantbrain.com",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Expose-Headers": "Location,Retry-After",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    },
+    "accepted": true
+  },
+  "post_submit_alpha": {
+    "id": "np3Jrqal",
+    "type": "REGULAR",
+    "author": "CM54257",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31"
+    },
+    "regular": {
+      "code": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 2.0)), subindustry)",
+      "description": null,
+      "operatorCount": 3
+    },
+    "dateCreated": "2026-05-22T07:51:13-04:00",
+    "dateSubmitted": "2026-05-23T01:21:04-04:00",
+    "dateModified": "2026-05-22T07:51:14-04:00",
+    "name": null,
+    "favorite": false,
+    "hidden": false,
+    "color": null,
+    "category": null,
+    "tags": [],
+    "classifications": [
+      {
+        "id": "DATA_USAGE:SINGLE_DATA_SET",
+        "name": "Single Data Set Alpha"
+      },
+      {
+        "id": "REGULAR:REGULAR",
+        "name": "Regular Alpha"
+      }
+    ],
+    "grade": "AVERAGE",
+    "stage": "OS",
+    "status": "ACTIVE",
+    "is": {
+      "pnl": 5584434,
+      "bookSize": 20000000,
+      "longCount": 618,
+      "shortCount": 1108,
+      "turnover": 0.0176,
+      "returns": 0.1129,
+      "drawdown": 0.0813,
+      "margin": 0.012814,
+      "sharpe": 1.35,
+      "fitness": 1.28,
+      "startDate": "2019-01-01",
+      "selfCorrelation": 0.0,
+      "prodCorrelation": 0.0,
+      "checks": [
+        {
+          "name": "LOW_SHARPE",
+          "result": "PASS",
+          "limit": 1.25,
+          "value": 1.35
+        },
+        {
+          "name": "LOW_FITNESS",
+          "result": "PASS",
+          "limit": 1.0,
+          "value": 1.28
+        },
+        {
+          "name": "LOW_TURNOVER",
+          "result": "PASS",
+          "limit": 0.01,
+          "value": 0.0176
+        },
+        {
+          "name": "HIGH_TURNOVER",
+          "result": "PASS",
+          "limit": 0.7,
+          "value": 0.0176
+        },
+        {
+          "name": "CONCENTRATED_WEIGHT",
+          "result": "PASS"
+        },
+        {
+          "name": "LOW_SUB_UNIVERSE_SHARPE",
+          "result": "PASS",
+          "limit": 0.58,
+          "value": 0.88
+        },
+        {
+          "name": "MATCHES_COMPETITION",
+          "result": "PASS",
+          "competitions": [
+            {
+              "id": "challenge",
+              "name": "Challenge"
+            }
+          ]
+        }
+      ]
+    },
+    "os": {
+      "startDate": "2024-01-01",
+      "osISSharpeRatio": null,
+      "preCloseSharpeRatio": null,
+      "checks": [
+        {
+          "name": "IS_SHARPE",
+          "result": "PENDING"
+        },
+        {
+          "name": "SHARPE",
+          "result": "PENDING"
+        },
+        {
+          "name": "SELF_CORRELATION",
+          "result": "PENDING"
+        },
+        {
+          "name": "OTHERS",
+          "result": "PENDING"
+        }
+      ]
+    },
+    "train": null,
+    "test": null,
+    "prod": null,
+    "competitions": [
+      {
+        "id": "challenge",
+        "name": "Challenge"
+      }
+    ],
+    "themes": [],
+    "pyramids": null,
+    "pyramidThemes": {
+      "effective": 0,
+      "pyramids": null
+    },
+    "team": null,
+    "origin": "PLATFORM"
+  }
+}

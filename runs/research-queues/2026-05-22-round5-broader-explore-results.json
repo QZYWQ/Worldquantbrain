@@ -1,0 +1,372 @@
+[
+  {
+    "id": "r5_denom_01",
+    "desc": "inverse(leverage) / (burn + abs_value)",
+    "original_alpha_id": "np3933Vq",
+    "expression": "divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, abs(change_in_eps_surprise)))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.04,
+      "fitness": 0.91,
+      "turnover": 0.0663,
+      "margin": 0.002899,
+      "longCount": 774,
+      "shortCount": 1965
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_denom_02",
+    "desc": "inverse(leverage) / (burn + volatility)",
+    "original_alpha_id": "1YJeJ2KR",
+    "expression": "divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, ts_std_dev(returns, 20)))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.04,
+      "fitness": 0.86,
+      "turnover": 0.055,
+      "margin": 0.003138,
+      "longCount": 735,
+      "shortCount": 2004
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_denom_03",
+    "desc": "inverse(leverage) / (burn + analyst_rating)",
+    "original_alpha_id": "P0vN1EWM",
+    "expression": "divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, consensus_analyst_rating))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.13,
+      "fitness": 1.1,
+      "turnover": 0.0448,
+      "margin": 0.005331,
+      "longCount": 756,
+      "shortCount": 1914
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_ts_01",
+    "desc": "ts_mean of inverse leverage / (burn+2)",
+    "original_alpha_id": "pw8m7NOj",
+    "expression": "divide(ts_mean(inverse(book_leverage_ratio_3), 20), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.24,
+      "fitness": 1.11,
+      "turnover": 0.0475,
+      "margin": 0.004185,
+      "longCount": 761,
+      "shortCount": 1978
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_ts_02",
+    "desc": "inverse(ts_mean leverage) / (burn+2)",
+    "original_alpha_id": "GrkPoXPG",
+    "expression": "divide(inverse(ts_mean(book_leverage_ratio_3, 20)), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.29,
+      "fitness": 1.17,
+      "turnover": 0.048,
+      "margin": 0.004322,
+      "longCount": 773,
+      "shortCount": 1966
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_ts_03",
+    "desc": "ts_zscore leverage / (burn+2)",
+    "original_alpha_id": "2rJM70pw",
+    "expression": "divide(ts_zscore(book_leverage_ratio_3, 20), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 0.39,
+      "fitness": 0.08,
+      "turnover": 0.5835,
+      "margin": 7.5e-05,
+      "longCount": 712,
+      "shortCount": 663
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_lev_01",
+    "desc": "inverse(liabilities_to_assets) / (burn+2)",
+    "status": "TIMEOUT"
+  },
+  {
+    "id": "r5_lev_02",
+    "desc": "inverse(net_debt_to_equity) / (burn+2)",
+    "status": "TIMEOUT"
+  },
+  {
+    "id": "r5_sent_01",
+    "desc": "inverse(leverage) / (burn+2) * analyst_sentiment",
+    "original_alpha_id": "vRd8lPVw",
+    "expression": "multiply(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2)), consensus_analyst_rating)",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.27,
+      "fitness": 1.14,
+      "turnover": 0.0509,
+      "margin": 0.003932,
+      "longCount": 760,
+      "shortCount": 1909
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_sent_02",
+    "desc": "inverse(leverage) * analyst / (burn+2) with sector",
+    "original_alpha_id": "omV7g2NE",
+    "expression": "group_neutralize(multiply(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2)), consensus_analyst_rating), sector)",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.27,
+      "fitness": 1.14,
+      "turnover": 0.0509,
+      "margin": 0.003932,
+      "longCount": 760,
+      "shortCount": 1909
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_num_01",
+    "desc": "inverse(eps_surprise) / (burn+2)",
+    "original_alpha_id": "88nbevQo",
+    "expression": "divide(inverse(change_in_eps_surprise), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": -0.76,
+      "fitness": -0.65,
+      "turnover": 0.1041,
+      "margin": -0.001748,
+      "longCount": 767,
+      "shortCount": 1971
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_num_02",
+    "desc": "inverse(earnings_momentum) / (burn+2)",
+    "original_alpha_id": "E5k1GWVR",
+    "expression": "divide(inverse(earnings_momentum_analyst_score), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 0.23,
+      "fitness": 0.08,
+      "turnover": 0.1061,
+      "margin": 0.000267,
+      "longCount": 767,
+      "shortCount": 1971
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_ts_rank_01",
+    "desc": "rank(ts_mean leverage) / (burn+2)",
+    "original_alpha_id": "zqOZNmvR",
+    "expression": "divide(rank(ts_mean(book_leverage_ratio_3, 20)), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": -1.3,
+      "fitness": -1.17,
+      "turnover": 0.0469,
+      "margin": -0.004332,
+      "longCount": 959,
+      "shortCount": 1780
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r5_mul_01",
+    "desc": "inverse(leverage) * inverse(burn+1) + sector",
+    "original_alpha_id": "O0oOGXER",
+    "expression": "group_neutralize(multiply(inverse(book_leverage_ratio_3), inverse(add(cash_burn_rate_v1, 1))), sector)",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.17,
+      "fitness": 1.03,
+      "turnover": 0.0519,
+      "margin": 0.003701,
+      "longCount": 751,
+      "shortCount": 1988
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  }
+]

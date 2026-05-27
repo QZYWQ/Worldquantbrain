@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-14-mdl77-2amv-signflip-refine",
+  "topic": "mdl77_2amv_signflip_refine",
+  "source": "mdl77_low_crowding_probe_phase2_results_2026-05-13",
+  "hypothesis": "mdl77_2amv has valid signal but requires sign-flip with industry neutralization. Next step: small-budget refinement of the sign-flipped industry line to reduce turnover and improve fitness.",
+  "policy": {
+    "route": "D1-first",
+    "budget": "bounded second probe - 5 candidates max",
+    "stop_condition": "If all variants below Sharpe 0.5 and Fitness < 0.8, kill the refinement and move to next lane"
+  },
+  "kill_list": [
+    "mdl77_2deepvaluefactor_coreepsp",
+    "mdl77_2deepvaluefactor_ttmsaleev",
+    "mdl77_2deepvaluefactor_apemtt"
+  ],
+  "candidates": [
+    {
+      "name": "mdl77_2amv_industry_w20_sign_v2",
+      "expression": "-group_rank(ts_rank(mdl77_2amv, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_industry_w20_sign_smooth",
+      "expression": "-group_rank(ts_rank(ts_mean(mdl77_2amv, 5), 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_industry_w40_sign",
+      "expression": "-group_rank(ts_rank(mdl77_2amv, 40), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_subindustry_w20_sign",
+      "expression": "-group_rank(ts_rank(mdl77_2amv, 20), subindustry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_rank_w20_sign",
+      "expression": "-rank(ts_rank(mdl77_2amv, 20))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    }
+  ]
+}

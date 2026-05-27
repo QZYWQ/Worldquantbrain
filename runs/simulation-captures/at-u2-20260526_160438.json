@@ -1,0 +1,125 @@
+{
+  "started": "2026-05-26T16:04:38.837434",
+  "results": [
+    {
+      "alpha_id": "N1AOwngo",
+      "name": "at_ws3_r0",
+      "sharpe": 1.21,
+      "fitness": 0.86,
+      "turnover": 0.0179,
+      "decay": 0,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "1YJg9OLR",
+      "name": "at_ws3_r6",
+      "sharpe": 1.2,
+      "fitness": 0.85,
+      "turnover": 0.017,
+      "decay": 6,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "omVY5MRJ",
+      "name": "at_ws3_r15",
+      "sharpe": 1.2,
+      "fitness": 0.85,
+      "turnover": 0.0158,
+      "decay": 15,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "ZYro3Er3",
+      "name": "at_ws3_z0",
+      "sharpe": 1.2,
+      "fitness": 0.85,
+      "turnover": 0.0174,
+      "decay": 0,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "e7LrokGM",
+      "name": "at_ws3_z6",
+      "sharpe": 1.19,
+      "fitness": 0.84,
+      "turnover": 0.0168,
+      "decay": 6,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "d5dQAQaK",
+      "name": "at_ws3_gm",
+      "sharpe": 1.24,
+      "fitness": 0.91,
+      "turnover": 0.016,
+      "decay": 0,
+      "neut": "MARKET"
+    },
+    {
+      "alpha_id": "ZYroev5j",
+      "name": "at_ws3_gs",
+      "sharpe": 1.21,
+      "fitness": 0.87,
+      "turnover": 0.0173,
+      "decay": 0,
+      "neut": "SECTOR"
+    },
+    {
+      "alpha_id": "E5kKJq2J",
+      "name": "at_ws3_gi",
+      "sharpe": 1.24,
+      "fitness": 0.9,
+      "turnover": 0.0185,
+      "decay": 0,
+      "neut": "INDUSTRY"
+    },
+    {
+      "name": "at_ws3_dc",
+      "status": "FAILED"
+    },
+    {
+      "name": "at_ws3_q0",
+      "status": "FAILED"
+    },
+    {
+      "name": "at_ws3_q6",
+      "status": "FAILED"
+    },
+    {
+      "alpha_id": "j21gmMVk",
+      "name": "at_ws3_tm",
+      "sharpe": 1.17,
+      "fitness": 0.82,
+      "turnover": 0.0147,
+      "decay": 0,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "ler0ZkYn",
+      "name": "at_ws3_d30",
+      "sharpe": 1.17,
+      "fitness": 0.82,
+      "turnover": 0.0145,
+      "decay": 30,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "LLkRxzEm",
+      "name": "at_ws3_d15",
+      "sharpe": 1.19,
+      "fitness": 0.84,
+      "turnover": 0.0156,
+      "decay": 15,
+      "neut": "SUBINDUSTRY"
+    },
+    {
+      "alpha_id": "58MvR3j5",
+      "name": "at_ws3_dm12",
+      "sharpe": 1.25,
+      "fitness": 0.92,
+      "turnover": 0.0132,
+      "decay": 12,
+      "neut": "MARKET"
+    }
+  ]
+}

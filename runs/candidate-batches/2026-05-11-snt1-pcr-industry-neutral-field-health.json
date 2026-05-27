@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-11-options-sentiment-industry-neutral-field-health",
+  "topic": "options_snt1_industry_neutral_field_discovery",
+  "candidates": [
+    {
+      "name": "snt1_d1_dynamicfocusrank_industry",
+      "expression": "group_rank(ts_rank(snt1_d1_dynamicfocusrank, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "snt1_d1_dynamicfocusrank_sign",
+      "expression": "-group_rank(ts_rank(snt1_d1_dynamicfocusrank, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "pcr_oi_60_industry",
+      "expression": "group_rank(ts_rank(pcr_oi_60, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "pcr_oi_60_sign",
+      "expression": "-group_rank(ts_rank(pcr_oi_60, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    }
+  ]
+}

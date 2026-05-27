@@ -1,0 +1,469 @@
+{
+  "generated_at": "2026-05-26T20:20:52.641265",
+  "results": [
+    {
+      "name": "p3_gir_d252",
+      "alpha_id": "xARnGv3q",
+      "sharpe": 1.32,
+      "fitness": 0.93,
+      "turnover": 0.03,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "PASS",
+          "value": 1.32
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.93
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.03
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.03
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "FAIL",
+          "value": 0.46
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p4_densify_d3",
+      "alpha_id": "3qzA5m80",
+      "sharpe": 1.06,
+      "fitness": 0.73,
+      "turnover": 0.0254,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 1.06
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.73
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0254
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0254
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "PASS",
+          "value": 0.71
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p4_densify_d0",
+      "alpha_id": "MPkxZ3Ra",
+      "sharpe": 1.05,
+      "fitness": 0.72,
+      "turnover": 0.0369,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 1.05
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.72
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0369
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0369
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "PASS",
+          "value": 0.7
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p4_densify_d6",
+      "alpha_id": "rKAW8Xe8",
+      "sharpe": 1.05,
+      "fitness": 0.72,
+      "turnover": 0.0206,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 1.05
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.72
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0206
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0206
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "PASS",
+          "value": 0.7
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p3_gir_d126",
+      "alpha_id": "58Mv5a0n",
+      "sharpe": 0.99,
+      "fitness": 0.57,
+      "turnover": 0.0378,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 0.99
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.57
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0378
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0378
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "PASS",
+          "value": 0.52
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p1_gimax_sind",
+      "alpha_id": "mLZXK3g6",
+      "sharpe": 0.95,
+      "fitness": 0.55,
+      "turnover": 0.0171,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 0.95
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.55
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0171
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0171
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "PASS",
+          "value": 0.97
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p4_rank_wrap",
+      "alpha_id": "xARnEZ9W",
+      "sharpe": 0.93,
+      "fitness": 0.56,
+      "turnover": 0.0252,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 0.93
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.56
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0252
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0252
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "PASS",
+          "value": 0.65
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p3_gir_assets",
+      "alpha_id": "2rJKXwM5",
+      "sharpe": 0.9,
+      "fitness": 0.54,
+      "turnover": 0.0233,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 0.9
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.54
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0233
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0233
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "FAIL",
+          "value": 0.28
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ]
+    },
+    {
+      "name": "p4_gimax_dens0",
+      "alpha_id": "zqOWnMbR",
+      "sharpe": 0.89,
+      "fitness": 0.56,
+      "turnover": 0.0327,
+      "selfcorr": null,
+      "checks": {
+        "LOW_SHARPE": {
+          "result": "FAIL",
+          "value": 0.89
+        },
+        "LOW_FITNESS": {
+          "result": "FAIL",
+          "value": 0.56
+        },
+        "LOW_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0327
+        },
+        "HIGH_TURNOVER": {
+          "result": "PASS",
+          "value": 0.0327
+        },
+        "CONCENTRATED_WEIGHT": {
+          "result": "PASS",
+          "value": null
+        },
+        "LOW_SUB_UNIVERSE_SHARPE": {
+          "result": "PASS",
+          "value": 0.83
+        },
+        "UNITS": {
+          "result": "WARNING",
+          "value": null
+        },
+        "SELF_CORRELATION": {
+          "result": "PENDING",
+          "value": null
+        },
+        "MATCHES_COMPETITION": {
+          "result": "PASS",
+          "value": null
+        }
+      },
+      "fails": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ]
+    }
+  ]
+}

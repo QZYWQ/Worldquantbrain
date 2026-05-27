@@ -1,0 +1,352 @@
+[
+  {
+    "id": "r4_lev_01",
+    "desc": "1/debt_to_equity/(burn+2)",
+    "status": "TIMEOUT"
+  },
+  {
+    "id": "r4_lev_02",
+    "desc": "1/debt_to_assets/(burn+2)",
+    "status": "TIMEOUT"
+  },
+  {
+    "id": "r4_lev_03",
+    "desc": "1/equity_multiplier/(burn+2)",
+    "status": "TIMEOUT"
+  },
+  {
+    "id": "r4_gn_01",
+    "desc": "1/leverage/(burn+2) + sector",
+    "original_alpha_id": "E5k1b9M1",
+    "expression": "group_neutralize(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2)), sector)",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.23,
+      "fitness": 1.1,
+      "turnover": 0.0503,
+      "margin": 0.003995,
+      "longCount": 761,
+      "shortCount": 1978
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_gn_02",
+    "desc": "1/leverage/(burn+2) + industry",
+    "original_alpha_id": "1YJemnJX",
+    "expression": "group_neutralize(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2)), industry)",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.23,
+      "fitness": 1.1,
+      "turnover": 0.0503,
+      "margin": 0.003995,
+      "longCount": 761,
+      "shortCount": 1978
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_decay_01",
+    "desc": "1/leverage/(burn+2) + decay=5",
+    "original_alpha_id": "gJx6PWjJ",
+    "expression": "divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.18,
+      "fitness": 1.04,
+      "turnover": 0.0401,
+      "margin": 0.004822,
+      "longCount": 762,
+      "shortCount": 1977
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 5,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_decay_02",
+    "desc": "1/leverage/(burn+2) + decay=8",
+    "original_alpha_id": "xARqzEVq",
+    "expression": "divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.16,
+      "fitness": 1.01,
+      "turnover": 0.0375,
+      "margin": 0.005092,
+      "longCount": 762,
+      "shortCount": 1977
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 8,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_decay_03",
+    "desc": "1/debt_eq/(burn+2) + decay=5",
+    "status": "TIMEOUT"
+  },
+  {
+    "id": "r4_zscore_01",
+    "desc": "zscore(1/leverage/(burn+2))",
+    "original_alpha_id": "YPQ6W9Qw",
+    "expression": "zscore(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2)))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.23,
+      "fitness": 1.1,
+      "turnover": 0.0503,
+      "margin": 0.003995,
+      "longCount": 761,
+      "shortCount": 1978
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_zscore_gn",
+    "desc": "zscore + group_neutralize(burn+2)",
+    "original_alpha_id": "N1A0gWQq",
+    "expression": "zscore(group_neutralize(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2)), sector))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.23,
+      "fitness": 1.1,
+      "turnover": 0.0503,
+      "margin": 0.003995,
+      "longCount": 761,
+      "shortCount": 1978
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_cap_01",
+    "desc": "1/leverage/(burn+2) * rank(cap)",
+    "original_alpha_id": "78JWa6GL",
+    "expression": "multiply(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 2)), rank(cap))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.09,
+      "fitness": 0.86,
+      "turnover": 0.0491,
+      "margin": 0.003142,
+      "longCount": 806,
+      "shortCount": 1933
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_burn3_01",
+    "desc": "1/leverage/(burn+3)",
+    "original_alpha_id": "1YJeaRxz",
+    "expression": "divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 3))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.26,
+      "fitness": 1.14,
+      "turnover": 0.0493,
+      "margin": 0.004164,
+      "longCount": 769,
+      "shortCount": 1970
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_burn3_02",
+    "desc": "1/leverage/(burn+3) + sector",
+    "original_alpha_id": "vRd8537v",
+    "expression": "group_neutralize(divide(inverse(book_leverage_ratio_3), add(cash_burn_rate_v1, 3)), sector)",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.26,
+      "fitness": 1.14,
+      "turnover": 0.0493,
+      "margin": 0.004164,
+      "longCount": 769,
+      "shortCount": 1970
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_alt_01",
+    "desc": "inverse(burn+1) * inverse(leverage)",
+    "original_alpha_id": "E5k1qEgP",
+    "expression": "multiply(inverse(add(cash_burn_rate_v1, 1)), inverse(book_leverage_ratio_3))",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.17,
+      "fitness": 1.03,
+      "turnover": 0.0519,
+      "margin": 0.003701,
+      "longCount": 751,
+      "shortCount": 1988
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  },
+  {
+    "id": "r4_alt_02",
+    "desc": "inverse(burn+1) * inverse(leverage) + sector",
+    "original_alpha_id": "VkOVXZw8",
+    "expression": "group_neutralize(multiply(inverse(add(cash_burn_rate_v1, 1)), inverse(book_leverage_ratio_3)), sector)",
+    "status": "COMPLETE",
+    "metrics": {
+      "sharpe": 1.17,
+      "fitness": 1.03,
+      "turnover": 0.0519,
+      "margin": 0.003701,
+      "longCount": 751,
+      "shortCount": 1988
+    },
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "testPeriod": "P2Y",
+      "unitHandling": "VERIFY",
+      "nanHandling": "ON",
+      "language": "FASTEXPR",
+      "visualization": false
+    }
+  }
+]

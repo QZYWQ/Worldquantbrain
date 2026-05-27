@@ -1,0 +1,139 @@
+{
+  "_instructions": [
+    "FO batch: fn_interest_paid_net_q field exploration",
+    "Hypothesis: Companies paying more interest relative to net have higher financial stress → short signal",
+    "Reference: 0mAE3qzp succeeded with market neutralization + decay=15 pattern",
+    "Field: fn_interest_paid_net_q - financial leverage indicator from FO scout (S=0.78, F=1.36)"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-19-fn-interest-paid-net-q-expansion",
+  "topic": "fn_interest_paid_net_q_financial_stress",
+  "author": "Claude",
+  "source": "hypothesis_driven",
+  "hypothesis": "Financial stress signal - high interest paid relative to net indicates leverage/risk, low values indicate financial health",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "baseline_rank",
+      "description": "Baseline: rank(fn_interest_paid_net_q) - simple cross-sectional",
+      "expression": "rank(fn_interest_paid_net_q)",
+      "settings": {}
+    },
+    {
+      "name": "baseline_zscore",
+      "description": "Baseline: zscore(fn_interest_paid_net_q) - normalized",
+      "expression": "zscore(fn_interest_paid_net_q)",
+      "settings": {}
+    },
+    {
+      "name": "reversed_rank",
+      "description": "Reversed: rank(-fn_interest_paid_net_q) - low interest = buy signal",
+      "expression": "rank(-fn_interest_paid_net_q)",
+      "settings": {}
+    },
+    {
+      "name": "group_rank_industry",
+      "description": "Group rank within industry",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), industry)",
+      "settings": {}
+    },
+    {
+      "name": "group_rank_market",
+      "description": "Group rank within market - per 0mAE3qzp success pattern",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), market)",
+      "settings": {}
+    },
+    {
+      "name": "group_neutralize_market",
+      "description": "Market neutralized per 0mAE3qzp pattern",
+      "expression": "group_neutralize(rank(fn_interest_paid_net_q), market)",
+      "settings": {}
+    },
+    {
+      "name": "decay15_group_rank_market",
+      "description": "decay=15 + market group_rank per 0mAE3qzp success",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), market)",
+      "settings": {
+        "decay": 15
+      }
+    },
+    {
+      "name": "decay6_group_rank_market",
+      "description": "decay=6 + market group_rank - shorter horizon",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), market)",
+      "settings": {
+        "decay": 6
+      }
+    },
+    {
+      "name": "ts_mean_22_group_rank_market",
+      "description": "ts_mean smoothing with 22-day window",
+      "expression": "group_rank(rank(ts_mean(fn_interest_paid_net_q, 22)), market)",
+      "settings": {}
+    },
+    {
+      "name": "ts_mean_10_group_rank_market",
+      "description": "ts_mean smoothing with 10-day window",
+      "expression": "group_rank(rank(ts_mean(fn_interest_paid_net_q, 10)), market)",
+      "settings": {}
+    },
+    {
+      "name": "reversed_decay15",
+      "description": "Reversed + decay=15",
+      "expression": "group_rank(rank(-fn_interest_paid_net_q), market)",
+      "settings": {
+        "decay": 15
+      }
+    },
+    {
+      "name": "reversed_decay6",
+      "description": "Reversed + decay=6",
+      "expression": "group_rank(rank(-fn_interest_paid_net_q), market)",
+      "settings": {
+        "decay": 6
+      }
+    },
+    {
+      "name": "subindustry_neutralization",
+      "description": "Subindustry neutralization for finer granularity",
+      "expression": "group_neutralize(rank(fn_interest_paid_net_q), subindustry)",
+      "settings": {}
+    },
+    {
+      "name": "quantile_gaussian",
+      "description": "Quantile transform with gaussian driver",
+      "expression": "group_rank(quantile(fn_interest_paid_net_q, driver=gaussian), market)",
+      "settings": {}
+    },
+    {
+      "name": "densify_bucket_wrapper",
+      "description": "densify(bucket(rank(cap))) wrapper per gJmojOQm pattern",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), market, densify(bucket(rank(cap))))",
+      "settings": {}
+    }
+  ],
+  "expected_outcomes": {
+    "sign_positive": "Low interest paid = financial health = positive returns (reversed expressions)",
+    "self_corr_target": "< 0.7 with proper wrapper or decay",
+    "fitness_target": "> 1.0",
+    "sharpe_target": "> 1.25"
+  },
+  "risk_factors": [
+    "fn_interest_paid_net_q may have sparse coverage",
+    "Self-correlation unknown - need to verify after simulation",
+    "FO showed S=0.78, need to boost to 1.25 with proper structure"
+  ],
+  "notes": "Following 0mAE3qzp (revenue_growth_qoq) success pattern: market neutralization + decay=15. FO baseline S=0.78, F=1.36."
+}

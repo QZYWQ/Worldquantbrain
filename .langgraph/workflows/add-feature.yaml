@@ -1,0 +1,16 @@
+workflow:
+  name: add-feature
+  entry: design
+  agents:
+    - name: design
+      prompt: "设计功能实现方案：\n{{ input.feature }}"
+      routes:
+        - to: implement
+    - name: implement
+      prompt: "基于设计实现代码：\n{{ design }}"
+      routes:
+        - to: test_generation
+    - name: test_generation
+      prompt: "为以下实现编写测试：\n{{ implement }}"
+      routes:
+        - to: $end

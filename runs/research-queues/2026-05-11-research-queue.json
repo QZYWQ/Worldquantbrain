@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "queue_id": "research-queue-2026-05-11",
+  "generated_at": "2026-05-11T00:00:00+0800",
+  "status": "ready_to_execute",
+  "queues": [
+    {
+      "priority": 1,
+      "family": "news_sentiment_momentum",
+      "family_key": "news_sentiment_momentum",
+      "hypothesis": "Earnings/financial news sentiment provides short-term alpha that isn't captured by price-only signals; news-driven sentiment shifts lead price by 1-5 days in high-relevance stories",
+      "status": "blocked_by_field_health",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "news",
+      "fields_to_diagnose": ["nws18_qcm", "nws18_bam", "nws18_sse", "nws18_relevance"],
+      "baseline_expression": "-group_rank(ts_zscore(nws18_qcm, 20), industry) * ts_rank(returns, 5)",
+      "sign_control_expression": "group_rank(ts_zscore(nws18_qcm, 20), industry) * ts_rank(returns, 5)",
+      "stop_condition": "Event fields (nws18_*) cannot use ts_zscore/ts_rank/group_rank - STOP memo: runs/notes/daily/2026-05-11-field-health-diagnostic-results.md",
+      "field_search_pack": "2026-05-11-news-sentiment-momentum",
+      "estimated_simulations": 6,
+      "blocking_families": []
+    },
+    {
+      "priority": 2,
+      "family": "social_buzz_acceleration",
+      "family_key": "social_buzz_acceleration",
+      "hypothesis": "Fast-updating social media buzz (scl12_buzz_fast_d1) captures crowd sentiment changes before price reacts; acceleration in buzz predicts near-term price movement",
+      "status": "needs_deeper_diagnostic",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "socialmedia",
+      "fields_to_diagnose": ["scl12_buzz_fast_d1", "scl12_buzz", "scl12_sentiment_fast_d1"],
+      "baseline_expression": "ts_rank(scl12_buzz_fast_d1, 20) - ts_rank(scl12_buzz, 60)",
+      "sign_control_expression": "ts_rank(scl12_buzz, 60) - ts_rank(scl12_buzz_fast_d1, 20)",
+      "stop_condition": "Fields accept ts_rank but produce no alpha - data may be constant/NaN for TOP3000",
+      "field_search_pack": "2026-05-11-social-buzz-acceleration",
+      "estimated_simulations": 6,
+      "blocking_families": []
+    },
+    {
+      "priority": 3,
+      "family": "model_composite_value_momentum",
+      "family_key": "model_composite_value_momentum",
+      "hypothesis": "Model-generated value-momentum composite signals (mdl177) provide orthogonal alpha not captured by raw price/volume; combining multiple model signals improves robustness",
+      "status": "ready_to_execute",
+      "stage": "field_health_diagnostic",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "model",
+      "fields_to_diagnose": ["mdl177_valuemomemtummodel_vm_compositesn", "mdl177_valuemomemtummodel_vm_compositesn", "fscore_total"],
+      "baseline_expression": "group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "sign_control_expression": "-group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "stop_condition": "If mdl177 coverage < 60%, stop family",
+      "field_search_pack": "2026-05-11-model-composite-value-momentum",
+      "estimated_simulations": 8,
+      "blocking_families": []
+    }
+  ],
+  "frozen_families": [
+    {
+      "family": "short_interest_squeeze",
+      "reason": "All short_interest fields returned 'unknown variable' - fields don't exist in BRAIN",
+      "memo": "runs/notes/daily/2026-05-09-short-interest-research-decision.md"
+    },
+    {
+      "family": "close_delta_family",
+      "reason": "All 12 variants share same signal source (ts_delta close,1); self-correlation expected to fail due to structural correlation",
+      "memo": "runs/candidate-batches/2026-05-10-close-delta-family-results.md"
+    },
+    {
+      "family": "eps_quality_yield_backup",
+      "reason": "QP2v6rVW self-corr 0.9221 FAIL; frozen",
+      "memo": "runs/submission-memos/2026-05-07-qp2v6rvw-self-corr-freeze.md"
+    }
+  ],
+  "active_submitted": [
+    {
+      "alpha": "E5g7vMjJ",
+      "family": "price_volume_corr",
+      "sharpe": 1.37,
+      "fitness": 1.01,
+      "status": "ACTIVE"
+    },
+    {
+      "alpha": "A1gVE97w",
+      "family": "eps_quality_yield",
+      "sharpe": 1.63,
+      "fitness": 1.04,
+      "status": "ACTIVE/OS"
+    },
+    {
+      "alpha": "bloqmdJK",
+      "family": "price_volume_social_gate",
+      "sharpe": 1.61,
+      "fitness": 1.25,
+      "status": "UNSUBMITTED (ready to submit)"
+    }
+  ],
+  "execution_blocked_by": ["api_rate_limit", "chrome_cdp_session_auth"],
+  "execution_ready_when": "Chrome CDP session re-authenticates; then run field health diagnostics for priority 1 family"
+}

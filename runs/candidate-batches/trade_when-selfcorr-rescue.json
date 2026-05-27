@@ -1,0 +1,95 @@
+{
+  "_instructions": [
+    "Rescue batch for trade_when alpha with self-corr FAIL (0.7033 vs 0.7 limit)",
+    "Reference: LLgOWZmn (range/close-position family, Sharpe=2.18, TVR=47.46%)",
+    "Root cause: trade_when structure + close-based signal + abs(returns) trigger",
+    "Fix hierarchy: (1) rank() wrapper, (2) decay increase, (3) vwap base, (4) exit replacement",
+    "Pass criteria: Sharpe>=1.25, Fitness>=1.0, TVR<=70%, self_corr<0.7"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "trade_when_selfcorr_rescue_batch",
+  "topic": "trade_when_selfcorr_rescue_vs_llgowzmn",
+  "parent_alpha_id": "CURRENT",
+  "parent_expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(close, 5)), densify(sector))), abs(returns) > 0.1)",
+  "parent_metrics": {
+    "sharpe": 1.59,
+    "fitness": 1.0,
+    "turnover": "unknown",
+    "self_correlation": 0.7033,
+    "fail_reason": "self_correlation 0.7033 > 0.7 vs LLgOWZmn (0.7033 vs 0.7, margin 0.0033)"
+  },
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "OFF",
+    "language": "FASTEXPR",
+    "testPeriod": "P1Y0M0D"
+  },
+  "candidates": [
+    {
+      "name": "rank_wrapper_decay15",
+      "description": "Add rank() wrapper + increase decay to 15 — primary fix from 88Ob79jV precedent",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(close, 5)), densify(sector))), abs(returns) > 0.1)",
+      "settings": {"decay": 15, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "rank_wrapper_decay15_vwap_base",
+      "description": "rank wrapper + decay=15 + vwap replaces close as price base",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(vwap, 5)), densify(sector))), abs(returns) > 0.1)",
+      "settings": {"decay": 15, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "rank_wrapper_decay20_vwap_base",
+      "description": "rank wrapper + higher decay=20 + vwap — maximum smoothing",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(vwap, 5)), densify(sector))), abs(returns) > 0.1)",
+      "settings": {"decay": 20, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "rank_wrapper_decay15_vol_trigger",
+      "description": "rank wrapper + decay=15 + volatility-based exit replaces abs(returns) trigger",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(close, 5)), densify(sector))), ts_std_dev(returns, 5) > 0.03)",
+      "settings": {"decay": 15, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "rank_wrapper_decay15_vwap_vol_trigger",
+      "description": "Full change: rank+decay15+vwap+vol trigger — most different from original",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(vwap, 5)), densify(sector))), ts_std_dev(returns, 5) > 0.03)",
+      "settings": {"decay": 15, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "no_densify_rank_decay15",
+      "description": "Remove densify(sector) to simplify neutralization — tests if densify causes path dependency",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(close, 5)), sector)), abs(returns) > 0.1)",
+      "settings": {"decay": 15, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "no_densify_vwap_rank_decay15",
+      "description": "No densify + vwap + rank wrapper + decay=15",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(vwap, 5)), sector)), abs(returns) > 0.1)",
+      "settings": {"decay": 15, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "sector_bucket_rank_decay15",
+      "description": "Replace densify(sector) with densify(bucket(rank(cap), range='0.1, 1, 0.1')) — cap-based grouping",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(close, 5)), densify(bucket(rank(cap), range='0.1, 1, 0.1')))), abs(returns) > 0.1)",
+      "settings": {"decay": 15, "neutralization": "INDUSTRY"}
+    }
+  ],
+  "expected_outcomes": {
+    "primary_target": "rank_wrapper_decay15 or rank_wrapper_decay15_vwap_base — expected self_corr < 0.69 (based on 88Ob79jV precedent)",
+    "fallback_target": "rank_wrapper_decay15_vol_trigger — vol-based exit may further reduce self-corr",
+    "kill_criteria": "All variants with self_corr >= 0.7 should be KILL",
+    "borderline_handling": "If any variant hits 0.700-0.702, run one additional decay=25 variant"
+  },
+  "notes": [
+    "Key precedent: 88Ob79jV (returns/vwap family) went from self_corr 0.7224 (decay=20) to 0.6796 (decay=15 + rank wrapper)",
+    "The rank() wrapper is the confirmed mechanism for breaking time-series dependency",
+    "vwap base change is orthogonal to LLgOWZmn which uses close-based high-low range",
+    "Do NOT increase decay beyond 20 unless all <20 variants FAIL — too much smoothing destroys Fitness"
+  ]
+}

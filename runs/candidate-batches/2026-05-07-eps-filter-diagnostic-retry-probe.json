@@ -1,0 +1,29 @@
+{
+  "capture_id": "2026-05-07-eps-filter-diagnostic-retry-probe",
+  "topic": "eps_filter_missingness_diagnostic_retry_probe",
+  "candidates": [
+    {
+      "name": "unit_clean_ts_rank_60_industry",
+      "expression": "group_rank(ts_rank(eps, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    }
+  ]
+}

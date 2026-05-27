@@ -1,0 +1,119 @@
+{
+  "_instructions": [
+    "Grk1xjWZ Sub-universe Rescue + Sign-flip Control batch",
+    "Grk1xjWZ (original): group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), industry)",
+    "Metrics: Sharpe=1.57, Fitness=1.34, Turnover=0.0585, Sub-universe=0.34 (FAIL 0.68)",
+    "Bottleneck: Sub-universe FAIL only — thesis is strong, fix is structural diversification",
+    "Sign-flip candidates: 2rJ8q1j8, blvGa3dR, akojVY7v — all negative Sharpe but pass Sub-universe structurally",
+    "Pass criteria: Grk1xjWZ rescue needs Sub-universe >= 0.62, Sharpe >= 1.25, Fitness >= 1.0",
+    "Sign-flips need: Sharpe >= 1.25, Fitness >= 1.0, Sub-universe >= 0.55",
+    "Field diversity check: cash_burn_rate_v1 (21 variants, avg -0.38), book_leverage_ratio_3 (11 variants, avg -0.20)",
+    "These sign-flips test whether the negative signal in those fields reverses to positive"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-22-grk1xjwz-rescue-signflip-batch",
+  "topic": "grk1xjwz_subuniverse_rescue_plus_signflip",
+  "author": "Claude",
+  "source": "overnight_alpha_report_20260522",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "OFF",
+    "language": "FASTEXPR",
+    "testPeriod": "P1Y0M0D"
+  },
+  "candidates": [
+    {
+      "name": "sector_neutral",
+      "description": "Replace industry with sector neutralization — broader grouping for better Sub-universe",
+      "expression": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "sector_cap_bucket",
+      "description": "Sector neutral + cap-based bucketing for structural diversification",
+      "expression": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+      "settings": {"neutralization": "NONE", "neutralizationBucket": "bucket(rank(cap), range='0.1, 1, 0.1')"}
+    },
+    {
+      "name": "rank_outer_sector",
+      "description": "Add rank() outer wrapper + sector neutralization — breaks time-series dependency (precedent: 88Ob79jV, QPn0vn3X)",
+      "expression": "rank(group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector))",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "rank_outer_industry_cap_bucket",
+      "description": "rank wrapper + industry neutral + cap bucket — tests if rank breaks Sub-universe concentration",
+      "expression": "rank(group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), industry))",
+      "settings": {"neutralization": "NONE", "neutralizationBucket": "bucket(rank(cap), range='0.1, 1, 0.1')"}
+    },
+    {
+      "name": "decay6_sector",
+      "description": "decay=6 + sector neutralization — slight smoothing with broader grouping",
+      "expression": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+      "settings": {"decay": 6, "neutralization": "NONE"}
+    },
+    {
+      "name": "decay8_sector_cap_bucket",
+      "description": "decay=8 + sector + cap bucket — maximum diversification for Sub-universe fix",
+      "expression": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+      "settings": {"decay": 8, "neutralization": "NONE", "neutralizationBucket": "bucket(rank(cap), range='0.1, 1, 0.1')"}
+    },
+    {
+      "name": "2rJ8q1j8_rev",
+      "description": "Sign-flip: book_leverage_ratio_3 * inverse(cash_burn_rate_v1) with industry neutral",
+      "expression": "reverse(group_neutralize(multiply(book_leverage_ratio_3, inverse(cash_burn_rate_v1)), industry))",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "blvGa3dR_rev",
+      "description": "Sign-flip: book_leverage_ratio_3 / (cash_burn_rate_v1 + 1) — ratio form",
+      "expression": "reverse(divide(book_leverage_ratio_3, add(cash_burn_rate_v1, 1)))",
+      "settings": {}
+    },
+    {
+      "name": "akojVY7v_rev",
+      "description": "Sign-flip: book_leverage_ratio_3 - cash_burn_rate_v1 — difference form",
+      "expression": "reverse(subtract(book_leverage_ratio_3, cash_burn_rate_v1))",
+      "settings": {}
+    },
+    {
+      "name": "akojVY7v_rev_industry",
+      "description": "Sign-flip with industry neutralization — tests if neutralization helps the flip",
+      "expression": "reverse(group_neutralize(subtract(book_leverage_ratio_3, cash_burn_rate_v1), industry))",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "2rJ8q1j8_rev_sector",
+      "description": "Sign-flip with sector neutralization — broader than industry",
+      "expression": "reverse(group_neutralize(multiply(book_leverage_ratio_3, inverse(cash_burn_rate_v1)), sector))",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "blvGa3dR_rev_industry_cap_bucket",
+      "description": "Sign-flip ratio with industry + cap bucket — tests structural fix on flip",
+      "expression": "reverse(divide(book_leverage_ratio_3, add(cash_burn_rate_v1, 1)))",
+      "settings": {"neutralization": "NONE", "neutralizationBucket": "bucket(rank(cap), range='0.1, 1, 0.1')"}
+    }
+  ],
+  "expected_outcomes": {
+    "grk1xjwz_rescue_target": "sector_neutral or sector_cap_bucket — expected Sub-universe >= 0.62 while keeping Sharpe >= 1.25",
+    "rank_wrapper_expectation": "rank_outer_sector may lower Sharpe slightly but improve Sub-universe and self-corr",
+    "signflip_best_hope": "2rJ8q1j8_rev — original had strong negative (-1.39), reversal may hit +1.25+ if thesis is valid",
+    "signflip_kill": "If all three sign-flips get Sharpe < 1.0 or Fitness < 0.8, cash_burn_rate_v1 / book_leverage_ratio_3 family is exhausted",
+    "kill_criteria": "Sub-universe < 0.55 for Grk1xjWZ variants, Sharpe < 1.0 for sign-flips"
+  },
+  "notes": [
+    "Grk1xjWZ original used group_neutralize(..., industry) — sector is the minimal structural change",
+    "Precedent: QPn0vn3X passed with rank wrapper + decay=15, trade_when structure",
+    "Precedent: 88Ob79jV passed with rank wrapper + decay=15 on returns/vwap family",
+    "rank() wrapper breaks time-series dependency — consistent mechanism across families",
+    "Sign-flips use same fields that had 21 and 11 variants in overnight run — this is the retest, not new mining"
+  ]
+}

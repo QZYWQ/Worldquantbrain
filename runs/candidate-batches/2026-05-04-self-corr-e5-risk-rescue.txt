@@ -1,0 +1,24 @@
+# Deep self-correlation rescue for the user's current best expression.
+# Comparator from official self-correlation detail: E5repQ81
+# group_rank(ts_rank(anl4_afv4_median_eps/close,60), industry)
+# Settings target the current best UI run: USA TOP3000 D1, platform
+# neutralization INDUSTRY, platform decay 0.
+
+# Outer quantile changes the final weight distribution while preserving the
+# economic ranking structure. This is a low-disruption check because the alpha
+# is only slightly above the 0.7 self-corr cutoff.
+quantile(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), driver=gaussian)
+
+# Custom neutralization against the actual self-correlation source family:
+# analyst EPS/price deciles. This removes broad valuation/earnings exposure
+# while keeping the price/range/volume core intact.
+group_neutralize(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), densify(bucket(rank(group_rank(ts_rank(anl4_afv4_median_eps/close,60),industry)), range="0,1,0.1")))
+
+# Time-series residualization against the same submitted EPS/price factor.
+# rettype=0 returns the regression error term, i.e. the part not explained by
+# the comparator factor over the last 252 days.
+group_neutralize(ts_regression(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40), group_rank(ts_rank(anl4_afv4_median_eps/close,60),industry), 252, rettype=0), subindustry)
+
+# Size-bucket custom neutralization is a less targeted fallback in case the
+# EPS/price overlap is mainly a size/value exposure rather than the exact field.
+group_neutralize(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), densify(bucket(rank(cap), range="0,1,0.1")))

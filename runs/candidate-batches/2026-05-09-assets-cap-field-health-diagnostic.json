@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "batch_type": "field_health_diagnostic",
+  "target_field_pack": "2026-05-08-assets-cap-delta-zscore-subindustry",
+  "region": "USA",
+  "universe": "TOP3000",
+  "delay": 1,
+  "neutralization": "None",
+  "decay": 0,
+  "created_at": "2026-05-09",
+  "diagnostics": [
+    {
+      "name": "assets_raw",
+      "expression": "assets",
+      "purpose": "Raw coverage of assets field"
+    },
+    {
+      "name": "cap_raw",
+      "expression": "cap",
+      "purpose": "Raw coverage of cap field"
+    },
+    {
+      "name": "assets_nonzero",
+      "expression": "assets != 0 ? 1 : 0",
+      "purpose": "Non-zero coverage of assets"
+    },
+    {
+      "name": "cap_nonzero",
+      "expression": "cap != 0 ? 1 : 0",
+      "purpose": "Non-zero coverage of cap"
+    },
+    {
+      "name": "ratio_nonzero",
+      "expression": "(assets / cap) != 0 ? 1 : 0",
+      "purpose": "Ratio non-zero coverage"
+    },
+    {
+      "name": "assets_update_63d",
+      "expression": "ts_std_dev(assets, 63) != 0 ? 1 : 0",
+      "purpose": "Assets update frequency 63d"
+    },
+    {
+      "name": "ratio_update_20d",
+      "expression": "ts_std_dev(assets / cap, 20) != 0 ? 1 : 0",
+      "purpose": "Ratio update frequency 20d"
+    },
+    {
+      "name": "ratio_bounds",
+      "expression": "abs(assets / cap) > 100",
+      "purpose": "Ratio bounds check"
+    }
+  ],
+  "baseline_expressions": [
+    {
+      "name": "baseline_positive",
+      "expression": "group_rank(ts_zscore(ts_delta(assets / cap, 2), 20), subindustry)",
+      "settings": {"decay": 6, "neutralization": "subindustry"}
+    },
+    {
+      "name": "baseline_negative",
+      "expression": "-group_rank(ts_zscore(ts_delta(assets / cap, 2), 20), subindustry)",
+      "settings": {"decay": 6, "neutralization": "subindustry"}
+    }
+  ]
+}

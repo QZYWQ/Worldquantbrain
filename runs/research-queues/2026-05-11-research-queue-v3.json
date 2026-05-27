@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "queue_id": "research-queue-2026-05-11-v3",
+  "generated_at": "2026-05-11T02:00:00+0800",
+  "status": "ready_to_execute",
+  "note": "v3 — Updated after deep CrossSection + project history analysis. All previously recommended paths verified FAILED or FROZEN. Only mdl177 VM_composite remains as untested new-source opportunity.",
+  "queues": [
+    {
+      "priority": 1,
+      "family": "model_value_momentum_composite",
+      "family_key": "model_value_momentum_composite",
+      "hypothesis": "Model77 value-momentum composite (mdl177) captures cross-sectional mispricing in growth-vs-value regime that pure price/volume signals miss; different dataset from frozen model16 rerating lanes",
+      "source": "BRAIN model77 — untested new source",
+      "status": "ready_to_execute",
+      "stage": "S-1",
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "data_category": "model77",
+      "fields_to_diagnose": ["mdl177_valuemomemtummodel_vm_compositesn"],
+      "baseline_expression": "group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "sign_control_expression": "-group_rank(ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20), industry)",
+      "stop_condition": "If Sharpe < 0.3 or alphaId=null (no alpha produced), STOP — no further mdl177 budget",
+      "family_doc": "runs/expression-families/2026-05-11-model-value-momentum-composite-mdl177.md",
+      "estimated_simulations": 2,
+      "blocking_families": []
+    }
+  ],
+  "verified_failed_paths": [
+    {
+      "family": "external_financing_share_dilution",
+      "field": "mdl77_valueanalystmodel_qva_yoychgshares",
+      "result": "Sharpe ±0.18 — FAIL",
+      "evidence": "runs/submission-memos/2026-05-04-dilution-sharecount-neighbor-scout-stop.md"
+    },
+    {
+      "family": "earnings_quality_value",
+      "field": "proforma_earnings_to_price",
+      "result": "IS -0.92 / TEST +0.57 sign-flip unstable — FAIL",
+      "evidence": "BRAIN history — alpha pwVqm3kV / QP21klOp"
+    },
+    {
+      "family": "news_sentiment_momentum",
+      "field": "nws18_qcm",
+      "result": "EVENT fields cannot use ts_rank — STOP confirmed",
+      "evidence": "runs/notes/daily/2026-05-11-field-health-diagnostic-results.md"
+    },
+    {
+      "family": "social_buzz_acceleration",
+      "field": "scl12_buzz",
+      "result": "ts_rank works but produces no alpha (alphaId=null) — DEAD",
+      "evidence": "runs/notes/daily/2026-05-11-field-health-diagnostic-results.md"
+    },
+    {
+      "family": "model_rerating_derivative",
+      "field": "multi_factor_static_score_derivative",
+      "result": "Frozen 2026-04-27 — S0 failure pattern",
+      "evidence": "runs/field-search-packs/2026-04-25-model-multi-factor-static-score-rerating.md"
+    },
+    {
+      "family": "model_rerating_derivative",
+      "field": "relative_valuation_rank_derivative",
+      "result": "Frozen 2026-04-27 — S0 failure pattern",
+      "evidence": "runs/field-search-packs/2026-04-25-model-relative-valuation-rerating.md"
+    },
+    {
+      "family": "analyst_disagreement",
+      "field": "anl4_afv4_dts_spe",
+      "result": "Sharpe 0.21 — weak and frozen",
+      "evidence": "runs/expression-families/analyst-disagreement-branch.md"
+    },
+    {
+      "family": "analyst_eps_sibling",
+      "field": "anl4_afv4_median_eps",
+      "result": "TEST Sharpe 0.15 — too weak and frozen",
+      "evidence": "runs/expression-families/analyst-sibling-branch.md"
+    },
+    {
+      "family": "short_interest_squeeze",
+      "field": "short_interest",
+      "result": "Field doesn't exist (unknown variable) — STOP",
+      "evidence": "runs/notes/daily/2026-05-09-short-interest-research-decision.md"
+    },
+    {
+      "family": "close_delta_family",
+      "field": "ts_delta(close,1)",
+      "result": "Structural self-corr (all 12 variants share same signal) — expected FAIL",
+      "evidence": "runs/candidate-batches/2026-05-10-close-delta-family-results.md"
+    }
+  ],
+  "frozen_families": [
+    {
+      "family": "analyst_eps_price_industry",
+      "reason": "TEST Sharpe too weak (0.15 on live recheck) — frozen",
+      "memo": "runs/expression-families/analyst-sibling-branch.md"
+    },
+    {
+      "family": "analyst_disagreement_dts_spe_industry",
+      "reason": "Sign-flip FAILED, best direct Sharpe only 0.21 — frozen",
+      "memo": "runs/expression-families/analyst-disagreement-branch.md"
+    },
+    {
+      "family": "eps_quality_yield_backup",
+      "reason": "QP2v6rVW self-corr 0.9221 FAIL — frozen",
+      "memo": "runs/submission-memos/2026-05-07-qp2v6rvw-self-corr-freeze.md"
+    },
+    {
+      "family": "model_rerating_derivative_multi_factor",
+      "reason": "Frozen 2026-04-27 — S0 failure pattern",
+      "memo": "runs/field-search-packs/2026-04-25-model-multi-factor-static-score-rerating.md"
+    },
+    {
+      "family": "model_rerating_derivative_relative_valuation",
+      "reason": "Frozen 2026-04-27 — S0 failure pattern",
+      "memo": "runs/field-search-packs/2026-04-25-model-relative-valuation-rerating.md"
+    }
+  ],
+  "active_submitted": [
+    {
+      "alpha": "E5g7vMjJ",
+      "family": "price_volume_corr",
+      "sharpe": 1.37,
+      "fitness": 1.01,
+      "status": "ACTIVE"
+    },
+    {
+      "alpha": "A1gVE97w",
+      "family": "eps_quality_yield",
+      "sharpe": 1.63,
+      "fitness": 1.04,
+      "status": "ACTIVE/OS"
+    },
+    {
+      "alpha": "bloqmdJK",
+      "family": "price_volume_social_gate",
+      "sharpe": 1.61,
+      "fitness": 1.25,
+      "status": "UNSUBMITTED — SUBMIT NOW (all gates passed, decision memo: runs/submission-memos/2026-05-11-bloqmdjk-submit-now.md)"
+    }
+  ],
+  "execution_ready_when": "Manual — user handles submission and simulation execution"
+}

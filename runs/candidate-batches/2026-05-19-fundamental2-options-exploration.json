@@ -1,0 +1,91 @@
+{
+  "_instructions": [
+    "FO batch: fundamental2 dataset field exploration",
+    "Hypothesis: fn_comp options related fields may provide unique signal",
+    "Reference: fn_comp_options_grants_fair_value_q had S=0.42 at FO - weak but might be improvable",
+    "Dataset: fundamental2 - not yet deeply explored"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-19-fundamental2-options-exploration",
+  "topic": "fundamental2_fn_comp_options",
+  "author": "Claude",
+  "source": "hypothesis_driven",
+  "hypothesis": "Options grants fair value - company stock-based compensation levels as signal",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "baseline_options_fair_value",
+      "description": "Baseline: rank(fn_comp_options_grants_fair_value_q)",
+      "expression": "rank(fn_comp_options_grants_fair_value_q)",
+      "settings": {}
+    },
+    {
+      "name": "reversed_options_fair_value",
+      "description": "Reversed: high options grants = sell signal (dilution)",
+      "expression": "rank(-fn_comp_options_grants_fair_value_q)",
+      "settings": {}
+    },
+    {
+      "name": "group_rank_industry",
+      "description": "Group rank within industry",
+      "expression": "group_rank(rank(fn_comp_options_grants_fair_value_q), industry)",
+      "settings": {}
+    },
+    {
+      "name": "group_rank_market",
+      "description": "Group rank within market",
+      "expression": "group_rank(rank(fn_comp_options_grants_fair_value_q), market)",
+      "settings": {}
+    },
+    {
+      "name": "decay15_group_rank_market",
+      "description": "decay=15 + market group_rank",
+      "expression": "group_rank(rank(fn_comp_options_grants_fair_value_q), market)",
+      "settings": {
+        "decay": 15
+      }
+    },
+    {
+      "name": "zscore_normalized",
+      "description": "Zscore normalization",
+      "expression": "zscore(fn_comp_options_grants_fair_value_q)",
+      "settings": {}
+    },
+    {
+      "name": "ts_mean_smoothing",
+      "description": "ts_mean smoothing",
+      "expression": "group_rank(rank(ts_mean(fn_comp_options_grants_fair_value_q, 22)), market)",
+      "settings": {}
+    },
+    {
+      "name": "quantile_gaussian",
+      "description": "Quantile with gaussian driver",
+      "expression": "group_rank(quantile(fn_comp_options_grants_fair_value_q, driver=gaussian), market)",
+      "settings": {}
+    }
+  ],
+  "expected_outcomes": {
+    "sign_positive": "High options grants may indicate dilution risk (sell signal)",
+    "self_corr_target": "< 0.7",
+    "fitness_target": "> 1.0",
+    "sharpe_target": "> 1.25"
+  },
+  "risk_factors": [
+    "FO showed weak S=0.42 - may not have enough signal",
+    "Coverage may be sparse (quarterly data)",
+    "fundamental2 fields less commonly used"
+  ],
+  "notes": "FO S=0.42 is weak, but patterns like decay and group_rank sometimes boost signal. Testing per fundamental2 dataset unexplored."
+}

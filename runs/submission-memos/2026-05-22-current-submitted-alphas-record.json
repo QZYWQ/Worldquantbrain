@@ -1,0 +1,50 @@
+{
+  "mode": "RECORD_ONLY",
+  "started_at_utc": "2026-05-22T14:42:10.970169+00:00",
+  "finished_at_utc": "2026-05-22T14:46:06.651089+00:00",
+  "official_account_alpha_count": 94,
+  "submitted_or_active_count": 1,
+  "records": [
+    {
+      "alpha_id": "A1kWl0LE",
+      "status": "ACTIVE",
+      "stage": "OS",
+      "date_created": "2026-05-22T06:24:48-04:00",
+      "date_submitted": "2026-05-22T06:43:27-04:00",
+      "author": "CM54257",
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 90), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.76,
+        "fitness": 1.56,
+        "turnover": 0.1171,
+        "returns": 0.0978,
+        "drawdown": 0.0672,
+        "margin": 0.001671,
+        "longCount": 1537,
+        "shortCount": 1538,
+        "subUniverseSharpe": 1.31,
+        "selfCorrelation": null
+      },
+      "check": null
+    }
+  ]
+}

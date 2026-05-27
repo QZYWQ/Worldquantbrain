@@ -1,0 +1,1347 @@
+{
+  "capture_id": "2026-05-04-self-corr-forum-field-availability-recheck",
+  "captured_at": "2026-05-04T13:51:46+00:00",
+  "source": "official WorldQuant BRAIN API /data-fields",
+  "platform_context": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "delay": 1,
+    "universe": "TOP3000"
+  },
+  "terms": [
+    "nws18_bee",
+    "rp_nip_assets",
+    "nws18_relevance",
+    "nws18_qcm",
+    "scl12_sentiment_fast_d1",
+    "snt_social_value",
+    "snt_social_volume",
+    "snt1_d1_dynamicfocusrank",
+    "snt1_cored1_score"
+  ],
+  "results": {
+    "nws18_bee": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=nws18_bee",
+      "count": 60,
+      "results": [
+        {
+          "id": "nws18_bee",
+          "description": "Earnings evaluation score indicating positive, neutral, or negative assessment (-1, 0, +1)",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 241,
+          "alphaCount": 497
+        },
+        {
+          "id": "nws18_ber",
+          "description": "Earnings Release Indicator flag for earnings release events",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 250,
+          "alphaCount": 595
+        },
+        {
+          "id": "nws18_bam",
+          "description": "Mergers and acquisitions sentiment indicator (e.g., -1 negative, 0 neutral, +1 positive)",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 364,
+          "alphaCount": 984
+        },
+        {
+          "id": "nws18_qep",
+          "description": "Equities sentiment polarity score derived from positive/negative words in news (typically -1, 0, +1)",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 287,
+          "alphaCount": 970
+        },
+        {
+          "id": "nws18_sse",
+          "description": "Continuous sentiment score between -1.00 and +1.00 for the entity-event",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 132,
+          "alphaCount": 367
+        },
+        {
+          "id": "fnd6_naicss",
+          "description": "NAICS Code",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 1052,
+          "alphaCount": 1685
+        },
+        {
+          "id": "nws12_afterhsz_vol_ratio",
+          "description": "Curr_Vol / Mov_Vol",
+          "dataset": "news12",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.7077,
+          "dateCoverage": null,
+          "userCount": 48,
+          "alphaCount": 81
+        },
+        {
+          "id": "nws12_mainz_vol_ratio",
+          "description": "Curr_Vol / Mov_Vol",
+          "dataset": "news12",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.9712,
+          "dateCoverage": null,
+          "userCount": 107,
+          "alphaCount": 332
+        },
+        {
+          "id": "nws12_prez_vol_ratio",
+          "description": "Curr_Vol / Mov_Vol",
+          "dataset": "news12",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.7809,
+          "dateCoverage": null,
+          "userCount": 41,
+          "alphaCount": 54
+        },
+        {
+          "id": "pv13_revere_country",
+          "description": "Country code",
+          "dataset": "pv13",
+          "category": {
+            "id": "pv",
+            "name": "Price Volume"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": null,
+          "userCount": 644,
+          "alphaCount": 1177
+        }
+      ]
+    },
+    "rp_nip_assets": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=rp_nip_assets",
+      "count": 688,
+      "results": [
+        {
+          "id": "rp_nip_assets",
+          "description": "News impact projection of assets news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 461,
+          "alphaCount": 868
+        },
+        {
+          "id": "pv13_revere_comproduct_company",
+          "description": "Company product",
+          "dataset": "pv13",
+          "category": {
+            "id": "pv",
+            "name": "Price Volume"
+          },
+          "type": "MATRIX",
+          "coverage": 0.4078,
+          "dateCoverage": null,
+          "userCount": 38,
+          "alphaCount": 46
+        },
+        {
+          "id": "fnd6_newa1v1300_ao",
+          "description": "Assets - Other",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 268,
+          "alphaCount": 566
+        },
+        {
+          "id": "fnd6_aox",
+          "description": "Assets - Other - Sundry",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 693,
+          "alphaCount": 1326
+        },
+        {
+          "id": "fnd6_newa1v1300_aul3",
+          "description": "Assets Level 3 (Unobservable)",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 207,
+          "alphaCount": 342
+        },
+        {
+          "id": "fnd6_newqeventv110_aul3q",
+          "description": "Assets Level 3 (Unobservable)",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 24,
+          "alphaCount": 31
+        },
+        {
+          "id": "fnd6_newqv1300_aul3q",
+          "description": "Assets Level 3 (Unobservable)",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 136,
+          "alphaCount": 203
+        },
+        {
+          "id": "fnd6_acox",
+          "description": "Current Assets - Other - Sundry",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 1484,
+          "alphaCount": 2795
+        },
+        {
+          "id": "assets",
+          "description": "Assets - Total",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 46310,
+          "alphaCount": 144947
+        },
+        {
+          "id": "fnd6_cptmfmq_atq",
+          "description": "Assets - Total",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 610,
+          "alphaCount": 1317
+        }
+      ]
+    },
+    "nws18_relevance": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=nws18_relevance",
+      "count": 2451,
+      "results": [
+        {
+          "id": "nws18_relevance",
+          "description": "Score from 0 to 100 indicating how strongly the entity is related to the story higher is more relevant",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 261,
+          "alphaCount": 653
+        },
+        {
+          "id": "rp_nip_labor",
+          "description": "News impact projection of labor issues news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 123,
+          "alphaCount": 304
+        },
+        {
+          "id": "rp_nip_equity",
+          "description": "News impact projection of equity action news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 322,
+          "alphaCount": 767
+        },
+        {
+          "id": "rp_nip_society",
+          "description": "News impact projection of society-related news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 60,
+          "alphaCount": 143
+        },
+        {
+          "id": "rp_nip_assets",
+          "description": "News impact projection of assets news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 461,
+          "alphaCount": 868
+        },
+        {
+          "id": "rp_ess_labor",
+          "description": "Event sentiment score of labor issues news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 191,
+          "alphaCount": 392
+        },
+        {
+          "id": "nws18_nip",
+          "description": "Narrative impact score in [-1, 1] estimating the news item’s short-term market impact (e.g., next two hours)",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 315,
+          "alphaCount": 1241
+        },
+        {
+          "id": "rp_nip_business",
+          "description": "News impact projection of business-related news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 323,
+          "alphaCount": 1068
+        },
+        {
+          "id": "rp_nip_technical",
+          "description": "News impact projection based on technical analysis",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 63,
+          "alphaCount": 142
+        },
+        {
+          "id": "rp_nip_product",
+          "description": "News impact projection of product and service-related news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 377,
+          "alphaCount": 812
+        }
+      ]
+    },
+    "nws18_qcm": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=nws18_qcm",
+      "count": 168,
+      "results": [
+        {
+          "id": "nws18_qcm",
+          "description": "News sentiment of relevant news with high confidence",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 272,
+          "alphaCount": 631
+        },
+        {
+          "id": "nws18_acb",
+          "description": "News sentiment specializing in corporate action announcements",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 175,
+          "alphaCount": 515
+        },
+        {
+          "id": "nws18_qep",
+          "description": "Equities sentiment polarity score derived from positive/negative words in news (typically -1, 0, +1)",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 287,
+          "alphaCount": 970
+        },
+        {
+          "id": "nws18_bam",
+          "description": "Mergers and acquisitions sentiment indicator (e.g., -1 negative, 0 neutral, +1 positive)",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 364,
+          "alphaCount": 984
+        },
+        {
+          "id": "nws18_qmb",
+          "description": "Editorials and commentary score indicating stance or sentiment (-1, 0, +1)",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 157,
+          "alphaCount": 471
+        },
+        {
+          "id": "fnd6_naicss",
+          "description": "NAICS Code",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 1052,
+          "alphaCount": 1685
+        },
+        {
+          "id": "anl4_ads1detailafv110_person",
+          "description": "Broker Id",
+          "dataset": "analyst4",
+          "category": {
+            "id": "analyst",
+            "name": "Analyst"
+          },
+          "type": "VECTOR",
+          "coverage": 0.688,
+          "dateCoverage": null,
+          "userCount": 316,
+          "alphaCount": 781
+        },
+        {
+          "id": "anl4_ads1detailqfv110_person",
+          "description": "Broker Id",
+          "dataset": "analyst4",
+          "category": {
+            "id": "analyst",
+            "name": "Analyst"
+          },
+          "type": "VECTOR",
+          "coverage": 0.6295,
+          "dateCoverage": null,
+          "userCount": 274,
+          "alphaCount": 293
+        },
+        {
+          "id": "anl4_basicdetaillt_person",
+          "description": "Broker Id",
+          "dataset": "analyst4",
+          "category": {
+            "id": "analyst",
+            "name": "Analyst"
+          },
+          "type": "VECTOR",
+          "coverage": 0.6827,
+          "dateCoverage": null,
+          "userCount": 59,
+          "alphaCount": 103
+        },
+        {
+          "id": "anl4_basicdetailqfv110_person",
+          "description": "Broker Id",
+          "dataset": "analyst4",
+          "category": {
+            "id": "analyst",
+            "name": "Analyst"
+          },
+          "type": "VECTOR",
+          "coverage": 0.6876,
+          "dateCoverage": null,
+          "userCount": 33,
+          "alphaCount": 42
+        }
+      ]
+    },
+    "scl12_sentiment_fast_d1": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=scl12_sentiment_fast_d1",
+      "count": 5683,
+      "results": [
+        {
+          "id": "scl12_sentiment_fast_d1",
+          "description": "sentiment",
+          "dataset": "socialmedia12",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 0.9756,
+          "dateCoverage": 1.0,
+          "userCount": 116,
+          "alphaCount": 134
+        },
+        {
+          "id": "scl12_alltype_sentvec",
+          "description": "sentiment",
+          "dataset": "socialmedia12",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "VECTOR",
+          "coverage": 0.9525,
+          "dateCoverage": 1.0,
+          "userCount": 47,
+          "alphaCount": 90
+        },
+        {
+          "id": "scl12_sentiment",
+          "description": "sentiment",
+          "dataset": "socialmedia12",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 1211,
+          "alphaCount": 3272
+        },
+        {
+          "id": "snt_social_value",
+          "description": "Z-score of sentiment",
+          "dataset": "socialmedia8",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 0.8585,
+          "dateCoverage": 1.0,
+          "userCount": 2263,
+          "alphaCount": 4930
+        },
+        {
+          "id": "snt1_d1_dynamicfocusrank",
+          "description": "Composite rank (0-100) emphasizing dynamic, short-term analyst sentiment signals; higher values indicate stronger buy signals, lower values indicate sell signals",
+          "dataset": "sentiment1",
+          "category": {
+            "id": "sentiment",
+            "name": "Sentiment"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5651,
+          "dateCoverage": 1.0,
+          "userCount": 305,
+          "alphaCount": 1887
+        },
+        {
+          "id": "rp_css_society",
+          "description": "Composite sentiment score of society-related news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 87,
+          "alphaCount": 139
+        },
+        {
+          "id": "rp_ess_society",
+          "description": "Event sentiment score of society-related news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 93,
+          "alphaCount": 182
+        },
+        {
+          "id": "rp_ess_partner",
+          "description": "Event sentiment score of partnership news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 668,
+          "alphaCount": 1539
+        },
+        {
+          "id": "rp_css_revenue",
+          "description": "Composite sentiment score of revenue news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 571,
+          "alphaCount": 1168
+        },
+        {
+          "id": "rp_ess_assets",
+          "description": "Event sentiment score of assets news",
+          "dataset": "news18",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 452,
+          "alphaCount": 694
+        }
+      ]
+    },
+    "snt_social_value": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=snt_social_value",
+      "count": 5187,
+      "results": [
+        {
+          "id": "snt_social_value",
+          "description": "Z-score of sentiment",
+          "dataset": "socialmedia8",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 0.8585,
+          "dateCoverage": 1.0,
+          "userCount": 2263,
+          "alphaCount": 4930
+        },
+        {
+          "id": "snt_social_volume",
+          "description": "Normalized tweet volume",
+          "dataset": "socialmedia8",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 0.8585,
+          "dateCoverage": 1.0,
+          "userCount": 2015,
+          "alphaCount": 4845
+        },
+        {
+          "id": "mdl77_2garpanalystmodel_qgp_valuation",
+          "description": "Valuation Rank: Valuation Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 0.9046,
+          "dateCoverage": 1.0,
+          "userCount": 3,
+          "alphaCount": 7
+        },
+        {
+          "id": "mdl77_garpanalystmodel_qgp_valuation",
+          "description": "Valuation Rank: Valuation Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 6,
+          "alphaCount": 8
+        },
+        {
+          "id": "mdl177_2_valuemomemtummodel_vm_compositesn",
+          "description": "Value Momentum Composite SN",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 93,
+          "alphaCount": 129
+        },
+        {
+          "id": "mdl177_valuemomemtummodel_vm_compositesn",
+          "description": "Value Momentum Composite SN",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 88,
+          "alphaCount": 152
+        },
+        {
+          "id": "isin",
+          "description": "ISIN Value",
+          "dataset": "pv1",
+          "category": {
+            "id": "pv",
+            "name": "Price Volume"
+          },
+          "type": "SYMBOL",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 0,
+          "alphaCount": 0
+        },
+        {
+          "id": "mdl177_valanalystmodel_qva_valuation",
+          "description": "Valuation Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 32,
+          "alphaCount": 49
+        },
+        {
+          "id": "mdl177_2_valueanalystmodel_qva_valuation",
+          "description": "Overall valuation rank, likely reflecting various value measures",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 56,
+          "alphaCount": 107
+        },
+        {
+          "id": "fnd2_a_sbcpnatqsttotnsvdptfv",
+          "description": "Fair value of share-based awards for which the grantee gained the right by satisfying service and performance requirements, to receive or retain shares or units, other instruments, or cash.",
+          "dataset": "fundamental2",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "MATRIX",
+          "coverage": 0.3068,
+          "dateCoverage": null,
+          "userCount": 63,
+          "alphaCount": 119
+        }
+      ]
+    },
+    "snt_social_volume": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=snt_social_volume",
+      "count": 2454,
+      "results": [
+        {
+          "id": "snt_social_volume",
+          "description": "Normalized tweet volume",
+          "dataset": "socialmedia8",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 0.8585,
+          "dateCoverage": 1.0,
+          "userCount": 2015,
+          "alphaCount": 4845
+        },
+        {
+          "id": "snt_social_value",
+          "description": "Z-score of sentiment",
+          "dataset": "socialmedia8",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 0.8585,
+          "dateCoverage": 1.0,
+          "userCount": 2263,
+          "alphaCount": 4930
+        },
+        {
+          "id": "scl12_alltype_buzzvec",
+          "description": "sentiment volume",
+          "dataset": "socialmedia12",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "VECTOR",
+          "coverage": 0.9525,
+          "dateCoverage": 1.0,
+          "userCount": 153,
+          "alphaCount": 229
+        },
+        {
+          "id": "volume",
+          "description": "Daily volume",
+          "dataset": "pv1",
+          "category": {
+            "id": "pv",
+            "name": "Price Volume"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 32815,
+          "alphaCount": 303584
+        },
+        {
+          "id": "news_curr_vol",
+          "description": "Current day's session volume",
+          "dataset": "news12",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "MATRIX",
+          "coverage": 0.7769,
+          "dateCoverage": 1.0,
+          "userCount": 417,
+          "alphaCount": 874
+        },
+        {
+          "id": "nws12_afterhsz_curr_vol",
+          "description": "Current day's session volume",
+          "dataset": "news12",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.707,
+          "dateCoverage": null,
+          "userCount": 33,
+          "alphaCount": 42
+        },
+        {
+          "id": "nws12_mainz_curr_vol",
+          "description": "Current day's session volume",
+          "dataset": "news12",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.9733,
+          "dateCoverage": null,
+          "userCount": 320,
+          "alphaCount": 506
+        },
+        {
+          "id": "nws12_prez_curr_vol",
+          "description": "Current day's session volume",
+          "dataset": "news12",
+          "category": {
+            "id": "news",
+            "name": "News"
+          },
+          "type": "VECTOR",
+          "coverage": 0.7742,
+          "dateCoverage": null,
+          "userCount": 57,
+          "alphaCount": 67
+        },
+        {
+          "id": "scl12_buzz",
+          "description": "relative sentiment volume",
+          "dataset": "socialmedia12",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 13532,
+          "alphaCount": 20382
+        },
+        {
+          "id": "scl12_buzz_fast_d1",
+          "description": "relative sentiment volume",
+          "dataset": "socialmedia12",
+          "category": {
+            "id": "socialmedia",
+            "name": "Social Media"
+          },
+          "type": "MATRIX",
+          "coverage": 0.9756,
+          "dateCoverage": 1.0,
+          "userCount": 106,
+          "alphaCount": 123
+        }
+      ]
+    },
+    "snt1_d1_dynamicfocusrank": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=snt1_d1_dynamicfocusrank",
+      "count": 404,
+      "results": [
+        {
+          "id": "snt1_d1_dynamicfocusrank",
+          "description": "Composite rank (0-100) emphasizing dynamic, short-term analyst sentiment signals; higher values indicate stronger buy signals, lower values indicate sell signals",
+          "dataset": "sentiment1",
+          "category": {
+            "id": "sentiment",
+            "name": "Sentiment"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5651,
+          "dateCoverage": 1.0,
+          "userCount": 305,
+          "alphaCount": 1887
+        },
+        {
+          "id": "fnd6_ranks",
+          "description": "Ranking",
+          "dataset": "fundamental6",
+          "category": {
+            "id": "fundamental",
+            "name": "Fundamental"
+          },
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dateCoverage": 1.0,
+          "userCount": 1108,
+          "alphaCount": 1545
+        },
+        {
+          "id": "mdl177_2_surpriseanalystmodel_qsa_efficiency",
+          "description": "Fundamentals Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 52,
+          "alphaCount": 150
+        },
+        {
+          "id": "mdl177_surpriseanalystmodel_qsa_efficiency",
+          "description": "Fundamentals Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 63,
+          "alphaCount": 186
+        },
+        {
+          "id": "mdl77_2surpriseanalystmodel_qsa_efficiency",
+          "description": "Fundamentals Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 0.9537,
+          "dateCoverage": 1.0,
+          "userCount": 6,
+          "alphaCount": 9
+        },
+        {
+          "id": "mdl77_qsa_efficiency",
+          "description": "Fundamentals Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 0.9448,
+          "dateCoverage": 1.0,
+          "userCount": 3,
+          "alphaCount": 8
+        },
+        {
+          "id": "mdl77_surpriseanalystmodel_qsa_efficiency",
+          "description": "Fundamentals Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 0.9537,
+          "dateCoverage": 1.0,
+          "userCount": 2,
+          "alphaCount": 5
+        },
+        {
+          "id": "mdl177_2_valueanalystmodel_qva_alertrank",
+          "description": "Alert Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 27,
+          "alphaCount": 64
+        },
+        {
+          "id": "mdl177_garpanalystmodel_qgp_alert",
+          "description": "Alert Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 46,
+          "alphaCount": 123
+        },
+        {
+          "id": "mdl177_valanalystmodel_qva_alertrank",
+          "description": "Alert Rank",
+          "dataset": "model77",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 29,
+          "alphaCount": 60
+        }
+      ]
+    },
+    "snt1_cored1_score": {
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=20&offset=0&search=snt1_cored1_score",
+      "count": 1688,
+      "results": [
+        {
+          "id": "snt1_cored1_score",
+          "description": "Proprietary composite analyst score; bearish if < 5, bullish if > 5, neutral if between -5 and 5",
+          "dataset": "sentiment1",
+          "category": {
+            "id": "sentiment",
+            "name": "Sentiment"
+          },
+          "type": "MATRIX",
+          "coverage": 0.6329,
+          "dateCoverage": 1.0,
+          "userCount": 559,
+          "alphaCount": 3763
+        },
+        {
+          "id": "cusip",
+          "description": "CUSIP Value",
+          "dataset": "pv1",
+          "category": {
+            "id": "pv",
+            "name": "Price Volume"
+          },
+          "type": "SYMBOL",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 33,
+          "alphaCount": 59
+        },
+        {
+          "id": "multi_factor_acceleration_score_derivative",
+          "description": "Change in the acceleration of multi-factor score compared to previous period.",
+          "dataset": "model16",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 121,
+          "alphaCount": 139
+        },
+        {
+          "id": "isin",
+          "description": "ISIN Value",
+          "dataset": "pv1",
+          "category": {
+            "id": "pv",
+            "name": "Price Volume"
+          },
+          "type": "SYMBOL",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 0,
+          "alphaCount": 0
+        },
+        {
+          "id": "relative_valuation_rank_derivative",
+          "description": "Assesses whether the stock is under or overpriced based on standard valuation multiples indicator variant",
+          "dataset": "model16",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 98,
+          "alphaCount": 119
+        },
+        {
+          "id": "multi_factor_static_score_derivative",
+          "description": "Change in static multi-factor score compared to previous period.",
+          "dataset": "model16",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dateCoverage": 1.0,
+          "userCount": 84,
+          "alphaCount": 98
+        },
+        {
+          "id": "fscore_total",
+          "description": "Final blended score that combines the static pentagon surface score with its acceleration",
+          "dataset": "model16",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 0.2946,
+          "dateCoverage": 1.0,
+          "userCount": 145,
+          "alphaCount": 339
+        },
+        {
+          "id": "fscore_bfl_total",
+          "description": "Blended composite M-Score combining the static pentagon surface score and its acceleration into an overarching rating",
+          "dataset": "model16",
+          "category": {
+            "id": "model",
+            "name": "Model"
+          },
+          "type": "MATRIX",
+          "coverage": 0.3726,
+          "dateCoverage": 1.0,
+          "userCount": 11,
+          "alphaCount": 13
+        },
+        {
+          "id": "snt1_d1_fundamentalfocusrank",
+          "description": "Rank (0-100) emphasizing longer-term, fundamental/value metrics; higher values for buy signal, lower for sell signal",
+          "dataset": "sentiment1",
+          "category": {
+            "id": "sentiment",
+            "name": "Sentiment"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5684,
+          "dateCoverage": 1.0,
+          "userCount": 245,
+          "alphaCount": 2523
+        },
+        {
+          "id": "snt1_d1_dynamicfocusrank",
+          "description": "Composite rank (0-100) emphasizing dynamic, short-term analyst sentiment signals; higher values indicate stronger buy signals, lower values indicate sell signals",
+          "dataset": "sentiment1",
+          "category": {
+            "id": "sentiment",
+            "name": "Sentiment"
+          },
+          "type": "MATRIX",
+          "coverage": 0.5651,
+          "dateCoverage": 1.0,
+          "userCount": 305,
+          "alphaCount": 1887
+        }
+      ]
+    }
+  }
+}

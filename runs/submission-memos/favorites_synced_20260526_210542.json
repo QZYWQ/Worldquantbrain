@@ -1,0 +1,110 @@
+{
+  "generated_at": "20260526_210542",
+  "summary": {
+    "total_favorites_before": 14,
+    "new_gp_favorites_added": 2,
+    "stale_favorites_removed": 0,
+    "total_favorites_after": 14
+  },
+  "final_favorites": [
+    {
+      "alpha_id": "QPEJ0oA5",
+      "sharpe": 2.23,
+      "fitness": 1.05,
+      "turnover": 0.6892,
+      "expression": "ts_zscore(-ts_delta(close, 1), 5)"
+    },
+    {
+      "alpha_id": "wpLmjx55",
+      "sharpe": 2.23,
+      "fitness": 1.45,
+      "turnover": 0.249,
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 120), industry)"
+    },
+    {
+      "alpha_id": "rKA3eXKo",
+      "sharpe": 2.08,
+      "fitness": 1.13,
+      "turnover": 0.4744,
+      "expression": "group_neutralize(ts_decay_linear((rank(high - close) - rank(close - low)) * rank"
+    },
+    {
+      "alpha_id": "VkOY2jWY",
+      "sharpe": 2.07,
+      "fitness": 1.46,
+      "turnover": 0.0595,
+      "expression": "group_neutralize(group_rank(0.8 * ts_rank(divide(operating_income, add(abs(asset"
+    },
+    {
+      "alpha_id": "RRd3e7jn",
+      "sharpe": 1.92,
+      "fitness": 1.09,
+      "turnover": 0.4436,
+      "expression": "ts_zscore(-ts_delta(close, 2), 10)"
+    },
+    {
+      "alpha_id": "0mzlEp32",
+      "sharpe": 1.87,
+      "fitness": 1.04,
+      "turnover": 0.5325,
+      "expression": "rank(-ts_zscore(close, 5))"
+    },
+    {
+      "alpha_id": "QPEJW2QG",
+      "sharpe": 1.84,
+      "fitness": 1.1,
+      "turnover": 0.2962,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252))*group_rank(rank"
+    },
+    {
+      "alpha_id": "JjbwOAMx",
+      "sharpe": 1.78,
+      "fitness": 1.05,
+      "turnover": 0.5237,
+      "expression": "rank(-ts_zscore(close, 5))"
+    },
+    {
+      "alpha_id": "MPkAX0LM",
+      "sharpe": 1.65,
+      "fitness": 1.18,
+      "turnover": 0.0398,
+      "expression": "group_rank(0.8 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),168)"
+    },
+    {
+      "alpha_id": "kqQ7GX6K",
+      "sharpe": 1.58,
+      "fitness": 1.03,
+      "turnover": 0.3727,
+      "expression": "group_rank(ts_delta(revenue, 1) / ts_mean(revenue, 8), market)"
+    },
+    {
+      "alpha_id": "d5dXKzmK",
+      "sharpe": 1.58,
+      "fitness": 1.21,
+      "turnover": 0.1045,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,15)) > 0.55, group_neutralize(ts"
+    },
+    {
+      "alpha_id": "Jjbd6OOO",
+      "sharpe": 1.54,
+      "fitness": 1.09,
+      "turnover": 0.0324,
+      "expression": "group_rank(ts_delta(gross_income_reported_value / add(abs(total_assets_amount), "
+    },
+    {
+      "alpha_id": "blvk8vpM",
+      "sharpe": 1.53,
+      "fitness": 1.08,
+      "turnover": 0.0771,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,30)) > 0.6, group_neutralize(ts_"
+    },
+    {
+      "alpha_id": "88nzmOpv",
+      "sharpe": 1.46,
+      "fitness": 1.06,
+      "turnover": 0.0227,
+      "expression": "group_rank(ts_delta((gross_income_max) / add(abs(total_assets_amount), 1), 252),"
+    }
+  ],
+  "removed": []
+}

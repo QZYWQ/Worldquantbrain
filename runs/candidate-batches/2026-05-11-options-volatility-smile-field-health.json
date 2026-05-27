@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-11-options-volatility-smile-field-health",
+  "topic": "options_volatility_smile_field_discovery",
+  "candidates": [
+    {
+      "name": "vsm3_iv_skew_20_coverage",
+      "expression": "ts_rank(vsm3_iv_skew_20, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_skew_20_nonzero",
+      "expression": "vsm3_iv_skew_20 != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_skew_20_volatility",
+      "expression": "ts_std_dev(vsm3_iv_skew_20, 60) != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_smile_20_coverage",
+      "expression": "ts_rank(vsm3_iv_smile_20, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_smile_20_nonzero",
+      "expression": "vsm3_iv_smile_20 != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_smile_20_volatility",
+      "expression": "ts_std_dev(vsm3_iv_smile_20, 60) != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_atm_20_coverage",
+      "expression": "ts_rank(vsm3_iv_atm_20, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_atm_20_nonzero",
+      "expression": "vsm3_iv_atm_20 != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "vsm3_iv_atm_20_volatility",
+      "expression": "ts_std_dev(vsm3_iv_atm_20, 60) != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    }
+  ]
+}

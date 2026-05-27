@@ -1,0 +1,119 @@
+{
+  "_instructions": [
+    "FO batch: model51 fields with gJmojOQm wrapper structure",
+    "Hypothesis: Low market sensitivity (beta/correlation/systematic_risk) predicts better risk-adjusted returns",
+    "Reference: gJmojOQm (unsystematic_risk) passed with self-corr 0.299 using densify(bucket(rank(cap))) wrapper"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-15-model51-fo-expansion",
+  "topic": "model51_beta_correlation_systematic_risk_fo",
+  "author": "Claude",
+  "source": "hypothesis_driven",
+  "hypothesis": "Beta/Correlation/Systematic Risk anomaly - stocks with high market exposure underperform risk-adjusted. Low correlation families provide submission diversity.",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "neutralization": "INDUSTRY",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "beta_baseline",
+      "description": "Baseline: group_rank(ts_zscore(winsorize(ts_backfill(beta_last_60_days_spy, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(beta_last_60_days_spy, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "INDUSTRY"
+      }
+    },
+    {
+      "name": "beta_reversed",
+      "description": "Beta reversed: -group_rank(...) - stocks with LOW beta should outperform",
+      "expression": "-group_rank(ts_zscore(winsorize(ts_backfill(beta_last_60_days_spy, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "INDUSTRY"
+      }
+    },
+    {
+      "name": "correlation_baseline",
+      "description": "Correlation with market - low correlation stocks provide diversification value",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(correlation_last_360_days_spy, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "INDUSTRY"
+      }
+    },
+    {
+      "name": "correlation_reversed",
+      "description": "Correlation reversed: -group_rank(...) - low correlation stocks outperform",
+      "expression": "-group_rank(ts_zscore(winsorize(ts_backfill(correlation_last_360_days_spy, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "INDUSTRY"
+      }
+    },
+    {
+      "name": "systematic_risk_baseline",
+      "description": "Systematic risk - measure of market exposure",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(systematic_risk_last_90_days, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "INDUSTRY"
+      }
+    },
+    {
+      "name": "systematic_risk_reversed",
+      "description": "Systematic risk reversed: -group_rank(...) - low systematic risk stocks outperform",
+      "expression": "-group_rank(ts_zscore(winsorize(ts_backfill(systematic_risk_last_90_days, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "INDUSTRY"
+      }
+    },
+    {
+      "name": "beta_subindustry",
+      "description": "Beta with subindustry neutralization instead of industry",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(beta_last_60_days_spy, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "SUBINDUSTRY"
+      }
+    },
+    {
+      "name": "correlation_subindustry",
+      "description": "Correlation with subindustry neutralization",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(correlation_last_360_days_spy, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "SUBINDUSTRY"
+      }
+    },
+    {
+      "name": "systematic_risk_subindustry",
+      "description": "Systematic risk with subindustry neutralization",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(systematic_risk_last_90_days, 120), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "SUBINDUSTRY"
+      }
+    },
+    {
+      "name": "beta_long_window",
+      "description": "Beta with longer lookback (240) for stability",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(beta_last_90_days_spy, 240), std=4), 66), densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "neutralization": "INDUSTRY"
+      }
+    }
+  ],
+  "expected_outcomes": {
+    "sign_positive": "Low beta/correlation/systematic_risk should predict positive returns (reversed expressions positive sign expected)",
+    "self_corr_target": "< 0.7 (using densify wrapper like gJmojOQm)",
+    "fitness_target": "> 1.0"
+  },
+  "risk_factors": [
+    "model51 fields may not exist or accessible on platform",
+    "Beta/Correlation fields may be crowded by other quants",
+    "Field health unknown - need to verify coverage and update frequency"
+  ],
+  "notes": "If field doesn't exist, will get alphaId=null error. Batch small (10 candidates) to test field viability quickly."
+}

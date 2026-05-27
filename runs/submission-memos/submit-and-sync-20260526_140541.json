@@ -1,0 +1,17 @@
+{
+  "target_alpha": "d5d8p1x2",
+  "pre_check": {
+    "all_pass": true,
+    "sc_value": 0.4865
+  },
+  "submitted": false,
+  "account_state": {
+    "synced_at": "2026-05-26T14:05:41.754238",
+    "total": 875,
+    "submitted": 870,
+    "unsubmitted": 870,
+    "positive_sharpe_unsubmitted": 807,
+    "sharpe_ge_1.5_unsubmitted": 96,
+    "favorites_count": 96
+  }
+}

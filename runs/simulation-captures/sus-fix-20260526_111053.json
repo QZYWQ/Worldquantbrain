@@ -1,0 +1,77 @@
+{
+  "family": "revenue_momentum",
+  "phase": "sus_fix",
+  "anchor": "densify_d0",
+  "results": [
+    {
+      "alpha_id": "O0oomvNJ",
+      "name": "sus_trunc05",
+      "sharpe": 1.76,
+      "fitness": 1.35,
+      "turnover": 0.1585,
+      "decay": 0,
+      "neut": "INDUSTRY",
+      "trunc": 0.05
+    },
+    {
+      "alpha_id": "vRddzvkd",
+      "name": "sus_trunc03",
+      "sharpe": 1.76,
+      "fitness": 1.35,
+      "turnover": 0.1585,
+      "decay": 0,
+      "neut": "INDUSTRY",
+      "trunc": 0.03
+    },
+    {
+      "alpha_id": "rKAAz8v3",
+      "name": "sus_flip",
+      "sharpe": -1.76,
+      "fitness": -1.35,
+      "turnover": 0.1585,
+      "decay": 0,
+      "neut": "INDUSTRY",
+      "trunc": 0.08
+    },
+    {
+      "alpha_id": "A1kkOWMg",
+      "name": "sus_wide",
+      "sharpe": 1.75,
+      "fitness": 1.36,
+      "turnover": 0.1538,
+      "decay": 0,
+      "neut": "INDUSTRY",
+      "trunc": 0.08
+    },
+    {
+      "alpha_id": "kqQQLQMO",
+      "name": "sus_narrow",
+      "sharpe": 1.77,
+      "fitness": 1.3,
+      "turnover": 0.1712,
+      "decay": 0,
+      "neut": "INDUSTRY",
+      "trunc": 0.08
+    },
+    {
+      "alpha_id": "MPkk5djr",
+      "name": "sus_indu_trunc",
+      "sharpe": 1.52,
+      "fitness": 1.24,
+      "turnover": 0.1191,
+      "decay": 6,
+      "neut": "INDUSTRY",
+      "trunc": 0.05
+    },
+    {
+      "alpha_id": "2rJJa8x6",
+      "name": "sus_tw",
+      "sharpe": -0.2,
+      "fitness": -0.05,
+      "turnover": 0.1585,
+      "decay": 0,
+      "neut": "INDUSTRY",
+      "trunc": 0.08
+    }
+  ]
+}

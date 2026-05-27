@@ -1,0 +1,1046 @@
+{
+  "mode": "SIMULATION_ONLY_NO_SUBMIT",
+  "started_at_utc": "2026-05-23T07:45:56.829858+00:00",
+  "parent_alpha_id": "vRdgb3dA",
+  "parent_expression": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry)",
+  "candidates": [
+    {
+      "name": "op-assets-subindustry-group",
+      "thesis": "Same operating-efficiency mechanism tested at a finer peer group to see whether industry ranking hides subindustry structure.",
+      "expression": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), subindustry)",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY"
+    },
+    {
+      "name": "op-assets-decay3",
+      "thesis": "Small decay rescue: test whether mild smoothing lifts Sharpe/Fitness without changing the economic mechanism.",
+      "expression": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry)",
+      "decay": 3,
+      "neutralization": "INDUSTRY"
+    },
+    {
+      "name": "op-assets-smoothed-fundamentals",
+      "thesis": "Smooth numerator and scale variable before ranking to reduce reporting noise while preserving operating efficiency logic.",
+      "expression": "group_rank(ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),252), industry)",
+      "decay": 0,
+      "neutralization": "INDUSTRY"
+    },
+    {
+      "name": "op-assets-composite-actual-fcf",
+      "thesis": "Combine operating efficiency with actual FCF strength; both were near-positive but not submit-ready alone.",
+      "expression": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(anl4_fs_actuals_advanced_qf_nd_fcf_value,63),252), industry)",
+      "decay": 3,
+      "neutralization": "INDUSTRY"
+    },
+    {
+      "name": "op-assets-composite-fcf-max",
+      "thesis": "Combine operating efficiency with slow analyst FCF expectation to test whether cash-flow expectation stabilizes the signal.",
+      "expression": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(free_cashflow_max,126),252), industry)",
+      "decay": 3,
+      "neutralization": "INDUSTRY"
+    },
+    {
+      "name": "op-assets-negative-control",
+      "thesis": "Final-expression sign control. If this wins, the economic interpretation must be changed before further work.",
+      "expression": "reverse(group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry))",
+      "decay": 0,
+      "neutralization": "INDUSTRY"
+    }
+  ],
+  "results": [
+    {
+      "name": "op-assets-subindustry-group",
+      "thesis": "Same operating-efficiency mechanism tested at a finer peer group to see whether industry ranking hides subindustry structure.",
+      "expression": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), subindustry)",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "simulation_location": "https://api.worldquantbrain.com/simulations/2OIUiUdD74t7ckcfMsVHiFB",
+      "simulation": {
+        "id": "2OIUiUdD74t7ckcfMsVHiFB",
+        "type": "REGULAR",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "SUBINDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false
+        },
+        "regular": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), subindustry)",
+        "status": "COMPLETE",
+        "alpha": "LLkxPd82"
+      },
+      "status": "COMPLETE",
+      "alpha_id": "LLkxPd82",
+      "alpha_detail": {
+        "id": "LLkxPd82",
+        "type": "REGULAR",
+        "author": "CM54257",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "SUBINDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false,
+          "startDate": "2019-01-01",
+          "endDate": "2023-12-31"
+        },
+        "regular": {
+          "code": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), subindustry)",
+          "description": null,
+          "operatorCount": 5
+        },
+        "dateCreated": "2026-05-23T03:47:43-04:00",
+        "dateSubmitted": null,
+        "dateModified": "2026-05-23T03:47:43-04:00",
+        "name": null,
+        "favorite": false,
+        "hidden": false,
+        "color": null,
+        "category": null,
+        "tags": [],
+        "classifications": [
+          {
+            "id": "DATA_USAGE:SINGLE_DATA_SET",
+            "name": "Single Data Set Alpha"
+          }
+        ],
+        "grade": "INFERIOR",
+        "stage": "IS",
+        "status": "UNSUBMITTED",
+        "is": {
+          "pnl": 2446229,
+          "bookSize": 20000000,
+          "longCount": 1206,
+          "shortCount": 1440,
+          "turnover": 0.0516,
+          "returns": 0.0494,
+          "drawdown": 0.0424,
+          "margin": 0.001915,
+          "sharpe": 1.36,
+          "fitness": 0.85,
+          "startDate": "2019-01-01",
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.36
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "FAIL",
+              "limit": 1.0,
+              "value": 0.85
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0516
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0516
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.59,
+              "value": 1.1
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PENDING"
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        },
+        "os": null,
+        "train": null,
+        "test": null,
+        "prod": null,
+        "competitions": null,
+        "themes": null,
+        "pyramids": null,
+        "pyramidThemes": null,
+        "team": null,
+        "origin": "PLATFORM"
+      },
+      "metrics": {
+        "sharpe": 1.36,
+        "fitness": 0.85,
+        "turnover": 0.0516,
+        "returns": 0.0494,
+        "drawdown": 0.0424,
+        "margin": 0.001915,
+        "longCount": 1206,
+        "shortCount": 1440,
+        "subUniverseSharpe": 1.1
+      },
+      "official_check": {
+        "status": "NOT_CHECKED_METRIC_FILTER"
+      },
+      "posture": "near_candidate"
+    },
+    {
+      "name": "op-assets-decay3",
+      "thesis": "Small decay rescue: test whether mild smoothing lifts Sharpe/Fitness without changing the economic mechanism.",
+      "expression": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry)",
+      "decay": 3,
+      "neutralization": "INDUSTRY",
+      "simulation_location": "https://api.worldquantbrain.com/simulations/23Kjg28nB4s1bra1gyP8zebp",
+      "simulation": {
+        "id": "23Kjg28nB4s1bra1gyP8zebp",
+        "type": "REGULAR",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false
+        },
+        "regular": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry)",
+        "status": "COMPLETE",
+        "alpha": "rKAm1Zq3"
+      },
+      "status": "COMPLETE",
+      "alpha_id": "rKAm1Zq3",
+      "alpha_detail": {
+        "id": "rKAm1Zq3",
+        "type": "REGULAR",
+        "author": "CM54257",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false,
+          "startDate": "2019-01-01",
+          "endDate": "2023-12-31"
+        },
+        "regular": {
+          "code": "group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry)",
+          "description": null,
+          "operatorCount": 5
+        },
+        "dateCreated": "2026-05-23T03:51:04-04:00",
+        "dateSubmitted": null,
+        "dateModified": "2026-05-23T03:51:04-04:00",
+        "name": null,
+        "favorite": false,
+        "hidden": false,
+        "color": null,
+        "category": null,
+        "tags": [],
+        "classifications": [
+          {
+            "id": "DATA_USAGE:SINGLE_DATA_SET",
+            "name": "Single Data Set Alpha"
+          }
+        ],
+        "grade": "INFERIOR",
+        "stage": "IS",
+        "status": "UNSUBMITTED",
+        "is": {
+          "pnl": 2534243,
+          "bookSize": 20000000,
+          "longCount": 1291,
+          "shortCount": 1641,
+          "turnover": 0.045,
+          "returns": 0.0512,
+          "drawdown": 0.071,
+          "margin": 0.002277,
+          "sharpe": 1.13,
+          "fitness": 0.72,
+          "startDate": "2019-01-01",
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "FAIL",
+              "limit": 1.25,
+              "value": 1.13
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "FAIL",
+              "limit": 1.0,
+              "value": 0.72
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.045
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.045
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.49,
+              "value": 0.88
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PENDING"
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        },
+        "os": null,
+        "train": null,
+        "test": null,
+        "prod": null,
+        "competitions": null,
+        "themes": null,
+        "pyramids": null,
+        "pyramidThemes": null,
+        "team": null,
+        "origin": "PLATFORM"
+      },
+      "metrics": {
+        "sharpe": 1.13,
+        "fitness": 0.72,
+        "turnover": 0.045,
+        "returns": 0.0512,
+        "drawdown": 0.071,
+        "margin": 0.002277,
+        "longCount": 1291,
+        "shortCount": 1641,
+        "subUniverseSharpe": 0.88
+      },
+      "official_check": {
+        "status": "NOT_CHECKED_METRIC_FILTER"
+      },
+      "posture": "rebuild_or_hold"
+    },
+    {
+      "name": "op-assets-smoothed-fundamentals",
+      "thesis": "Smooth numerator and scale variable before ranking to reduce reporting noise while preserving operating efficiency logic.",
+      "expression": "group_rank(ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),252), industry)",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "simulation_location": "https://api.worldquantbrain.com/simulations/3Eqdae5SE4DlalirRJHd67a",
+      "simulation": {
+        "id": "3Eqdae5SE4DlalirRJHd67a",
+        "type": "REGULAR",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false
+        },
+        "regular": "group_rank(ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),252), industry)",
+        "status": "COMPLETE",
+        "alpha": "qMgZMPQO"
+      },
+      "status": "COMPLETE",
+      "alpha_id": "qMgZMPQO",
+      "alpha_detail": {
+        "id": "qMgZMPQO",
+        "type": "REGULAR",
+        "author": "CM54257",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false,
+          "startDate": "2019-01-01",
+          "endDate": "2023-12-31"
+        },
+        "regular": {
+          "code": "group_rank(ts_rank(divide(ts_mean(operating_income,63), add(abs(ts_mean(assets_curr,63)), 1)),252), industry)",
+          "description": null,
+          "operatorCount": 7
+        },
+        "dateCreated": "2026-05-23T03:53:53-04:00",
+        "dateSubmitted": null,
+        "dateModified": "2026-05-23T03:53:53-04:00",
+        "name": null,
+        "favorite": false,
+        "hidden": false,
+        "color": null,
+        "category": null,
+        "tags": [],
+        "classifications": [
+          {
+            "id": "DATA_USAGE:SINGLE_DATA_SET",
+            "name": "Single Data Set Alpha"
+          }
+        ],
+        "grade": "INFERIOR",
+        "stage": "IS",
+        "status": "UNSUBMITTED",
+        "is": {
+          "pnl": 2019400,
+          "bookSize": 20000000,
+          "longCount": 1291,
+          "shortCount": 1635,
+          "turnover": 0.0355,
+          "returns": 0.0408,
+          "drawdown": 0.0855,
+          "margin": 0.002299,
+          "sharpe": 0.85,
+          "fitness": 0.49,
+          "startDate": "2019-01-01",
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "FAIL",
+              "limit": 1.25,
+              "value": 0.85
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "FAIL",
+              "limit": 1.0,
+              "value": 0.49
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0355
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0355
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.37,
+              "value": 0.81
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PENDING"
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        },
+        "os": null,
+        "train": null,
+        "test": null,
+        "prod": null,
+        "competitions": null,
+        "themes": null,
+        "pyramids": null,
+        "pyramidThemes": null,
+        "team": null,
+        "origin": "PLATFORM"
+      },
+      "metrics": {
+        "sharpe": 0.85,
+        "fitness": 0.49,
+        "turnover": 0.0355,
+        "returns": 0.0408,
+        "drawdown": 0.0855,
+        "margin": 0.002299,
+        "longCount": 1291,
+        "shortCount": 1635,
+        "subUniverseSharpe": 0.81
+      },
+      "official_check": {
+        "status": "NOT_CHECKED_METRIC_FILTER"
+      },
+      "posture": "rebuild_or_hold"
+    },
+    {
+      "name": "op-assets-composite-actual-fcf",
+      "thesis": "Combine operating efficiency with actual FCF strength; both were near-positive but not submit-ready alone.",
+      "expression": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(anl4_fs_actuals_advanced_qf_nd_fcf_value,63),252), industry)",
+      "decay": 3,
+      "neutralization": "INDUSTRY",
+      "simulation_location": "https://api.worldquantbrain.com/simulations/3bSzURaq05aycfHA7n3v7v8",
+      "simulation": {
+        "id": "3bSzURaq05aycfHA7n3v7v8",
+        "type": "REGULAR",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false
+        },
+        "regular": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(anl4_fs_actuals_advanced_qf_nd_fcf_value,63),252), industry)",
+        "status": "COMPLETE",
+        "alpha": "vRdVR6Ar"
+      },
+      "status": "COMPLETE",
+      "alpha_id": "vRdVR6Ar",
+      "alpha_detail": {
+        "id": "vRdVR6Ar",
+        "type": "REGULAR",
+        "author": "CM54257",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false,
+          "startDate": "2019-01-01",
+          "endDate": "2023-12-31"
+        },
+        "regular": {
+          "code": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(anl4_fs_actuals_advanced_qf_nd_fcf_value,63),252), industry)",
+          "description": null,
+          "operatorCount": 10
+        },
+        "dateCreated": "2026-05-23T03:57:05-04:00",
+        "dateSubmitted": null,
+        "dateModified": "2026-05-23T03:57:06-04:00",
+        "name": null,
+        "favorite": false,
+        "hidden": false,
+        "color": null,
+        "category": null,
+        "tags": [],
+        "classifications": [],
+        "grade": "INFERIOR",
+        "stage": "IS",
+        "status": "UNSUBMITTED",
+        "is": {
+          "pnl": 3030823,
+          "bookSize": 20000000,
+          "longCount": 1021,
+          "shortCount": 1873,
+          "turnover": 0.0349,
+          "returns": 0.0613,
+          "drawdown": 0.108,
+          "margin": 0.003506,
+          "sharpe": 1.19,
+          "fitness": 0.83,
+          "startDate": "2019-01-01",
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "FAIL",
+              "limit": 1.25,
+              "value": 1.19
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "FAIL",
+              "limit": 1.0,
+              "value": 0.83
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0349
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0349
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.52,
+              "value": 0.76
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PENDING"
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        },
+        "os": null,
+        "train": null,
+        "test": null,
+        "prod": null,
+        "competitions": null,
+        "themes": null,
+        "pyramids": null,
+        "pyramidThemes": null,
+        "team": null,
+        "origin": "PLATFORM"
+      },
+      "metrics": {
+        "sharpe": 1.19,
+        "fitness": 0.83,
+        "turnover": 0.0349,
+        "returns": 0.0613,
+        "drawdown": 0.108,
+        "margin": 0.003506,
+        "longCount": 1021,
+        "shortCount": 1873,
+        "subUniverseSharpe": 0.76
+      },
+      "official_check": {
+        "status": "NOT_CHECKED_METRIC_FILTER"
+      },
+      "posture": "near_candidate"
+    },
+    {
+      "name": "op-assets-composite-fcf-max",
+      "thesis": "Combine operating efficiency with slow analyst FCF expectation to test whether cash-flow expectation stabilizes the signal.",
+      "expression": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(free_cashflow_max,126),252), industry)",
+      "decay": 3,
+      "neutralization": "INDUSTRY",
+      "simulation_location": "https://api.worldquantbrain.com/simulations/2GReQteK84J28yXCUzIIVaP",
+      "simulation": {
+        "id": "2GReQteK84J28yXCUzIIVaP",
+        "type": "REGULAR",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false
+        },
+        "regular": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(free_cashflow_max,126),252), industry)",
+        "status": "COMPLETE",
+        "alpha": "P0vEQaQM"
+      },
+      "status": "COMPLETE",
+      "alpha_id": "P0vEQaQM",
+      "alpha_detail": {
+        "id": "P0vEQaQM",
+        "type": "REGULAR",
+        "author": "CM54257",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false,
+          "startDate": "2019-01-01",
+          "endDate": "2023-12-31"
+        },
+        "regular": {
+          "code": "group_rank(0.7 * ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252) + 0.3 * ts_rank(ts_mean(free_cashflow_max,126),252), industry)",
+          "description": null,
+          "operatorCount": 10
+        },
+        "dateCreated": "2026-05-23T03:59:20-04:00",
+        "dateSubmitted": null,
+        "dateModified": "2026-05-23T03:59:20-04:00",
+        "name": null,
+        "favorite": false,
+        "hidden": false,
+        "color": null,
+        "category": null,
+        "tags": [],
+        "classifications": [],
+        "grade": "INFERIOR",
+        "stage": "IS",
+        "status": "UNSUBMITTED",
+        "is": {
+          "pnl": 3166140,
+          "bookSize": 20000000,
+          "longCount": 1082,
+          "shortCount": 1822,
+          "turnover": 0.0326,
+          "returns": 0.064,
+          "drawdown": 0.1183,
+          "margin": 0.003927,
+          "sharpe": 1.25,
+          "fitness": 0.89,
+          "startDate": "2019-01-01",
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "PASS",
+              "limit": 1.25,
+              "value": 1.25
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "FAIL",
+              "limit": 1.0,
+              "value": 0.89
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0326
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0326
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "PASS",
+              "limit": 0.54,
+              "value": 0.78
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PENDING"
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        },
+        "os": null,
+        "train": null,
+        "test": null,
+        "prod": null,
+        "competitions": null,
+        "themes": null,
+        "pyramids": null,
+        "pyramidThemes": null,
+        "team": null,
+        "origin": "PLATFORM"
+      },
+      "metrics": {
+        "sharpe": 1.25,
+        "fitness": 0.89,
+        "turnover": 0.0326,
+        "returns": 0.064,
+        "drawdown": 0.1183,
+        "margin": 0.003927,
+        "longCount": 1082,
+        "shortCount": 1822,
+        "subUniverseSharpe": 0.78
+      },
+      "official_check": {
+        "status": "NOT_CHECKED_METRIC_FILTER"
+      },
+      "posture": "near_candidate"
+    },
+    {
+      "name": "op-assets-negative-control",
+      "thesis": "Final-expression sign control. If this wins, the economic interpretation must be changed before further work.",
+      "expression": "reverse(group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry))",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "simulation_location": "https://api.worldquantbrain.com/simulations/3QnxjD4fo540aSOHtUIlgnn",
+      "simulation": {
+        "id": "3QnxjD4fo540aSOHtUIlgnn",
+        "type": "REGULAR",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false
+        },
+        "regular": "reverse(group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry))",
+        "status": "COMPLETE",
+        "alpha": "QPEdZ5oQ"
+      },
+      "status": "COMPLETE",
+      "alpha_id": "QPEdZ5oQ",
+      "alpha_detail": {
+        "id": "QPEdZ5oQ",
+        "type": "REGULAR",
+        "author": "CM54257",
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "ON",
+          "maxTrade": "OFF",
+          "maxPosition": "OFF",
+          "language": "FASTEXPR",
+          "visualization": false,
+          "startDate": "2019-01-01",
+          "endDate": "2023-12-31"
+        },
+        "regular": {
+          "code": "reverse(group_rank(ts_rank(divide(operating_income, add(abs(assets_curr), 1)),252), industry))",
+          "description": null,
+          "operatorCount": 6
+        },
+        "dateCreated": "2026-05-23T04:01:13-04:00",
+        "dateSubmitted": null,
+        "dateModified": "2026-05-23T04:01:14-04:00",
+        "name": null,
+        "favorite": false,
+        "hidden": false,
+        "color": null,
+        "category": null,
+        "tags": [],
+        "classifications": [
+          {
+            "id": "DATA_USAGE:SINGLE_DATA_SET",
+            "name": "Single Data Set Alpha"
+          }
+        ],
+        "grade": "INFERIOR",
+        "stage": "IS",
+        "status": "UNSUBMITTED",
+        "is": {
+          "pnl": -2640226,
+          "bookSize": 20000000,
+          "longCount": 1638,
+          "shortCount": 1287,
+          "turnover": 0.0498,
+          "returns": -0.0534,
+          "drawdown": 0.2862,
+          "margin": -0.002142,
+          "sharpe": -1.19,
+          "fitness": -0.78,
+          "startDate": "2019-01-01",
+          "checks": [
+            {
+              "name": "LOW_SHARPE",
+              "result": "FAIL",
+              "limit": 1.25,
+              "value": -1.19
+            },
+            {
+              "name": "LOW_FITNESS",
+              "result": "FAIL",
+              "limit": 1.0,
+              "value": -0.78
+            },
+            {
+              "name": "LOW_TURNOVER",
+              "result": "PASS",
+              "limit": 0.01,
+              "value": 0.0498
+            },
+            {
+              "name": "HIGH_TURNOVER",
+              "result": "PASS",
+              "limit": 0.7,
+              "value": 0.0498
+            },
+            {
+              "name": "CONCENTRATED_WEIGHT",
+              "result": "PASS"
+            },
+            {
+              "name": "LOW_SUB_UNIVERSE_SHARPE",
+              "result": "FAIL",
+              "limit": -0.52,
+              "value": -0.92
+            },
+            {
+              "name": "SELF_CORRELATION",
+              "result": "PENDING"
+            },
+            {
+              "name": "MATCHES_COMPETITION",
+              "result": "PASS",
+              "competitions": [
+                {
+                  "id": "challenge",
+                  "name": "Challenge"
+                }
+              ]
+            }
+          ]
+        },
+        "os": null,
+        "train": null,
+        "test": null,
+        "prod": null,
+        "competitions": null,
+        "themes": null,
+        "pyramids": null,
+        "pyramidThemes": null,
+        "team": null,
+        "origin": "PLATFORM"
+      },
+      "metrics": {
+        "sharpe": -1.19,
+        "fitness": -0.78,
+        "turnover": 0.0498,
+        "returns": -0.0534,
+        "drawdown": 0.2862,
+        "margin": -0.002142,
+        "longCount": 1638,
+        "shortCount": 1287,
+        "subUniverseSharpe": -0.92
+      },
+      "official_check": {
+        "status": "NOT_CHECKED_METRIC_FILTER"
+      },
+      "posture": "kill_or_hold"
+    }
+  ],
+  "updated_at_utc": "2026-05-23T08:01:15.575453+00:00",
+  "finished_at_utc": "2026-05-23T08:01:17.579714+00:00"
+}

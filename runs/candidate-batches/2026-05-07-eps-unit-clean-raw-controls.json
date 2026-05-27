@@ -1,0 +1,54 @@
+{
+  "capture_id": "2026-05-07-eps-unit-clean-raw-controls",
+  "topic": "eps_unit_clean_raw_controls",
+  "source_alpha_id": "xAPrqaxg",
+  "source_expression": "multiply(add(eps, 50), 50, filter=true)",
+  "candidates": [
+    {
+      "name": "raw_eps_scaled_filter",
+      "expression": "multiply(eps, 50, filter=true)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    },
+    {
+      "name": "backfilled_eps_scaled_filter",
+      "expression": "multiply(ts_backfill(eps, 252), 50, filter=true)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    }
+  ]
+}

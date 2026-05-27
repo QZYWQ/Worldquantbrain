@@ -1,0 +1,81 @@
+[
+  {
+    "id": "rescue_01",
+    "desc": "Grk1xjWZ - sector替代industry",
+    "alpha": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+    "decay": 0,
+    "neutralization": "SUBINDUSTRY"
+  },
+  {
+    "id": "rescue_02",
+    "desc": "Grk1xjWZ - rank外层wrapper",
+    "alpha": "rank(group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector))",
+    "decay": 0,
+    "neutralization": "SUBINDUSTRY"
+  },
+  {
+    "id": "rescue_03",
+    "desc": "Grk1xjWZ - sector + cap bucket",
+    "alpha": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+    "decay": 0,
+    "neutralization": "SUBINDUSTRY",
+    "neutralizationBucket": "bucket(rank(cap), range='0.1, 1, 0.1')"
+  },
+  {
+    "id": "rescue_04",
+    "desc": "Grk1xjWZ - decay=6 + sector",
+    "alpha": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+    "decay": 6,
+    "neutralization": "SUBINDUSTRY"
+  },
+  {
+    "id": "rescue_05",
+    "desc": "Grk1xjWZ - decay=8 + sector + cap bucket",
+    "alpha": "group_neutralize(divide(change_in_eps_surprise, add(book_leverage_ratio_3, 1)), sector)",
+    "decay": 8,
+    "neutralization": "SUBINDUSTRY",
+    "neutralizationBucket": "bucket(rank(cap), range='0.1, 1, 0.1')"
+  },
+  {
+    "id": "flip_01",
+    "desc": "2rJ8q1j8 reverse - group_neutralize multiply/inverse",
+    "alpha": "reverse(group_neutralize(multiply(book_leverage_ratio_3, inverse(cash_burn_rate_v1)), industry))",
+    "decay": 0,
+    "neutralization": "SUBINDUSTRY"
+  },
+  {
+    "id": "flip_02",
+    "desc": "blvGa3dR reverse - divide leverage/burn",
+    "alpha": "reverse(divide(book_leverage_ratio_3, add(cash_burn_rate_v1, 1)))",
+    "decay": 0,
+    "neutralization": "SUBINDUSTRY"
+  },
+  {
+    "id": "flip_02b",
+    "desc": "blvGa3dR reverse + industry neutralization",
+    "alpha": "reverse(divide(book_leverage_ratio_3, add(cash_burn_rate_v1, 1)))",
+    "decay": 0,
+    "neutralization": "INDUSTRY"
+  },
+  {
+    "id": "flip_03",
+    "desc": "akojVY7v reverse - subtract leverage/burn",
+    "alpha": "reverse(subtract(book_leverage_ratio_3, cash_burn_rate_v1))",
+    "decay": 0,
+    "neutralization": "SUBINDUSTRY"
+  },
+  {
+    "id": "flip_03b",
+    "desc": "akojVY7v reverse + industry neutralization",
+    "alpha": "reverse(subtract(book_leverage_ratio_3, cash_burn_rate_v1))",
+    "decay": 0,
+    "neutralization": "INDUSTRY"
+  },
+  {
+    "id": "flip_03c",
+    "desc": "akojVY7v reverse + sector neutralization",
+    "alpha": "reverse(subtract(book_leverage_ratio_3, cash_burn_rate_v1))",
+    "decay": 0,
+    "neutralization": "SECTOR"
+  }
+]

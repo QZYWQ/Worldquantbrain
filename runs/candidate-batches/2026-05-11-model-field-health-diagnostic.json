@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-11-model-field-health-diagnostic",
+  "topic": "model16_77_field_health_diagnostic",
+  "source": "official_worldquantbrain_api",
+  "auth_mode": "playwright_chrome_profile",
+  "candidates": [
+    {
+      "name": "fscore_total_coverage",
+      "expression": "ts_rank(fscore_total, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "fscore_total_nonzero",
+      "expression": "fscore_total != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "fscore_total_volatility",
+      "expression": "ts_std_dev(fscore_total, 60) != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "rvrd_coverage",
+      "expression": "ts_rank(relative_valuation_rank_derivative, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "rvrd_nonzero",
+      "expression": "relative_valuation_rank_derivative != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "rvrd_volatility",
+      "expression": "ts_std_dev(relative_valuation_rank_derivative, 60) != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "mdl177_coverage",
+      "expression": "ts_rank(mdl177_valuemomemtummodel_vm_compositesn, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "mdl177_nonzero",
+      "expression": "mdl177_valuemomemtummodel_vm_compositesn != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    },
+    {
+      "name": "mdl177_volatility",
+      "expression": "ts_std_dev(mdl177_valuemomemtummodel_vm_compositesn, 60) != 0 ? 1 : 0",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR"
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "started_at": "2026-05-25T22:04:24.440655",
+  "family": "revenue_momentum",
+  "phase": "A_neut_decay",
+  "anchor": "group_rank(ts_delta(revenue,21)/ts_mean(revenue,252),industry) [S=1.52, F=1.13]",
+  "results": [
+    {
+      "name": "rev_mom_a_grp_subi_d0",
+      "alpha_id": "gJxRo2q0",
+      "sharpe": 1.46,
+      "fitness": 0.95,
+      "turnover": 0.1589
+    },
+    {
+      "name": "rev_mom_a_grp_subi_d3",
+      "alpha_id": "kqQ11R2K",
+      "sharpe": 1.47,
+      "fitness": 1.02,
+      "turnover": 0.1405
+    },
+    {
+      "name": "rev_mom_a_grp_subi_d6",
+      "alpha_id": "LLkggNA2",
+      "sharpe": 1.47,
+      "fitness": 1.08,
+      "turnover": 0.125
+    },
+    {
+      "name": "rev_mom_a_grp_mark_d0",
+      "alpha_id": "vRdeeE03",
+      "sharpe": 1.2,
+      "fitness": 1.01,
+      "turnover": 0.1012
+    },
+    {
+      "name": "rev_mom_a_grp_mark_d3",
+      "alpha_id": "LLkgn6em",
+      "sharpe": 1.18,
+      "fitness": 0.99,
+      "turnover": 0.0951
+    },
+    {
+      "name": "rev_mom_a_grp_mark_d6",
+      "alpha_id": "A1kgnx0Y",
+      "sharpe": 1.18,
+      "fitness": 0.99,
+      "turnover": 0.0885
+    },
+    {
+      "name": "rev_mom_a_grp_indu_d3",
+      "alpha_id": "mLZrqEPE",
+      "sharpe": 1.51,
+      "fitness": 1.19,
+      "turnover": 0.1329
+    },
+    {
+      "name": "rev_mom_a_grp_indu_d6",
+      "alpha_id": "N1AgA6np",
+      "sharpe": 1.52,
+      "fitness": 1.24,
+      "turnover": 0.1191
+    },
+    {
+      "name": "rev_mom_a_gn_indu_d0",
+      "alpha_id": "omV3Va6E",
+      "sharpe": -0.23,
+      "fitness": -0.09,
+      "turnover": 0.2388
+    },
+    {
+      "name": "rev_mom_a_gn_indu_d3",
+      "alpha_id": "9qJaJeqe",
+      "sharpe": -0.23,
+      "fitness": -0.1,
+      "turnover": 0.2058
+    },
+    {
+      "name": "rev_mom_a_gn_indu_d6",
+      "alpha_id": "j219gXKo",
+      "sharpe": -0.21,
+      "fitness": -0.1,
+      "turnover": 0.1819
+    },
+    {
+      "name": "rev_mom_a_gn_subi_d0",
+      "alpha_id": "A1kg3zEg",
+      "sharpe": -0.31,
+      "fitness": -0.14,
+      "turnover": 0.2466
+    },
+    {
+      "name": "rev_mom_a_gn_subi_d3",
+      "alpha_id": "Xg12pQla",
+      "sharpe": -0.29,
+      "fitness": -0.14,
+      "turnover": 0.2119
+    },
+    {
+      "name": "rev_mom_a_gn_subi_d6",
+      "alpha_id": "Wj9appXP",
+      "sharpe": -0.26,
+      "fitness": -0.13,
+      "turnover": 0.1868
+    },
+    {
+      "name": "rev_mom_a_gn_mark_d0",
+      "alpha_id": "QPE2aNer",
+      "sharpe": -0.26,
+      "fitness": -0.13,
+      "turnover": 0.2092
+    },
+    {
+      "name": "rev_mom_a_gn_mark_d3",
+      "alpha_id": "Wj9apv3Q",
+      "sharpe": -0.3,
+      "fitness": -0.18,
+      "turnover": 0.1817
+    },
+    {
+      "name": "rev_mom_a_gn_mark_d6",
+      "alpha_id": "omV3lzpJ",
+      "sharpe": -0.32,
+      "fitness": -0.21,
+      "turnover": 0.1616
+    },
+    {
+      "name": "rev_mom_a_densify_d0",
+      "alpha_id": "blvoqbPm",
+      "sharpe": 1.76,
+      "fitness": 1.35,
+      "turnover": 0.1585
+    },
+    {
+      "name": "rev_mom_a_densify_d3",
+      "alpha_id": "j2190qoO",
+      "sharpe": 1.74,
+      "fitness": 1.44,
+      "turnover": 0.1345
+    }
+  ]
+}

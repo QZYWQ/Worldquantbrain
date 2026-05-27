@@ -1,0 +1,57 @@
+{
+  "capture_id": "2026-05-07-eps-quality-value-orthogonal-fitness-repair",
+  "topic": "eps_quality_value_orthogonal_fitness_repair",
+  "source_alpha_id": "WjaO0nMx",
+  "source_expression": "group_rank(add(group_rank(ts_rank(eps / close, 60), industry), group_rank(-ts_count_nans(eps, 252), industry)), industry)",
+  "expression_family": "runs/expression-families/2026-05-07-eps-quality-value-orthogonal.md",
+  "dominant_failure": "LOW_FITNESS",
+  "repair_cap": 2,
+  "candidates": [
+    {
+      "name": "eps_yield_120_plus_ranked_completeness_sum_industry",
+      "expression": "group_rank(add(group_rank(ts_rank(eps / close, 120), industry), group_rank(-ts_count_nans(eps, 252), industry)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    },
+    {
+      "name": "eps_yield_60_plus_ranked_completeness_sum_industry_decay4",
+      "expression": "group_rank(add(group_rank(ts_rank(eps / close, 60), industry), group_rank(-ts_count_nans(eps, 252), industry)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 4,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "testPeriod": "P5Y0M0D"
+      }
+    }
+  ]
+}

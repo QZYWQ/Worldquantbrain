@@ -1,0 +1,22 @@
+{
+  "synced_at": "2026-05-26T16:40:00+08:00",
+  "account": "mcydedn@outlook.com",
+  "total_alphas": 875,
+  "active_submitted_count": 7,
+  "active_submitted_ids": ["A1kWl0LE","O0ovYJXg","0mzWQbPK","d5d8p1x2","E5kobRlG","j21QzK9E","np3Jrqal"],
+  "starred_favorites_remaining": 12,
+  "submittable_starred_favorites": 10,
+  "removed_from_starred": [
+    {"id": "QPEJ0oA5", "reason": "close_delta (old account)"},
+    {"id": "RRd3e7jn", "reason": "close_delta (old account)"},
+    {"id": "MPkAX0LM", "reason": "SC=0.9975 FAIL"}
+  ],
+  "research": {
+    "direction": "asset_turnover_efficiency",
+    "total_variants": 67,
+    "best_sharpe": 1.25,
+    "best_fitness": 1.04,
+    "submission_threshold": "S>=~1.2, F>=1.0",
+    "verdict": "signal_confirmed_below_threshold"
+  }
+}

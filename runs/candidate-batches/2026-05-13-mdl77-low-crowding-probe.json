@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-13-mdl77-low-crowding-probe",
+  "topic": "mdl77_low_crowding_model_fields",
+  "source": "official_field_recheck_2026-05-13",
+  "hypothesis": "Low-crowding model77 fields with high coverage may encode analyst/fundamental model information that is less correlated with the current submitted price-volume and EPS-yield pool.",
+  "policy": {
+    "route": "D1-first",
+    "budget": "bounded first probe",
+    "rules": [
+      "Do not reopen mdl77_2400_rmi or mdl77_valueanalystmodel_qva_yoychgshares in this batch.",
+      "If the mdl77_2amv baseline is negative, compare the immediately adjacent sign control before tuning lookbacks or neutralization.",
+      "If mdl77_2amv and both deep-value siblings are all below Sharpe 0.3, stop this lane instead of widening the sweep."
+    ]
+  },
+  "candidates": [
+    {
+      "name": "mdl77_2amv_health_w20_none",
+      "expression": "ts_rank(mdl77_2amv, 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_industry_w20",
+      "expression": "group_rank(ts_rank(mdl77_2amv, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_2amv_industry_w20_sign",
+      "expression": "-group_rank(ts_rank(mdl77_2amv, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_coreepsp_industry_w60",
+      "expression": "group_rank(ts_rank(mdl77_2deepvaluefactor_coreepsp, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_ttmsaleev_industry_w60",
+      "expression": "group_rank(ts_rank(mdl77_2deepvaluefactor_ttmsaleev, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "mdl77_apemtt_industry_w60",
+      "expression": "group_rank(ts_rank(mdl77_2deepvaluefactor_apemtt, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    }
+  ]
+}

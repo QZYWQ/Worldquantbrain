@@ -1,0 +1,44 @@
+# Code Implementation — 路径 D
+spec:
+  name: code-implementation
+  version: "2.1"
+  extends: task-router
+  path: D
+  triggers: ["实现", "开发", "新功能", "重构", "写代码", "添加模块", "加功能", "修改代码", "写库"]
+
+states:
+  plan:
+    on_enter: "理解需求→查已有实现→设计方案。禁止编码。"
+    tools_from_library:
+      - grill-with-docs        # trigger: CONTEXT.md or ≥3 files or fuzzy terms
+      - gitnexus-context       # MUST: 理解任何符号前
+      - langgraph-cli-analyze  # 陌生项目 or F 路径
+      - oh-my-claude-advisor   # 复杂任务 gap 分析
+    rules:
+      - "gitnexus-context: 修改任何函数/类前 MUST 查"
+      - "grill-with-docs 的 exit 条件满足前 → 不进入 implement"
+    output: "设计文档 | 受影响文件 | 工具库检查清单"
+
+  implement:
+    on_enter: "TDD: 测试→失败→实现→通过。每步骤标记 [✓]。"
+    tools_from_library:
+      - tdd                    # trigger: 新功能/非琐碎 bugfix
+      - gitnexus-impact        # MUST: 编辑任何符号前
+      - prototype              # trigger: 数据模型不确定 or UI 多方案
+    rules:
+      - "gitnexus-impact: 编辑前 MUST。HIGH/CRITICAL → 暂停+汇报"
+      - "tdd protocol: 每步 test→fail→impl→pass→refactor。禁止横切"
+      - "完成每步: [✓ N/M]"
+
+  review:
+    on_enter: "审查变更的正确性+副作用。"
+    tools_from_library:
+      - langgraph-cli-review         # per-file 即时审查
+      - gitnexus-detect-changes      # MUST: 提交前
+      - oh-my-claude-code-reviewer   # PR diff 级审查
+      - oh-my-claude-validator       # 测试/lint 验证
+      - langgraph-cli-pr             # PR 描述生成
+    rules:
+      - "P0 问题 → 回 implement"
+      - "gitnexus-detect-changes 超预期 → 回 implement"
+    exit: "review PASS AND detect_changes 范围正常 AND 无 P0"

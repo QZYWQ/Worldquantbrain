@@ -1,0 +1,328 @@
+{
+  "generated_at": "2026-05-26T18:13:39.928332",
+  "region": "USA",
+  "delay": 1,
+  "universe": "TOP3000",
+  "primary_fields": {
+    "gross_profit": {
+      "total_results": 100,
+      "exact_matches": 0,
+      "fields": [
+        {
+          "id": "fnd6_newa1v1300_gp",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "ppande_gross_value_total",
+          "type": "MATRIX",
+          "coverage": 0.4057,
+          "dataset": "fundamental2"
+        },
+        {
+          "id": "fnd6_mfma2_revt",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        }
+      ]
+    },
+    "gross_margin": {
+      "total_results": 100,
+      "exact_matches": 0,
+      "fields": [
+        {
+          "id": "fnd6_newa1v1300_gp",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "gross_income_reported_value",
+          "type": "MATRIX",
+          "coverage": 0.6954,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "anl4_gric_value",
+          "type": "MATRIX",
+          "coverage": 0.6954,
+          "dataset": "analyst4"
+        }
+      ]
+    },
+    "gross_income": {
+      "total_results": 100,
+      "exact_matches": 12,
+      "fields": [
+        {
+          "id": "gross_income_reported_value",
+          "type": "MATRIX",
+          "coverage": 0.6954,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "gross_income_max",
+          "type": "MATRIX",
+          "coverage": 0.6803,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "gross_income_avg",
+          "type": "MATRIX",
+          "coverage": 0.6803,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "gross_income_total",
+          "type": "MATRIX",
+          "coverage": 0.7047,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "gross_income_median",
+          "type": "MATRIX",
+          "coverage": 0.6803,
+          "dataset": "analyst4"
+        }
+      ]
+    },
+    "cost_of_revenue": {
+      "total_results": 100,
+      "exact_matches": 0,
+      "fields": [
+        {
+          "id": "domestic_revenue_total",
+          "type": "MATRIX",
+          "coverage": 0.2861,
+          "dataset": "fundamental2"
+        },
+        {
+          "id": "fnd2_a_rvndm",
+          "type": "MATRIX",
+          "coverage": 0.3533,
+          "dataset": "fundamental2"
+        },
+        {
+          "id": "net_profit_or_loss",
+          "type": "MATRIX",
+          "coverage": 0.5557,
+          "dataset": "fundamental2"
+        }
+      ]
+    },
+    "cogs": {
+      "total_results": 100,
+      "exact_matches": 5,
+      "fields": [
+        {
+          "id": "cogs",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "fnd6_mfmq_cogsq",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "fnd6_newa1v1300_cogs",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "fnd6_newqeventv110_cogsq",
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "fnd6_newqv1300_cogsq",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        }
+      ]
+    },
+    "cost_of_goods_sold": {
+      "total_results": 100,
+      "exact_matches": 0,
+      "fields": [
+        {
+          "id": "cogs",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "fnd6_cogss",
+          "type": "VECTOR",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "fnd6_mfmq_cogsq",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        }
+      ]
+    },
+    "revenue": {
+      "total_results": 100,
+      "exact_matches": 8,
+      "fields": [
+        {
+          "id": "revenue",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "domestic_revenue_amount",
+          "type": "MATRIX",
+          "coverage": 0.4558,
+          "dataset": "fundamental2"
+        },
+        {
+          "id": "domestic_revenue_total",
+          "type": "MATRIX",
+          "coverage": 0.2861,
+          "dataset": "fundamental2"
+        },
+        {
+          "id": "rp_nip_revenue",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "news18"
+        },
+        {
+          "id": "acquisition_proforma_revenue",
+          "type": "MATRIX",
+          "coverage": 0.4275,
+          "dataset": "fundamental2"
+        }
+      ]
+    },
+    "sales": {
+      "total_results": 100,
+      "exact_matches": 60,
+      "fields": [
+        {
+          "id": "sales",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "sales_estimate_count_2",
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "sales_max_guidance_value",
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "sales_min_guidance_value",
+          "type": "MATRIX",
+          "coverage": 1.0,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "sales_growth",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        }
+      ]
+    },
+    "assets": {
+      "total_results": 100,
+      "exact_matches": 40,
+      "fields": [
+        {
+          "id": "assets",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "assets_curr",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        },
+        {
+          "id": "assets_fair_value_lvl2",
+          "type": "MATRIX",
+          "coverage": 0.4826,
+          "dataset": "fundamental2"
+        },
+        {
+          "id": "assets_fair_value_lvl1",
+          "type": "MATRIX",
+          "coverage": 0.4858,
+          "dataset": "fundamental2"
+        },
+        {
+          "id": "return_assets",
+          "type": "MATRIX",
+          "coverage": 0.5,
+          "dataset": "fundamental6"
+        }
+      ]
+    },
+    "total_assets": {
+      "total_results": 100,
+      "exact_matches": 8,
+      "fields": [
+        {
+          "id": "total_assets_amount",
+          "type": "MATRIX",
+          "coverage": 0.8035,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "total_assets_min",
+          "type": "MATRIX",
+          "coverage": 0.7048,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "total_assets_reported_value",
+          "type": "MATRIX",
+          "coverage": 0.6486,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "total_assets_median",
+          "type": "MATRIX",
+          "coverage": 0.7048,
+          "dataset": "analyst4"
+        },
+        {
+          "id": "num_total_assets_est",
+          "type": "MATRIX",
+          "coverage": 0.7048,
+          "dataset": "analyst4"
+        }
+      ]
+    }
+  },
+  "confirmed_primary_fields": [
+    "gross_income",
+    "cogs",
+    "revenue",
+    "sales",
+    "assets",
+    "total_assets"
+  ]
+}

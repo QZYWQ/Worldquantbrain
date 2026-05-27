@@ -1,0 +1,20 @@
+{
+  "base_url": "https://api.xixixixi.cloud",
+  "model": "MiniMax-M2.7",
+  "endpoint": "/v1/chat/completions",
+  "ok": true,
+  "max_tokens": 4096,
+  "reasoning_effort": "low",
+  "raw_chars": 3064,
+  "finish_reason": "stop",
+  "reasoning_chars": 3537,
+  "usage": {
+    "total_tokens": 2345,
+    "total_characters": 0,
+    "prompt_tokens": 741,
+    "completion_tokens": 1604,
+    "completion_tokens_details": {
+      "reasoning_tokens": 697
+    }
+  }
+}

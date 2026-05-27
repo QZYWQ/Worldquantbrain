@@ -1,0 +1,105 @@
+{
+  "_instructions": [
+    "Combined SO expansion: FO field health 3 remaining fields + snt1 simplified wrapper",
+    "Key learning: industry neutralization compresses signal too much",
+    "Strategy: market neutralization, no group_rank, keep signal simple",
+    "Reference: 0mAE3qzp (revenue_group_rank_market) passed with S=1.58"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-16-fo-remaining-snt1-so",
+  "topic": "combined_fo_remaining_snt1_simplified",
+  "author": "Claude",
+  "source": "combined_direction_2_and_3",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "eps_revision_rank_market",
+      "description": "EPS revision with market neutralization - no group_rank",
+      "expression": "rank(ts_delta(eps, 1))",
+      "settings": {"neutralization": "MARKET"}
+    },
+    {
+      "name": "eps_revision_ts_rank_market",
+      "description": "EPS revision with ts_rank + market neutralization",
+      "expression": "ts_rank(ts_delta(eps, 1), 20)",
+      "settings": {"neutralization": "MARKET"}
+    },
+    {
+      "name": "eps_revision_group_rank_market",
+      "description": "EPS revision with group_rank + market (like 0mAE3qzp)",
+      "expression": "group_rank(ts_delta(eps, 1), market)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "eps_revision_group_rank_market_dec6",
+      "description": "EPS revision group_rank market with decay=6",
+      "expression": "group_rank(ts_delta(eps, 1), market)",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    },
+    {
+      "name": "fn_interest_rank_market",
+      "description": "Interest paid net q with market neutralization - no group_rank",
+      "expression": "rank(fn_interest_paid_net_q)",
+      "settings": {"neutralization": "MARKET"}
+    },
+    {
+      "name": "fn_interest_ts_rank_market",
+      "description": "Interest paid with ts_rank + market",
+      "expression": "ts_rank(fn_interest_paid_net_q, 20)",
+      "settings": {"neutralization": "MARKET"}
+    },
+    {
+      "name": "fn_interest_group_rank_market",
+      "description": "Interest paid with group_rank + market",
+      "expression": "group_rank(fn_interest_paid_net_q, market)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "fn_interest_group_rank_market_dec6",
+      "description": "Interest paid group_rank market with decay=6",
+      "expression": "group_rank(fn_interest_paid_net_q, market)",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    },
+    {
+      "name": "snt1_ts_rank_market",
+      "description": "snt1 sentiment with ts_rank + market (no group_rank)",
+      "expression": "ts_rank(snt1_d1_dynamicfocusrank, 20)",
+      "settings": {"neutralization": "MARKET"}
+    },
+    {
+      "name": "snt1_rank_market",
+      "description": "snt1 with simple rank + market",
+      "expression": "rank(snt1_d1_dynamicfocusrank)",
+      "settings": {"neutralization": "MARKET"}
+    },
+    {
+      "name": "snt1_group_rank_market",
+      "description": "snt1 with group_rank + market (like 0mAE3qzp)",
+      "expression": "group_rank(snt1_d1_dynamicfocusrank, market)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "snt1_group_rank_market_dec6",
+      "description": "snt1 group_rank market with decay=6",
+      "expression": "group_rank(snt1_d1_dynamicfocusrank, market)",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    }
+  ],
+  "expected_outcomes": {
+    "target_fields": ["eps_revision", "fn_interest", "snt1"],
+    "pass_criteria": "Sharpe >= 1.25, Fitness >= 1.0, self_corr < 0.7",
+    "key_learning": "market neutralization better than industry for signal retention"
+  },
+  "notes": "12 candidates - 3 fields x 4 variants each. Simplified wrappers, market neutralization."
+}

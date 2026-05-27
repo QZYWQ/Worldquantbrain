@@ -1,0 +1,140 @@
+{
+  "_instructions": [
+    "SO Expansion Round 3 - Focused on promising candidates from R2",
+    "Issue: R2 candidates had S=0.76-0.94 (below S>=1.25 threshold) but F=1.28-1.70 (well above F>=1.0)",
+    "Strategy: (1) Test reversed sign candidates (2) Test decay variants to boost Sharpe (3) Test longer ts windows",
+    "Observation: snt1_rank_market (S=0.94, F=1.70, TVR=0.033), rectr_rank_market (S=0.92, F=1.66, TVR=0.004), interest_rank_market (S=0.89, F=1.64, TVR=0.007) are close but need Sharpe boost"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-21-fo-field-so-expansion-r3",
+  "topic": "so_expansion_round3_targeted",
+  "author": "Claude",
+  "source": "fo_field_health_scout_r2_analysis",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "snt1_rank_market_reversed",
+      "description": "snt1 reversed sign - low sentiment outperformance",
+      "expression": "group_rank(rank(-snt1_d1_dynamicfocusrank), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "snt1_rank_market_decay6",
+      "description": "snt1 with decay=6 to reduce turnover and potentially boost Sharpe",
+      "expression": "group_rank(rank(snt1_d1_dynamicfocusrank), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "snt1_rank_market_decay15",
+      "description": "snt1 with decay=15",
+      "expression": "group_rank(rank(snt1_d1_dynamicfocusrank), market)",
+      "settings": {"neutralization": "NONE", "decay": 15}
+    },
+    {
+      "name": "snt1_ts_zscore66_market",
+      "description": "snt1 with longer ts_zscore window (66 days ~ 3 months)",
+      "expression": "group_rank(ts_zscore(snt1_d1_dynamicfocusrank, 66), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "rectr_rank_market_reversed",
+      "description": "rectr reversed sign - low receivable turnover outperformance",
+      "expression": "group_rank(rank(-fnd6_rectr), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "rectr_rank_market_decay6",
+      "description": "rectr with decay=6",
+      "expression": "group_rank(rank(fnd6_rectr), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "rectr_rank_market_decay15",
+      "description": "rectr with decay=15",
+      "expression": "group_rank(rank(fnd6_rectr), market)",
+      "settings": {"neutralization": "NONE", "decay": 15}
+    },
+    {
+      "name": "rectr_ts_zscore66_market",
+      "description": "rectr with longer ts_zscore window",
+      "expression": "group_rank(ts_zscore(fnd6_rectr, 66), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "interest_rank_market_reversed",
+      "description": "interest reversed - low interest paid outperformance",
+      "expression": "group_rank(rank(-fn_interest_paid_net_q), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "interest_rank_market_decay6",
+      "description": "interest with decay=6",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "interest_rank_market_decay15",
+      "description": "interest with decay=15",
+      "expression": "group_rank(rank(fn_interest_paid_net_q), market)",
+      "settings": {"neutralization": "NONE", "decay": 15}
+    },
+    {
+      "name": "interest_ts_zscore66_market",
+      "description": "interest with longer ts_zscore window",
+      "expression": "group_rank(ts_zscore(fn_interest_paid_net_q, 66), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "recco_rank_market_reversed",
+      "description": "recco reversed sign - low receivable concentration outperformance",
+      "expression": "group_rank(rank(-fnd6_recco), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "recco_rank_market_decay6",
+      "description": "recco with decay=6",
+      "expression": "group_rank(rank(fnd6_recco), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "recco_ts_zscore66_market",
+      "description": "recco with longer ts_zscore window",
+      "expression": "group_rank(ts_zscore(fnd6_recco, 66), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "eps_rev_rank_market_reversed",
+      "description": "eps revision reversed - negative EPS revision outperformance",
+      "expression": "group_rank(rank(-ts_delta(eps, 1)), market)",
+      "settings": {"neutralization": "NONE"}
+    },
+    {
+      "name": "eps_rev_rank_market_decay6",
+      "description": "eps revision with decay=6",
+      "expression": "group_rank(rank(ts_delta(eps, 1)), market)",
+      "settings": {"neutralization": "NONE", "decay": 6}
+    },
+    {
+      "name": "eps_rev_ts_zscore66_market",
+      "description": "eps revision with longer ts_zscore window",
+      "expression": "group_rank(ts_zscore(ts_delta(eps, 1), 66), market)",
+      "settings": {"neutralization": "NONE"}
+    }
+  ],
+  "expected_outcomes": {
+    "pass_criteria": "Sharpe >= 1.25, Fitness >= 1.0, self_corr < 0.7",
+    "near_pass": "Sharpe >= 1.0, Fitness >= 0.8, self_corr < 0.7 - consider for further optimization",
+    "kill_criteria": "Sharpe < 1.0 or self_corr >= 0.7"
+  }
+}

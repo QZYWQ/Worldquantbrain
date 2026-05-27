@@ -1,0 +1,37 @@
+{
+  "qwen": {
+    "candidate_count": 24,
+    "unique_exprs": 24,
+    "field_family_count": 2,
+    "field_families": {
+      "model16:model:model-valuation-models": 24,
+      "fundamental2:fundamental:fundamental-footnotes": 15
+    },
+    "operator_count": 16,
+    "unsupported_ops": {},
+    "vec_avg_non_vector_count": 16,
+    "other_flags": {
+      "group_numeric_second_arg": 2
+    },
+    "best_score": 34.76
+  },
+  "minimax": {
+    "candidate_count": 24,
+    "unique_exprs": 24,
+    "field_family_count": 2,
+    "field_families": {
+      "fundamental2:fundamental:fundamental-footnotes": 15,
+      "model16:model:model-valuation-models": 11
+    },
+    "operator_count": 14,
+    "unsupported_ops": {
+      "sign": 2,
+      "neg": 4
+    },
+    "vec_avg_non_vector_count": 0,
+    "other_flags": {
+      "json_label_typo": 3
+    },
+    "best_score": 34.84
+  }
+}

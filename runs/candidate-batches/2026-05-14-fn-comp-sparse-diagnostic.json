@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-14-fn-comp-sparse-field-diagnostic",
+  "topic": "fn_comp_options_grants_fair_value_q_sparse_diagnostic",
+  "source": "official_field_recheck_2026-05-13",
+  "hypothesis": "fn_comp_options_grants_fair_value_q is sparse (coverage 0.2391) but user reported Sharpe 0.42 with ts_zscore(...,5). First test: raw field direction diagnostic with NONE neutralization to confirm whether positive direction is real.",
+  "policy": {
+    "route": "D1-first",
+    "budget": "2 candidates - raw field direction diagnostic",
+    "stop_condition": "If both Sharpe < 0.3 OR Fitness < 0.5 → STOP fn_comp_q lane"
+  },
+  "candidates": [
+    {
+      "name": "fn_comp_q_none_pos",
+      "expression": "ts_zscore(fn_comp_options_grants_fair_value_q, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    },
+    {
+      "name": "fn_comp_q_none_neg",
+      "expression": "-ts_zscore(fn_comp_options_grants_fair_value_q, 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "NONE",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false
+      }
+    }
+  ],
+  "stop_conditions": {
+    "sharpe_floor": 0.3,
+    "fitness_floor": 0.5,
+    "hard_stop": "If both candidates Sharpe < 0.3 OR Fitness < 0.5 → STOP fn_comp_q lane"
+  }
+}

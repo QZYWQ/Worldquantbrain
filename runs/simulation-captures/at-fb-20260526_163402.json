@@ -1,0 +1,61 @@
+{
+  "started": "2026-05-26T16:34:02.340389",
+  "results": [
+    {
+      "alpha_id": "np3WwzVz",
+      "name": "fb_mkt_d15",
+      "sharpe": 1.14,
+      "fitness": 1.04,
+      "turnover": 0.0086
+    },
+    {
+      "alpha_id": "E5kKo2KR",
+      "name": "fb_mkt_d20",
+      "sharpe": 1.14,
+      "fitness": 1.04,
+      "turnover": 0.0085
+    },
+    {
+      "alpha_id": "RRdrZYoe",
+      "name": "fb_mkt_r6",
+      "sharpe": 1.14,
+      "fitness": 1.04,
+      "turnover": 0.009
+    },
+    {
+      "alpha_id": "1YJgVPNX",
+      "name": "fb_mkt_ts",
+      "sharpe": 1.13,
+      "fitness": 1.02,
+      "turnover": 0.0089
+    },
+    {
+      "alpha_id": "RRdrqWdg",
+      "name": "fb_mkt_t05",
+      "sharpe": 1.14,
+      "fitness": 1.04,
+      "turnover": 0.0087
+    },
+    {
+      "alpha_id": "d5dQgKej",
+      "name": "fb_dc_mkt",
+      "sharpe": 0.67,
+      "fitness": 0.49,
+      "turnover": 0.0285
+    },
+    {
+      "alpha_id": "rKAWEMrd",
+      "name": "fb_dc_mkt_d6",
+      "sharpe": 0.64,
+      "fitness": 0.46,
+      "turnover": 0.0148
+    },
+    {
+      "alpha_id": "0mz8d92K",
+      "name": "fb_p2y_d12",
+      "sharpe": 1.14,
+      "fitness": 1.04,
+      "turnover": 0.0087
+    }
+  ]
+}

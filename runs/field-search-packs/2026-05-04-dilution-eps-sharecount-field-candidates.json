@@ -1,0 +1,319 @@
+{
+  "fields": [
+    {
+      "id": "fnd2_q_atdlsecexfcepsastkos",
+      "description": "Antidilutive Shares Excluded From Earnings Per Share Amount, Stock Options",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.2706,
+      "userCount": 96,
+      "alphaCount": 342,
+      "themes": []
+    },
+    {
+      "id": "fnd2_a_atdlsecexfcepsastkos",
+      "description": "Antidilutive Shares Excluded From Earnings Per Share Amount, Stock Options",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.2602,
+      "userCount": 110,
+      "alphaCount": 606,
+      "themes": []
+    },
+    {
+      "id": "fn_avg_diluted_sharesout_adj_q",
+      "description": "The sum of dilutive potential common shares or units used in the calculation of the diluted per-share or per-unit computation.",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.5733,
+      "userCount": 119,
+      "alphaCount": 234,
+      "themes": []
+    },
+    {
+      "id": "fn_avg_diluted_sharesout_adj_a",
+      "description": "The sum of dilutive potential common shares or units used in the calculation of the diluted per-share or per-unit computation.",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.58,
+      "userCount": 113,
+      "alphaCount": 209,
+      "themes": []
+    },
+    {
+      "id": "fn_incremental_shares_attributable_to_share_based_payment_q",
+      "description": "Additional shares included in the calculation of diluted EPS as a result of the potentially dilutive effect of share-based payment arrangements using the treasury stock method.",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.3749,
+      "userCount": 92,
+      "alphaCount": 167,
+      "themes": []
+    },
+    {
+      "id": "fn_incremental_shares_attributable_to_share_based_payment_a",
+      "description": "Additional shares included in the calculation of diluted EPS as a result of the potentially dilutive effect of share-based payment arrangements using the treasury stock method.",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.368,
+      "userCount": 37,
+      "alphaCount": 66,
+      "themes": []
+    },
+    {
+      "id": "fn_new_shares_options_q",
+      "description": "Number of share options (or share units) exercised during the current period.",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.3511,
+      "userCount": 85,
+      "alphaCount": 291,
+      "themes": []
+    },
+    {
+      "id": "fn_new_shares_options_a",
+      "description": "Number of share options (or share units) exercised during the current period.",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.6306,
+      "userCount": 171,
+      "alphaCount": 740,
+      "themes": []
+    },
+    {
+      "id": "fnd2_a_sbcpnshardustoprgps",
+      "description": "Share-based compensation shares authorized under stock option plans exercise price range number of outstanding options",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.2928,
+      "userCount": 68,
+      "alphaCount": 139,
+      "themes": []
+    },
+    {
+      "id": "fnd2_sbcpnshardpreops",
+      "description": "Share-based compensation shares authorized under stock option plans exercise price range number of exercisable options",
+      "dataset": {
+        "id": "fundamental2",
+        "name": "Report Footnotes"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-footnotes",
+        "name": "Footnotes"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "coverage": 0.266,
+      "userCount": 69,
+      "alphaCount": 145,
+      "themes": []
+    },
+    {
+      "id": "fnd6_newqv1300_cshoq",
+      "description": "Common Shares Outstanding",
+      "dataset": {
+        "id": "fundamental6",
+        "name": "Company Fundamental Data for Equity"
+      },
+      "category": {
+        "id": "fundamental",
+        "name": "Fundamental"
+      },
+      "subcategory": {
+        "id": "fundamental-fundamental-data",
+        "name": "Fundamental Data"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "dateCoverage": 1.0,
+      "coverage": 0.5,
+      "userCount": 175,
+      "alphaCount": 294,
+      "themes": []
+    },
+    {
+      "id": "mdl177_earningsqualityfactor_chgshare_alt",
+      "description": "Change in shares outstanding",
+      "dataset": {
+        "id": "model77",
+        "name": "Analysts' Factor Model"
+      },
+      "category": {
+        "id": "model",
+        "name": "Model"
+      },
+      "subcategory": {
+        "id": "model-technical-models",
+        "name": "Technical Models"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "dateCoverage": 1.0,
+      "coverage": 1.0,
+      "userCount": 31,
+      "alphaCount": 43,
+      "themes": []
+    },
+    {
+      "id": "mdl77_valueanalystmodel_qva_yoychgshares",
+      "description": "Change in Shares Outstanding Rank: It is defined as a company's change in common shares outstanding over the last 12 months.",
+      "dataset": {
+        "id": "model77",
+        "name": "Analysts' Factor Model"
+      },
+      "category": {
+        "id": "model",
+        "name": "Model"
+      },
+      "subcategory": {
+        "id": "model-technical-models",
+        "name": "Technical Models"
+      },
+      "region": "USA",
+      "delay": 1,
+      "universe": "TOP3000",
+      "type": "MATRIX",
+      "dateCoverage": 1.0,
+      "coverage": 0.9632,
+      "userCount": 15,
+      "alphaCount": 23,
+      "themes": []
+    }
+  ]
+}

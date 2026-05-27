@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "elapsed_sec": 125.22,
+  "model": "qwen3.6:27b",
+  "endpoint": "/api/chat",
+  "done_reason": "stop",
+  "eval_count": 972,
+  "prompt_eval_count": 770
+}

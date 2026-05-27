@@ -1,0 +1,105 @@
+{
+  "_instructions": [
+    "Direction A: revenue_growth_qoq with simplified wrappers",
+    "Problem: group_rank compresses signal too much (S=1.06 -> F=0.65)",
+    "Approach: Replace group_rank with group_zscore or remove group operation entirely",
+    "Baseline: FO S=0.81, F=1.41 (ts_delta(revenue)/ts_mean(revenue,4))",
+    "Goal: Sharpe >= 1.25, Fitness >= 1.0"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-16-revenue-simple-so",
+  "topic": "revenue_simplified_so_wrapper",
+  "author": "Claude",
+  "source": "revenue_near_miss_analysis",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "ON",
+    "language": "FASTEXPR"
+  },
+  "candidates": [
+    {
+      "name": "revenue_simple_zscore_ind",
+      "description": "Direct ts_zscore without group_rank - keep signal",
+      "expression": "ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_simple_zscore_subind",
+      "description": "Direct zscore with SUBINDUSTRY neutralization",
+      "expression": "ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66)",
+      "settings": {"neutralization": "SUBINDUSTRY"}
+    },
+    {
+      "name": "revenue_group_zscore_cap_ind",
+      "description": "group_zscore instead of group_rank - less compression",
+      "expression": "group_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), cap)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_group_zscore_industry",
+      "description": "group_zscore by industry instead of cap bucket",
+      "expression": "group_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), industry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_group_zscore_subind",
+      "description": "group_zscore with SUBINDUSTRY neutralization",
+      "expression": "group_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), subindustry)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_group_rank_market",
+      "description": "group_rank with market neutralization instead of industry",
+      "expression": "group_rank(ts_delta(revenue, 1) / ts_mean(revenue, 4), market)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_rank_only",
+      "description": "Simple rank without group operation - keep signal",
+      "expression": "rank(ts_delta(revenue, 1) / ts_mean(revenue, 4))",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_zscore33_ind",
+      "description": "Shorter lookback (33) for stronger signal",
+      "expression": "ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 33)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_zscore120_ind",
+      "description": "Longer lookback (120) for more stable signal",
+      "expression": "ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 120)",
+      "settings": {"neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "revenue_simple_zscore_decay6",
+      "description": "Direct zscore with decay=6 to reduce TVR",
+      "expression": "ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66)",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    },
+    {
+      "name": "revenue_group_zscore_cap_ind_decay6",
+      "description": "group_zscore with decay=6",
+      "expression": "group_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), cap)",
+      "settings": {"neutralization": "INDUSTRY", "decay": 6}
+    },
+    {
+      "name": "revenue_reversed_simple",
+      "description": "Reversed signal - low revenue growth outperformance",
+      "expression": "-ts_zscore(ts_delta(revenue, 1) / ts_mean(revenue, 4), 66)",
+      "settings": {"neutralization": "INDUSTRY"}
+    }
+  ],
+  "expected_outcomes": {
+    "pass_criteria": "Sharpe >= 1.25, Fitness >= 1.0",
+    "target": "group_zscore or rank-only should retain more signal than group_rank"
+  },
+  "notes": "12 candidates - test simplified wrappers on revenue_growth_qoq"
+}

@@ -1,0 +1,177 @@
+{
+  "_instructions": [
+    "FO Field Health Diagnostic Batch",
+    "Goal: Find 3-5 usable fields with predictive power outside submitted families",
+    "Method: Simple ts_rank test per field, None neutralization, decay 0",
+    "Skip if alphaId=null (field doesn't exist) - that's valid diagnostic info",
+    "Hypothesis types: behavior(reversal/momentum/volatility), expectation(earnings/sentiment), quality(value/profitability), event-gating"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-16-fo-field-health-scout",
+  "topic": "field_health_scout_new_sources",
+  "author": "Claude",
+  "source": "hypothesis_driven_field_discovery",
+  "settings_template": {
+    "instrumentType": "EQUITY",
+    "region": "USA",
+    "universe": "TOP3000",
+    "delay": 1,
+    "decay": 0,
+    "neutralization": "NONE",
+    "truncation": 0.08,
+    "pasteurization": "ON",
+    "unitHandling": "VERIFY",
+    "nanHandling": "OFF",
+    "language": "FASTEXPR"
+  },
+  "diagnostic_objective": "Find fields with: (1) non-zero coverage >60%, (2) Sharpe > 0.3 as simple ts_rank, (3) not overlapping with submitted families",
+  "candidates": [
+    {
+      "name": "fn_comp_options_grants_f_health",
+      "description": "Options grants activity - CEO/institutional options filing signals",
+      "expression": "ts_rank(fn_comp_options_grants_f, 20)",
+      "expected_failure": "May not exist or may be sparse quarterly data"
+    },
+    {
+      "name": "fnd6_receivable_turnover_health",
+      "description": "Receivables turnover - efficiency metric",
+      "expression": "ts_rank(fnd6_rectr, 20)",
+      "expected_failure": "Unit mismatch if not normalized"
+    },
+    {
+      "name": "fnd6_receivable_concentration_health",
+      "description": "Receivables concentration - quality signal",
+      "expression": "ts_rank(fnd6_recco, 20)",
+      "expected_failure": "May overlap with existing quality factors"
+    },
+    {
+      "name": "fnd6_payables_turnover_health",
+      "description": "Payables turnover - working capital efficiency",
+      "expression": "ts_rank(fnd6_paytr, 20)",
+      "expected_failure": "Slower updating data"
+    },
+    {
+      "name": "fn_interest_paid_net_q_health",
+      "description": "Quarterly interest paid - leverage signal",
+      "expression": "ts_rank(fn_interest_paid_net_q, 20)",
+      "expected_failure": "Quarterly data may be too slow"
+    },
+    {
+      "name": "earnings_surprise_health",
+      "description": "Earnings surprise vs expectations",
+      "expression": "ts_rank(earnings_surprise, 20)",
+      "expected_failure": "May not exist as raw field"
+    },
+    {
+      "name": "revenue_growth_qoq_health",
+      "description": "Revenue quarter-over-quarter growth",
+      "expression": "ts_rank(ts_delta(revenue, 1) / ts_mean(revenue, 4), 20)",
+      "expected_failure": "May be too noisy"
+    },
+    {
+      "name": "operating_margin_health",
+      "description": "Operating margin - profitability signal",
+      "expression": "ts_rank(operating_margin, 20)",
+      "expected_failure": "May overlap with eps/sales quality families"
+    },
+    {
+      "name": "snt1_sentiment_health",
+      "description": "Sentiment type 1 - alternative to scl12 (which overlaps bloqmdJK)",
+      "expression": "ts_rank(snt1_d1_dynamicfocusrank, 20)",
+      "expected_failure": "snt1 was FAIL before (industry neutral → Sharpe -0.15)"
+    },
+    {
+      "name": "analyst_revision_health",
+      "description": "Analyst estimate revision - expectation change",
+      "expression": "ts_rank(analyst_revision, 20)",
+      "expected_failure": "May not exist as aggregate field"
+    },
+    {
+      "name": "price_target_change_health",
+      "description": "Price target changes - analyst action signal",
+      "expression": "ts_rank(price_target_change, 20)",
+      "expected_failure": "Sparse coverage"
+    },
+    {
+      "name": "shares_outstanding_change_health",
+      "description": "Shares outstanding change - dilution signal",
+      "expression": "ts_rank(ts_delta(shares_outstanding, 1), 20)",
+      "expected_failure": "May overlap with assets/cap family"
+    },
+    {
+      "name": "fnd6_working_capital_health",
+      "description": "Working capital efficiency",
+      "expression": "ts_rank(fnd6_working_capital, 20)",
+      "expected_failure": "May not exist as single field"
+    },
+    {
+      "name": "eps_revision_health",
+      "description": "EPS revision - analyst expectation change",
+      "expression": "ts_rank(ts_delta(eps, 1), 20)",
+      "expected_failure": "May overlap with eps family (A1gVE97w)"
+    },
+    {
+      "name": "volume_zscore_health",
+      "description": "Volume anomaly vs historical - behavioral",
+      "expression": "ts_zscore(volume / ts_mean(volume, 20), 20)",
+      "expected_failure": "May be too crowded with price_volume_corr family"
+    },
+    {
+      "name": "trade_when_momentum_health",
+      "description": "Event-gated momentum - only trade after good news",
+      "expression": "trade_when(ts_delta(close, 5) > 0, ts_rank(close, 20), -1)",
+      "expected_failure": "Complex expression, may need simplification"
+    },
+    {
+      "name": "insider_transaction_health",
+      "description": "Insider buy/sell transactions",
+      "expression": "ts_rank(insider_transaction, 20)",
+      "expected_failure": "May not exist as accessible field"
+    },
+    {
+      "name": " institutional_holding_change_health",
+      "description": "Institutional ownership change - smart money signal",
+      "expression": "ts_rank(ts_delta(institutional_holding, 60), 20)",
+      "expected_failure": "Quarterly data lag"
+    }
+  ],
+  "field_category_mapping": {
+    "fn_comp_options_grants_f": "event_gating",
+    "fnd6_rectr": "quality_value",
+    "fnd6_recco": "quality_value",
+    "fnd6_paytr": "quality_value",
+    "fn_interest_paid_net_q": "quality_value",
+    "earnings_surprise": "expectation_change",
+    "revenue_growth_qoq": "expectation_change",
+    "operating_margin": "quality_value",
+    "snt1_d1_dynamicfocusrank": "sentiment",
+    "analyst_revision": "expectation_change",
+    "price_target_change": "expectation_change",
+    "shares_outstanding_change": "behavior",
+    "fnd6_working_capital": "quality_value",
+    "eps_revision": "expectation_change",
+    "volume_zscore": "behavior",
+    "trade_when_momentum": "event_gating",
+    "insider_transaction": "behavior",
+    "institutional_holding_change": "behavior"
+  },
+  "expected_outcomes": {
+    "pass_criteria": "Sharpe > 0.3, non-zero coverage >60%, alphaId exists",
+    "kill_criteria": "alphaId=null (field doesn't exist), Sharpe < 0.2, coverage <50%",
+    "significance": "If 3+ fields pass, can expand into family expansion batches"
+  },
+  "avoid_families": [
+    "close_delta (ts_delta(close))",
+    "tobins_q_ratio",
+    "assets_cap (assets/cap)",
+    "returns_vwap",
+    "eps_family",
+    "scl12_sentiment (overlaps bloqmdJK)",
+    "sales_estimate",
+    "anl4_totassets",
+    "unsystematic_risk",
+    "range_family (high-low)",
+    "price_volume_corr"
+  ],
+  "notes": "If alphaId=null, record the field name as unusable and continue. Some fields may exist but have poor coverage or no signal - these are still useful KILL decisions."
+}

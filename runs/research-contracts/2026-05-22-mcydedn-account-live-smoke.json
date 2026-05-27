@@ -1,0 +1,38 @@
+{
+  "account_email": "[redacted-email]",
+  "account_id": "CM54257",
+  "base_url": "https://api.worldquantbrain.com",
+  "checks": [
+    {
+      "name": "authentication",
+      "ok": true,
+      "status_code": 201,
+      "url": "https://api.worldquantbrain.com/authentication"
+    },
+    {
+      "count": 0,
+      "name": "users_self_alphas",
+      "ok": true,
+      "result_count": 0,
+      "sample_ids": [],
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/users/self/alphas?limit=1&offset=0&hidden=false"
+    },
+    {
+      "count": 4367,
+      "name": "data_fields_usa_top3000_d1",
+      "ok": true,
+      "result_count": 5,
+      "sample_ids": [
+        "accrued_liabilities_total",
+        "accrued_liabilities_total_2",
+        "accumulated_amortization_customer_intangibles",
+        "accumulated_amortization_customer_intangibles_2",
+        "accumulated_amortization_finite_intangibles"
+      ],
+      "status_code": 200,
+      "url": "https://api.worldquantbrain.com/data-fields?instrumentType=EQUITY&region=USA&delay=1&universe=TOP3000&limit=5"
+    }
+  ],
+  "generated_at": "2026-05-22T09:48:44+00:00"
+}

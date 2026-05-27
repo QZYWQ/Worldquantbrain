@@ -1,0 +1,62 @@
+{
+  "family_name": "assets-cap-delta-zscore-subindustry",
+  "template": "{sign}group_rank({stat_op}(ts_delta({ratio_expr}, {delta_days}), {stat_window}), {group})",
+  "base": {
+    "sign": "",
+    "stat_op": "ts_zscore",
+    "ratio_expr": "assets / cap",
+    "delta_days": 2,
+    "stat_window": 20,
+    "group": "subindustry"
+  },
+  "axes": [
+    {
+      "name": "sign",
+      "values": [
+        "",
+        "-"
+      ]
+    },
+    {
+      "name": "stat_op",
+      "values": [
+        "ts_zscore",
+        "ts_rank"
+      ]
+    },
+    {
+      "name": "ratio_expr",
+      "values": [
+        "assets / cap",
+        "ts_backfill(assets, 60) / cap",
+        "ts_backfill(assets / cap, 60)"
+      ]
+    },
+    {
+      "name": "delta_days",
+      "values": [
+        2,
+        5,
+        10
+      ]
+    },
+    {
+      "name": "stat_window",
+      "values": [
+        20,
+        60,
+        120
+      ]
+    },
+    {
+      "name": "group",
+      "values": [
+        "subindustry",
+        "industry"
+      ]
+    }
+  ],
+  "include_baseline": true,
+  "max_variants": 10,
+  "notes": "Screenshot-derived exploratory queue. Run only after confirming assets/cap availability and coverage. Do not treat these as simulated candidates until real platform metrics exist."
+}

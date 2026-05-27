@@ -1,0 +1,2454 @@
+{
+  "mode": "RECORD_ONLY",
+  "selection_rule": "If at least 5 strict 8-pass alphas exist, choose only from strict 8-pass. Otherwise include all strict 8-pass first, then fill with the best remaining candidates by economic logic score plus real metrics/check evidence, with complexity and parameter-stack penalties.",
+  "selection_scope": "all_8pass_then_best_non_8pass_fill",
+  "top5": [
+    {
+      "alpha_id": "d5dXKzmK",
+      "original_id": "bloqmdJK_v2",
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,15)) > 0.55, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 3,
+        "neutralization": "MARKET",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.58,
+        "fitness": 1.21,
+        "turnover": 0.1045,
+        "returns": 0.0737,
+        "drawdown": 0.0345,
+        "margin": 0.00141,
+        "longCount": 1577,
+        "shortCount": 1481
+      },
+      "strict_8pass": true,
+      "pass_count": 8,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "sentiment_conditioned_risk",
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Sentiment can condition when risk or reversal effects are more likely to be repriced.",
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 14,
+      "complexity_penalty": 20,
+      "metric_score": 27.46,
+      "check_score": 24,
+      "economic_logic_score": 36,
+      "total_score": 67.46
+    },
+    {
+      "alpha_id": "wpLmjx55",
+      "original_id": "E5repQ81_v1",
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 120), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 2.23,
+        "fitness": 1.45,
+        "turnover": 0.249,
+        "returns": 0.1056,
+        "drawdown": 0.046,
+        "margin": 0.000848,
+        "longCount": 1501,
+        "shortCount": 1501
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "earnings_yield",
+        "estimate_revision_or_analyst_attention",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Analyst estimate and surprise information can capture delayed fundamental repricing.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 44.44,
+      "check_score": 0,
+      "economic_logic_score": 60,
+      "total_score": 104.44
+    },
+    {
+      "alpha_id": "A1kWl0LE",
+      "original_id": "E5repQ81_v2",
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 90), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.76,
+        "fitness": 1.56,
+        "turnover": 0.1171,
+        "returns": 0.0978,
+        "drawdown": 0.0672,
+        "margin": 0.001671,
+        "longCount": 1537,
+        "shortCount": 1538
+      },
+      "strict_8pass": false,
+      "pass_count": 0,
+      "check_count": 1,
+      "failed_or_non_pass_checks": [
+        "ALREADY_SUBMITTED"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "earnings_yield",
+        "estimate_revision_or_analyst_attention",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Analyst estimate and surprise information can capture delayed fundamental repricing.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 38.4,
+      "check_score": -6.0,
+      "economic_logic_score": 60,
+      "total_score": 92.4
+    },
+    {
+      "alpha_id": "qMg1NeNZ",
+      "original_id": "d5l07rpX_v1",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.55,
+        "fitness": 1.15,
+        "turnover": 0.1373,
+        "returns": 0.0755,
+        "drawdown": 0.0431,
+        "margin": 0.0011,
+        "longCount": 1524,
+        "shortCount": 1530
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "earnings_yield",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 25.6,
+      "check_score": 0,
+      "economic_logic_score": 36,
+      "total_score": 61.6
+    },
+    {
+      "alpha_id": "MPkWY7ro",
+      "original_id": "A1gVE97w_v2",
+      "expression": "group_rank(add(group_rank(ts_rank(eps / close, 120), industry), group_rank(-ts_count_nans(eps, 180), industry)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P5Y"
+      },
+      "metrics": {
+        "sharpe": 1.59,
+        "fitness": 0.97,
+        "turnover": 0.1933,
+        "returns": 0.0724,
+        "drawdown": 0.0432,
+        "margin": 0.000749,
+        "longCount": 1527,
+        "shortCount": 1530
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "earnings_yield",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 10,
+      "complexity_penalty": 4,
+      "metric_score": 22.36,
+      "check_score": 6.0,
+      "economic_logic_score": 36,
+      "total_score": 60.36
+    }
+  ],
+  "all_ranked": [
+    {
+      "alpha_id": "wpLmjx55",
+      "original_id": "E5repQ81_v1",
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 120), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 2.23,
+        "fitness": 1.45,
+        "turnover": 0.249,
+        "returns": 0.1056,
+        "drawdown": 0.046,
+        "margin": 0.000848,
+        "longCount": 1501,
+        "shortCount": 1501
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "earnings_yield",
+        "estimate_revision_or_analyst_attention",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Analyst estimate and surprise information can capture delayed fundamental repricing.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 44.44,
+      "check_score": 0,
+      "economic_logic_score": 60,
+      "total_score": 104.44
+    },
+    {
+      "alpha_id": "A1kWl0LE",
+      "original_id": "E5repQ81_v2",
+      "expression": "group_rank(ts_rank(anl4_afv4_median_eps/close, 90), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.76,
+        "fitness": 1.56,
+        "turnover": 0.1171,
+        "returns": 0.0978,
+        "drawdown": 0.0672,
+        "margin": 0.001671,
+        "longCount": 1537,
+        "shortCount": 1538
+      },
+      "strict_8pass": false,
+      "pass_count": 0,
+      "check_count": 1,
+      "failed_or_non_pass_checks": [
+        "ALREADY_SUBMITTED"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "earnings_yield",
+        "estimate_revision_or_analyst_attention",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Analyst estimate and surprise information can capture delayed fundamental repricing.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 38.4,
+      "check_score": -6.0,
+      "economic_logic_score": 60,
+      "total_score": 92.4
+    },
+    {
+      "alpha_id": "d5dXKzmK",
+      "original_id": "bloqmdJK_v2",
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,15)) > 0.55, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 3,
+        "neutralization": "MARKET",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.58,
+        "fitness": 1.21,
+        "turnover": 0.1045,
+        "returns": 0.0737,
+        "drawdown": 0.0345,
+        "margin": 0.00141,
+        "longCount": 1577,
+        "shortCount": 1481
+      },
+      "strict_8pass": true,
+      "pass_count": 8,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "sentiment_conditioned_risk",
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Sentiment can condition when risk or reversal effects are more likely to be repriced.",
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 14,
+      "complexity_penalty": 20,
+      "metric_score": 27.46,
+      "check_score": 24,
+      "economic_logic_score": 36,
+      "total_score": 67.46
+    },
+    {
+      "alpha_id": "qMg1NeNZ",
+      "original_id": "d5l07rpX_v1",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.55,
+        "fitness": 1.15,
+        "turnover": 0.1373,
+        "returns": 0.0755,
+        "drawdown": 0.0431,
+        "margin": 0.0011,
+        "longCount": 1524,
+        "shortCount": 1530
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "earnings_yield",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 25.6,
+      "check_score": 0,
+      "economic_logic_score": 36,
+      "total_score": 61.6
+    },
+    {
+      "alpha_id": "MPkWY7ro",
+      "original_id": "A1gVE97w_v2",
+      "expression": "group_rank(add(group_rank(ts_rank(eps / close, 120), industry), group_rank(-ts_count_nans(eps, 180), industry)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P5Y"
+      },
+      "metrics": {
+        "sharpe": 1.59,
+        "fitness": 0.97,
+        "turnover": 0.1933,
+        "returns": 0.0724,
+        "drawdown": 0.0432,
+        "margin": 0.000749,
+        "longCount": 1527,
+        "shortCount": 1530
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "earnings_yield",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 10,
+      "complexity_penalty": 4,
+      "metric_score": 22.36,
+      "check_score": 6.0,
+      "economic_logic_score": 36,
+      "total_score": 60.36
+    },
+    {
+      "alpha_id": "A1kWGQqE",
+      "original_id": "d5l07rpX_v2",
+      "expression": "group_rank(ts_rank(earnings_per_share_average/close, 90), subindustry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 8,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.53,
+        "fitness": 1.05,
+        "turnover": 0.1069,
+        "returns": 0.0589,
+        "drawdown": 0.0373,
+        "margin": 0.001102,
+        "longCount": 1487,
+        "shortCount": 1488
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "earnings_yield",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 23.04,
+      "check_score": 0,
+      "economic_logic_score": 36,
+      "total_score": 59.04
+    },
+    {
+      "alpha_id": "d5dXWLqv",
+      "original_id": "A1gVE97w_v1",
+      "expression": "group_rank(add(group_rank(ts_rank(eps / close, 60), industry), group_rank(-ts_count_nans(eps, 252), industry)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P5Y"
+      },
+      "metrics": {
+        "sharpe": 1.59,
+        "fitness": 0.83,
+        "turnover": 0.2768,
+        "returns": 0.0757,
+        "drawdown": 0.0496,
+        "margin": 0.000547,
+        "longCount": 1528,
+        "shortCount": 1530
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "earnings_yield",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Relative earnings yield: stocks with stronger earnings power versus price should command better forward returns.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 10,
+      "complexity_penalty": 4,
+      "metric_score": 19.28,
+      "check_score": 6.0,
+      "economic_logic_score": 36,
+      "total_score": 57.28
+    },
+    {
+      "alpha_id": "e7LpVPdJ",
+      "original_id": "0mAE3qzp_v1",
+      "expression": "group_rank(ts_delta(revenue, 2) / ts_mean(revenue, 4), market)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.62,
+        "fitness": 1.12,
+        "turnover": 0.3225,
+        "returns": 0.1537,
+        "drawdown": 0.1157,
+        "margin": 0.000953,
+        "longCount": 1808,
+        "shortCount": 840
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": false,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 26.2,
+      "check_score": 6.0,
+      "economic_logic_score": 22,
+      "total_score": 54.2
+    },
+    {
+      "alpha_id": "Xg1raQLa",
+      "original_id": "e7dPWeop_v2",
+      "expression": "ts_rank(ts_delta(assets / cap, 2), 30)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.83,
+        "fitness": 0.96,
+        "turnover": 0.5343,
+        "returns": 0.1458,
+        "drawdown": 0.0576,
+        "margin": 0.000546,
+        "longCount": 1488,
+        "shortCount": 1483
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 18.46,
+      "check_score": 6.0,
+      "economic_logic_score": 22,
+      "total_score": 46.46
+    },
+    {
+      "alpha_id": "58MbzaqJ",
+      "original_id": "A1g6AlWg_v2",
+      "expression": "group_rank(ts_decay_linear(sales_estimate_count, 10), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.67,
+        "fitness": 0.99,
+        "turnover": 0.0404,
+        "returns": 0.044,
+        "drawdown": 0.032,
+        "margin": 0.00218,
+        "longCount": 1521,
+        "shortCount": 1526
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "estimate_revision_or_analyst_attention"
+      ],
+      "economic_thesis": [
+        "Analyst estimate and surprise information can capture delayed fundamental repricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 16.24,
+      "check_score": 6.0,
+      "economic_logic_score": 24,
+      "total_score": 46.24
+    },
+    {
+      "alpha_id": "QPEJbX9G",
+      "original_id": "A1g6AlWg_v1",
+      "expression": "rank(ts_decay_linear(sales_estimate_count, 15))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.65,
+        "fitness": 0.99,
+        "turnover": 0.0329,
+        "returns": 0.0451,
+        "drawdown": 0.0249,
+        "margin": 0.002741,
+        "longCount": 1546,
+        "shortCount": 1512
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "estimate_revision_or_analyst_attention"
+      ],
+      "economic_thesis": [
+        "Analyst estimate and surprise information can capture delayed fundamental repricing."
+      ],
+      "complexity": 2,
+      "complexity_penalty": 0,
+      "metric_score": 15.88,
+      "check_score": 6.0,
+      "economic_logic_score": 24,
+      "total_score": 45.88
+    },
+    {
+      "alpha_id": "kqQ7GX6K",
+      "original_id": "0mAE3qzp_v2",
+      "expression": "group_rank(ts_delta(revenue, 1) / ts_mean(revenue, 8), market)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.58,
+        "fitness": 1.03,
+        "turnover": 0.3727,
+        "returns": 0.1589,
+        "drawdown": 0.1204,
+        "margin": 0.000853,
+        "longCount": 1857,
+        "shortCount": 668
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 23.5,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 45.5
+    },
+    {
+      "alpha_id": "6Xz8orOP",
+      "original_id": "gJmojOQm_v2",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(unsystematic_risk_last_90_days, 120), std=4), 66),densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.47,
+        "fitness": 1.18,
+        "turnover": 0.1266,
+        "returns": 0.0818,
+        "drawdown": 0.0359,
+        "margin": 0.001291,
+        "longCount": 1577,
+        "shortCount": 1557
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 10,
+      "complexity_penalty": 4,
+      "metric_score": 24.82,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 42.82
+    },
+    {
+      "alpha_id": "LLkj9171",
+      "original_id": "E5g7vMjJ_v1",
+      "expression": "group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 70)), 8), subindustry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 1.31,
+        "fitness": 1.03,
+        "turnover": 0.1469,
+        "returns": 0.0907,
+        "drawdown": 0.0759,
+        "margin": 0.001234,
+        "longCount": 1728,
+        "shortCount": 1339
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": false,
+      "economic_themes": [
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 8,
+      "complexity_penalty": 0,
+      "metric_score": 18.64,
+      "check_score": 6.0,
+      "economic_logic_score": 18,
+      "total_score": 42.64
+    },
+    {
+      "alpha_id": "88nojGGl",
+      "original_id": "LLgOWZmn_v1",
+      "expression": "group_neutralize(ts_decay_linear((rank(high - close) - rank(close - low)) * rank(ts_mean((high - low) / close, 30)) * (1 - 0.5 * rank(ts_mean((high - low) / close, 30))) * (1 - rank(ts_std_dev(returns, 30))), 20), subindustry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 1.92,
+        "fitness": 1.05,
+        "turnover": 0.3685,
+        "returns": 0.1112,
+        "drawdown": 0.0496,
+        "margin": 0.000604,
+        "longCount": 1526,
+        "shortCount": 1546
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": false,
+      "economic_themes": [
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 10,
+      "complexity_penalty": 12,
+      "metric_score": 30.06,
+      "check_score": 6.0,
+      "economic_logic_score": 18,
+      "total_score": 42.06
+    },
+    {
+      "alpha_id": "gJxAgzzg",
+      "original_id": "gJmojOQm_v1",
+      "expression": "group_rank(ts_zscore(winsorize(ts_backfill(unsystematic_risk_last_60_days, 120), std=4), 120),densify(bucket(rank(cap), range='0.1, 1, 0.1')))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.44,
+        "fitness": 1.14,
+        "turnover": 0.1148,
+        "returns": 0.0779,
+        "drawdown": 0.0426,
+        "margin": 0.001357,
+        "longCount": 1572,
+        "shortCount": 1563
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 10,
+      "complexity_penalty": 4,
+      "metric_score": 23.4,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 41.4
+    },
+    {
+      "alpha_id": "A1kWL2dQ",
+      "original_id": "88Ob79jV_v2",
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry), 15),industry))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.73,
+        "fitness": 0.97,
+        "turnover": 0.382,
+        "returns": 0.1204,
+        "drawdown": 0.0628,
+        "margin": 0.00063,
+        "longCount": 1570,
+        "shortCount": 1566
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 12,
+      "complexity_penalty": 8,
+      "metric_score": 24.88,
+      "check_score": 6.0,
+      "economic_logic_score": 18,
+      "total_score": 40.88
+    },
+    {
+      "alpha_id": "E5k7R8ZK",
+      "original_id": "Xg2X2jxl_v1",
+      "expression": "rank(ts_mean(anl4_totassets_flag, 30))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 1.3,
+        "fitness": 1.3,
+        "turnover": 0.0235,
+        "returns": 0.1249,
+        "drawdown": 0.1389,
+        "margin": 0.010626,
+        "longCount": 1558,
+        "shortCount": 272
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "estimate_revision_or_analyst_attention"
+      ],
+      "economic_thesis": [
+        "Analyst estimate and surprise information can capture delayed fundamental repricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 16.4,
+      "check_score": 0,
+      "economic_logic_score": 24,
+      "total_score": 40.4
+    },
+    {
+      "alpha_id": "9qJv2LJr",
+      "original_id": "1YopVrdW_v2",
+      "expression": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 1.0)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON"
+      },
+      "metrics": {
+        "sharpe": 1.33,
+        "fitness": 1.35,
+        "turnover": 0.0162,
+        "returns": 0.128,
+        "drawdown": 0.094,
+        "margin": 0.015769,
+        "longCount": 550,
+        "shortCount": 1254
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 18.04,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 40.04
+    },
+    {
+      "alpha_id": "QPEJW2QG",
+      "original_id": "88Ob79jV_v1",
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry), 25),subindustry))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.84,
+        "fitness": 1.1,
+        "turnover": 0.2962,
+        "returns": 0.1053,
+        "drawdown": 0.0546,
+        "margin": 0.000711,
+        "longCount": 1567,
+        "shortCount": 1566
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 12,
+      "complexity_penalty": 8,
+      "metric_score": 29.72,
+      "check_score": 0,
+      "economic_logic_score": 18,
+      "total_score": 39.72
+    },
+    {
+      "alpha_id": "blvk8vpM",
+      "original_id": "bloqmdJK_v1",
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,30)) > 0.6, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 5,
+        "neutralization": "MARKET",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.53,
+        "fitness": 1.08,
+        "turnover": 0.0771,
+        "returns": 0.0618,
+        "drawdown": 0.0308,
+        "margin": 0.001603,
+        "longCount": 1493,
+        "shortCount": 1449
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "sentiment_conditioned_risk",
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Sentiment can condition when risk or reversal effects are more likely to be repriced.",
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 14,
+      "complexity_penalty": 20,
+      "metric_score": 23.7,
+      "check_score": 0,
+      "economic_logic_score": 36,
+      "total_score": 39.7
+    },
+    {
+      "alpha_id": "A1kWVr1W",
+      "original_id": "e7dPWeop_v1",
+      "expression": "ts_rank(ts_delta(assets / cap, 4), 20)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 8,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.35,
+        "fitness": 0.68,
+        "turnover": 0.3674,
+        "returns": 0.0945,
+        "drawdown": 0.0616,
+        "margin": 0.000515,
+        "longCount": 1483,
+        "shortCount": 1483
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 11.66,
+      "check_score": 6.0,
+      "economic_logic_score": 22,
+      "total_score": 39.66
+    },
+    {
+      "alpha_id": "9qJvkZeV",
+      "original_id": "xAeN6jGp_v1",
+      "expression": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 0.1)), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON"
+      },
+      "metrics": {
+        "sharpe": 1.31,
+        "fitness": 1.41,
+        "turnover": 0.0172,
+        "returns": 0.1442,
+        "drawdown": 0.127,
+        "margin": 0.016763,
+        "longCount": 446,
+        "shortCount": 1358
+      },
+      "strict_8pass": false,
+      "pass_count": 5,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "CONCENTRATED_WEIGHT",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": false,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 19.0,
+      "check_score": -2.0,
+      "economic_logic_score": 22,
+      "total_score": 39.0
+    },
+    {
+      "alpha_id": "np3Jrqal",
+      "original_id": "1YopVrdW_v1",
+      "expression": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 2.0)), subindustry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "ON"
+      },
+      "metrics": {
+        "sharpe": 1.35,
+        "fitness": 1.28,
+        "turnover": 0.0176,
+        "returns": 0.1129,
+        "drawdown": 0.0813,
+        "margin": 0.012814,
+        "longCount": 618,
+        "shortCount": 1108
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 16.86,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 38.86
+    },
+    {
+      "alpha_id": "mLZ3Y3rx",
+      "original_id": "Xg2X2jxl_v2",
+      "expression": "group_rank(ts_mean(anl4_totassets_flag, 20), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 1.27,
+        "fitness": 1.25,
+        "turnover": 0.0245,
+        "returns": 0.1214,
+        "drawdown": 0.146,
+        "margin": 0.009924,
+        "longCount": 1517,
+        "shortCount": 264
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "estimate_revision_or_analyst_attention"
+      ],
+      "economic_thesis": [
+        "Analyst estimate and surprise information can capture delayed fundamental repricing."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 14.76,
+      "check_score": 0,
+      "economic_logic_score": 24,
+      "total_score": 38.76
+    },
+    {
+      "alpha_id": "omVpZnKm",
+      "original_id": "xAeN6jGp_v2",
+      "expression": "group_neutralize(divide(fnd6_rectr, max(fnd6_recd, 0.000001)), subindustry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 3,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "ON"
+      },
+      "metrics": {
+        "sharpe": 1.37,
+        "fitness": 1.25,
+        "turnover": 0.0134,
+        "returns": 0.1044,
+        "drawdown": 0.096,
+        "margin": 0.015566,
+        "longCount": 586,
+        "shortCount": 2015
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 16.56,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 38.56
+    },
+    {
+      "alpha_id": "Wj9qxA0N",
+      "original_id": "1YoX2GxX_v1",
+      "expression": "rank(group_neutralize(divide(fnd6_sppe, add(abs(fnd6_siv), 2)), industry))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.42,
+        "fitness": 1.14,
+        "turnover": 0.0193,
+        "returns": 0.0802,
+        "drawdown": 0.0712,
+        "margin": 0.00833,
+        "longCount": 359,
+        "shortCount": 1801
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 5,
+      "complexity_penalty": 0,
+      "metric_score": 15.04,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 37.04
+    },
+    {
+      "alpha_id": "RRd3zEPo",
+      "original_id": "1YodbWO6_v1",
+      "expression": "reverse(group_neutralize(multiply(fnd6_prstkc, quantile(fnd6_pstkc, driver=uniform)), industry))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 15,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "ON"
+      },
+      "metrics": {
+        "sharpe": 1.38,
+        "fitness": 1.14,
+        "turnover": 0.0185,
+        "returns": 0.0846,
+        "drawdown": 0.0452,
+        "margin": 0.009151,
+        "longCount": 805,
+        "shortCount": 1659
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 14.32,
+      "check_score": 0,
+      "economic_logic_score": 22,
+      "total_score": 36.32
+    },
+    {
+      "alpha_id": "rKA3eXKo",
+      "original_id": "LLgOWZmn_v2",
+      "expression": "group_neutralize(ts_decay_linear((rank(high - close) - rank(close - low)) * rank(ts_mean((high - low) / close, 20)) * (1 - 0.5 * rank(ts_mean((high - low) / close, 20))) * (1 - rank(ts_std_dev(returns, 30))), 12), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 2.08,
+        "fitness": 1.13,
+        "turnover": 0.4744,
+        "returns": 0.14,
+        "drawdown": 0.0487,
+        "margin": 0.00059,
+        "longCount": 1565,
+        "shortCount": 1572
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 10,
+      "complexity_penalty": 12,
+      "metric_score": 26.7,
+      "check_score": 0,
+      "economic_logic_score": 18,
+      "total_score": 32.7
+    },
+    {
+      "alpha_id": "RRd3e7jn",
+      "original_id": "O0bXoVV1_v1",
+      "expression": "ts_zscore(-ts_delta(close, 2), 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 15,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.92,
+        "fitness": 1.09,
+        "turnover": 0.4436,
+        "returns": 0.1427,
+        "drawdown": 0.0812,
+        "margin": 0.000643,
+        "longCount": 1549,
+        "shortCount": 1521
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 30.94,
+      "check_score": 0,
+      "economic_logic_score": 6,
+      "total_score": 28.94
+    },
+    {
+      "alpha_id": "e7LpvAPd",
+      "original_id": "1YodbWO6_v2",
+      "expression": "reverse(group_neutralize(multiply(fnd6_prstkc, quantile(fnd6_pstkc, driver=gaussian)), subindustry))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 10,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON"
+      },
+      "metrics": {
+        "sharpe": 1.17,
+        "fitness": 0.92,
+        "turnover": 0.0219,
+        "returns": 0.0766,
+        "drawdown": 0.0476,
+        "margin": 0.006986,
+        "longCount": 851,
+        "shortCount": 1689
+      },
+      "strict_8pass": false,
+      "pass_count": 5,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 4,
+      "complexity_penalty": 0,
+      "metric_score": 5.7,
+      "check_score": -2.0,
+      "economic_logic_score": 22,
+      "total_score": 25.7
+    },
+    {
+      "alpha_id": "QPEJ0oA5",
+      "original_id": "O0bXoVV1_v2",
+      "expression": "ts_zscore(-ts_delta(close, 1), 5)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 18,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 2.23,
+        "fitness": 1.05,
+        "turnover": 0.6892,
+        "returns": 0.1526,
+        "drawdown": 0.068,
+        "margin": 0.000443,
+        "longCount": 1546,
+        "shortCount": 1524
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 27.64,
+      "check_score": 0,
+      "economic_logic_score": 6,
+      "total_score": 25.64
+    },
+    {
+      "alpha_id": "zqOMYamR",
+      "original_id": "qMmpvp8v_v2",
+      "expression": "-ts_mean(returns, 3)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.48,
+        "fitness": 1.11,
+        "turnover": 0.4386,
+        "returns": 0.2474,
+        "drawdown": 0.1521,
+        "margin": 0.001128,
+        "longCount": 1556,
+        "shortCount": 1515
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 1,
+      "complexity_penalty": 0,
+      "metric_score": 23.46,
+      "check_score": 0,
+      "economic_logic_score": 6,
+      "total_score": 21.46
+    },
+    {
+      "alpha_id": "O0oYjNxJ",
+      "original_id": "QPn0vn3X_v2",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(close, 3)), densify(sector))), abs(returns) > 0.1)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 15,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 1.69,
+        "fitness": 0.94,
+        "turnover": 0.3422,
+        "returns": 0.1049,
+        "drawdown": 0.0679,
+        "margin": 0.000613,
+        "longCount": 740,
+        "shortCount": 716
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 9,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "UNITS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 12,
+      "complexity_penalty": 8,
+      "metric_score": 23.5,
+      "check_score": 6.0,
+      "economic_logic_score": 6,
+      "total_score": 19.5
+    },
+    {
+      "alpha_id": "Wj9qP0Po",
+      "original_id": "E5g7vMjJ_v2",
+      "expression": "group_neutralize(ts_decay_linear(rank(ts_delta(close, 15)) * -rank(ts_corr(rank(close), rank(volume), 50)), 5), industry)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 3,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 0.86,
+        "fitness": 0.61,
+        "turnover": 0.1351,
+        "returns": 0.0675,
+        "drawdown": 0.0768,
+        "margin": 0.001,
+        "longCount": 1816,
+        "shortCount": 1314
+      },
+      "strict_8pass": false,
+      "pass_count": 5,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "price_volume_microstructure",
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Price-volume and intraday range behavior can encode liquidity pressure, reversal, or crowding.",
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 8,
+      "complexity_penalty": 0,
+      "metric_score": 1.3,
+      "check_score": -2.0,
+      "economic_logic_score": 18,
+      "total_score": 17.3
+    },
+    {
+      "alpha_id": "ZYr51JLx",
+      "original_id": "1YoX2GxX_v2",
+      "expression": "rank(group_neutralize(divide(fnd6_sppe, add(abs(fnd6_siv), 1)), subindustry))",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.23,
+        "fitness": 0.82,
+        "turnover": 0.0178,
+        "returns": 0.0557,
+        "drawdown": 0.0506,
+        "margin": 0.006274,
+        "longCount": 363,
+        "shortCount": 1466
+      },
+      "strict_8pass": false,
+      "pass_count": 4,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": false,
+      "economic_themes": [
+        "balance_sheet_or_quality"
+      ],
+      "economic_thesis": [
+        "Balance-sheet, valuation, revenue, and risk fields can proxy for quality, capital structure, or fundamental mispricing."
+      ],
+      "complexity": 5,
+      "complexity_penalty": 0,
+      "metric_score": 4.58,
+      "check_score": -10.0,
+      "economic_logic_score": 22,
+      "total_score": 16.58
+    },
+    {
+      "alpha_id": "blvkn9Zq",
+      "original_id": "2rvNV1qJ_v1",
+      "expression": "group_rank(ts_delta(eps, 4), market)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 4,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.44,
+        "fitness": 0.87,
+        "turnover": 0.3224,
+        "returns": 0.1174,
+        "drawdown": 0.1351,
+        "margin": 0.000728,
+        "longCount": 2053,
+        "shortCount": 852
+      },
+      "strict_8pass": false,
+      "pass_count": 6,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [],
+      "economic_thesis": [
+        "No strong economic field theme detected; this looks closer to operator or parameter exploration."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 17.46,
+      "check_score": 6.0,
+      "economic_logic_score": 0,
+      "total_score": 11.46
+    },
+    {
+      "alpha_id": "1YJ9PlX6",
+      "original_id": "2rvNV1qJ_v2",
+      "expression": "group_rank(ts_delta(eps, 1), sector)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 6,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "ON",
+        "testPeriod": "P2Y"
+      },
+      "metrics": {
+        "sharpe": 1.35,
+        "fitness": 1.08,
+        "turnover": 0.231,
+        "returns": 0.1476,
+        "drawdown": 0.1673,
+        "margin": 0.001278,
+        "longCount": 2385,
+        "shortCount": 674
+      },
+      "strict_8pass": false,
+      "pass_count": null,
+      "check_count": null,
+      "failed_or_non_pass_checks": [],
+      "self_correlation": null,
+      "subuniverse_pass": null,
+      "economic_themes": [],
+      "economic_thesis": [
+        "No strong economic field theme detected; this looks closer to operator or parameter exploration."
+      ],
+      "complexity": 3,
+      "complexity_penalty": 0,
+      "metric_score": 20.46,
+      "check_score": 0,
+      "economic_logic_score": 0,
+      "total_score": 8.46
+    },
+    {
+      "alpha_id": "omVpqbGb",
+      "original_id": "qMmpvp8v_v1",
+      "expression": "-ts_mean(returns, 10)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 0,
+        "neutralization": "SUBINDUSTRY",
+        "nanHandling": "OFF",
+        "testPeriod": "P1Y"
+      },
+      "metrics": {
+        "sharpe": 1.21,
+        "fitness": 0.8,
+        "turnover": 0.4457,
+        "returns": 0.1929,
+        "drawdown": 0.1691,
+        "margin": 0.000866,
+        "longCount": 1552,
+        "shortCount": 1519
+      },
+      "strict_8pass": false,
+      "pass_count": 5,
+      "check_count": 8,
+      "failed_or_non_pass_checks": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": true,
+      "economic_themes": [
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 1,
+      "complexity_penalty": 0,
+      "metric_score": 11.78,
+      "check_score": -2.0,
+      "economic_logic_score": 6,
+      "total_score": 7.78
+    },
+    {
+      "alpha_id": "2rJ0xqVJ",
+      "original_id": "QPn0vn3X_v1",
+      "expression": "trade_when(group_rank(ts_std_dev(returns,40), sector) > 0.75, rank(group_zscore(rank(-ts_zscore(close, 5)), densify(sector))), abs(returns) > 0.1)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "startDate": "2019-01-01",
+        "endDate": "2023-12-31",
+        "decay": 20,
+        "neutralization": "INDUSTRY",
+        "nanHandling": "OFF"
+      },
+      "metrics": {
+        "sharpe": 1.18,
+        "fitness": 0.75,
+        "turnover": 0.2028,
+        "returns": 0.0823,
+        "drawdown": 0.1111,
+        "margin": 0.000811,
+        "longCount": 779,
+        "shortCount": 747
+      },
+      "strict_8pass": false,
+      "pass_count": 4,
+      "check_count": 9,
+      "failed_or_non_pass_checks": [
+        "LOW_SHARPE",
+        "LOW_FITNESS",
+        "LOW_SUB_UNIVERSE_SHARPE",
+        "UNITS",
+        "SELF_CORRELATION"
+      ],
+      "self_correlation": null,
+      "subuniverse_pass": false,
+      "economic_themes": [
+        "short_horizon_price_reversal"
+      ],
+      "economic_thesis": [
+        "Short-horizon price reversal is economically plausible but crowded and easier to overfit."
+      ],
+      "complexity": 12,
+      "complexity_penalty": 8,
+      "metric_score": 10.14,
+      "check_score": -10.0,
+      "economic_logic_score": 6,
+      "total_score": -9.86
+    }
+  ]
+}

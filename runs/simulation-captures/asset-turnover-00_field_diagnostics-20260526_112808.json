@@ -1,0 +1,96 @@
+{
+  "phase": "00_field_diagnostics",
+  "description": "Field health diagnostics",
+  "started_at": "2026-05-26T11:28:08.430958",
+  "phase_completed_at": "2026-05-26T11:55:43.846551",
+  "results": [
+    {
+      "name": "s0_raw_assets",
+      "alpha_id": "YPQQNR5J",
+      "sharpe": 0.92,
+      "fitness": 1.62,
+      "turnover": 0.0023,
+      "expression": "winsorize(ts_backfill(assets, 252), std=4)",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "s0_raw_revenue",
+      "alpha_id": "YPQQQWRw",
+      "sharpe": 1.08,
+      "fitness": 1.95,
+      "turnover": 0.0041,
+      "expression": "winsorize(ts_backfill(revenue, 252), std=4)",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "s0_raw_ppent",
+      "alpha_id": "1YJJJNeQ",
+      "sharpe": 1.04,
+      "fitness": 1.87,
+      "turnover": 0.0027,
+      "expression": "winsorize(ts_backfill(ppent, 252), std=4)",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "s0_raw_acur",
+      "alpha_id": "LLkkk0R2",
+      "sharpe": 1.0,
+      "fitness": 1.75,
+      "turnover": 0.0034,
+      "expression": "winsorize(ts_backfill(assets_curr, 252), std=4)",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "s0_nz_assets",
+      "alpha_id": "omVVYwPn",
+      "sharpe": 0.73,
+      "fitness": 1.21,
+      "turnover": 0.0045,
+      "expression": "winsorize(ts_backfill(assets, 252), std=4) != 0 ? 1 : 0",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "s0_nz_revenue",
+      "alpha_id": "9qJJRVn2",
+      "sharpe": 0.77,
+      "fitness": 1.3,
+      "turnover": 0.0044,
+      "expression": "winsorize(ts_backfill(revenue, 252), std=4) != 0 ? 1 : 0",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "s0_freq_assets",
+      "alpha_id": "pw887Le3",
+      "sharpe": 0.75,
+      "fitness": 1.25,
+      "turnover": 0.0058,
+      "expression": "ts_std_dev(winsorize(ts_backfill(assets, 252), std=4), 252) != 0 ? 1 : 0",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "s0_freq_revenue",
+      "alpha_id": "Xg11plga",
+      "sharpe": 0.77,
+      "fitness": 1.31,
+      "turnover": 0.0055,
+      "expression": "ts_std_dev(winsorize(ts_backfill(revenue, 252), std=4), 252) != 0 ? 1 : 0",
+      "decay": 0,
+      "neutralization": "NONE",
+      "status": "COMPLETE"
+    }
+  ]
+}

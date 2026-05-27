@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "queue_id": "research-queue-2026-05-11-v4",
+  "generated_at": "2026-05-11T03:00:00+0800",
+  "status": "exhausted",
+  "note": "v4 — close_delta family KILL memo written. All candidate paths exhausted. Only bloqmdJK remains ready to submit.",
+  "queues": [],
+  "frozen_families": [
+    {
+      "family": "close_delta_family",
+      "reason": "Structural self-correlation — all 11 unsubmitted variants share ts_delta(close,1) signal source. Kill memo: runs/submission-memos/2026-05-11-close-delta-family-kill.md",
+      "memo": "runs/submission-memos/2026-05-11-close-delta-family-kill.md",
+      "note": "O0bXoVV1 already submitted ACTIVE; 11 others never submitted and should not be"
+    },
+    {
+      "family": "model_value_momentum_composite",
+      "reason": "mdl177 VM composite Sharpe 0.24 — too weak, STOP memo: runs/notes/daily/2026-05-11-mdl177-stop-memo.md",
+      "memo": "runs/notes/daily/2026-05-11-mdl177-stop-memo.md"
+    },
+    {
+      "family": "model_rerating_derivative_multi_factor",
+      "reason": "Frozen 2026-04-27 — S0 failure pattern",
+      "memo": "runs/field-search-packs/2026-04-25-model-multi-factor-static-score-rerating.md"
+    },
+    {
+      "family": "model_rerating_derivative_relative_valuation",
+      "reason": "Frozen 2026-04-27 — S0 failure pattern",
+      "memo": "runs/field-search-packs/2026-04-25-model-relative-valuation-rerating.md"
+    },
+    {
+      "family": "analyst_eps_price_industry",
+      "reason": "TEST Sharpe too weak (0.15) — frozen",
+      "memo": "runs/expression-families/analyst-sibling-branch.md"
+    },
+    {
+      "family": "analyst_disagreement_dts_spe_industry",
+      "reason": "Sign-flip FAILED, best direct Sharpe only 0.21 — frozen",
+      "memo": "runs/expression-families/analyst-disagreement-branch.md"
+    },
+    {
+      "family": "eps_quality_yield_backup",
+      "reason": "QP2v6rVW self-corr 0.9221 FAIL — frozen",
+      "memo": "runs/submission-memos/2026-05-07-qp2v6rvw-self-corr-freeze.md"
+    }
+  ],
+  "verified_dead_paths": [
+    {"family": "news_sentiment_momentum", "field": "nws18_qcm", "result": "EVENT fields cannot use ts_rank — STOP"},
+    {"family": "social_buzz_acceleration", "field": "scl12_buzz", "result": "alphaId=null — no alpha produced"},
+    {"family": "external_financing_share_dilution", "field": "mdl77_valueanalystmodel_qva_yoychgshares", "result": "Sharpe ±0.18 — FAIL"},
+    {"family": "earnings_quality_value", "field": "proforma_earnings_to_price", "result": "sign-flip unstable — FAIL"},
+    {"family": "model_value_momentum_composite", "field": "mdl177_valuemomemtummodel_vm_compositesn", "result": "Sharpe ±0.24 — STOP"},
+    {"family": "model_rerating_derivative", "field": "multi_factor_static_score_derivative", "result": "Frozen 2026-04-27"},
+    {"family": "model_rerating_derivative", "field": "relative_valuation_rank_derivative", "result": "Frozen 2026-04-27"},
+    {"family": "analyst_disagreement", "field": "anl4_afv4_dts_spe", "result": "Sharpe 0.21 — frozen"},
+    {"family": "analyst_eps_sibling", "field": "anl4_afv4_median_eps", "result": "TEST Sharpe 0.15 — frozen"},
+    {"family": "short_interest_squeeze", "field": "short_interest", "result": "Field doesn't exist — STOP"},
+    {"family": "close_delta_family", "field": "ts_delta(close,1)", "result": "Structural self-corr — KILL (11 unsubmitted, 1 active)"}
+  ],
+  "active_submitted": [
+    {
+      "alpha": "E5g7vMjJ",
+      "family": "price_volume_corr",
+      "sharpe": 1.37,
+      "fitness": 1.01,
+      "status": "ACTIVE"
+    },
+    {
+      "alpha": "A1gVE97w",
+      "family": "eps_quality_yield",
+      "sharpe": 1.63,
+      "fitness": 1.04,
+      "status": "ACTIVE/OS"
+    },
+    {
+      "alpha": "bloqmdJK",
+      "family": "price_volume_social_gate",
+      "sharpe": 1.61,
+      "fitness": 1.25,
+      "status": "UNSUBMITTED — SUBMIT IMMEDIATELY"
+    }
+  ],
+  "research_queue_exhausted": true,
+  "next_action": "1. Submit bloqmdJK now  2. Scout genuinely new data source not yet tested"
+}

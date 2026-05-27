@@ -21,6 +21,8 @@ Write the plain-language hypothesis behind this expression family.
 - Liquidity fit:
 - Holding frequency:
 - Delay:
+- Competition route posture: D1-first / D0-probe / dual-control / not competition-targeted
+- Competition route reason:
 - Neutralization target:
 - Decay:
 - Truncation:
@@ -35,6 +37,7 @@ Write the plain-language hypothesis behind this expression family.
 ## Validation Design
 
 - Primary test period:
+- Competition route test:
 - Regime slices:
 - Liquidity slice:
 - Subuniverse gate:
@@ -100,6 +103,7 @@ replace-me-variant-3
 ## Next Simulation Batch
 
 - Baseline:
+- D0 / D1 route control:
 - Variant 1:
 - Variant 2:
 - Variant 3:

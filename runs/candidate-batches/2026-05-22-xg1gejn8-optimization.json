@@ -1,0 +1,103 @@
+{
+  "_instructions": [
+    "SO Optimization for Xg1gEJn8 - Sub-universe is 0.61/0.62 (FAIL by 0.01)",
+    "Goal: Fix Sub-universe while keeping Sharpe>=1.25, Fitness>=1.0",
+    "Strategy: Tiny adjustments to spread signal across sub-universe",
+    "Observation: decay=4 best for balance, need slight diversification boost"
+  ],
+  "schema_version": "1.0.0",
+  "capture_id": "2026-05-22-xg1gejn8-optimization",
+  "topic": "sub_universe_fix",
+  "author": "Claude",
+  "source": "optimization_request",
+  "base_candidate": {
+    "alpha_id": "Xg1gEJn8",
+    "expression": "reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))",
+    "settings": {"decay": 4, "neutralization": "INDUSTRY"},
+    "sharpe": 1.43,
+    "fitness": 1.31,
+    "returns": 0.1055,
+    "turnover": 0.1054,
+    "margin": 0.002001,
+    "sub_universe": "FAIL by 0.01"
+  },
+  "candidates": [
+    {
+      "name": "base_decay3",
+      "description": "decay=3 instead of 4 - slightly less smoothing",
+      "expression": "reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))",
+      "settings": {"decay": 3, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "base_decay5",
+      "description": "decay=5 instead of 4",
+      "expression": "reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))",
+      "settings": {"decay": 5, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "base_decay5_market",
+      "description": "decay=5 with MARKET neutralization",
+      "expression": "reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))",
+      "settings": {"decay": 5, "neutralization": "MARKET"}
+    },
+    {
+      "name": "base_decay4_sector",
+      "description": "decay=4 with SECTOR neutralization",
+      "expression": "reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))",
+      "settings": {"decay": 4, "neutralization": "SECTOR"}
+    },
+    {
+      "name": "base_decay4_bucket_cap",
+      "description": "decay=4 with bucket(cap) diversification",
+      "expression": "reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))",
+      "settings": {"decay": 4, "neutralization": "INDUSTRY", "neutralizationBucket": "bucket(rank(cap), range='0.1, 1, 0.1')"}
+    },
+    {
+      "name": "rank_wrapper_decay4",
+      "description": "Add rank outer wrapper for better distribution",
+      "expression": "rank(reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01))))",
+      "settings": {"decay": 4, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "zscore_wrapper_decay4",
+      "description": "Add zscore outer wrapper",
+      "expression": "zscore(reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01))))",
+      "settings": {"decay": 4, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "quantile_wrapper_decay4",
+      "description": "Add quantile(0.3) outer wrapper for concentration control",
+      "expression": "quantile(reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01))), 0.3)",
+      "settings": {"decay": 4, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "ts_zscore_outer_decay4",
+      "description": "Add ts_zscore(20) outer wrapper for smoothing",
+      "expression": "ts_zscore(reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01))), 20)",
+      "settings": {"decay": 4, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "group_neutralize_decay4",
+      "description": "Use group_neutralize instead of group_rank",
+      "expression": "group_neutralize(reverse(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01))), industry)",
+      "settings": {"decay": 4, "neutralization": "NONE"}
+    },
+    {
+      "name": "eps_field_variant",
+      "description": "Try different eps field - actual_eps_surprise",
+      "expression": "reverse(divide(actual_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))",
+      "settings": {"decay": 4, "neutralization": "INDUSTRY"}
+    },
+    {
+      "name": "corr_field_variant",
+      "description": "Try different correlation field - beta_last_60_days_spy",
+      "expression": "reverse(divide(change_in_eps_surprise, max(abs(beta_last_60_days_spy), 0.01)))",
+      "settings": {"decay": 4, "neutralization": "INDUSTRY"}
+    }
+  ],
+  "expected_outcomes": {
+    "pass_criteria": "Sub-universe >= 0.62, Sharpe >= 1.25, Fitness >= 1.0",
+    "near_pass": "Sub-universe >= 0.60, Sharpe >= 1.25, Fitness >= 1.0",
+    "kill_criteria": "Sub-universe < 0.60 or Sharpe < 1.25 or Fitness < 1.0"
+  }
+}

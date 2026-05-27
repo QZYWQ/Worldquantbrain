@@ -1,0 +1,1176 @@
+[
+  {
+    "id": "d5l07rpX_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_rank(earnings_per_share_average/close, 60), industry)"
+    },
+    "note": "\u53d8\u4f531: ts_rank\u7a97\u53e3120\u219260, decay 4\u21926, neutralization SUBINDUSTRY\u2192INDUSTRY"
+  },
+  {
+    "id": "d5l07rpX_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 8,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_rank(earnings_per_share_average/close, 90), subindustry)"
+    },
+    "note": "\u53d8\u4f532: ts_rank\u7a97\u53e3120\u219290, decay 4\u21928"
+  },
+  {
+    "id": "E5repQ81_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_rank(anl4_afv4_median_eps/close, 120), industry)"
+    },
+    "note": "\u53d8\u4f531: ts_rank\u7a97\u53e360\u2192120, decay 4\u21920"
+  },
+  {
+    "id": "E5repQ81_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_rank(anl4_afv4_median_eps/close, 90), industry)"
+    },
+    "note": "\u53d8\u4f532: ts_rank\u7a97\u53e360\u219290, decay 4\u21926, neutralization SUBINDUSTRY\u2192INDUSTRY"
+  },
+  {
+    "id": "qMmpvp8v_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "-ts_mean(returns, 10)"
+    },
+    "note": "\u53d8\u4f531: ts_mean\u7a97\u53e35\u219210, decay 4\u21920"
+  },
+  {
+    "id": "qMmpvp8v_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "-ts_mean(returns, 3)"
+    },
+    "note": "\u53d8\u4f532: ts_mean\u7a97\u53e35\u21923, decay 4\u21926"
+  },
+  {
+    "id": "E5g7vMjJ_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "group_neutralize(ts_decay_linear(rank(ts_delta(close, 10)) * -rank(ts_corr(rank(close), rank(volume), 70)), 8), subindustry)"
+    },
+    "note": "\u53d8\u4f531: ts_decay_linear\u7a97\u53e35\u21928, neutralization INDUSTRY\u2192SUBINDUSTRY"
+  },
+  {
+    "id": "E5g7vMjJ_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 3,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "group_neutralize(ts_decay_linear(rank(ts_delta(close, 15)) * -rank(ts_corr(rank(close), rank(volume), 50)), 5), industry)"
+    },
+    "note": "\u53d8\u4f532: ts_delta\u7a97\u53e310\u219215, ts_corr\u7a97\u53e370\u219250, decay 0\u21923"
+  },
+  {
+    "id": "A1g6AlWg_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "rank(ts_decay_linear(sales_estimate_count, 15))"
+    },
+    "note": "\u53d8\u4f531: ts_decay_linear\u7a97\u53e310\u219215"
+  },
+  {
+    "id": "A1g6AlWg_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_decay_linear(sales_estimate_count, 10), industry)"
+    },
+    "note": "\u53d8\u4f532: \u6dfb\u52a0group_rank\u5305\u88c5"
+  },
+  {
+    "id": "LLgOWZmn_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "group_neutralize(ts_decay_linear((rank(high - close) - rank(close - low)) * rank(ts_mean((high - low) / close, 30)) * (1 - 0.5 * rank(ts_mean((high - low) / close, 30))) * (1 - rank(ts_std_dev(returns, 30))), 20), subindustry)"
+    },
+    "note": "\u53d8\u4f531: ts_decay_linear\u7a97\u53e312\u219220, neutralization INDUSTRY\u2192SUBINDUSTRY"
+  },
+  {
+    "id": "LLgOWZmn_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "group_neutralize(ts_decay_linear((rank(high - close) - rank(close - low)) * rank(ts_mean((high - low) / close, 20)) * (1 - 0.5 * rank(ts_mean((high - low) / close, 20))) * (1 - rank(ts_std_dev(returns, 30))), 12), industry)"
+    },
+    "note": "\u53d8\u4f532: ts_mean\u7a97\u53e330\u219220"
+  },
+  {
+    "id": "Xg2X2jxl_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "rank(ts_mean(anl4_totassets_flag, 30))"
+    },
+    "note": "\u53d8\u4f531: ts_mean\u7a97\u53e320\u219230"
+  },
+  {
+    "id": "Xg2X2jxl_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "group_rank(ts_mean(anl4_totassets_flag, 20), industry)"
+    },
+    "note": "\u53d8\u4f532: \u6dfb\u52a0group_rank\u5305\u88c5"
+  },
+  {
+    "id": "bloqmdJK_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 5,
+      "neutralization": "MARKET",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,30)) > 0.6, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)"
+    },
+    "note": "\u53d8\u4f531: ts_mean\u7a97\u53e320\u219230, \u9608\u503c0.55\u21920.6, decay 3\u21925"
+  },
+  {
+    "id": "bloqmdJK_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 3,
+      "neutralization": "MARKET",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,15)) > 0.55, group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry),40),subindustry), -1)"
+    },
+    "note": "\u53d8\u4f532: ts_mean\u7a97\u53e320\u219215"
+  },
+  {
+    "id": "A1gVE97w_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P5Y"
+    },
+    "regular": {
+      "code": "group_rank(add(group_rank(ts_rank(eps / close, 60), industry), group_rank(-ts_count_nans(eps, 252), industry)), industry)"
+    },
+    "note": "\u53d8\u4f531: ts_rank\u7a97\u53e3120\u219260"
+  },
+  {
+    "id": "A1gVE97w_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P5Y"
+    },
+    "regular": {
+      "code": "group_rank(add(group_rank(ts_rank(eps / close, 120), industry), group_rank(-ts_count_nans(eps, 180), industry)), industry)"
+    },
+    "note": "\u53d8\u4f532: ts_count_nans\u7a97\u53e3252\u2192180"
+  },
+  {
+    "id": "e7dPWeop_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 8,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "ts_rank(ts_delta(assets / cap, 4), 20)"
+    },
+    "note": "\u53d8\u4f531: ts_delta\u5468\u671f2\u21924, decay 6\u21928"
+  },
+  {
+    "id": "e7dPWeop_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "ts_rank(ts_delta(assets / cap, 2), 30)"
+    },
+    "note": "\u53d8\u4f532: ts_rank\u7a97\u53e320\u219230"
+  },
+  {
+    "id": "O0bXoVV1_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 15,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "ts_zscore(-ts_delta(close, 2), 10)"
+    },
+    "note": "\u53d8\u4f531: ts_delta\u5468\u671f1\u21922, decay 18\u219215"
+  },
+  {
+    "id": "O0bXoVV1_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 18,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "ts_zscore(-ts_delta(close, 1), 5)"
+    },
+    "note": "\u53d8\u4f532: ts_zscore\u7a97\u53e310\u21925"
+  },
+  {
+    "id": "88Ob79jV_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry), 25),subindustry))"
+    },
+    "note": "\u53d8\u4f531: ts_decay_linear\u7a97\u53e315\u219225"
+  },
+  {
+    "id": "88Ob79jV_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*rank(ts_mean(volume,120)/ts_mean(volume,80)),subindustry), 15),industry))"
+    },
+    "note": "\u53d8\u4f532: \u5185\u5c42neutralization subindustry\u2192industry"
+  },
+  {
+    "id": "GrnExm2Q_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 8,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "rank(-group_rank(-ts_zscore(tobins_q_ratio, 3), industry))"
+    },
+    "note": "\u53d8\u4f531: ts_zscore\u7a97\u53e35\u21923, decay 5\u21928"
+  },
+  {
+    "id": "GrnExm2Q_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 5,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P1Y"
+    },
+    "regular": {
+      "code": "rank(-group_rank(-ts_zscore(tobins_q_ratio, 5), subindustry))"
+    },
+    "note": "\u53d8\u4f532: neutralization INDUSTRY\u2192SUBINDUSTRY"
+  },
+  {
+    "id": "gJmojOQm_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_zscore(winsorize(ts_backfill(unsystematic_risk_last_60_days, 120), std=4), 120),densify(bucket(rank(cap), range='0.1, 1, 0.1')))"
+    },
+    "note": "\u53d8\u4f531: ts_zscore\u7a97\u53e366\u2192120"
+  },
+  {
+    "id": "gJmojOQm_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_zscore(winsorize(ts_backfill(unsystematic_risk_last_90_days, 120), std=4), 66),densify(bucket(rank(cap), range='0.1, 1, 0.1')))"
+    },
+    "note": "\u53d8\u4f532: unsystematic_risk_last_60_days\u219290_days"
+  },
+  {
+    "id": "0mAE3qzp_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_delta(revenue, 2) / ts_mean(revenue, 4), market)"
+    },
+    "note": "\u53d8\u4f531: ts_delta\u5468\u671f1\u21922"
+  },
+  {
+    "id": "0mAE3qzp_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_delta(revenue, 1) / ts_mean(revenue, 8), market)"
+    },
+    "note": "\u53d8\u4f532: ts_mean\u7a97\u53e34\u21928"
+  },
+  {
+    "id": "1YodbWO6_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 15,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "ON"
+    },
+    "regular": {
+      "code": "reverse(group_neutralize(multiply(fnd6_prstkc, quantile(fnd6_pstkc, driver=uniform)), industry))"
+    },
+    "note": "\u53d8\u4f531: decay 10\u219215, quantile driver gaussian\u2192uniform"
+  },
+  {
+    "id": "1YodbWO6_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 10,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON"
+    },
+    "regular": {
+      "code": "reverse(group_neutralize(multiply(fnd6_prstkc, quantile(fnd6_pstkc, driver=gaussian)), subindustry))"
+    },
+    "note": "\u53d8\u4f532: neutralization SUBINDUSTRY\u2192INDUSTRY"
+  },
+  {
+    "id": "2rvNV1qJ_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 4,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_delta(eps, 4), market)"
+    },
+    "note": "\u53d8\u4f531: ts_delta\u5468\u671f1\u21924, decay 6\u21924"
+  },
+  {
+    "id": "2rvNV1qJ_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "group_rank(ts_delta(eps, 1), sector)"
+    },
+    "note": "\u53d8\u4f532: neutralization market\u2192sector"
+  },
+  {
+    "id": "xAeN6jGp_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON"
+    },
+    "regular": {
+      "code": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 0.1)), industry)"
+    },
+    "note": "\u53d8\u4f531: max()\u2192add(, 0.1), neutralization SUBINDUSTRY\u2192INDUSTRY"
+  },
+  {
+    "id": "xAeN6jGp_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 3,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "ON"
+    },
+    "regular": {
+      "code": "group_neutralize(divide(fnd6_rectr, max(fnd6_recd, 0.000001)), subindustry)"
+    },
+    "note": "\u53d8\u4f532: decay 0\u21923"
+  },
+  {
+    "id": "1YopVrdW_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "ON"
+    },
+    "regular": {
+      "code": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 2.0)), subindustry)"
+    },
+    "note": "\u53d8\u4f531: denominator add(fnd6_recd, 1.0)\u21922.0"
+  },
+  {
+    "id": "1YopVrdW_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON"
+    },
+    "regular": {
+      "code": "group_neutralize(divide(fnd6_rectr, add(fnd6_recd, 1.0)), industry)"
+    },
+    "note": "\u53d8\u4f532: neutralization SUBINDUSTRY\u2192INDUSTRY"
+  },
+  {
+    "id": "1YoX2GxX_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "rank(group_neutralize(divide(fnd6_sppe, add(abs(fnd6_siv), 2)), industry))"
+    },
+    "note": "\u53d8\u4f531: denominator abs(fnd6_siv)+1 \u2192 +2"
+  },
+  {
+    "id": "1YoX2GxX_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 0,
+      "neutralization": "SUBINDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "rank(group_neutralize(divide(fnd6_sppe, add(abs(fnd6_siv), 1)), subindustry))"
+    },
+    "note": "\u53d8\u4f532: neutralization INDUSTRY\u2192SUBINDUSTRY"
+  },
+  {
+    "id": "QPn0vn3X_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 20,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "trade_when(group_rank(ts_std_dev(returns,40), sector) > 0.75, rank(group_zscore(rank(-ts_zscore(close, 5)), densify(sector))), abs(returns) > 0.1)"
+    },
+    "note": "\u53d8\u4f531: ts_std_dev\u7a97\u53e360\u219240, \u9608\u503c0.7\u21920.75, decay 15\u219220"
+  },
+  {
+    "id": "QPn0vn3X_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 15,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "OFF"
+    },
+    "regular": {
+      "code": "trade_when(group_rank(ts_std_dev(returns,60), sector) > 0.7, rank(group_zscore(rank(-ts_zscore(close, 3)), densify(sector))), abs(returns) > 0.1)"
+    },
+    "note": "\u53d8\u4f532: ts_zscore\u7a97\u53e35\u21923"
+  },
+  {
+    "id": "d5d59jpw_v1",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "zscore(reverse(divide(change_in_eps_surprise, max(abs(correlation_last_180_days_spy), 0.01))))"
+    },
+    "note": "\u53d8\u4f531: correlation\u7a97\u53e3360\u2192180, decay 4\u21926"
+  },
+  {
+    "id": "d5d59jpw_v2",
+    "type": "REGULAR",
+    "settings": {
+      "instrumentType": "EQUITY",
+      "region": "USA",
+      "universe": "TOP3000",
+      "delay": 1,
+      "truncation": 0.08,
+      "pasteurization": "ON",
+      "unitHandling": "VERIFY",
+      "maxTrade": "OFF",
+      "maxPosition": "OFF",
+      "language": "FASTEXPR",
+      "visualization": false,
+      "startDate": "2019-01-01",
+      "endDate": "2023-12-31",
+      "decay": 4,
+      "neutralization": "INDUSTRY",
+      "nanHandling": "ON",
+      "testPeriod": "P2Y"
+    },
+    "regular": {
+      "code": "zscore(divide(change_in_eps_surprise, max(abs(correlation_last_360_days_spy), 0.01)))"
+    },
+    "note": "\u53d8\u4f532: \u79fb\u9664reverse"
+  }
+]

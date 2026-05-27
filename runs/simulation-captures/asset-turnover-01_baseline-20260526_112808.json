@@ -1,0 +1,96 @@
+{
+  "phase": "01_baseline",
+  "description": "Baseline confirmation",
+  "started_at": "2026-05-26T11:28:08.430958",
+  "phase_completed_at": "2026-05-26T12:25:01.980504",
+  "results": [
+    {
+      "name": "p1_base_at_i126",
+      "alpha_id": "VkOOp0VY",
+      "sharpe": 0.92,
+      "fitness": 0.64,
+      "turnover": 0.0152,
+      "expression": "group_rank(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p1_base_at_i63",
+      "alpha_id": "e7LLOMgp",
+      "sharpe": 0.88,
+      "fitness": 0.6,
+      "turnover": 0.0133,
+      "expression": "group_rank(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 63), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p1_base_at_i252",
+      "alpha_id": "LLkk1ONe",
+      "sharpe": 0.98,
+      "fitness": 0.69,
+      "turnover": 0.0111,
+      "expression": "group_rank(ts_mean(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 252), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p1_base_at_flip",
+      "alpha_id": "LLkk17Vn",
+      "sharpe": -0.92,
+      "fitness": -0.64,
+      "turnover": 0.0152,
+      "expression": "-group_rank(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p1_base_at_subind",
+      "alpha_id": "gJxx9J6e",
+      "sharpe": 1.16,
+      "fitness": 0.82,
+      "turnover": 0.0168,
+      "expression": "group_rank(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), subindustry)",
+      "decay": 6,
+      "neutralization": "SUBINDUSTRY",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p1_base_at_market",
+      "alpha_id": "78JJndk2",
+      "sharpe": 1.14,
+      "fitness": 1.03,
+      "turnover": 0.009,
+      "expression": "group_rank(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), market)",
+      "decay": 6,
+      "neutralization": "MARKET",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p1_base_at_rank",
+      "alpha_id": "VkOO3RlV",
+      "sharpe": 0.85,
+      "fitness": 0.72,
+      "turnover": 0.0086,
+      "expression": "rank(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)))",
+      "decay": 6,
+      "neutralization": "MARKET",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "p1_base_at_zscore",
+      "alpha_id": "9qJJpodx",
+      "sharpe": 0.83,
+      "fitness": 0.48,
+      "turnover": 0.0347,
+      "expression": "group_rank(ts_zscore(divide(winsorize(ts_backfill(revenue, 252), std=4), add(abs(winsorize(ts_backfill(assets, 252), std=4)), 1)), 252), industry)",
+      "decay": 6,
+      "neutralization": "INDUSTRY",
+      "status": "COMPLETE"
+    }
+  ]
+}

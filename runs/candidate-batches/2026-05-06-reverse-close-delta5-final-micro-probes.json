@@ -1,0 +1,140 @@
+{
+  "capture_id": "2026-05-06-reverse-close-delta5-final-micro-probes",
+  "topic": "reverse_close_delta5_fitness_rescue",
+  "rationale": "Final bounded micro-probes around the official qblend decay2 near-pass. Each candidate changes one major lever only.",
+  "baseline_reference": {
+    "alpha_id": "npZKqZp3",
+    "fitness": 0.99,
+    "sharpe": 1.66,
+    "turnover": 0.4875,
+    "returns": 0.1737
+  },
+  "candidates": [
+    {
+      "name": "qblend_decay2_trunc010",
+      "expression": "quantile(rank(rank((-ts_sum(returns, 5)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 5)))), driver=gaussian)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 2,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.10,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    },
+    {
+      "name": "qblend_decay2_trunc012",
+      "expression": "quantile(rank(rank((-ts_sum(returns, 5)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 5)))), driver=gaussian)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 2,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.12,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    },
+    {
+      "name": "qblend_decay2_nan_on",
+      "expression": "quantile(rank(rank((-ts_sum(returns, 5)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 5)))), driver=gaussian)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 2,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "ON",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    },
+    {
+      "name": "qblend_decay2_pasteur_off",
+      "expression": "quantile(rank(rank((-ts_sum(returns, 5)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 5)))), driver=gaussian)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 2,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "OFF",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    },
+    {
+      "name": "qblend_expr_decay2_settings0",
+      "expression": "ts_decay_linear(quantile(rank(rank((-ts_sum(returns, 5)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 5)))), driver=gaussian), 2)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 0,
+        "neutralization": "INDUSTRY",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    },
+    {
+      "name": "qblend_decay2_market",
+      "expression": "quantile(rank(rank((-ts_sum(returns, 5)) / ts_std_dev(returns, 60)) + reverse(rank(ts_delta(close, 5)))), driver=gaussian)",
+      "settings": {
+        "instrumentType": "EQUITY",
+        "region": "USA",
+        "universe": "TOP3000",
+        "delay": 1,
+        "decay": 2,
+        "neutralization": "MARKET",
+        "truncation": 0.08,
+        "pasteurization": "ON",
+        "unitHandling": "VERIFY",
+        "nanHandling": "OFF",
+        "maxTrade": "OFF",
+        "maxPosition": "OFF",
+        "language": "FASTEXPR",
+        "visualization": false,
+        "testPeriod": "P1Y0M0D"
+      }
+    }
+  ]
+}

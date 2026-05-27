@@ -1,0 +1,1384 @@
+{
+  "generated_at": "2026-05-25T13:11:08.606662",
+  "api_status": "LOCKED",
+  "data_source": "/Users/zpdedn/Documents/project/Worldquantbrain/runs/simulation-captures/unsubmitted-full-2026-05-20T19-02-51-888Z.json",
+  "summary": {
+    "total_unsubmitted": 5161,
+    "total_candidates": 77,
+    "killed_family": 72,
+    "live_candidates": 5,
+    "by_economic_logic": {
+      "fundamental": 5
+    }
+  },
+  "top_30_live": [
+    {
+      "rank": 1,
+      "alpha_id": "E5rMOr69",
+      "sharpe": 1.59,
+      "fitness": 1.17,
+      "turnover": 0.1716,
+      "score": 0.028600000000000004,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ]
+    },
+    {
+      "rank": 2,
+      "alpha_id": "Gr372wO3",
+      "sharpe": 1.59,
+      "fitness": 1.17,
+      "turnover": 0.1716,
+      "score": 0.028600000000000004,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ]
+    },
+    {
+      "rank": 3,
+      "alpha_id": "ZYW1N67Y",
+      "sharpe": 1.59,
+      "fitness": 1.17,
+      "turnover": 0.1716,
+      "score": 0.028600000000000004,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ]
+    },
+    {
+      "rank": 4,
+      "alpha_id": "d5lPJzpx",
+      "sharpe": 1.58,
+      "fitness": 1.05,
+      "turnover": 0.179,
+      "score": 0.029833333333333337,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ]
+    },
+    {
+      "rank": 5,
+      "alpha_id": "kqLMrxKk",
+      "sharpe": 1.59,
+      "fitness": 1.01,
+      "turnover": 0.1845,
+      "score": 0.03075,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ]
+    }
+  ],
+  "high_sharpe": [
+    {
+      "alpha_id": "KPn2VRG1",
+      "sharpe": 2.03,
+      "fitness": 1.29,
+      "is_killed": true
+    },
+    {
+      "alpha_id": "Grn7QXv0",
+      "sharpe": 2.03,
+      "fitness": 1.29,
+      "is_killed": true
+    }
+  ],
+  "all_live_candidates": [
+    {
+      "alpha_id": "E5rMOr69",
+      "sharpe": 1.59,
+      "fitness": 1.17,
+      "turnover": 0.1716,
+      "score": 0.028600000000000004,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ],
+      "is_killed": false,
+      "expression": "-group_rank(-ts_rank(anl4_af_eps_value / close, 60), industry);"
+    },
+    {
+      "alpha_id": "Gr372wO3",
+      "sharpe": 1.59,
+      "fitness": 1.17,
+      "turnover": 0.1716,
+      "score": 0.028600000000000004,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ],
+      "is_killed": false,
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)"
+    },
+    {
+      "alpha_id": "ZYW1N67Y",
+      "sharpe": 1.59,
+      "fitness": 1.17,
+      "turnover": 0.1716,
+      "score": 0.028600000000000004,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ],
+      "is_killed": false,
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)"
+    },
+    {
+      "alpha_id": "d5lPJzpx",
+      "sharpe": 1.58,
+      "fitness": 1.05,
+      "turnover": 0.179,
+      "score": 0.029833333333333337,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ],
+      "is_killed": false,
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), industry)"
+    },
+    {
+      "alpha_id": "kqLMrxKk",
+      "sharpe": 1.59,
+      "fitness": 1.01,
+      "turnover": 0.1845,
+      "score": 0.03075,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "anl4_"
+      ],
+      "is_killed": false,
+      "expression": "group_rank(ts_rank(anl4_af_eps_value / close, 60), subindustry)"
+    },
+    {
+      "alpha_id": "KPwQ2Pjz",
+      "sharpe": 1.71,
+      "fitness": 1.12,
+      "turnover": 0.1537,
+      "score": 0.12561666666666668,
+      "econ_type": "fundamental",
+      "fields": [
+        "close",
+        "earnings_"
+      ],
+      "is_killed": true,
+      "expression": "group_rank(ts_rank(earnings_per_share_median_value/close, 84), subindustry)"
+    },
+    {
+      "alpha_id": "P0wO9gax",
+      "sharpe": 1.58,
+      "fitness": 1.13,
+      "turnover": 0.0835,
+      "score": 0.18891666666666665,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "scl12_"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.65, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "WjaV1exj",
+      "sharpe": 1.5,
+      "fitness": 1.05,
+      "turnover": 0.0844,
+      "score": 0.18906666666666666,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "scl12_",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.65, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "wpnEgzz5",
+      "sharpe": 1.75,
+      "fitness": 1.39,
+      "turnover": 0.1014,
+      "score": 0.1919,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "scl12_"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.55, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "KPXEaZZ1",
+      "sharpe": 1.61,
+      "fitness": 1.28,
+      "turnover": 0.1078,
+      "score": 0.19296666666666665,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "scl12_"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,10)) > 0.55, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "LLgdV2We",
+      "sharpe": 1.54,
+      "fitness": 1.21,
+      "turnover": 0.1089,
+      "score": 0.19315,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "scl12_",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,10)) > 0.55, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "6XaeXZvP",
+      "sharpe": 1.54,
+      "fitness": 1.18,
+      "turnover": 0.111,
+      "score": 0.19349999999999998,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "scl12_",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.50, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "N1nlY6E7",
+      "sharpe": 1.66,
+      "fitness": 1.1,
+      "turnover": 0.1619,
+      "score": 0.20198333333333332,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "scl12_"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,30)) > 0.55, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "le7dL6m5",
+      "sharpe": 1.63,
+      "fitness": 1.09,
+      "turnover": 0.1655,
+      "score": 0.20258333333333334,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "scl12_"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.55, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "omn0d2rm",
+      "sharpe": 1.57,
+      "fitness": 1.02,
+      "turnover": 0.168,
+      "score": 0.20299999999999999,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "scl12_"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,20)) > 0.55, zscore(group_neutralize(ts_decay_linear"
+    },
+    {
+      "alpha_id": "YPNoeOzM",
+      "sharpe": 1.61,
+      "fitness": 1.1,
+      "turnover": 0.1717,
+      "score": 0.20361666666666667,
+      "econ_type": "sentiment",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "scl12_"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(ts_mean(scl12_sentiment_fast_d1,10)) > 0.55, group_neutralize(ts_decay_linear((-ts_z"
+    },
+    {
+      "alpha_id": "2rvo6gP8",
+      "sharpe": 1.57,
+      "fitness": 1.25,
+      "turnover": 0.0624,
+      "score": 0.2604,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "omn0rAam",
+      "sharpe": 1.58,
+      "fitness": 1.26,
+      "turnover": 0.063,
+      "score": 0.2605,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "gJmVGMvJ",
+      "sharpe": 1.57,
+      "fitness": 1.25,
+      "turnover": 0.0635,
+      "score": 0.26058333333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "QPnpgGaw",
+      "sharpe": 1.58,
+      "fitness": 1.26,
+      "turnover": 0.0647,
+      "score": 0.2607833333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "gJmVgMXm",
+      "sharpe": 1.57,
+      "fitness": 1.26,
+      "turnover": 0.066,
+      "score": 0.261,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "xAepVZxn",
+      "sharpe": 1.55,
+      "fitness": 1.25,
+      "turnover": 0.0692,
+      "score": 0.26153333333333334,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "9q9O8jWd",
+      "sharpe": 1.54,
+      "fitness": 1.24,
+      "turnover": 0.0731,
+      "score": 0.2621833333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "E5qPxqwG",
+      "sharpe": 1.7,
+      "fitness": 1.48,
+      "turnover": 0.0755,
+      "score": 0.26258333333333334,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high"
+    },
+    {
+      "alpha_id": "LLnYr306",
+      "sharpe": 1.7,
+      "fitness": 1.49,
+      "turnover": 0.0773,
+      "score": 0.26288333333333336,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high"
+    },
+    {
+      "alpha_id": "WjN23knN",
+      "sharpe": 1.73,
+      "fitness": 1.53,
+      "turnover": 0.078,
+      "score": 0.263,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "YPN9bmao",
+      "sharpe": 1.65,
+      "fitness": 1.42,
+      "turnover": 0.079,
+      "score": 0.26316666666666666,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "ts_mean(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((hig"
+    },
+    {
+      "alpha_id": "P0nmPAWJ",
+      "sharpe": 1.72,
+      "fitness": 1.52,
+      "turnover": 0.08,
+      "score": 0.2633333333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "WjNRY6VG",
+      "sharpe": 1.72,
+      "fitness": 1.52,
+      "turnover": 0.0815,
+      "score": 0.26358333333333334,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "d5nr90EY",
+      "sharpe": 1.71,
+      "fitness": 1.51,
+      "turnover": 0.0832,
+      "score": 0.2638666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "E5q2v5QK",
+      "sharpe": 1.5,
+      "fitness": 1.17,
+      "turnover": 0.0844,
+      "score": 0.26406666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "group_rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts"
+    },
+    {
+      "alpha_id": "npn5aPmd",
+      "sharpe": 1.7,
+      "fitness": 1.51,
+      "turnover": 0.086,
+      "score": 0.2643333333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "58L1J23J",
+      "sharpe": 1.68,
+      "fitness": 1.5,
+      "turnover": 0.0919,
+      "score": 0.26531666666666665,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "qMnw011V",
+      "sharpe": 1.53,
+      "fitness": 1.16,
+      "turnover": 0.093,
+      "score": 0.2655,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "close",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(ts_corr(close, volume, 20) < 0, rank(group_neutralize(ts_decay_linear((-ts_zscore(returns"
+    },
+    {
+      "alpha_id": "LLn27go2",
+      "sharpe": 1.5,
+      "fitness": 1.41,
+      "turnover": 0.111,
+      "score": 0.2685,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean"
+    },
+    {
+      "alpha_id": "3qEOkW7Z",
+      "sharpe": 1.66,
+      "fitness": 1.42,
+      "turnover": 0.1194,
+      "score": 0.26990000000000003,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(zscore(zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+t"
+    },
+    {
+      "alpha_id": "1YoRO3KJ",
+      "sharpe": 1.66,
+      "fitness": 1.42,
+      "turnover": 0.1194,
+      "score": 0.26990000000000003,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(rank(zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_"
+    },
+    {
+      "alpha_id": "xAeErZRp",
+      "sharpe": 1.66,
+      "fitness": 1.42,
+      "turnover": 0.1194,
+      "score": 0.26990000000000003,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(zscore(rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_"
+    },
+    {
+      "alpha_id": "QPnov6Q5",
+      "sharpe": 1.66,
+      "fitness": 1.42,
+      "turnover": 0.1194,
+      "score": 0.26990000000000003,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(rank(rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_me"
+    },
+    {
+      "alpha_id": "O0n2Jv7d",
+      "sharpe": 1.66,
+      "fitness": 1.42,
+      "turnover": 0.1194,
+      "score": 0.26990000000000003,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "LLn28GOn",
+      "sharpe": 1.82,
+      "fitness": 1.52,
+      "turnover": 0.1215,
+      "score": 0.27025,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_m"
+    },
+    {
+      "alpha_id": "le7NjA3A",
+      "sharpe": 1.78,
+      "fitness": 1.58,
+      "turnover": 0.1367,
+      "score": 0.2727833333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / ("
+    },
+    {
+      "alpha_id": "akNge57R",
+      "sharpe": 1.76,
+      "fitness": 1.57,
+      "turnover": 0.1381,
+      "score": 0.2730166666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high"
+    },
+    {
+      "alpha_id": "3qaRO7n0",
+      "sharpe": 1.73,
+      "fitness": 1.53,
+      "turnover": 0.1765,
+      "score": 0.27941666666666665,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "1Yad2OAz",
+      "sharpe": 1.9,
+      "fitness": 1.58,
+      "turnover": 0.1778,
+      "score": 0.27963333333333334,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "78xr3x75",
+      "sharpe": 1.76,
+      "fitness": 1.3,
+      "turnover": 0.1944,
+      "score": 0.2824,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "trade_when(rank(volume / ts_mean(volume, 20)) > 0.6, zscore(group_neutralize(ts_decay_linear((-ts_zs"
+    },
+    {
+      "alpha_id": "omn00ex6",
+      "sharpe": 1.85,
+      "fitness": 1.22,
+      "turnover": 0.2364,
+      "score": 0.2894,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_std_d"
+    },
+    {
+      "alpha_id": "LLn29mba",
+      "sharpe": 1.87,
+      "fitness": 1.24,
+      "turnover": 0.2365,
+      "score": 0.28941666666666666,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "WjNxOPgo",
+      "sharpe": 1.86,
+      "fitness": 1.23,
+      "turnover": 0.2385,
+      "score": 0.28975,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(zscore(rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_"
+    },
+    {
+      "alpha_id": "0mAaYkxk",
+      "sharpe": 1.86,
+      "fitness": 1.23,
+      "turnover": 0.2385,
+      "score": 0.28975,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(rank(rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_me"
+    },
+    {
+      "alpha_id": "QPnoveRQ",
+      "sharpe": 1.86,
+      "fitness": 1.23,
+      "turnover": 0.2385,
+      "score": 0.28975,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(zscore(zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+t"
+    },
+    {
+      "alpha_id": "KPn2m50g",
+      "sharpe": 1.86,
+      "fitness": 1.23,
+      "turnover": 0.2385,
+      "score": 0.28975,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(rank(zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_"
+    },
+    {
+      "alpha_id": "9q92WEV1",
+      "sharpe": 1.86,
+      "fitness": 1.23,
+      "turnover": 0.2385,
+      "score": 0.28975,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-l"
+    },
+    {
+      "alpha_id": "KPn2VRG1",
+      "sharpe": 2.03,
+      "fitness": 1.29,
+      "turnover": 0.2495,
+      "score": 0.2915833333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_m"
+    },
+    {
+      "alpha_id": "Grn7QXv0",
+      "sharpe": 2.03,
+      "fitness": 1.29,
+      "turnover": 0.2496,
+      "score": 0.29159999999999997,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "zscore(group_rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts"
+    },
+    {
+      "alpha_id": "6XR77PpO",
+      "sharpe": 1.74,
+      "fitness": 1.13,
+      "turnover": 0.254,
+      "score": 0.29233333333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/vwap,20)))*ra"
+    },
+    {
+      "alpha_id": "88aem8qz",
+      "sharpe": 1.89,
+      "fitness": 1.25,
+      "turnover": 0.2561,
+      "score": 0.29268333333333335,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "quantile(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((hi"
+    },
+    {
+      "alpha_id": "MPb2aMoz",
+      "sharpe": 1.81,
+      "fitness": 1.11,
+      "turnover": 0.2566,
+      "score": 0.2927666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_rank(rank(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_m"
+    },
+    {
+      "alpha_id": "zq5n7AYK",
+      "sharpe": 1.97,
+      "fitness": 1.36,
+      "turnover": 0.2586,
+      "score": 0.2931,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_std_dev(cl"
+    },
+    {
+      "alpha_id": "zqPmbOOR",
+      "sharpe": 1.78,
+      "fitness": 1.15,
+      "turnover": 0.2704,
+      "score": 0.2950666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "e7d05jWE",
+      "sharpe": 1.95,
+      "fitness": 1.33,
+      "turnover": 0.2715,
+      "score": 0.29525,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "YPNoo51w",
+      "sharpe": 1.97,
+      "fitness": 1.33,
+      "turnover": 0.2721,
+      "score": 0.29535,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_std"
+    },
+    {
+      "alpha_id": "N1nlG8de",
+      "sharpe": 1.97,
+      "fitness": 1.33,
+      "turnover": 0.2721,
+      "score": 0.29535,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_std_dev(cl"
+    },
+    {
+      "alpha_id": "A1g79l1e",
+      "sharpe": 1.97,
+      "fitness": 1.33,
+      "turnover": 0.2721,
+      "score": 0.29535,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_std_dev(cl"
+    },
+    {
+      "alpha_id": "P0wOQ17W",
+      "sharpe": 1.79,
+      "fitness": 1.3,
+      "turnover": 0.2723,
+      "score": 0.29538333333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_mean((high"
+    },
+    {
+      "alpha_id": "zq5L87X1",
+      "sharpe": 1.9,
+      "fitness": 1.24,
+      "turnover": 0.2735,
+      "score": 0.2955833333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean"
+    },
+    {
+      "alpha_id": "d5n69R5J",
+      "sharpe": 1.99,
+      "fitness": 1.37,
+      "turnover": 0.2746,
+      "score": 0.2957666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_"
+    },
+    {
+      "alpha_id": "0mALGdEK",
+      "sharpe": 1.99,
+      "fitness": 1.37,
+      "turnover": 0.2746,
+      "score": 0.2957666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_"
+    },
+    {
+      "alpha_id": "pwnpvNq3",
+      "sharpe": 1.99,
+      "fitness": 1.37,
+      "turnover": 0.2746,
+      "score": 0.2957666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high"
+    },
+    {
+      "alpha_id": "xAeE33Ab",
+      "sharpe": 1.99,
+      "fitness": 1.37,
+      "turnover": 0.2746,
+      "score": 0.2957666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "zscore(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high"
+    },
+    {
+      "alpha_id": "rKbpx931",
+      "sharpe": 1.98,
+      "fitness": 1.36,
+      "turnover": 0.2746,
+      "score": 0.2957666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "leQlaYNe",
+      "sharpe": 1.98,
+      "fitness": 1.36,
+      "turnover": 0.2746,
+      "score": 0.2957666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "MPb215Pa",
+      "sharpe": 1.99,
+      "fitness": 1.31,
+      "turnover": 0.2759,
+      "score": 0.2959833333333333,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "cap",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_"
+    },
+    {
+      "alpha_id": "rKbMar13",
+      "sharpe": 1.93,
+      "fitness": 1.27,
+      "turnover": 0.2888,
+      "score": 0.29813333333333336,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_std_dev(cl"
+    },
+    {
+      "alpha_id": "om3l6jg6",
+      "sharpe": 1.7,
+      "fitness": 1.02,
+      "turnover": 0.3093,
+      "score": 0.30155,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns,252))*group_rank(rank(1/(1+ts_mean((high-low)/v"
+    },
+    {
+      "alpha_id": "qMnJJRqV",
+      "sharpe": 1.89,
+      "fitness": 1.2,
+      "turnover": 0.31,
+      "score": 0.3016666666666667,
+      "econ_type": "price_volume",
+      "fields": [
+        "close",
+        "returns",
+        "vwap",
+        "volume"
+      ],
+      "is_killed": true,
+      "expression": "group_neutralize(ts_decay_linear((-ts_zscore(returns, 252)) * group_rank(rank(1 / (1 + ts_std_dev(cl"
+    },
+    {
+      "alpha_id": "9q9YQm89",
+      "sharpe": 1.89,
+      "fitness": 1.1,
+      "turnover": 0.3341,
+      "score": 0.30568333333333336,
+      "econ_type": "price_volume",
+      "fields": [
+        "vwap",
+        "volume",
+        "returns",
+        "high",
+        "low"
+      ],
+      "is_killed": true,
+      "expression": "rank(group_neutralize(ts_decay_linear((-ts_zscore(returns, 252))*group_rank(rank(1/(1+ts_mean((high-"
+    }
+  ]
+}
